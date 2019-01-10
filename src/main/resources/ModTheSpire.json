@@ -1,0 +1,11 @@
+{
+  "modid": "KinomotoSakuraMod",
+  "name": "KinomotoSakuraMod",
+  "description": "Kinomoto Sakura, the protagonist of animation Card Captor Sakura.\n动画《魔卡少女樱》的主角木之本樱。",
+  "author_list": ["tuzishu"],
+  "version": "0.0.1",
+  "mts_version": "3.6.0",
+  "sts_version": "01-03-2019",
+  "credits": "None",
+  "update_json": "None"
+}
