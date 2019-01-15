@@ -32,7 +32,7 @@ public class ClowCardTheSword extends AbstractClowCard
 //        DESCRIPTION = cardStrings.DESCRIPTION;
         NAME = "剑";
         DESCRIPTION = "造成 !D! 点伤害。";
-        IMAGE_PATH = "img/cards/SimpleSpark.png";
+        IMAGE_PATH = "img/cards/ClowCardTheSword.png";
         COST = 1;
         CARD_TYPE = CardType.ATTACK;
         CARD_COLOR = CardColorEnum.CLOWCARD_COLOR;
