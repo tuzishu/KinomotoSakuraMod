@@ -1,5 +1,6 @@
 package KinomotoSakuraMod.Characters;
 
+import KinomotoSakuraMod.Patches.CardColorEnum;
 import KinomotoSakuraMod.Patches.CharacterEnum;
 import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.graphics.Color;
@@ -13,6 +14,7 @@ import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.events.city.Vampires;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import java.util.ArrayList;
 
@@ -41,12 +43,21 @@ public class KinomotoSakura extends CustomPlayer
 
     public ArrayList<String> getStartingDeck()
     {
-        return null;
+        ArrayList<String> startCards = new ArrayList<String>();
+        startCards.add("ClowCardTheSword");
+        startCards.add("ClowCardTheSword");
+        startCards.add("ClowCardTheSword");
+        startCards.add("ClowCardTheSword");
+        startCards.add("ClowCardTheSword");
+        return startCards;
     }
 
     public ArrayList<String> getStartingRelics()
     {
-        return null;
+        ArrayList<String> startRelics = new ArrayList<String>();
+        startRelics.add("Test 4");
+        UnlockTracker.markRelicAsSeen("Test 4");
+        return startRelics;
     }
 
     public CharSelectInfo getLoadout()
@@ -61,7 +72,7 @@ public class KinomotoSakura extends CustomPlayer
 
     public AbstractCard.CardColor getCardColor()
     {
-        return null;
+        return CardColorEnum.CLOWCARD_COLOR;
     }
 
     public Color getCardRenderColor()
