@@ -1,5 +1,6 @@
 package KinomotoSakuraMod.Characters;
 
+import KinomotoSakuraMod.KinomotoSakutaMod;
 import KinomotoSakuraMod.Patches.CardColorEnum;
 import KinomotoSakuraMod.Patches.CharacterEnum;
 import basemod.abstracts.CustomPlayer;
@@ -10,9 +11,13 @@ import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.events.beyond.SpireHeart;
 import com.megacrit.cardcrawl.events.city.Vampires;
+import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
@@ -62,12 +67,30 @@ public class KinomotoSakura extends CustomPlayer
 
     public CharSelectInfo getLoadout()
     {
-        return null;
+        String title;
+        String flavor;
+        if (Settings.language == Settings.GameLanguage.ZHS)
+        {
+            title = "魔卡少女";
+            flavor = "《魔拉少女樱》的主角";
+        }
+        else
+        {
+            title = "Card Capter";
+            flavor = "The protagonist of animation Card Captor Sakura";
+        }
+        return new CharSelectInfo(title, flavor, 75, 75, 0, 99, 5, this, getStartingRelics(), getStartingDeck(), false);
     }
 
     public String getTitle(PlayerClass playerClass)
     {
-        return null;
+        String title;
+        if (Settings.language == Settings.GameLanguage.ZHS) {
+            title = "魔卡少女";
+        } else {
+            title = "Card Capter";
+        }
+        return title;
     }
 
     public AbstractCard.CardColor getCardColor()
@@ -87,47 +110,48 @@ public class KinomotoSakura extends CustomPlayer
 
     public Color getCardTrailColor()
     {
-        return null;
+        return KinomotoSakutaMod.COLOR_SAKURA;
     }
 
     public int getAscensionMaxHPLoss()
     {
-        return 0;
+        return 5;
     }
 
     public BitmapFont getEnergyNumFont()
     {
-        return null;
+        return FontHelper.energyNumFontBlue;
     }
 
     public void doCharSelectScreenSelectEffect()
     {
-
+        CardCrawlGame.sound.playA("ATTACK_MAGIC_BEAM_SHORT", MathUtils.random(-0.2F, 0.2F));
+        CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.SHORT, false);
     }
 
     public String getCustomModeCharacterButtonSoundKey()
     {
-        return null;
+        return "ATTACK_MAGIC_BEAM_SHORT";
     }
 
     public String getLocalizedCharacterName()
     {
-        return null;
+        return "Sakura";
     }
 
     public AbstractPlayer newInstance()
     {
-        return null;
+        return new KinomotoSakura(this.name);
     }
 
     public String getSpireHeartText()
     {
-        return null;
+        return SpireHeart.DESCRIPTIONS[10];
     }
 
     public Color getSlashAttackColor()
     {
-        return null;
+        return KinomotoSakutaMod.COLOR_SAKURA;
     }
 
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect()

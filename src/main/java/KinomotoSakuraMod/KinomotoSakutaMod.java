@@ -33,7 +33,7 @@ public class KinomotoSakutaMod implements ISubscriber, EditCharactersSubscriber,
     public static final Color COLOR_CLOWCARD = CardHelper.getColor(255f, 152f, 74f);
     public static final Color COLOR_SAKURA = CardHelper.getColor(255f, 192f, 203f);
     public static final Color COLOR_SPELL = CardHelper.getColor(253f, 220f, 106f);
-    private static final String JSON_CARD = "localization/KinomotoSakura_card_zhs.json";
+    private static final String JSON_CARD = "localization/KinomotoSakura_card_eng.json";
     private static final String JSON_CARD_ZHS = "localization/KinomotoSakura_card_zhs.json";
 //    private static final String RELIC_STRING;
 //    private static final String RELIC_STRING_ZH;
