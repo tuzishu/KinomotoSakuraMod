@@ -17,27 +17,21 @@ public class ClowCardTheSword extends AbstractClowCard
 {
     private static final String ID = "ClowCardTheSword";
     private static final String NAME;
-    private static final String IMAGE_PATH;
-    private static final int COST;
     private static final String DESCRIPTION;
-    private static final CardType CARD_TYPE;
-    private static final CardColor CARD_COLOR;
-    private static final CardRarity CARD_RARITY;
-    private static final CardTarget CARD_TARGET;
+    private static final String IMAGE_PATH = "img/cards/ClowCardTheSword.png";
+    private static final int COST = 1;
+    private static final CardType CARD_TYPE = CardType.ATTACK;
+    private static final CardColor CARD_COLOR = CardColorEnum.CLOWCARD_COLOR;
+    private static final CardRarity CARD_RARITY = CardRarity.COMMON;
+    private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
 
     static
     {
-//        CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-//        NAME = cardStrings.NAME;
-//        DESCRIPTION = cardStrings.DESCRIPTION;
-        NAME = "剑";
-        DESCRIPTION = "造成 !D! 点伤害。";
-        IMAGE_PATH = "img/cards/ClowCardTheSword.png";
-        COST = 1;
-        CARD_TYPE = CardType.ATTACK;
-        CARD_COLOR = CardColorEnum.CLOWCARD_COLOR;
-        CARD_RARITY = CardRarity.COMMON;
-        CARD_TARGET = CardTarget.ENEMY;
+        CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+        NAME = cardStrings.NAME;
+        DESCRIPTION = cardStrings.DESCRIPTION;
+//        NAME = "剑";
+//        DESCRIPTION = "造成 !D! 点伤害。";
     }
 
 
