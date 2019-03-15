@@ -85,9 +85,12 @@ public class KinomotoSakura extends CustomPlayer
     public String getTitle(PlayerClass playerClass)
     {
         String title;
-        if (Settings.language == Settings.GameLanguage.ZHS) {
+        if (Settings.language == Settings.GameLanguage.ZHS)
+        {
             title = "魔卡少女";
-        } else {
+        }
+        else
+        {
             title = "Card Capter";
         }
         return title;
@@ -156,7 +159,7 @@ public class KinomotoSakura extends CustomPlayer
 
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect()
     {
-        return new AbstractGameAction.AttackEffect[] { AbstractGameAction.AttackEffect.SLASH_HEAVY, AbstractGameAction.AttackEffect.FIRE, AbstractGameAction.AttackEffect.SLASH_DIAGONAL, AbstractGameAction.AttackEffect.SLASH_HEAVY, AbstractGameAction.AttackEffect.FIRE, AbstractGameAction.AttackEffect.SLASH_DIAGONAL };
+        return new AbstractGameAction.AttackEffect[]{AbstractGameAction.AttackEffect.SLASH_HEAVY, AbstractGameAction.AttackEffect.FIRE, AbstractGameAction.AttackEffect.SLASH_DIAGONAL, AbstractGameAction.AttackEffect.SLASH_HEAVY, AbstractGameAction.AttackEffect.FIRE, AbstractGameAction.AttackEffect.SLASH_DIAGONAL};
     }
 
     public String getVampireText()

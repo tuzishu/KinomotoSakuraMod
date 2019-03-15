@@ -1,4 +1,4 @@
-package KinomotoSakuraMod.Patches;
+package KinomotoSakuraMod.Cards;
 
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
