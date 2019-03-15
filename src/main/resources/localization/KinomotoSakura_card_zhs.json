@@ -1,6 +1,10 @@
 {
   "ClowCardTheSword": {
     "NAME": "剑",
-    "DESCRIPTION": "对目标造成 !D! 点伤害。"
+    "DESCRIPTION": "造成 !D! 点伤害。"
+  },
+  "ClowCradTheShield": {
+    "NAME": "盾",
+    "DESCRIPTION": "获得 !B! 点 格挡 。"
   }
 }

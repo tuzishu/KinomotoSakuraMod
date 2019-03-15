@@ -2,5 +2,9 @@
   "ClowCardTheSword": {
     "NAME": "TheSword",
     "DESCRIPTION": "deal !D! damage."
+  },
+  "ClowCardTheShield": {
+    "NAME": "",
+    "DESCRIPTION": "Gain !B! Block."
   }
 }
