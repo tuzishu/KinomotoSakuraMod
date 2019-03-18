@@ -1,0 +1,9 @@
+{
+  "EnhancementMagickPower": {
+    "NAME": "EnhancementMagickPower",
+    "DESCRIPTIONS": [
+      "Increases the damage of Physics Card",
+      "by 5% per layer."
+    ]
+  }
+}

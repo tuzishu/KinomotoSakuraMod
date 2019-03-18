@@ -15,6 +15,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -30,8 +31,6 @@ public class KinomotoSakutaMod implements ISubscriber, EditCharactersSubscriber,
     public static final Color COLOR_CLOWCARD = CardHelper.getColor(255f, 152f, 74f);
     public static final Color COLOR_SAKURA = CardHelper.getColor(255f, 192f, 203f);
     public static final Color COLOR_SPELL = CardHelper.getColor(253f, 220f, 106f);
-    private static final String JSON_CARD = "localization/KinomotoSakura_card_eng.json";
-    private static final String JSON_CARD_ZHS = "localization/KinomotoSakura_card_zhs.json";
 //    private static final String RELIC_STRING;
 //    private static final String RELIC_STRING_ZH;
 //    private static final String POWER_STRING;
@@ -78,37 +77,33 @@ public class KinomotoSakutaMod implements ISubscriber, EditCharactersSubscriber,
     public void receiveEditStrings()
     {
         logger.info("start editing strings");
+        String path = "localization/";
+        switch (Settings.language)
+        {
 
-        String card;
-//        String relic;
-//        String power;
-//        String potion;
-        if (Settings.language == Settings.GameLanguage.ZHS)
-        {
-            logger.info("lang == zhs");
-            card = JSON_CARD_ZHS;
-//            relic = "localization/ThMod_Fnh_relics-zh.json";
-//            power = "localization/ThMod_Fnh_powers-zh.json";
-//            potion = "localization/ThMod_MRS_potions-zh.json";
-        }
-        else
-        {
-            logger.info("lang == eng");
-            card = JSON_CARD;
-//            relic = "localization/ThMod_Fnh_relics.json";
-//            power = "localization/ThMod_Fnh_powers.json";
-//            potion = "localization/ThMod_MRS_potions.json";
+            case ZHS:
+                logger.info("lang == zhs");
+                path += "zhs/";
+                break;
+            default:
+                logger.info("lang == eng");
+                path += "eng/";
+                break;
         }
 
+        String card = path + "card.json";
         String cardStrings = Gdx.files.internal(card).readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
 
+//        String relic = path + "relic.json";
 //        String relicStrings = Gdx.files.internal(relic).readString(String.valueOf(StandardCharsets.UTF_8));
 //        BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
-//
-//        String powerStrings = Gdx.files.internal(power).readString(String.valueOf(StandardCharsets.UTF_8));
-//        BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
-//
+
+        String power = path + "power.json";
+        String powerStrings = Gdx.files.internal(power).readString(String.valueOf(StandardCharsets.UTF_8));
+        BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
+
+//        String potion = path + "potion.json";
 //        String potionStrings = Gdx.files.internal(potion).readString(String.valueOf(StandardCharsets.UTF_8));
 //        BaseMod.loadCustomStrings(PotionStrings.class, potionStrings);
 

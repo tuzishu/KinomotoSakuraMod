@@ -9,9 +9,9 @@ public enum CardMagicalType
     /**
      * 元素卡
      */
-    ElementalCard,
+    ElementCard,
     /**
      * 物理卡
      */
-    PhysicalCard
+    PhysicsCard
 }

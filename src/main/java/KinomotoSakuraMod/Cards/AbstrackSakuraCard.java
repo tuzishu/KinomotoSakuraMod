@@ -4,12 +4,12 @@ import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public abstract class AbstrackSakuraCard extends CustomCard
+public abstract class AbstrackSakuraCard extends AbstractModCard
 {
 
-    public AbstrackSakuraCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target)
+    public AbstrackSakuraCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target, CardMagicalType magicaltype)
     {
-        super(id, name, img, cost, rawDescription, type, color, rarity, target);
+        super(id, name, img, cost, rawDescription, type, color, rarity, target, magicaltype);
     }
 
     public abstract void upgrade();
