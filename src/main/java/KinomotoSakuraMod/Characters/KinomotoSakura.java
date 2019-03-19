@@ -2,9 +2,10 @@ package KinomotoSakuraMod.Characters;
 
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheShield;
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheSword;
-import KinomotoSakuraMod.KinomotoSakutaMod;
-import KinomotoSakuraMod.Patches.CardColorEnum;
+import KinomotoSakuraMod.KinomotoSakuraMod;
+import KinomotoSakuraMod.Patches.AbstractCardEnum;
 import KinomotoSakuraMod.Patches.CharacterEnum;
+import KinomotoSakuraMod.Relics.SealedWand;
 import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -79,8 +80,8 @@ public class KinomotoSakura extends CustomPlayer
     public ArrayList<String> getStartingRelics()
     {
         ArrayList<String> startRelics = new ArrayList<String>();
-        startRelics.add("Test 4");
-        UnlockTracker.markRelicAsSeen("Test 4");
+        startRelics.add(SealedWand.class.getSimpleName());
+        UnlockTracker.markRelicAsSeen(SealedWand.class.getSimpleName());
         return startRelics;
     }
 
@@ -119,12 +120,12 @@ public class KinomotoSakura extends CustomPlayer
 
     public AbstractCard.CardColor getCardColor()
     {
-        return CardColorEnum.CLOWCARD_COLOR;
+        return AbstractCardEnum.CLOWCARD_COLOR;
     }
 
     public Color getCardRenderColor()
     {
-        return null;
+        return KinomotoSakuraMod.colorSakuraCard;
     }
 
     public AbstractCard getStartCardForEvent()
@@ -134,7 +135,7 @@ public class KinomotoSakura extends CustomPlayer
 
     public Color getCardTrailColor()
     {
-        return KinomotoSakutaMod.colorSakuraCard;
+        return KinomotoSakuraMod.colorSakuraCard;
     }
 
     public int getAscensionMaxHPLoss()
@@ -175,7 +176,7 @@ public class KinomotoSakura extends CustomPlayer
 
     public Color getSlashAttackColor()
     {
-        return KinomotoSakutaMod.colorSakuraCard;
+        return KinomotoSakuraMod.colorSakuraCard;
     }
 
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect()

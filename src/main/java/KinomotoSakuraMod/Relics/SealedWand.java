@@ -23,6 +23,7 @@ public class SealedWand extends CustomRelic
     public SealedWand()
     {
         super(ID, ImageMaster.loadImage(IMG), ImageMaster.loadImage(IMG_OTL), AbstractRelic.RelicTier.STARTER, AbstractRelic.LandingSound.MAGICAL);
+        this.counter = 0;
     }
 
     public String getUpdatedDescription()
@@ -40,7 +41,8 @@ public class SealedWand extends CustomRelic
         if (card instanceof AbstractClowCard || card instanceof AbstrackSakuraCard)
         {
             ++this.counter;
-            if (this.counter % 100 == 0)
+            this.flash();
+            if (this.counter >= 100)
             {
                 active();
             }
@@ -49,10 +51,9 @@ public class SealedWand extends CustomRelic
 
     public void active()
     {
-        this.flash();
-        this.counter = 0;
+        this.counter -= 100;
         AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, 4));
-         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new SpellCardTurn()));
+        // AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new SpellCardTurn()));
     }
 }

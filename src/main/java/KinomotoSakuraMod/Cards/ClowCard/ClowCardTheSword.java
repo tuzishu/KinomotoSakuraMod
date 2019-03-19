@@ -2,11 +2,15 @@ package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.AbstractClowCard;
 import KinomotoSakuraMod.Cards.CardMagicalType;
-import KinomotoSakuraMod.Patches.CardColorEnum;
+import KinomotoSakuraMod.Patches.AbstractCardEnum;
 import basemod.helpers.BaseModCardTags;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -15,10 +19,10 @@ public class ClowCardTheSword extends AbstractClowCard
     public static final String ID = "ClowCardTheSword";
     private static final String NAME;
     private static final String DESCRIPTION;
-    private static final String IMAGE_PATH = "img/cards/ClowCardTheSword.png";
+    private static final String IMAGE_PATH = "img/cards/default_attack_card.png";
     private static final int COST = 1;
     private static final CardType CARD_TYPE = CardType.ATTACK;
-    private static final CardColor CARD_COLOR = CardColorEnum.CLOWCARD_COLOR;
+    private static final CardColor CARD_COLOR = AbstractCardEnum.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
     private static final CardMagicalType CARD_MAGICAL_TYPE = CardMagicalType.PHYSICS_CARD;
@@ -58,6 +62,6 @@ public class ClowCardTheSword extends AbstractClowCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
     }
 }
