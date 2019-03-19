@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class ClowCardTheSword extends AbstractClowCard
 {
-    private static final String ID = "ClowCardTheSword";
+    public static final String ID = "ClowCardTheSword";
     private static final String NAME;
     private static final String DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/ClowCardTheSword.png";

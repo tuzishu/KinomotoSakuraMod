@@ -1,5 +1,7 @@
 package KinomotoSakuraMod.Characters;
 
+import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheShield;
+import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheSword;
 import KinomotoSakuraMod.KinomotoSakutaMod;
 import KinomotoSakuraMod.Patches.CardColorEnum;
 import KinomotoSakuraMod.Patches.CharacterEnum;
@@ -25,21 +27,33 @@ import java.util.ArrayList;
 
 public class KinomotoSakura extends CustomPlayer
 {
+    // 能量栏
     private static final String[] ORB_TEXTURES = {"img/UI/EPanel/layer5.png", "img/UI/EPanel/layer4.png", "img/UI/EPanel/layer3.png", "img/UI/EPanel/layer2.png", "img/UI/EPanel/layer1.png", "img/UI/EPanel/layer0.png", "img/UI/EPanel/layer5d.png", "img/UI/EPanel/layer4d.png", "img/UI/EPanel/layer3d.png", "img/UI/EPanel/layer2d.png", "img/UI/EPanel/layer1d.png"};
     private static final String ORB_VFX = "img/UI/energyBlueVFX.png";
     private static final float[] LAYER_SPEED = {-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F, -5.0F, 0.0F};
+    private static final int START_ENERGY = 3;
+    // 角色资源
+    private static final String SHOULDER_1_IMAGE_PATH = "img/char/Marisa/shoulder1.png";
+    private static final String SHOULDER_2_IMAGE_PATH = "img/char/Marisa/shoulder2.png";
+    private static final String CORPSE_IMAGE_PATH = "img/char/Marisa/fallen.png";
+    private static final String ATLAS_PATH = "img/char/Marisa/MarisaModelv3.atlas";
+    private static final String SKELETON_PATH = "img/char/Marisa/MarisaModelv3.json";
+    private static final float CHARACTER_SCALE_RATE = 2.0f;
 
     public KinomotoSakura(String playerName)
     {
         // 参数列表：角色名，角色类枚举，能量面板贴图路径列表，能量面板特效贴图路径，能量面板贴图旋转速度列表，能量面板，模型资源路径，动画资源路径
         super(playerName, CharacterEnum.KINOMOTOSAKURA, ORB_TEXTURES, ORB_VFX, LAYER_SPEED, null, null);
 
+        // 对话框位置，默认就好
         this.dialogX = (this.drawX + 0.0F * Settings.scale);
         this.dialogY = (this.drawY + 220.0F * Settings.scale);
-        // 参数列表：静态贴图路径，越肩视角2贴图路径，越肩视角贴图路径，失败时贴图路径，角色选择界面信息，意义不明的四个固定数字（20.0F, -10.0F, 220.0F, 290.0F），初始能量数
-        initializeClass(null, "img/char/Marisa/shoulder2.png", "img/char/Marisa/shoulder1.png", "img/char/Marisa/fallen.png", getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(3));
 
-        loadAnimation("img/char/Marisa/MarisaModelv3.atlas", "img/char/Marisa/MarisaModelv3.json", 2.0F);
+        // 参数列表：静态贴图路径，越肩视角2贴图路径，越肩视角贴图路径，失败时贴图路径，角色选择界面信息，意义不明的四个固定数字（20.0F, -10.0F, 220.0F, 290.0F），初始能量数
+        initializeClass(null, SHOULDER_2_IMAGE_PATH, SHOULDER_1_IMAGE_PATH, CORPSE_IMAGE_PATH, getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(START_ENERGY));
+
+        loadAnimation(ATLAS_PATH, SKELETON_PATH, CHARACTER_SCALE_RATE);
+
         AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
         e.setTime(e.getEndTime() * MathUtils.random());
         this.stateData.setMix("Hit", "Idle", 0.1F);
@@ -49,11 +63,16 @@ public class KinomotoSakura extends CustomPlayer
     public ArrayList<String> getStartingDeck()
     {
         ArrayList<String> startCards = new ArrayList<String>();
-        startCards.add("ClowCardTheSword");
-        startCards.add("ClowCardTheSword");
-        startCards.add("ClowCardTheSword");
-        startCards.add("ClowCardTheSword");
-        startCards.add("ClowCardTheSword");
+        startCards.add(ClowCardTheSword.ID);
+        startCards.add(ClowCardTheSword.ID);
+        startCards.add(ClowCardTheSword.ID);
+        startCards.add(ClowCardTheSword.ID);
+        startCards.add(ClowCardTheShield.ID);
+        startCards.add(ClowCardTheShield.ID);
+        startCards.add(ClowCardTheShield.ID);
+        startCards.add(ClowCardTheShield.ID);
+//        startCards.add(SpellCardSeal.ID);
+//        startCards.add(SpellCardRelease.ID);
         return startCards;
     }
 
@@ -69,15 +88,16 @@ public class KinomotoSakura extends CustomPlayer
     {
         String title;
         String flavor;
-        if (Settings.language == Settings.GameLanguage.ZHS)
+        switch (Settings.language)
         {
-            title = "魔卡少女";
-            flavor = "《魔拉少女樱》的主角";
-        }
-        else
-        {
-            title = "Card Capter";
-            flavor = "The protagonist of animation Card Captor Sakura";
+            case ZHS:
+                title = "魔卡少女";
+                flavor = "《魔卡少女樱》的主角";
+                break;
+            default:
+                title = "Card Capter";
+                flavor = "The protagonist of animation Card Captor Sakura";
+                break;
         }
         return new CharSelectInfo(title, flavor, 75, 75, 0, 99, 5, this, getStartingRelics(), getStartingDeck(), false);
     }
@@ -85,13 +105,14 @@ public class KinomotoSakura extends CustomPlayer
     public String getTitle(PlayerClass playerClass)
     {
         String title;
-        if (Settings.language == Settings.GameLanguage.ZHS)
+        switch (Settings.language)
         {
-            title = "魔卡少女";
-        }
-        else
-        {
-            title = "Card Capter";
+            case ZHS:
+                title = "魔卡少女";
+                break;
+            default:
+                title = "Card Capter";
+                break;
         }
         return title;
     }
