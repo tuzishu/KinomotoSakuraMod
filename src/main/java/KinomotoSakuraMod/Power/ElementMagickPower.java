@@ -9,15 +9,15 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class EnhancementMagickPower extends AbstractPower
+public class ElementMagickPower extends AbstractPower
 {
-    private static final String ID = "EnhancementMagickPower";
+    private static final String ID = "ElementMagickPower";
     private static final String NAME;
     private static final String[] DESCRIPTIONS;
-    private static final String IMG = "img/powers/EnhancementMagickPower.png";
+    private static final String IMG = "img/powers/ElementMagickPower.png";
     private static final float CORRECTION_RATE = 0.05f;
 
-    private boolean _isPhysicsCardUsed = false;
+    private boolean _isElementCardUsed = false;
 
     static
     {
@@ -29,18 +29,19 @@ public class EnhancementMagickPower extends AbstractPower
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action)
     {
-        _isPhysicsCardUsed = card instanceof AbstractModCard && ((AbstractModCard)card).magicalType == CardMagicalType.PhysicsCard;
+        _isElementCardUsed = card instanceof AbstractModCard && ((AbstractModCard)card).magicalType == CardMagicalType.PhysicsCard;
     }
 
     @Override
     public void onAfterUseCard(AbstractCard card, UseCardAction action)
     {
-        _isPhysicsCardUsed = false;
+        _isElementCardUsed = false;
     }
 
+    @Override
     public float atDamageGive(float damage, DamageInfo.DamageType type)
     {
-        if (_isPhysicsCardUsed)
+        if (_isElementCardUsed)
         {
             damage *= CORRECTION_RATE * this.amount + 1f;
         }

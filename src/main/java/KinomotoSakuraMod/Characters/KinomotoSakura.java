@@ -113,7 +113,7 @@ public class KinomotoSakura extends CustomPlayer
 
     public Color getCardTrailColor()
     {
-        return KinomotoSakutaMod.COLOR_SAKURA;
+        return KinomotoSakutaMod.colorSakuraCard;
     }
 
     public int getAscensionMaxHPLoss()
@@ -154,7 +154,7 @@ public class KinomotoSakura extends CustomPlayer
 
     public Color getSlashAttackColor()
     {
-        return KinomotoSakutaMod.COLOR_SAKURA;
+        return KinomotoSakutaMod.colorSakuraCard;
     }
 
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect()

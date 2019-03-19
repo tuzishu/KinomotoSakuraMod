@@ -4,5 +4,11 @@
     "DESCRIPTIONS": [
       "每层提高5%的 物理牌 的伤害。"
     ]
+  },
+  "ElementMagickPower": {
+    "NAME": "元素魔法",
+    "DESCRIPTIONS": [
+      "每层提高5%的 元素牌 的伤害。"
+    ]
   }
 }

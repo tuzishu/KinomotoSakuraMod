@@ -1,5 +1,6 @@
 package KinomotoSakuraMod.Cards;
 
+import KinomotoSakuraMod.Power.ElementMagickPower;
 import KinomotoSakuraMod.Power.EnhancementMagickPower;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -28,6 +29,7 @@ public abstract class AbstractModCard extends CustomCard
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new EnhancementMagickPower()));
                 break;
             case ElementCard:
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new ElementMagickPower()));
                 break;
             default:
                 break;
