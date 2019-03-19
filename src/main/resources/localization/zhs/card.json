@@ -6,5 +6,9 @@
   "ClowCradTheShield": {
     "NAME": "盾",
     "DESCRIPTION": "获得 !B! 点 格挡 。"
+  },
+  "SpellCardTurn": {
+    "NAME": "转",
+    "DESCRIPTION": ""
   }
 }

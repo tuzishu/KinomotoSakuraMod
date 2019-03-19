@@ -21,7 +21,7 @@ public class ClowCardTheSword extends AbstractClowCard
     private static final CardColor CARD_COLOR = CardColorEnum.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final CardMagicalType CARD_MAGICAL_TYPE = CardMagicalType.PhysicsCard;
+    private static final CardMagicalType CARD_MAGICAL_TYPE = CardMagicalType.PHYSICS_CARD;
     private static final int BASE_DAMAGE = 6;
     private static final int UPGRADE_DAMAGE = 3;
 

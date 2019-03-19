@@ -5,13 +5,13 @@ public enum CardMagicalType
     /**
      * 默认卡
      */
-    Default,
+    DEFAULT,
     /**
      * 元素卡
      */
-    ElementCard,
+    ELEMENT_CARD,
     /**
      * 物理卡
      */
-    PhysicsCard
+    PHYSICS_CARD
 }
