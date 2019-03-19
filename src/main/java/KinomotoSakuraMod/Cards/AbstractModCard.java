@@ -1,11 +1,7 @@
 package KinomotoSakuraMod.Cards;
 
-import KinomotoSakuraMod.Power.ElementMagickPower;
-import KinomotoSakuraMod.Power.EnhancementMagickPower;
 import basemod.abstracts.CustomCard;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public abstract class AbstractModCard extends CustomCard
@@ -20,21 +16,5 @@ public abstract class AbstractModCard extends CustomCard
 
     public abstract void upgrade();
 
-    public void use(AbstractPlayer player, AbstractMonster monster)
-    {
-        this.onUsed(player, monster);
-        switch (this.magicalType)
-        {
-            case PhysicsCard:
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new EnhancementMagickPower()));
-                break;
-            case ElementCard:
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new ElementMagickPower()));
-                break;
-            default:
-                break;
-        }
-    }
-
-    public abstract void onUsed(AbstractPlayer player, AbstractMonster monster);
+    public abstract void use(AbstractPlayer player, AbstractMonster monster);
 }

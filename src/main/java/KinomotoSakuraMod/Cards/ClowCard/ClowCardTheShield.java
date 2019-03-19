@@ -4,11 +4,9 @@ import KinomotoSakuraMod.Cards.AbstractClowCard;
 import KinomotoSakuraMod.Cards.CardMagicalType;
 import KinomotoSakuraMod.Patches.CardColorEnum;
 import basemod.helpers.BaseModCardTags;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -58,7 +56,7 @@ public class ClowCardTheShield extends AbstractClowCard
     }
 
     @Override
-    public void onUsed(AbstractPlayer player, AbstractMonster monster)
+    public void use(AbstractPlayer player, AbstractMonster monster)
     {
 
     }

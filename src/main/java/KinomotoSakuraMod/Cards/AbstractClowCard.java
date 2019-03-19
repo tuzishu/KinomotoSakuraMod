@@ -1,6 +1,5 @@
 package KinomotoSakuraMod.Cards;
 
-import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -13,5 +12,5 @@ public abstract class AbstractClowCard extends AbstractModCard
 
     public abstract void upgrade();
 
-    public abstract void onUsed(AbstractPlayer player, AbstractMonster monster);
+    public abstract void use(AbstractPlayer player, AbstractMonster monster);
 }

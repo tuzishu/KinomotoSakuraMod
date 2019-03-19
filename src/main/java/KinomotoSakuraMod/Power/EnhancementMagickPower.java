@@ -1,11 +1,8 @@
 package KinomotoSakuraMod.Power;
 
-import KinomotoSakuraMod.Cards.AbstractModCard;
-import KinomotoSakuraMod.Cards.CardMagicalType;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
@@ -17,8 +14,6 @@ public class EnhancementMagickPower extends AbstractPower
     private static final String IMG = "img/powers/EnhancementMagickPower.png";
     private static final float CORRECTION_RATE = 0.05f;
 
-    private boolean _isPhysicsCardUsed = false;
-
     static
     {
         PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(ID);
@@ -26,24 +21,9 @@ public class EnhancementMagickPower extends AbstractPower
         DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     }
 
-    @Override
-    public void onUseCard(AbstractCard card, UseCardAction action)
+    public static float PhysicsCorrect(float input)
     {
-        _isPhysicsCardUsed = card instanceof AbstractModCard && ((AbstractModCard)card).magicalType == CardMagicalType.PhysicsCard;
-    }
-
-    @Override
-    public void onAfterUseCard(AbstractCard card, UseCardAction action)
-    {
-        _isPhysicsCardUsed = false;
-    }
-
-    public float atDamageGive(float damage, DamageInfo.DamageType type)
-    {
-        if (_isPhysicsCardUsed)
-        {
-            damage *= CORRECTION_RATE * this.amount + 1f;
-        }
-        return super.atDamageGive(damage, type);
+        EnhancementMagickPower power = (EnhancementMagickPower) AbstractDungeon.player.getPower(ID);
+        return MathUtils.floor((power.amount * CORRECTION_RATE + 1f) * input);
     }
 }

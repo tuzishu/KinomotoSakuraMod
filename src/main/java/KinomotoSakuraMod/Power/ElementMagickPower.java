@@ -1,11 +1,8 @@
 package KinomotoSakuraMod.Power;
 
-import KinomotoSakuraMod.Cards.AbstractModCard;
-import KinomotoSakuraMod.Cards.CardMagicalType;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
@@ -26,25 +23,10 @@ public class ElementMagickPower extends AbstractPower
         DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     }
 
-    @Override
-    public void onUseCard(AbstractCard card, UseCardAction action)
-    {
-        _isElementCardUsed = card instanceof AbstractModCard && ((AbstractModCard)card).magicalType == CardMagicalType.PhysicsCard;
-    }
 
-    @Override
-    public void onAfterUseCard(AbstractCard card, UseCardAction action)
+    public static float ElementCorrect(float input)
     {
-        _isElementCardUsed = false;
-    }
-
-    @Override
-    public float atDamageGive(float damage, DamageInfo.DamageType type)
-    {
-        if (_isElementCardUsed)
-        {
-            damage *= CORRECTION_RATE * this.amount + 1f;
-        }
-        return super.atDamageGive(damage, type);
+        EnhancementMagickPower power = (EnhancementMagickPower) AbstractDungeon.player.getPower(ID);
+        return MathUtils.floor((power.amount * CORRECTION_RATE + 1f) * input);
     }
 }
