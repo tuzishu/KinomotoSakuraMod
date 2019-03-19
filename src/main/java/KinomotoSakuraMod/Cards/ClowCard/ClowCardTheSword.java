@@ -53,14 +53,15 @@ public class ClowCardTheSword extends AbstractClowCard
         }
     }
 
+    @Override
     public AbstractCard makeCopy()
     {
         return new ClowCardTheSword();
     }
 
     @Override
-    public void use(AbstractPlayer player, AbstractMonster monster)
+    public void onUsed(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+
     }
 }

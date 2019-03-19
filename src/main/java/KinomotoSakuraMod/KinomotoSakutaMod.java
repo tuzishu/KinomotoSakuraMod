@@ -25,25 +25,32 @@ import java.nio.charset.StandardCharsets;
 @SpireInitializer
 public class KinomotoSakutaMod implements ISubscriber, EditCharactersSubscriber, EditCardsSubscriber, EditStringsSubscriber
 {
+    // Logger静态字段
     public static final Logger logger = LogManager.getLogger(KinomotoSakutaMod.class.getName());
-    private static final String SELECT_BUTTON_IMAGE_PATH = "img/charSelect/MarisaButton.png";
-    private static final String PORTRAIT_PATH = "img/charSelect/marisaPortrait.jpg";
+    // CardColor卡片颜色，卡片总览中的tab按钮颜色
     public static final Color COLOR_CLOWCARD = CardHelper.getColor(255f, 152f, 74f);
     public static final Color COLOR_SAKURA = CardHelper.getColor(255f, 192f, 203f);
     public static final Color COLOR_SPELL = CardHelper.getColor(253f, 220f, 106f);
-//    private static final String RELIC_STRING;
-//    private static final String RELIC_STRING_ZH;
-//    private static final String POWER_STRING;
-//    private static final String POWER_STRING_ZH;
-//    private static final String POTION_STRING;
-//    private static final String POTION_STRING_ZH;
+    // 角色图片素材路径
+    private static final String CHARACTER_NAME = "KinomotoSakura";
+    private static final String SELECT_BUTTON_IMAGE_PATH = "img/charSelect/MarisaButton.png";
+    private static final String PORTRAIT_PATH = "img/charSelect/marisaPortrait.jpg";
+    // 卡片图片素材路径
+    private static final String ATTACK_BG_PATH = "img/512/attack_card.png";
+    private static final String ATTACK_BG_1024_PATH = "img/1024/attack_card_1024.png";
+    private static final String SKILL_BG_PATH = "img/512/skill_card.png";
+    private static final String SKILL_BG_1024_PATH = "img/1024/skill_card_1024.png";
+    private static final String POWER_BG_PATH = "img/512/power_card.png";
+    private static final String POWER_BG_1024_PATH = "img/1024/power_card_1024.png";
+    private static final String ENERGYORB_BG_PATH = "img/512/cardOrb.png";
+    private static final String ENERGYORB_BG_1024_PATH = "img/1024/cardOrb.png";
 
     public KinomotoSakutaMod()
     {
         BaseMod.subscribe(this);
-        BaseMod.addColor(CardColorEnum.CLOWCARD_COLOR, COLOR_CLOWCARD, COLOR_CLOWCARD, COLOR_CLOWCARD, COLOR_CLOWCARD, COLOR_CLOWCARD, COLOR_CLOWCARD, COLOR_CLOWCARD, "img/512/bg_attack_MRS_s.png", "img/512/bg_skill_MRS_s.png", "img/512/bg_power_MRS_s.png", "img/512/cardOrb.png", "img/1024/bg_attack_MRS.png", "img/1024/bg_skill_MRS.png", "img/1024/bg_power_MRS.png", "img/1024/cardOrb.png");
-        BaseMod.addColor(CardColorEnum.SAKURACARD_COLOR, COLOR_SAKURA, COLOR_SAKURA, COLOR_SAKURA, COLOR_SAKURA, COLOR_SAKURA, COLOR_SAKURA, COLOR_SAKURA, "img/512/bg_attack_MRS_s.png", "img/512/bg_skill_MRS_s.png", "img/512/bg_power_MRS_s.png", "img/512/cardOrb.png", "img/1024/bg_attack_MRS.png", "img/1024/bg_skill_MRS.png", "img/1024/bg_power_MRS.png", "img/1024/cardOrb.png");
-        BaseMod.addColor(CardColorEnum.SPELL_COLOR, COLOR_SPELL, COLOR_SPELL, COLOR_SPELL, COLOR_SPELL, COLOR_SPELL, COLOR_SPELL, COLOR_SPELL, "img/512/bg_attack_MRS_s.png", "img/512/bg_skill_MRS_s.png", "img/512/bg_power_MRS_s.png", "img/512/cardOrb.png", "img/1024/bg_attack_MRS.png", "img/1024/bg_skill_MRS.png", "img/1024/bg_power_MRS.png", "img/1024/cardOrb.png");
+        BaseMod.addColor(CardColorEnum.CLOWCARD_COLOR, COLOR_CLOWCARD, COLOR_CLOWCARD, COLOR_CLOWCARD, COLOR_CLOWCARD, COLOR_CLOWCARD, COLOR_CLOWCARD, COLOR_CLOWCARD, ATTACK_BG_PATH, SKILL_BG_PATH, POWER_BG_PATH, ENERGYORB_BG_PATH, ATTACK_BG_1024_PATH, SKILL_BG_1024_PATH, POWER_BG_1024_PATH, ENERGYORB_BG_1024_PATH);
+//        BaseMod.addColor(CardColorEnum.SAKURACARD_COLOR, COLOR_SAKURA, COLOR_SAKURA, COLOR_SAKURA, COLOR_SAKURA, COLOR_SAKURA, COLOR_SAKURA, COLOR_SAKURA, "img/512/bg_attack_MRS_s.png", "img/512/bg_skill_MRS_s.png", "img/512/bg_power_MRS_s.png", "img/512/cardOrb.png", "img/1024/bg_attack_MRS.png", "img/1024/bg_skill_MRS.png", "img/1024/bg_power_MRS.png", "img/1024/cardOrb.png");
+//        BaseMod.addColor(CardColorEnum.SPELL_COLOR, COLOR_SPELL, COLOR_SPELL, COLOR_SPELL, COLOR_SPELL, COLOR_SPELL, COLOR_SPELL, COLOR_SPELL, "img/512/bg_attack_MRS_s.png", "img/512/bg_skill_MRS_s.png", "img/512/bg_power_MRS_s.png", "img/512/cardOrb.png", "img/1024/bg_attack_MRS.png", "img/1024/bg_skill_MRS.png", "img/1024/bg_power_MRS.png", "img/1024/cardOrb.png");
     }
 
     public static void initialize()
@@ -59,7 +66,7 @@ public class KinomotoSakutaMod implements ISubscriber, EditCharactersSubscriber,
     {
         logger.info("start editing characters");
 
-        BaseMod.addCharacter(new KinomotoSakura("KinomotoSakura"), this.SELECT_BUTTON_IMAGE_PATH, this.PORTRAIT_PATH, CharacterEnum.KINOMOTOSAKURA);
+        BaseMod.addCharacter(new KinomotoSakura(CHARACTER_NAME), SELECT_BUTTON_IMAGE_PATH, PORTRAIT_PATH, CharacterEnum.KINOMOTOSAKURA);
 
         logger.info("start editing characters");
     }
@@ -69,7 +76,7 @@ public class KinomotoSakutaMod implements ISubscriber, EditCharactersSubscriber,
         logger.info("start editing cards");
 
         BaseMod.addCard(new ClowCardTheSword());
-        UnlockTracker.unlockCard("ClowCardTheSword");
+        UnlockTracker.unlockCard(ClowCardTheSword.class.getSimpleName());
 
         KinomotoSakutaMod.logger.info("done editing cards");
     }
@@ -77,20 +84,19 @@ public class KinomotoSakutaMod implements ISubscriber, EditCharactersSubscriber,
     public void receiveEditStrings()
     {
         logger.info("start editing strings");
+
         String path = "localization/";
         switch (Settings.language)
         {
-
             case ZHS:
-                logger.info("lang == zhs");
+                logger.info("language == zhs");
                 path += "zhs/";
                 break;
             default:
-                logger.info("lang == eng");
+                logger.info("language == eng");
                 path += "eng/";
                 break;
         }
-
         String card = path + "card.json";
         String cardStrings = Gdx.files.internal(card).readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(CardStrings.class, cardStrings);

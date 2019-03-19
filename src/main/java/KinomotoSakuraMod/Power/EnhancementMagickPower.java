@@ -1,11 +1,7 @@
 package KinomotoSakuraMod.Power;
 
-import KinomotoSakuraMod.Cards.AbstractModCard;
-import KinomotoSakuraMod.Cards.CardMagicalType;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
@@ -14,7 +10,7 @@ public class EnhancementMagickPower extends AbstractPower
     private static final String ID = "EnhancementMagickPower";
     private static final String NAME;
     private static final String[] DESCRIPTIONS;
-    private static final String IMG = "img/powers/Sp.png";
+    private static final String IMG = "img/powers/EnhancementMagickPower.png";
 
     static
     {
@@ -22,12 +18,7 @@ public class EnhancementMagickPower extends AbstractPower
         NAME = powerStrings.NAME;
         DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     }
-
-    public EnhancementMagickPower()
-    {
-        super();
-    }
-
+    
     public void updateDescription()
     {
         this.description = (DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1]);
