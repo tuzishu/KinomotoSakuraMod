@@ -2,6 +2,8 @@ package KinomotoSakuraMod;
 
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheShield;
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheSword;
+import KinomotoSakuraMod.Cards.SpellCard.SpellCardSeal;
+import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Patches.AbstractCardEnum;
 import KinomotoSakuraMod.Patches.CharacterEnum;
@@ -11,6 +13,7 @@ import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -21,9 +24,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 
 @SpireInitializer
-public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber, EditRelicsSubscriber,EditCardsSubscriber, EditStringsSubscriber
+public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber, EditRelicsSubscriber, EditCardsSubscriber, EditStringsSubscriber
 {
     // Logger静态字段
     public static final Logger logger = LogManager.getLogger(KinomotoSakuraMod.class.getName());
@@ -49,6 +53,7 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
     {
         BaseMod.subscribe(this);
         BaseMod.addColor(AbstractCardEnum.CLOWCARD_COLOR, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, ATTACK_BG_PATH, SKILL_BG_PATH, POWER_BG_PATH, ENERGYORB_BG_PATH, ATTACK_BG_1024_PATH, SKILL_BG_1024_PATH, POWER_BG_1024_PATH, ENERGYORB_BG_1024_PATH);
+        BaseMod.addColor(AbstractCardEnum.SPELL_COLOR, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, ATTACK_BG_PATH, SKILL_BG_PATH, POWER_BG_PATH, ENERGYORB_BG_PATH, ATTACK_BG_1024_PATH, SKILL_BG_1024_PATH, POWER_BG_1024_PATH, ENERGYORB_BG_1024_PATH);
 //        BaseMod.addColor(AbstractCardEnum.SAKURACARD_COLOR, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, "img/512/bg_attack_MRS_s.png", "img/512/bg_skill_MRS_s.png", "img/512/bg_power_MRS_s.png", "img/512/card_orb_1024.png", "img/1024/bg_attack_MRS.png", "img/1024/bg_skill_MRS.png", "img/1024/bg_power_MRS.png", "img/1024/card_orb_1024.png");
 //        BaseMod.addColor(AbstractCardEnum.SPELL_COLOR, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, "img/512/bg_attack_MRS_s.png", "img/512/bg_skill_MRS_s.png", "img/512/bg_power_MRS_s.png", "img/512/card_orb_1024.png", "img/1024/bg_attack_MRS.png", "img/1024/bg_skill_MRS.png", "img/1024/bg_power_MRS.png", "img/1024/card_orb_1024.png");
     }
@@ -84,12 +89,11 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
     {
         logger.info("开始编辑卡牌");
 
-        BaseMod.addCard(new ClowCardTheSword());
-        UnlockTracker.unlockCard(ClowCardTheSword.ID);
-        BaseMod.addCard(new ClowCardTheShield());
-        UnlockTracker.unlockCard(ClowCardTheShield.ID);
-//        BaseMod.addCard(new SpellCardTurn());
-//        UnlockTracker.unlockCard(SpellCardTurn.ID);
+        for (AbstractCard card : GetCardList())
+        {
+            BaseMod.addCard(card);
+            UnlockTracker.unlockCard(card.cardID);
+        }
 
         logger.info("结束编辑卡牌");
     }
@@ -103,7 +107,7 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
 //        {
 //            case ZHS:
 //                logger.info("language == zhs");
-                path += "zhs/";
+        path += "zhs/";
 //                break;
 //            default:
 //                logger.info("language == eng");
@@ -127,5 +131,17 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
 //        BaseMod.loadCustomStrings(PotionStrings.class, potionStrings);
 
         logger.info("结束编辑本地化文本");
+    }
+
+    private ArrayList<AbstractCard> GetCardList()
+    {
+        ArrayList<AbstractCard> cardList = new ArrayList<AbstractCard>();
+
+        cardList.add(new ClowCardTheSword());
+        cardList.add(new ClowCardTheShield());
+        cardList.add(new SpellCardTurn());
+        cardList.add(new SpellCardSeal());
+
+        return cardList;
     }
 }

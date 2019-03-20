@@ -2,6 +2,7 @@ package KinomotoSakuraMod.Characters;
 
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheShield;
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheSword;
+import KinomotoSakuraMod.Cards.SpellCard.SpellCardSeal;
 import KinomotoSakuraMod.KinomotoSakuraMod;
 import KinomotoSakuraMod.Patches.AbstractCardEnum;
 import KinomotoSakuraMod.Patches.CharacterEnum;
@@ -72,7 +73,7 @@ public class KinomotoSakura extends CustomPlayer
         startCards.add(ClowCardTheShield.ID);
         startCards.add(ClowCardTheShield.ID);
         startCards.add(ClowCardTheShield.ID);
-//        startCards.add(SpellCardSeal.ID);
+        startCards.add(SpellCardSeal.ID);
 //        startCards.add(SpellCardRelease.ID);
         return startCards;
     }

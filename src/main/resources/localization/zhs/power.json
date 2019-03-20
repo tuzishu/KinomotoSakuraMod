@@ -10,5 +10,12 @@
     "DESCRIPTIONS": [
       "每层提高5%的 元素牌 的伤害。"
     ]
+  },
+  "SealPower": {
+    "NAME": "封印",
+    "DESCRIPTIONS": [
+      "战斗结束后，额外获得 #b",
+      " 次卡牌奖励"
+    ]
   }
 }

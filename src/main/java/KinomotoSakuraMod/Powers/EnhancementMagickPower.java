@@ -11,7 +11,7 @@ public class EnhancementMagickPower extends AbstractPower
     private static final String ID = "EnhancementMagickPower";
     private static final String NAME;
     private static final String[] DESCRIPTIONS;
-    private static final String IMG = "img/powers/EnhancementMagickPower.png";
+    private static final String IMG = "img/powers/default_power.png";
     private static final float CORRECTION_RATE = 0.05f;
 
     static
@@ -24,6 +24,6 @@ public class EnhancementMagickPower extends AbstractPower
     public static float PhysicsCorrect(float input)
     {
         EnhancementMagickPower power = (EnhancementMagickPower) AbstractDungeon.player.getPower(ID);
-        return MathUtils.floor((power.amount * CORRECTION_RATE + 1f) * input);
+        return power != null ? MathUtils.floor((power.amount * CORRECTION_RATE + 1f) * input) : input;
     }
 }

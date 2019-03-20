@@ -55,7 +55,7 @@ public class ClowCardTheShield extends AbstractClowCard
     }
 
     @Override
-    public AbstractCard makeCopy()
+    public AbstractClowCard makeCopy()
     {
         return new ClowCardTheShield();
     }

@@ -1,12 +1,12 @@
-package KinomotoSakuraMod.Cards.ClowCard;
+package KinomotoSakuraMod.Cards.SpellCard;
 
-import KinomotoSakuraMod.Cards.AbstractClowCard;
+import KinomotoSakuraMod.Cards.AbstractSpellCard;
 import KinomotoSakuraMod.Cards.CardMagicalType;
 import KinomotoSakuraMod.Patches.AbstractCardEnum;
-import basemod.helpers.BaseModCardTags;
+import KinomotoSakuraMod.Powers.SealPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -14,19 +14,19 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class ClowCardTheSword extends AbstractClowCard
+public class SpellCardSeal extends AbstractSpellCard
 {
-    public static final String ID = "ClowCardTheSword";
+    public static final String ID = "SpellCardSeal";
     private static final String NAME;
     private static final String DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/default_attack_card.png";
-    private static final int COST = 1;
+    private static final int COST = 2;
     private static final CardType CARD_TYPE = CardType.ATTACK;
-    private static final CardColor CARD_COLOR = AbstractCardEnum.CLOWCARD_COLOR;
+    private static final CardColor CARD_COLOR = AbstractCardEnum.SPELL_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.BASIC;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final CardMagicalType CARD_MAGICAL_TYPE = CardMagicalType.PHYSICS_CARD;
-    private static final int BASE_DAMAGE = 6;
+    private static final CardMagicalType CARD_MAGICAL_TYPE = CardMagicalType.DEFAULT;
+    private static final int BASE_DAMAGE = 9;
     private static final int UPGRADE_DAMAGE = 3;
 
     static
@@ -36,10 +36,9 @@ public class ClowCardTheSword extends AbstractClowCard
         DESCRIPTION = cardStrings.DESCRIPTION;
     }
 
-    public ClowCardTheSword()
+    public SpellCardSeal()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CARD_MAGICAL_TYPE);
-        this.tags.add(BaseModCardTags.BASIC_STRIKE);
         this.baseDamage = BASE_DAMAGE;
     }
 
@@ -54,14 +53,19 @@ public class ClowCardTheSword extends AbstractClowCard
     }
 
     @Override
-    public AbstractClowCard makeCopy()
+    public AbstractSpellCard makeCopy()
     {
-        return new ClowCardTheSword();
+        return new SpellCardSeal();
     }
 
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        if ((monster.isDying || monster.currentHealth <= 0) && !monster.halfDead && !monster.hasPower("Minion"))
+        {
+            AbstractDungeon.getCurrRoom().addCardToRewards();
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new SealPower(player)));
+        }
     }
 }

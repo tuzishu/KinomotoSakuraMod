@@ -12,5 +12,7 @@ public abstract class AbstrackSakuraCard extends AbstractModCard
 
     public abstract void upgrade();
 
+    public abstract AbstractClowCard makeCopy();
+
     public abstract void use(AbstractPlayer player, AbstractMonster monster);
 }

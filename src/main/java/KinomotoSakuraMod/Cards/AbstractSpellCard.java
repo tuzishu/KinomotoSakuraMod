@@ -12,5 +12,7 @@ public abstract class AbstractSpellCard extends AbstractModCard
 
     public abstract void upgrade();
 
+    public abstract AbstractSpellCard makeCopy();
+
     public abstract void use(AbstractPlayer player, AbstractMonster monster);
 }

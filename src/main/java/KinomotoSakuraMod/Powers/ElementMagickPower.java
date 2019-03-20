@@ -11,10 +11,8 @@ public class ElementMagickPower extends AbstractPower
     private static final String ID = "ElementMagickPower";
     private static final String NAME;
     private static final String[] DESCRIPTIONS;
-    private static final String IMG = "img/powers/ElementMagickPower.png";
+    private static final String IMG = "img/powers/default_power.png";
     private static final float CORRECTION_RATE = 0.05f;
-
-    private boolean _isElementCardUsed = false;
 
     static
     {
@@ -27,6 +25,6 @@ public class ElementMagickPower extends AbstractPower
     public static float ElementCorrect(float input)
     {
         EnhancementMagickPower power = (EnhancementMagickPower) AbstractDungeon.player.getPower(ID);
-        return MathUtils.floor((power.amount * CORRECTION_RATE + 1f) * input);
+        return power != null ? MathUtils.floor((power.amount * CORRECTION_RATE + 1f) * input) : input;
     }
 }

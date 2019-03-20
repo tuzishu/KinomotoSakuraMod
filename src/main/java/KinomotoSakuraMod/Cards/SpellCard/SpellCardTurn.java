@@ -44,7 +44,7 @@ public class SpellCardTurn extends AbstractSpellCard
     }
 
     @Override
-    public AbstractCard makeCopy()
+    public AbstractSpellCard makeCopy()
     {
         return new SpellCardTurn();
     }
