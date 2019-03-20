@@ -2,10 +2,11 @@ package KinomotoSakuraMod.Characters;
 
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheShield;
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheSword;
+import KinomotoSakuraMod.Cards.SpellCard.SpellCardRelease;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardSeal;
 import KinomotoSakuraMod.KinomotoSakuraMod;
-import KinomotoSakuraMod.Patches.AbstractCardEnum;
-import KinomotoSakuraMod.Patches.CharacterEnum;
+import KinomotoSakuraMod.Patches.CustomCardColor;
+import KinomotoSakuraMod.Patches.CustomCharacter;
 import KinomotoSakuraMod.Relics.SealedWand;
 import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.graphics.Color;
@@ -45,7 +46,7 @@ public class KinomotoSakura extends CustomPlayer
     public KinomotoSakura(String playerName)
     {
         // 参数列表：角色名，角色类枚举，能量面板贴图路径列表，能量面板特效贴图路径，能量面板贴图旋转速度列表，能量面板，模型资源路径，动画资源路径
-        super(playerName, CharacterEnum.KINOMOTOSAKURA, ORB_TEXTURES, ORB_VFX, LAYER_SPEED, null, null);
+        super(playerName, CustomCharacter.KINOMOTOSAKURA, ORB_TEXTURES, ORB_VFX, LAYER_SPEED, null, null);
 
         // 对话框位置，默认就好
         this.dialogX = (this.drawX + 0.0F * Settings.scale);
@@ -74,7 +75,7 @@ public class KinomotoSakura extends CustomPlayer
         startCards.add(ClowCardTheShield.ID);
         startCards.add(ClowCardTheShield.ID);
         startCards.add(SpellCardSeal.ID);
-//        startCards.add(SpellCardRelease.ID);
+        startCards.add(SpellCardRelease.ID);
         return startCards;
     }
 
@@ -121,7 +122,7 @@ public class KinomotoSakura extends CustomPlayer
 
     public AbstractCard.CardColor getCardColor()
     {
-        return AbstractCardEnum.CLOWCARD_COLOR;
+        return CustomCardColor.CLOWCARD_COLOR;
     }
 
     public Color getCardRenderColor()

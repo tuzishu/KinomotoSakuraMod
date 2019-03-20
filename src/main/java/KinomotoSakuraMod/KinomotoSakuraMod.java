@@ -2,11 +2,12 @@ package KinomotoSakuraMod;
 
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheShield;
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheSword;
+import KinomotoSakuraMod.Cards.SpellCard.SpellCardRelease;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardSeal;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
-import KinomotoSakuraMod.Patches.AbstractCardEnum;
-import KinomotoSakuraMod.Patches.CharacterEnum;
+import KinomotoSakuraMod.Patches.CustomCardColor;
+import KinomotoSakuraMod.Patches.CustomCharacter;
 import KinomotoSakuraMod.Relics.SealedWand;
 import basemod.BaseMod;
 import basemod.interfaces.*;
@@ -19,7 +20,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-import com.sun.xml.internal.bind.v2.model.core.ID;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -52,10 +52,10 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
     public KinomotoSakuraMod()
     {
         BaseMod.subscribe(this);
-        BaseMod.addColor(AbstractCardEnum.CLOWCARD_COLOR, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, ATTACK_BG_PATH, SKILL_BG_PATH, POWER_BG_PATH, ENERGYORB_BG_PATH, ATTACK_BG_1024_PATH, SKILL_BG_1024_PATH, POWER_BG_1024_PATH, ENERGYORB_BG_1024_PATH);
-        BaseMod.addColor(AbstractCardEnum.SPELL_COLOR, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, ATTACK_BG_PATH, SKILL_BG_PATH, POWER_BG_PATH, ENERGYORB_BG_PATH, ATTACK_BG_1024_PATH, SKILL_BG_1024_PATH, POWER_BG_1024_PATH, ENERGYORB_BG_1024_PATH);
-//        BaseMod.addColor(AbstractCardEnum.SAKURACARD_COLOR, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, "img/512/bg_attack_MRS_s.png", "img/512/bg_skill_MRS_s.png", "img/512/bg_power_MRS_s.png", "img/512/card_orb_1024.png", "img/1024/bg_attack_MRS.png", "img/1024/bg_skill_MRS.png", "img/1024/bg_power_MRS.png", "img/1024/card_orb_1024.png");
-//        BaseMod.addColor(AbstractCardEnum.SPELL_COLOR, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, "img/512/bg_attack_MRS_s.png", "img/512/bg_skill_MRS_s.png", "img/512/bg_power_MRS_s.png", "img/512/card_orb_1024.png", "img/1024/bg_attack_MRS.png", "img/1024/bg_skill_MRS.png", "img/1024/bg_power_MRS.png", "img/1024/card_orb_1024.png");
+        BaseMod.addColor(CustomCardColor.CLOWCARD_COLOR, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, ATTACK_BG_PATH, SKILL_BG_PATH, POWER_BG_PATH, ENERGYORB_BG_PATH, ATTACK_BG_1024_PATH, SKILL_BG_1024_PATH, POWER_BG_1024_PATH, ENERGYORB_BG_1024_PATH);
+        BaseMod.addColor(CustomCardColor.SPELL_COLOR, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, ATTACK_BG_PATH, SKILL_BG_PATH, POWER_BG_PATH, ENERGYORB_BG_PATH, ATTACK_BG_1024_PATH, SKILL_BG_1024_PATH, POWER_BG_1024_PATH, ENERGYORB_BG_1024_PATH);
+//        BaseMod.addColor(CustomCardColor.SAKURACARD_COLOR, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, "img/512/bg_attack_MRS_s.png", "img/512/bg_skill_MRS_s.png", "img/512/bg_power_MRS_s.png", "img/512/card_orb_1024.png", "img/1024/bg_attack_MRS.png", "img/1024/bg_skill_MRS.png", "img/1024/bg_power_MRS.png", "img/1024/card_orb_1024.png");
+//        BaseMod.addColor(CustomCardColor.SPELL_COLOR, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, "img/512/bg_attack_MRS_s.png", "img/512/bg_skill_MRS_s.png", "img/512/bg_power_MRS_s.png", "img/512/card_orb_1024.png", "img/1024/bg_attack_MRS.png", "img/1024/bg_skill_MRS.png", "img/1024/bg_power_MRS.png", "img/1024/card_orb_1024.png");
     }
 
     public static void initialize()
@@ -71,7 +71,7 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
     {
         logger.info("开始编辑角色");
 
-        BaseMod.addCharacter(new KinomotoSakura(CHARACTER_NAME), SELECT_BUTTON_IMAGE_PATH, PORTRAIT_PATH, CharacterEnum.KINOMOTOSAKURA);
+        BaseMod.addCharacter(new KinomotoSakura(CHARACTER_NAME), SELECT_BUTTON_IMAGE_PATH, PORTRAIT_PATH, CustomCharacter.KINOMOTOSAKURA);
 
         logger.info("结束编辑角色");
     }
@@ -80,7 +80,7 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
     {
         logger.info("开始编辑遗物");
 
-        BaseMod.addRelicToCustomPool(new SealedWand(), AbstractCardEnum.CLOWCARD_COLOR);
+        BaseMod.addRelicToCustomPool(new SealedWand(), CustomCardColor.CLOWCARD_COLOR);
 
         logger.info("结束编辑遗物");
     }
@@ -141,6 +141,7 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
         cardList.add(new ClowCardTheShield());
         cardList.add(new SpellCardTurn());
         cardList.add(new SpellCardSeal());
+        cardList.add(new SpellCardRelease());
 
         return cardList;
     }

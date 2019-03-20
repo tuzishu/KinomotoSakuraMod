@@ -1,12 +1,11 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.AbstractClowCard;
-import KinomotoSakuraMod.Cards.CardMagicalType;
-import KinomotoSakuraMod.Patches.AbstractCardEnum;
+import KinomotoSakuraMod.Patches.CustomCardColor;
+import KinomotoSakuraMod.Patches.CustomTag;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -22,10 +21,9 @@ public class ClowCardTheSword extends AbstractClowCard
     private static final String IMAGE_PATH = "img/cards/default_attack_card.png";
     private static final int COST = 1;
     private static final CardType CARD_TYPE = CardType.ATTACK;
-    private static final CardColor CARD_COLOR = AbstractCardEnum.CLOWCARD_COLOR;
+    private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.BASIC;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final CardMagicalType CARD_MAGICAL_TYPE = CardMagicalType.PHYSICS_CARD;
     private static final int BASE_DAMAGE = 6;
     private static final int UPGRADE_DAMAGE = 3;
 
@@ -38,8 +36,9 @@ public class ClowCardTheSword extends AbstractClowCard
 
     public ClowCardTheSword()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CARD_MAGICAL_TYPE);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(BaseModCardTags.BASIC_STRIKE);
+        this.tags.add(CustomTag.PHYSICS_CARD);
         this.baseDamage = BASE_DAMAGE;
     }
 

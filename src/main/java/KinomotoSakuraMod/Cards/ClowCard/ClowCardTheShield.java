@@ -1,19 +1,15 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.AbstractClowCard;
-import KinomotoSakuraMod.Cards.CardMagicalType;
-import KinomotoSakuraMod.KinomotoSakuraMod;
-import KinomotoSakuraMod.Patches.AbstractCardEnum;
+import KinomotoSakuraMod.Patches.CustomCardColor;
+import KinomotoSakuraMod.Patches.CustomTag;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import java.util.logging.Logger;
 
 public class ClowCardTheShield extends AbstractClowCard
 {
@@ -23,10 +19,9 @@ public class ClowCardTheShield extends AbstractClowCard
     private static final String IMAGE_PATH = "img/cards/default_skill_card.png";
     private static final int COST = 1;
     private static final CardType CARD_TYPE = CardType.SKILL;
-    private static final CardColor CARD_COLOR = AbstractCardEnum.CLOWCARD_COLOR;
+    private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.BASIC;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
-    private static final CardMagicalType CARD_MAGICAL_TYPE = CardMagicalType.PHYSICS_CARD;
     private static final int BASE_BLOCK = 5;
     private static final int UPGRADE_BLOCK = 3;
 
@@ -39,8 +34,9 @@ public class ClowCardTheShield extends AbstractClowCard
 
     public ClowCardTheShield()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CARD_MAGICAL_TYPE);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(BaseModCardTags.BASIC_DEFEND);
+        this.tags.add(CustomTag.PHYSICS_CARD);
         this.baseBlock = BASE_BLOCK;
     }
 

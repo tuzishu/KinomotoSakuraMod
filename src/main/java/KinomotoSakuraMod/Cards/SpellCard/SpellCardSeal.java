@@ -1,8 +1,7 @@
 package KinomotoSakuraMod.Cards.SpellCard;
 
 import KinomotoSakuraMod.Cards.AbstractSpellCard;
-import KinomotoSakuraMod.Cards.CardMagicalType;
-import KinomotoSakuraMod.Patches.AbstractCardEnum;
+import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Powers.SealPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -22,10 +21,9 @@ public class SpellCardSeal extends AbstractSpellCard
     private static final String IMAGE_PATH = "img/cards/default_attack_card.png";
     private static final int COST = 2;
     private static final CardType CARD_TYPE = CardType.ATTACK;
-    private static final CardColor CARD_COLOR = AbstractCardEnum.SPELL_COLOR;
+    private static final CardColor CARD_COLOR = CustomCardColor.SPELL_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.BASIC;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final CardMagicalType CARD_MAGICAL_TYPE = CardMagicalType.DEFAULT;
     private static final int BASE_DAMAGE = 9;
     private static final int UPGRADE_DAMAGE = 3;
 
@@ -38,7 +36,7 @@ public class SpellCardSeal extends AbstractSpellCard
 
     public SpellCardSeal()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CARD_MAGICAL_TYPE);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.baseDamage = BASE_DAMAGE;
     }
 

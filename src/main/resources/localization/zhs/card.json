@@ -14,5 +14,9 @@
   "SpellCardSeal": {
     "NAME": "封",
     "DESCRIPTION": "造成 !D! 点伤害。 NL 如果击杀了1名不是 爪牙 的敌人， NL 额外获得1次选牌奖励。"
+  },
+  "SpellCardRelease": {
+    "NAME": "解",
+    "DESCRIPTION": "从手牌中选择 消耗 1张 库洛牌 或 小樱牌 ，视为打出该牌，并对所有敌人造成 !D! 点伤害。"
   }
 }

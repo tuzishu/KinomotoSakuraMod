@@ -3,7 +3,7 @@ package KinomotoSakuraMod.Patches;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 
-public class LibraryTypeEnum
+public class CustomLibraryType
 {
     @SpireEnum
     public static CardLibrary.LibraryType CLOWCARD_COLOR;
