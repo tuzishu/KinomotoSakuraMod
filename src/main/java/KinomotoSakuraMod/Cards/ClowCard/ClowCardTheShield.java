@@ -24,7 +24,7 @@ public class ClowCardTheShield extends AbstractClowCard
     private static final int COST = 1;
     private static final CardType CARD_TYPE = CardType.SKILL;
     private static final CardColor CARD_COLOR = AbstractCardEnum.CLOWCARD_COLOR;
-    private static final CardRarity CARD_RARITY = CardRarity.COMMON;
+    private static final CardRarity CARD_RARITY = CardRarity.BASIC;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
     private static final CardMagicalType CARD_MAGICAL_TYPE = CardMagicalType.PHYSICS_CARD;
     private static final int BASE_BLOCK = 5;
@@ -40,7 +40,6 @@ public class ClowCardTheShield extends AbstractClowCard
     public ClowCardTheShield()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CARD_MAGICAL_TYPE);
-        KinomotoSakuraMod.logger.info("ClowCardTheShield 构造函数 super 之后");
         this.tags.add(BaseModCardTags.BASIC_DEFEND);
         this.baseBlock = BASE_BLOCK;
     }
