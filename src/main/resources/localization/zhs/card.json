@@ -1,7 +1,11 @@
 {
+  "ClowCardTheFly": {
+    "NAME": "飞",
+    "DESCRIPTION": "获得 !M! 层 飞行 ， NL 并获得 !B! 点 格挡 。"
+  },
   "ClowCardThePower": {
     "NAME": "力",
-    "DESCRIPTION": "造成 !D! 点伤害。 NL 力量 发挥 !M! 倍效果。"
+    "DESCRIPTION": "造成 !D! 点伤害， NL 力量 发挥 !M! 倍效果。"
   },
   "ClowCardTheShield": {
     "NAME": "盾",
@@ -17,7 +21,7 @@
   },
   "SpellCardRelease": {
     "NAME": "解",
-    "DESCRIPTION": "从手牌中选择 消耗 #b1 张 库洛牌 或 小樱牌 ，视为打出该牌，并对所有敌人造成 !D! 点伤害。"
+    "DESCRIPTION": "从手牌中选择 消耗 #b1 张 库洛牌 或 小樱牌 ， NL 视为打出该牌， NL 并对所有敌人造成 !D! 点伤害。"
   },
   "SpellCardSeal": {
     "NAME": "封",

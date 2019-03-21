@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.red.HeavyBlade;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -47,18 +46,6 @@ public class ClowCardThePower extends AbstractClowCard
         this.baseMagicNumber = BASE_MAGIC_NUMBER;
     }
 
-    public void use(AbstractPlayer player, AbstractMonster monster)
-    {
-        if (monster != null)
-        {
-            AbstractDungeon.actionManager.addToBottom(new VFXAction(new VerticalImpactEffect(monster.hb.cX + monster.hb.width / 4.0F, monster.hb.cY - monster.hb.height / 4.0F)));
-        }
-        AbstractPower power = AbstractDungeon.player.getPower(StrengthPower.POWER_ID);
-        int powerCnt = power!=null?power.amount:0;
-        int damage = this.correctDamage() + powerCnt * correctMagicNumber();
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-    }
-
     public AbstractClowCard makeCopy()
     {
         return new ClowCardThePower();
@@ -71,5 +58,17 @@ public class ClowCardThePower extends AbstractClowCard
             this.upgradeName();
             this.upgradeMagicNumber(UPGRADE_MAGIC_NUMBER);
         }
+    }
+
+    public void use(AbstractPlayer player, AbstractMonster monster)
+    {
+        if (monster != null)
+        {
+            AbstractDungeon.actionManager.addToBottom(new VFXAction(new VerticalImpactEffect(monster.hb.cX + monster.hb.width / 4.0F, monster.hb.cY - monster.hb.height / 4.0F)));
+        }
+        AbstractPower power = AbstractDungeon.player.getPower(StrengthPower.POWER_ID);
+        int powerCnt = power != null ? power.amount : 0;
+        int damage = this.correctDamage() + powerCnt * correctMagicNumber();
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
     }
 }

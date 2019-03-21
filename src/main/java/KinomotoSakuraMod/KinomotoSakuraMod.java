@@ -1,9 +1,6 @@
 package KinomotoSakuraMod;
 
-import KinomotoSakuraMod.Cards.ClowCard.ClowCardThePower;
-import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheShield;
-import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheShoot;
-import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheSword;
+import KinomotoSakuraMod.Cards.ClowCard.*;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardRelease;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardSeal;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
@@ -108,6 +105,7 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
         cardList.add(new SpellCardRelease());
         cardList.add(new ClowCardThePower());
         cardList.add(new ClowCardTheShoot());
+        cardList.add(new ClowCardTheFly());
 
         return cardList;
     }
