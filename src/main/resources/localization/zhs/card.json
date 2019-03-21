@@ -7,20 +7,24 @@
     "NAME": "盾",
     "DESCRIPTION": "获得 !B! 点 格挡 。"
   },
+  "ClowCardTheShoot": {
+    "NAME": "击",
+    "DESCRIPTION": "造成 !D! 点伤害并给与 !M! 层 易伤  #b2 次。"
+  },
   "ClowCardTheSword": {
     "NAME": "剑",
     "DESCRIPTION": "造成 !D! 点伤害。"
   },
   "SpellCardRelease": {
     "NAME": "解",
-    "DESCRIPTION": "从手牌中选择 消耗 1张 库洛牌 或 小樱牌 ，视为打出该牌，并对所有敌人造成 !D! 点伤害。"
+    "DESCRIPTION": "从手牌中选择 消耗 #b1 张 库洛牌 或 小樱牌 ，视为打出该牌，并对所有敌人造成 !D! 点伤害。"
   },
   "SpellCardSeal": {
     "NAME": "封",
-    "DESCRIPTION": "造成 !D! 点伤害。 NL 如果击杀了1名不是 爪牙 的敌人， NL 额外获得1次选牌奖励。"
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 如果击杀了 #b1 名不是 爪牙 的敌人， NL 额外获得 #b1 次选牌奖励。"
   },
   "SpellCardTurn": {
     "NAME": "转",
-    "DESCRIPTION": " 保留 。选择1张手牌消耗。 NL 如果消耗的是 库洛牌 ，则将此卡从卡组中移除。 NL 如果卡组中没有其对应的 小樱牌 ，则将其加入卡组。"
+    "DESCRIPTION": " 保留 。选择 #b1 张手牌消耗。 NL 如果消耗的是 库洛牌 ，则将此卡从卡组中移除。 NL 如果卡组中没有其对应的 小樱牌 ，则将其加入卡组。"
   }
 }
