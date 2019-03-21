@@ -23,6 +23,7 @@ import com.megacrit.cardcrawl.events.beyond.SpireHeart;
 import com.megacrit.cardcrawl.events.city.Vampires;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
+import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
@@ -30,11 +31,43 @@ import java.util.ArrayList;
 
 public class KinomotoSakura extends CustomPlayer
 {
-    // 能量栏
-    private static final String[] ORB_TEXTURES = {"img/UI/EPanel/layer5.png", "img/UI/EPanel/layer4.png", "img/UI/EPanel/layer3.png", "img/UI/EPanel/layer2.png", "img/UI/EPanel/layer1.png", "img/UI/EPanel/layer0.png", "img/UI/EPanel/layer5d.png", "img/UI/EPanel/layer4d.png", "img/UI/EPanel/layer3d.png", "img/UI/EPanel/layer2d.png", "img/UI/EPanel/layer1d.png"};
-    private static final String ORB_VFX = "img/UI/energyBlueVFX.png";
-    private static final float[] LAYER_SPEED = {-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F, -5.0F, 0.0F};
+    // 角色数据
+    public static final String ID = "KinomotoSakura";
+    private static final String NAME;
+    private static final String TITLE;
+    private static final String DESCRIPTION;
+    private static final int START_HP = 75;
+    private static final int START_GOLD = 99;
+    private static final int MAX_ORBS = 0;
+    private static final int CARD_DRAW = 5;
     private static final int START_ENERGY = 3;
+    // 能量栏
+    private static final String[] ORB_TEXTURES = {
+            "img/UI/EPanel/layer5.png",
+            "img/UI/EPanel/layer4.png",
+            "img/UI/EPanel/layer3.png",
+            "img/UI/EPanel/layer2.png",
+            "img/UI/EPanel/layer1.png",
+            "img/UI/EPanel/layer0.png",
+            "img/UI/EPanel/layer5d.png",
+            "img/UI/EPanel/layer4d.png",
+            "img/UI/EPanel/layer3d.png",
+            "img/UI/EPanel/layer2d.png",
+            "img/UI/EPanel/layer1d.png"
+    };
+    private static final String ORB_VFX = "img/UI/energyBlueVFX.png";
+    private static final float[] LAYER_SPEED = {
+            -40.0F,
+            -32.0F,
+            20.0F,
+            -20.0F,
+            0.0F,
+            -10.0F,
+            -8.0F,
+            5.0F,
+            -5.0F,
+            0.0F
+    };
     // 角色资源
     private static final String SHOULDER_1_IMAGE_PATH = "img/char/Marisa/shoulder1.png";
     private static final String SHOULDER_2_IMAGE_PATH = "img/char/Marisa/shoulder2.png";
@@ -43,10 +76,18 @@ public class KinomotoSakura extends CustomPlayer
     private static final String SKELETON_PATH = "img/char/Marisa/MarisaModelv3.json";
     private static final float CHARACTER_SCALE_RATE = 2.0f;
 
-    public KinomotoSakura(String playerName)
+    static
+    {
+        CharacterStrings charStrings = CardCrawlGame.languagePack.getCharacterString(ID);
+        NAME = charStrings.NAMES[0];
+        TITLE = charStrings.NAMES[1];
+        DESCRIPTION = charStrings.TEXT[0];
+    }
+
+    public KinomotoSakura()
     {
         // 参数列表：角色名，角色类枚举，能量面板贴图路径列表，能量面板特效贴图路径，能量面板贴图旋转速度列表，能量面板，模型资源路径，动画资源路径
-        super(playerName, CustomCharacter.KINOMOTOSAKURA, ORB_TEXTURES, ORB_VFX, LAYER_SPEED, null, null);
+        super(ID, CustomCharacter.KINOMOTOSAKURA, ORB_TEXTURES, ORB_VFX, LAYER_SPEED, null, null);
 
         // 对话框位置，默认就好
         this.dialogX = (this.drawX + 0.0F * Settings.scale);
@@ -89,35 +130,12 @@ public class KinomotoSakura extends CustomPlayer
 
     public CharSelectInfo getLoadout()
     {
-        String title;
-        String flavor;
-        switch (Settings.language)
-        {
-            case ZHS:
-                title = "魔卡少女";
-                flavor = "《魔卡少女樱》的主角";
-                break;
-            default:
-                title = "Card Capter";
-                flavor = "The protagonist of animation Card Captor Sakura";
-                break;
-        }
-        return new CharSelectInfo(title, flavor, 75, 75, 0, 99, 5, this, getStartingRelics(), getStartingDeck(), false);
+        return new CharSelectInfo(NAME, DESCRIPTION, START_HP, START_HP, MAX_ORBS, START_GOLD, CARD_DRAW, this, getStartingRelics(), getStartingDeck(), false);
     }
 
     public String getTitle(PlayerClass playerClass)
     {
-        String title;
-        switch (Settings.language)
-        {
-            case ZHS:
-                title = "魔卡少女";
-                break;
-            default:
-                title = "Card Capter";
-                break;
-        }
-        return title;
+        return TITLE;
     }
 
     public AbstractCard.CardColor getCardColor()
@@ -163,12 +181,12 @@ public class KinomotoSakura extends CustomPlayer
 
     public String getLocalizedCharacterName()
     {
-        return "Sakura";
+        return NAME;
     }
 
     public AbstractPlayer newInstance()
     {
-        return new KinomotoSakura(this.name);
+        return new KinomotoSakura();
     }
 
     public String getSpireHeartText()
@@ -183,7 +201,14 @@ public class KinomotoSakura extends CustomPlayer
 
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect()
     {
-        return new AbstractGameAction.AttackEffect[]{AbstractGameAction.AttackEffect.SLASH_HEAVY, AbstractGameAction.AttackEffect.FIRE, AbstractGameAction.AttackEffect.SLASH_DIAGONAL, AbstractGameAction.AttackEffect.SLASH_HEAVY, AbstractGameAction.AttackEffect.FIRE, AbstractGameAction.AttackEffect.SLASH_DIAGONAL};
+        return new AbstractGameAction.AttackEffect[] {
+                AbstractGameAction.AttackEffect.SLASH_HEAVY,
+                AbstractGameAction.AttackEffect.FIRE,
+                AbstractGameAction.AttackEffect.SLASH_DIAGONAL,
+                AbstractGameAction.AttackEffect.SLASH_HEAVY,
+                AbstractGameAction.AttackEffect.FIRE,
+                AbstractGameAction.AttackEffect.SLASH_DIAGONAL
+        };
     }
 
     public String getVampireText()
