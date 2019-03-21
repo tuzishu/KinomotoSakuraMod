@@ -23,7 +23,6 @@ import com.megacrit.cardcrawl.events.beyond.SpireHeart;
 import com.megacrit.cardcrawl.events.city.Vampires;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
-import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
@@ -33,9 +32,9 @@ public class KinomotoSakura extends CustomPlayer
 {
     // 角色数据
     public static final String ID = "KinomotoSakura";
-    private static final String NAME;
-    private static final String TITLE;
-    private static final String DESCRIPTION;
+    private static String NAME;
+    private static String TITLE;
+    private static String DESCRIPTION;
     private static final int START_HP = 75;
     private static final int START_GOLD = 99;
     private static final int MAX_ORBS = 0;
@@ -76,18 +75,16 @@ public class KinomotoSakura extends CustomPlayer
     private static final String SKELETON_PATH = "img/char/Marisa/MarisaModelv3.json";
     private static final float CHARACTER_SCALE_RATE = 2.0f;
 
-    static
-    {
-        CharacterStrings charStrings = CardCrawlGame.languagePack.getCharacterString(ID);
-        NAME = charStrings.NAMES[0];
-        TITLE = charStrings.NAMES[1];
-        DESCRIPTION = charStrings.TEXT[0];
-    }
-
     public KinomotoSakura()
     {
         // 参数列表：角色名，角色类枚举，能量面板贴图路径列表，能量面板特效贴图路径，能量面板贴图旋转速度列表，能量面板，模型资源路径，动画资源路径
         super(ID, CustomCharacter.KINOMOTOSAKURA, ORB_TEXTURES, ORB_VFX, LAYER_SPEED, null, null);
+
+        // 本地化字段
+        KinomotoSakuraLocalizationData charData = CharacterLocalization.KINOMOTO_SAKURA_MAP.get(Settings.language);
+        NAME = charData.NAME;
+        TITLE = charData.TITLE;
+        DESCRIPTION = charData.DESCRIPTION;
 
         // 对话框位置，默认就好
         this.dialogX = (this.drawX + 0.0F * Settings.scale);
