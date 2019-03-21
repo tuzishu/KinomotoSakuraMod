@@ -122,23 +122,23 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
         //                path += "eng/";
         //                break;
         //        }
-        String card = path + "card.json";
+        String card = path + "sakura_card.json";
         String cardStrings = Gdx.files.internal(card).readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
 
-        String character = path + "character.json";
+        String character = path + "sakura_character.json";
         String charStrings = Gdx.files.internal(character).readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(CharacterStrings.class, charStrings);
 
-        String power = path + "power.json";
+        String power = path + "sakura_power.json";
         String powerStrings = Gdx.files.internal(power).readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
 
-        String relic = path + "relic.json";
+        String relic = path + "sakura_relic.json";
         String relicStrings = Gdx.files.internal(relic).readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
 
-        String ui = path + "ui.json";
+        String ui = path + "sakura_ui.json";
         String uiStrings = Gdx.files.internal(ui).readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(UIStrings.class, uiStrings);
 
