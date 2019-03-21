@@ -2,13 +2,15 @@
   "EnhancedMagickPower": {
     "NAME": "强化魔法",
     "DESCRIPTIONS": [
-      "每层提高5%的 物理牌 的伤害。"
+      "提高 #b",
+      " %的 物理牌 的所有效果。"
     ]
   },
   "ElementMagickPower": {
     "NAME": "元素魔法",
     "DESCRIPTIONS": [
-      "每层提高5%的 元素牌 的伤害。"
+      "提高 #b",
+      " %的 元素牌 的所有效果。"
     ]
   },
   "SealPower": {

@@ -7,12 +7,13 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class SealPower extends AbstractPower
+public class SealPower extends CustomPower
 {
-    private static final String POWER_ID = "SealPower";
+    public static final String POWER_ID = "SealPower";
     private static final String POWER_NAME;
     private static final String[] POWER_DESCRIPTIONS;
     private static final String POWER_IMG = "img/powers/default_power.png";
+    private static final PowerType POWER_TYPE = PowerType.BUFF;
 
     static
     {
@@ -21,18 +22,22 @@ public class SealPower extends AbstractPower
         POWER_DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     }
 
-    public SealPower(AbstractCreature owner)
+    public SealPower(AbstractCreature target)
     {
-        this.ID = POWER_ID;
-        this.name = POWER_NAME;
+        super(POWER_ID, POWER_NAME, POWER_IMG, POWER_TYPE, target);
         updateDescription();
-        this.owner = owner;
-        this.type = PowerType.BUFF;
-        this.img = new Texture(POWER_IMG);
     }
 
     public void updateDescription()
     {
-        this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
+        this.description = POWER_DESCRIPTIONS[0] + this.amount + POWER_DESCRIPTIONS[1];
+    }
+
+    public void onVictory()
+    {
+        for (int i = 0; i < this.amount; i++)
+        {
+            AbstractDungeon.getCurrRoom().addCardToRewards();
+        }
     }
 }

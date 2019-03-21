@@ -59,6 +59,6 @@ public class ClowCardTheShield extends AbstractClowCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.correctBlock()));
     }
 }

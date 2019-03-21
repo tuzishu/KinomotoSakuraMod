@@ -1,29 +1,38 @@
 package KinomotoSakuraMod.Powers;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.MathUtils;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class EnhancementMagickPower extends AbstractPower
+public class EnhancementMagickPower extends CustomPower
 {
-    private static final String ID = "EnhancementMagickPower";
-    private static final String NAME;
-    private static final String[] DESCRIPTIONS;
-    private static final String IMG = "img/powers/default_power.png";
-    private static final float CORRECTION_RATE = 0.05f;
+    public static final String POWER_ID = "EnhancementMagickPower";
+    private static final String POWER_NAME;
+    private static final String[] POWER_DESCRIPTIONS;
+    private static final String POWER_IMG_PATH = "img/powers/default_power.png";
+    private static final PowerType POWER_TYPE = PowerType.BUFF;
+    public static final float CORRECTION_RATE = 0.05f;
 
     static
     {
-        PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(ID);
-        NAME = powerStrings.NAME;
-        DESCRIPTIONS = powerStrings.DESCRIPTIONS;
+        PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
+        POWER_NAME = powerStrings.NAME;
+        POWER_DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     }
 
-    public static float PhysicsCorrect(float input)
+    public EnhancementMagickPower(AbstractCreature target)
     {
-        EnhancementMagickPower power = (EnhancementMagickPower) AbstractDungeon.player.getPower(ID);
-        return power != null ? MathUtils.floor((power.amount * CORRECTION_RATE + 1f) * input) : input;
+        super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target);
+        updateDescription();
+    }
+
+
+    public void updateDescription()
+    {
+        this.description = POWER_DESCRIPTIONS[0] + this.amount * 5 + POWER_DESCRIPTIONS[1];
     }
 }
