@@ -3,6 +3,7 @@ package KinomotoSakuraMod.Cards.ClowCard;
 import KinomotoSakuraMod.Cards.AbstractClowCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
+import KinomotoSakuraMod.Utility.ModLogger;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -27,14 +28,14 @@ public class ClowCardTheShoot extends AbstractClowCard
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
     private static final int BASE_DAMAGE = 3;
     private static final int UPGRADE_DAMAGE = 1;
-    private static final int BASE_MAGIC_NUMBER = 2;
-    private static final int UPGRADE_MAGIC_NUMBER = 1;
+    private static final String UPGRADE_DESCRIPTION;
 
     static
     {
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
         NAME = cardStrings.NAME;
         DESCRIPTION = cardStrings.DESCRIPTION;
+        UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     }
 
     public ClowCardTheShoot()
@@ -42,7 +43,6 @@ public class ClowCardTheShoot extends AbstractClowCard
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(CustomTag.PHYSICS_CARD);
         this.baseDamage = BASE_DAMAGE;
-        this.baseMagicNumber = BASE_MAGIC_NUMBER;
     }
 
     @Override
@@ -52,7 +52,7 @@ public class ClowCardTheShoot extends AbstractClowCard
         {
             upgradeName();
             upgradeDamage(UPGRADE_DAMAGE);
-            upgradeMagicNumber(UPGRADE_MAGIC_NUMBER);
+            this.rawDescription = UPGRADE_DESCRIPTION;
         }
     }
 
@@ -65,16 +65,18 @@ public class ClowCardTheShoot extends AbstractClowCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
+        ModLogger.logger.info(this.correctDamage()+","+this.damage);
+        ModLogger.logger.info(this.correctBlock()+","+this.block);
+        ModLogger.logger.info(this.correctMagicNumber()+","+this.magicNumber);
         AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.correctDamage(), this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new VulnerablePower(player, 1, false)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new VulnerablePower(monster, 1, false), 1));
+
         AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.correctDamage(), this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new VulnerablePower(player, 1, false)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new VulnerablePower(monster, 1, false),1));
+
         if (this.upgradedMagicNumber)
         {
-            for (int i = 0; i < UPGRADE_MAGIC_NUMBER; i++)
-            {
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new VulnerablePower(player, 1, false)));
-            }
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new VulnerablePower(player, 1, false),1));
         }
     }
 }

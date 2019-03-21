@@ -30,6 +30,7 @@ public class ChangeCardAction extends AbstractGameAction
         this.duration = Settings.ACTION_DUR_FAST;
         this.player = AbstractDungeon.player;
         this.amount = amount;
+        this.duration = DURATION;
     }
 
     public void update()

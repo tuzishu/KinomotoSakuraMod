@@ -29,7 +29,7 @@ public class ClowCardThePower extends AbstractClowCard
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
     private static final int BASE_DAMAGE = 12;
     private static final int BASE_MAGIC_NUMBER = 3;
-    private static final int UPGRADE_MAGIC_NUMBER = 3;
+    private static final int UPGRADE_MAGIC_NUMBER = 2;
 
     static
     {
@@ -43,7 +43,7 @@ public class ClowCardThePower extends AbstractClowCard
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(CustomTag.PHYSICS_CARD);
         this.baseDamage = BASE_DAMAGE;
-        this.baseMagicNumber = BASE_MAGIC_NUMBER;
+        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
     public AbstractClowCard makeCopy()

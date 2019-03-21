@@ -20,7 +20,7 @@ public class SpellCardRelease extends AbstractSpellCard
     private static final CardRarity CARD_RARITY = CardRarity.BASIC;
     private static final CardTarget CARD_TARGET = CardTarget.NONE;
     private static final int BASE_DAMAGE = 3;
-    private static final int UPGRADE_DAMAGE = 5;
+    private static final int UPGRADE_DAMAGE = 2;
 
     static
     {

@@ -22,63 +22,43 @@ public abstract class AbstractClowCard extends CustomCard
 
     public abstract void use(AbstractPlayer player, AbstractMonster monster);
 
+    public void setBaseMagicNumber(int value)
+    {
+        this.baseMagicNumber = value;
+        this.magicNumber = value;
+    }
+
     public int correctDamage()
     {
-        if (this.tags.contains(CustomTag.PHYSICS_CARD))
-        {
-            AbstractPower power = AbstractDungeon.player.getPower(EnhancementMagickPower.POWER_ID);
-            int cnt = power != null ? power.amount : 0;
-            return (int) Math.floor(this.damage * (1F + cnt * EnhancementMagickPower.CORRECTION_RATE));
-        }
-        else if (this.tags.contains(CustomTag.ELEMENT_CARD))
-        {
-            AbstractPower power = AbstractDungeon.player.getPower(ElementMagickPower.POWER_ID);
-            int cnt = power != null ? power.amount : 0;
-            return (int) Math.floor(this.damage * (1F + cnt * ElementMagickPower.CORRECTION_RATE));
-        }
-        else
-        {
-            return this.damage;
-        }
+        return getCorrentValue(this.damage);
     }
 
     public int correctBlock()
     {
-        if (this.tags.contains(CustomTag.PHYSICS_CARD))
-        {
-            AbstractPower power = AbstractDungeon.player.getPower(EnhancementMagickPower.POWER_ID);
-            int cnt = power != null ? power.amount : 0;
-            return (int) Math.floor(this.block * (1F + cnt * EnhancementMagickPower.CORRECTION_RATE));
-        }
-        else if (this.tags.contains(CustomTag.ELEMENT_CARD))
-        {
-            AbstractPower power = AbstractDungeon.player.getPower(ElementMagickPower.POWER_ID);
-            int cnt = power != null ? power.amount : 0;
-            return (int) Math.floor(this.block * (1F + cnt * ElementMagickPower.CORRECTION_RATE));
-        }
-        else
-        {
-            return this.block;
-        }
+        return getCorrentValue(this.block);
     }
 
     public int correctMagicNumber()
     {
+        return getCorrentValue(this.magicNumber);
+    }
+
+    private int getCorrentValue(int value)
+    {
         if (this.tags.contains(CustomTag.PHYSICS_CARD))
         {
             AbstractPower power = AbstractDungeon.player.getPower(EnhancementMagickPower.POWER_ID);
-            int cnt = power != null ? power.amount : 0;
-            return (int) Math.floor(this.magicNumber * (1F + cnt * EnhancementMagickPower.CORRECTION_RATE));
+            int count = power != null ? power.amount : 0;
+            float rate = EnhancementMagickPower.CORRECTION_RATE;
+            value = (int) (value * (1F + count * rate));
         }
-        else if (this.tags.contains(CustomTag.ELEMENT_CARD))
+        if (this.tags.contains(CustomTag.ELEMENT_CARD))
         {
             AbstractPower power = AbstractDungeon.player.getPower(ElementMagickPower.POWER_ID);
-            int cnt = power != null ? power.amount : 0;
-            return (int) Math.floor(this.magicNumber * (1F + cnt * ElementMagickPower.CORRECTION_RATE));
+            int count = power != null ? power.amount : 0;
+            float rate = ElementMagickPower.CORRECTION_RATE;
+            value = (int) (value * (1F + count * rate));
         }
-        else
-        {
-            return this.magicNumber;
-        }
+        return value;
     }
 }

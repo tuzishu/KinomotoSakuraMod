@@ -41,7 +41,7 @@ public class ClowCardTheFly extends AbstractClowCard
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(CustomTag.PHYSICS_CARD);
         this.baseBlock = BASE_BLOCK;
-        this.baseMagicNumber = BASE_MAGIC_NUMBER;
+        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
     public AbstractClowCard makeCopy()
