@@ -63,7 +63,7 @@ public class ClowCardTheFly extends AbstractClowCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new FlyPower(player, this.correctMagicNumber()), 1));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new FlyPower(player, this.correctMagicNumber()), this.correctMagicNumber()));
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.correctBlock()));
     }
 }

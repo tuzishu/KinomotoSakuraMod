@@ -20,6 +20,7 @@ public class SealedWand extends CustomRelic
     private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/SealedWand.png";
     private static final RelicTier RELIC_TIER = RelicTier.STARTER;
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
+    private static int TriggerNumber = 100;
 
     public SealedWand()
     {
@@ -43,18 +44,27 @@ public class SealedWand extends CustomRelic
         {
             ++this.counter;
             this.flash();
-            if (this.counter >= 100)
+            if (this.counter >= TriggerNumber)
             {
                 active();
             }
         }
     }
 
-    public void active()
+    private void active()
     {
-        this.counter -= 100;
+        this.counter -= TriggerNumber;
+        if (this.counter < 0)
+        {
+            this.counter = 0;
+        }
         AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, 4));
         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new SpellCardTurn()));
+    }
+
+    public static void setTriggerNumber(int value)
+    {
+        TriggerNumber = value;
     }
 }

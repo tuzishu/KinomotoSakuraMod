@@ -28,9 +28,7 @@ public class FlyPower extends CustomPower
     {
         super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, amount);
         this.updateDescription();
-        this.storedAmount = amount;
-        this.loadRegion("flight");
-        this.priority = 50;
+        this.storedAmount = this.amount;
     }
 
     public void playApplyPowerSfx()

@@ -7,6 +7,7 @@ import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomCharacter;
+import KinomotoSakuraMod.Relics.SealedBook;
 import KinomotoSakuraMod.Relics.SealedWand;
 import KinomotoSakuraMod.Utility.ModLogger;
 import basemod.BaseMod;
@@ -17,6 +18,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import java.nio.charset.StandardCharsets;
@@ -71,9 +73,22 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
     {
         ModLogger.logger.info("开始编辑遗物");
 
-        BaseMod.addRelicToCustomPool(new SealedWand(), CustomCardColor.CLOWCARD_COLOR);
+        for (AbstractRelic relic : GetRelicList())
+        {
+            BaseMod.addRelicToCustomPool(relic, CustomCardColor.CLOWCARD_COLOR);
+        }
 
         ModLogger.logger.info("结束编辑遗物");
+    }
+
+    private ArrayList<AbstractRelic> GetRelicList()
+    {
+        ArrayList<AbstractRelic> relicList = new ArrayList<AbstractRelic>();
+
+        relicList.add(new SealedWand());
+        relicList.add(new SealedBook());
+
+        return relicList;
     }
 
     public void receiveEditCards()

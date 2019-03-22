@@ -7,6 +7,7 @@ import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
 import KinomotoSakuraMod.KinomotoSakuraMod;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomCharacter;
+import KinomotoSakuraMod.Relics.SealedBook;
 import KinomotoSakuraMod.Relics.SealedWand;
 import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.graphics.Color;
@@ -129,8 +130,6 @@ public class KinomotoSakura extends CustomPlayer
         testStartCards.add(ClowCardTheSword.ID);
         testStartCards.add(SpellCardRelease.ID);
         testStartCards.add(SpellCardSeal.ID);
-        testStartCards.add(SpellCardTurn.ID);
-        testStartCards.add(HeavyBlade.ID);
 
         return testStartCards;
     }
@@ -138,7 +137,8 @@ public class KinomotoSakura extends CustomPlayer
     public ArrayList<String> getStartingRelics()
     {
         ArrayList<String> startRelics = new ArrayList<String>();
-        startRelics.add(SealedWand.class.getSimpleName());
+        startRelics.add(SealedWand.RELIC_ID);
+        startRelics.add(SealedBook.RELIC_ID);
         UnlockTracker.markRelicAsSeen(SealedWand.class.getSimpleName());
         return startRelics;
     }
