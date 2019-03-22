@@ -11,6 +11,8 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public abstract class AbstractClowCard extends CustomCard
 {
+    public boolean hasReleased = false;
+
     public AbstractClowCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target)
     {
         super(id, name, img, cost, rawDescription, type, color, rarity, target);
@@ -60,5 +62,16 @@ public abstract class AbstractClowCard extends CustomCard
             value = (int) (value * (1F + count * rate));
         }
         return value;
+    }
+
+    public void release(float releaseRate)
+    {
+        if (!hasReleased)
+        {
+            this.damage *= 1 + releaseRate;
+            this.block *= 1 + releaseRate;
+            this.magicNumber *= 1 + releaseRate;
+            this.hasReleased = true;
+        }
     }
 }

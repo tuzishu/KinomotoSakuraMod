@@ -47,6 +47,12 @@ public class FlyPower extends CustomPower
         this.updateDescription();
     }
 
+    public void atEndOfTurn(boolean isPlayer)
+    {
+        this.storedAmount = this.amount;
+        this.updateDescription();
+    }
+
     public float atDamageFinalReceive(float damage, DamageInfo.DamageType type)
     {
         return this.calculateDamageTakenAmount(damage, type);

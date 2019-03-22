@@ -44,8 +44,8 @@ public class SealAction extends AbstractGameAction
 
             if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead())
             {
-                AbstractDungeon.getCurrRoom().addCardToRewards();
                 AbstractDungeon.actionManager.clearPostCombatActions();
+                AbstractDungeon.getCurrRoom().addCardToRewards();
             }
         }
         tickDuration();
