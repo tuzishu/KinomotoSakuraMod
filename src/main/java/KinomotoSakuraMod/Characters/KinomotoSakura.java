@@ -1,9 +1,9 @@
 package KinomotoSakuraMod.Characters;
 
-import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheShield;
-import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheSword;
+import KinomotoSakuraMod.Cards.ClowCard.*;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardRelease;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardSeal;
+import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
 import KinomotoSakuraMod.KinomotoSakuraMod;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomCharacter;
@@ -15,6 +15,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.red.HeavyBlade;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
@@ -103,7 +104,9 @@ public class KinomotoSakura extends CustomPlayer
 
     public ArrayList<String> getStartingDeck()
     {
+        // 正式初始牌
         ArrayList<String> startCards = new ArrayList<String>();
+
         startCards.add(ClowCardTheSword.ID);
         startCards.add(ClowCardTheSword.ID);
         startCards.add(ClowCardTheSword.ID);
@@ -114,7 +117,22 @@ public class KinomotoSakura extends CustomPlayer
         startCards.add(ClowCardTheShield.ID);
         startCards.add(SpellCardSeal.ID);
         startCards.add(SpellCardRelease.ID);
-        return startCards;
+
+        // 测试初始牌
+        ArrayList<String> testStartCards = new ArrayList<String>();
+
+        testStartCards.add(ClowCardTheChange.ID);
+        testStartCards.add(ClowCardTheFly.ID);
+        testStartCards.add(ClowCardThePower.ID);
+        testStartCards.add(ClowCardTheShield.ID);
+        testStartCards.add(ClowCardTheShoot.ID);
+        testStartCards.add(ClowCardTheSword.ID);
+        testStartCards.add(SpellCardRelease.ID);
+        testStartCards.add(SpellCardSeal.ID);
+        testStartCards.add(SpellCardTurn.ID);
+        testStartCards.add(HeavyBlade.ID);
+
+        return testStartCards;
     }
 
     public ArrayList<String> getStartingRelics()

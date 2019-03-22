@@ -9,7 +9,7 @@
   },
   "ClowCardThePower": {
     "NAME": "力",
-    "DESCRIPTION": "造成 !D! 点伤害， NL 力量 发挥 !M! 倍效果。"
+    "DESCRIPTION": "造成 !D! 点伤害， NL 力量 发挥额外 !M! 倍效果。"
   },
   "ClowCardTheShield": {
     "NAME": "盾",

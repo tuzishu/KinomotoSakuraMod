@@ -22,7 +22,7 @@ public class ClowCardTheFly extends AbstractClowCard
     private static final int COST = 2;
     private static final CardType CARD_TYPE = CardType.POWER;
     private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
-    private static final CardRarity CARD_RARITY = CardRarity.COMMON;
+    private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
     private static final int BASE_BLOCK = 8;
     private static final int UPGRADE_BLOCK = 4;

@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.MinionPower;
 
 public class SpellCardSeal extends AbstractSpellCard
 {
@@ -60,7 +61,7 @@ public class SpellCardSeal extends AbstractSpellCard
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        if (!monster.hasPower("Minion") && monster.isDying || monster.currentHealth <= 0)
+        if (!monster.hasPower(MinionPower.POWER_ID) && monster.isDying || monster.currentHealth <= 0)
         {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new SealPower(player), 1));
         }

@@ -4,14 +4,17 @@ import KinomotoSakuraMod.Cards.AbstrackSakuraCard;
 import KinomotoSakuraMod.Cards.AbstractClowCard;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
 import basemod.abstracts.CustomRelic;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.utility.QueueCardAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 public class SealedWand extends CustomRelic
@@ -55,5 +58,11 @@ public class SealedWand extends CustomRelic
         AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, 4));
         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new SpellCardTurn()));
+    }
+
+    public void atBattleStart()
+    {
+        AbstractPlayer player = AbstractDungeon.player;
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player,player,new StrengthPower(player,1),1));
     }
 }
