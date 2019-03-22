@@ -3,6 +3,10 @@
     "NAME": "替",
     "DESCRIPTION": "【 物理牌 】丢弃最多 !M! 张手牌， NL 并抽相同数量的牌。"
   },
+  "ClowCardTheDash": {
+    "NAME": "驱",
+    "DESCRIPTION": "【 物理牌 】每使用5张 库洛牌 或 小樱牌 ， NL 抽 !M! 张牌。"
+  },
   "ClowCardTheFly": {
     "NAME": "飞",
     "DESCRIPTION": "【 物理牌 】获得 !M! 层 飞行 ， NL 并获得 !B! 点 格挡 。"

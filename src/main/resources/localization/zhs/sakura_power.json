@@ -3,14 +3,14 @@
     "NAME": "强化魔法",
     "DESCRIPTIONS": [
       " 物理牌 的所有效果提高 #b",
-      " %。"
+      "% 。"
     ]
   },
   "ElementMagickPower": {
     "NAME": "元素魔法",
     "DESCRIPTIONS": [
       " 元素牌 的所有效果提高 #b",
-      " %。"
+      "% 。"
     ]
   },
   "SealPower": {
@@ -25,6 +25,14 @@
     "DESCRIPTIONS": [
       "将所受到的 #y攻击 伤害降低 #b50% 。 如果在一个回合内被 #y攻击 伤害 #b",
       " 次，就会取消。"
+    ]
+  },
+  "DashPower": {
+    "NAME": "冲刺",
+    "DESCRIPTIONS": [
+      "每使用 #b5 张 库洛牌 或 小樱牌 ，抽 #b",
+      " 张卡。再使用 #b",
+      " 张卡发动抽卡效果。"
     ]
   }
 }
