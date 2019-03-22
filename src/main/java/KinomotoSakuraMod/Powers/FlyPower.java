@@ -63,7 +63,7 @@ public class FlyPower extends CustomPower
         if (info.owner != null && info.type != DamageInfo.DamageType.HP_LOSS && info.type != DamageInfo.DamageType.THORNS && damageAmount > 0 && willLive)
         {
             this.flash();
-            AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(this.owner, this.owner, "Flight", 1));
+            AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(this.owner, this.owner, FlyPower.POWER_ID, 1));
             this.updateDescription();
         }
         return damageAmount;

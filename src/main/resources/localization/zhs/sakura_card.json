@@ -1,28 +1,28 @@
 {
   "ClowCardTheChange": {
     "NAME": "替",
-    "DESCRIPTION": "丢弃最多 !M! 张手牌， NL 并抽相同数量的牌。"
+    "DESCRIPTION": "【 物理牌 】丢弃最多 !M! 张手牌， NL 并抽相同数量的牌。"
   },
   "ClowCardTheFly": {
     "NAME": "飞",
-    "DESCRIPTION": "获得 !M! 层 飞行 ， NL 并获得 !B! 点 格挡 。"
+    "DESCRIPTION": "【 物理牌 】获得 !M! 层 飞行 ， NL 并获得 !B! 点 格挡 。"
   },
   "ClowCardThePower": {
     "NAME": "力",
-    "DESCRIPTION": "造成 !D! 点伤害， NL 力量 发挥额外 !M! 倍效果。"
+    "DESCRIPTION": "【 物理牌 】造成 !D! 点伤害， NL 力量 发挥额外 !M! 倍效果。"
   },
   "ClowCardTheShield": {
     "NAME": "盾",
-    "DESCRIPTION": "获得 !B! 点 格挡 。"
+    "DESCRIPTION": "【 物理牌 】获得 !B! 点 格挡 。"
   },
   "ClowCardTheShoot": {
     "NAME": "击",
-    "DESCRIPTION": "造成 !D! 点伤害并给与1层 易伤  2次。",
+    "DESCRIPTION": "【 物理牌 】造成 !D! 点伤害并给与1层 易伤 2次。",
     "UPGRADE_DESCRIPTION": "造成 !D! 点伤害并给与1层 易伤 2次。额外给与1层 易伤 。"
   },
   "ClowCardTheSword": {
     "NAME": "剑",
-    "DESCRIPTION": "造成 !D! 点伤害。"
+    "DESCRIPTION": "【 物理牌 】造成 !D! 点伤害。"
   },
   "SpellCardRelease": {
     "NAME": "解",
@@ -34,6 +34,6 @@
   },
   "SpellCardTurn": {
     "NAME": "转",
-    "DESCRIPTION": " 保留 。选择1张手牌消耗。 NL 如果消耗的是 库洛牌 ，则将此卡从卡组中移除。 NL 如果卡组中没有其对应的 小樱牌 ，则将其加入卡组。"
+    "DESCRIPTION": " 保留 。选择1张手牌消耗。 NL 如果消耗的是 库洛牌 ，且卡组中没有对应的 小樱牌 时， NL 则将其转化为对应的小樱牌。"
   }
 }

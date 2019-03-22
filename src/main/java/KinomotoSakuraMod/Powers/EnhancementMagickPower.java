@@ -33,6 +33,6 @@ public class EnhancementMagickPower extends CustomPower
 
     public void updateDescription()
     {
-        this.description = POWER_DESCRIPTIONS[0] + this.amount * 5 + POWER_DESCRIPTIONS[1];
+        this.description = POWER_DESCRIPTIONS[0] + this.amount * (CORRECTION_RATE * 100) + POWER_DESCRIPTIONS[1];
     }
 }

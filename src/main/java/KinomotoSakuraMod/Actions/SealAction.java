@@ -41,6 +41,12 @@ public class SealAction extends AbstractGameAction
                 ModLogger.logger.info(ModNavigator.getLineNumber());
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new SealPower(), 1));
             }
+
+            if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead())
+            {
+                AbstractDungeon.getCurrRoom().addCardToRewards();
+                AbstractDungeon.actionManager.clearPostCombatActions();
+            }
         }
         tickDuration();
     }

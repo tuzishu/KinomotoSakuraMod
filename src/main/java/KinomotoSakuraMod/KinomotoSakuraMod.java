@@ -7,6 +7,7 @@ import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomCharacter;
+import KinomotoSakuraMod.Patches.CustomKeywords;
 import KinomotoSakuraMod.Relics.SealedBook;
 import KinomotoSakuraMod.Relics.SealedWand;
 import KinomotoSakuraMod.Utility.ModLogger;
@@ -15,6 +16,7 @@ import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
+import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
@@ -25,7 +27,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 @SpireInitializer
-public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber, EditRelicsSubscriber, EditCardsSubscriber, EditStringsSubscriber
+public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber, EditRelicsSubscriber, EditCardsSubscriber, EditStringsSubscriber, EditKeywordsSubscriber
 {
     // CardColor卡片颜色，卡片总览中的tab按钮颜色
     public static final Color colorClowCard = CardHelper.getColor(255f, 152f, 74f);
@@ -60,6 +62,7 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
         ModLogger.logger.info("完成初始化 KinomotoSakuraMod");
     }
 
+    @Override
     public void receiveEditCharacters()
     {
         ModLogger.logger.info("开始编辑角色");
@@ -69,6 +72,7 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
         ModLogger.logger.info("结束编辑角色");
     }
 
+    @Override
     public void receiveEditRelics()
     {
         ModLogger.logger.info("开始编辑遗物");
@@ -91,6 +95,7 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
         return relicList;
     }
 
+    @Override
     public void receiveEditCards()
     {
         ModLogger.logger.info("开始编辑卡牌");
@@ -121,6 +126,7 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
         return cardList;
     }
 
+    @Override
     public void receiveEditStrings()
     {
         ModLogger.logger.info("开始编辑本地化文本");
@@ -137,6 +143,7 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
         //                path += "eng/";
         //                break;
         //        }
+
         String card = path + "sakura_card.json";
         String cardStrings = Gdx.files.internal(card).readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
@@ -158,5 +165,38 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
         BaseMod.loadCustomStrings(UIStrings.class, uiStrings);
 
         ModLogger.logger.info("结束编辑本地化文本");
+    }
+
+    @Override
+    public void receiveEditKeywords()
+    {
+        ModLogger.logger.info("开始编辑关键字");
+
+        String path = "localization/";
+        //        switch (Settings.language)
+        //        {
+        //            case ZHS:
+        //                ModLogger.logger.info("language == zhs");
+        path += "zhs/";
+        //                break;
+        //            default:
+        //                ModLogger.logger.info("language == eng");
+        //                path += "eng/";
+        //                break;
+        //        }
+
+        path += "sakura_keyword.json";
+        Gson gson = new Gson();
+        String json = Gdx.files.internal(path).readString(String.valueOf(StandardCharsets.UTF_8));
+        CustomKeywords keywords = (CustomKeywords)gson.fromJson(json, CustomKeywords.class);
+        Keyword[] keywordList = keywords.keywords;
+
+        for(int i = 0; i < keywordList.length; ++i) {
+            Keyword key = keywordList[i];
+            ModLogger.logger.info("Loading keyword : " + key.NAMES[0]);
+            BaseMod.addKeyword(key.NAMES, key.DESCRIPTION);
+        }
+
+        ModLogger.logger.info("结束编辑关键字");
     }
 }

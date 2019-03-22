@@ -1,16 +1,16 @@
 {
-  "EnhancedMagickPower": {
+  "EnhancementMagickPower": {
     "NAME": "强化魔法",
     "DESCRIPTIONS": [
-      "提高 #b",
-      " %的 物理牌 的所有效果。"
+      " 物理牌 的所有效果提高 #b",
+      " %。"
     ]
   },
   "ElementMagickPower": {
     "NAME": "元素魔法",
     "DESCRIPTIONS": [
-      "提高 #b",
-      " %的 元素牌 的所有效果。"
+      " 元素牌 的所有效果提高 #b",
+      " %。"
     ]
   },
   "SealPower": {

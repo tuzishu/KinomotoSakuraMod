@@ -3,6 +3,7 @@ package KinomotoSakuraMod.Relics;
 import KinomotoSakuraMod.Patches.CustomTag;
 import KinomotoSakuraMod.Powers.ElementMagickPower;
 import KinomotoSakuraMod.Powers.EnhancementMagickPower;
+import KinomotoSakuraMod.Utility.ModLogger;
 import basemod.abstracts.CustomRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -44,7 +45,13 @@ public class SealedBook extends CustomRelic
             countElement += card.hasTag(CustomTag.ELEMENT_CARD) ? 1 : 0;
         }
         AbstractPlayer player = AbstractDungeon.player;
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new EnhancementMagickPower(player, countEnhancement), countEnhancement));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new ElementMagickPower(player, countElement), countElement));
+        if (countEnhancement > 0)
+        {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new EnhancementMagickPower(player, countEnhancement), countEnhancement));
+        }
+        if (countElement > 0)
+        {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new ElementMagickPower(player, countElement), countElement));
+        }
     }
 }

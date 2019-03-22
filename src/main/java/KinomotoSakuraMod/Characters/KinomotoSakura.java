@@ -122,7 +122,7 @@ public class KinomotoSakura extends CustomPlayer
         // 测试初始牌
         ArrayList<String> testStartCards = new ArrayList<String>();
 
-        testStartCards.add(ClowCardTheChange.ID);
+        // testStartCards.add(ClowCardTheChange.ID);
         testStartCards.add(ClowCardTheFly.ID);
         testStartCards.add(ClowCardThePower.ID);
         testStartCards.add(ClowCardTheShield.ID);
@@ -137,7 +137,7 @@ public class KinomotoSakura extends CustomPlayer
     public ArrayList<String> getStartingRelics()
     {
         ArrayList<String> startRelics = new ArrayList<String>();
-        startRelics.add(SealedWand.RELIC_ID);
+        // startRelics.add(SealedWand.RELIC_ID);
         startRelics.add(SealedBook.RELIC_ID);
         UnlockTracker.markRelicAsSeen(SealedWand.class.getSimpleName());
         return startRelics;
