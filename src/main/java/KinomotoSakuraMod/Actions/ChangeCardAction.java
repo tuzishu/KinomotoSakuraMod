@@ -1,8 +1,6 @@
 package KinomotoSakuraMod.Actions;
 
-import KinomotoSakuraMod.Patches.CustomTag;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -27,7 +25,6 @@ public class ChangeCardAction extends AbstractGameAction
     public ChangeCardAction(int amount)
     {
         this.actionType = AbstractGameAction.ActionType.CARD_MANIPULATION;
-        this.duration = Settings.ACTION_DUR_FAST;
         this.player = AbstractDungeon.player;
         this.amount = amount;
         this.duration = DURATION;
@@ -35,7 +32,7 @@ public class ChangeCardAction extends AbstractGameAction
 
     public void update()
     {
-        if (this.duration == Settings.ACTION_DUR_FAST)
+        if (this.duration == Settings.ACTION_DUR_XFAST)
         {
             if (this.player.hand.isEmpty())
             {
@@ -57,7 +54,8 @@ public class ChangeCardAction extends AbstractGameAction
             }
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
             AbstractDungeon.handCardSelectScreen.selectedCards.group.clear();
-            if (count > 0) {
+            if (count > 0)
+            {
                 AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, count));
             }
         }

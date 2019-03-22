@@ -59,10 +59,4 @@ public class SealedWand extends CustomRelic
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, 4));
         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new SpellCardTurn()));
     }
-
-    public void atBattleStart()
-    {
-        AbstractPlayer player = AbstractDungeon.player;
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player,player,new StrengthPower(player,1),1));
-    }
 }

@@ -6,12 +6,13 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public abstract class CustomPower extends AbstractPower
 {
-    public CustomPower(String id, String name, String img, PowerType powerType, AbstractCreature target)
+    public CustomPower(String id, String name, String img, PowerType powerType, AbstractCreature target, int amount)
     {
         this.ID = id;
         this.name = name;
         this.img = new Texture(img);
         this.type = powerType;
         this.owner = target;
+        this.amount = amount;
     }
 }

@@ -3,6 +3,7 @@ package KinomotoSakuraMod.Cards.ClowCard;
 import KinomotoSakuraMod.Cards.AbstractClowCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
+import KinomotoSakuraMod.Powers.FlyPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -62,7 +63,7 @@ public class ClowCardTheFly extends AbstractClowCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new FlightPower(player, this.correctMagicNumber())));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new FlyPower(player, this.correctMagicNumber()), 1));
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.correctBlock()));
     }
 }

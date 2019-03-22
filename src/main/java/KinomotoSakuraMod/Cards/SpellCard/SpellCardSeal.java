@@ -63,7 +63,7 @@ public class SpellCardSeal extends AbstractSpellCard
         AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
         if (!monster.hasPower(MinionPower.POWER_ID) && monster.isDying || monster.currentHealth <= 0)
         {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new SealPower(player), 1));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new SealPower(), 1));
         }
     }
 }

@@ -22,9 +22,14 @@ public class SealPower extends CustomPower
         POWER_DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     }
 
-    public SealPower(AbstractCreature target)
+    public SealPower()
     {
-        super(POWER_ID, POWER_NAME, POWER_IMG, POWER_TYPE, target);
+        this(AbstractDungeon.player, 1);
+    }
+
+    public SealPower(AbstractCreature target, int amount)
+    {
+        super(POWER_ID, POWER_NAME, POWER_IMG, POWER_TYPE, target, amount);
         updateDescription();
     }
 

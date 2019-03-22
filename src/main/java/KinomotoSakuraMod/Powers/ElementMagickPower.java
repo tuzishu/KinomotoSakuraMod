@@ -23,9 +23,9 @@ public class ElementMagickPower extends CustomPower
         POWER_DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     }
 
-    public ElementMagickPower(AbstractCreature target)
+    public ElementMagickPower(AbstractCreature target, int amount)
     {
-        super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target);
+        super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, amount);
         updateDescription();
     }
 
