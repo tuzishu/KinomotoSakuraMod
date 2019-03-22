@@ -1,8 +1,11 @@
 package KinomotoSakuraMod.Cards.SpellCard;
 
+import KinomotoSakuraMod.Actions.SealAction;
 import KinomotoSakuraMod.Cards.AbstractSpellCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Powers.SealPower;
+import KinomotoSakuraMod.Utility.ModNavigator;
+import KinomotoSakuraMod.Utility.ModLogger;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -60,10 +63,6 @@ public class SpellCardSeal extends AbstractSpellCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        if (!monster.hasPower(MinionPower.POWER_ID) && monster.isDying || monster.currentHealth <= 0)
-        {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new SealPower(), 1));
-        }
+        AbstractDungeon.actionManager.addToBottom(new SealAction(monster, this.damage));
     }
 }
