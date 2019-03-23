@@ -100,7 +100,7 @@ public class ReleaseAction extends AbstractGameAction
         {
             card.rawDescription = SpellCardRelease.EXTENDED_DESCRIPTION[1] + card.rawDescription;
         }
-        card.rawDescription = SpellCardRelease.EXTENDED_DESCRIPTION[1] + card.rawDescription;
+        card.rawDescription = SpellCardRelease.EXTENDED_DESCRIPTION[2] + card.rawDescription;
         card.initializeDescription();
     }
 }

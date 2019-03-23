@@ -60,7 +60,7 @@ public class FlyPower extends CustomPower
 
     private float calculateDamageTakenAmount(float damage, DamageInfo.DamageType type)
     {
-        return type != DamageInfo.DamageType.HP_LOSS && type != DamageInfo.DamageType.THORNS ? damage * DAMAGE_REDUCE_RATE : damage;
+        return type != DamageInfo.DamageType.HP_LOSS && type != DamageInfo.DamageType.THORNS ? damage * (1 - DAMAGE_REDUCE_RATE) : damage;
     }
 
     public int onAttacked(DamageInfo info, int damageAmount)
