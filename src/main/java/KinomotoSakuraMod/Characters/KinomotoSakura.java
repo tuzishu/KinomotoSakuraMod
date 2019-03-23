@@ -120,6 +120,7 @@ public class KinomotoSakura extends CustomPlayer
         // 测试初始牌
         ArrayList<String> testStartCards = new ArrayList<String>();
 
+        testStartCards.add(ClowCardTheArrow.ID);
         testStartCards.add(ClowCardTheChange.ID);
         testStartCards.add(ClowCardTheDash.ID);
         testStartCards.add(ClowCardTheFly.ID);

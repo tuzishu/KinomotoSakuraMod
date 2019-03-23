@@ -1,4 +1,8 @@
 {
+  "ClowCardTheArrow": {
+    "NAME": "矢",
+    "DESCRIPTION": "【 物理牌 】丢弃任意张牌并消耗所有能量， NL 对1名随机敌人造成 !D! 点伤害弃牌数与消耗能量之和次。"
+  },
   "ClowCardTheChange": {
     "NAME": "替",
     "DESCRIPTION": "【 物理牌 】丢弃最多 !M! 张手牌， NL 并抽相同数量的牌。"
