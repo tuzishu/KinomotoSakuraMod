@@ -65,7 +65,7 @@ public class FlyPower extends CustomPower
 
     public int onAttacked(DamageInfo info, int damageAmount)
     {
-        Boolean willLive = this.calculateDamageTakenAmount((float) damageAmount, info.type) < (float) this.owner.currentHealth;
+        boolean willLive = this.calculateDamageTakenAmount((float) damageAmount, info.type) < (float) this.owner.currentHealth;
         if (info.owner != null && info.type != DamageInfo.DamageType.HP_LOSS && info.type != DamageInfo.DamageType.THORNS && damageAmount > 0 && willLive)
         {
             this.flash();
@@ -74,4 +74,6 @@ public class FlyPower extends CustomPower
         }
         return damageAmount;
     }
+
+
 }

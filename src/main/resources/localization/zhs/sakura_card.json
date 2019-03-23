@@ -15,6 +15,10 @@
     "NAME": "飞",
     "DESCRIPTION": "【 物理牌 】获得 !M! 层 飞行 ， NL 并获得 !B! 点 格挡 。"
   },
+  "ClowCardTheJump": {
+    "NAME": "跳",
+    "DESCRIPTION": "【 物理牌 】获得 !B! 点 格挡 。 NL 并随机移除1个减益。"
+  },
   "ClowCardThePower": {
     "NAME": "力",
     "DESCRIPTION": "【 物理牌 】造成 !D! 点伤害， NL 力量 发挥额外 !M! 倍效果。"
