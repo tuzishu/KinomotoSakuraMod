@@ -63,7 +63,7 @@ public class SealedWand extends CustomRelic
         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new SpellCardTurn()));
     }
 
-    public static void setTriggerNumber(int value)
+    public void setTriggerNumber(int value)
     {
         TriggerNumber = value;
     }

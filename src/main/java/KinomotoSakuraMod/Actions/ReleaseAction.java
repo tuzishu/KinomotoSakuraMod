@@ -2,10 +2,12 @@ package KinomotoSakuraMod.Actions;
 
 import KinomotoSakuraMod.Cards.AbstrackSakuraCard;
 import KinomotoSakuraMod.Cards.AbstractClowCard;
-import KinomotoSakuraMod.Utility.ModLogger;
+import KinomotoSakuraMod.Cards.SpellCard.SpellCardRelease;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -50,6 +52,7 @@ public class ReleaseAction extends AbstractGameAction
                 for (AbstractCard card : AbstractDungeon.handCardSelectScreen.selectedCards.group)
                 {
                     tryReleaseCard(card);
+                    AbstractDungeon.actionManager.addToTop(new DamageAllEnemiesAction(player, new int[] {this.damage}, DamageInfo.DamageType.HP_LOSS, AttackEffect.FIRE));
                 }
             }
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
@@ -61,7 +64,6 @@ public class ReleaseAction extends AbstractGameAction
     {
         if (card instanceof AbstractClowCard)
         {
-            ModLogger.logger.info("card : "+card.name+" is instance of AbstractClowCard");
             if (card.costForTurn > 0)
             {
                 card.cost = 0;
@@ -69,17 +71,21 @@ public class ReleaseAction extends AbstractGameAction
                 card.isCostModified = true;
                 card.superFlash(Color.GOLD.cpy());
             }
-            if (card.type != AbstractCard.CardType.POWER && !card.exhaust && !card.exhaustOnFire && !card.exhaustOnUseOnce)
+            if (card.type == AbstractCard.CardType.POWER)
             {
+                reloadCardDescription(card, !card.isEthereal, !card.exhaust);
+                card.isEthereal = true;
+            }
+            else
+            {
+                ((AbstractClowCard) card).release(RELEASE_UPGRADE_RATE);
+                reloadCardDescription(card, !card.isEthereal, !card.exhaust);
                 card.isEthereal = true;
                 card.exhaust = true;
-                ((AbstractClowCard) card).release(RELEASE_UPGRADE_RATE);
             }
-            reloadCardDescription(card);
         }
         else if (card instanceof AbstrackSakuraCard)
         {
-            ModLogger.logger.info("card : "+card.name+" is instance of AbstrackSakuraCard");
             if (card.costForTurn > 0)
             {
                 card.cost = 0;
@@ -87,20 +93,38 @@ public class ReleaseAction extends AbstractGameAction
                 card.isCostModified = true;
                 card.superFlash(Color.GOLD.cpy());
             }
-            if (card.type != AbstractCard.CardType.POWER && !card.exhaust && !card.exhaustOnFire && !card.exhaustOnUseOnce)
+            if (card.type == AbstractCard.CardType.POWER)
             {
+                reloadCardDescription(card, !card.isEthereal, !card.exhaust);
+                card.isEthereal = true;
+            }
+            else
+            {
+                ((AbstrackSakuraCard) card).release(RELEASE_UPGRADE_RATE);
+                reloadCardDescription(card, !card.isEthereal, !card.exhaust);
                 card.isEthereal = true;
                 card.exhaust = true;
-                ((AbstrackSakuraCard) card).release(RELEASE_UPGRADE_RATE);
             }
-            reloadCardDescription(card);
         }
         AbstractDungeon.player.hand.addToTop(card);
     }
 
-    private void reloadCardDescription(AbstractCard card)
+    private void reloadCardDescription(AbstractCard card, boolean isAddEthereal, boolean isAddExhaust)
     {
-        card.rawDescription = " 消耗 ， 保留 。" + card.rawDescription;
-        card.initializeDescription();
+        boolean isChanged = false;
+        if (isAddEthereal)
+        {
+            card.rawDescription = SpellCardRelease.EXTENDED_DESCRIPTION[0] + card.rawDescription;
+            isChanged = true;
+        }
+        if (isAddExhaust)
+        {
+            card.rawDescription = SpellCardRelease.EXTENDED_DESCRIPTION[1] + card.rawDescription;
+            isChanged = true;
+        }
+        if (isChanged)
+        {
+            card.initializeDescription();
+        }
     }
 }
