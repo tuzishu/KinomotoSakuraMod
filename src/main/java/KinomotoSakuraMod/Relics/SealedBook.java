@@ -3,7 +3,6 @@ package KinomotoSakuraMod.Relics;
 import KinomotoSakuraMod.Patches.CustomTag;
 import KinomotoSakuraMod.Powers.ElementMagickPower;
 import KinomotoSakuraMod.Powers.EnhancementMagickPower;
-import KinomotoSakuraMod.Utility.ModLogger;
 import basemod.abstracts.CustomRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;

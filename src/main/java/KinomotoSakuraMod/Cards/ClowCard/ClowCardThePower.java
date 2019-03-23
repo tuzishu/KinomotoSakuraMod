@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
-import KinomotoSakuraMod.Cards.AbstractClowCard;
+import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -16,7 +16,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.vfx.combat.VerticalImpactEffect;
 
-public class ClowCardThePower extends AbstractClowCard
+public class ClowCardThePower extends AbstractMagicCard
 {
     public static final String ID = "ClowCardThePower";
     private static final String NAME;
@@ -46,7 +46,7 @@ public class ClowCardThePower extends AbstractClowCard
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
-    public AbstractClowCard makeCopy()
+    public AbstractMagicCard makeCopy()
     {
         return new ClowCardThePower();
     }

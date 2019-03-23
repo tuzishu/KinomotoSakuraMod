@@ -1,13 +1,22 @@
 package KinomotoSakuraMod.Utility;
 
-public class ModNavigator
+import KinomotoSakuraMod.KinomotoSakuraMod;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+public class ModUtility
 {
+    /**
+     * 日志管理器
+     */
+    public static final Logger Logger = LogManager.getLogger(KinomotoSakuraMod.class.getName());
+
     /**
      * 获取该语句所在的类名
      *
-     * @return String
+     * @return String 该语句所在的类名
      */
-    public static String getClassName()
+    public static String GetClassName()
     {
         StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
         StackTraceElement e = stacktrace[2];
@@ -17,9 +26,9 @@ public class ModNavigator
     /**
      * 获取该语句所在的方法名
      *
-     * @return String
+     * @return String 该语句所在的方法名
      */
-    public static String getMethodName()
+    public static String GetMethodName()
     {
         StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
         StackTraceElement e = stacktrace[2];
@@ -29,9 +38,9 @@ public class ModNavigator
     /**
      * 获取该语句所在的文件名
      *
-     * @return String
+     * @return String 该语句所在的文件名
      */
-    public static String getFileName()
+    public static String GetFileName()
     {
         StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
         StackTraceElement e = stacktrace[2];
@@ -41,9 +50,9 @@ public class ModNavigator
     /**
      * 获取该语句执行的代码行数
      *
-     * @return String
+     * @return String 该语句执行的代码行数
      */
-    public static int getLineNumber()
+    public static int GetLineNumber()
     {
         StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
         StackTraceElement e = stacktrace[2];

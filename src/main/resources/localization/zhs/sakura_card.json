@@ -33,7 +33,8 @@
     "DESCRIPTION": "选择手牌中最多1张库洛牌， 封印解除 。并使所有敌人流失 !D! 点生命。",
     "EXTENDED_DESCRIPTION": [
       " 消耗 。",
-      " 虚无 。"
+      " 虚无 。",
+      " 封印解除 。"
     ]
   },
   "SpellCardSeal": {

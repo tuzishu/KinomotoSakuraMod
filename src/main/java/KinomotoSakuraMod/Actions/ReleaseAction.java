@@ -1,7 +1,6 @@
 package KinomotoSakuraMod.Actions;
 
-import KinomotoSakuraMod.Cards.AbstrackSakuraCard;
-import KinomotoSakuraMod.Cards.AbstractClowCard;
+import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardRelease;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -52,7 +51,13 @@ public class ReleaseAction extends AbstractGameAction
                 for (AbstractCard card : AbstractDungeon.handCardSelectScreen.selectedCards.group)
                 {
                     tryReleaseCard(card);
-                    AbstractDungeon.actionManager.addToTop(new DamageAllEnemiesAction(player, new int[] {this.damage}, DamageInfo.DamageType.HP_LOSS, AttackEffect.FIRE));
+                    int size = AbstractDungeon.getCurrRoom().monsters.monsters.size();
+                    int[] damageList = new int[size];
+                    for (int i = 0; i < size; i++)
+                    {
+                        damageList[i] = this.damage;
+                    }
+                    AbstractDungeon.actionManager.addToTop(new DamageAllEnemiesAction(player, damageList, DamageInfo.DamageType.HP_LOSS, AttackEffect.FIRE));
                 }
             }
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
@@ -62,13 +67,11 @@ public class ReleaseAction extends AbstractGameAction
 
     private void tryReleaseCard(AbstractCard card)
     {
-        if (card instanceof AbstractClowCard)
+        if (card instanceof AbstractMagicCard)
         {
             if (card.costForTurn > 0)
             {
-                card.cost = 0;
-                card.costForTurn = 0;
-                card.isCostModified = true;
+                card.setCostForTurn(0);
                 card.superFlash(Color.GOLD.cpy());
             }
             if (card.type == AbstractCard.CardType.POWER)
@@ -78,29 +81,7 @@ public class ReleaseAction extends AbstractGameAction
             }
             else
             {
-                ((AbstractClowCard) card).release(RELEASE_UPGRADE_RATE);
-                reloadCardDescription(card, !card.isEthereal, !card.exhaust);
-                card.isEthereal = true;
-                card.exhaust = true;
-            }
-        }
-        else if (card instanceof AbstrackSakuraCard)
-        {
-            if (card.costForTurn > 0)
-            {
-                card.cost = 0;
-                card.costForTurn = 0;
-                card.isCostModified = true;
-                card.superFlash(Color.GOLD.cpy());
-            }
-            if (card.type == AbstractCard.CardType.POWER)
-            {
-                reloadCardDescription(card, !card.isEthereal, !card.exhaust);
-                card.isEthereal = true;
-            }
-            else
-            {
-                ((AbstrackSakuraCard) card).release(RELEASE_UPGRADE_RATE);
+                ((AbstractMagicCard) card).release(RELEASE_UPGRADE_RATE);
                 reloadCardDescription(card, !card.isEthereal, !card.exhaust);
                 card.isEthereal = true;
                 card.exhaust = true;
@@ -111,20 +92,15 @@ public class ReleaseAction extends AbstractGameAction
 
     private void reloadCardDescription(AbstractCard card, boolean isAddEthereal, boolean isAddExhaust)
     {
-        boolean isChanged = false;
         if (isAddEthereal)
         {
             card.rawDescription = SpellCardRelease.EXTENDED_DESCRIPTION[0] + card.rawDescription;
-            isChanged = true;
         }
         if (isAddExhaust)
         {
             card.rawDescription = SpellCardRelease.EXTENDED_DESCRIPTION[1] + card.rawDescription;
-            isChanged = true;
         }
-        if (isChanged)
-        {
-            card.initializeDescription();
-        }
+        card.rawDescription = SpellCardRelease.EXTENDED_DESCRIPTION[1] + card.rawDescription;
+        card.initializeDescription();
     }
 }

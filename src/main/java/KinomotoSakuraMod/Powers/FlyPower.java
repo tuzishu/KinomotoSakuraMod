@@ -14,7 +14,7 @@ public class FlyPower extends CustomPower
     private static final String[] POWER_DESCRIPTIONS;
     private static final String POWER_IMG_PATH = "img/powers/default_power.png";
     private static final PowerType POWER_TYPE = PowerType.BUFF;
-    private static final float DAMAGE_REDUCE_RATE = 0.5F;
+    private static final float DAMAGE_REDUCE_RATE = 0.25F;
     private int storedAmount;
 
     static
@@ -38,7 +38,7 @@ public class FlyPower extends CustomPower
 
     public void updateDescription()
     {
-        this.description = POWER_DESCRIPTIONS[0] + this.amount + POWER_DESCRIPTIONS[1];
+        this.description = POWER_DESCRIPTIONS[0] + DAMAGE_REDUCE_RATE * 100 + POWER_DESCRIPTIONS[1] + this.amount + POWER_DESCRIPTIONS[2];
     }
 
     public void atStartOfTurn()

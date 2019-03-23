@@ -1,8 +1,6 @@
 package KinomotoSakuraMod.Actions;
 
 import KinomotoSakuraMod.Powers.SealPower;
-import KinomotoSakuraMod.Utility.ModLogger;
-import KinomotoSakuraMod.Utility.ModNavigator;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -38,7 +36,6 @@ public class SealAction extends AbstractGameAction
 
             if (!this.monster.hasPower(MinionPower.POWER_ID) && this.monster.isDying || this.monster.currentHealth <= 0)
             {
-                ModLogger.logger.info(ModNavigator.getLineNumber());
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new SealPower(), 1));
             }
 

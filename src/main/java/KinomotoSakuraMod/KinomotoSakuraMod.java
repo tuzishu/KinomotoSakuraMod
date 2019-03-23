@@ -10,7 +10,7 @@ import KinomotoSakuraMod.Patches.CustomCharacter;
 import KinomotoSakuraMod.Patches.CustomKeywords;
 import KinomotoSakuraMod.Relics.SealedBook;
 import KinomotoSakuraMod.Relics.SealedWand;
-import KinomotoSakuraMod.Utility.ModLogger;
+import KinomotoSakuraMod.Utility.ModUtility;
 import basemod.BaseMod;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
@@ -55,34 +55,34 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
 
     public static void initialize()
     {
-        ModLogger.logger.info("开始初始化 KinomotoSakuraMod");
+        ModUtility.Logger.info("开始初始化 KinomotoSakuraMod");
 
         new KinomotoSakuraMod();
 
-        ModLogger.logger.info("完成初始化 KinomotoSakuraMod");
+        ModUtility.Logger.info("完成初始化 KinomotoSakuraMod");
     }
 
     @Override
     public void receiveEditCharacters()
     {
-        ModLogger.logger.info("开始编辑角色");
+        ModUtility.Logger.info("开始编辑角色");
 
         BaseMod.addCharacter(new KinomotoSakura(), SELECT_BUTTON_IMAGE_PATH, PORTRAIT_PATH, CustomCharacter.KINOMOTOSAKURA);
 
-        ModLogger.logger.info("结束编辑角色");
+        ModUtility.Logger.info("结束编辑角色");
     }
 
     @Override
     public void receiveEditRelics()
     {
-        ModLogger.logger.info("开始编辑遗物");
+        ModUtility.Logger.info("开始编辑遗物");
 
         for (AbstractRelic relic : GetRelicList())
         {
             BaseMod.addRelicToCustomPool(relic, CustomCardColor.CLOWCARD_COLOR);
         }
 
-        ModLogger.logger.info("结束编辑遗物");
+        ModUtility.Logger.info("结束编辑遗物");
     }
 
     private ArrayList<AbstractRelic> GetRelicList()
@@ -98,7 +98,7 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
     @Override
     public void receiveEditCards()
     {
-        ModLogger.logger.info("开始编辑卡牌");
+        ModUtility.Logger.info("开始编辑卡牌");
 
         for (AbstractCard card : GetCardList())
         {
@@ -106,7 +106,7 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
             UnlockTracker.unlockCard(card.cardID);
         }
 
-        ModLogger.logger.info("结束编辑卡牌");
+        ModUtility.Logger.info("结束编辑卡牌");
     }
 
     private ArrayList<AbstractCard> GetCardList()
@@ -130,17 +130,17 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
     @Override
     public void receiveEditStrings()
     {
-        ModLogger.logger.info("开始编辑本地化文本");
+        ModUtility.Logger.info("开始编辑本地化文本");
 
         String path = "localization/";
         //        switch (Settings.language)
         //        {
         //            case ZHS:
-        //                ModLogger.logger.info("language == zhs");
+        //                ModUtility.Logger.info("language == zhs");
         path += "zhs/";
         //                break;
         //            default:
-        //                ModLogger.logger.info("language == eng");
+        //                ModUtility.Logger.info("language == eng");
         //                path += "eng/";
         //                break;
         //        }
@@ -165,23 +165,23 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
         String uiStrings = Gdx.files.internal(ui).readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(UIStrings.class, uiStrings);
 
-        ModLogger.logger.info("结束编辑本地化文本");
+        ModUtility.Logger.info("结束编辑本地化文本");
     }
 
     @Override
     public void receiveEditKeywords()
     {
-        ModLogger.logger.info("开始编辑关键字");
+        ModUtility.Logger.info("开始编辑关键字");
 
         String path = "localization/";
         //        switch (Settings.language)
         //        {
         //            case ZHS:
-        //                ModLogger.logger.info("language == zhs");
+        //                ModUtility.Logger.info("language == zhs");
         path += "zhs/";
         //                break;
         //            default:
-        //                ModLogger.logger.info("language == eng");
+        //                ModUtility.Logger.info("language == eng");
         //                path += "eng/";
         //                break;
         //        }
@@ -194,10 +194,10 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
 
         for(int i = 0; i < keywordList.length; ++i) {
             Keyword key = keywordList[i];
-            ModLogger.logger.info("Loading keyword : " + key.NAMES[0]);
+            ModUtility.Logger.info("Loading keyword : " + key.NAMES[0]);
             BaseMod.addKeyword(key.NAMES, key.DESCRIPTION);
         }
 
-        ModLogger.logger.info("结束编辑关键字");
+        ModUtility.Logger.info("结束编辑关键字");
     }
 }

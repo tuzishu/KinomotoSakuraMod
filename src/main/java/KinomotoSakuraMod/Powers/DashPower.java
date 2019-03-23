@@ -1,7 +1,6 @@
 package KinomotoSakuraMod.Powers;
 
-import KinomotoSakuraMod.Cards.AbstrackSakuraCard;
-import KinomotoSakuraMod.Cards.AbstractClowCard;
+import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -41,7 +40,7 @@ public class DashPower extends CustomPower
 
     public void onUseCard(AbstractCard card, UseCardAction action)
     {
-        if (card instanceof AbstractClowCard || card instanceof AbstrackSakuraCard)
+        if (card instanceof AbstractMagicCard)
         {
             counter += 1;
             if (counter >= TRIGGER_NUMBER)

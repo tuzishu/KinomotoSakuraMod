@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
-import KinomotoSakuraMod.Cards.AbstractClowCard;
+import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
 import KinomotoSakuraMod.Powers.DashPower;
@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class ClowCardTheDash extends AbstractClowCard
+public class ClowCardTheDash extends AbstractMagicCard
 {
     public static final String ID = "ClowCardTheDash";
     private static final String NAME;
@@ -39,7 +39,7 @@ public class ClowCardTheDash extends AbstractClowCard
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
-    public AbstractClowCard makeCopy()
+    public AbstractMagicCard makeCopy()
     {
         return new ClowCardTheDash();
     }

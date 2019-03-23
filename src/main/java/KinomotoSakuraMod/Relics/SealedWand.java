@@ -1,7 +1,6 @@
 package KinomotoSakuraMod.Relics;
 
-import KinomotoSakuraMod.Cards.AbstrackSakuraCard;
-import KinomotoSakuraMod.Cards.AbstractClowCard;
+import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
 import basemod.abstracts.CustomRelic;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -40,7 +39,7 @@ public class SealedWand extends CustomRelic
 
     public void onUseCard(AbstractCard card, UseCardAction action)
     {
-        if (card instanceof AbstractClowCard || card instanceof AbstrackSakuraCard)
+        if (card instanceof AbstractMagicCard)
         {
             ++this.counter;
             this.flash();
