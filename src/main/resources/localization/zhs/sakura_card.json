@@ -17,7 +17,7 @@
   },
   "ClowCardTheJump": {
     "NAME": "跳",
-    "DESCRIPTION": "【 物理牌 】获得 !B! 点 格挡 。 NL 并随机移除1个减益。"
+    "DESCRIPTION": "【 物理牌 】 消耗 。获得 !B! 点 格挡 。 NL 随机移除1个减益。"
   },
   "ClowCardThePower": {
     "NAME": "力",
