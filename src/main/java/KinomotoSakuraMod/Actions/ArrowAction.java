@@ -42,7 +42,7 @@ public class ArrowAction extends AbstractGameAction
                 this.isDone = true;
                 return;
             }
-            AbstractDungeon.handCardSelectScreen.open(TEXT[0], 99, true, true);
+            AbstractDungeon.handCardSelectScreen.open(TEXT[0], this.player.gameHandSize, true, true);
             tickDuration();
             return;
         }
@@ -58,7 +58,7 @@ public class ArrowAction extends AbstractGameAction
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
             AbstractDungeon.handCardSelectScreen.selectedCards.group.clear();
 
-            AbstractMonster mon = AbstractDungeon.getCurrRoom().monsters.getRandomMonster();
+            AbstractMonster mon = AbstractDungeon.getRandomMonster();
             count += player.energy.energy;
             this.player.energy.use(EnergyPanel.totalCount);
             if (count > 0)

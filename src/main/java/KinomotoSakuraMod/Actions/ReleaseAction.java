@@ -51,7 +51,7 @@ public class ReleaseAction extends AbstractGameAction
                 for (AbstractCard card : AbstractDungeon.handCardSelectScreen.selectedCards.group)
                 {
                     tryReleaseCard(card);
-                    int size = AbstractDungeon.getCurrRoom().monsters.monsters.size();
+                    int size = AbstractDungeon.getMonsters().monsters.size();
                     int[] damageList = new int[size];
                     for (int i = 0; i < size; i++)
                     {

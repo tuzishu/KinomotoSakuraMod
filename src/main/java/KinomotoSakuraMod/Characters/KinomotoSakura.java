@@ -15,6 +15,8 @@ import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.colorless.Discovery;
+import com.megacrit.cardcrawl.cards.red.Exhume;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
@@ -132,6 +134,8 @@ public class KinomotoSakura extends CustomPlayer
         testStartCards.add(SpellCardRelease.ID);
         testStartCards.add(SpellCardSeal.ID);
         // testStartCards.add(SpellCardTurn.ID);
+
+        testStartCards.add(Exhume.ID);
 
         return testStartCards;
     }
