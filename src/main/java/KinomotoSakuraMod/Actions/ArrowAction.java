@@ -37,8 +37,16 @@ public class ArrowAction extends AbstractGameAction
     {
         if (this.duration == Settings.ACTION_DUR_FAST)
         {
-            if (this.player.hand.isEmpty())
+            if (this.player.hand.isEmpty() && EnergyPanel.getCurrentEnergy() == 0)
             {
+                this.isDone = true;
+                return;
+            }
+            else if (this.player.hand.isEmpty())
+            {
+                int count = EnergyPanel.getCurrentEnergy();
+                this.player.energy.use(EnergyPanel.totalCount);
+                AttackRandomTarget(count);
                 this.isDone = true;
                 return;
             }
@@ -57,18 +65,22 @@ public class ArrowAction extends AbstractGameAction
             }
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
             AbstractDungeon.handCardSelectScreen.selectedCards.group.clear();
-
-            AbstractMonster mon = AbstractDungeon.getRandomMonster();
-            count += player.energy.energy;
+            count += EnergyPanel.getCurrentEnergy();
             this.player.energy.use(EnergyPanel.totalCount);
-            if (count > 0)
-            {
-                for (int i = 0; i < count; i++)
-                {
-                    AbstractDungeon.actionManager.addToBottom(new DamageAction(mon, new DamageInfo(player, this.damage), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-                }
-            }
+            AttackRandomTarget(count);
         }
         tickDuration();
+    }
+
+    private void AttackRandomTarget(int count)
+    {
+        AbstractMonster mon = AbstractDungeon.getRandomMonster();
+        if (count > 0)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(mon, new DamageInfo(player, this.damage), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+            }
+        }
     }
 }

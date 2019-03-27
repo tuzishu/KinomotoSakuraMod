@@ -133,15 +133,28 @@ public class ReleaseAction extends AbstractGameAction
 
     private void reloadCardDescription(AbstractCard card, boolean isAddEthereal, boolean isAddExhaust)
     {
+        String cardHeadStr = "";
+        if (card.rawDescription.contains(SpellCardRelease.EXTENDED_DESCRIPTION[0]))
+        {
+            cardHeadStr = SpellCardRelease.EXTENDED_DESCRIPTION[0];
+            card.rawDescription = card.rawDescription.replace(cardHeadStr, "");
+        }
+        else if (card.rawDescription.contains(SpellCardRelease.EXTENDED_DESCRIPTION[1]))
+        {
+            cardHeadStr = SpellCardRelease.EXTENDED_DESCRIPTION[1];
+            card.rawDescription = card.rawDescription.replace(cardHeadStr, "");
+        }
+
         if (isAddEthereal)
         {
-            card.rawDescription = SpellCardRelease.EXTENDED_DESCRIPTION[0] + card.rawDescription;
+            card.rawDescription = SpellCardRelease.EXTENDED_DESCRIPTION[2] + card.rawDescription;
         }
         if (isAddExhaust)
         {
-            card.rawDescription = SpellCardRelease.EXTENDED_DESCRIPTION[1] + card.rawDescription;
+            card.rawDescription = SpellCardRelease.EXTENDED_DESCRIPTION[3] + card.rawDescription;
         }
-        card.rawDescription = SpellCardRelease.EXTENDED_DESCRIPTION[2] + card.rawDescription;
+        card.rawDescription = SpellCardRelease.EXTENDED_DESCRIPTION[4] + card.rawDescription;
+        card.rawDescription = cardHeadStr + card.rawDescription;
         card.initializeDescription();
     }
 }

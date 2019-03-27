@@ -44,12 +44,19 @@
     "NAME": "剑",
     "DESCRIPTION": "【 物理牌 】造成 !D! 点伤害。"
   },
+  "ClowCardTheTwin": {
+    "NAME": "双",
+    "DESCRIPTION": "【 物理牌 】每回合打出的第1张牌会打额外打出1次。",
+    "UPGRADE_DESCRIPTION": "【 物理牌 】 保留 。每回合打出的第1张牌会额外打出1次。"
+  },
   "SpellCardRelease": {
     "NAME": "解",
     "DESCRIPTION": "选择手牌中最多1张库洛牌， 封印解除 。并使所有敌人流失 !D! 点生命。",
     "EXTENDED_DESCRIPTION": [
-      " 消耗 。",
+      "【 物理牌 】",
+      "【 元素牌 】",
       " 虚无 。",
+      " 消耗 。",
       " 封印解除 。"
     ]
   },

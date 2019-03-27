@@ -3,26 +3,25 @@ package KinomotoSakuraMod.Cards.ClowCard;
 import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
-import KinomotoSakuraMod.Powers.SilentPower;
+import KinomotoSakuraMod.Powers.TwinPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.BufferPower;
 
-public class ClowCardTheSilent extends AbstractMagicCard
+public class ClowCardTheTwin extends AbstractMagicCard
 {
-    public static final String ID = "ClowCardTheSilent";
+    public static final String ID = "ClowCardTheTwin";
     private static final String NAME;
     private static final String DESCRIPTION;
-    private static final String IMAGE_PATH = "img/cards/default_skill_card.png";
-    private static final int COST = 1;
-    private static final int UPGRADED_COST = 0;
-    private static final CardType CARD_TYPE = CardType.SKILL;
+    private static final String UPGRADE_DESCRIPTION;
+    private static final String IMAGE_PATH = "img/cards/default_power_card.png";
+    private static final int COST = 3;
+    private static final CardType CARD_TYPE = CardType.POWER;
     private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
-    private static final CardRarity CARD_RARITY = CardRarity.COMMON;
+    private static final CardRarity CARD_RARITY = CardRarity.RARE;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
 
     static
@@ -30,9 +29,11 @@ public class ClowCardTheSilent extends AbstractMagicCard
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
         NAME = cardStrings.NAME;
         DESCRIPTION = cardStrings.DESCRIPTION;
+        UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+            
     }
 
-    public ClowCardTheSilent()
+    public ClowCardTheTwin()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(CustomTag.PHYSICS_CARD);
@@ -44,20 +45,20 @@ public class ClowCardTheSilent extends AbstractMagicCard
         if (!this.upgraded)
         {
             upgradeName();
-            upgradeBaseCost(UPGRADED_COST);
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            this.retain = true;
         }
     }
 
     @Override
     public AbstractMagicCard makeCopy()
     {
-        return new ClowCardTheSilent();
+        return new ClowCardTheTwin();
     }
 
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new BufferPower(player, 1), 1));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new SilentPower(player)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new TwinPower(player, 1), 1));
     }
 }
