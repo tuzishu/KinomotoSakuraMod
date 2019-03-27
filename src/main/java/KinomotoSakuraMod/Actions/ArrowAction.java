@@ -14,14 +14,14 @@ import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 public class ArrowAction extends AbstractGameAction
 {
-    public static final String POWER_ID = "ArrowAction";
+    public static final String ACTION_ID = "ArrowAction";
     private static final String[] TEXT;
     private AbstractPlayer player;
     private int damage;
 
     static
     {
-        UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(POWER_ID);
+        UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ACTION_ID);
         TEXT = uiStrings.TEXT;
     }
 

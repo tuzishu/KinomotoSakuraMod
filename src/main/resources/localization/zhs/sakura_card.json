@@ -1,27 +1,31 @@
 {
   "ClowCardTheArrow": {
     "NAME": "矢",
-    "DESCRIPTION": "【 物理牌 】丢弃任意张牌并消耗所有能量， NL 对1名随机敌人造成 !D! 点伤害弃牌数与消耗能量之和次。"
+    "DESCRIPTION": "【 物理牌 】丢弃任意张牌并消耗所有能量，对1名随机敌人造成 !D! 点伤害弃牌数与消耗能量之和次。"
   },
   "ClowCardTheChange": {
     "NAME": "替",
-    "DESCRIPTION": "【 物理牌 】丢弃最多 !M! 张手牌， NL 并抽相同数量的牌。"
+    "DESCRIPTION": "【 物理牌 】丢弃最多 !M! 张手牌，并抽相同数量的牌。"
   },
   "ClowCardTheDash": {
     "NAME": "驱",
-    "DESCRIPTION": "【 物理牌 】每使用5张 库洛牌 或 小樱牌 ， NL 抽 !M! 张牌。"
+    "DESCRIPTION": "【 物理牌 】每使用5张 库洛牌 或 小樱牌 ，抽 !M! 张牌。"
   },
   "ClowCardTheFly": {
     "NAME": "飞",
-    "DESCRIPTION": "【 物理牌 】获得 !M! 层 飞行 ， NL 并获得 !B! 点 格挡 。"
+    "DESCRIPTION": "【 物理牌 】获得 !M! 层 飞行 ，并获得 !B! 点 格挡 。"
   },
   "ClowCardTheJump": {
     "NAME": "跳",
-    "DESCRIPTION": "【 物理牌 】 消耗 。获得 !B! 点 格挡 。 NL 随机移除1个减益。"
+    "DESCRIPTION": "【 物理牌 】 消耗 。获得 !B! 点 格挡 。并随机移除1个减益。"
+  },
+  "ClowCardTheMirror": {
+    "NAME": "镜",
+    "DESCRIPTION": "【 物理牌 】 消耗 。选择1张手中的 库洛牌 或 小樱牌 ，复制1张加入手中"
   },
   "ClowCardThePower": {
     "NAME": "力",
-    "DESCRIPTION": "【 物理牌 】造成 !D! 点伤害， NL 力量 发挥额外 !M! 倍效果。"
+    "DESCRIPTION": "【 物理牌 】造成 !D! 点伤害，力量 发挥额外 !M! 倍效果。"
   },
   "ClowCardTheShield": {
     "NAME": "盾",
@@ -47,10 +51,10 @@
   },
   "SpellCardSeal": {
     "NAME": "封",
-    "DESCRIPTION": "造成 !D! 点伤害。 NL 如果击杀了1名不是 爪牙 的敌人， NL 额外获得1次选牌奖励。"
+    "DESCRIPTION": "造成 !D! 点伤害。如果击杀了1名不是 爪牙 的敌人，额外获得1次选牌奖励。"
   },
   "SpellCardTurn": {
     "NAME": "转",
-    "DESCRIPTION": " 保留 。选择1张手牌消耗。 NL 如果消耗的是 库洛牌 ，且卡组中没有对应的 小樱牌 时， NL 则将其转化为对应的小樱牌。"
+    "DESCRIPTION": " 保留 。选择1张手牌消耗。如果消耗的是 库洛牌 ，且卡组中没有对应的 小樱牌 时，则将其转化为对应的小樱牌。"
   }
 }

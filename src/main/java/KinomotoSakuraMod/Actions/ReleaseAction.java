@@ -2,6 +2,7 @@ package KinomotoSakuraMod.Actions;
 
 import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardRelease;
+import KinomotoSakuraMod.Patches.CustomCardColor;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
@@ -13,6 +14,8 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 
+import java.util.ArrayList;
+
 public class ReleaseAction extends AbstractGameAction
 {
     private static final String ACTION_ID = "ReleaseAction";
@@ -21,6 +24,7 @@ public class ReleaseAction extends AbstractGameAction
     private static final float DURATION = Settings.ACTION_DUR_XFAST;
     private static final float RELEASE_UPGRADE_RATE = 0.5F;
     private int damage;
+    private ArrayList<AbstractCard> cannotReleaseList = new ArrayList<AbstractCard>();
 
     static
     {
@@ -40,17 +44,42 @@ public class ReleaseAction extends AbstractGameAction
     {
         if (this.duration == Settings.ACTION_DUR_XFAST)
         {
-            AbstractDungeon.handCardSelectScreen.open(TEXT[0], 1, false, true, false, false, true);
-            tickDuration();
-            return;
+            for (AbstractCard card : this.player.hand.group)
+            {
+                if (!this.IsCorrectCardType(card))
+                {
+                    this.cannotReleaseList.add(card);
+                }
+            }
+            if (this.cannotReleaseList.size() == this.player.hand.group.size())
+            {
+                this.isDone = true;
+                return;
+            }
+
+            this.player.hand.group.removeAll(this.cannotReleaseList);
+            if (this.player.hand.group.size() == 1)
+            {
+                ReleaseCard(this.player.hand.getTopCard());
+                this.returnCards();
+                this.isDone = true;
+            }
+
+            if (this.player.hand.group.size() > 1)
+            {
+                AbstractDungeon.handCardSelectScreen.open(TEXT[0], 1, false, false);
+                this.tickDuration();
+                return;
+            }
         }
+
         if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved)
         {
             if (AbstractDungeon.handCardSelectScreen.selectedCards.size() > 0)
             {
                 for (AbstractCard card : AbstractDungeon.handCardSelectScreen.selectedCards.group)
                 {
-                    tryReleaseCard(card);
+                    ReleaseCard(card);
                     int size = AbstractDungeon.getMonsters().monsters.size();
                     int[] damageList = new int[size];
                     for (int i = 0; i < size; i++)
@@ -65,27 +94,39 @@ public class ReleaseAction extends AbstractGameAction
         tickDuration();
     }
 
-    private void tryReleaseCard(AbstractCard card)
+    private void returnCards()
     {
-        if (card instanceof AbstractMagicCard)
+
+        for (AbstractCard card : this.cannotReleaseList)
         {
-            if (card.costForTurn > 0)
-            {
-                card.setCostForTurn(0);
-                card.superFlash(Color.GOLD.cpy());
-            }
-            if (card.type == AbstractCard.CardType.POWER)
-            {
-                reloadCardDescription(card, !card.isEthereal, !card.exhaust);
-                card.isEthereal = true;
-            }
-            else
-            {
-                ((AbstractMagicCard) card).release(RELEASE_UPGRADE_RATE);
-                reloadCardDescription(card, !card.isEthereal, !card.exhaust);
-                card.isEthereal = true;
-                card.exhaust = true;
-            }
+            this.player.hand.addToTop(card);
+        }
+        this.player.hand.refreshHandLayout();
+    }
+
+    private boolean IsCorrectCardType(AbstractCard card)
+    {
+        return card.color == CustomCardColor.CLOWCARD_COLOR || card.color == CustomCardColor.SAKURACARD_COLOR;
+    }
+
+    private void ReleaseCard(AbstractCard card)
+    {
+        if (card.costForTurn > 0)
+        {
+            card.setCostForTurn(0);
+            card.superFlash(Color.GOLD.cpy());
+        }
+        if (card.type == AbstractCard.CardType.POWER)
+        {
+            reloadCardDescription(card, !card.isEthereal, !card.exhaust);
+            card.isEthereal = true;
+        }
+        else
+        {
+            ((AbstractMagicCard) card).release(RELEASE_UPGRADE_RATE);
+            reloadCardDescription(card, !card.isEthereal, !card.exhaust);
+            card.isEthereal = true;
+            card.exhaust = true;
         }
         AbstractDungeon.player.hand.addToTop(card);
     }
