@@ -4,6 +4,7 @@ import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -13,6 +14,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
+import com.megacrit.cardcrawl.vfx.combat.ThrowDaggerEffect;
 
 public class ClowCardTheShoot extends AbstractMagicCard
 {
@@ -29,6 +31,7 @@ public class ClowCardTheShoot extends AbstractMagicCard
     private static final int BASE_DAMAGE = 3;
     private static final int UPGRADE_DAMAGE = 1;
     private static final int BASE_MAGIC_NUMBER = 1;
+    private static final float DURATION_ATTACK = 0.05F;
 
     static
     {
@@ -66,14 +69,17 @@ public class ClowCardTheShoot extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(player, new ThrowDaggerEffect(monster.hb.cX, monster.hb.cY), DURATION_ATTACK));
         AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.correctDamage(), this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new VulnerablePower(monster, this.correctMagicNumber(), false), this.correctMagicNumber()));
 
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(player, new ThrowDaggerEffect(monster.hb.cX, monster.hb.cY), DURATION_ATTACK));
         AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.correctDamage(), this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new VulnerablePower(monster, this.correctMagicNumber(), false), this.correctMagicNumber()));
 
         if (this.upgradedMagicNumber)
         {
+            AbstractDungeon.actionManager.addToBottom(new VFXAction(player, new ThrowDaggerEffect(monster.hb.cX, monster.hb.cY), DURATION_ATTACK));
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new VulnerablePower(player, this.correctMagicNumber(), false), this.correctMagicNumber()));
         }
     }
