@@ -4,6 +4,7 @@ import KinomotoSakuraMod.Cards.ClowCard.*;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardRelease;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardSeal;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
+import KinomotoSakuraMod.Cards.SpellCard.TestCard;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomCharacter;
@@ -126,7 +127,9 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
         cardList.add(new ClowCardTheArrow());
         cardList.add(new ClowCardTheJump());
         cardList.add(new ClowCardTheMirror());
+        cardList.add(new ClowCardTheSilent());
 
+        cardList.add(new TestCard());
         return cardList;
     }
 

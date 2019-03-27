@@ -3,6 +3,7 @@ package KinomotoSakuraMod.Characters;
 import KinomotoSakuraMod.Cards.ClowCard.*;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardRelease;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardSeal;
+import KinomotoSakuraMod.Cards.SpellCard.TestCard;
 import KinomotoSakuraMod.KinomotoSakuraMod;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomCharacter;
@@ -120,25 +121,31 @@ public class KinomotoSakura extends CustomPlayer
         startCards.add(SpellCardRelease.ID);
 
         // 测试初始牌
-        ArrayList<String> testStartCards = new ArrayList<String>();
+        ArrayList<String> testCards = new ArrayList<String>();
 
-        testStartCards.add(ClowCardTheArrow.ID);
-        testStartCards.add(ClowCardTheChange.ID);
-        testStartCards.add(ClowCardTheDash.ID);
-        testStartCards.add(ClowCardTheFly.ID);
-        testStartCards.add(ClowCardTheJump.ID);
-        testStartCards.add(ClowCardTheMirror.ID);
-        testStartCards.add(ClowCardThePower.ID);
-        testStartCards.add(ClowCardTheShield.ID);
-        testStartCards.add(ClowCardTheShoot.ID);
-        testStartCards.add(ClowCardTheSword.ID);
-        testStartCards.add(SpellCardRelease.ID);
-        testStartCards.add(SpellCardSeal.ID);
+        testCards.add(ClowCardTheArrow.ID);
+        testCards.add(ClowCardTheChange.ID);
+        testCards.add(ClowCardTheDash.ID);
+        testCards.add(ClowCardTheFly.ID);
+        testCards.add(ClowCardTheJump.ID);
+        testCards.add(ClowCardTheMirror.ID);
+        testCards.add(ClowCardThePower.ID);
+        testCards.add(ClowCardTheShield.ID);
+        testCards.add(ClowCardTheShoot.ID);
+        testCards.add(ClowCardTheSilent.ID);
+        testCards.add(ClowCardTheSword.ID);
+        testCards.add(SpellCardRelease.ID);
+        testCards.add(SpellCardSeal.ID);
         // testStartCards.add(SpellCardTurn.ID);
 
-        testStartCards.add(Exhume.ID);
+        // testCards.add(Exhume.ID);   // 发掘
 
-        return testStartCards;
+        // 秒杀查关牌
+        // ArrayList<String> imbaCards = new ArrayList<String>();
+        //
+        // imbaCards.add(TestCard.ID);
+
+        return testCards;
     }
 
     public ArrayList<String> getStartingRelics()

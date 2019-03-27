@@ -36,6 +36,10 @@
     "DESCRIPTION": "【 物理牌 】造成 !D! 点伤害并给与1层 易伤 2次。",
     "UPGRADE_DESCRIPTION": "造成 !D! 点伤害并给与1层 易伤 2次。额外给与1层 易伤 。"
   },
+  "ClowCardTheSilent": {
+    "NAME": "静",
+    "DESCRIPTION": "【 物理牌 】获得1层 缓冲 ，下回合无法打出攻击牌。"
+  },
   "ClowCardTheSword": {
     "NAME": "剑",
     "DESCRIPTION": "【 物理牌 】造成 !D! 点伤害。"
