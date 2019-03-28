@@ -34,8 +34,8 @@ public class FightPower extends CustomPower
     public FightPower(AbstractCreature target, int amount, boolean upgraded)
     {
         super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, amount);
-        this.updateDescription();
         this.damageTrigger = upgraded ? UPGRADE_DAMAGE_TRIGGER : DAMAGE_TRIGGER;
+        this.updateDescription();
     }
 
     public void updateDescription()
