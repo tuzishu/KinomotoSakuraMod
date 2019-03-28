@@ -126,6 +126,7 @@ public class KinomotoSakura extends CustomPlayer
         testCards.add(ClowCardTheArrow.ID);
         testCards.add(ClowCardTheChange.ID);
         testCards.add(ClowCardTheDash.ID);
+        testCards.add(ClowCardTheFight.ID);
         testCards.add(ClowCardTheFly.ID);
         testCards.add(ClowCardTheJump.ID);
         testCards.add(ClowCardTheMirror.ID);
@@ -140,14 +141,7 @@ public class KinomotoSakura extends CustomPlayer
         testCards.add(SpellCardSeal.ID);
         // testStartCards.add(SpellCardTurn.ID);
 
-        // testCards.add(Exhume.ID);   // 发掘
-
-        // 秒杀查关牌
-        // ArrayList<String> imbaCards = new ArrayList<String>();
-        //
-        // imbaCards.add(TestCard.ID);
-
-        return testCards;
+        return startCards;
     }
 
     public ArrayList<String> getStartingRelics()
