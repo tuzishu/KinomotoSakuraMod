@@ -24,6 +24,7 @@ public class ClowCardTheSilent extends AbstractMagicCard
     private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
+    private static final int BASE_MAGIC_NUMBER = 1;
 
     static
     {
@@ -35,6 +36,7 @@ public class ClowCardTheSilent extends AbstractMagicCard
     public ClowCardTheSilent()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
+        setBaseMagicNumber(BASE_MAGIC_NUMBER);
         this.tags.add(CustomTag.PHYSICS_CARD);
     }
 
@@ -57,7 +59,7 @@ public class ClowCardTheSilent extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new BufferPower(player, 1), 1));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new BufferPower(player, this.correctMagicNumber()), this.correctMagicNumber()));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new SilentPower(player)));
     }
 }

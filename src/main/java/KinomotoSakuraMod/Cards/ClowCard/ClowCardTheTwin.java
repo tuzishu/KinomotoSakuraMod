@@ -23,6 +23,7 @@ public class ClowCardTheTwin extends AbstractMagicCard
     private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.RARE;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
+    private static final int BASE_MAGIC_NUMBER = 1;
 
     static
     {
@@ -36,6 +37,7 @@ public class ClowCardTheTwin extends AbstractMagicCard
     public ClowCardTheTwin()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
+        setBaseMagicNumber(BASE_MAGIC_NUMBER);
         this.tags.add(CustomTag.PHYSICS_CARD);
     }
 
@@ -59,6 +61,6 @@ public class ClowCardTheTwin extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new TwinPower(player, 1), 1));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new TwinPower(player, this.correctMagicNumber()), this.correctMagicNumber()));
     }
 }

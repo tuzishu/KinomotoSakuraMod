@@ -28,6 +28,7 @@ public class ClowCardTheJump extends AbstractMagicCard
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
     private static final int BASE_BLOCK = 7;
     private static final int UPGRADE_BLOCK = 3;
+    private static final int BASE_MAGIC_NUMBER = 1;
 
     static
     {
@@ -41,6 +42,7 @@ public class ClowCardTheJump extends AbstractMagicCard
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(CustomTag.PHYSICS_CARD);
         this.baseBlock = BASE_BLOCK;
+        setBaseMagicNumber(BASE_MAGIC_NUMBER);
         this.exhaust = true;
     }
 

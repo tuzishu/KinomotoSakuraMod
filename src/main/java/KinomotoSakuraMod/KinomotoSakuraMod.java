@@ -81,6 +81,7 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
         for (AbstractRelic relic : GetRelicList())
         {
             BaseMod.addRelicToCustomPool(relic, CustomCardColor.CLOWCARD_COLOR);
+            ModUtility.Logger.info("Loading relic : " + relic.name);
         }
 
         ModUtility.Logger.info("结束编辑遗物");
@@ -105,6 +106,7 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
         {
             BaseMod.addCard(card);
             UnlockTracker.unlockCard(card.cardID);
+            ModUtility.Logger.info("Loading card : " + card.name);
         }
 
         ModUtility.Logger.info("结束编辑卡牌");
@@ -129,6 +131,7 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
         cardList.add(new ClowCardTheMirror());
         cardList.add(new ClowCardTheSilent());
         cardList.add(new ClowCardTheTwin());
+        cardList.add(new ClowCardTheMove());
 
         cardList.add(new TestCard());
         return cardList;

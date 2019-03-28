@@ -18,7 +18,6 @@ public class MirrorAction extends AbstractGameAction
     private static final String[] TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
     private AbstractPlayer player;
-    private int dupeAmount = 1;
     private ArrayList<AbstractCard> cannotDuplicateList = new ArrayList<AbstractCard>();
 
     static
@@ -33,7 +32,7 @@ public class MirrorAction extends AbstractGameAction
         this.actionType = ActionType.CARD_MANIPULATION;
         this.duration = DURATION;
         this.player = AbstractDungeon.player;
-        this.dupeAmount = amount;
+        this.amount = amount;
     }
 
     public void update()
@@ -56,7 +55,7 @@ public class MirrorAction extends AbstractGameAction
             this.player.hand.group.removeAll(this.cannotDuplicateList);
             if (this.player.hand.group.size() == 1)
             {
-                for (int i = 0; i < this.dupeAmount; ++i)
+                for (int i = 0; i < this.amount; ++i)
                 {
                     AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(this.player.hand.getTopCard().makeStatEquivalentCopy()));
                 }
@@ -77,7 +76,7 @@ public class MirrorAction extends AbstractGameAction
             for (AbstractCard card : AbstractDungeon.handCardSelectScreen.selectedCards.group)
             {
                 AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(card.makeStatEquivalentCopy()));
-                for (int j = 0; j < this.dupeAmount; ++j)
+                for (int j = 0; j < this.amount; ++j)
                 {
                     AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(card.makeStatEquivalentCopy()));
                 }

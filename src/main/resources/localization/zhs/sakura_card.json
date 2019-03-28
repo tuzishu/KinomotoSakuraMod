@@ -17,11 +17,15 @@
   },
   "ClowCardTheJump": {
     "NAME": "跳",
-    "DESCRIPTION": "【 物理牌 】 消耗 。获得 !B! 点 格挡 。并随机移除1个减益。"
+    "DESCRIPTION": "【 物理牌 】 消耗 。获得 !B! 点 格挡 。并随机移除 !M! 个减益。"
   },
   "ClowCardTheMirror": {
     "NAME": "镜",
-    "DESCRIPTION": "【 物理牌 】 消耗 。选择1张手中的 库洛牌 或 小樱牌 ，复制1张加入手中"
+    "DESCRIPTION": "【 物理牌 】 消耗 。选择1张手中的 库洛牌 或 小樱牌 ，复制 !M! 张加入手中。"
+  },
+  "ClowCardTheMove": {
+    "NAME": "移",
+    "DESCRIPTION": "【 物理牌 】获得 !B! 点格挡。选择 !M! 张弃牌堆中的牌，放到抽排堆随机位置。"
   },
   "ClowCardThePower": {
     "NAME": "力",
@@ -46,8 +50,8 @@
   },
   "ClowCardTheTwin": {
     "NAME": "双",
-    "DESCRIPTION": "【 物理牌 】每回合打出的第1张牌会打额外打出1次。",
-    "UPGRADE_DESCRIPTION": "【 物理牌 】 保留 。每回合打出的第1张牌会额外打出1次。"
+    "DESCRIPTION": "【 物理牌 】每回合打出的第 !M! 张牌会打额外打出1次。",
+    "UPGRADE_DESCRIPTION": "【 物理牌 】 保留 。每回合打出的第 !M! 张牌会额外打出1次。"
   },
   "SpellCardRelease": {
     "NAME": "解",

@@ -56,6 +56,6 @@ public class ClowCardTheDash extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new DashPower(player, this.correctMagicNumber()), 1));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new DashPower(player, this.correctMagicNumber()), this.correctMagicNumber()));
     }
 }

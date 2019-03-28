@@ -22,6 +22,7 @@ public class ClowCardTheMirror extends AbstractMagicCard
     private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.NONE;
+    private static final int BASE_MAGIC_NUMBER = 1;
 
     static
     {
@@ -34,6 +35,7 @@ public class ClowCardTheMirror extends AbstractMagicCard
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(CustomTag.PHYSICS_CARD);
+        setBaseMagicNumber(BASE_MAGIC_NUMBER);
         this.exhaust = true;
     }
 
@@ -56,6 +58,6 @@ public class ClowCardTheMirror extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new MirrorAction(1));
+        AbstractDungeon.actionManager.addToBottom(new MirrorAction(this.correctMagicNumber()));
     }
 }

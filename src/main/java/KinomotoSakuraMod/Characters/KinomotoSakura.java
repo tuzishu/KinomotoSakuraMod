@@ -129,6 +129,7 @@ public class KinomotoSakura extends CustomPlayer
         testCards.add(ClowCardTheFly.ID);
         testCards.add(ClowCardTheJump.ID);
         testCards.add(ClowCardTheMirror.ID);
+        testCards.add(ClowCardTheMove.ID);
         testCards.add(ClowCardThePower.ID);
         testCards.add(ClowCardTheShield.ID);
         testCards.add(ClowCardTheShoot.ID);
