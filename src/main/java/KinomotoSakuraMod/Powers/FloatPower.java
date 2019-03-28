@@ -17,7 +17,7 @@ public class FloatPower extends CustomPower
     private static final String POWER_IMG_PATH = "img/powers/default_power.png";
     private static final PowerType POWER_TYPE = PowerType.BUFF;
     private static final int GAIN_BLOCK = 3;
-    private boolean upgraded;
+    private boolean upgraded = false;
 
     static
     {
@@ -34,8 +34,8 @@ public class FloatPower extends CustomPower
     public FloatPower(AbstractCreature target, int amount, boolean upgraded)
     {
         super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, amount);
+        this.upgraded = upgraded ? upgraded : this.upgraded;
         this.updateDescription();
-        this.upgraded = upgraded;
     }
 
     public void updateDescription()

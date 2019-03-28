@@ -18,7 +18,7 @@ public class FightPower extends CustomPower
     private static final PowerType POWER_TYPE = PowerType.BUFF;
     private static final int DAMAGE_TRIGGER = 12;
     private static final int UPGRADE_DAMAGE_TRIGGER = 8;
-    public int damageTrigger;
+    public int damageTrigger = DAMAGE_TRIGGER;
 
     static
     {
@@ -35,7 +35,7 @@ public class FightPower extends CustomPower
     public FightPower(AbstractCreature target, int amount, boolean upgraded)
     {
         super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, amount);
-        this.damageTrigger = upgraded ? UPGRADE_DAMAGE_TRIGGER : DAMAGE_TRIGGER;
+        this.damageTrigger = upgraded ? UPGRADE_DAMAGE_TRIGGER : this.damageTrigger;
         this.updateDescription();
     }
 
