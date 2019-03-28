@@ -1,5 +1,6 @@
 package KinomotoSakuraMod.Actions;
 
+import KinomotoSakuraMod.Utility.ModUtility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -19,7 +20,7 @@ public class ArrowAction extends AbstractGameAction
     public static final String ACTION_ID = "ArrowAction";
     private static final String[] TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
-    private static final float DURATION_ATTACK = 0.05F;
+    private static final float DURATION_ATTACK = 0.02F;
     private AbstractPlayer player;
     private int damage;
 
@@ -83,6 +84,7 @@ public class ArrowAction extends AbstractGameAction
         {
             for (int i = 0; i < count; i++)
             {
+
                 AbstractDungeon.actionManager.addToBottom(new VFXAction(this.player, new ThrowDaggerEffect(monster.hb.cX, monster.hb.cY), DURATION_ATTACK));
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
             }
