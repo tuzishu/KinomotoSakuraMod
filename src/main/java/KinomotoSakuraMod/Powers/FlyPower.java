@@ -74,6 +74,4 @@ public class FlyPower extends CustomPower
         }
         return damageAmount;
     }
-
-
 }

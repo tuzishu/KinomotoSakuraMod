@@ -16,6 +16,11 @@
     "DESCRIPTION": "【 物理牌 】你每造成1次大于12的伤害时，获得1层 力量 。",
     "UPGRADE_DESCRIPTION": "【 物理牌 】你每造成1次大于8的伤害时，获得1层 力量 。"
   },
+  "ClowCardTheFloat": {
+    "NAME": "浮",
+    "DESCRIPTION": "【 物理牌 】受到的未被格挡的伤害减少 !M! 点。",
+    "UPGRADE_DESCRIPTION": "【 物理牌 】受到的未被格挡的伤害减少 !M! 点。每受到1次未被格挡的伤害，获得3点格挡。"
+  },
   "ClowCardTheFly": {
     "NAME": "飞",
     "DESCRIPTION": "【 物理牌 】获得 !M! 层 飞行 ，并获得 !B! 点 格挡 。"
