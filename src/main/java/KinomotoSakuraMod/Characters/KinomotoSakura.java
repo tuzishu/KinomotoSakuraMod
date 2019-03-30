@@ -124,6 +124,7 @@ public class KinomotoSakura extends CustomPlayer
         ArrayList<String> testCards = new ArrayList<String>();
 
         testCards.add(ClowCardTheArrow.ID);
+        testCards.add(ClowCardTheBig.ID);
         testCards.add(ClowCardTheChange.ID);
         testCards.add(ClowCardTheDash.ID);
         testCards.add(ClowCardTheFight.ID);
@@ -136,6 +137,7 @@ public class KinomotoSakura extends CustomPlayer
         testCards.add(ClowCardTheShield.ID);
         testCards.add(ClowCardTheShoot.ID);
         testCards.add(ClowCardTheSilent.ID);
+        testCards.add(ClowCardTheSmall.ID);
         testCards.add(ClowCardTheSword.ID);
         testCards.add(ClowCardTheTwin.ID);
         testCards.add(SpellCardRelease.ID);

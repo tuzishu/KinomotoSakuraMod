@@ -3,6 +3,11 @@
     "NAME": "矢",
     "DESCRIPTION": "【 物理牌 】丢弃任意张牌并消耗所有能量，对1名随机敌人造成 !D! 点伤害弃牌数与消耗能量之和次。"
   },
+  "ClowCardTheBig": {
+    "NAME": "大",
+    "DESCRIPTION": "【 物理牌 】受到伤害增加15%，造成伤害增加15%。",
+    "UPGRADE_DESCRIPTION": "【 物理牌 】受到伤害增加25%，造成伤害增加25%。"
+  },
   "ClowCardTheChange": {
     "NAME": "替",
     "DESCRIPTION": "【 物理牌 】丢弃最多 !M! 张手牌，并抽相同数量的牌。"
@@ -48,7 +53,7 @@
   "ClowCardTheShoot": {
     "NAME": "击",
     "DESCRIPTION": "【 物理牌 】造成 !D! 点伤害并给与1层 易伤 2次。",
-    "UPGRADE_DESCRIPTION": "造成 !D! 点伤害并给与1层 易伤 2次。额外给与1层 易伤 。"
+    "UPGRADE_DESCRIPTION": "【 物理牌 】造成 !D! 点伤害并给与1层 易伤 2次。额外给与1层 易伤 。额外给与1层 易伤 。"
   },
   "ClowCardTheSilent": {
     "NAME": "静",
@@ -57,6 +62,11 @@
   "ClowCardTheSword": {
     "NAME": "剑",
     "DESCRIPTION": "【 物理牌 】造成 !D! 点伤害。"
+  },
+  "ClowCardTheSmall": {
+    "NAME": "小",
+    "DESCRIPTION": "【 物理牌 】受到伤害减少15%，造成伤害减少15%。",
+    "UPGRADE_DESCRIPTION": "【 物理牌 】受到伤害减少25%，造成伤害减少25%。"
   },
   "ClowCardTheTwin": {
     "NAME": "双",
