@@ -39,8 +39,7 @@ public class ClowCardTheJump extends AbstractMagicCard
 
     public ClowCardTheJump()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
-        this.tags.add(CustomTag.PHYSICS_CARD);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.PHYSICS_CARD);
         this.baseBlock = BASE_BLOCK;
         setBaseMagicNumber(BASE_MAGIC_NUMBER);
         this.exhaust = true;

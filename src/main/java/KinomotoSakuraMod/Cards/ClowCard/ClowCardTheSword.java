@@ -36,9 +36,8 @@ public class ClowCardTheSword extends AbstractMagicCard
 
     public ClowCardTheSword()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.PHYSICS_CARD);
         this.tags.add(BaseModCardTags.BASIC_STRIKE);
-        this.tags.add(CustomTag.PHYSICS_CARD);
         this.baseDamage = BASE_DAMAGE;
     }
 

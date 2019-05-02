@@ -35,9 +35,8 @@ public class ClowCardTheSilent extends AbstractMagicCard
 
     public ClowCardTheSilent()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.PHYSICS_CARD);
         setBaseMagicNumber(BASE_MAGIC_NUMBER);
-        this.tags.add(CustomTag.PHYSICS_CARD);
     }
 
     @Override

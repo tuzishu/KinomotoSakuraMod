@@ -38,8 +38,7 @@ public class ClowCardTheLittle extends AbstractMagicCard
 
     public ClowCardTheLittle()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
-        this.tags.add(CustomTag.PHYSICS_CARD);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.PHYSICS_CARD);
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 

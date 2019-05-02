@@ -34,9 +34,8 @@ public class ClowCardTheShield extends AbstractMagicCard
 
     public ClowCardTheShield()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.PHYSICS_CARD);
         this.tags.add(BaseModCardTags.BASIC_DEFEND);
-        this.tags.add(CustomTag.PHYSICS_CARD);
         this.baseBlock = BASE_BLOCK;
     }
 
