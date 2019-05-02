@@ -27,7 +27,7 @@ public class ClowCardTheArrow extends AbstractMagicCard
     private static final CardRarity CARD_RARITY = CardRarity.BASIC;
     private static final CardTarget CARD_TARGET = CardTarget.NONE;
     private static final CardTarget UPGRADE_CARD_TARGET = CardTarget.ENEMY;
-    private static final int BASE_DAMAGE = 4;
+    private static final int BASE_DAMAGE = 5;
 
     static
     {
@@ -64,6 +64,13 @@ public class ClowCardTheArrow extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ArrowAction(this.correctDamage()));
+        if (!this.upgraded)
+        {
+            AbstractDungeon.actionManager.addToBottom(new ArrowAction(this.correctDamage()));
+        }
+        else
+        {
+            AbstractDungeon.actionManager.addToBottom(new ArrowAction(monster, this.correctDamage()));
+        }
     }
 }

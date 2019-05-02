@@ -1,12 +1,12 @@
 package KinomotoSakuraMod.Actions;
 
-import KinomotoSakuraMod.Utility.ModUtility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -23,6 +23,7 @@ public class ArrowAction extends AbstractGameAction
     private static final float DURATION_ATTACK = 0.02F;
     private AbstractPlayer player;
     private int damage;
+    private AbstractMonster monster;
 
     static
     {
@@ -32,10 +33,16 @@ public class ArrowAction extends AbstractGameAction
 
     public ArrowAction(int damage)
     {
+        this(AbstractDungeon.getRandomMonster(), damage);
+    }
+
+    public ArrowAction(AbstractMonster monster, int damage)
+    {
         this.actionType = ActionType.DAMAGE;
         this.player = AbstractDungeon.player;
         this.duration = DURATION;
         this.damage = damage;
+        this.monster = monster;
     }
 
     public void update()
@@ -51,7 +58,7 @@ public class ArrowAction extends AbstractGameAction
             {
                 int count = EnergyPanel.getCurrentEnergy();
                 this.player.energy.use(EnergyPanel.totalCount);
-                AttackRandomTarget(count);
+                AttackTargetForTimes(count);
                 this.isDone = true;
                 return;
             }
@@ -72,21 +79,20 @@ public class ArrowAction extends AbstractGameAction
             AbstractDungeon.handCardSelectScreen.selectedCards.group.clear();
             count += EnergyPanel.getCurrentEnergy();
             this.player.energy.use(EnergyPanel.totalCount);
-            AttackRandomTarget(count);
+            AttackTargetForTimes(count);
         }
         tickDuration();
     }
 
-    private void AttackRandomTarget(int count)
+    private void AttackTargetForTimes(int count)
     {
-        AbstractMonster monster = AbstractDungeon.getRandomMonster();
         if (count > 0)
         {
             for (int i = 0; i < count; i++)
             {
 
-                AbstractDungeon.actionManager.addToBottom(new VFXAction(this.player, new ThrowDaggerEffect(monster.hb.cX, monster.hb.cY), DURATION_ATTACK));
-                AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(this.player, new ThrowDaggerEffect(this.monster.hb.cX, this.monster.hb.cY), DURATION_ATTACK));
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(this.monster, new DamageInfo(player, this.damage), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
             }
         }
     }

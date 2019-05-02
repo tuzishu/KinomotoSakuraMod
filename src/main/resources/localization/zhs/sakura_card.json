@@ -1,7 +1,8 @@
 {
   "ClowCardTheArrow": {
     "NAME": "矢",
-    "DESCRIPTION": "【 物理牌 】丢弃任意张牌并消耗所有能量，对1名随机敌人造成 !D! 点伤害弃牌数与消耗能量之和次。"
+    "DESCRIPTION": "【 物理牌 】 消耗 任意张牌，对1名随机敌人造成 消耗 牌数+X次 !D! 点伤害。",
+    "UPGRADE_DESCRIPTION": "【 物理牌 】 消耗 任意张牌，对1名敌人造成 消耗 牌数+X次 !D! 点伤害。"
   },
   "ClowCardTheBig": {
     "NAME": "大",
