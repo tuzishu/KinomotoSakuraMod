@@ -34,6 +34,11 @@
     "NAME": "跳",
     "DESCRIPTION": "【 物理牌 】 消耗 。获得 !B! 点 格挡 。并随机移除 !M! 个减益。"
   },
+  "ClowCardTheLittle": {
+    "NAME": "小",
+    "DESCRIPTION": "【 物理牌 】受到伤害减少15%，造成伤害减少15%。",
+    "UPGRADE_DESCRIPTION": "【 物理牌 】受到伤害减少25%，造成伤害减少25%。"
+  },
   "ClowCardTheMirror": {
     "NAME": "镜",
     "DESCRIPTION": "【 物理牌 】 消耗 。选择1张手中的 库洛牌 或 小樱牌 ，复制 !M! 张加入手中。"
@@ -50,7 +55,7 @@
     "NAME": "盾",
     "DESCRIPTION": "【 物理牌 】获得 !B! 点 格挡 。"
   },
-  "ClowCardTheShoot": {
+  "ClowCardTheShot": {
     "NAME": "击",
     "DESCRIPTION": "【 物理牌 】造成 !D! 点伤害并给与1层 易伤 2次。",
     "UPGRADE_DESCRIPTION": "【 物理牌 】造成 !D! 点伤害并给与1层 易伤 2次。额外给与1层 易伤 。额外给与1层 易伤 。"
@@ -62,11 +67,6 @@
   "ClowCardTheSword": {
     "NAME": "剑",
     "DESCRIPTION": "【 物理牌 】造成 !D! 点伤害。"
-  },
-  "ClowCardTheSmall": {
-    "NAME": "小",
-    "DESCRIPTION": "【 物理牌 】受到伤害减少15%，造成伤害减少15%。",
-    "UPGRADE_DESCRIPTION": "【 物理牌 】受到伤害减少25%，造成伤害减少25%。"
   },
   "ClowCardTheTwin": {
     "NAME": "双",

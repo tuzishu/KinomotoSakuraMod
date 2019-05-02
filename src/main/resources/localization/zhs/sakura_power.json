@@ -66,7 +66,7 @@
       "每受到1次未被格挡的伤害，获得 #b3 点格挡。"
     ]
   },
-  "SmallPower": {
+  "LittlePower": {
     "NAME": "缩小",
     "DESCRIPTIONS": [
       "受到的伤害减少 #b",

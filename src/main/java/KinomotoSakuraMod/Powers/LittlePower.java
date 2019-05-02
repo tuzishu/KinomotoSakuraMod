@@ -8,9 +8,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class SmallPower extends CustomPower
+public class LittlePower extends CustomPower
 {
-    public static final String POWER_ID = "SmallPower";
+    public static final String POWER_ID = "LittlePower";
     private static final String POWER_NAME;
     private static final String[] POWER_DESCRIPTIONS;
     private static final String POWER_IMG_PATH = "img/powers/default_power.png";
@@ -25,12 +25,12 @@ public class SmallPower extends CustomPower
         POWER_DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     }
 
-    public SmallPower(int amount)
+    public LittlePower(int amount)
     {
         this(AbstractDungeon.player, amount);
     }
 
-    public SmallPower(AbstractCreature target, int amount)
+    public LittlePower(AbstractCreature target, int amount)
     {
         super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, amount);
         this.updateDescription();

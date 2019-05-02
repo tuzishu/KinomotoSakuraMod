@@ -122,7 +122,7 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
         cardList.add(new SpellCardSeal());
         cardList.add(new SpellCardRelease());
         cardList.add(new ClowCardThePower());
-        cardList.add(new ClowCardTheShoot());
+        cardList.add(new ClowCardTheShot());
         cardList.add(new ClowCardTheFly());
         cardList.add(new ClowCardTheChange());
         cardList.add(new ClowCardTheDash());
@@ -134,7 +134,7 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
         cardList.add(new ClowCardTheMove());
         cardList.add(new ClowCardTheFight());
         cardList.add(new ClowCardTheFloat());
-        cardList.add(new ClowCardTheSmall());
+        cardList.add(new ClowCardTheLittle());
         cardList.add(new ClowCardTheBig());
 
         cardList.add(new TestCard());

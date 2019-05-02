@@ -16,9 +16,9 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.vfx.combat.ThrowDaggerEffect;
 
-public class ClowCardTheShoot extends AbstractMagicCard
+public class ClowCardTheShot extends AbstractMagicCard
 {
-    public static final String ID = "ClowCardTheShoot";
+    public static final String ID = "ClowCardTheShot";
     private static final String NAME;
     private static final String DESCRIPTION;
     private static final String UPGRADE_DESCRIPTION;
@@ -40,7 +40,7 @@ public class ClowCardTheShoot extends AbstractMagicCard
         UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     }
 
-    public ClowCardTheShoot()
+    public ClowCardTheShot()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(CustomTag.PHYSICS_CARD);
@@ -62,7 +62,7 @@ public class ClowCardTheShoot extends AbstractMagicCard
     @Override
     public AbstractMagicCard makeCopy()
     {
-        return new ClowCardTheShoot();
+        return new ClowCardTheShot();
     }
 
     @Override

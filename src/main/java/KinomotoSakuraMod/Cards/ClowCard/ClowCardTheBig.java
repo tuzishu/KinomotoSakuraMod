@@ -4,7 +4,7 @@ import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
 import KinomotoSakuraMod.Powers.BigPower;
-import KinomotoSakuraMod.Powers.SmallPower;
+import KinomotoSakuraMod.Powers.LittlePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -62,9 +62,9 @@ public class ClowCardTheBig extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        if (player.hasPower(SmallPower.POWER_ID))
+        if (player.hasPower(LittlePower.POWER_ID))
         {
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(player,player,SmallPower.POWER_ID));
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(player,player, LittlePower.POWER_ID));
         }
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new BigPower(this.correctMagicNumber()), this.correctMagicNumber()));
     }

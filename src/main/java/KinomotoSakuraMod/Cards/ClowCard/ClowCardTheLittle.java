@@ -4,7 +4,7 @@ import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
 import KinomotoSakuraMod.Powers.BigPower;
-import KinomotoSakuraMod.Powers.SmallPower;
+import KinomotoSakuraMod.Powers.LittlePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -13,9 +13,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class ClowCardTheSmall extends AbstractMagicCard
+public class ClowCardTheLittle extends AbstractMagicCard
 {
-    public static final String ID = "ClowCardTheSmall";
+    public static final String ID = "ClowCardTheLittle";
     private static final String NAME;
     private static final String DESCRIPTION;
     private static final String UPGRADE_DESCRIPTION;
@@ -36,7 +36,7 @@ public class ClowCardTheSmall extends AbstractMagicCard
         UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     }
 
-    public ClowCardTheSmall()
+    public ClowCardTheLittle()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(CustomTag.PHYSICS_CARD);
@@ -45,7 +45,7 @@ public class ClowCardTheSmall extends AbstractMagicCard
 
     public AbstractMagicCard makeCopy()
     {
-        return new ClowCardTheSmall();
+        return new ClowCardTheLittle();
     }
 
     public void upgrade()
@@ -65,6 +65,6 @@ public class ClowCardTheSmall extends AbstractMagicCard
         {
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(player,player,BigPower.POWER_ID));
         }
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new SmallPower(this.correctMagicNumber()), this.correctMagicNumber()));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new LittlePower(this.correctMagicNumber()), this.correctMagicNumber()));
     }
 }
