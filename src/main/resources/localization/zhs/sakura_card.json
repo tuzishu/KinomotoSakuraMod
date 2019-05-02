@@ -13,6 +13,11 @@
     "NAME": "替",
     "DESCRIPTION": "【 物理牌 】丢弃最多 !M! 张手牌，并抽相同数量的牌。"
   },
+  "ClowCardTheCreate": {
+    "NAME": "创",
+    "DESCRIPTION": "战斗结束后获得1个随机遗物。不可被 镜牌 复制。",
+    "UPGRADE_DESCRIPTION": " 保留 。战斗结束后获得1个随机遗物。不可被 镜牌 复制。"
+  },
   "ClowCardTheDash": {
     "NAME": "驱",
     "DESCRIPTION": "【 物理牌 】每使用5张 库洛牌 或 小樱牌 ，抽 !M! 张牌。"

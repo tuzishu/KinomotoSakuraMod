@@ -136,6 +136,7 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
         cardList.add(new ClowCardTheFloat());
         cardList.add(new ClowCardTheLittle());
         cardList.add(new ClowCardTheBig());
+        cardList.add(new ClowCardTheCreate());
 
         cardList.add(new TestCard());
         return cardList;

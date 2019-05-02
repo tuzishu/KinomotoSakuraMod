@@ -90,7 +90,6 @@ public class ArrowAction extends AbstractGameAction
         {
             for (int i = 0; i < count; i++)
             {
-
                 AbstractDungeon.actionManager.addToBottom(new VFXAction(this.player, new ThrowDaggerEffect(this.monster.hb.cX, this.monster.hb.cY), DURATION_ATTACK));
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(this.monster, new DamageInfo(player, this.damage), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
             }
