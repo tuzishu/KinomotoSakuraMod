@@ -61,14 +61,20 @@ public class ClowCardTheCreate extends AbstractMagicCard
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new CreatePower(), 1));
+        RemoveThisFromMasterDeck();
+    }
+
+    private void RemoveThisFromMasterDeck()
+    {
         int size = AbstractDungeon.player.masterDeck.group.size();
         for (int i = 0; i < size; i++)
         {
             AbstractCard card = AbstractDungeon.player.masterDeck.group.get(i);
             ModUtility.Logger.info("masterDeck: "+card.name);
-            if (card == this)
+            if (card instanceof ClowCardTheCreate && card.name == this.name && card.upgraded == this.upgraded)
             {
-                AbstractDungeon.player.masterDeck.removeCard(this);
+                ModUtility.Logger.info("搜索到该卡：card == this");
+                AbstractDungeon.player.masterDeck.removeCard(card);
             }
         }
     }
