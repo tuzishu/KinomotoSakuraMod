@@ -3,7 +3,6 @@ package KinomotoSakuraMod.Cards.ClowCard;
 import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Powers.CreatePower;
-import KinomotoSakuraMod.Utility.ModUtility;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -70,10 +69,8 @@ public class ClowCardTheCreate extends AbstractMagicCard
         for (int i = 0; i < size; i++)
         {
             AbstractCard card = AbstractDungeon.player.masterDeck.group.get(i);
-            ModUtility.Logger.info("masterDeck: "+card.name);
-            if (card instanceof ClowCardTheCreate && card.name == this.name && card.upgraded == this.upgraded)
+            if (card instanceof ClowCardTheCreate && card.name.equals(this.name) && card.upgraded == this.upgraded)
             {
-                ModUtility.Logger.info("搜索到该卡：card == this");
                 AbstractDungeon.player.masterDeck.removeCard(card);
             }
         }
