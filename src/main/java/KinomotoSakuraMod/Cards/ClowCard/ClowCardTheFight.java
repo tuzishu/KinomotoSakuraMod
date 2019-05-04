@@ -50,6 +50,7 @@ public class ClowCardTheFight extends AbstractMagicCard
         {
             this.upgradeName();
             this.rawDescription = UPGRADE_DESCRIPTION;
+            this.initializeDescription();
         }
     }
 

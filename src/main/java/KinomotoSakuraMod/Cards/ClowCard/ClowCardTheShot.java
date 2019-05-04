@@ -55,6 +55,7 @@ public class ClowCardTheShot extends AbstractMagicCard
             upgradeName();
             upgradeDamage(UPGRADE_DAMAGE);
             this.rawDescription = UPGRADE_DESCRIPTION;
+            this.initializeDescription();
         }
     }
 

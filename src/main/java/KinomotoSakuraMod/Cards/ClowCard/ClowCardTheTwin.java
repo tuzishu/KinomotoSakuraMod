@@ -48,6 +48,7 @@ public class ClowCardTheTwin extends AbstractMagicCard
             upgradeName();
             this.retain = true;
             this.rawDescription = UPGRADE_DESCRIPTION;
+            this.initializeDescription();
         }
     }
 

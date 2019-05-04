@@ -51,6 +51,7 @@ public class ClowCardTheArrow extends AbstractMagicCard
             upgradeName();
             this.target = UPGRADE_CARD_TARGET;
             this.rawDescription = UPGRADE_DESCRIPTION;
+            this.initializeDescription();
         }
     }
 

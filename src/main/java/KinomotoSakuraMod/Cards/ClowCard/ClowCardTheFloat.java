@@ -52,6 +52,7 @@ public class ClowCardTheFloat extends AbstractMagicCard
             this.upgradeName();
             this.upgradeMagicNumber(UPGRADE_MAGIC_NUMBER);
             this.rawDescription = UPGRADE_DESCRIPTION;
+            this.initializeDescription();
         }
     }
 

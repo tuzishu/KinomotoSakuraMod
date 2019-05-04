@@ -45,8 +45,9 @@ public class ClowCardTheCreate extends AbstractMagicCard
         if (!this.upgraded)
         {
             upgradeName();
-            this.rawDescription = UPGRADE_DESCRIPTION;
             this.retain = true;
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            this.initializeDescription();
         }
     }
 
