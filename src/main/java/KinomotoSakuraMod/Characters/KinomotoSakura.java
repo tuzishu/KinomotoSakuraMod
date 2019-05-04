@@ -1,6 +1,7 @@
 package KinomotoSakuraMod.Characters;
 
-import KinomotoSakuraMod.Cards.ClowCard.*;
+import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheShield;
+import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheSword;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardRelease;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardSeal;
 import KinomotoSakuraMod.KinomotoSakuraMod;
@@ -116,31 +117,6 @@ public class KinomotoSakura extends CustomPlayer
         startCards.add(ClowCardTheShield.ID);
         startCards.add(SpellCardSeal.ID);
         startCards.add(SpellCardRelease.ID);
-
-        // 测试初始牌
-        ArrayList<String> testCards = new ArrayList<String>();
-
-        testCards.add(ClowCardTheArrow.ID);
-        testCards.add(ClowCardTheBig.ID);
-        testCards.add(ClowCardTheChange.ID);
-        testCards.add(ClowCardTheCreate.ID);
-        testCards.add(ClowCardTheDash.ID);
-        testCards.add(ClowCardTheFight.ID);
-        testCards.add(ClowCardTheFloat.ID);
-        testCards.add(ClowCardTheFly.ID);
-        testCards.add(ClowCardTheJump.ID);
-        testCards.add(ClowCardTheMirror.ID);
-        testCards.add(ClowCardTheMove.ID);
-        testCards.add(ClowCardThePower.ID);
-        testCards.add(ClowCardTheShield.ID);
-        testCards.add(ClowCardTheShot.ID);
-        testCards.add(ClowCardTheSilent.ID);
-        testCards.add(ClowCardTheLittle.ID);
-        testCards.add(ClowCardTheSword.ID);
-        testCards.add(ClowCardTheTwin.ID);
-        testCards.add(SpellCardRelease.ID);
-        testCards.add(SpellCardSeal.ID);
-        // testStartCards.add(SpellCardTurn.ID);
 
         return startCards;
     }

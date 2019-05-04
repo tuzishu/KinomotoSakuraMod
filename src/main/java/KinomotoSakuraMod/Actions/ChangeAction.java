@@ -9,9 +9,9 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 
-public class ChangeCardAction extends AbstractGameAction
+public class ChangeAction extends AbstractGameAction
 {
-    private static final String ACTION_ID = "ChangeCardAction";
+    private static final String ACTION_ID = "ChangeAction";
     private static final String[] TEXT;
     private static final float DURATION = Settings.ACTION_DUR_XFAST;
     private AbstractPlayer player;
@@ -22,7 +22,7 @@ public class ChangeCardAction extends AbstractGameAction
         TEXT = uiStrings.TEXT;
     }
 
-    public ChangeCardAction(int amount)
+    public ChangeAction(int amount)
     {
         this.actionType = AbstractGameAction.ActionType.CARD_MANIPULATION;
         this.player = AbstractDungeon.player;

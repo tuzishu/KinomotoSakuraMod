@@ -36,9 +36,17 @@
     "NAME": "飞",
     "DESCRIPTION": "【 物理牌 】获得 !M! 层 飞行 ，并获得 !B! 点 格挡 。"
   },
+  "ClowCardTheIllusion": {
+    "NAME": "幻",
+    "DESCRIPTION": "造成 !D! 点伤害。消耗区每有2张牌，额外造成1次伤害。"
+  },
   "ClowCardTheJump": {
     "NAME": "跳",
     "DESCRIPTION": "【 物理牌 】 消耗 。获得 !B! 点 格挡 。并随机移除 !M! 个减益。"
+  },
+  "ClowCardTheLibra": {
+    "NAME": "秤",
+    "DESCRIPTION": "获得 !B! 点格挡。当前能量大于抽排堆和弃牌堆的牌数差时，获得 !M! 点能量。"
   },
   "ClowCardTheLittle": {
     "NAME": "小",

@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class ClowCardTheCreate extends AbstractMagicCard
 {
-
     public static final String ID = "ClowCardTheCreate";
     private static final String NAME;
     private static final String DESCRIPTION;
@@ -72,6 +71,7 @@ public class ClowCardTheCreate extends AbstractMagicCard
             if (card instanceof ClowCardTheCreate && card.name.equals(this.name) && card.upgraded == this.upgraded)
             {
                 AbstractDungeon.player.masterDeck.removeCard(card);
+                break;
             }
         }
     }

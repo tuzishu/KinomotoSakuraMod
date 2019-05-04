@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
-import KinomotoSakuraMod.Actions.ChangeCardAction;
+import KinomotoSakuraMod.Actions.ChangeAction;
 import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
@@ -54,6 +54,6 @@ public class ClowCardTheChange extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ChangeCardAction(this.correctMagicNumber()));
+        AbstractDungeon.actionManager.addToBottom(new ChangeAction(this.correctMagicNumber()));
     }
 }

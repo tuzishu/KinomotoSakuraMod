@@ -1,6 +1,9 @@
 package KinomotoSakuraMod.Powers;
 
+import KinomotoSakuraMod.Patches.CustomTag;
 import com.badlogic.gdx.math.MathUtils;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -33,5 +36,13 @@ public class ElementMagickPower extends CustomPower
     public void updateDescription()
     {
         this.description = POWER_DESCRIPTIONS[0] + this.amount * (CORRECTION_RATE * 100) + POWER_DESCRIPTIONS[1];
+    }
+
+    public void onUseCard(AbstractCard card, UseCardAction action)
+    {
+        if (card.tags.contains(CustomTag.ELEMENT_CARD))
+        {
+            flash();
+        }
     }
 }
