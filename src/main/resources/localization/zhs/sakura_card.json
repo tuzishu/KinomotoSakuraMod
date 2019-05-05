@@ -53,6 +53,10 @@
     "DESCRIPTION": "【 物理牌 】受到伤害减少15%，造成伤害减少15%。",
     "UPGRADE_DESCRIPTION": "【 物理牌 】受到伤害减少25%，造成伤害减少25%。"
   },
+  "ClowCardTheLoop": {
+    "NAME": "轮",
+    "DESCRIPTION": "每回合将第1张被打出并进入弃牌堆的 库洛牌 或 小樱牌 或 符咒 返回手牌。"
+  },
   "ClowCardTheMirror": {
     "NAME": "镜",
     "DESCRIPTION": "【 物理牌 】 消耗 。选择1张手中的 库洛牌 或 小樱牌 ，复制 !M! 张加入手中。"

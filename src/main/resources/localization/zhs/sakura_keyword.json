@@ -28,7 +28,7 @@
       "NAMES": [
         "转"
       ],
-      "DESCRIPTION": "能将 #y库洛牌 转变为 #y小樱牌 。"
+      "DESCRIPTION": "符咒。能将 #y库洛牌 转变为 #y小樱牌 。"
     },
     {
       "NAMES": [
@@ -46,7 +46,13 @@
       "NAMES": [
         "镜牌"
       ],
-      "DESCRIPTION": "这张牌可以复制手中的一张牌。"
+      "DESCRIPTION": "这张牌可以复制手中的1张牌。"
+    },
+    {
+      "NAMES": [
+        "符咒"
+      ],
+      "DESCRIPTION": "从事件中获得的特殊卡牌。"
     }
   ]
 }
