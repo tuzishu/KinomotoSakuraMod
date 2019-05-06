@@ -55,7 +55,7 @@
   },
   "ClowCardTheLoop": {
     "NAME": "轮",
-    "DESCRIPTION": "每回合将第1张被打出并进入弃牌堆的 库洛牌 或 小樱牌 或 符咒 返回手牌。"
+    "DESCRIPTION": "每回合第1张 库洛牌 、 小樱牌 或 符咒 被打出并进入弃牌堆时，抽1张牌。"
   },
   "ClowCardTheMirror": {
     "NAME": "镜",

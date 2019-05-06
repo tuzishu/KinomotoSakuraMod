@@ -52,6 +52,10 @@ public class ClowCardTheLoop extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
+        if (player.hasPower(LoopPower.POWER_ID))
+        {
+            ((LoopPower)player.getPower(LoopPower.POWER_ID)).AddStoredAmount(1);
+        }
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new LoopPower(1), 1));
     }
 }

@@ -1,11 +1,8 @@
 package KinomotoSakuraMod.Powers;
 
-import KinomotoSakuraMod.Actions.LoopAction;
 import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import KinomotoSakuraMod.Cards.AbstractSpellCard;
-import KinomotoSakuraMod.Patches.CustomTag;
-import com.badlogic.gdx.scenes.scene2d.actions.AfterAction;
-import com.megacrit.cardcrawl.actions.utility.DiscardToHandAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -55,9 +52,14 @@ public class LoopPower extends CustomPower
     {
         if (this.storedAmount > 0 && (usedCard instanceof AbstractMagicCard || usedCard instanceof AbstractSpellCard) && usedCard.type != AbstractCard.CardType.POWER && !usedCard.exhaust)
         {
-            AbstractDungeon.actionManager.addToBottom(new LoopAction(usedCard));
+            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player, 1));
             this.storedAmount -= 1;
             this.updateDescription();
         }
+    }
+
+    public void AddStoredAmount(int count)
+    {
+        this.storedAmount += count;
     }
 }
