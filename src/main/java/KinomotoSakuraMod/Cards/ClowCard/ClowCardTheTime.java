@@ -2,10 +2,19 @@ package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
+import com.evacipated.cardcrawl.mod.stslib.powers.StunMonsterPower;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
+
+import java.util.ArrayList;
 
 public class ClowCardTheTime extends AbstractMagicCard
 {
@@ -54,7 +63,30 @@ public class ClowCardTheTime extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        monster.setMove((byte) 0, AbstractMonster.Intent.STUN);
-        monster.flashIntent();
+        ArrayList<AbstractMonster> monsters = AbstractDungeon.getMonsters().monsters;
+        int size = monsters.size();
+        int[] damageList = new int[size];
+        for (int i = 0; i < size; i++)
+        {
+            damageList[i] = this.correctDamage();
+        }
+        for (int i = 0; i < size; i++)
+        {
+            AbstractMonster mon = monsters.get(i);
+            if (mon.hasPower(ArtifactPower.POWER_ID))
+            {
+                int artiAmount = mon.getPower(ArtifactPower.POWER_ID).amount;
+                for (int j = 0; j < artiAmount + 1; j++)
+                {
+                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new StunMonsterPower(mon, 1), 1));
+                }
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new ArtifactPower(mon, artiAmount), artiAmount));
+            }
+            else
+            {
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new StunMonsterPower(mon, 1), 1));
+            }
+        }
+        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, damageList, DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.POISON));
     }
 }

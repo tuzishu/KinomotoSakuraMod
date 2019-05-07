@@ -39,7 +39,14 @@ public class LoopPower extends CustomPower
 
     public void updateDescription()
     {
-        this.description = POWER_DESCRIPTIONS[0] + this.amount + POWER_DESCRIPTIONS[1] + this.storedAmount + POWER_DESCRIPTIONS[2];
+        if (this.amount == 1)
+        {
+            this.description = POWER_DESCRIPTIONS[0] + this.amount + POWER_DESCRIPTIONS[2] + this.storedAmount + POWER_DESCRIPTIONS[3];
+        }
+        else
+        {
+            this.description = POWER_DESCRIPTIONS[1] + this.amount + POWER_DESCRIPTIONS[2] + this.storedAmount + POWER_DESCRIPTIONS[3];
+        }
     }
 
     public void atStartOfTurn()
