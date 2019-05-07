@@ -11,8 +11,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 public class TestCard extends AbstractSpellCard
 {
     public static final String ID = "TestCard";
-    private static final String NAME = "TestCard";
-    private static final String DESCRIPTION = "deal !D! damage to all enemies";
+    private static final String NAME = "测试卡";
+    private static final String DESCRIPTION = "对所有敌人造成 !D! 点伤害。";
     private static final String IMAGE_PATH = "img/cards/default_attack_card.png";
     private static final int COST = 0;
     private static final CardType CARD_TYPE = CardType.ATTACK;

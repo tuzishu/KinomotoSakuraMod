@@ -82,6 +82,10 @@
     "NAME": "静",
     "DESCRIPTION": "【 物理牌 】获得1层 缓冲 ，下回合无法打出攻击牌。"
   },
+  "ClowCardTheSweet": {
+    "NAME": "甘",
+    "DESCRIPTION": " 消耗 。回复 !M! 生命。"
+  },
   "ClowCardTheSword": {
     "NAME": "剑",
     "DESCRIPTION": "【 物理牌 】造成 !D! 点伤害。"
