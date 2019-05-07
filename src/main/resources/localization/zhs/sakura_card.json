@@ -90,6 +90,10 @@
     "NAME": "剑",
     "DESCRIPTION": "【 物理牌 】造成 !D! 点伤害。"
   },
+  "ClowCardTheTime": {
+    "NAME": "时",
+    "DESCRIPTION": " 消耗 。对所有敌人造成 !D! 点伤害，打断所有敌人的下次行动。无法被 人工制品 阻挡。"
+  },
   "ClowCardTheTwin": {
     "NAME": "双",
     "DESCRIPTION": "【 物理牌 】每回合打出的第 !M! 张 库洛牌 或 小樱牌 会打额外打出1次。",

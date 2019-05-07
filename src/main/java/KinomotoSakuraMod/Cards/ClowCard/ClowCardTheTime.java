@@ -2,26 +2,24 @@ package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
-import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class ClowCardTheSweet extends AbstractMagicCard
+public class ClowCardTheTime extends AbstractMagicCard
 {
-    public static final String ID = "ClowCardTheSweet";
+    public static final String ID = "ClowCardTheTime";
     private static final String NAME;
     private static final String DESCRIPTION;
-    private static final String IMAGE_PATH = "img/cards/default_skill_card.png";
-    private static final int COST = 1;
-    private static final int UPGRADED_COST = 0;
-    private static final CardType CARD_TYPE = CardType.SKILL;
+    private static final String IMAGE_PATH = "img/cards/default_attack_card.png";
+    private static final int COST = 2;
+    private static final CardType CARD_TYPE = CardType.ATTACK;
     private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
-    private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
-    private static final CardTarget CARD_TARGET = CardTarget.SELF;
-    private static final int BASE_MAGIC_NUMBER = 4;
+    private static final CardRarity CARD_RARITY = CardRarity.RARE;
+    private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
+    private static final int BASE_DAMAGE = 10;
+    private static final int UPGRADE_DAMAGE = 8;
 
     static
     {
@@ -30,10 +28,10 @@ public class ClowCardTheSweet extends AbstractMagicCard
         DESCRIPTION = cardStrings.DESCRIPTION;
     }
 
-    public ClowCardTheSweet()
+    public ClowCardTheTime()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
-        setBaseMagicNumber(BASE_MAGIC_NUMBER);
+        this.baseDamage = BASE_DAMAGE;
         this.exhaust = true;
     }
 
@@ -43,19 +41,20 @@ public class ClowCardTheSweet extends AbstractMagicCard
         if (!this.upgraded)
         {
             upgradeName();
-            upgradeBaseCost(UPGRADED_COST);
+            upgradeDamage(UPGRADE_DAMAGE);
         }
     }
 
     @Override
     public AbstractMagicCard makeCopy()
     {
-        return new ClowCardTheSweet();
+        return new ClowCardTheTime();
     }
 
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new HealAction(player, player, this.correctMagicNumber()));
+        monster.setMove((byte) 0, AbstractMonster.Intent.STUN);
+        monster.flashIntent();
     }
 }
