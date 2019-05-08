@@ -20,8 +20,8 @@ public class ClowCardTheSong extends AbstractMagicCard
     private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
-    private static final int BASE_DAMAGE = 2;
-    private static final int UPGRADE_DAMAGE = 1;
+    private static final int BASE_DAMAGE = 3;
+    private static final int UPGRADE_DAMAGE = 2;
 
     static
     {

@@ -2,7 +2,6 @@ package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
-import KinomotoSakuraMod.Patches.CustomTag;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -35,7 +34,7 @@ public class ClowCardTheVoice extends AbstractMagicCard
 
     public ClowCardTheVoice()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.PHYSICS_CARD);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
@@ -60,6 +59,10 @@ public class ClowCardTheVoice extends AbstractMagicCard
     {
     }
 
+    public boolean canUse(AbstractPlayer player, AbstractMonster monster)
+    {
+        return false;
+    }
 
     public void triggerWhenDrawn()
     {

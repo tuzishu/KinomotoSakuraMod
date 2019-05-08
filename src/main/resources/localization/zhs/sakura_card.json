@@ -84,7 +84,7 @@
   },
   "ClowCardTheSong": {
     "NAME": "歌",
-    "DESCRIPTION": "选择最多X+1张手牌 消耗 ，每 消耗 1张牌对所有敌人造成 !D! 点伤害，每消耗1张“声”额外造成2次伤害。"
+    "DESCRIPTION": "选择最多X+1张手牌 消耗 ，每 消耗 1张牌对所有敌人造成 !D! 点伤害，每 消耗 1张“声”额外造成2次伤害。"
   },
   "ClowCardTheSweet": {
     "NAME": "甘",

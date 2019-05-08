@@ -66,7 +66,7 @@ public class ModUtility
         int[] damageList = new int[size];
         for (int i = 0; i < size; i++)
         {
-            damageList[0] = damage;
+            damageList[i] = damage;
         }
         return damageList;
     }
