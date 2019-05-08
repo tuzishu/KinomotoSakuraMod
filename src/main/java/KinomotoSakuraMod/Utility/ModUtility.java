@@ -1,6 +1,7 @@
 package KinomotoSakuraMod.Utility;
 
 import KinomotoSakuraMod.KinomotoSakuraMod;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -57,5 +58,16 @@ public class ModUtility
         StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
         StackTraceElement e = stacktrace[2];
         return e.getLineNumber();
+    }
+
+    public static int[] GetDamageList(int damage)
+    {
+        int size = AbstractDungeon.getMonsters().monsters.size();
+        int[] damageList = new int[size];
+        for (int i = 0; i < size; i++)
+        {
+            damageList[0] = damage;
+        }
+        return damageList;
     }
 }

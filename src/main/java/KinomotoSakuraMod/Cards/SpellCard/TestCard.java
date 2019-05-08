@@ -2,6 +2,7 @@ package KinomotoSakuraMod.Cards.SpellCard;
 
 import KinomotoSakuraMod.Cards.AbstractSpellCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
+import KinomotoSakuraMod.Utility.ModUtility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -42,12 +43,6 @@ public class TestCard extends AbstractSpellCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        int size = AbstractDungeon.getMonsters().monsters.size();
-        int[] damageList = new int[size];
-        for (int i = 0; i < size; i++)
-        {
-            damageList[i] = this.damage;
-        }
-        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, damageList, this.damageType, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, ModUtility.GetDamageList(this.damage), this.damageType, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
     }
 }

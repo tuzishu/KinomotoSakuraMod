@@ -2,6 +2,7 @@ package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
+import KinomotoSakuraMod.Utility.ModUtility;
 import com.evacipated.cardcrawl.mod.stslib.powers.StunMonsterPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -64,13 +65,7 @@ public class ClowCardTheTime extends AbstractMagicCard
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
         ArrayList<AbstractMonster> monsters = AbstractDungeon.getMonsters().monsters;
-        int size = monsters.size();
-        int[] damageList = new int[size];
-        for (int i = 0; i < size; i++)
-        {
-            damageList[i] = this.correctDamage();
-        }
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < monsters.size(); i++)
         {
             AbstractMonster mon = monsters.get(i);
             if (mon.hasPower(ArtifactPower.POWER_ID))
@@ -87,6 +82,6 @@ public class ClowCardTheTime extends AbstractMagicCard
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new StunMonsterPower(mon, 1), 1));
             }
         }
-        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, damageList, DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.POISON));
+        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, ModUtility.GetDamageList(this.correctDamage()), DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.POISON));
     }
 }
