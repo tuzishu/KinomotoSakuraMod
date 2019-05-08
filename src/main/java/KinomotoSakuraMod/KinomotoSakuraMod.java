@@ -144,6 +144,7 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
         cardList.add(new ClowCardTheTime());
         cardList.add(new ClowCardTheVoice());
         cardList.add(new ClowCardTheSong());
+        cardList.add(new ClowCardTheWave());
 
         cardList.add(new TestCard());
         return cardList;
@@ -211,10 +212,11 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
         path += "sakura_keyword.json";
         Gson gson = new Gson();
         String json = Gdx.files.internal(path).readString(String.valueOf(StandardCharsets.UTF_8));
-        CustomKeywords keywords = (CustomKeywords)gson.fromJson(json, CustomKeywords.class);
+        CustomKeywords keywords = (CustomKeywords) gson.fromJson(json, CustomKeywords.class);
         Keyword[] keywordList = keywords.keywords;
 
-        for(int i = 0; i < keywordList.length; ++i) {
+        for (int i = 0; i < keywordList.length; ++i)
+        {
             Keyword key = keywordList[i];
             ModUtility.Logger.info("Loading keyword : " + key.NAMES[0]);
             BaseMod.addKeyword(key.NAMES, key.DESCRIPTION);

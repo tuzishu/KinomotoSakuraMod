@@ -107,6 +107,10 @@
     "NAME": "声",
     "DESCRIPTION": "无法被打出。抽到此牌时额外抽1张牌。被消耗时获得 !M! 能量。"
   },
+  "ClowCardTheWave": {
+    "NAME": "波",
+    "DESCRIPTION": "打出的 库洛牌 或 小樱牌 对单个目标造成伤害时，对所有其他敌人造成 !M! %的伤害。多段伤害只触发1次。"
+  },
 
   "SpellCardRelease": {
     "NAME": "解",
