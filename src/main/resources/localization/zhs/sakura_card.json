@@ -86,6 +86,10 @@
     "NAME": "静",
     "DESCRIPTION": "【 物理牌 】获得1层 缓冲 ，下回合无法打出攻击牌。"
   },
+  "ClowCardTheSleep": {
+    "NAME": "睡",
+    "DESCRIPTION": "使目标沉睡 !M! 回合。醒来时恢复所有生命值。"
+  },
   "ClowCardTheSong": {
     "NAME": "歌",
     "DESCRIPTION": "选择最多X+1张手牌 消耗 ，每 消耗 1张牌对所有敌人造成 !D! 点伤害，每 消耗 1张“声”额外造成2次伤害。"
