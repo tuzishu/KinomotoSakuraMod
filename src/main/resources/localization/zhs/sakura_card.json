@@ -69,6 +69,10 @@
     "NAME": "力",
     "DESCRIPTION": "【 物理牌 】造成 !D! 点伤害，力量 发挥额外 !M! 倍效果。"
   },
+  "ClowCardTheReturn": {
+    "NAME": "回",
+    "DESCRIPTION": " 消耗 。选择最多 !M! 张消耗区的牌返回抽排堆的随机位置，并抽1张牌。"
+  },
   "ClowCardTheShield": {
     "NAME": "盾",
     "DESCRIPTION": "【 物理牌 】获得 !B! 点 格挡 。"
