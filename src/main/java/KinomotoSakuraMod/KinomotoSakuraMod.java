@@ -220,7 +220,7 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
         for (int i = 0; i < keywordList.length; ++i)
         {
             Keyword key = keywordList[i];
-            ModUtility.Logger.info("Loading keyword : " + key.NAMES[0]);
+            ModUtility.Logger.info("加载关键字：" + key.NAMES[0]);
             BaseMod.addKeyword(key.NAMES, key.DESCRIPTION);
         }
 
