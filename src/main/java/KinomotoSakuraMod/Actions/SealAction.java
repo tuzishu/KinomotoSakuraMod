@@ -29,7 +29,12 @@ public class SealAction extends AbstractGameAction
 
     public void update()
     {
-        if (this.duration == Settings.ACTION_DUR_XFAST && this.monster != null)
+        if (AbstractDungeon.getCurrRoom().isBattleEnding())
+        {
+            this.isDone = true;
+            return;
+        }
+        if (this.duration == DURATION && this.monster != null)
         {
             AbstractDungeon.effectList.add(new FlashAtkImgEffect(this.monster.hb.cX, this.monster.hb.cY, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
             this.monster.damage(new DamageInfo(this.player, this.damage));

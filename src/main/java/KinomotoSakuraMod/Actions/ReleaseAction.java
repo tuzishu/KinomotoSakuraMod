@@ -43,7 +43,12 @@ public class ReleaseAction extends AbstractGameAction
 
     public void update()
     {
-        if (this.duration == Settings.ACTION_DUR_XFAST)
+        if (AbstractDungeon.getCurrRoom().isBattleEnding())
+        {
+            this.isDone = true;
+            return;
+        }
+        if (this.duration == DURATION)
         {
             for (AbstractCard card : this.player.hand.group)
             {

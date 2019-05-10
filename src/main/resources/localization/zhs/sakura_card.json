@@ -21,6 +21,10 @@
     "NAME": "驱",
     "DESCRIPTION": "【 物理牌 】每使用5张 库洛牌 或 小樱牌 ，抽 !M! 张牌。"
   },
+  "ClowCardTheEarthy": {
+    "NAME": "地",
+    "DESCRIPTION": "【 元素牌 】造成未被格挡的伤害时，给与 !M! 层 地元素 。从其他卡牌给与敌人 地元素 时，额外给与2层。"
+  },
   "ClowCardTheFight": {
     "NAME": "斗",
     "DESCRIPTION": "【 物理牌 】你每造成1次大于12的伤害时，获得1层 力量 。",

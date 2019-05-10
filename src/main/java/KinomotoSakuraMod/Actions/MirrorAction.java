@@ -37,6 +37,11 @@ public class MirrorAction extends AbstractGameAction
 
     public void update()
     {
+        if (AbstractDungeon.getCurrRoom().isBattleEnding())
+        {
+            this.isDone = true;
+            return;
+        }
         if (this.duration == DURATION)
         {
             for (AbstractCard card : this.player.hand.group)

@@ -32,7 +32,12 @@ public class ChangeAction extends AbstractGameAction
 
     public void update()
     {
-        if (this.duration == Settings.ACTION_DUR_XFAST)
+        if (AbstractDungeon.getCurrRoom().isBattleEnding())
+        {
+            this.isDone = true;
+            return;
+        }
+        if (this.duration == DURATION)
         {
             if (this.player.hand.isEmpty())
             {

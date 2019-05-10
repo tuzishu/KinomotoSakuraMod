@@ -47,7 +47,12 @@ public class ArrowAction extends AbstractGameAction
 
     public void update()
     {
-        if (this.duration == Settings.ACTION_DUR_FAST)
+        if (AbstractDungeon.getCurrRoom().isBattleEnding())
+        {
+            this.isDone = true;
+            return;
+        }
+        if (this.duration == DURATION)
         {
             if (this.player.hand.isEmpty() && EnergyPanel.getCurrentEnergy() == 0)
             {
