@@ -18,7 +18,6 @@ public class ClowCardTheLittle extends AbstractMagicCard
     public static final String ID = "ClowCardTheLittle";
     private static final String NAME;
     private static final String DESCRIPTION;
-    private static final String UPGRADE_DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/default_power_card.png";
     private static final int COST = 1;
     private static final CardType CARD_TYPE = CardType.POWER;
@@ -33,7 +32,6 @@ public class ClowCardTheLittle extends AbstractMagicCard
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
         NAME = cardStrings.NAME;
         DESCRIPTION = cardStrings.DESCRIPTION;
-        UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     }
 
     public ClowCardTheLittle()
@@ -53,8 +51,6 @@ public class ClowCardTheLittle extends AbstractMagicCard
         {
             this.upgradeName();
             this.upgradeMagicNumber(UPGRADE_MAGIC_NUMBER);
-            this.rawDescription = UPGRADE_DESCRIPTION;
-            this.initializeDescription();
         }
     }
 

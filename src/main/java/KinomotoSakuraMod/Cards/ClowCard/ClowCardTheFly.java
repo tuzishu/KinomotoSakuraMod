@@ -26,7 +26,7 @@ public class ClowCardTheFly extends AbstractMagicCard
     private static final int BASE_BLOCK = 6;
     private static final int UPGRADE_BLOCK = 4;
     private static final int BASE_MAGIC_NUMBER = 2;
-    private static final int UPGRADE_MAGIC_NUMBER = 2;
+    private static final int UPGRADE_MAGIC_NUMBER = 1;
 
     static
     {

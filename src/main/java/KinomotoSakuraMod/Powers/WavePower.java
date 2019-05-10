@@ -23,7 +23,7 @@ public class WavePower extends CustomPower
     private static final String[] POWER_DESCRIPTIONS;
     private static final String POWER_IMG_PATH = "img/powers/default_power.png";
     private static final PowerType POWER_TYPE = PowerType.BUFF;
-    private static final int MAX_RATE = 75;
+    private static final float MAX_RATE = 0.75F;
     private AbstractCard currentCard;
 
     static
@@ -65,8 +65,8 @@ public class WavePower extends CustomPower
             return;
         }
         ArrayList<AbstractMonster> monsters = AbstractDungeon.getMonsters().monsters;
-        int amount = this.amount > MAX_RATE ? MAX_RATE : this.amount;
-        int damage = MathUtils.ceil(damageAmount * amount / 100F);
+        float rate = this.amount / 100F > MAX_RATE ? MAX_RATE : this.amount / 100F;
+        int damage = MathUtils.ceil(damageAmount * rate);
         for (int i = 0; i < monsters.size(); i++)
         {
             if (monsters.get(i) != target)

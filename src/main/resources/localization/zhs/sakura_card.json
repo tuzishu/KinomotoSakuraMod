@@ -6,8 +6,7 @@
   },
   "ClowCardTheBig": {
     "NAME": "大",
-    "DESCRIPTION": "【 物理牌 】受到伤害增加15%，造成伤害增加15%。",
-    "UPGRADE_DESCRIPTION": "【 物理牌 】受到伤害增加25%，造成伤害增加25%。"
+    "DESCRIPTION": "【 物理牌 】受到伤害增加 !M! %，造成伤害增加 !M! %。"
   },
   "ClowCardTheChange": {
     "NAME": "替",
@@ -50,8 +49,7 @@
   },
   "ClowCardTheLittle": {
     "NAME": "小",
-    "DESCRIPTION": "【 物理牌 】受到伤害减少15%，造成伤害减少15%。",
-    "UPGRADE_DESCRIPTION": "【 物理牌 】受到伤害减少25%，造成伤害减少25%。"
+    "DESCRIPTION": "【 物理牌 】受到伤害减少 !M! %，造成伤害减少 !M! %。"
   },
   "ClowCardTheLoop": {
     "NAME": "轮",
@@ -88,7 +86,7 @@
   },
   "ClowCardTheSleep": {
     "NAME": "睡",
-    "DESCRIPTION": " 消耗 。使目标沉睡 !M! 回合。醒来时恢复所有生命值。"
+    "DESCRIPTION": " 消耗 。使非BOSS的目标沉睡 !M! 回合。受到伤害时醒来。自然醒来时恢复所有生命值，并获得2层虚弱。"
   },
   "ClowCardTheSong": {
     "NAME": "歌",

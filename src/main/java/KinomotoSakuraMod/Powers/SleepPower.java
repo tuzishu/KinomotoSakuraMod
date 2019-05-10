@@ -1,6 +1,7 @@
 package KinomotoSakuraMod.Powers;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -9,6 +10,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.WeakPower;
 
 public class SleepPower extends CustomPower
 {
@@ -17,6 +19,7 @@ public class SleepPower extends CustomPower
     public static final String[] POWER_DESCRIPTIONS;
     private static final String POWER_IMG_PATH = "img/powers/default_power.png";
     private static final PowerType POWER_TYPE = PowerType.DEBUFF;
+    private static final int WEAKENED_COUNT = 2;
 
     static
     {
@@ -52,19 +55,26 @@ public class SleepPower extends CustomPower
         else
         {
             AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
-            AbstractDungeon.actionManager.addToTop(new HealAction(this.owner, this.owner, this.owner.maxHealth - this.owner.currentHealth));
+            if (((AbstractMonster)this.owner).type != AbstractMonster.EnemyType.BOSS)
+            {
+                AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this.owner, this.owner, new WeakPower(this.owner, WEAKENED_COUNT, true)));
+                AbstractDungeon.actionManager.addToTop(new HealAction(this.owner, this.owner, this.owner.maxHealth - this.owner.currentHealth));
+            }
         }
     }
 
     public float atDamageReceive(float damage, DamageInfo.DamageType damageType)
     {
         AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
-        AbstractDungeon.actionManager.addToTop(new HealAction(this.owner, this.owner, this.owner.maxHealth - this.owner.currentHealth));
         return damage;
     }
 
     public void onRemove()
     {
+        if (((AbstractMonster) this.owner).type == AbstractMonster.EnemyType.BOSS)
+        {
+            return;
+        }
         if (this.owner instanceof AbstractMonster)
         {
             AbstractMonster monster = (AbstractMonster) this.owner;
@@ -76,6 +86,10 @@ public class SleepPower extends CustomPower
 
     private void DoStunAction()
     {
+        if (((AbstractMonster) this.owner).type == AbstractMonster.EnemyType.BOSS)
+        {
+            return;
+        }
         AbstractDungeon.actionManager.addToBottom(new AbstractGameAction()
         {
             public void update()

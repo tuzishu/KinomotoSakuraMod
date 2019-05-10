@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.cards.red.ThunderClap;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -23,6 +22,7 @@ public class SongAction extends AbstractGameAction
     private static final String[] TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
     private static final float DURATION_ATTACK = 0.02F;
+    private static final int VOICE_EXTRA_COUNT = 2;
     private AbstractPlayer player;
     private int damage;
 
@@ -59,7 +59,7 @@ public class SongAction extends AbstractGameAction
             int count = 0;
             for (AbstractCard card : AbstractDungeon.handCardSelectScreen.selectedCards.group)
             {
-                count += card instanceof ClowCardTheVoice ? 3 : 1;
+                count += card instanceof ClowCardTheVoice ? 1 + VOICE_EXTRA_COUNT : 1;
                 this.player.hand.moveToExhaustPile(card);
             }
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
