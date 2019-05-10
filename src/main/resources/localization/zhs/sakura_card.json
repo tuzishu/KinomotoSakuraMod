@@ -88,7 +88,7 @@
   },
   "ClowCardTheSleep": {
     "NAME": "睡",
-    "DESCRIPTION": "使目标沉睡 !M! 回合。醒来时恢复所有生命值。"
+    "DESCRIPTION": " 消耗 。使目标沉睡 !M! 回合。醒来时恢复所有生命值。"
   },
   "ClowCardTheSong": {
     "NAME": "歌",
