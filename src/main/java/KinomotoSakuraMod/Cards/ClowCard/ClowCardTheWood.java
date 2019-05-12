@@ -4,7 +4,7 @@ import KinomotoSakuraMod.Actions.ApplyElementAction;
 import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
-import KinomotoSakuraMod.Powers.EarthyElementpower;
+import KinomotoSakuraMod.Powers.EarthyElementPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -79,12 +79,12 @@ public class ClowCardTheWood extends AbstractMagicCard
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new GainStrengthPower(monster, this.correctDamage()), this.correctDamage()));
         }
 
-        if (EarthyElementpower.TryActiveEarthyElement(monster, ACTIVE_ELEMENT_NUMBER, true))
+        if (EarthyElementPower.TryActiveEarthyElement(monster, ACTIVE_ELEMENT_NUMBER, true))
         {
             AbstractDungeon.actionManager.addToBottom(new SFXAction(SOUND_KEY, 0.05F));
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new ChokePower(monster, CHOKE_NUMBER), CHOKE_NUMBER));
         }
 
-        AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(monster, player, new EarthyElementpower(monster, this.correctMagicNumber()), this.correctMagicNumber(), true));
+        AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(monster, player, new EarthyElementPower(monster, this.correctMagicNumber()), this.correctMagicNumber(), true));
     }
 }

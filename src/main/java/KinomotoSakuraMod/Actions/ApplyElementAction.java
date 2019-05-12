@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Actions;
 
-import KinomotoSakuraMod.Powers.EarthyElementpower;
+import KinomotoSakuraMod.Powers.EarthyElementPower;
 import KinomotoSakuraMod.Powers.EarthyMagickPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -45,14 +45,14 @@ public class ApplyElementAction extends AbstractGameAction
         }
         if (this.duration == DURATION)
         {
-            if (this.power instanceof EarthyElementpower)
+            if (this.power instanceof EarthyElementPower)
             {
                 if (this.source.hasPower(EarthyMagickPower.POWER_ID) && isApplyAddition)
                 {
                     this.amount += EarthyMagickPower.EXTRA_NUMBER;
                     this.source.getPower(EarthyMagickPower.POWER_ID).flash();
                 }
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.target, this.source, new EarthyElementpower(this.target, this.amount), this.amount));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.target, this.source, new EarthyElementPower(this.target, this.amount), this.amount));
             }
             // else if (this.power instanceof )
             // {

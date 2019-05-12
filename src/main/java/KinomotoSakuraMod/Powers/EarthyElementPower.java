@@ -10,11 +10,10 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.sun.org.apache.bcel.internal.classfile.PMGClass;
 
-public class EarthyElementpower extends CustomPower
+public class EarthyElementPower extends CustomPower
 {
-    public static final String POWER_ID = "EarthyElementpower";
+    public static final String POWER_ID = "EarthyElementPower";
     private static final String POWER_NAME;
     private static final String[] POWER_DESCRIPTIONS;
     private static final String POWER_IMG_PATH = "img/powers/default_power.png";
@@ -28,7 +27,7 @@ public class EarthyElementpower extends CustomPower
         POWER_DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     }
 
-    public EarthyElementpower(AbstractCreature target, int amount)
+    public EarthyElementPower(AbstractCreature target, int amount)
     {
         super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, amount);
         this.updateDescription();
@@ -42,9 +41,9 @@ public class EarthyElementpower extends CustomPower
     public static boolean TryActiveEarthyElement(AbstractMonster monster, int needAmount, boolean isExhaust)
     {
         AbstractPower power;
-        if (monster.hasPower(EarthyElementpower.POWER_ID))
+        if (monster.hasPower(EarthyElementPower.POWER_ID))
         {
-            power = monster.getPower(EarthyElementpower.POWER_ID);
+            power = monster.getPower(EarthyElementPower.POWER_ID);
         }
         else
         {
@@ -54,15 +53,23 @@ public class EarthyElementpower extends CustomPower
         {
             AbstractPlayer player = AbstractDungeon.player;
             AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, BLOCK_AMOUNT));
-            if (!monster.hasPower("LockPower") && isExhaust)
+            if (isExhaust)
             {
-                if (power.amount > needAmount)
+                if (monster.hasPower(LockPower.POWER_ID))
                 {
-                    AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(monster, player, power, needAmount));
+                    LockPower lockpower = (LockPower)monster.getPower(LockPower.POWER_ID);
+                    lockpower.OnActived();
                 }
                 else
                 {
-                    AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(monster, player, power));
+                    if (power.amount == needAmount)
+                    {
+                        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(monster, player, power));
+                    }
+                    else
+                    {
+                        AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(monster, player, power, needAmount));
+                    }
                 }
             }
             power.flash();

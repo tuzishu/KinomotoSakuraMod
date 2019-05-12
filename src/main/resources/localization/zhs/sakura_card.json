@@ -55,6 +55,10 @@
     "NAME": "小",
     "DESCRIPTION": "【 物理牌 】受到伤害减少 !M! %，造成伤害减少 !M! %。"
   },
+  "ClowCardTheLock": {
+    "NAME": "锁",
+    "DESCRIPTION": "给与 !M! 层 锁定 。触发消耗 元素 时，消耗1层 锁定 作为替代。回合结束时下降1层。"
+  },
   "ClowCardTheLoop": {
     "NAME": "轮",
     "DESCRIPTION": "每回合第1张 库洛牌 、 小樱牌 或 符咒 被打出并进入弃牌堆时，抽1张牌。"
@@ -90,7 +94,7 @@
   },
   "ClowCardTheSleep": {
     "NAME": "睡",
-    "DESCRIPTION": " 消耗 。使非BOSS的目标沉睡 !M! 回合。受到伤害时醒来。自然醒来时恢复所有生命值，并获得2层虚弱。"
+    "DESCRIPTION": " 消耗 。使非boss的目标沉睡 !M! 回合。受到伤害时醒来。自然醒来时恢复所有生命值，并获得2层虚弱。"
   },
   "ClowCardTheSong": {
     "NAME": "歌",
