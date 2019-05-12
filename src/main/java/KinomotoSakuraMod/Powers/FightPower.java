@@ -1,6 +1,5 @@
 package KinomotoSakuraMod.Powers;
 
-import KinomotoSakuraMod.Utility.ModUtility;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -47,7 +46,6 @@ public class FightPower extends CustomPower
     @Override
     public void onAttack(DamageInfo info, int damage, AbstractCreature target)
     {
-        ModUtility.Logger.info(info.base+" | "+info.output+" | "+damage);
         if (info.type == DamageInfo.DamageType.NORMAL && info.output - target.currentBlock >= damageTrigger)
         {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(info.owner, info.owner, new StrengthPower(info.owner, this.amount), this.amount));

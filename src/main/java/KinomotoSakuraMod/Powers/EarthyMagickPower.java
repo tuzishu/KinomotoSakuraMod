@@ -14,6 +14,7 @@ public class EarthyMagickPower extends CustomPower
     private static final String[] POWER_DESCRIPTIONS;
     private static final String POWER_IMG_PATH = "img/powers/default_power.png";
     private static final PowerType POWER_TYPE = PowerType.BUFF;
+    public static final int EXTRA_NUMBER = 2;
 
     static
     {

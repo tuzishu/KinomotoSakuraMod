@@ -15,6 +15,7 @@ public class FlyPower extends CustomPower
     private static final String POWER_IMG_PATH = "img/powers/default_power.png";
     private static final PowerType POWER_TYPE = PowerType.BUFF;
     private static final float DAMAGE_REDUCE_RATE = 0.25F;
+    private static final String SOUND_KEY = "POWER_FLIGHT";
     private int storedAmount;
 
     static
@@ -33,7 +34,7 @@ public class FlyPower extends CustomPower
 
     public void playApplyPowerSfx()
     {
-        CardCrawlGame.sound.play("POWER_FLIGHT", 0.05F);
+        CardCrawlGame.sound.play(SOUND_KEY, 0.05F);
     }
 
     public void updateDescription()
