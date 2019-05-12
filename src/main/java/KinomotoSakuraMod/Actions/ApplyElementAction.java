@@ -1,7 +1,6 @@
 package KinomotoSakuraMod.Actions;
 
-import KinomotoSakuraMod.Powers.EarthyElementPower;
-import KinomotoSakuraMod.Powers.EarthyMagickPower;
+import KinomotoSakuraMod.Powers.*;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -54,10 +53,33 @@ public class ApplyElementAction extends AbstractGameAction
                 }
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.target, this.source, new EarthyElementPower(this.target, this.amount), this.amount));
             }
-            // else if (this.power instanceof )
-            // {
-            //
-            // }
+            else if (this.power instanceof WateryElementPower)
+            {
+                if (this.source.hasPower(WateryMagickPower.POWER_ID) && isApplyAddition)
+                {
+                    this.amount += WateryMagickPower.EXTRA_NUMBER;
+                    this.source.getPower(WateryMagickPower.POWER_ID).flash();
+                }
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.target, this.source, new WateryElementPower(this.target, this.amount), this.amount));
+            }
+            else if (this.power instanceof FireyElementPower)
+            {
+                if (this.source.hasPower(FireyMagickPower.POWER_ID) && isApplyAddition)
+                {
+                    this.amount += FireyMagickPower.EXTRA_NUMBER;
+                    this.source.getPower(FireyMagickPower.POWER_ID).flash();
+                }
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.target, this.source, new FireyElementPower(this.target, this.amount), this.amount));
+            }
+            else if (this.power instanceof WindyElementPower)
+            {
+                if (this.source.hasPower(WindyMagickPower.POWER_ID) && isApplyAddition)
+                {
+                    this.amount += WindyMagickPower.EXTRA_NUMBER;
+                    this.source.getPower(WindyMagickPower.POWER_ID).flash();
+                }
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.target, this.source, new WindyElementPower(this.target, this.amount), this.amount));
+            }
             this.isDone = true;
         }
         tickDuration();

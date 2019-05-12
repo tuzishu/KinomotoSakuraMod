@@ -38,12 +38,12 @@ public class EarthyElementPower extends CustomPower
         this.description = POWER_DESCRIPTIONS[0] + BLOCK_AMOUNT + POWER_DESCRIPTIONS[1];
     }
 
-    public static boolean TryActiveEarthyElement(AbstractMonster monster, int needAmount, boolean isExhaust)
+    public static boolean TryActiveEarthyElement(AbstractMonster target, int needAmount, boolean isExhaust)
     {
         AbstractPower power;
-        if (monster.hasPower(EarthyElementPower.POWER_ID))
+        if (target.hasPower(EarthyElementPower.POWER_ID))
         {
-            power = monster.getPower(EarthyElementPower.POWER_ID);
+            power = target.getPower(EarthyElementPower.POWER_ID);
         }
         else
         {
@@ -55,20 +55,20 @@ public class EarthyElementPower extends CustomPower
             AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, BLOCK_AMOUNT));
             if (isExhaust)
             {
-                if (monster.hasPower(LockPower.POWER_ID))
+                if (target.hasPower(LockPower.POWER_ID))
                 {
-                    LockPower lockpower = (LockPower)monster.getPower(LockPower.POWER_ID);
+                    LockPower lockpower = (LockPower)target.getPower(LockPower.POWER_ID);
                     lockpower.OnActived();
                 }
                 else
                 {
                     if (power.amount == needAmount)
                     {
-                        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(monster, player, power));
+                        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(target, player, power));
                     }
                     else
                     {
-                        AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(monster, player, power, needAmount));
+                        AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(target, player, power, needAmount));
                     }
                 }
             }

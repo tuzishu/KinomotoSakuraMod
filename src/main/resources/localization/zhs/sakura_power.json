@@ -112,11 +112,38 @@
       " 回合。受到伤害时醒来。 #r自然醒来 后恢复所有生命，并获得 #b2 层 虚弱 。"
     ]
   },
+  "LockPower": {
+    "NAME": "锁定",
+    "DESCRIPTIONS": [
+      "触发消耗 #y元素 时，消耗1层作为替代。回合结束时下降1层。"
+    ]
+  },
   "EarthyMagickPower": {
     "NAME": "地魔法",
     "DESCRIPTIONS": [
       "造成未被格挡的伤害时，给与 #b",
       " 层 #y地元素 。从其他卡牌给与敌人 #y地元素 时，额外给与2层。"
+    ]
+  },
+  "WateryMagickPower": {
+    "NAME": "水魔法",
+    "DESCRIPTIONS": [
+      "造成未被格挡的伤害时，给与 #b",
+      " 层 #y水元素 。从其他卡牌给与敌人 #y水元素 时，额外给与2层。"
+    ]
+  },
+  "FireyMagickPower": {
+    "NAME": "火魔法",
+    "DESCRIPTIONS": [
+      "造成未被格挡的伤害时，给与 #b",
+      " 层 #y火元素 。从其他卡牌给与敌人 #y火元素 时，额外给与2层。"
+    ]
+  },
+  "WindyMagickPower": {
+    "NAME": "风魔法",
+    "DESCRIPTIONS": [
+      "造成未被格挡的伤害时，给与 #b",
+      " 层 #y风元素 。从其他卡牌给与敌人 #y风元素 时，额外给与2层。"
     ]
   },
   "EarthyElementPower": {
@@ -126,10 +153,25 @@
       " 点格挡。"
     ]
   },
-  "LockPower": {
-    "NAME": "锁定",
+  "WateryElementPower": {
+    "NAME": "水元素",
     "DESCRIPTIONS": [
-      "触发消耗 #y元素 时，消耗1层作为替代。回合结束时下降1层。"
+      "受到 #y水元素 的标记，能被特殊卡牌触发效果。被触发时，获得 #b",
+      " 点能量。"
+    ]
+  },
+  "FireyElementPower": {
+    "NAME": "火元素",
+    "DESCRIPTIONS": [
+      "受到 #y火元素 的标记，能被特殊卡牌触发效果。被触发时，造成 #b",
+      " 点伤害。"
+    ]
+  },
+  "WindyElementPower": {
+    "NAME": "风元素",
+    "DESCRIPTIONS": [
+      "受到 #y风元素 的标记，能被特殊卡牌触发效果。被触发时，抽 #b",
+      " 张牌。"
     ]
   }
 }

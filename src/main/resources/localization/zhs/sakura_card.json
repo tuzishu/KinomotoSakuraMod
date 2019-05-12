@@ -30,6 +30,10 @@
     "DESCRIPTION": "【 物理牌 】你每造成1次大于12的伤害时，获得1层 力量 。",
     "UPGRADE_DESCRIPTION": "【 物理牌 】你每造成1次大于8的伤害时，获得1层 力量 。"
   },
+  "ClowCardTheFirey": {
+    "NAME": "火",
+    "DESCRIPTION": "【 元素牌 】造成未被格挡的伤害时，给与 !M! 层 火元素 。从其他卡牌给与敌人 火元素 时，额外给与2层。"
+  },
   "ClowCardTheFloat": {
     "NAME": "浮",
     "DESCRIPTION": "【 物理牌 】受到的未被格挡的伤害减少 !M! 点。",
@@ -121,9 +125,17 @@
     "NAME": "声",
     "DESCRIPTION": "无法被打出。抽到此牌时额外抽1张牌。被消耗时获得 !M! 能量。"
   },
+  "ClowCardTheWatery": {
+    "NAME": "水",
+    "DESCRIPTION": "【 元素牌 】造成未被格挡的伤害时，给与 !M! 层 水元素 。从其他卡牌给与敌人 水元素 时，额外给与2层。"
+  },
   "ClowCardTheWave": {
     "NAME": "波",
     "DESCRIPTION": "打出的 库洛牌 或 小樱牌 对单个目标造成伤害时，对所有其他敌人造成 !M! %的伤害。多段伤害只触发1次。"
+  },
+  "ClowCardTheWindy": {
+    "NAME": "风",
+    "DESCRIPTION": "【 元素牌 】造成未被格挡的伤害时，给与 !M! 层 风元素 。从其他卡牌给与敌人 风元素 时，额外给与2层。"
   },
   "ClowCardTheWood": {
     "NAME": "树",
