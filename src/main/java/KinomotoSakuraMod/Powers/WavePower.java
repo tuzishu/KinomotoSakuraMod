@@ -75,5 +75,6 @@ public class WavePower extends CustomPower
             }
         }
         this.currentCard = null;
+        this.flash();
     }
 }

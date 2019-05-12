@@ -49,21 +49,29 @@ public class FloatPower extends CustomPower
 
     public int onAttacked(DamageInfo info, int damage)
     {
+        boolean needFlash = false;
         AbstractPlayer player = AbstractDungeon.player;
         if (info.owner instanceof AbstractMonster && info.type == DamageInfo.DamageType.NORMAL)
         {
             if (damage >= (player.currentBlock + this.amount))
             {
                 damage -= this.amount;
+                needFlash = true;
             }
             else if (damage >= player.currentBlock)
             {
                 damage = player.currentBlock;
+                needFlash = true;
             }
             if (this.upgraded)
             {
+                needFlash = true;
                 AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, GAIN_BLOCK));
             }
+        }
+        if (needFlash)
+        {
+            this.flash();
         }
         return damage;
     }

@@ -48,6 +48,7 @@ public class FightPower extends CustomPower
     {
         if (info.type == DamageInfo.DamageType.NORMAL && info.output - target.currentBlock >= damageTrigger)
         {
+            this.flash();
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(info.owner, info.owner, new StrengthPower(info.owner, this.amount), this.amount));
         }
     }

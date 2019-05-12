@@ -100,6 +100,7 @@ public class TwinPower extends CustomPower
         }
         tempCard.purgeOnUse = true;
         AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(tempCard, monster, card.energyOnUse));
+        this.flash();
     }
 
     private boolean CheckCard()

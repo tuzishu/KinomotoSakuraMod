@@ -58,6 +58,7 @@ public class LoopPower extends CustomPower
     public void atStartOfTurn()
     {
         this.storedAmount = this.amount;
+        this.flash();
         this.updateDescription();
     }
 
@@ -65,6 +66,7 @@ public class LoopPower extends CustomPower
     {
         if (this.storedAmount > 0 && (usedCard instanceof AbstractMagicCard || usedCard instanceof AbstractSpellCard) && usedCard.type != AbstractCard.CardType.POWER && !usedCard.exhaust)
         {
+            this.flash();
             AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player, 1));
             this.storedAmount -= 1;
             this.updateDescription();

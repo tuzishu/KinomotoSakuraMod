@@ -44,6 +44,7 @@ public class LittlePower extends CustomPower
     public float atDamageGive(float damage, DamageInfo.DamageType type)
     {
         damage = (int) (damage * (1 - DAMAGE_CORRECTION * this.amount));
+        this.flash();
         return damage;
     }
 
@@ -53,6 +54,7 @@ public class LittlePower extends CustomPower
         if (info.owner instanceof AbstractMonster && info.type == DamageInfo.DamageType.NORMAL)
         {
             damage = (int) (damage * (1 - DEFENCE_CORRECTION * this.amount));
+            this.flash();
         }
         return damage;
     }

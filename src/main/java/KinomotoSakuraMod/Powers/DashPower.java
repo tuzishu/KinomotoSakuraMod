@@ -45,6 +45,7 @@ public class DashPower extends CustomPower
             counter += 1;
             if (counter >= TRIGGER_NUMBER)
             {
+                this.flash();
                 AbstractDungeon.actionManager.addToBottom(new DrawCardAction(this.owner, this.amount));
                 counter -= TRIGGER_NUMBER;
             }
