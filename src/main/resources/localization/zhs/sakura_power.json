@@ -146,6 +146,22 @@
       " 层 #y风元素 。从其他卡牌给与敌人 #y风元素 时，额外给与2层。"
     ]
   },
+  "LightMagickPower": {
+    "NAME": "光魔法",
+    "DESCRIPTIONS": [
+      "回合开始时，给与所有敌人 #b",
+      " 层 #y光元素 。你的手牌上限+ #b",
+      " 。"
+    ]
+  },
+  "DarkMagickPower": {
+    "NAME": "暗魔法",
+    "DESCRIPTIONS": [
+      "回合开始时，给与所有敌人 #b",
+      " 层 #y暗元素 ，额外抽 #b",
+      " 张牌。"
+    ]
+  },
   "EarthyElementPower": {
     "NAME": "地元素",
     "DESCRIPTIONS": [
@@ -172,6 +188,20 @@
     "DESCRIPTIONS": [
       "受到 #y风元素 的标记，能被特殊卡牌触发效果。被触发时，抽 #b",
       " 张牌。"
+    ]
+  },
+  "LightElementPower": {
+    "NAME": "光元素",
+    "DESCRIPTIONS": [
+      "受到 #y光元素 的标记，能被特殊卡牌触发效果。被触发时，给与 #b",
+      " 层易伤。"
+    ]
+  },
+  "DarkElementPower": {
+    "NAME": "暗元素",
+    "DESCRIPTIONS": [
+      "受到 #y暗元素 的标记，能被特殊卡牌触发效果。被触发时，给与 #b",
+      " 层虚弱。"
     ]
   }
 }
