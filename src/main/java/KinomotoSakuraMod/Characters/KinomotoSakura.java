@@ -91,7 +91,7 @@ public class KinomotoSakura extends CustomPlayer
         this.dialogX = (this.drawX + 0.0F * Settings.scale);
         this.dialogY = (this.drawY + 220.0F * Settings.scale);
 
-        // 参数列表：静态贴图路径，越肩视角2贴图路径，越肩视角贴图路径，失败时贴图路径，角色选择界面信息，意义不明的四个固定数字（20.0F, -10.0F, 220.0F, 290.0F），初始能量数
+        // 参数列表：静态贴图路径，越肩视角2贴图路径，越肩视角贴图路径，失败时贴图路径，角色选择界面信息，碰撞箱XY宽高，初始能量数
         initializeClass(null, SHOULDER_2_IMAGE_PATH, SHOULDER_1_IMAGE_PATH, CORPSE_IMAGE_PATH, getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(START_ENERGY));
 
         loadAnimation(ATLAS_PATH, SKELETON_PATH, CHARACTER_SCALE_RATE);

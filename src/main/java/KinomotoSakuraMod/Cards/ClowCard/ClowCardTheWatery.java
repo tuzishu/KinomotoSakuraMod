@@ -40,7 +40,7 @@ public class ClowCardTheWatery extends AbstractMagicCard
 
     public AbstractMagicCard makeCopy()
     {
-        return new ClowCardTheEarthy();
+        return new ClowCardTheWatery();
     }
 
     public void upgrade()
