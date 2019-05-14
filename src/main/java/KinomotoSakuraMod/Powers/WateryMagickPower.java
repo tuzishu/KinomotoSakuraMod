@@ -39,7 +39,7 @@ public class WateryMagickPower extends CustomPower
     {
         if (damageAmount > 0 && info.type == DamageInfo.DamageType.NORMAL)
         {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, this.owner, new WateryElementPower(target, this.amount), this.amount));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, this.owner, new WateryElementPower(target, this.amount), this.amount, true));
         }
     }
 }

@@ -20,21 +20,8 @@ import static com.megacrit.cardcrawl.helpers.ImageMaster.loadImage;
 
 public abstract class AbstractMagicCard extends CustomCard
 {
-    private static final String BANNER_COMMON_IMAGE_PATH = "img/banner/common.png";
-    private static final String BANNER_UNCOMMON_IMAGE_PATH = "img/banner/uncommon.png";
-    private static final String BANNER_RARE_IMAGE_PATH = "img/banner/rare.png";
-    private static final Texture BANNER_COMMON;
-    private static final Texture BANNER_UNCOMMON;
-    private static final Texture BANNER_RARE;
     private boolean hasReleased = false;
     private float releaseRate = 0F;
-
-    static
-    {
-        BANNER_COMMON = loadImage(BANNER_COMMON_IMAGE_PATH);
-        BANNER_UNCOMMON = loadImage(BANNER_UNCOMMON_IMAGE_PATH);
-        BANNER_RARE = loadImage(BANNER_RARE_IMAGE_PATH);
-    }
 
     public AbstractMagicCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target)
     {
@@ -106,35 +93,4 @@ public abstract class AbstractMagicCard extends CustomCard
             hasReleased = true;
         }
     }
-
-    // @SpireOverride
-    // protected void renderHelper(SpriteBatch sb, Color color, Texture img, float drawX, float drawY)
-    // {
-    //     sb.setColor(color);
-    //     try
-    //     {
-    //         sb.draw(img, drawX, drawY, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
-    //     }
-    //     catch (Exception var7)
-    //     {
-    //         ModUtility.Logger.error("renderHelper line 55: " + var7);
-    //     }
-    // }
-    //
-    // @SpireOverride
-    // protected void renderBannerImage(SpriteBatch sb, float drawX, float drawY)
-    // {
-    //     Color color = Color.WHITE.cpy();
-    //     switch (this.rarity)
-    //     {
-    //         case UNCOMMON:
-    //             this.renderHelper(sb, color, BANNER_UNCOMMON, drawX, drawY);
-    //             return;
-    //         case RARE:
-    //             this.renderHelper(sb, color, BANNER_RARE, drawX, drawY);
-    //         default:
-    //             this.renderHelper(sb, color, BANNER_COMMON, drawX, drawY);
-    //             return;
-    //     }
-    // }
 }

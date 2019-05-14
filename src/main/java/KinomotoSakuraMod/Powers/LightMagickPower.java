@@ -37,7 +37,7 @@ public class LightMagickPower extends CustomPower
     {
         for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters)
         {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, this.owner, new LightElementPower(monster, this.amount), this.amount));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, this.owner, new LightElementPower(monster, this.amount), this.amount, true));
         }
         AbstractDungeon.player.gameHandSize = AbstractDungeon.player.masterHandSize + this.amount;
     }

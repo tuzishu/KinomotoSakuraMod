@@ -23,7 +23,7 @@ public class ReleaseAction extends AbstractGameAction
     private static final String[] TEXT;
     private AbstractPlayer player;
     private static final float DURATION = Settings.ACTION_DUR_XFAST;
-    private static final float RELEASE_UPGRADE_RATE = 0.5F;
+    private float releaseRate;
     private int damage;
     private ArrayList<AbstractCard> cannotReleaseList = new ArrayList<AbstractCard>();
 
@@ -33,11 +33,12 @@ public class ReleaseAction extends AbstractGameAction
         TEXT = uiStrings.TEXT;
     }
 
-    public ReleaseAction(int damage)
+    public ReleaseAction(int damage, float rate)
     {
         this.actionType = AbstractGameAction.ActionType.CARD_MANIPULATION;
         this.player = AbstractDungeon.player;
         this.damage = damage;
+        this.releaseRate = rate;
         this.duration = DURATION;
     }
 
@@ -69,6 +70,7 @@ public class ReleaseAction extends AbstractGameAction
                 ReleaseCard(this.player.hand.getTopCard());
                 this.returnCards();
                 this.isDone = true;
+                return;
             }
 
             if (this.player.hand.group.size() > 1)
@@ -124,7 +126,7 @@ public class ReleaseAction extends AbstractGameAction
         }
         else
         {
-            ((AbstractMagicCard) card).release(RELEASE_UPGRADE_RATE);
+            ((AbstractMagicCard) card).release(releaseRate);
             reloadCardDescription(card, !card.isEthereal, !card.exhaust);
             card.isEthereal = true;
             card.exhaust = true;

@@ -45,8 +45,8 @@
   },
   "ClowCardTheFlower": {
     "NAME": "花",
-    "DESCRIPTION": "【 元素牌 】回复所有敌人身上 水元素 层数和1/4的生命。给与目标 !M! 层 地元素 。",
-    "UPGRADE_DESCRIPTION": "【 元素牌 】回复所有敌人身上 水元素 层数和1/4的生命，并获得层数和一半的格挡。给与目标 !M! 层 地元素 。"
+    "DESCRIPTION": "【 元素牌 】 消耗 。回复所有敌人身上 水元素 层数和1/4的生命。给与目标 !M! 层 地元素 。",
+    "UPGRADE_DESCRIPTION": "【 元素牌 】 消耗 。回复所有敌人身上 水元素 层数和1/4的生命。获得层数和1/2的格挡。给与目标 !M! 层 地元素 。"
   },
   "ClowCardTheFly": {
     "NAME": "飞",
@@ -80,6 +80,10 @@
     "NAME": "轮",
     "DESCRIPTION": "每回合第1张 库洛牌 、 小樱牌 或 符咒 被打出并进入弃牌堆时，抽1张牌。"
   },
+  "ClowCardTheMaze": {
+    "NAME": "迷",
+    "DESCRIPTION": "【 元素牌 】获得 !B! 点格挡。额外获得所有敌人身上 地元素 层数的格挡。"
+  },
   "ClowCardTheMirror": {
     "NAME": "镜",
     "DESCRIPTION": "【 物理牌 】 消耗 。选择1张手中的 库洛牌 或 小樱牌 ，复制 !M! 张加入手中。"
@@ -95,6 +99,10 @@
   "ClowCardTheReturn": {
     "NAME": "回",
     "DESCRIPTION": " 消耗 。选择最多 !M! 张消耗区的牌返回抽排堆，并抽1张牌。"
+  },
+  "ClowCardTheSand": {
+    "NAME": "沙",
+    "DESCRIPTION": "【 元素牌 】造成 !D! 点伤害。 地元素 大于15层时，消耗15层 地元素 给与目标 !M! 层 易伤 。给与目标3层 地元素 。"
   },
   "ClowCardTheShield": {
     "NAME": "盾",

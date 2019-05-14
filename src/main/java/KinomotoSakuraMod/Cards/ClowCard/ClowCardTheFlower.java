@@ -5,6 +5,7 @@ import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
 import KinomotoSakuraMod.Powers.EarthyElementPower;
+import KinomotoSakuraMod.Powers.WateryElementPower;
 import basemod.helpers.BaseModCardTags;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -44,6 +45,7 @@ public class ClowCardTheFlower extends AbstractMagicCard
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.ELEMENT_CARD);
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
+        this.exhaust = true;
     }
 
     @Override
@@ -69,9 +71,9 @@ public class ClowCardTheFlower extends AbstractMagicCard
         int amount = 0;
         for (AbstractMonster mon: AbstractDungeon.getMonsters().monsters)
         {
-            if (mon.hasPower(EarthyElementPower.POWER_ID))
+            if (mon.hasPower(WateryElementPower.POWER_ID))
             {
-                amount += mon.getPower(EarthyElementPower.POWER_ID).amount;
+                amount += mon.getPower(WateryElementPower.POWER_ID).amount;
             }
         }
         AbstractDungeon.actionManager.addToBottom(new HealAction(player, player, MathUtils.ceil(amount * HEAL_RATE)));

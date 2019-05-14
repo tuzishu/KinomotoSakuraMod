@@ -8,21 +8,17 @@ import KinomotoSakuraMod.Powers.EarthyElementPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.ArtifactPower;
-import com.megacrit.cardcrawl.powers.ChokePower;
-import com.megacrit.cardcrawl.powers.GainStrengthPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
 
-public class ClowCardTheWood extends AbstractMagicCard
+public class ClowCardTheSand extends AbstractMagicCard
 {
-    public static final String ID = "ClowCardTheWood";
+    public static final String ID = "ClowCardTheSand";
     private static final String NAME;
     private static final String DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/default_attack_card.png";
@@ -32,11 +28,10 @@ public class ClowCardTheWood extends AbstractMagicCard
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
     private static final int BASE_DAMAGE = 3;
-    private static final int UPGRADE_DAMAGE = 2;
-    private static final int BASE_MAGIC_NUMBER = 2;
-    private static final int ACTIVE_ELEMENT_NUMBER = 12;
-    private static final int CHOKE_NUMBER = 2;
-    private static final String SOUND_KEY = "POWER_CONSTRICTED";
+    private static final int UPGRADE_DAMAGE = 4;
+    private static final int ACTIVE_NUMBER = 15;
+    private static final int BASE_MAGIC_NUMBER = 1;
+    private static final int UPGRADE_MAGIC_NUMBER = 1;
 
     static
     {
@@ -45,7 +40,7 @@ public class ClowCardTheWood extends AbstractMagicCard
         DESCRIPTION = cardStrings.DESCRIPTION;
     }
 
-    public ClowCardTheWood()
+    public ClowCardTheSand()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.ELEMENT_CARD);
         this.baseDamage = BASE_DAMAGE;
@@ -57,34 +52,26 @@ public class ClowCardTheWood extends AbstractMagicCard
     {
         if (!this.upgraded)
         {
-            upgradeName();
+            this.upgradeName();
             this.upgradeDamage(UPGRADE_DAMAGE);
+            this.upgradeMagicNumber(UPGRADE_MAGIC_NUMBER);
         }
     }
 
     @Override
     public AbstractMagicCard makeCopy()
     {
-        return new ClowCardTheWood();
+        return new ClowCardTheSand();
     }
 
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.correctDamage(), DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new StrengthPower(monster, -this.correctDamage()), -this.correctDamage()));
-        if (!monster.hasPower(ArtifactPower.POWER_ID))
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.correctDamage(), DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        if (EarthyElementPower.TryActiveEarthyElement(monster, ACTIVE_NUMBER, true))
         {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new GainStrengthPower(monster, this.correctDamage()), this.correctDamage()));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new VulnerablePower(monster, this.correctMagicNumber(), false), this.correctMagicNumber()));
         }
-
-        if (EarthyElementPower.TryActiveEarthyElement(monster, ACTIVE_ELEMENT_NUMBER, true))
-        {
-            AbstractDungeon.actionManager.addToBottom(new SFXAction(SOUND_KEY, 0.05F));
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new ChokePower(monster, CHOKE_NUMBER), CHOKE_NUMBER));
-        }
-
-        AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(monster, player, new EarthyElementPower(monster, this.correctMagicNumber()), this.correctMagicNumber(), true));
+        AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(monster, player, new EarthyElementPower(monster, this.correctMagicNumber()), this.correctMagicNumber()));
     }
 }

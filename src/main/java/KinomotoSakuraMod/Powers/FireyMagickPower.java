@@ -39,7 +39,7 @@ public class FireyMagickPower extends CustomPower
     {
         if (damageAmount > 0 && info.type == DamageInfo.DamageType.NORMAL)
         {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, this.owner, new FireyElementPower(target, this.amount), this.amount));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, this.owner, new FireyElementPower(target, this.amount), this.amount, true));
         }
     }
 }

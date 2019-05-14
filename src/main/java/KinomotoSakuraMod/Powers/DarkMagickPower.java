@@ -39,7 +39,7 @@ public class DarkMagickPower extends CustomPower
 
         for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters)
         {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, this.owner, new DarkElementPower(monster, this.amount), this.amount));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, this.owner, new DarkElementPower(monster, this.amount), this.amount, true));
         }
         AbstractDungeon.actionManager.addToBottom(new DrawCardAction(this.owner, this.amount));
     }

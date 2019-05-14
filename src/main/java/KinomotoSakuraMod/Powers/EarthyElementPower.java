@@ -57,7 +57,7 @@ public class EarthyElementPower extends CustomPower
             {
                 if (target.hasPower(LockPower.POWER_ID))
                 {
-                    LockPower lockpower = (LockPower)target.getPower(LockPower.POWER_ID);
+                    LockPower lockpower = (LockPower) target.getPower(LockPower.POWER_ID);
                     lockpower.OnActived();
                 }
                 else
