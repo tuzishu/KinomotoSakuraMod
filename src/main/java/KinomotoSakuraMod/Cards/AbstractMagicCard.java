@@ -73,7 +73,11 @@ public abstract class AbstractMagicCard extends CustomCard
             AbstractPower power = AbstractDungeon.player.getPower(EnhancementMagickPower.POWER_ID);
             int count = power != null ? power.amount : 0;
             float rate = EnhancementMagickPower.CORRECTION_RATE;
+            ModUtility.Logger.info("value: "+ value);
+            ModUtility.Logger.info("(1F + count * rate): "+ (1F + count * rate));
+            ModUtility.Logger.info("(1F + (hasReleased ? releaseRate : 0F): "+ (1F + (hasReleased ? releaseRate : 0F)));
             value = (int) (value * (1F + count * rate) * (1F + (hasReleased ? releaseRate : 0F)));
+            ModUtility.Logger.info("value: "+ value);
         }
         if (this.tags.contains(CustomTag.ELEMENT_CARD))
         {

@@ -25,7 +25,7 @@ public class SpellCardRelease extends AbstractSpellCard
     private static final int BASE_DAMAGE = 3;
     private static final int UPGRADE_DAMAGE = 2;
     private static final float BASE_RELEASE_UPGRADE_RATE = 0.25F;
-    private static final float UPGRADE_RELEASE_UPGRADE_RATE = 0.25F;
+    private static final float UPGRADE_RELEASE_UPGRADE_RATE = 0.5F;
 
     static
     {
@@ -61,6 +61,6 @@ public class SpellCardRelease extends AbstractSpellCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ReleaseAction(this.damage, upgraded ? BASE_RELEASE_UPGRADE_RATE : UPGRADE_RELEASE_UPGRADE_RATE));
+        AbstractDungeon.actionManager.addToBottom(new ReleaseAction(this.damage, upgraded ? UPGRADE_RELEASE_UPGRADE_RATE : BASE_RELEASE_UPGRADE_RATE));
     }
 }

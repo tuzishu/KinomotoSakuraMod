@@ -45,8 +45,8 @@
   },
   "ClowCardTheFlower": {
     "NAME": "花",
-    "DESCRIPTION": "【 元素牌 】 消耗 。回复所有敌人身上 水元素 层数和1/4的生命。给与目标 !M! 层 地元素 。",
-    "UPGRADE_DESCRIPTION": "【 元素牌 】 消耗 。回复所有敌人身上 水元素 层数和1/4的生命。获得层数和1/2的格挡。给与目标 !M! 层 地元素 。"
+    "DESCRIPTION": "【 元素牌 】 消耗 。回复场上所有 水元素 层数和1/4的生命。给与目标 !M! 层 地元素 。",
+    "UPGRADE_DESCRIPTION": "【 元素牌 】 消耗 。回复场上所有 水元素 层数和1/4的生命。获得场上所有 地元素 层数和1/2的格挡。给与目标 !M! 层 地元素 。"
   },
   "ClowCardTheFly": {
     "NAME": "飞",
@@ -82,7 +82,7 @@
   },
   "ClowCardTheMaze": {
     "NAME": "迷",
-    "DESCRIPTION": "【 元素牌 】获得 !B! 点格挡。额外获得所有敌人身上 地元素 层数的格挡。"
+    "DESCRIPTION": "【 元素牌 】获得 !B! 点格挡。额外获得场上所有 地元素 层数和的格挡。"
   },
   "ClowCardTheMirror": {
     "NAME": "镜",
