@@ -43,6 +43,11 @@
     "DESCRIPTION": "【 物理牌 】受到的未被格挡的伤害减少 !M! 点。",
     "UPGRADE_DESCRIPTION": "【 物理牌 】受到的未被格挡的伤害减少 !M! 点。每受到1次未被格挡的伤害，获得3点格挡。"
   },
+  "ClowCardTheFlower": {
+    "NAME": "花",
+    "DESCRIPTION": "【 元素牌 】回复所有敌人身上 水元素 层数和1/4的生命。给与目标 !M! 层 地元素 。",
+    "UPGRADE_DESCRIPTION": "【 元素牌 】回复所有敌人身上 水元素 层数和1/4的生命，并获得层数和一半的格挡。给与目标 !M! 层 地元素 。"
+  },
   "ClowCardTheFly": {
     "NAME": "飞",
     "DESCRIPTION": "【 物理牌 】获得 !M! 层 飞行 ，并获得 !B! 点 格挡 。"

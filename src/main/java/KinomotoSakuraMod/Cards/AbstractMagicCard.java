@@ -107,14 +107,6 @@ public abstract class AbstractMagicCard extends CustomCard
         }
     }
 
-    public void unRelease()
-    {
-        if (hasReleased)
-        {
-            hasReleased = false;
-        }
-    }
-
     // @SpireOverride
     // protected void renderHelper(SpriteBatch sb, Color color, Texture img, float drawX, float drawY)
     // {
