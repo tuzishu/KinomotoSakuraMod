@@ -66,7 +66,10 @@ public class SleepPower extends CustomPower
 
     public float atDamageReceive(float damage, DamageInfo.DamageType damageType)
     {
-        AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+        if (damage > 0)
+        {
+            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+        }
         return damage;
     }
 

@@ -102,17 +102,23 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
     {
         ModUtility.Logger.info("开始编辑卡牌");
 
-        for (AbstractCard card : GetCardList())
+        for (AbstractCard card : GetUnlockedCardList())
         {
             BaseMod.addCard(card);
             UnlockTracker.unlockCard(card.cardID);
-            ModUtility.Logger.info("Loading card : " + card.name);
+            ModUtility.Logger.info("Loading Unlocked Card : " + card.name);
+        }
+
+        for (AbstractCard card : GetLockedCardList())
+        {
+            BaseMod.addCard(card);
+            ModUtility.Logger.info("Loading Locked Card : " + card.name);
         }
 
         ModUtility.Logger.info("结束编辑卡牌");
     }
 
-    private ArrayList<AbstractCard> GetCardList()
+    private ArrayList<AbstractCard> GetUnlockedCardList()
     {
         ArrayList<AbstractCard> cardList = new ArrayList<AbstractCard>();
 
@@ -153,6 +159,16 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
         cardList.add(new ClowCardTheWatery());
         cardList.add(new ClowCardTheFirey());
         cardList.add(new ClowCardTheWindy());
+        cardList.add(new ClowCardTheLight());
+        cardList.add(new ClowCardTheDark());
+
+        cardList.add(new TestCard());
+        return cardList;
+    }
+
+    private ArrayList<AbstractCard> GetLockedCardList()
+    {
+        ArrayList<AbstractCard> cardList = new ArrayList<AbstractCard>();
 
         cardList.add(new TestCard());
         return cardList;

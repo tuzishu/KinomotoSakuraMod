@@ -17,6 +17,10 @@
     "DESCRIPTION": "战斗结束后获得1个随机遗物。不可被 镜牌 复制。",
     "UPGRADE_DESCRIPTION": " 保留 。战斗结束后获得1个随机遗物。不可被 镜牌 复制。"
   },
+  "ClowCardTheDark": {
+    "NAME": "暗",
+    "DESCRIPTION": "【 元素牌 】给与所有敌人 !M! 层暗元素。"
+  },
   "ClowCardTheDash": {
     "NAME": "驱",
     "DESCRIPTION": "【 物理牌 】每使用5张 库洛牌 或 小樱牌 ，抽 !M! 张牌。"
@@ -54,6 +58,10 @@
   "ClowCardTheLibra": {
     "NAME": "秤",
     "DESCRIPTION": "获得 !B! 点格挡。当前能量大于抽排堆和弃牌堆的牌数差时，获得 !M! 点能量。"
+  },
+  "ClowCardTheLight": {
+    "NAME": "光",
+    "DESCRIPTION": "【 元素牌 】给与所有敌人 !M! 层光元素。"
   },
   "ClowCardTheLittle": {
     "NAME": "小",
