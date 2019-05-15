@@ -8,6 +8,11 @@
     "NAME": "大",
     "DESCRIPTION": "【 物理牌 】受到伤害增加 !M! %，造成伤害增加 !M! %。"
   },
+  "ClowCardTheBubble": {
+    "NAME": "泡",
+    "DESCRIPTION": "【 元素牌 】 消耗 。随机清除目标的1个buff， 水元素 大于18层时，清除所有buff。",
+    "UPGRADE_DESCRIPTION": "【 元素牌 】随机清除目标1的个buff， 水元素 大于18层时，清除所有buff。"
+  },
   "ClowCardTheChange": {
     "NAME": "替",
     "DESCRIPTION": "【 物理牌 】丢弃最多 !M! 张手牌，并抽相同数量的牌。"
@@ -27,7 +32,7 @@
   },
   "ClowCardTheEarthy": {
     "NAME": "地",
-    "DESCRIPTION": "【 元素牌 】造成未被格挡的伤害时，给与 !M! 层 地元素 。从其他卡牌给与敌人 地元素 时，额外给与2层。"
+    "DESCRIPTION": "【 元素牌 】造成未被格挡的伤害时，给与 !M! 层 地元素 。从其他卡牌给与 地元素 时，额外给与2层。"
   },
   "ClowCardTheFight": {
     "NAME": "斗",
@@ -36,7 +41,7 @@
   },
   "ClowCardTheFirey": {
     "NAME": "火",
-    "DESCRIPTION": "【 元素牌 】造成未被格挡的伤害时，给与 !M! 层 火元素 。从其他卡牌给与敌人 火元素 时，额外给与2层。"
+    "DESCRIPTION": "【 元素牌 】造成未被格挡的伤害时，给与 !M! 层 火元素 。从其他卡牌给与 火元素 时，额外给与2层。"
   },
   "ClowCardTheFloat": {
     "NAME": "浮",
@@ -102,7 +107,7 @@
   },
   "ClowCardTheSand": {
     "NAME": "沙",
-    "DESCRIPTION": "【 元素牌 】造成 !D! 点伤害。 地元素 大于15层时，消耗15层 地元素 给与目标 !M! 层 易伤 。给与目标3层 地元素 。"
+    "DESCRIPTION": "【 元素牌 】造成 !D! 点伤害。目标携带 地元素 大于15层时，消耗15层 地元素 给与 !M! 层 易伤 。给与3层 地元素 。"
   },
   "ClowCardTheShield": {
     "NAME": "盾",
@@ -148,7 +153,7 @@
   },
   "ClowCardTheWatery": {
     "NAME": "水",
-    "DESCRIPTION": "【 元素牌 】造成未被格挡的伤害时，给与 !M! 层 水元素 。从其他卡牌给与敌人 水元素 时，额外给与2层。"
+    "DESCRIPTION": "【 元素牌 】造成未被格挡的伤害时，给与 !M! 层 水元素 。从其他卡牌给与 水元素 时，额外给与2层。"
   },
   "ClowCardTheWave": {
     "NAME": "波",
@@ -156,7 +161,7 @@
   },
   "ClowCardTheWindy": {
     "NAME": "风",
-    "DESCRIPTION": "【 元素牌 】造成未被格挡的伤害时，给与 !M! 层 风元素 。从其他卡牌给与敌人 风元素 时，额外给与2层。"
+    "DESCRIPTION": "【 元素牌 】造成未被格挡的伤害时，给与 !M! 层 风元素 。从其他卡牌给与 风元素 时，额外给与2层。"
   },
   "ClowCardTheWood": {
     "NAME": "树",

@@ -23,7 +23,7 @@ public class ClowCardTheBig extends AbstractMagicCard
     private static final int COST = 1;
     private static final AbstractCard.CardType CARD_TYPE = AbstractCard.CardType.POWER;
     private static final AbstractCard.CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
-    private static final AbstractCard.CardRarity CARD_RARITY = AbstractCard.CardRarity.UNCOMMON;
+    private static final AbstractCard.CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final AbstractCard.CardTarget CARD_TARGET = AbstractCard.CardTarget.SELF;
     private static final int BASE_MAGIC_NUMBER = 10;
     private static final int UPGRADE_MAGIC_NUMBER = 10;
