@@ -9,6 +9,7 @@ import KinomotoSakuraMod.Powers.WateryElementPower;
 import KinomotoSakuraMod.Powers.WindyElementPower;
 import KinomotoSakuraMod.Utility.ModUtility;
 import com.evacipated.cardcrawl.mod.stslib.powers.StunMonsterPower;
+import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
