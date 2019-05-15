@@ -32,7 +32,7 @@ public class FreezePower extends CustomPower
 
     public void updateDescription()
     {
-        this.description = POWER_DESCRIPTIONS[0] + this.amount + POWER_DESCRIPTIONS[1];
+        this.description = POWER_DESCRIPTIONS[0];
     }
 
     public void onInitialApplication()

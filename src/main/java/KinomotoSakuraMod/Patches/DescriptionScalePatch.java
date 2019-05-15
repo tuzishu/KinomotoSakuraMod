@@ -21,7 +21,8 @@ public class DescriptionScalePatch
 
     public static SpireReturn<Object> Prefix(AbstractCard card, SpriteBatch sb)
     {
-        if (card instanceof AbstractMagicCard && card.type == AbstractCard.CardType.ATTACK)
+        if (false)
+        // if (card instanceof AbstractMagicCard && card.type == AbstractCard.CardType.ATTACK)
         {
             if (card.isSeen && !card.isLocked)
             {

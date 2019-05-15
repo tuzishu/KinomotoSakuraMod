@@ -22,7 +22,8 @@ public class DescriptionLinePatch
 
     public static SpireReturn<Object> Prefix(AbstractCard card)
     {
-        if (card instanceof AbstractMagicCard && card.type == AbstractCard.CardType.ATTACK)
+        if (false)
+        // if (card instanceof AbstractMagicCard && card.type == AbstractCard.CardType.ATTACK)
         {
             // Invoker.setField(the_AbstractCard, "CN_DESC_BOX_WIDTH",  the_AbstractCard.IMG_WIDTH*1.05);
             {

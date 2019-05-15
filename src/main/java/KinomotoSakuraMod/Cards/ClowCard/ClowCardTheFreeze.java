@@ -21,12 +21,12 @@ public class ClowCardTheFreeze extends AbstractMagicCard
     private static final String NAME;
     private static final String DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/default_attack_card.png";
-    private static final int COST = 0;
+    private static final int COST = 1;
     private static final CardType CARD_TYPE = CardType.ATTACK;
     private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final int BASE_DAMATE = 5;
+    private static final int BASE_DAMATE = 3;
     private static final int UPGRADE_DAMATE = 3;
     private static final int ACTIVE_NUMBER = 12;
     private static final int BASE_MAGIC_NUMBER = 6;

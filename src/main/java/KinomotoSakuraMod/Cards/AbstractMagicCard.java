@@ -11,6 +11,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
+import java.lang.reflect.Field;
+
 public abstract class AbstractMagicCard extends CustomCard
 {
     private boolean hasReleased = false;
