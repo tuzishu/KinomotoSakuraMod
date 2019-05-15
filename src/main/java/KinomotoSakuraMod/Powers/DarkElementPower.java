@@ -53,7 +53,7 @@ public class DarkElementPower extends CustomPower
         if (power.amount >= needAmount)
         {
             AbstractPlayer player = AbstractDungeon.player;
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new WeakPower(target, WEAKENED_AMOUNT, false), WEAKENED_AMOUNT));
+            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(player, player, new WeakPower(target, WEAKENED_AMOUNT, false), WEAKENED_AMOUNT));
             if (isExhaust)
             {
                 if (target.hasPower(LockPower.POWER_ID))
@@ -65,11 +65,11 @@ public class DarkElementPower extends CustomPower
                 {
                     if (power.amount == needAmount)
                     {
-                        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(target, player, power));
+                        AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(target, player, power));
                     }
                     else
                     {
-                        AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(target, player, power, needAmount));
+                        AbstractDungeon.actionManager.addToTop(new ReducePowerAction(target, player, power, needAmount));
                     }
                 }
             }

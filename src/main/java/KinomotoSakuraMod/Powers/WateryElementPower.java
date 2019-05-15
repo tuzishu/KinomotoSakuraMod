@@ -52,7 +52,7 @@ public class WateryElementPower extends CustomPower
         if (power.amount >= needAmount)
         {
             AbstractPlayer player = AbstractDungeon.player;
-            AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(ENERGY_NUMBER));
+            AbstractDungeon.actionManager.addToTop(new GainEnergyAction(ENERGY_NUMBER));
             if (isExhaust)
             {
                 if (target.hasPower(LockPower.POWER_ID))
@@ -64,11 +64,11 @@ public class WateryElementPower extends CustomPower
                 {
                     if (power.amount == needAmount)
                     {
-                        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(target, player, power));
+                        AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(target, player, power));
                     }
                     else
                     {
-                        AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(target, player, power, needAmount));
+                        AbstractDungeon.actionManager.addToTop(new ReducePowerAction(target, player, power, needAmount));
                     }
                 }
             }

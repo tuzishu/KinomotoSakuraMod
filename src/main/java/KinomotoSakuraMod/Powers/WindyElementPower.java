@@ -52,7 +52,7 @@ public class WindyElementPower extends CustomPower
         if (power.amount >= needAmount)
         {
             AbstractPlayer player = AbstractDungeon.player;
-            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, DRAW_AMOUNT));
+            AbstractDungeon.actionManager.addToTop(new DrawCardAction(player, DRAW_AMOUNT));
             if (isExhaust)
             {
                 if (target.hasPower(LockPower.POWER_ID))
@@ -64,11 +64,11 @@ public class WindyElementPower extends CustomPower
                 {
                     if (power.amount == needAmount)
                     {
-                        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(target, player, power));
+                        AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(target, player, power));
                     }
                     else
                     {
-                        AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(target, player, power, needAmount));
+                        AbstractDungeon.actionManager.addToTop(new ReducePowerAction(target, player, power, needAmount));
                     }
                 }
             }

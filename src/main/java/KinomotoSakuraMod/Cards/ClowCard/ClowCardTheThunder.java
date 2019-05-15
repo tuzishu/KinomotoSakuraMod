@@ -6,10 +6,9 @@ import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
 import KinomotoSakuraMod.Powers.FireyElementPower;
 import KinomotoSakuraMod.Powers.LightElementPower;
-import com.badlogic.gdx.math.MathUtils;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
+import KinomotoSakuraMod.Utility.ModUtility;
 import com.megacrit.cardcrawl.actions.defect.ThunderStrikeAction;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -71,14 +70,25 @@ public class ClowCardTheThunder extends AbstractMagicCard
     {
         for (int i = 0; i < ATTACK_COUNT; i++)
         {
+ModUtility.Logger.info("i: "+i);
             AbstractMonster mon = AbstractDungeon.getRandomMonster();
             AbstractDungeon.actionManager.addToBottom(new ThunderStrikeAction(mon, new DamageInfo(player, this.correctDamage(), DamageInfo.DamageType.HP_LOSS), 1));
             if (mon.hasPower(LightElementPower.POWER_ID))
             {
                 int amount = mon.getPower(LightElementPower.POWER_ID).amount;
-                amount  *= this.correctMagicNumber();
+                amount *= this.correctMagicNumber();
                 LightElementPower.TryActiveEarthyElement(mon, amount, true);
-                AbstractDungeon.actionManager.addToBottom(new ThunderStrikeAction(mon, new DamageInfo(player, this.correctDamage(), DamageInfo.DamageType.HP_LOSS), amount));
+                for (int j = 0; j < amount; j++)
+                {
+ModUtility.Logger.info("j: "+j);
+                    if (mon.isDeadOrEscaped())
+                    {
+ModUtility.Logger.info("mon.isDeadOrEscaped: "+true);
+                        break;
+                    }
+                    AbstractDungeon.actionManager.addToBottom(new ThunderStrikeAction(mon, new DamageInfo(player, this.correctDamage(), DamageInfo.DamageType.HP_LOSS), 1));
+                }
+ModUtility.Logger.info("LightElementPower.amount: "+mon.getPower(LightElementPower.POWER_ID).amount);
             }
             AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(mon, player, new FireyElementPower(mon, this.correctMagicNumber()), this.correctMagicNumber(), true));
         }

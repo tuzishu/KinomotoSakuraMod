@@ -54,7 +54,7 @@ public class FireyElementPower extends CustomPower
         if (power.amount >= needAmount)
         {
             AbstractPlayer player = AbstractDungeon.player;
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(player, DAMAGE_AMOUNT, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
+            AbstractDungeon.actionManager.addToTop(new DamageAction(target, new DamageInfo(player, DAMAGE_AMOUNT, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
             if (isExhaust)
             {
                 if (target.hasPower(LockPower.POWER_ID))
@@ -66,11 +66,11 @@ public class FireyElementPower extends CustomPower
                 {
                     if (power.amount == needAmount)
                     {
-                        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(target, player, power));
+                        AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(target, player, power));
                     }
                     else
                     {
-                        AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(target, player, power, needAmount));
+                        AbstractDungeon.actionManager.addToTop(new ReducePowerAction(target, player, power, needAmount));
                     }
                 }
             }
