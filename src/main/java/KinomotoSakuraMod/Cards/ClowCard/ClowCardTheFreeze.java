@@ -42,7 +42,7 @@ public class ClowCardTheFreeze extends AbstractMagicCard
 
     public ClowCardTheFreeze()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.PHYSICS_CARD);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.ELEMENT_CARD);
         this.baseDamage = BASE_DAMATE;
         setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }

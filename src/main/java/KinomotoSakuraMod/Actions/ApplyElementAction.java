@@ -15,17 +15,6 @@ public class ApplyElementAction extends AbstractGameAction
     private AbstractPower power;
     private boolean isApplyAddition;
 
-
-    public ApplyElementAction(AbstractCreature target, AbstractCreature source, AbstractPower powerToApply)
-    {
-        this(target, source, powerToApply, 1, false);
-    }
-
-    public ApplyElementAction(AbstractCreature target, AbstractCreature source, AbstractPower powerToApply, int stackAmount)
-    {
-        this(target, source, powerToApply, stackAmount, false);
-    }
-
     public ApplyElementAction(AbstractCreature target, AbstractCreature source, AbstractPower powerToApply, int stackAmount, boolean isApplyAddition)
     {
         this.actionType = ActionType.DAMAGE;

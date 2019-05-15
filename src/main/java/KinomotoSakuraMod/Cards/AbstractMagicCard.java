@@ -5,18 +5,11 @@ import KinomotoSakuraMod.Powers.ElementMagickPower;
 import KinomotoSakuraMod.Powers.EnhancementMagickPower;
 import KinomotoSakuraMod.Utility.ModUtility;
 import basemod.abstracts.CustomCard;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-
-import static com.megacrit.cardcrawl.helpers.ImageMaster.loadImage;
 
 public abstract class AbstractMagicCard extends CustomCard
 {
@@ -73,11 +66,7 @@ public abstract class AbstractMagicCard extends CustomCard
             AbstractPower power = AbstractDungeon.player.getPower(EnhancementMagickPower.POWER_ID);
             int count = power != null ? power.amount : 0;
             float rate = EnhancementMagickPower.CORRECTION_RATE;
-            ModUtility.Logger.info("value: "+ value);
-            ModUtility.Logger.info("(1F + count * rate): "+ (1F + count * rate));
-            ModUtility.Logger.info("(1F + (hasReleased ? releaseRate : 0F): "+ (1F + (hasReleased ? releaseRate : 0F)));
             value = (int) (value * (1F + count * rate) * (1F + (hasReleased ? releaseRate : 0F)));
-            ModUtility.Logger.info("value: "+ value);
         }
         if (this.tags.contains(CustomTag.ELEMENT_CARD))
         {

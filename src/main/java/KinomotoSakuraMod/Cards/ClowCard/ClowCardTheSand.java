@@ -72,6 +72,6 @@ public class ClowCardTheSand extends AbstractMagicCard
         {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new VulnerablePower(monster, this.correctMagicNumber(), false), this.correctMagicNumber()));
         }
-        AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(monster, player, new EarthyElementPower(monster, this.correctMagicNumber()), this.correctMagicNumber()));
+        AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(monster, player, new EarthyElementPower(monster, this.correctMagicNumber()), this.correctMagicNumber(), true));
     }
 }

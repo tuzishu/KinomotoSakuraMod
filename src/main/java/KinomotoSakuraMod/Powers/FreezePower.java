@@ -70,7 +70,7 @@ public class FreezePower extends CustomPower
     {
         if (this.owner instanceof AbstractMonster)
         {
-            AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(this.owner, AbstractDungeon.player, new WateryElementPower(this.owner, this.amount), this.amount));
+            AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(this.owner, AbstractDungeon.player, new WateryElementPower(this.owner, this.amount), this.amount, true));
         }
     }
 }

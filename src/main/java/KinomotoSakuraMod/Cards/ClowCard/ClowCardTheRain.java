@@ -41,7 +41,7 @@ public class ClowCardTheRain extends AbstractMagicCard
 
     public ClowCardTheRain()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.PHYSICS_CARD);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.ELEMENT_CARD);
         setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
@@ -71,7 +71,7 @@ public class ClowCardTheRain extends AbstractMagicCard
         }
         for (int i = 0; i < BUFF_COUNT; i++)
         {
-            AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(monster, player, new WateryElementPower(monster, this.correctMagicNumber()), correctMagicNumber()));
+            AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(monster, player, new WateryElementPower(monster, this.correctMagicNumber()), correctMagicNumber(), true));
         }
     }
 }
