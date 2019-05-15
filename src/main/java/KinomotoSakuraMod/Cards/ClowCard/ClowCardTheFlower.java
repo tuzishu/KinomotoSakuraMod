@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class ClowCardTheFlower extends AbstractMagicCard
 {
@@ -73,7 +74,9 @@ public class ClowCardTheFlower extends AbstractMagicCard
         {
             if (mon.hasPower(WateryElementPower.POWER_ID))
             {
-                amount += mon.getPower(WateryElementPower.POWER_ID).amount;
+                AbstractPower power = mon.getPower(WateryElementPower.POWER_ID);
+                power.flash();
+                amount += power.amount;
             }
         }
         AbstractDungeon.actionManager.addToBottom(new HealAction(player, player, MathUtils.ceil(amount * HEAL_RATE)));

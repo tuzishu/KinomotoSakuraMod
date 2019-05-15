@@ -149,6 +149,10 @@
     "NAME": "歌",
     "DESCRIPTION": "选择最多X+1张手牌 消耗 ，每 消耗 1张牌对所有敌人造成 !D! 点伤害，每 消耗 1张 声牌 额外造成2次伤害。"
   },
+  "ClowCardTheStorm": {
+    "NAME": "岚",
+    "DESCRIPTION": "【 元素牌 】消耗目标身上所有 元素 ，造成层数之和的伤害。给与目标 !M! 层 风元素 。"
+  },
   "ClowCardTheSweet": {
     "NAME": "甘",
     "DESCRIPTION": " 消耗 。回复 !M! 生命。"
@@ -156,6 +160,10 @@
   "ClowCardTheSword": {
     "NAME": "剑",
     "DESCRIPTION": "【 物理牌 】造成 !D! 点伤害。"
+  },
+  "ClowCardTheThunder": {
+    "NAME": "雷",
+    "DESCRIPTION": "【 元素牌 】对随机3个目标造成 !D! 点伤害。 目标身上存在 光元素 时，消耗所有 光元素 ，每消耗1层额外造成 !M! 次伤害。每次伤害给与目标 !M! 层 火元素 。"
   },
   "ClowCardTheTime": {
     "NAME": "时",

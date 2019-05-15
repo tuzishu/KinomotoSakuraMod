@@ -2,6 +2,8 @@ package KinomotoSakuraMod.Powers;
 
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheRain;
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheSnow;
+import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheStorm;
+import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheThunder;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -91,14 +93,14 @@ public class CloudPower extends CustomPower
         {
             return true;
         }
-        // if (card instanceof ClowCardTheStorm)
-        // {
-        //     return true;
-        // }
-        // if (card instanceof ClowCardTheThunder)
-        // {
-        //     return true;
-        // }
+        if (card instanceof ClowCardTheStorm)
+        {
+            return true;
+        }
+        if (card instanceof ClowCardTheThunder)
+        {
+            return true;
+        }
         // if (card instanceof SakuraCardTheRain)
         // {
         //     return true;
