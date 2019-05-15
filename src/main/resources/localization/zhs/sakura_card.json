@@ -57,6 +57,10 @@
     "NAME": "飞",
     "DESCRIPTION": "【 物理牌 】获得 !M! 层 飞行 ，并获得 !B! 点 格挡 。"
   },
+  "ClowCardTheFreeze": {
+    "NAME": "冻",
+    "DESCRIPTION": "【 元素牌 】造成 !D! 点伤害，给与2层 冰冻 。目标携带 水元素 大于12层时，消耗12层 水元素 造成额外 !M! 点伤害。"
+  },
   "ClowCardTheIllusion": {
     "NAME": "幻",
     "DESCRIPTION": "造成 !D! 点伤害。消耗区每有2张牌，额外造成1次伤害。"
