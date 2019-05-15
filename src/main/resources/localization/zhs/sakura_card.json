@@ -101,6 +101,11 @@
     "NAME": "力",
     "DESCRIPTION": "【 物理牌 】造成 !D! 点伤害，力量 发挥额外 !M! 倍效果。"
   },
+  "ClowCardTheRain": {
+    "NAME": "雨",
+    "DESCRIPTION": "【 元素牌 】给与 !M! 层 水元素 5次。",
+    "UPGRADE_DESCRIPTION": "【 元素牌 】给与 !M! 层 水元素 5次。目标携带 火元素 大于12层时，降低2点力量。"
+  },
   "ClowCardTheReturn": {
     "NAME": "回",
     "DESCRIPTION": " 消耗 。选择最多 !M! 张消耗区的牌返回抽排堆，并抽1张牌。"
