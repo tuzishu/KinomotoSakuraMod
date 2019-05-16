@@ -6,9 +6,7 @@ import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
 import KinomotoSakuraMod.Powers.FireyElementPower;
 import KinomotoSakuraMod.Powers.LightElementPower;
-import KinomotoSakuraMod.Utility.ModUtility;
 import com.megacrit.cardcrawl.actions.defect.ThunderStrikeAction;
-import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -79,7 +77,7 @@ public class ClowCardTheThunder extends AbstractMagicCard
             {
                 int amount = mon.getPower(LightElementPower.POWER_ID).amount;
                 amount *= this.correctMagicNumber();
-                LightElementPower.TryActiveEarthyElement(mon, amount, true);
+                LightElementPower.TryActiveLightElement(mon, amount, true);
                 for (int j = 0; j < amount; j++)
                 {
                     if (mon.isDeadOrEscaped())

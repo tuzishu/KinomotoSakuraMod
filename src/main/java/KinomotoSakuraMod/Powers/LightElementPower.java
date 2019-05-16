@@ -39,7 +39,7 @@ public class LightElementPower extends CustomPower
         this.description = POWER_DESCRIPTIONS[0] + VULNERABLE_AMOUNT + POWER_DESCRIPTIONS[1];
     }
 
-    public static boolean TryActiveEarthyElement(AbstractMonster target, int needAmount, boolean isExhaust)
+    public static boolean TryActiveLightElement(AbstractMonster target, int needAmount, boolean isExhaust)
     {
         AbstractPower power;
         if (target.hasPower(LightElementPower.POWER_ID))

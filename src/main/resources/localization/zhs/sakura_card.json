@@ -2,7 +2,7 @@
   "ClowCardTheArrow": {
     "NAME": "矢",
     "DESCRIPTION": "【 物理牌 】 消耗 任意张牌，对1名随机敌人造成 消耗 牌数+X次 !D! 点伤害。",
-    "UPGRADE_DESCRIPTION": "【 物理牌 】 消耗 任意张牌，对1名敌人造成 消耗 牌数+X次 !D! 点伤害。"
+    "UPGRADE_DESCRIPTION": "【 物理牌 】 消耗 任意张牌，对1名敌人造成消耗牌数+X次 !D! 点伤害。"
   },
   "ClowCardTheBig": {
     "NAME": "大",
@@ -10,8 +10,8 @@
   },
   "ClowCardTheBubble": {
     "NAME": "泡",
-    "DESCRIPTION": "【 元素牌 】 消耗 。随机清除目标的1个buff， 水元素 大于18层时，清除所有buff。",
-    "UPGRADE_DESCRIPTION": "【 元素牌 】随机清除目标1的个buff， 水元素 大于18层时，清除所有buff。"
+    "DESCRIPTION": "【 元素牌 】 消耗 。随机清除目标的1个增益， 水元素 大于18层时，清除所有增益。",
+    "UPGRADE_DESCRIPTION": "【 元素牌 】随机清除目标1的个增益， 水元素 大于18层时，清除所有增益。"
   },
   "ClowCardTheChange": {
     "NAME": "替",
@@ -37,7 +37,7 @@
   },
   "ClowCardTheEarthy": {
     "NAME": "地",
-    "DESCRIPTION": "【 元素牌 】造成未被格挡的伤害时，给与 !M! 层 地元素 。从其他卡牌给与 地元素 时，额外给与2层。"
+    "DESCRIPTION": "【 元素牌 】造成未被 格挡 的伤害时，给与 !M! 层 地元素 。从其他卡牌给与 地元素 时，额外给与2层。"
   },
   "ClowCardTheErase": {
     "NAME": "消",
@@ -50,17 +50,17 @@
   },
   "ClowCardTheFirey": {
     "NAME": "火",
-    "DESCRIPTION": "【 元素牌 】造成未被格挡的伤害时，给与 !M! 层 火元素 。从其他卡牌给与 火元素 时，额外给与2层。"
+    "DESCRIPTION": "【 元素牌 】造成未被 格挡 的伤害时，给与 !M! 层 火元素 。从其他卡牌给与 火元素 时，额外给与2层。"
   },
   "ClowCardTheFloat": {
     "NAME": "浮",
-    "DESCRIPTION": "【 物理牌 】受到的未被格挡的伤害减少 !M! 点。",
-    "UPGRADE_DESCRIPTION": "【 物理牌 】受到的未被格挡的伤害减少 !M! 点。每受到1次未被格挡的伤害，获得3点格挡。"
+    "DESCRIPTION": "【 物理牌 】受到的未被 格挡 的伤害减少 !M! 点。",
+    "UPGRADE_DESCRIPTION": "【 物理牌 】受到的未被 格挡 的伤害减少 !M! 点。每受到1次未被 格挡 的伤害，获得3点 格挡 。"
   },
   "ClowCardTheFlower": {
     "NAME": "花",
     "DESCRIPTION": "【 元素牌 】 消耗 。回复场上所有 水元素 层数和1/4的生命。给与目标 !M! 层 地元素 。",
-    "UPGRADE_DESCRIPTION": "【 元素牌 】 消耗 。回复场上所有 水元素 层数和1/4的生命。获得场上所有 地元素 层数和1/2的格挡。给与目标 !M! 层 地元素 。"
+    "UPGRADE_DESCRIPTION": "【 元素牌 】 消耗 。回复场上所有 水元素 层数和1/4的生命。获得场上所有 地元素 层数和1/2的 格挡 。给与目标 !M! 层 地元素 。"
   },
   "ClowCardTheFly": {
     "NAME": "飞",
@@ -85,7 +85,7 @@
   },
   "ClowCardTheLibra": {
     "NAME": "秤",
-    "DESCRIPTION": "获得 !B! 点格挡。当前能量大于抽排堆和弃牌堆的牌数差时，获得 !M! 点能量。"
+    "DESCRIPTION": "获得 !B! 点 格挡 。当前能量大于抽排堆和弃牌堆的牌数差时，获得 [B]  [B] 。"
   },
   "ClowCardTheLight": {
     "NAME": "光",
@@ -105,12 +105,12 @@
   },
   "ClowCardTheMaze": {
     "NAME": "迷",
-    "DESCRIPTION": "【 元素牌 】获得 !B! 点格挡。额外获得场上所有 地元素 层数和的格挡。"
+    "DESCRIPTION": "【 元素牌 】获得 !B! 点 格挡 。额外获得场上所有 地元素 层数和的 格挡 。"
   },
   "ClowCardTheMist": {
     "NAME": "雾",
-    "DESCRIPTION": "【 元素牌 】去除所有敌人的格挡。携带 暗元素 大于10层时，消耗10层，移除其身上所有 多层护甲 、 金属化 和 荆棘 。给与所有敌人1层 暗元素 。",
-    "UPGRADE_DESCRIPTION": "【 元素牌 】去除所有敌人的格挡，并在3回合内无法获得格挡。携带 暗元素 大于10层时，消耗10层，移除其身上所有 多层护甲 、 金属化 和 荆棘 。给与所有敌人1层 暗元素 。"
+    "DESCRIPTION": "【 元素牌 】去除所有敌人的 格挡 。携带 暗元素 大于10层时，消耗10层，移除其身上所有 多层护甲 、 金属化 和 荆棘 。给与所有敌人1层 暗元素 。",
+    "UPGRADE_DESCRIPTION": "【 元素牌 】去除所有敌人的 格挡 ，并在3回合内无法获得 格挡 。携带 暗元素 大于10层时，消耗10层，移除其身上所有 多层护甲 、 金属化 和 荆棘 。给与所有敌人1层 暗元素 。"
   },
   "ClowCardTheMirror": {
     "NAME": "镜",
@@ -118,7 +118,7 @@
   },
   "ClowCardTheMove": {
     "NAME": "移",
-    "DESCRIPTION": "【 物理牌 】获得 !B! 点格挡。从弃牌堆选择 !M! 张牌返回抽排堆。"
+    "DESCRIPTION": "【 物理牌 】获得 !B! 点 格挡 。从弃牌堆选择 !M! 张牌返回抽排堆。"
   },
   "ClowCardThePower": {
     "NAME": "力",
@@ -139,8 +139,8 @@
   },
   "ClowCardTheShadow": {
     "NAME": "影",
-    "DESCRIPTION": "【 物理牌 】获得 !B! 点 格挡 。消耗场上所有 暗元素 ，获得层数和1/2倍的多层护甲。",
-    "UPGRADE_DESCRIPTION": "【 物理牌 】获得 !B! 点 格挡 。消耗场上所有 暗元素 ，获得层数和的多层护甲。"
+    "DESCRIPTION": "【 物理牌 】获得 !B! 点 格挡 。 消耗 场上所有 暗元素 ，获得层数和1/2倍的多层护甲。",
+    "UPGRADE_DESCRIPTION": "【 物理牌 】获得 !B! 点 格挡 。 消耗 场上所有 暗元素 ，获得层数和的多层护甲。"
   },
   "ClowCardTheShield": {
     "NAME": "盾",
@@ -157,7 +157,7 @@
   },
   "ClowCardTheSleep": {
     "NAME": "睡",
-    "DESCRIPTION": " 消耗 。使非boss的目标沉睡 !M! 回合，受到伤害时会醒来。自然醒来时将恢复所有生命值，并获得2层虚弱。"
+    "DESCRIPTION": " 消耗 。使非boss目标沉睡 !M! 回合，受到伤害时会醒来。自然醒来时将恢复所有生命值，并获得2层 虚弱 。"
   },
   "ClowCardTheSnow": {
     "NAME": "雪",
@@ -180,9 +180,13 @@
     "NAME": "剑",
     "DESCRIPTION": "【 物理牌 】造成 !D! 点伤害。"
   },
+  "ClowCardTheThrough": {
+    "NAME": "拔",
+    "DESCRIPTION": "消耗目标所有 六元素 ，对其造成层数和 !M! 倍的伤害。"
+  },
   "ClowCardTheThunder": {
     "NAME": "雷",
-    "DESCRIPTION": "【 元素牌 】对随机3个目标造成 !D! 点伤害。 目标身上存在 光元素 时，消耗所有 光元素 ，每消耗1层额外造成 !M! 次伤害。每次伤害给与目标 !M! 层 火元素 。"
+    "DESCRIPTION": "【 元素牌 】对随机3个目标造成 !D! 点伤害。消耗目标身上所有 光元素 ，每消耗1层额外造成 !M! 次伤害。每次伤害给与 !M! 层 火元素 。"
   },
   "ClowCardTheTime": {
     "NAME": "时",
@@ -195,11 +199,11 @@
   },
   "ClowCardTheVoice": {
     "NAME": "声",
-    "DESCRIPTION": "无法被打出。抽到此牌时额外抽1张牌。被消耗时获得 !M! 能量。"
+    "DESCRIPTION": "无法被打出。抽到此牌时额外抽1张牌。被 消耗 时获得 !M! 能量。"
   },
   "ClowCardTheWatery": {
     "NAME": "水",
-    "DESCRIPTION": "【 元素牌 】造成未被格挡的伤害时，给与 !M! 层 水元素 。从其他卡牌给与 水元素 时，额外给与2层。"
+    "DESCRIPTION": "【 元素牌 】造成未被 格挡 的伤害时，给与 !M! 层 水元素 。从其他卡牌给与 水元素 时，额外给与2层。"
   },
   "ClowCardTheWave": {
     "NAME": "波",
@@ -207,7 +211,7 @@
   },
   "ClowCardTheWindy": {
     "NAME": "风",
-    "DESCRIPTION": "【 元素牌 】造成未被格挡的伤害时，给与 !M! 层 风元素 。从其他卡牌给与 风元素 时，额外给与2层。"
+    "DESCRIPTION": "【 元素牌 】造成未被 格挡 的伤害时，给与 !M! 层 风元素 。从其他卡牌给与 风元素 时，额外给与2层。"
   },
   "ClowCardTheWood": {
     "NAME": "树",
@@ -216,7 +220,7 @@
 
   "SpellCardRelease": {
     "NAME": "解",
-    "DESCRIPTION": "选择手牌中最多1张库洛牌， 封印解除 。并使所有敌人流失 !D! 点生命。",
+    "DESCRIPTION": "选择手牌中最多1张 库洛牌 ， 封印解除 。并使所有敌人流失 !D! 点生命。",
     "EXTENDED_DESCRIPTION": [
       "【 物理牌 】",
       "【 元素牌 】",
@@ -231,6 +235,6 @@
   },
   "SpellCardTurn": {
     "NAME": "转",
-    "DESCRIPTION": " 保留 。选择1张手牌消耗。如果消耗的是 库洛牌 ，且卡组中没有对应的 小樱牌 时，则将其转化为对应的小樱牌。"
+    "DESCRIPTION": " 保留 。选择1张手牌 消耗 。如果 消耗 的是 库洛牌 ，且卡组中没有对应的 小樱牌 时，则将其转化为对应的 小樱牌 。"
   }
 }
