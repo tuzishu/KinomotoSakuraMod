@@ -39,7 +39,7 @@ public class DarkElementPower extends CustomPower
         this.description = POWER_DESCRIPTIONS[0] + WEAKENED_AMOUNT + POWER_DESCRIPTIONS[1];
     }
 
-    public static boolean TryActiveEarthyElement(AbstractMonster target, int needAmount, boolean isExhaust)
+    public static boolean TryActiveDarkElement(AbstractMonster target, int needAmount, boolean isExhaust)
     {
         AbstractPower power;
         if (target.hasPower(DarkElementPower.POWER_ID))

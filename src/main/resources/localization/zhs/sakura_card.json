@@ -128,6 +128,11 @@
     "NAME": "沙",
     "DESCRIPTION": "【 元素牌 】造成 !D! 点伤害。目标携带 地元素 大于15层时，消耗15层 地元素 给与 !M! 层 易伤 。给与3层 地元素 。"
   },
+  "ClowCardTheShadow": {
+    "NAME": "影",
+    "DESCRIPTION": "【 物理牌 】获得 !B! 点 格挡 。消耗场上所有 暗元素 ，获得层数和1/2倍的多层护甲。",
+    "UPGRADE_DESCRIPTION": "【 物理牌 】获得 !B! 点 格挡 。消耗场上所有 暗元素 ，获得层数和的多层护甲。"
+  },
   "ClowCardTheShield": {
     "NAME": "盾",
     "DESCRIPTION": "【 物理牌 】获得 !B! 点 格挡 。"
