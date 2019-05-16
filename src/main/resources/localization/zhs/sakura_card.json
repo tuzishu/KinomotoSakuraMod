@@ -85,7 +85,7 @@
   },
   "ClowCardTheLibra": {
     "NAME": "秤",
-    "DESCRIPTION": "获得 !B! 点 格挡 。当前能量大于抽排堆和弃牌堆的牌数差时，获得 [B]  [B] 。"
+    "DESCRIPTION": "获得 !B! 点 格挡 。当前能量大于抽排堆和弃牌堆的牌数差时，获得 !M! 点能量。"
   },
   "ClowCardTheLight": {
     "NAME": "光",
@@ -199,7 +199,7 @@
   },
   "ClowCardTheVoice": {
     "NAME": "声",
-    "DESCRIPTION": "无法被打出。抽到此牌时额外抽1张牌。被 消耗 时获得 !M! 能量。"
+    "DESCRIPTION": "无法被打出。抽到此牌时额外抽1张牌。被 消耗 时获得 !M! 点能量。"
   },
   "ClowCardTheWatery": {
     "NAME": "水",

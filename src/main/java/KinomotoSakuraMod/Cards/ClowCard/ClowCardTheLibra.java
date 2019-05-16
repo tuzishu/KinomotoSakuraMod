@@ -16,7 +16,6 @@ public class ClowCardTheLibra extends AbstractMagicCard
     public static final String ID = "ClowCardTheLibra";
     private static final String NAME;
     private static final String DESCRIPTION;
-    private static final String UPGRADE_DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/default_skill_card.png";
     private static final int COST = 0;
     private static final CardType CARD_TYPE = CardType.SKILL;
@@ -33,7 +32,6 @@ public class ClowCardTheLibra extends AbstractMagicCard
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
         NAME = cardStrings.NAME;
         DESCRIPTION = cardStrings.DESCRIPTION;
-        UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     }
 
     public ClowCardTheLibra()
@@ -51,8 +49,6 @@ public class ClowCardTheLibra extends AbstractMagicCard
             this.upgradeName();
             this.upgradeBlock(UPGRADE_BLOCK);
             this.upgradeMagicNumber(UPGRADED_MAGIC_NUMBER);
-            this.rawDescription = UPGRADE_DESCRIPTION;
-            this.initializeDescription();
         }
     }
 
