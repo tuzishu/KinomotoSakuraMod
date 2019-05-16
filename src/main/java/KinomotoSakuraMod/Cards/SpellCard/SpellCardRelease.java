@@ -23,9 +23,8 @@ public class SpellCardRelease extends AbstractSpellCard
     private static final CardRarity CARD_RARITY = CardRarity.BASIC;
     private static final CardTarget CARD_TARGET = CardTarget.NONE;
     private static final int BASE_DAMAGE = 3;
-    private static final int UPGRADE_DAMAGE = 2;
     private static final float BASE_RELEASE_UPGRADE_RATE = 0.25F;
-    private static final float UPGRADE_RELEASE_UPGRADE_RATE = 0.5F;
+    // private static final float UPGRADE_RELEASE_UPGRADE_RATE = 0.5F;
 
     static
     {
@@ -38,18 +37,18 @@ public class SpellCardRelease extends AbstractSpellCard
     public SpellCardRelease()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
-        this.tags.add(BaseModCardTags.BASIC_STRIKE);
         this.baseDamage = BASE_DAMAGE;
+    }
+
+    public boolean canUpgrade()
+    {
+        return false;
     }
 
     @Override
     public void upgrade()
     {
-        if (!this.upgraded)
-        {
-            upgradeName();
-            upgradeDamage(UPGRADE_DAMAGE);
-        }
+
     }
 
     @Override
@@ -61,6 +60,7 @@ public class SpellCardRelease extends AbstractSpellCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ReleaseAction(this.damage, upgraded ? UPGRADE_RELEASE_UPGRADE_RATE : BASE_RELEASE_UPGRADE_RATE));
+        // 剑玉未添加
+        AbstractDungeon.actionManager.addToBottom(new ReleaseAction(this.damage, BASE_RELEASE_UPGRADE_RATE));
     }
 }

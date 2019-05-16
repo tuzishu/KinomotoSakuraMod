@@ -31,13 +31,15 @@ public class SpellCardTurn extends AbstractSpellCard
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
     }
 
+    public boolean canUpgrade()
+    {
+        return false;
+    }
+
     @Override
     public void upgrade()
     {
-        if (this.upgraded)
-        {
-            upgradeName();
-        }
+        
     }
 
     @Override
