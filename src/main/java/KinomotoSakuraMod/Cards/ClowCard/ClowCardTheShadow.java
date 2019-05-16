@@ -78,6 +78,9 @@ public class ClowCardTheShadow extends AbstractMagicCard
             }
         }
         amount *= this.activeRate;
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new PlatedArmorPower(player, amount), amount));
+        if (amount > 0)
+        {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new PlatedArmorPower(player, amount), amount));
+        }
     }
 }

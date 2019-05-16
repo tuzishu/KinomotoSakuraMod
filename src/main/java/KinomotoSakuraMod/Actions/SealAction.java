@@ -39,14 +39,9 @@ public class SealAction extends AbstractGameAction
             AbstractDungeon.effectList.add(new FlashAtkImgEffect(this.monster.hb.cX, this.monster.hb.cY, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
             this.monster.damage(new DamageInfo(this.player, this.damage));
 
-            if (!this.monster.hasPower(MinionPower.POWER_ID) && this.monster.isDying || this.monster.currentHealth <= 0)
+            if (!this.monster.hasPower(MinionPower.POWER_ID) && this.monster.isDying || this.monster.currentHealth <= 0 || AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead())
             {
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new SealPower(), 1));
-            }
-
-            if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead())
-            {
-                AbstractDungeon.actionManager.clearPostCombatActions();
                 AbstractDungeon.getCurrRoom().addCardToRewards();
             }
         }

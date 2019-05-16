@@ -1,7 +1,6 @@
 package KinomotoSakuraMod.Powers;
 
 import KinomotoSakuraMod.Patches.CustomCardColor;
-import KinomotoSakuraMod.Utility.ModUtility;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
@@ -21,7 +20,7 @@ public class TwinPower extends CustomPower
     private static final PowerType POWER_TYPE = PowerType.BUFF;
     private int cardsDoubledThisTurn;
     private boolean isFirstTurn;
-    private int firstTurnCardsOffset;
+    private int countOffset;
 
     static
     {
@@ -36,7 +35,7 @@ public class TwinPower extends CustomPower
         updateDescription();
         this.cardsDoubledThisTurn = 0;
         this.isFirstTurn = true;
-        this.firstTurnCardsOffset = AbstractDungeon.actionManager.cardsPlayedThisTurn.size();
+        this.countOffset = AbstractDungeon.actionManager.cardsPlayedThisTurn.size();
     }
 
     public void updateDescription()
@@ -54,6 +53,7 @@ public class TwinPower extends CustomPower
     public void atStartOfTurn()
     {
         this.cardsDoubledThisTurn = 0;
+        this.countOffset = 0;
     }
 
     public void atEndOfTurn(boolean isPlayer)
@@ -67,16 +67,17 @@ public class TwinPower extends CustomPower
         {
             return;
         }
-        if (card.color != CustomCardColor.CLOWCARD_COLOR && card.color != CustomCardColor.SAKURACARD_COLOR)
-        {
-            return;
-        }
         if (card.purgeOnUse)
         {
             return;
         }
         if (!CheckCard())
         {
+            return;
+        }
+        if (card.color != CustomCardColor.CLOWCARD_COLOR && card.color != CustomCardColor.SAKURACARD_COLOR)
+        {
+            this.countOffset += 1;
             return;
         }
 
@@ -108,7 +109,7 @@ public class TwinPower extends CustomPower
         int doubledCount;
         if (isFirstTurn)
         {
-            doubledCount = AbstractDungeon.actionManager.cardsPlayedThisTurn.size() - this.cardsDoubledThisTurn - firstTurnCardsOffset;
+            doubledCount = AbstractDungeon.actionManager.cardsPlayedThisTurn.size() - this.cardsDoubledThisTurn - this.countOffset;
         }
         else
         {

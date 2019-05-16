@@ -37,12 +37,4 @@ public class SealPower extends CustomPower
     {
         this.description = POWER_DESCRIPTIONS[0] + this.amount + POWER_DESCRIPTIONS[1];
     }
-
-    public void onVictory()
-    {
-        for (int i = 0; i < this.amount; i++)
-        {
-            AbstractDungeon.getCurrRoom().addCardToRewards();
-        }
-    }
 }
