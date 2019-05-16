@@ -39,6 +39,10 @@
     "NAME": "地",
     "DESCRIPTION": "【 元素牌 】造成未被格挡的伤害时，给与 !M! 层 地元素 。从其他卡牌给与 地元素 时，额外给与2层。"
   },
+  "ClowCardTheErase": {
+    "NAME": "消",
+    "DESCRIPTION": "【 元素牌 】造成 !D! 点伤害，如果目标为 爪牙 则立即消灭。给与 !M! 层 暗元素 。"
+  },
   "ClowCardTheFight": {
     "NAME": "斗",
     "DESCRIPTION": "【 物理牌 】你每造成1次大于12的伤害时，获得1层 力量 。",
