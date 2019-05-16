@@ -17,6 +17,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import java.util.ArrayList;
+
 public class ClowCardTheThunder extends AbstractMagicCard
 {
     public static final String ID = "ClowCardTheThunder";
@@ -68,29 +70,30 @@ public class ClowCardTheThunder extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
+        ArrayList<AbstractMonster> monList = new ArrayList<>();
         for (int i = 0; i < ATTACK_COUNT; i++)
         {
-ModUtility.Logger.info("i: "+i);
             AbstractMonster mon = AbstractDungeon.getRandomMonster();
             AbstractDungeon.actionManager.addToBottom(new ThunderStrikeAction(mon, new DamageInfo(player, this.correctDamage(), DamageInfo.DamageType.HP_LOSS), 1));
-            if (mon.hasPower(LightElementPower.POWER_ID))
+            if (!monList.contains(mon) && mon.hasPower(LightElementPower.POWER_ID))
             {
                 int amount = mon.getPower(LightElementPower.POWER_ID).amount;
                 amount *= this.correctMagicNumber();
                 LightElementPower.TryActiveEarthyElement(mon, amount, true);
                 for (int j = 0; j < amount; j++)
                 {
-ModUtility.Logger.info("j: "+j);
                     if (mon.isDeadOrEscaped())
                     {
-ModUtility.Logger.info("mon.isDeadOrEscaped: "+true);
                         break;
                     }
                     AbstractDungeon.actionManager.addToBottom(new ThunderStrikeAction(mon, new DamageInfo(player, this.correctDamage(), DamageInfo.DamageType.HP_LOSS), 1));
                 }
-ModUtility.Logger.info("LightElementPower.amount: "+mon.getPower(LightElementPower.POWER_ID).amount);
             }
             AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(mon, player, new FireyElementPower(mon, this.correctMagicNumber()), this.correctMagicNumber(), true));
+            if (!monList.contains(mon))
+            {
+                monList.add(mon);
+            }
         }
     }
 }

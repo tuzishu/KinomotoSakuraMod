@@ -28,7 +28,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 @SpireInitializer
-public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber, EditRelicsSubscriber, EditCardsSubscriber, EditStringsSubscriber, EditKeywordsSubscriber
+public class KinomotoSakuraMod implements ISubscriber, PostInitializeSubscriber, EditCharactersSubscriber, EditRelicsSubscriber, EditCardsSubscriber, EditStringsSubscriber, EditKeywordsSubscriber
 {
     // CardColor卡片颜色，卡片总览中的tab按钮颜色
     public static final Color colorClowCard = CardHelper.getColor(255f, 152f, 74f);
@@ -61,6 +61,20 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
         new KinomotoSakuraMod();
 
         ModUtility.Logger.info("完成初始化 KinomotoSakuraMod");
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public void receivePostInitialize()
+    {
+        // Texture badgeTexture = new Texture("mod图标路径");
+        // ModPanel settingsPanel = new ModPanel();
+        // settingsPanel.addLabel("config里的mod描叙", 400.0f, 700.0f, (me) -> {});
+        // BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
+        //
+        // Settings.isDailyRun = false;
+        // Settings.isTrial = false;
+        // Settings.isDemo = false;
     }
 
     @Override
@@ -171,6 +185,7 @@ public class KinomotoSakuraMod implements ISubscriber, EditCharactersSubscriber,
         cardList.add(new ClowCardTheCloud());
         cardList.add(new ClowCardTheStorm());
         cardList.add(new ClowCardTheThunder());
+        cardList.add(new ClowCardTheGlow());
 
         cardList.add(new TestCard());
         return cardList;
