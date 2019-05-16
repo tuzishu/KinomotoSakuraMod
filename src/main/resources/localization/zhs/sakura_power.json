@@ -112,6 +112,13 @@
       " 回合。受到伤害时醒来。 #r自然醒来 后恢复所有生命，并获得 #b2 层 虚弱 。"
     ]
   },
+  "TimePower": {
+    "NAME": "时停",
+    "DESCRIPTIONS": [
+      " #b",
+      " 回合内无法行动。"
+    ]
+  },
   "LockPower": {
     "NAME": "锁定",
     "DESCRIPTIONS": [

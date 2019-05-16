@@ -2,11 +2,12 @@ package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
+import KinomotoSakuraMod.Powers.TimePower;
 import KinomotoSakuraMod.Utility.ModUtility;
-import com.evacipated.cardcrawl.mod.stslib.powers.StunMonsterPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -72,15 +73,13 @@ public class ClowCardTheTime extends AbstractMagicCard
             if (mon.hasPower(ArtifactPower.POWER_ID))
             {
                 int artiAmount = mon.getPower(ArtifactPower.POWER_ID).amount;
-                for (int j = 0; j < artiAmount + 1; j++)
-                {
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new StunMonsterPower(mon, 1), 1));
-                }
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(mon, player, ArtifactPower.POWER_ID));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new TimePower(mon, 1), 1));
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new ArtifactPower(mon, artiAmount), artiAmount));
             }
             else
             {
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new StunMonsterPower(mon, 1), 1));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new TimePower(mon, 1), 1));
             }
         }
         AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, ModUtility.GetDamageList(this.correctDamage()), DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.POISON));
