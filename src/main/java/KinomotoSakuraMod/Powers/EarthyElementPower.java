@@ -52,7 +52,7 @@ public class EarthyElementPower extends CustomPower
         if (power.amount >= needAmount)
         {
             AbstractPlayer player = AbstractDungeon.player;
-            AbstractDungeon.actionManager.addToTop(new GainBlockAction(player, player, BLOCK_AMOUNT));
+            AbstractDungeon.actionManager.addToTop(new GainBlockAction(player, player, BLOCK_AMOUNT, true));
             if (isExhaust)
             {
                 if (target.hasPower(LockPower.POWER_ID))

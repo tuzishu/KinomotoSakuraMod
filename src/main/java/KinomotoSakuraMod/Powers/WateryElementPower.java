@@ -18,7 +18,7 @@ public class WateryElementPower extends CustomPower
     private static final String[] POWER_DESCRIPTIONS;
     private static final String POWER_IMG_PATH = "img/powers/default_power.png";
     private static final PowerType POWER_TYPE = PowerType.DEBUFF;
-    private static final int ENERGY_NUMBER = 1;
+    private static final int ENERGY_AMOUNT = 1;
 
     static
     {
@@ -35,7 +35,7 @@ public class WateryElementPower extends CustomPower
 
     public void updateDescription()
     {
-        this.description = POWER_DESCRIPTIONS[0] + ENERGY_NUMBER + POWER_DESCRIPTIONS[1];
+        this.description = POWER_DESCRIPTIONS[0] + ENERGY_AMOUNT + POWER_DESCRIPTIONS[1];
     }
 
     public static boolean TryActiveWateryElement(AbstractMonster target, int needAmount, boolean isExhaust)
@@ -52,7 +52,7 @@ public class WateryElementPower extends CustomPower
         if (power.amount >= needAmount)
         {
             AbstractPlayer player = AbstractDungeon.player;
-            AbstractDungeon.actionManager.addToTop(new GainEnergyAction(ENERGY_NUMBER));
+            AbstractDungeon.actionManager.addToTop(new GainEnergyAction(ENERGY_AMOUNT));
             if (isExhaust)
             {
                 if (target.hasPower(LockPower.POWER_ID))

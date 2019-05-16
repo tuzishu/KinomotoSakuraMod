@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class WindyElementPower extends CustomPower
 {
-    public static final String POWER_ID = "EarthyElementPower";
+    public static final String POWER_ID = "WindyElementPower";
     private static final String POWER_NAME;
     private static final String[] POWER_DESCRIPTIONS;
     private static final String POWER_IMG_PATH = "img/powers/default_power.png";

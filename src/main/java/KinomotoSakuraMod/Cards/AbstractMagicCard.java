@@ -3,15 +3,12 @@ package KinomotoSakuraMod.Cards;
 import KinomotoSakuraMod.Patches.CustomTag;
 import KinomotoSakuraMod.Powers.ElementMagickPower;
 import KinomotoSakuraMod.Powers.EnhancementMagickPower;
-import KinomotoSakuraMod.Utility.ModUtility;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-
-import java.lang.reflect.Field;
 
 public abstract class AbstractMagicCard extends CustomCard
 {
@@ -61,7 +58,7 @@ public abstract class AbstractMagicCard extends CustomCard
         return getCorrentValue(this.magicNumber);
     }
 
-    private int getCorrentValue(int value)
+    public int getCorrentValue(int value)
     {
         if (this.tags.contains(CustomTag.PHYSICS_CARD))
         {

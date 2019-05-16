@@ -8,6 +8,7 @@ import KinomotoSakuraMod.Powers.EarthyElementPower;
 import KinomotoSakuraMod.Powers.FireyElementPower;
 import KinomotoSakuraMod.Powers.WateryElementPower;
 import KinomotoSakuraMod.Powers.WindyElementPower;
+import KinomotoSakuraMod.Utility.ModUtility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -68,34 +69,33 @@ public class ClowCardTheStorm extends AbstractMagicCard
         if (monster.hasPower(EarthyElementPower.POWER_ID))
         {
             int amount = monster.getPower(EarthyElementPower.POWER_ID).amount;
-            EarthyElementPower.TryActiveEarthyElement(monster, amount, true);
             count += amount;
+            EarthyElementPower.TryActiveEarthyElement(monster, amount, true);
         }
         if (monster.hasPower(WateryElementPower.POWER_ID))
         {
             int amount = monster.getPower(WateryElementPower.POWER_ID).amount;
-            WateryElementPower.TryActiveWateryElement(monster, amount, true);
             count += amount;
+            WateryElementPower.TryActiveWateryElement(monster, amount, true);
         }
         if (monster.hasPower(FireyElementPower.POWER_ID))
         {
             int amount = monster.getPower(FireyElementPower.POWER_ID).amount;
-            FireyElementPower.TryActiveFireyElement(monster, amount, true);
             count += amount;
+            FireyElementPower.TryActiveFireyElement(monster, amount, true);
         }
         if (monster.hasPower(WindyElementPower.POWER_ID))
         {
             int amount = monster.getPower(WindyElementPower.POWER_ID).amount;
-            WindyElementPower.TryActiveWindyElement(monster, amount, true);
             count += amount;
+            WindyElementPower.TryActiveWindyElement(monster, amount, true);
         }
 
         if (count > 0)
         {
-            this.baseDamage = count;
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.correctDamage(), DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.POISON));
-            this.baseDamage = 0;
+            AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.getCorrentValue(count), DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.POISON));
         }
+
         AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(monster, player, new WindyElementPower(monster, this.correctMagicNumber()), correctMagicNumber(), true));
     }
 }

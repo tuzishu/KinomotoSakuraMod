@@ -54,7 +54,7 @@ public class FireyElementPower extends CustomPower
         if (power.amount >= needAmount)
         {
             AbstractPlayer player = AbstractDungeon.player;
-            AbstractDungeon.actionManager.addToTop(new DamageAction(target, new DamageInfo(player, DAMAGE_AMOUNT, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
+            AbstractDungeon.actionManager.addToTop(new DamageAction(target, new DamageInfo(player, DAMAGE_AMOUNT, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE, true));
             if (isExhaust)
             {
                 if (target.hasPower(LockPower.POWER_ID))
