@@ -28,6 +28,7 @@ public class ClowCardTheArrow extends AbstractMagicCard
     private static final CardTarget CARD_TARGET = CardTarget.NONE;
     private static final CardTarget UPGRADE_CARD_TARGET = CardTarget.ENEMY;
     private static final int BASE_DAMAGE = 5;
+    private static final int UPGRADE_DAMAGE = 1;
 
     static
     {
@@ -49,6 +50,7 @@ public class ClowCardTheArrow extends AbstractMagicCard
         if (!this.upgraded)
         {
             upgradeName();
+            this.upgradeDamage(UPGRADE_DAMAGE);
             this.target = UPGRADE_CARD_TARGET;
             this.rawDescription = UPGRADE_DESCRIPTION;
             this.initializeDescription();

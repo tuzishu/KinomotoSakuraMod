@@ -64,7 +64,7 @@
   },
   "ClowCardTheFly": {
     "NAME": "飞",
-    "DESCRIPTION": "【 物理牌 】获得 !M! 层 飞行 ，并获得 !B! 点 格挡 。"
+    "DESCRIPTION": "【 物理牌 】获得 !B! 点 格挡 ，获得 !M! 层 飞行 。"
   },
   "ClowCardTheFreeze": {
     "NAME": "冻",
