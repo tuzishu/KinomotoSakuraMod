@@ -1,6 +1,7 @@
 package KinomotoSakuraMod.Powers;
 
 import KinomotoSakuraMod.Patches.CustomCardColor;
+import KinomotoSakuraMod.Utility.ModUtility;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
@@ -19,8 +20,6 @@ public class TwinPower extends CustomPower
     private static final String POWER_IMG = "img/powers/default_power.png";
     private static final PowerType POWER_TYPE = PowerType.BUFF;
     private int cardsDoubledThisTurn;
-    private boolean isFirstTurn;
-    private int countOffset;
 
     static
     {
@@ -34,8 +33,6 @@ public class TwinPower extends CustomPower
         super(POWER_ID, POWER_NAME, POWER_IMG, POWER_TYPE, target, amount);
         updateDescription();
         this.cardsDoubledThisTurn = 0;
-        this.isFirstTurn = true;
-        this.countOffset = AbstractDungeon.actionManager.cardsPlayedThisTurn.size();
     }
 
     public void updateDescription()
@@ -53,16 +50,14 @@ public class TwinPower extends CustomPower
     public void atStartOfTurn()
     {
         this.cardsDoubledThisTurn = 0;
-        this.countOffset = 0;
-    }
-
-    public void atEndOfTurn(boolean isPlayer)
-    {
-        this.isFirstTurn = false;
     }
 
     public void onUseCard(AbstractCard card, UseCardAction action)
     {
+        if (AbstractDungeon.getMonsters().areMonstersBasicallyDead())
+        {
+            return;
+        }
         if (this.amount <= 0)
         {
             return;
@@ -71,13 +66,12 @@ public class TwinPower extends CustomPower
         {
             return;
         }
-        if (!CheckCard())
+        if (this.cardsDoubledThisTurn >= this.amount)
         {
             return;
         }
         if (card.color != CustomCardColor.CLOWCARD_COLOR && card.color != CustomCardColor.SAKURACARD_COLOR)
         {
-            this.countOffset += 1;
             return;
         }
 
@@ -102,19 +96,5 @@ public class TwinPower extends CustomPower
         tempCard.purgeOnUse = true;
         AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(tempCard, monster, card.energyOnUse));
         this.flash();
-    }
-
-    private boolean CheckCard()
-    {
-        int doubledCount;
-        if (isFirstTurn)
-        {
-            doubledCount = AbstractDungeon.actionManager.cardsPlayedThisTurn.size() - this.cardsDoubledThisTurn - this.countOffset;
-        }
-        else
-        {
-            doubledCount = AbstractDungeon.actionManager.cardsPlayedThisTurn.size() - this.cardsDoubledThisTurn;
-        }
-        return doubledCount <= this.amount;
     }
 }

@@ -10,6 +10,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.random.Random;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 public class ClowCardTheCreate extends AbstractMagicCard
 {
@@ -71,8 +73,23 @@ public class ClowCardTheCreate extends AbstractMagicCard
             if (card instanceof ClowCardTheCreate && card.name.equals(this.name) && card.upgraded == this.upgraded)
             {
                 AbstractDungeon.player.masterDeck.removeCard(card);
+                AbstractDungeon.getCurrRoom().addRelicToRewards(GetRandomTier());
                 break;
             }
+        }
+    }
+
+    private AbstractRelic.RelicTier GetRandomTier()
+    {
+        int randNum = new Random().random(0,2);
+        switch (randNum)
+        {
+            case 2:
+                return AbstractRelic.RelicTier.RARE;
+            case 1:
+                return AbstractRelic.RelicTier.UNCOMMON;
+            default:
+                return AbstractRelic.RelicTier.COMMON;
         }
     }
 }

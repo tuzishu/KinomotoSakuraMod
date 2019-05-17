@@ -67,7 +67,7 @@ public class ArrowAction extends AbstractGameAction
                 this.isDone = true;
                 return;
             }
-            AbstractDungeon.handCardSelectScreen.open(TEXT[0], this.player.gameHandSize, true, true);
+            AbstractDungeon.handCardSelectScreen.open(TEXT[0], this.player.hand.size(), true, true);
             tickDuration();
             return;
         }

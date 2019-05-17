@@ -4,8 +4,6 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.random.Random;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 public class CreatePower extends CustomPower
 {
@@ -37,27 +35,5 @@ public class CreatePower extends CustomPower
     public void updateDescription()
     {
         this.description = POWER_DESCRIPTIONS[0] + this.amount + POWER_DESCRIPTIONS[1];
-    }
-
-    public void onInitialApplication()
-    {
-        for (int i = 0; i < this.amount; i++)
-        {
-            AbstractDungeon.getCurrRoom().addRelicToRewards(GetRandomTier());
-        }
-    }
-
-    private AbstractRelic.RelicTier GetRandomTier()
-    {
-        int randNum = new Random().random(0,2);
-        switch (randNum)
-        {
-            case 2:
-                return AbstractRelic.RelicTier.RARE;
-            case 1:
-                return AbstractRelic.RelicTier.UNCOMMON;
-            default:
-                return AbstractRelic.RelicTier.COMMON;
-        }
     }
 }

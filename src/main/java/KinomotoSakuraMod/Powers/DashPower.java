@@ -40,6 +40,10 @@ public class DashPower extends CustomPower
 
     public void onUseCard(AbstractCard card, UseCardAction action)
     {
+        if (AbstractDungeon.getMonsters().areMonstersBasicallyDead())
+        {
+            return;
+        }
         if (card instanceof AbstractMagicCard)
         {
             counter += 1;
