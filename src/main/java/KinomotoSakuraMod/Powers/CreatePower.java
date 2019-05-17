@@ -39,7 +39,7 @@ public class CreatePower extends CustomPower
         this.description = POWER_DESCRIPTIONS[0] + this.amount + POWER_DESCRIPTIONS[1];
     }
 
-    public void onVictory()
+    public void onInitialApplication()
     {
         for (int i = 0; i < this.amount; i++)
         {

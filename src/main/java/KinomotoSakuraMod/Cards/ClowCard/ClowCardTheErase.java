@@ -27,9 +27,10 @@ public class ClowCardTheErase extends AbstractMagicCard
     private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final int BASE_DAMAGE = 6;
+    private static final int BASE_DAMAGE = 7;
+    private static final int UPGRADE_DAMAGE = 4;
     private static final int BASE_MAGIC_NUMBER = 2;
-    private static final int UPGRADE_MAGIC_NUMBER = 3;
+    private static final int UPGRADE_MAGIC_NUMBER = 2;
 
     static
     {
@@ -51,6 +52,7 @@ public class ClowCardTheErase extends AbstractMagicCard
         if (!this.upgraded)
         {
             this.upgradeName();
+            this.upgradeDamage(UPGRADE_DAMAGE);
             this.upgradeMagicNumber(UPGRADE_MAGIC_NUMBER);
         }
     }
