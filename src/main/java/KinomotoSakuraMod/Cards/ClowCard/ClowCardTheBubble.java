@@ -1,5 +1,6 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
+import KinomotoSakuraMod.Actions.ApplyElementAction;
 import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
@@ -27,7 +28,7 @@ public class ClowCardTheBubble extends AbstractMagicCard
     private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final int BASE_MAGIC_NUMBER = 1;
+    private static final int BASE_MAGIC_NUMBER = 2;
     private static final int ACTIVE_NUMBER = 18;
 
     static
@@ -41,7 +42,7 @@ public class ClowCardTheBubble extends AbstractMagicCard
     public ClowCardTheBubble()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.ELEMENT_CARD);
-        setBaseMagicNumber(BASE_MAGIC_NUMBER);
+        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
         this.exhaust = true;
     }
 
@@ -89,5 +90,6 @@ public class ClowCardTheBubble extends AbstractMagicCard
                 AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(monster, player, buffs.get(sub)));
             }
         }
+        AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(monster, player, new WateryElementPower(monster, this.correctMagicNumber()), this.correctMagicNumber(), true));
     }
 }

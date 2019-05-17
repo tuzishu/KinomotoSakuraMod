@@ -26,11 +26,11 @@ public class ClowCardTheFreeze extends AbstractMagicCard
     private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final int BASE_DAMATE = 3;
-    private static final int UPGRADE_DAMATE = 3;
+    private static final int BASE_DAMATE = 4;
+    private static final int UPGRADE_DAMATE = 4;
     private static final int ACTIVE_NUMBER = 12;
     private static final int BASE_MAGIC_NUMBER = 6;
-    private static final int UPGRADE_MAGIC_NUMBER = 4;
+    private static final int UPGRADE_MAGIC_NUMBER = 6;
     private static final int DEBUFF_NUMBER = 2;
 
     static

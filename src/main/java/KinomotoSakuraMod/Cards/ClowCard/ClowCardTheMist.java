@@ -31,7 +31,7 @@ public class ClowCardTheMist extends AbstractMagicCard
     private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
     private static final int ACTIVE_NUMBER = 10;
     private static final int UPGRADE_MAGIC_NUMBER = 3;
-    private static final int ELEMENT_NUMBER = 1;
+    private static final int ELEMENT_NUMBER = 2;
 
     static
     {

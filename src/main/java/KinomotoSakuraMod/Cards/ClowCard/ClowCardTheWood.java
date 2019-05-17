@@ -15,10 +15,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.ArtifactPower;
-import com.megacrit.cardcrawl.powers.ChokePower;
-import com.megacrit.cardcrawl.powers.GainStrengthPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.powers.*;
 
 public class ClowCardTheWood extends AbstractMagicCard
 {
@@ -31,11 +28,11 @@ public class ClowCardTheWood extends AbstractMagicCard
     private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final int BASE_DAMAGE = 3;
+    private static final int BASE_DAMAGE = 4;
     private static final int UPGRADE_DAMAGE = 2;
     private static final int BASE_MAGIC_NUMBER = 2;
     private static final int ACTIVE_ELEMENT_NUMBER = 12;
-    private static final int CHOKE_NUMBER = 2;
+    private static final int CONSTRICTED_NUMBER = 2;
     private static final String SOUND_KEY = "POWER_CONSTRICTED";
 
     static
@@ -82,7 +79,7 @@ public class ClowCardTheWood extends AbstractMagicCard
         if (EarthyElementPower.TryActiveEarthyElement(monster, ACTIVE_ELEMENT_NUMBER, true))
         {
             AbstractDungeon.actionManager.addToBottom(new SFXAction(SOUND_KEY, 0.05F));
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new ChokePower(monster, CHOKE_NUMBER), CHOKE_NUMBER));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new ConstrictedPower(monster, player, CONSTRICTED_NUMBER), CONSTRICTED_NUMBER));
         }
 
         AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(monster, player, new EarthyElementPower(monster, this.correctMagicNumber()), this.correctMagicNumber(), true));

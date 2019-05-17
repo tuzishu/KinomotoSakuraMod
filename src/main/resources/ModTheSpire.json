@@ -1,9 +1,11 @@
 {
   "modid": "KinomotoSakuraMod",
   "name": "KinomotoSakuraMod",
-  "description": "Kinomoto Sakura, the protagonist of animation Card Captor Sakura.\n动画《魔卡少女樱》的主角木之本樱。",
-  "author_list": ["tuzishu"],
-  "version": "0.2.2",
+  "description": "Kinomoto Sakura, the protagonist of animation Card Captor Sakura.\n动画《魔卡少女樱》的主角木之本樱。\n\n0.2.3改动\n修复：封牌奖励SL后消失问题；\n修复：影牌获取0层多层护甲问题；\n修复：双牌第一张不是有效牌时，无法发动问题；\n\n添加：泡牌给与水元素；\n添加：云牌升级消耗风元素额外获得云层；\n\n调整：冻牌伤害3(6)->4(8)；\n调整：迷牌格挡14(20)->16(24)；\n调整：雾牌消耗2->1；\n调整：沙牌伤害3(7)->6(10)；\n调整：雪牌伤害9(13)->9(14)；\n调整：树牌伤害3(5)->4(6)，修改勒脖为缠绕；",
+  "author_list": [
+    "tuzishu"
+  ],
+  "version": "0.2.3",
   "mts_version": "3.10.1",
   "sts_version": "01-23-2019",
   "credits": "None",

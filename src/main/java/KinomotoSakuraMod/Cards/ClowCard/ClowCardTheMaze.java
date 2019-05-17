@@ -23,9 +23,9 @@ public class ClowCardTheMaze extends AbstractMagicCard
     private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
-    private static final int BASE_BLOCK = 14;
-    private static final int UPGRADE_BLOCK = 6;
-    private static final float BLOCK_RATE = 1F;
+    private static final int BASE_BLOCK = 16;
+    private static final int UPGRADE_BLOCK = 8;
+    private static final float ELEMENT_RATE = 1F;
 
     static
     {
@@ -70,7 +70,7 @@ public class ClowCardTheMaze extends AbstractMagicCard
         }
         if (count > 0)
         {
-            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, MathUtils.ceil(count * BLOCK_RATE)));
+            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, MathUtils.ceil(count * ELEMENT_RATE)));
         }
     }
 }

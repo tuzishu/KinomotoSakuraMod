@@ -39,7 +39,7 @@ public class ClowCardTheSnow extends AbstractMagicCard
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
     private static final int BASE_DAMAGE = 9;
-    private static final int UPGRADE_DAMAGE = 4;
+    private static final int UPGRADE_DAMAGE = 5;
     private static final int BASE_MAGIC_NUMBER = 2;
     private static final int FREEZE_ACTIVE_NUMBER = 16;
     private static final int FREEZE_COUNT = 1;
