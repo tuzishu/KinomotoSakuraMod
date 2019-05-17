@@ -5,6 +5,7 @@ import KinomotoSakuraMod.Utility.ModUtility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -21,10 +22,11 @@ public class SongAction extends AbstractGameAction
     public static final String ACTION_ID = "SongAction";
     private static final String[] TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
-    private static final float DURATION_ATTACK = 0.02F;
+    private static final float WAVE_EFFECT_DURATION = 0.6F;
     private static final int VOICE_EXTRA_COUNT = 2;
     private AbstractPlayer player;
     private int damage;
+    private int block;
 
     static
     {
@@ -32,12 +34,13 @@ public class SongAction extends AbstractGameAction
         TEXT = uiStrings.TEXT;
     }
 
-    public SongAction(int damage)
+    public SongAction(int damage, int block)
     {
         this.actionType = ActionType.DAMAGE;
         this.player = AbstractDungeon.player;
         this.duration = DURATION;
         this.damage = damage;
+        this.block = block;
     }
 
     public void update()
@@ -80,10 +83,14 @@ public class SongAction extends AbstractGameAction
         if (count > 0)
         {
             AbstractDungeon.actionManager.addToBottom(new SFXAction("THUNDERCLAP"));
-            AbstractDungeon.actionManager.addToBottom(new VFXAction(player, new ShockWaveEffect(player.hb.cX, player.hb.cY, Settings.CREAM_COLOR, ShockWaveEffect.ShockWaveType.CHAOTIC), 0.75F));
+            AbstractDungeon.actionManager.addToBottom(new VFXAction(player, new ShockWaveEffect(player.hb.cX, player.hb.cY, Settings.CREAM_COLOR, ShockWaveEffect.ShockWaveType.CHAOTIC), WAVE_EFFECT_DURATION));
             for (int i = 0; i < count; i++)
             {
                 AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, ModUtility.GetDamageList(this.damage), DamageInfo.DamageType.NORMAL, AttackEffect.BLUNT_LIGHT, true));
+            }
+            for (int i = 0; i < count; i++)
+            {
+                AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, block));
             }
         }
     }

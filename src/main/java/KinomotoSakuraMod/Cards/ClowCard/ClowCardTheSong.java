@@ -20,8 +20,10 @@ public class ClowCardTheSong extends AbstractMagicCard
     private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
-    private static final int BASE_DAMAGE = 3;
+    private static final int BASE_DAMAGE = 4;
     private static final int UPGRADE_DAMAGE = 2;
+    private static final int BASE_BLOCK = 2;
+    private static final int UPGRADE_BLOCK = 2;
 
     static
     {
@@ -34,6 +36,7 @@ public class ClowCardTheSong extends AbstractMagicCard
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.baseDamage = BASE_DAMAGE;
+        this.baseBlock = BASE_BLOCK;
     }
 
     @Override
@@ -41,8 +44,9 @@ public class ClowCardTheSong extends AbstractMagicCard
     {
         if (!this.upgraded)
         {
-            upgradeName();
-            upgradeDamage(UPGRADE_DAMAGE);
+            this.upgradeName();
+            this.upgradeDamage(UPGRADE_DAMAGE);
+            this.upgradeBlock(UPGRADE_BLOCK);
         }
     }
 
@@ -55,6 +59,6 @@ public class ClowCardTheSong extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new SongAction(this.correctDamage()));
+        AbstractDungeon.actionManager.addToBottom(new SongAction(this.correctDamage(), this.correctBlock()));
     }
 }
