@@ -16,7 +16,7 @@ import com.megacrit.cardcrawl.helpers.GameDictionary;
 import java.util.ArrayList;
 
 @SpirePatch(clz = AbstractCard.class, method = "initializeDescriptionCN", paramtypez = {})
-public class DescriptionLinePatch
+public class OverrideInitializeDescriptionCN
 {
     private static final float DESCRIPTION_WIDTH = 220F;
 

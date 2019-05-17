@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 
 @SpirePatch(clz = AbstractCard.class, method = "renderDescriptionCN", paramtypez = {SpriteBatch.class})
-public class DescriptionScalePatch
+public class OverrideRenderDescriptionCN
 {
     private static final float DES_OFFSET_X = 540F / 1024F;  //从左上角往下数第几个像素
     private static final float DES_OFFSET_Y = 340F / 1024F;  //从左上角往右数第几个像素
