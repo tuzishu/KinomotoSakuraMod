@@ -1,7 +1,6 @@
 package KinomotoSakuraMod.Patches;
 
 import KinomotoSakuraMod.Cards.AbstractMagicCard;
-import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Utility.ModUtility;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
@@ -9,23 +8,23 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DescriptionLine;
 import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.GameDictionary;
+import com.megacrit.cardcrawl.helpers.input.InputHelper;
 
 import java.util.ArrayList;
 
 @SpirePatch(clz = AbstractCard.class, method = "initializeDescriptionCN", paramtypez = {})
-public class OverrideInitializeDescriptionCN
+public class CustomInitializeDescriptionCN
 {
     private static final float DESCRIPTION_WIDTH = 220F;
 
     public static SpireReturn<Object> Prefix(AbstractCard card)
     {
-        if (false)
-        // if (card instanceof AbstractMagicCard && card.type == AbstractCard.CardType.ATTACK)
+        if (card instanceof AbstractMagicCard && card.type == AbstractCard.CardType.ATTACK)
         {
-            // Invoker.setField(the_AbstractCard, "CN_DESC_BOX_WIDTH",  the_AbstractCard.IMG_WIDTH*1.05);
+            boolean ishoverd = false;
+            if (ishoverd)
             {
                 card.description.clear();
                 int numLines = 1;
@@ -40,12 +39,6 @@ public class OverrideInitializeDescriptionCN
                     if (!word.contains("NL"))
                     {
                         String keywordTmp = word.toLowerCase();
-
-                        // MyNewMethod = Invoker.getMethod(the_AbstractCard, "dedupeKeyword", String.class);
-                        // keywordTmp = the_AbstractCard.dedupeKeyword(keywordTmp);
-                        // Invoker.getMethod(the_AbstractCard, "dedupeKeyword", Class...paramTypes)
-                        // keywordTmp = the_AbstractCard.dedupeKeyword(keywordTmp);
-
                         String retVal = (String) GameDictionary.parentWord.get(keywordTmp);
                         keywordTmp = (retVal != null ? retVal : keywordTmp);
 
@@ -58,10 +51,6 @@ public class OverrideInitializeDescriptionCN
                             }
 
                             gl = new GlyphLayout(FontHelper.cardDescFont_N, word);
-                            // Field Iff = Invoker.getField(the_AbstractCard, "CN_DESC_BOX_WIDTH");
-                            // Iff.setAccessible(true);
-                            // Iff.get(the_AbstractCard);
-                            // (float) Iff.get(the_AbstractCard);
                             if (currentWidth + gl.width > DESCRIPTION_WIDTH * Settings.scale)
                             {
                                 ++numLines;
@@ -124,7 +113,6 @@ public class OverrideInitializeDescriptionCN
                                     }
                                     break;
                                 default:
-                                    // the_AbstractCard.logger.info("ERROR: Tried to display an invalid energy type");
                             }
 
                             if (currentWidth + 24.0F * Settings.scale > DESCRIPTION_WIDTH * Settings.scale)
@@ -159,15 +147,7 @@ public class OverrideInitializeDescriptionCN
                     var10000.set(var10001, new DescriptionLine(var10006.text = var10004.append(var10006.text).append("。").toString(), ((DescriptionLine) card.description.get(card.description.size() - 2)).width));
                     card.description.remove(card.description.size() - 1);
                 }
-
-                // if (numLines > 5)
-                // {
-                //     the_AbstractCard.logger.info("WARNING: Card " + the_AbstractCard.name + " has lots of text");
-                // }
-
             }
-
-            // Invoker.setField(the_AbstractCard, "CN_DESC_BOX_WIDTH",  the_AbstractCard.IMG_WIDTH*0.72);
             return SpireReturn.Return((Object) null);
         }
         else

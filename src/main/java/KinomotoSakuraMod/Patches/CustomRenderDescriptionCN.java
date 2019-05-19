@@ -1,6 +1,5 @@
 package KinomotoSakuraMod.Patches;
 
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
@@ -13,10 +12,10 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 
 @SpirePatch(clz = AbstractCard.class, method = "renderDescriptionCN", paramtypez = {SpriteBatch.class})
-public class OverrideRenderDescriptionCN
+public class CustomRenderDescriptionCN
 {
-    private static final float DES_OFFSET_X = 540F / 1024F;  //从左上角往下数第几个像素
-    private static final float DES_OFFSET_Y = 340F / 1024F;  //从左上角往右数第几个像素
+    private static final float SCALE_RATE = 1F;
+    private static final float DES_OFFSET_Y = 0.173F;
     private static final Color TEXT_COLOR = Settings.CREAM_COLOR.cpy();
 
     public static SpireReturn<Object> Prefix(AbstractCard card, SpriteBatch sb)
@@ -53,7 +52,7 @@ public class OverrideRenderDescriptionCN
                 {
                     float start_x = 0.0F;
                     start_x = card.current_x - (((DescriptionLine) card.description.get(i)).width) * 0.67f * card.drawScale / 2.0F - 14.0F * Settings.scale;
-                    start_x = card.current_x - maxline * DES_OFFSET_X * card.drawScale / 2.0F - 14.0F * Settings.scale;
+                    start_x = card.current_x - maxline * SCALE_RATE * card.drawScale / 2.0F - 14.0F * Settings.scale;
                     String desc = ((DescriptionLine) card.description.get(i)).text;
                     String[] descList = desc.split(" ");
                     for (int j = 0; j < descList.length; ++j)
