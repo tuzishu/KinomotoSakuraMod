@@ -1,5 +1,6 @@
 package KinomotoSakuraMod.Patches;
 
+import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
@@ -20,8 +21,7 @@ public class CustomRenderDescriptionCN
 
     public static SpireReturn<Object> Prefix(AbstractCard card, SpriteBatch sb)
     {
-        if (false)
-        // if (card instanceof AbstractMagicCard && card.type == AbstractCard.CardType.ATTACK)
+        if (card instanceof AbstractMagicCard)
         {
             if (card.isSeen && !card.isLocked)
             {

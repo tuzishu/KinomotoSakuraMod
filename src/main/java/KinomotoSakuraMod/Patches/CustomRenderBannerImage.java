@@ -11,7 +11,11 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 
-@SpirePatch(clz = AbstractCard.class, method = "renderBannerImage", paramtypez = {SpriteBatch.class, float.class, float.class})
+@SpirePatch(clz = AbstractCard.class, method = "renderBannerImage", paramtypez = {
+        SpriteBatch.class,
+        float.class,
+        float.class
+})
 public class CustomRenderBannerImage
 {
     private static final String BANNER_COMMON_IMAGE_PATH = "img/banner/common.png";
@@ -39,22 +43,20 @@ public class CustomRenderBannerImage
 
     public static SpireReturn<Object> Prefix(AbstractCard card, SpriteBatch sb, float drawX, float drawY)
     {
-        ModUtility.Logger.info((card instanceof AbstractMagicCard) +", "+card.color);
         if (card instanceof AbstractMagicCard && card.color == CustomCardColor.CLOWCARD_COLOR)
         {
-            boolean ishovered = false;
             Texture texture;
-
+            boolean hovered = card.hb.hovered;
             switch (card.rarity)
             {
                 case RARE:
-                    texture = ishovered ? BANNER_RARE_MASK : BANNER_RARE;
+                    texture = hovered ? BANNER_RARE_MASK : BANNER_RARE;
                     break;
                 case UNCOMMON:
-                    texture = ishovered ? BANNER_UNCOMMON_MASK : BANNER_UNCOMMON;
+                    texture = hovered ? BANNER_UNCOMMON_MASK : BANNER_UNCOMMON;
                     break;
                 default:
-                    texture = ishovered ? BANNER_COMMON_MASK : BANNER_COMMON;
+                    texture = hovered ? BANNER_COMMON_MASK : BANNER_COMMON;
                     break;
             }
             sb.setColor(Color.WHITE.cpy());

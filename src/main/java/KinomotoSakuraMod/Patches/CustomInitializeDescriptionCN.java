@@ -1,7 +1,6 @@
 package KinomotoSakuraMod.Patches;
 
 import KinomotoSakuraMod.Cards.AbstractMagicCard;
-import KinomotoSakuraMod.Utility.ModUtility;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
@@ -10,7 +9,6 @@ import com.megacrit.cardcrawl.cards.DescriptionLine;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.GameDictionary;
-import com.megacrit.cardcrawl.helpers.input.InputHelper;
 
 import java.util.ArrayList;
 
@@ -19,12 +17,12 @@ public class CustomInitializeDescriptionCN
 {
     private static final float DESCRIPTION_WIDTH = 220F;
 
-    public static SpireReturn<Object> Prefix(AbstractCard card)
+    public static SpireReturn<Object> Prefix(AbstractCard card) throws NoSuchFieldException, IllegalAccessException
     {
-        if (card instanceof AbstractMagicCard && card.type == AbstractCard.CardType.ATTACK)
+        if (card instanceof AbstractMagicCard)
         {
-            boolean ishoverd = false;
-            if (ishoverd)
+            boolean hovered = card.hb.hovered;
+            if (hovered)
             {
                 card.description.clear();
                 int numLines = 1;

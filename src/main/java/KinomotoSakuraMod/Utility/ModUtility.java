@@ -1,9 +1,12 @@
 package KinomotoSakuraMod.Utility;
 
 import KinomotoSakuraMod.KinomotoSakuraMod;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.lang.reflect.Field;
 
 public class ModUtility
 {
@@ -60,6 +63,13 @@ public class ModUtility
         return e.getLineNumber();
     }
 
+    /**
+     * 通过输入一个伤害值，来返回一个用于DamageAllEnemy的伤害列表
+     *
+     * @param damage int 伤害值
+     *
+     * @return int[] 伤害列表
+     */
     public static int[] GetDamageList(int damage)
     {
         int size = AbstractDungeon.getMonsters().monsters.size();
@@ -69,5 +79,17 @@ public class ModUtility
             damageList[i] = damage;
         }
         return damageList;
+    }
+
+    public static Field GetFieldByReflect(Object obj, String fieldName) throws NoSuchFieldException, IllegalAccessException
+    {
+        Class cls = obj.getClass();
+        while (cls.getName() != AbstractCard.class.getName())
+        {
+            cls = cls.getSuperclass();
+        }
+        Field field = cls.getDeclaredField(fieldName);
+        field.setAccessible(true);
+        return field;
     }
 }
