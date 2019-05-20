@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.HashMap;
 
 public class KSMOD_Utility
 {
@@ -80,6 +81,8 @@ public class KSMOD_Utility
         return damageList;
     }
 
+    private static HashMap<Object, HashMap<Class, HashMap<String, Field>>> fieldMap = new HashMap<Object, HashMap<Class, HashMap<String, Field>>>();
+
     /**
      * 通过反射的方法获取实例包括基类中的变量
      *
@@ -92,15 +95,40 @@ public class KSMOD_Utility
      */
     public static Field GetFieldByReflect(Object obj, Class targetClass, String fieldName) throws NoSuchFieldException, IllegalAccessException
     {
-        Class cls = obj.getClass();
-        while (cls.getName() != targetClass.getName())
+        HashMap<Class, HashMap<String, Field>> classMap;
+        HashMap<String, Field> nameMap;
+
+        if (!fieldMap.containsKey(obj))
         {
-            cls = cls.getSuperclass();
+            fieldMap.put(obj, new HashMap<>());
         }
-        Field field = cls.getDeclaredField(fieldName);
-        field.setAccessible(true);
-        return field;
+        classMap = fieldMap.get(obj);
+
+        if (!classMap.containsKey(targetClass))
+        {
+            classMap.put(targetClass, new HashMap<>());
+        }
+        nameMap = classMap.get(targetClass);
+
+        if (!nameMap.containsKey(fieldName))
+        {
+            Class cls = obj.getClass();
+            while (cls.getName() != targetClass.getName())
+            {
+                cls = cls.getSuperclass();
+            }
+            Field field = cls.getDeclaredField(fieldName);
+            field.setAccessible(true);
+            nameMap.put(fieldName, field);
+            return field;
+        }
+        else
+        {
+            return nameMap.get(fieldName);
+        }
     }
+
+    private static HashMap<Object, HashMap<Class, HashMap<String, HashMap<Object, Method>>>> methodMap = new HashMap<Object, HashMap<Class, HashMap<String, HashMap<Object, Method>>>>();
 
     /**
      * 通过反射的方法获取实例包括基类中的方法
@@ -113,13 +141,42 @@ public class KSMOD_Utility
      */
     public static Method GetMethodByReflect(Object obj, Class targetClass, String methodName, Class<?>... parameterTypes) throws NoSuchMethodException
     {
-        Class cls = obj.getClass();
-        while (cls.getName() != targetClass.getName())
+        HashMap<Class, HashMap<String, HashMap<Object, Method>>> classMap;
+        HashMap<String, HashMap<Object, Method>> nameMap;
+        HashMap<Object, Method> paramMap;
+
+        if (!methodMap.containsKey(obj))
         {
-            cls = cls.getSuperclass();
+            methodMap.put(obj, new HashMap<>());
         }
-        Method method = cls.getDeclaredMethod(methodName, parameterTypes);
-        method.setAccessible(true);
-        return method;
+        classMap = methodMap.get(obj);
+
+        if (!classMap.containsKey(targetClass))
+        {
+            classMap.put(targetClass, new HashMap<>());
+        }
+        nameMap = classMap.get(targetClass);
+
+        if (!nameMap.containsKey(methodName))
+        {
+            nameMap.put(methodName, new HashMap<>());
+        }
+        paramMap = nameMap.get(methodName);
+
+        if (!paramMap.containsKey(parameterTypes))
+        {
+            Class cls = obj.getClass();
+            while (cls.getName() != targetClass.getName())
+            {
+                cls = cls.getSuperclass();
+            }
+            Method method = cls.getDeclaredMethod(methodName, parameterTypes);
+            method.setAccessible(true);
+            return method;
+        }
+        else
+        {
+            return paramMap.get(parameterTypes);
+        }
     }
 }

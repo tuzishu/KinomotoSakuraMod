@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import java.lang.reflect.Field;
 
 @SpirePatch(clz = AbstractCard.class, method = "updateHoverLogic", paramtypez = {})
-public class CustomUpdateHoverLogic
+public class KSMOD_UpdateHoverLogicPatch
 {
     public static SpireReturn<Object> Prefix(AbstractCard card) throws NoSuchFieldException, IllegalAccessException
     {

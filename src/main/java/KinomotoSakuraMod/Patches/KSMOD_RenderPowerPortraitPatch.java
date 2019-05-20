@@ -13,13 +13,14 @@ import com.megacrit.cardcrawl.core.Settings;
 
 import java.lang.reflect.Field;
 
-@SpirePatch(clz = AbstractCard.class, method = "renderAttackPortrait", paramtypez = {
+@SpirePatch(clz = AbstractCard.class, method = "renderPowerPortrait", paramtypez = {
         SpriteBatch.class,
         float.class,
         float.class
 })
-public class CustomRenderAttackPortrait
+public class KSMOD_RenderPowerPortraitPatch
 {
+
     public static SpireReturn<Object> Prefix(AbstractCard card, SpriteBatch sb, float x, float y) throws NoSuchFieldException, IllegalAccessException
     {
         if (card instanceof AbstractMagicCard && card.color == CustomCardColor.CLOWCARD_COLOR)
@@ -55,3 +56,4 @@ public class CustomRenderAttackPortrait
         }
     }
 }
+

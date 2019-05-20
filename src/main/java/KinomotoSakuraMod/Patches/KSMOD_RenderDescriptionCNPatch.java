@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 
 @SpirePatch(clz = AbstractCard.class, method = "renderDescriptionCN", paramtypez = {SpriteBatch.class})
-public class CustomRenderDescriptionCN
+public class KSMOD_RenderDescriptionCNPatch
 {
     private static final float SCALE_RATE = 1F;
     private static final float DES_OFFSET_Y = 0.173F;

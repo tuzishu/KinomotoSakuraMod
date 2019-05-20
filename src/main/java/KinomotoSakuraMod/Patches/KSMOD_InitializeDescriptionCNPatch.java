@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.helpers.GameDictionary;
 import java.util.ArrayList;
 
 @SpirePatch(clz = AbstractCard.class, method = "initializeDescriptionCN", paramtypez = {})
-public class CustomInitializeDescriptionCN
+public class KSMOD_InitializeDescriptionCNPatch
 {
     private static final float DESCRIPTION_WIDTH = 220F;
 
