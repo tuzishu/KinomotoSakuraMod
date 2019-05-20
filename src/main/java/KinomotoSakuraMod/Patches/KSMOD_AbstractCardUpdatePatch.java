@@ -16,8 +16,8 @@ import java.lang.reflect.Method;
 @SpirePatch(clz = AbstractCard.class, method = "update", paramtypez = {})
 public class KSMOD_AbstractCardUpdatePatch
 {
-    private static final float HB_W = 440F;
-    private static final float HB_H = 440F;
+    private static final float HB_W = 220F * Settings.scale;
+    private static final float HB_H = 500F * Settings.scale;
 
     public static SpireReturn<Object> Prefix(AbstractCard card) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException
     {
