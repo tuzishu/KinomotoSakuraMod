@@ -191,7 +191,7 @@ public class KSMOD_Utility
             Method method = cls.getDeclaredMethod(methodName, parameterTypes);
             method.setAccessible(true);
             // paramMap.put(parameterTypes, method);
-            Logger.info("Put Method Map => Object: " + obj + ", Class: " + targetClass + ", Method: " + methodName + ", Param: " + parameterTypes);
+            // Logger.info("Put Method Map => Object: " + obj + ", Class: " + targetClass + ", Method: " + methodName + ", Param: " + parameterTypes);
             return method;
         // }
         // else
