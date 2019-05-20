@@ -1,14 +1,14 @@
 package KinomotoSakuraMod.Utility;
 
 import KinomotoSakuraMod.KinomotoSakuraMod;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
-public class ModUtility
+public class KSMOD_Utility
 {
     /**
      * 日志管理器
@@ -67,7 +67,6 @@ public class ModUtility
      * 通过输入一个伤害值，来返回一个用于DamageAllEnemy的伤害列表
      *
      * @param damage int 伤害值
-     *
      * @return int[] 伤害列表
      */
     public static int[] GetDamageList(int damage)
@@ -81,15 +80,46 @@ public class ModUtility
         return damageList;
     }
 
-    public static Field GetFieldByReflect(Object obj, String fieldName) throws NoSuchFieldException, IllegalAccessException
+    /**
+     * 通过反射的方法获取实例包括基类中的变量
+     *
+     * @param obj         实例
+     * @param fieldName   变量名
+     * @param targetClass 目标类型
+     * @return 目标变量
+     * @throws NoSuchFieldException
+     * @throws IllegalAccessException
+     */
+    public static Field GetFieldByReflect(Object obj, Class targetClass, String fieldName) throws NoSuchFieldException, IllegalAccessException
     {
         Class cls = obj.getClass();
-        while (cls.getName() != AbstractCard.class.getName())
+        while (cls.getName() != targetClass.getName())
         {
             cls = cls.getSuperclass();
         }
         Field field = cls.getDeclaredField(fieldName);
         field.setAccessible(true);
         return field;
+    }
+
+    /**
+     * 通过反射的方法获取实例包括基类中的方法
+     *
+     * @param obj            实例
+     * @param methodName     方法名
+     * @param parameterTypes 方法参数列表
+     * @return 目标函数
+     * @throws NoSuchMethodException
+     */
+    public static Method GetMethodByReflect(Object obj, Class targetClass, String methodName, Class<?>... parameterTypes) throws NoSuchMethodException
+    {
+        Class cls = obj.getClass();
+        while (cls.getName() != targetClass.getName())
+        {
+            cls = cls.getSuperclass();
+        }
+        Method method = cls.getDeclaredMethod(methodName, parameterTypes);
+        method.setAccessible(true);
+        return method;
     }
 }

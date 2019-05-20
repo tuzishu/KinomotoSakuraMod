@@ -13,36 +13,35 @@ import com.megacrit.cardcrawl.core.Settings;
 
 import java.lang.reflect.Field;
 
-@SpirePatch(clz = AbstractCard.class, method = "renderBannerImage", paramtypez = {
+@SpirePatch(clz = AbstractCard.class, method = "renderSkillPortrait", paramtypez = {
         SpriteBatch.class,
         float.class,
         float.class
 })
-public class CustomRenderBannerImage
+public class CustomRenderSkillPortrait
 {
-    public static SpireReturn<Object> Prefix(AbstractCard card, SpriteBatch sb, float drawX, float drawY) throws NoSuchFieldException, IllegalAccessException
+    public static SpireReturn<Object> Prefix(AbstractCard card, SpriteBatch sb, float x, float y) throws NoSuchFieldException, IllegalAccessException
     {
         if (card instanceof AbstractMagicCard && card.color == CustomCardColor.CLOWCARD_COLOR)
         {
             Texture texture;
-            boolean hovered = card.hb.hovered;
             switch (card.rarity)
             {
                 case RARE:
-                    texture = hovered ? KSMOD_ImageConst.BANNER_RARE_MASK : KSMOD_ImageConst.BANNER_RARE;
+                    texture = KSMOD_ImageConst.FRAME_COMMON;
                     break;
                 case UNCOMMON:
-                    texture = hovered ? KSMOD_ImageConst.BANNER_UNCOMMON_MASK : KSMOD_ImageConst.BANNER_UNCOMMON;
+                    texture = KSMOD_ImageConst.FRAME_UNCOMMON;
                     break;
                 default:
-                    texture = hovered ? KSMOD_ImageConst.BANNER_COMMON_MASK : KSMOD_ImageConst.BANNER_COMMON;
+                    texture = KSMOD_ImageConst.FRAME_COMMON;
                     break;
             }
             Field renderColor = KSMOD_Utility.GetFieldByReflect(card, AbstractCard.class, "renderColor");
             sb.setColor((Color) renderColor.get(card));
             try
             {
-                sb.draw(texture, drawX, drawY, 256.0F, 256.0F, 512.0F, 512.0F, card.drawScale * Settings.scale, card.drawScale * Settings.scale, card.angle, 0, 0, 512, 512, false, false);
+                sb.draw(texture, x, y, 256.0F, 256.0F, 512.0F, 512.0F, card.drawScale * Settings.scale, card.drawScale * Settings.scale, card.angle, 0, 0, 512, 512, false, false);
             }
             catch (Exception var7)
             {
@@ -54,6 +53,5 @@ public class CustomRenderBannerImage
         {
             return SpireReturn.Continue();
         }
-
     }
 }

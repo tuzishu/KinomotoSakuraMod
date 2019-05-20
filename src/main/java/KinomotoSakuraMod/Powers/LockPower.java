@@ -1,6 +1,5 @@
 package KinomotoSakuraMod.Powers;
 
-import KinomotoSakuraMod.Utility.ModUtility;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;

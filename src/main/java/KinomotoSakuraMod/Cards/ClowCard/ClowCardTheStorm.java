@@ -8,7 +8,6 @@ import KinomotoSakuraMod.Powers.EarthyElementPower;
 import KinomotoSakuraMod.Powers.FireyElementPower;
 import KinomotoSakuraMod.Powers.WateryElementPower;
 import KinomotoSakuraMod.Powers.WindyElementPower;
-import KinomotoSakuraMod.Utility.ModUtility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;

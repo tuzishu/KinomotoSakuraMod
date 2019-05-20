@@ -17,7 +17,7 @@ public class CustomInitializeDescriptionCN
 {
     private static final float DESCRIPTION_WIDTH = 220F;
 
-    public static SpireReturn<Object> Prefix(AbstractCard card) throws NoSuchFieldException, IllegalAccessException
+    public static SpireReturn<Object> Prefix(AbstractCard card)
     {
         if (card instanceof AbstractMagicCard)
         {

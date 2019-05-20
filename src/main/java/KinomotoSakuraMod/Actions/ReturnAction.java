@@ -2,7 +2,7 @@ package KinomotoSakuraMod.Actions;
 
 import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import KinomotoSakuraMod.Cards.AbstractSpellCard;
-import KinomotoSakuraMod.Utility.ModUtility;
+import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -54,7 +54,7 @@ public class ReturnAction extends AbstractGameAction
                     group.group.add(card);
                 }
             }
-            ModUtility.Logger.info(count);
+            KSMOD_Utility.Logger.info(count);
             if (count == 0)
             {
                 this.isDone = true;

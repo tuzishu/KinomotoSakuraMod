@@ -2,13 +2,12 @@ package KinomotoSakuraMod.Patches;
 
 
 import KinomotoSakuraMod.Cards.AbstractMagicCard;
-import KinomotoSakuraMod.Utility.ModUtility;
+import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
-
 import java.lang.reflect.Field;
 
 @SpirePatch(clz = AbstractCard.class, method = "updateHoverLogic", paramtypez = {})
@@ -18,9 +17,9 @@ public class CustomUpdateHoverLogic
     {
         if (card instanceof AbstractMagicCard && card.type == AbstractCard.CardType.ATTACK)
         {
-            Field hoverDuration = ModUtility.GetFieldByReflect(card, "hoverDuration");
-            Field renderTip = ModUtility.GetFieldByReflect(card, "renderTip");
-            Field hovered = ModUtility.GetFieldByReflect(card, "hovered");
+            Field hoverDuration = KSMOD_Utility.GetFieldByReflect(card, AbstractCard.class, "hoverDuration");
+            Field renderTip = KSMOD_Utility.GetFieldByReflect(card, AbstractCard.class, "renderTip");
+            Field hovered = KSMOD_Utility.GetFieldByReflect(card, AbstractCard.class, "hovered");
             boolean justHovered = hovered.getBoolean(card);
             boolean justUnhovered = false;
             card.hb.update();

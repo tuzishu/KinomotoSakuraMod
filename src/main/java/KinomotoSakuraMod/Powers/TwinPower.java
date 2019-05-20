@@ -1,7 +1,6 @@
 package KinomotoSakuraMod.Powers;
 
 import KinomotoSakuraMod.Patches.CustomCardColor;
-import KinomotoSakuraMod.Utility.ModUtility;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;

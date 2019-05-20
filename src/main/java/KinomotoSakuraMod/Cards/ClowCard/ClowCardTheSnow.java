@@ -7,9 +7,7 @@ import KinomotoSakuraMod.Patches.CustomTag;
 import KinomotoSakuraMod.Powers.FreezePower;
 import KinomotoSakuraMod.Powers.WateryElementPower;
 import KinomotoSakuraMod.Powers.WindyElementPower;
-import KinomotoSakuraMod.Utility.ModUtility;
-import com.evacipated.cardcrawl.mod.stslib.powers.StunMonsterPower;
-import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
+import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
@@ -19,12 +17,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.ArtifactPower;
 import com.megacrit.cardcrawl.powers.WeakPower;
-
-import java.util.ArrayList;
 
 public class ClowCardTheSnow extends AbstractMagicCard
 {
@@ -82,7 +76,7 @@ public class ClowCardTheSnow extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, ModUtility.GetDamageList(this.correctDamage()), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.POISON, true));
+        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.correctDamage()), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.POISON, true));
 
         if (upgraded)
         {
