@@ -1,15 +1,12 @@
 package KinomotoSakuraMod.Utility;
 
-import KinomotoSakuraMod.KinomotoSakuraMod;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.sun.org.apache.xerces.internal.xs.datatypes.ObjectList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class KSMOD_Utility
@@ -183,16 +180,16 @@ public class KSMOD_Utility
 
         // if (!paramMap.containsKey(parameterTypes))
         // {
-            Class cls = obj.getClass();
-            while (cls != targetClass)
-            {
-                cls = cls.getSuperclass();
-            }
-            Method method = cls.getDeclaredMethod(methodName, parameterTypes);
-            method.setAccessible(true);
-            // paramMap.put(parameterTypes, method);
-            // Logger.info("Put Method Map => Object: " + obj + ", Class: " + targetClass + ", Method: " + methodName + ", Param: " + parameterTypes);
-            return method;
+        Class cls = obj.getClass();
+        while (cls != targetClass)
+        {
+            cls = cls.getSuperclass();
+        }
+        Method method = cls.getDeclaredMethod(methodName, parameterTypes);
+        method.setAccessible(true);
+        // paramMap.put(parameterTypes, method);
+        // Logger.info("Put Method Map => Object: " + obj + ", Class: " + targetClass + ", Method: " + methodName + ", Param: " + parameterTypes);
+        return method;
         // }
         // else
         // {
