@@ -17,7 +17,7 @@ public class KSMOD_Utility
     /**
      * 日志管理器
      */
-    public static final Logger Logger = LogManager.getLogger(KinomotoSakuraMod.class.getName());
+    public static final Logger Logger = LogManager.getLogger("KSMOD");
 
     /**
      * 获取该语句所在的类名

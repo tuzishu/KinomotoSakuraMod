@@ -15,7 +15,7 @@ public class KSMOD_UpdateHoverLogicPatch
 {
     public static SpireReturn<Object> Prefix(AbstractCard card) throws NoSuchFieldException, IllegalAccessException
     {
-        if (card instanceof AbstractMagicCard && card.type == AbstractCard.CardType.ATTACK)
+        if (card instanceof AbstractMagicCard)
         {
             Field hoverDuration = KSMOD_Utility.GetFieldByReflect(card, AbstractCard.class, "hoverDuration");
             Field renderTip = KSMOD_Utility.GetFieldByReflect(card, AbstractCard.class, "renderTip");

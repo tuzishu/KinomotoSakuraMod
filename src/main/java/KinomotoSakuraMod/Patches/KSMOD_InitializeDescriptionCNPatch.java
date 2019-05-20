@@ -15,14 +15,13 @@ import java.util.ArrayList;
 @SpirePatch(clz = AbstractCard.class, method = "initializeDescriptionCN", paramtypez = {})
 public class KSMOD_InitializeDescriptionCNPatch
 {
-    private static final float DESCRIPTION_WIDTH = 220F;
+    private static final float DESCRIPTION_WIDTH = 160F;
 
     public static SpireReturn<Object> Prefix(AbstractCard card)
     {
         if (card instanceof AbstractMagicCard)
         {
-            boolean hovered = card.hb.hovered;
-            if (hovered)
+            if (card.hb.hovered)
             {
                 card.description.clear();
                 int numLines = 1;
