@@ -7,22 +7,26 @@ import com.evacipated.cardcrawl.modthespire.patcher.PatchingException;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
 
-@SpirePatch(clz = SealedBook.class, method = "atBattleStart", paramtypez = {})
+import java.util.ArrayList;
+
+@SpirePatch(clz = SealedBook.class, method = "atBattleStart")
 public class TestInsertPatch
 {
-    @SpireInsertPatch(locator = TestInsertPatch.Locator.class, localvars = {})
-    public static void Insert(SealedBook sealedBook)
+    @SpireInsertPatch(locator = Locator.class)
+    public static void Insert(SealedBook instance)
     {
-        // Matcher m = Pattern.compile("int").matcher(tmp[0]);
-        KSMOD_Utility.Logger.info("Insert");
+        KSMOD_Utility.Logger.info("InsertTest success.");
     }
 
     private static class Locator extends SpireInsertLocator
     {
         public int[] Locate(CtBehavior method) throws CannotCompileException, PatchingException
         {
-            Matcher matcher = new Matcher.MethodCallMatcher(SealedBook.class, "addToBottom");
-            return LineFinder.findInOrder(method, matcher);
+            Matcher finalMatcher = new Matcher.FieldAccessMatcher(SealedBook.class, "STR2");
+            int[] lines = LineFinder.findAllInOrder(method, new ArrayList<Matcher>(), finalMatcher);
+            // return new int[]{lines[0]};
+            return  lines;
         }
     }
+
 }

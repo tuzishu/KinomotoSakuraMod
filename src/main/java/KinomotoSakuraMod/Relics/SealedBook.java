@@ -3,6 +3,7 @@ package KinomotoSakuraMod.Relics;
 import KinomotoSakuraMod.Patches.CustomTag;
 import KinomotoSakuraMod.Powers.ElementMagickPower;
 import KinomotoSakuraMod.Powers.EnhancementMagickPower;
+import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import basemod.abstracts.CustomRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -18,6 +19,8 @@ public class SealedBook extends CustomRelic
     private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/SealedBook.png";
     private static final RelicTier RELIC_TIER = RelicTier.STARTER;
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
+    public static final String STR = "final str";
+    public static String STR2 = "common str";
 
     public SealedBook()
     {
@@ -36,6 +39,14 @@ public class SealedBook extends CustomRelic
 
     public void atBattleStart()
     {
+        String a;
+        KSMOD_Utility.Logger.info("第" + KSMOD_Utility.GetLineNumber() + "行");
+        a = STR;
+        a = STR2;
+        KSMOD_Utility.Logger.info("第" + KSMOD_Utility.GetLineNumber() + "行");
+        KSMOD_Utility.Logger.info("第" + KSMOD_Utility.GetLineNumber() + "行");
+        KSMOD_Utility.Logger.info("第" + KSMOD_Utility.GetLineNumber() + "行");
+        KSMOD_Utility.Logger.info("第" + KSMOD_Utility.GetLineNumber() + "行");
         int countEnhancement = 0;
         int countElement = 0;
         for (AbstractCard card : AbstractDungeon.player.masterDeck.group)
