@@ -3,7 +3,7 @@ package KinomotoSakuraMod.Utility;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 
-public class KSMOD_ImageConst
+public class ImageConst
 {
     private static final String ORB_IMAGE_PATH = "img/512/card_orb.png";
     private static final String ORB_LARGE_IMAGE_PATH = "img/1024/card_orb_1024.png";

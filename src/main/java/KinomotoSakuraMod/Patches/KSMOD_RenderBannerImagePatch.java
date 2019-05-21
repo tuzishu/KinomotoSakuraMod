@@ -1,8 +1,8 @@
 package KinomotoSakuraMod.Patches;
 
 import KinomotoSakuraMod.Cards.AbstractMagicCard;
-import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.ImageConst;
+import KinomotoSakuraMod.Utility.Utility;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -29,16 +29,16 @@ public class KSMOD_RenderBannerImagePatch
             switch (card.rarity)
             {
                 case RARE:
-                    texture = hovered ? KSMOD_ImageConst.BANNER_MASK_RARE : KSMOD_ImageConst.BANNER_RARE;
+                    texture = hovered ? ImageConst.BANNER_MASK_RARE : ImageConst.BANNER_RARE;
                     break;
                 case UNCOMMON:
-                    texture = hovered ? KSMOD_ImageConst.BANNER_MASK_UNCOMMON : KSMOD_ImageConst.BANNER_UNCOMMON;
+                    texture = hovered ? ImageConst.BANNER_MASK_UNCOMMON : ImageConst.BANNER_UNCOMMON;
                     break;
                 default:
-                    texture = hovered ? KSMOD_ImageConst.BANNER_MASK_COMMON : KSMOD_ImageConst.BANNER_COMMON;
+                    texture = hovered ? ImageConst.BANNER_MASK_COMMON : ImageConst.BANNER_COMMON;
                     break;
             }
-            Field renderColor = KSMOD_Utility.GetFieldByReflect(card, AbstractCard.class, "renderColor");
+            Field renderColor = Utility.GetFieldByReflect(card, AbstractCard.class, "renderColor");
             sb.setColor((Color) renderColor.get(card));
             try
             {
@@ -46,7 +46,7 @@ public class KSMOD_RenderBannerImagePatch
             }
             catch (Exception var7)
             {
-                KSMOD_Utility.Logger.error(var7);
+                Utility.Logger.error(var7);
             }
             return SpireReturn.Return(null);
         }

@@ -1,7 +1,7 @@
 package KinomotoSakuraMod.Patches;
 
 import KinomotoSakuraMod.Cards.AbstractMagicCard;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.Utility;
 import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
@@ -23,7 +23,7 @@ public class KSMOD_AbstractCardUpdatePatch
     {
         if (card instanceof AbstractMagicCard)
         {
-            Method updateFlashVfx = KSMOD_Utility.GetMethodByReflect(card, AbstractCard.class, "updateFlashVfx");
+            Method updateFlashVfx = Utility.GetMethodByReflect(card, AbstractCard.class, "updateFlashVfx");
             updateFlashVfx.invoke(card);
             if (card.hoverTimer != 0.0F)
             {
@@ -76,8 +76,8 @@ public class KSMOD_AbstractCardUpdatePatch
                 card.angle = MathHelper.angleLerpSnap(card.angle, card.targetAngle);
             }
 
-            Method updateTransparency = KSMOD_Utility.GetMethodByReflect(card, AbstractCard.class, "updateTransparency");
-            Method updateColor = KSMOD_Utility.GetMethodByReflect(card, AbstractCard.class, "updateColor");
+            Method updateTransparency = Utility.GetMethodByReflect(card, AbstractCard.class, "updateTransparency");
+            Method updateColor = Utility.GetMethodByReflect(card, AbstractCard.class, "updateColor");
             updateTransparency.invoke(card);
             updateColor.invoke(card);
             return SpireReturn.Return(null);

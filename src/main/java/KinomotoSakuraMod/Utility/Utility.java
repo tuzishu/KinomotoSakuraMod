@@ -3,13 +3,13 @@ package KinomotoSakuraMod.Utility;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import sun.rmi.runtime.Log;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.lang.reflect.Type;
 import java.util.HashMap;
 
-public class KSMOD_Utility
+public class Utility
 {
     /**
      * 日志管理器
@@ -128,72 +128,41 @@ public class KSMOD_Utility
         }
     }
 
-    private static HashMap<Object, HashMap<Class, HashMap<String, HashMap<Type[], Method>>>> methodMap = new HashMap<Object, HashMap<Class, HashMap<String, HashMap<Type[], Method>>>>();
+    private static HashMap<String, Method> methodMap = new HashMap<>();
 
     /**
      * 通过反射的方法获取实例包括基类中的方法
      *
-     * @param obj            实例
-     * @param methodName     方法名
-     * @param parameterTypes 方法参数列表
+     * @param obj        实例
+     * @param methodName 方法名
+     * @param paramTypes 方法参数列表
      * @return 目标函数
      * @throws NoSuchMethodException
      */
-    public static Method GetMethodByReflect(Object obj, Class targetClass, String methodName, Class<?>... parameterTypes) throws NoSuchMethodException
+    public static Method GetMethodByReflect(Object obj, Class targetClass, String methodName, Class<?>... paramTypes) throws NoSuchMethodException
     {
-        // HashMap<Class, HashMap<String, HashMap<Type[], Method>>> classMap;
-        // HashMap<String, HashMap<Type[], Method>> nameMap;
-        // HashMap<Type[], Method> paramMap;
-        //
-        // if (!methodMap.containsKey(obj))
-        // {
-        //     methodMap.put(obj, new HashMap<>());
-        // }
-        // classMap = methodMap.get(obj);
-        //
-        // if (!classMap.containsKey(targetClass))
-        // {
-        //     classMap.put(targetClass, new HashMap<>());
-        // }
-        // nameMap = classMap.get(targetClass);
-        //
-        // if (!nameMap.containsKey(methodName))
-        // {
-        //     paramMap = new HashMap<>();
-        //     nameMap.put(methodName, paramMap);
-        //     Class cls = obj.getClass();
-        //     while (cls != targetClass)
-        //     {
-        //         cls = cls.getSuperclass();
-        //     }
-        //     Method[] methods = cls.getMethods();
-        //     for (Method method: methods)
-        //     {
-        //         method.setAccessible(true);
-        //         paramMap.put(method.getGenericParameterTypes(), method);
-        //         Logger.info("Put Method Map => Object: " + obj + ", Class: " + targetClass + ", Method: " + methodName + ", Param: " + parameterTypes);
-        //     }
-        // }
-        //
-        // paramMap = nameMap.get(methodName);
-        // return paramMap.get(parameterTypes);
-
-        // if (!paramMap.containsKey(parameterTypes))
-        // {
-        Class cls = obj.getClass();
-        while (cls != targetClass)
+        String key = targetClass.getName() + "_" + methodName;
+        for (Class cls : paramTypes)
         {
-            cls = cls.getSuperclass();
+            key += "_" + cls.getName();
         }
-        Method method = cls.getDeclaredMethod(methodName, parameterTypes);
-        method.setAccessible(true);
-        // paramMap.put(parameterTypes, method);
-        // Logger.info("Put Method Map => Object: " + obj + ", Class: " + targetClass + ", Method: " + methodName + ", Param: " + parameterTypes);
+
+        Method method = null;
+        if (!methodMap.containsKey(key))
+        {
+            Class cls = obj.getClass();
+            while (cls != targetClass)
+            {
+                cls = cls.getSuperclass();
+            }
+            method = cls.getDeclaredMethod(methodName, paramTypes);
+            method.setAccessible(true);
+            methodMap.put(key, method);
+        }
+        else
+        {
+            method = methodMap.get(key);
+        }
         return method;
-        // }
-        // else
-        // {
-        //     return paramMap.get(parameterTypes);
-        // }
     }
 }

@@ -3,7 +3,7 @@ package KinomotoSakuraMod.Cards.ClowCard;
 import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Powers.TimePower;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.Utility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
@@ -82,6 +82,6 @@ public class ClowCardTheTime extends AbstractMagicCard
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new TimePower(mon, 1), 1));
             }
         }
-        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.correctDamage()), DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.POISON));
+        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, Utility.GetDamageList(this.correctDamage()), DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.POISON));
     }
 }

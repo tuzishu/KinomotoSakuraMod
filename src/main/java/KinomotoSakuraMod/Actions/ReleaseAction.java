@@ -3,7 +3,7 @@ package KinomotoSakuraMod.Actions;
 import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardRelease;
 import KinomotoSakuraMod.Patches.CustomCardColor;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.Utility;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
@@ -89,7 +89,7 @@ public class ReleaseAction extends AbstractGameAction
                 {
                     ReleaseCard(card);
                     returnCards();
-                    AbstractDungeon.actionManager.addToTop(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage), DamageInfo.DamageType.HP_LOSS, AttackEffect.FIRE));
+                    AbstractDungeon.actionManager.addToTop(new DamageAllEnemiesAction(player, Utility.GetDamageList(this.damage), DamageInfo.DamageType.HP_LOSS, AttackEffect.FIRE));
                 }
             }
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;

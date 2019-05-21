@@ -11,7 +11,7 @@ import KinomotoSakuraMod.Patches.CustomCharacter;
 import KinomotoSakuraMod.Patches.CustomKeywords;
 import KinomotoSakuraMod.Relics.SealedBook;
 import KinomotoSakuraMod.Relics.SealedWand;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.Utility;
 import basemod.BaseMod;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
@@ -56,11 +56,11 @@ public class KinomotoSakuraMod implements ISubscriber, PostInitializeSubscriber,
 
     public static void initialize()
     {
-        KSMOD_Utility.Logger.info("开始初始化 KinomotoSakuraMod");
+        Utility.Logger.info("开始初始化 KinomotoSakuraMod");
 
         new KinomotoSakuraMod();
 
-        KSMOD_Utility.Logger.info("完成初始化 KinomotoSakuraMod");
+        Utility.Logger.info("完成初始化 KinomotoSakuraMod");
     }
 
     @SuppressWarnings("deprecation")
@@ -80,25 +80,25 @@ public class KinomotoSakuraMod implements ISubscriber, PostInitializeSubscriber,
     @Override
     public void receiveEditCharacters()
     {
-        KSMOD_Utility.Logger.info("开始编辑角色");
+        Utility.Logger.info("开始编辑角色");
 
         BaseMod.addCharacter(new KinomotoSakura(), SELECT_BUTTON_IMAGE_PATH, PORTRAIT_PATH, CustomCharacter.KINOMOTOSAKURA);
 
-        KSMOD_Utility.Logger.info("结束编辑角色");
+        Utility.Logger.info("结束编辑角色");
     }
 
     @Override
     public void receiveEditRelics()
     {
-        KSMOD_Utility.Logger.info("开始编辑遗物");
+        Utility.Logger.info("开始编辑遗物");
 
         for (AbstractRelic relic : GetRelicList())
         {
             BaseMod.addRelicToCustomPool(relic, CustomCardColor.CLOWCARD_COLOR);
-            KSMOD_Utility.Logger.info("Loading relic : " + relic.name);
+            Utility.Logger.info("Loading relic : " + relic.name);
         }
 
-        KSMOD_Utility.Logger.info("结束编辑遗物");
+        Utility.Logger.info("结束编辑遗物");
     }
 
     private ArrayList<AbstractRelic> GetRelicList()
@@ -114,22 +114,22 @@ public class KinomotoSakuraMod implements ISubscriber, PostInitializeSubscriber,
     @Override
     public void receiveEditCards()
     {
-        KSMOD_Utility.Logger.info("开始编辑卡牌");
+        Utility.Logger.info("开始编辑卡牌");
 
         for (AbstractCard card : GetUnlockedCardList())
         {
             BaseMod.addCard(card);
             UnlockTracker.unlockCard(card.cardID);
-            KSMOD_Utility.Logger.info("Loading Unlocked Card : " + card.name);
+            Utility.Logger.info("Loading Unlocked Card : " + card.name);
         }
 
         for (AbstractCard card : GetLockedCardList())
         {
             BaseMod.addCard(card);
-            KSMOD_Utility.Logger.info("Loading Locked Card : " + card.name);
+            Utility.Logger.info("Loading Locked Card : " + card.name);
         }
 
-        KSMOD_Utility.Logger.info("结束编辑卡牌");
+        Utility.Logger.info("结束编辑卡牌");
     }
 
     private ArrayList<AbstractCard> GetUnlockedCardList()
@@ -206,17 +206,17 @@ public class KinomotoSakuraMod implements ISubscriber, PostInitializeSubscriber,
     @Override
     public void receiveEditStrings()
     {
-        KSMOD_Utility.Logger.info("开始编辑本地化文本");
+        Utility.Logger.info("开始编辑本地化文本");
 
         String path = "localization/";
         //        switch (Settings.language)
         //        {
         //            case ZHS:
-        //                KSMOD_Utility.Logger.info("language == zhs");
+        //                Utility.Logger.info("language == zhs");
         path += "zhs/";
         //                break;
         //            default:
-        //                KSMOD_Utility.Logger.info("language == eng");
+        //                Utility.Logger.info("language == eng");
         //                path += "eng/";
         //                break;
         //        }
@@ -241,23 +241,23 @@ public class KinomotoSakuraMod implements ISubscriber, PostInitializeSubscriber,
         String uiStrings = Gdx.files.internal(ui).readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(UIStrings.class, uiStrings);
 
-        KSMOD_Utility.Logger.info("结束编辑本地化文本");
+        Utility.Logger.info("结束编辑本地化文本");
     }
 
     @Override
     public void receiveEditKeywords()
     {
-        KSMOD_Utility.Logger.info("开始编辑关键字");
+        Utility.Logger.info("开始编辑关键字");
 
         String path = "localization/";
         //        switch (Settings.language)
         //        {
         //            case ZHS:
-        //                KSMOD_Utility.Logger.info("language == zhs");
+        //                Utility.Logger.info("language == zhs");
         path += "zhs/";
         //                break;
         //            default:
-        //                KSMOD_Utility.Logger.info("language == eng");
+        //                Utility.Logger.info("language == eng");
         //                path += "eng/";
         //                break;
         //        }
@@ -271,10 +271,10 @@ public class KinomotoSakuraMod implements ISubscriber, PostInitializeSubscriber,
         for (int i = 0; i < keywordList.length; ++i)
         {
             Keyword key = keywordList[i];
-            KSMOD_Utility.Logger.info("加载关键字：" + key.NAMES[0]);
+            Utility.Logger.info("加载关键字：" + key.NAMES[0]);
             BaseMod.addKeyword(key.NAMES, key.DESCRIPTION);
         }
 
-        KSMOD_Utility.Logger.info("结束编辑关键字");
+        Utility.Logger.info("结束编辑关键字");
     }
 }

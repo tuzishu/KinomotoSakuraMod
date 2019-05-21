@@ -7,7 +7,7 @@ import KinomotoSakuraMod.Patches.CustomTag;
 import KinomotoSakuraMod.Powers.FreezePower;
 import KinomotoSakuraMod.Powers.WateryElementPower;
 import KinomotoSakuraMod.Powers.WindyElementPower;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.Utility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
@@ -76,7 +76,7 @@ public class ClowCardTheSnow extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.correctDamage()), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.POISON, true));
+        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, Utility.GetDamageList(this.correctDamage()), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.POISON, true));
 
         if (upgraded)
         {

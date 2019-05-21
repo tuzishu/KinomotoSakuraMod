@@ -1,8 +1,8 @@
 package KinomotoSakuraMod.Patches;
 
 import KinomotoSakuraMod.Cards.AbstractMagicCard;
-import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.ImageConst;
+import KinomotoSakuraMod.Utility.Utility;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -28,16 +28,16 @@ public class KSMOD_RenderSkillPortraitPatch
             switch (card.rarity)
             {
                 case RARE:
-                    texture = KSMOD_ImageConst.FRAME_COMMON;
+                    texture = ImageConst.FRAME_COMMON;
                     break;
                 case UNCOMMON:
-                    texture = KSMOD_ImageConst.FRAME_UNCOMMON;
+                    texture = ImageConst.FRAME_UNCOMMON;
                     break;
                 default:
-                    texture = KSMOD_ImageConst.FRAME_COMMON;
+                    texture = ImageConst.FRAME_COMMON;
                     break;
             }
-            Field renderColor = KSMOD_Utility.GetFieldByReflect(card, AbstractCard.class, "renderColor");
+            Field renderColor = Utility.GetFieldByReflect(card, AbstractCard.class, "renderColor");
             sb.setColor((Color) renderColor.get(card));
             try
             {
@@ -45,7 +45,7 @@ public class KSMOD_RenderSkillPortraitPatch
             }
             catch (Exception var7)
             {
-                KSMOD_Utility.Logger.error(var7);
+                Utility.Logger.error(var7);
             }
             return SpireReturn.Return(null);
         }
