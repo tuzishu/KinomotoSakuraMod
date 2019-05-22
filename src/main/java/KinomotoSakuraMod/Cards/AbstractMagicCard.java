@@ -40,12 +40,13 @@ public abstract class AbstractMagicCard extends CustomCard
     private static final Color ENERGY_COST_MODIFIED_COLOR = new Color(0.4F, 1.0F, 0.4F, 1.0F);
     private static final float CARD_WIDTH = 220F;
     private static final float CARD_HEIGHT = 500F;
-    private static final float DESC_LINE_WIDTH = 160F * Settings.scale;
-    private static final float DESC_OFFSET_RATE_X = 0.79F;
-    private static final float DESC_OFFSET_RATE_Y = 0.321F;
+    private static final float DESC_LINE_WIDTH = 190F * Settings.scale;
+    private static final float DESC_SCALE_RATE_X = 0.83F;
+    private static final float DESC_OFFSET_TO_BOTTOM_Y = 0.5F;
     private static final float CARD_ENERGY_IMG_WIDTH = 24.0F * Settings.scale;
     private static final float HB_W = CARD_WIDTH * Settings.scale;
     private static final float HB_H = CARD_HEIGHT * Settings.scale;
+    private static final float TITLE_HEIGHT_TO_CENTER = 222.0F;
 
     private boolean hasReleased = false;
     private float releaseRate = 0F;
@@ -289,7 +290,7 @@ public abstract class AbstractMagicCard extends CustomCard
         {
             Method getDescFont = Utility.GetMethodByReflect(this, AbstractCard.class, "getDescFont");
             BitmapFont font = (BitmapFont) getDescFont.invoke(this);
-            float draw_y = this.current_y - CARD_HEIGHT * this.drawScale / 2.0F + CARD_HEIGHT * DESC_OFFSET_RATE_Y * this.drawScale;
+            float draw_y = this.current_y - CARD_HEIGHT * this.drawScale / 2.0F + CARD_HEIGHT * DESC_OFFSET_TO_BOTTOM_Y * this.drawScale;
             draw_y += (float) this.description.size() * font.getCapHeight() * 0.775F - font.getCapHeight() * 0.375F;
             float spacing = 1.45F * -font.getCapHeight() / Settings.scale / this.drawScale;
             GlyphLayout gl = new GlyphLayout();
@@ -299,7 +300,7 @@ public abstract class AbstractMagicCard extends CustomCard
                 float start_x = 0.0F;
                 if (Settings.leftAlignCards)
                 {
-                    start_x = this.current_x - CARD_WIDTH * DESC_OFFSET_RATE_X * this.drawScale / 2.0F + 2.0F * Settings.scale;
+                    start_x = this.current_x - CARD_WIDTH * DESC_SCALE_RATE_X * this.drawScale / 2.0F + 2.0F * Settings.scale;
                 }
                 else
                 {
@@ -671,6 +672,78 @@ public abstract class AbstractMagicCard extends CustomCard
         catch (Exception e)
         {
             e.printStackTrace();
+        }
+    }
+
+    @SpireOverride
+    public void renderTitle(SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException
+    {
+        BitmapFont font = null;
+        Color renderColor = (Color) Utility.GetFieldByReflect(this, AbstractCard.class, "renderColor").get(this);
+        if (this.isLocked)
+        {
+            if (this.angle == 0.0F && this.drawScale == 1.0F)
+            {
+                font = FontHelper.cardTitleFont_N;
+            }
+            else
+            {
+                font = FontHelper.cardTitleFont_L;
+            }
+
+            font.getData().setScale(this.drawScale);
+
+            FontHelper.renderRotatedText(sb, font, LOCKED_STRING, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
+        }
+        else if (!this.isSeen)
+        {
+            if (this.angle == 0.0F && this.drawScale == 1.0F)
+            {
+                font = FontHelper.cardTitleFont_N;
+            }
+            else
+            {
+                font = FontHelper.cardTitleFont_L;
+            }
+
+            font.getData().setScale(this.drawScale);
+            FontHelper.renderRotatedText(sb, font, UNKNOWN_STRING, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
+        }
+        else
+        {
+            boolean useSmallTitleFont = Utility.GetFieldByReflect(this, AbstractCard.class, "useSmallTitleFont").getBoolean(this);
+            if (!useSmallTitleFont)
+            {
+                if (this.angle == 0.0F && this.drawScale == 1.0F)
+                {
+                    font = FontHelper.cardTitleFont_N;
+                }
+                else
+                {
+                    font = FontHelper.cardTitleFont_L;
+                }
+            }
+            else if (this.angle == 0.0F && this.drawScale == 1.0F)
+            {
+                font = FontHelper.cardTitleFont_small_N;
+            }
+            else
+            {
+                font = FontHelper.cardTitleFont_small_L;
+            }
+
+            font.getData().setScale(this.drawScale);
+            if (this.upgraded)
+            {
+                Color color = Settings.GREEN_TEXT_COLOR.cpy();
+                color.a = renderColor.a;
+                FontHelper.renderRotatedText(sb, font, this.name, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, color);
+            }
+            else
+            {
+                FontHelper.renderRotatedText(sb, font, this.name, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
+            }
+
         }
     }
 }
