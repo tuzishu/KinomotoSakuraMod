@@ -3,7 +3,6 @@ package KinomotoSakuraMod.Utility;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import sun.rmi.runtime.Log;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -158,6 +157,7 @@ public class Utility
             method = cls.getDeclaredMethod(methodName, paramTypes);
             method.setAccessible(true);
             methodMap.put(key, method);
+            Logger.info("method cache add: " + key);
         }
         else
         {
