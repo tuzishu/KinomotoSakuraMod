@@ -34,7 +34,7 @@ public abstract class AbstractMagicCard extends CustomCard
     //////////
     // Override Method Usage
     //////////
-    private static final float ENERGY_COST_OFFSET_X = -92;
+    private static final float ENERGY_COST_OFFSET_X = -90;
     private static final float ENERGY_COST_OFFSET_Y = 222;
     private static final Color ENERGY_COST_RESTRICTED_COLOR = new Color(1.0F, 0.3F, 0.3F, 1.0F);
     private static final Color ENERGY_COST_MODIFIED_COLOR = new Color(0.4F, 1.0F, 0.4F, 1.0F);
@@ -42,11 +42,15 @@ public abstract class AbstractMagicCard extends CustomCard
     private static final float CARD_HEIGHT = 500F;
     private static final float DESC_LINE_WIDTH = 190F * Settings.scale;
     private static final float DESC_SCALE_RATE_X = 0.83F;
-    private static final float DESC_OFFSET_TO_BOTTOM_Y = 0.5F;
+    private static final float DESC_OFFSET_TO_BOTTOM_Y = 0.425F;
     private static final float CARD_ENERGY_IMG_WIDTH = 24.0F * Settings.scale;
     private static final float HB_W = CARD_WIDTH * Settings.scale;
     private static final float HB_H = CARD_HEIGHT * Settings.scale;
     private static final float TITLE_HEIGHT_TO_CENTER = 222.0F;
+    private static final float PORTRAIT_WIDTH = 151F;
+    private static final float PORTRAIT_HEIGHT = 393F;
+    private static final float PORTRAIT_ORIGIN_X = 75F;
+    private static final float PORTRAIT_ORIGIN_Y = 178F;
 
     private boolean hasReleased = false;
     private float releaseRate = 0F;
@@ -745,5 +749,39 @@ public abstract class AbstractMagicCard extends CustomCard
             }
 
         }
+    }
+
+    @SpireOverride
+    public void renderPortrait(SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException
+    {
+        float drawX = this.current_x;// - 125.0F;
+        float drawY = this.current_y;// - 95.0F;
+        Texture img = null;
+        if (this.portraitImg != null)
+        {
+            img = this.portraitImg;
+        }
+
+        if (!this.isLocked)
+        {
+            Color renderColor = (Color) Utility.GetFieldByReflect(this, AbstractCard.class, "renderColor").get(this);
+            if (this.portrait != null)
+            {
+                drawX = this.current_x - PORTRAIT_ORIGIN_X;
+                drawY = this.current_y - PORTRAIT_ORIGIN_Y;
+                sb.setColor(renderColor);
+                sb.draw(this.portrait, drawX, drawY, PORTRAIT_ORIGIN_X, PORTRAIT_ORIGIN_Y, PORTRAIT_WIDTH, PORTRAIT_HEIGHT, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle);
+            }
+            else if (img != null)
+            {
+                sb.setColor(renderColor);
+                sb.draw(img, drawX, drawY, PORTRAIT_ORIGIN_X, PORTRAIT_ORIGIN_Y, PORTRAIT_WIDTH, PORTRAIT_HEIGHT, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, (int)PORTRAIT_WIDTH, (int) PORTRAIT_HEIGHT, false, false);
+            }
+        }
+        else
+        {
+            sb.draw(this.portraitImg, drawX, drawY, PORTRAIT_ORIGIN_X, PORTRAIT_ORIGIN_Y, PORTRAIT_WIDTH, PORTRAIT_HEIGHT, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, (int)PORTRAIT_WIDTH, (int) PORTRAIT_HEIGHT, false, false);
+        }
+
     }
 }
