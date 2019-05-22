@@ -38,14 +38,14 @@ public abstract class AbstractMagicCard extends CustomCard
     private static final float ENERGY_COST_OFFSET_Y = 222;
     private static final Color ENERGY_COST_RESTRICTED_COLOR = new Color(1.0F, 0.3F, 0.3F, 1.0F);
     private static final Color ENERGY_COST_MODIFIED_COLOR = new Color(0.4F, 1.0F, 0.4F, 1.0F);
-    private static final float CARD_WIDTH = 220F;
-    private static final float CARD_HEIGHT = 500F;
+    private static final float CARD_WIDTH = 220F * Settings.scale;
+    private static final float CARD_HEIGHT = 500F * Settings.scale;
     private static final float DESC_LINE_WIDTH = 190F * Settings.scale;
     private static final float DESC_SCALE_RATE_X = 0.83F;
-    private static final float DESC_OFFSET_TO_BOTTOM_Y = 0.425F;
+    private static final float DESC_OFFSET_TO_BOTTOM_Y = 0.34F;
     private static final float CARD_ENERGY_IMG_WIDTH = 24.0F * Settings.scale;
-    private static final float HB_W = CARD_WIDTH * Settings.scale;
-    private static final float HB_H = CARD_HEIGHT * Settings.scale;
+    private static final float HB_W = CARD_WIDTH;
+    private static final float HB_H = CARD_HEIGHT;
     private static final float TITLE_HEIGHT_TO_CENTER = 222.0F;
     private static final float PORTRAIT_WIDTH = 151F;
     private static final float PORTRAIT_HEIGHT = 393F;
@@ -680,43 +680,13 @@ public abstract class AbstractMagicCard extends CustomCard
     }
 
     @SpireOverride
-    public void renderTitle(SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException
+    public void renderTitle(SpriteBatch sb)
     {
-        BitmapFont font = null;
-        Color renderColor = (Color) Utility.GetFieldByReflect(this, AbstractCard.class, "renderColor").get(this);
-        if (this.isLocked)
+        try
         {
-            if (this.angle == 0.0F && this.drawScale == 1.0F)
-            {
-                font = FontHelper.cardTitleFont_N;
-            }
-            else
-            {
-                font = FontHelper.cardTitleFont_L;
-            }
-
-            font.getData().setScale(this.drawScale);
-
-            FontHelper.renderRotatedText(sb, font, LOCKED_STRING, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
-        }
-        else if (!this.isSeen)
-        {
-            if (this.angle == 0.0F && this.drawScale == 1.0F)
-            {
-                font = FontHelper.cardTitleFont_N;
-            }
-            else
-            {
-                font = FontHelper.cardTitleFont_L;
-            }
-
-            font.getData().setScale(this.drawScale);
-            FontHelper.renderRotatedText(sb, font, UNKNOWN_STRING, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
-        }
-        else
-        {
-            boolean useSmallTitleFont = Utility.GetFieldByReflect(this, AbstractCard.class, "useSmallTitleFont").getBoolean(this);
-            if (!useSmallTitleFont)
+            BitmapFont font = null;
+            Color renderColor = (Color) Utility.GetFieldByReflect(this, AbstractCard.class, "renderColor").get(this);
+            if (this.isLocked)
             {
                 if (this.angle == 0.0F && this.drawScale == 1.0F)
                 {
@@ -726,36 +696,72 @@ public abstract class AbstractMagicCard extends CustomCard
                 {
                     font = FontHelper.cardTitleFont_L;
                 }
+
+                font.getData().setScale(this.drawScale);
+
+                FontHelper.renderRotatedText(sb, font, LOCKED_STRING, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
             }
-            else if (this.angle == 0.0F && this.drawScale == 1.0F)
+            else if (!this.isSeen)
             {
-                font = FontHelper.cardTitleFont_small_N;
+                if (this.angle == 0.0F && this.drawScale == 1.0F)
+                {
+                    font = FontHelper.cardTitleFont_N;
+                }
+                else
+                {
+                    font = FontHelper.cardTitleFont_L;
+                }
+
+                font.getData().setScale(this.drawScale);
+                FontHelper.renderRotatedText(sb, font, UNKNOWN_STRING, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
             }
             else
             {
-                font = FontHelper.cardTitleFont_small_L;
-            }
+                boolean useSmallTitleFont = Utility.GetFieldByReflect(this, AbstractCard.class, "useSmallTitleFont").getBoolean(this);
+                if (!useSmallTitleFont)
+                {
+                    if (this.angle == 0.0F && this.drawScale == 1.0F)
+                    {
+                        font = FontHelper.cardTitleFont_N;
+                    }
+                    else
+                    {
+                        font = FontHelper.cardTitleFont_L;
+                    }
+                }
+                else if (this.angle == 0.0F && this.drawScale == 1.0F)
+                {
+                    font = FontHelper.cardTitleFont_small_N;
+                }
+                else
+                {
+                    font = FontHelper.cardTitleFont_small_L;
+                }
 
-            font.getData().setScale(this.drawScale);
-            if (this.upgraded)
-            {
-                Color color = Settings.GREEN_TEXT_COLOR.cpy();
-                color.a = renderColor.a;
-                FontHelper.renderRotatedText(sb, font, this.name, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, color);
+                font.getData().setScale(this.drawScale);
+                if (this.upgraded)
+                {
+                    Color color = Settings.GREEN_TEXT_COLOR.cpy();
+                    color.a = renderColor.a;
+                    FontHelper.renderRotatedText(sb, font, this.name, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, color);
+                }
+                else
+                {
+                    FontHelper.renderRotatedText(sb, font, this.name, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
+                }
             }
-            else
-            {
-                FontHelper.renderRotatedText(sb, font, this.name, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
-            }
-
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
         }
     }
 
     @SpireOverride
     public void renderPortrait(SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException
     {
-        float drawX = this.current_x;// - 125.0F;
-        float drawY = this.current_y;// - 95.0F;
+        float drawX = this.current_x;
+        float drawY = this.current_y;
         Texture img = null;
         if (this.portraitImg != null)
         {
@@ -775,13 +781,18 @@ public abstract class AbstractMagicCard extends CustomCard
             else if (img != null)
             {
                 sb.setColor(renderColor);
-                sb.draw(img, drawX, drawY, PORTRAIT_ORIGIN_X, PORTRAIT_ORIGIN_Y, PORTRAIT_WIDTH, PORTRAIT_HEIGHT, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, (int)PORTRAIT_WIDTH, (int) PORTRAIT_HEIGHT, false, false);
+                sb.draw(img, drawX, drawY, PORTRAIT_ORIGIN_X, PORTRAIT_ORIGIN_Y, PORTRAIT_WIDTH, PORTRAIT_HEIGHT, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, (int) PORTRAIT_WIDTH, (int) PORTRAIT_HEIGHT, false, false);
             }
         }
         else
         {
-            sb.draw(this.portraitImg, drawX, drawY, PORTRAIT_ORIGIN_X, PORTRAIT_ORIGIN_Y, PORTRAIT_WIDTH, PORTRAIT_HEIGHT, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, (int)PORTRAIT_WIDTH, (int) PORTRAIT_HEIGHT, false, false);
+            sb.draw(this.portraitImg, drawX, drawY, PORTRAIT_ORIGIN_X, PORTRAIT_ORIGIN_Y, PORTRAIT_WIDTH, PORTRAIT_HEIGHT, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, (int) PORTRAIT_WIDTH, (int) PORTRAIT_HEIGHT, false, false);
         }
 
+    }
+
+    @SpireOverride
+    public void renderType(SpriteBatch sb)
+    {
     }
 }
