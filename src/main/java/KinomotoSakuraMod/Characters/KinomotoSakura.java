@@ -152,7 +152,7 @@ public class KinomotoSakura extends CustomPlayer
 
     public AbstractCard getStartCardForEvent()
     {
-        return null;
+        return new ClowCardTheSword();
     }
 
     public Color getCardTrailColor()

@@ -20,7 +20,6 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.GameDictionary;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.MathHelper;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -39,14 +38,14 @@ public abstract class AbstractMagicCard extends CustomCard
     private static final float ENERGY_COST_OFFSET_Y = 222;
     private static final Color ENERGY_COST_RESTRICTED_COLOR = new Color(1.0F, 0.3F, 0.3F, 1.0F);
     private static final Color ENERGY_COST_MODIFIED_COLOR = new Color(0.4F, 1.0F, 0.4F, 1.0F);
-    public static final float CARD_WIDTH = 220F * Settings.scale;
-    public static final float CARD_HEIGHT = 500F * Settings.scale;
+    public static final float IMG_WIDTH = 220F * Settings.scale;
+    public static final float IMG_HEIGHT = 500F * Settings.scale;
     private static final float DESC_LINE_WIDTH = 190F * Settings.scale;
     private static final float DESC_SCALE_RATE_X = 0.83F;
     private static final float DESC_OFFSET_TO_BOTTOM_Y = 0.367F;
     private static final float CARD_ENERGY_IMG_WIDTH = 24.0F * Settings.scale;
-    private static final float HB_W = CARD_WIDTH;
-    private static final float HB_H = CARD_HEIGHT;
+    private static final float HB_W = IMG_WIDTH;
+    private static final float HB_H = IMG_HEIGHT;
     private static final float TITLE_HEIGHT_TO_CENTER = 222.0F;
     private static final float PORTRAIT_WIDTH = 151F;
     private static final float PORTRAIT_HEIGHT = 393F;
@@ -185,7 +184,7 @@ public abstract class AbstractMagicCard extends CustomCard
 
             Method renderHelper = Utility.GetMethodByReflect(this, AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, Texture.class, float.class, float.class);
             Color renderColor = (Color) Utility.GetFieldByReflect(this, AbstractCard.class, "renderColor").get(this);
-            renderHelper.invoke(this, sb, renderColor, ImageConst.ORB, drawX, drawY);
+            renderHelper.invoke(this, sb, renderColor, ImageConst.ORB_ATTACK, drawX, drawY);
 
             Color costColor = Color.WHITE.cpy();
             if (AbstractDungeon.player != null && AbstractDungeon.player.hand.contains(this) && !this.hasEnoughEnergy())
@@ -295,7 +294,7 @@ public abstract class AbstractMagicCard extends CustomCard
         {
             Method getDescFont = Utility.GetMethodByReflect(this, AbstractCard.class, "getDescFont");
             BitmapFont font = (BitmapFont) getDescFont.invoke(this);
-            float draw_y = this.current_y - CARD_HEIGHT * this.drawScale / 2.0F + CARD_HEIGHT * DESC_OFFSET_TO_BOTTOM_Y * this.drawScale;
+            float draw_y = this.current_y - IMG_HEIGHT * this.drawScale / 2.0F + IMG_HEIGHT * DESC_OFFSET_TO_BOTTOM_Y * this.drawScale;
             draw_y += (float) this.description.size() * font.getCapHeight() * 0.775F - font.getCapHeight() * 0.375F;
             float spacing = 1.45F * -font.getCapHeight() / Settings.scale / this.drawScale;
             GlyphLayout gl = new GlyphLayout();
@@ -305,7 +304,7 @@ public abstract class AbstractMagicCard extends CustomCard
                 float start_x = 0.0F;
                 if (Settings.leftAlignCards)
                 {
-                    start_x = this.current_x - CARD_WIDTH * DESC_SCALE_RATE_X * this.drawScale / 2.0F + 2.0F * Settings.scale;
+                    start_x = this.current_x - IMG_WIDTH * DESC_SCALE_RATE_X * this.drawScale / 2.0F + 2.0F * Settings.scale;
                 }
                 else
                 {
@@ -795,5 +794,18 @@ public abstract class AbstractMagicCard extends CustomCard
     @SpireOverride
     public void renderType(SpriteBatch sb)
     {
+    }
+
+    @Override
+    public Texture getCardBg()
+    {
+        switch(this.type) {
+            case ATTACK:
+            case SKILL:
+            case POWER:
+                return ImageConst.SILHOUETTE;
+            default:
+                return null;
+        }
     }
 }

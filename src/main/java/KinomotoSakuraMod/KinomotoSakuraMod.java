@@ -11,6 +11,7 @@ import KinomotoSakuraMod.Patches.CustomCharacter;
 import KinomotoSakuraMod.Patches.CustomKeywords;
 import KinomotoSakuraMod.Relics.SealedBook;
 import KinomotoSakuraMod.Relics.SealedWand;
+import KinomotoSakuraMod.Utility.ImageConst;
 import KinomotoSakuraMod.Utility.Utility;
 import basemod.BaseMod;
 import basemod.interfaces.*;
@@ -34,24 +35,12 @@ public class KinomotoSakuraMod implements ISubscriber, PostInitializeSubscriber,
     public static final Color colorClowCard = CardHelper.getColor(255f, 152f, 74f);
     public static final Color colorSakuraCard = CardHelper.getColor(255f, 192f, 203f);
     public static final Color colorSpellCard = CardHelper.getColor(253f, 220f, 106f);
-    // 角色图片素材路径
-    private static final String SELECT_BUTTON_IMAGE_PATH = "img/charSelect/MarisaButton.png";
-    private static final String PORTRAIT_PATH = "img/charSelect/marisaPortrait.jpg";
-    // 卡片图片素材路径
-    private static final String ATTACK_BG_PATH = "img/512/attack_card.png";
-    private static final String SKILL_BG_PATH = "img/512/skill_card.png";
-    private static final String POWER_BG_PATH = "img/512/power_card.png";
-    private static final String ENERGYORB_BG_PATH = "img/512/card_orb.png";
-    private static final String ATTACK_BG_1024_PATH = "img/1024/attack_card_1024.png";
-    private static final String SKILL_BG_1024_PATH = "img/1024/skill_card_1024.png";
-    private static final String POWER_BG_1024_PATH = "img/1024/power_card_1024.png";
-    private static final String ENERGYORB_BG_1024_PATH = "img/1024/card_orb_1024.png";
 
     public KinomotoSakuraMod()
     {
         BaseMod.subscribe(this);
-        BaseMod.addColor(CustomCardColor.CLOWCARD_COLOR, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, ATTACK_BG_PATH, SKILL_BG_PATH, POWER_BG_PATH, ENERGYORB_BG_PATH, ATTACK_BG_1024_PATH, SKILL_BG_1024_PATH, POWER_BG_1024_PATH, ENERGYORB_BG_1024_PATH);
-        BaseMod.addColor(CustomCardColor.SPELL_COLOR, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, ATTACK_BG_PATH, SKILL_BG_PATH, POWER_BG_PATH, ENERGYORB_BG_PATH, ATTACK_BG_1024_PATH, SKILL_BG_1024_PATH, POWER_BG_1024_PATH, ENERGYORB_BG_1024_PATH);
+        BaseMod.addColor(CustomCardColor.CLOWCARD_COLOR, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, ImageConst.ATTACK_BG_PATH, ImageConst.SKILL_BG_PATH, ImageConst.POWER_BG_PATH, ImageConst.ORB_ATTACK_PATH, ImageConst.ATTACK_BG_LARGE_PATH, ImageConst.SKILL_BG_LARGE_PATH, ImageConst.POWER_BG_LARGE_PATH, ImageConst.ORB_ATTACK_LARGE_PATH);
+        BaseMod.addColor(CustomCardColor.SPELL_COLOR, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, ImageConst.ATTACK_BG_PATH, ImageConst.SKILL_BG_PATH, ImageConst.POWER_BG_PATH, ImageConst.ORB_ATTACK_PATH, ImageConst.ATTACK_BG_LARGE_PATH, ImageConst.SKILL_BG_LARGE_PATH, ImageConst.POWER_BG_LARGE_PATH, ImageConst.ORB_ATTACK_LARGE_PATH);
     }
 
     public static void initialize()
@@ -82,7 +71,7 @@ public class KinomotoSakuraMod implements ISubscriber, PostInitializeSubscriber,
     {
         Utility.Logger.info("开始编辑角色");
 
-        BaseMod.addCharacter(new KinomotoSakura(), SELECT_BUTTON_IMAGE_PATH, PORTRAIT_PATH, CustomCharacter.KINOMOTOSAKURA);
+        BaseMod.addCharacter(new KinomotoSakura(), ImageConst.SELECT_BUTTON_PATH, ImageConst.PORTRAIT_PATH, CustomCharacter.KINOMOTOSAKURA);
 
         Utility.Logger.info("结束编辑角色");
     }
