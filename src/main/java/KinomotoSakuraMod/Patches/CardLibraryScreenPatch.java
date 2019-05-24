@@ -16,7 +16,7 @@ import java.util.ArrayList;
 @SpirePatch(clz = CardLibraryScreen.class, method = "updateCards", paramtypez = {})
 public class CardLibraryScreenPatch
 {
-    private static final int CARD_NUMBER_PER_LINE = 6;
+    private static final int CARDS_PER_LINE = 6;
     private static float DRAW_START_X = ((float) Settings.WIDTH - 5.0F * AbstractCard.IMG_WIDTH * 0.75F - 4.0F * Settings.CARD_VIEW_PAD_X) / 2.0F + AbstractCard.IMG_WIDTH * 0.75F / 2.0F;
     private static float DRAW_START_Y = Settings.HEIGHT * 0.66F;
     private static float PAD_X = AbstractMagicCard.IMG_WIDTH * 0.778F + Settings.CARD_VIEW_PAD_X;
@@ -26,7 +26,7 @@ public class CardLibraryScreenPatch
     {
         CardGroup visibleCards = (CardGroup) Utility.GetFieldByReflect(lib, CardLibraryScreen.class, "visibleCards").get(lib);
         ArrayList<AbstractCard> cards = visibleCards.group;
-        if (cards.get(0).color == CustomCardColor.CLOWCARD_COLOR || cards.get(0).color == CustomCardColor.SAKURACARD_COLOR || cards.get(0).color == CustomCardColor.SPELL_COLOR)
+        if (Check(cards))
         {
             Field hoveredCard = Utility.GetFieldByReflect(lib, CardLibraryScreen.class, "hoveredCard");
             hoveredCard.set(lib, null);
@@ -34,7 +34,7 @@ public class CardLibraryScreenPatch
             for (int i = 0; i < cards.size(); ++i)
             {
                 AbstractCard card = cards.get(i);
-                int mod = i % CARD_NUMBER_PER_LINE;
+                int mod = i % CARDS_PER_LINE;
                 if (mod == 0 && i != 0)
                 {
                     ++lineNum;
@@ -64,5 +64,15 @@ public class CardLibraryScreenPatch
         {
             return SpireReturn.Continue();
         }
+    }
+
+    public static boolean Check(ArrayList<AbstractCard> cards)
+    {
+        if (cards.size() > 0)
+        {
+            AbstractCard card = cards.get(0);
+            return card.color == CustomCardColor.CLOWCARD_COLOR || card.color == CustomCardColor.SAKURACARD_COLOR || card.color == CustomCardColor.SPELL_COLOR;
+        }
+        return false;
     }
 }
