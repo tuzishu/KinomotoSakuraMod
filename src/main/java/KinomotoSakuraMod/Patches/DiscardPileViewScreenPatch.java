@@ -8,12 +8,12 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.screens.MasterDeckViewScreen;
+import com.megacrit.cardcrawl.screens.DiscardPileViewScreen;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-public class MasterDeckViewScreenPatch
+public class DiscardPileViewScreenPatch
 {
     private static final int CARDS_PER_LINE = 5;
     private static float DRAW_START_X = ((float) Settings.WIDTH - 5.0F * AbstractCard.IMG_WIDTH * 0.75F - 4.0F * Settings.CARD_VIEW_PAD_X) / 2.0F + AbstractCard.IMG_WIDTH * 0.75F / 2.0F;
@@ -77,21 +77,21 @@ public class MasterDeckViewScreenPatch
         return pad;
     }
 
-    @SpirePatch(clz = MasterDeckViewScreen.class, method = "updatePositions", paramtypez = {})
+    @SpirePatch(clz = DiscardPileViewScreen.class, method = "updatePositions", paramtypez = {})
     public static class updatePositions
     {
-        public static SpireReturn<Object> Prefix(MasterDeckViewScreen deck) throws NoSuchFieldException, IllegalAccessException
+        public static SpireReturn<Object> Prefix(DiscardPileViewScreen deck) throws NoSuchFieldException, IllegalAccessException
         {
             ArrayList<AbstractCard> cards = AbstractDungeon.player.masterDeck.group;
             if (HasLongCard(cards))
             {
-                Field hoveredCard = Utility.GetFieldByReflect(deck, MasterDeckViewScreen.class, "hoveredCard");
+                Field hoveredCard = Utility.GetFieldByReflect(deck, DiscardPileViewScreen.class, "hoveredCard");
                 hoveredCard.set(deck, null);
                 for (int i = 0; i < cards.size(); ++i)
                 {
                     AbstractCard card = cards.get(i);
                     int mod = i % CARDS_PER_LINE;
-                    Float currentDiffY = Utility.GetFieldByReflect(deck, MasterDeckViewScreen.class, "currentDiffY").getFloat(deck);
+                    Float currentDiffY = Utility.GetFieldByReflect(deck, DiscardPileViewScreen.class, "currentDiffY").getFloat(deck);
                     card.target_x = DRAW_START_X + (float) mod * PAD_X;
                     card.target_y = DRAW_START_Y + currentDiffY - GetPadHeight(i, false);
                     card.update();
@@ -110,24 +110,24 @@ public class MasterDeckViewScreenPatch
         }
     }
 
-    @SpirePatch(clz = MasterDeckViewScreen.class, method = "calculateScrollBounds", paramtypez = {})
+    @SpirePatch(clz = DiscardPileViewScreen.class, method = "calculateScrollBounds", paramtypez = {})
     public static class calculateScrollBounds
     {
-        public static SpireReturn<Object> Prefix(MasterDeckViewScreen deck) throws NoSuchFieldException, IllegalAccessException
+        public static SpireReturn<Object> Prefix(DiscardPileViewScreen deck) throws NoSuchFieldException, IllegalAccessException
         {
             ArrayList<AbstractCard> cards = AbstractDungeon.player.masterDeck.group;
             if (HasLongCard(cards))
             {
-                Field scrollUpperBound = Utility.GetFieldByReflect(deck, MasterDeckViewScreen.class, "scrollUpperBound");
+                Field scrollUpperBound = Utility.GetFieldByReflect(deck, DiscardPileViewScreen.class, "scrollUpperBound");
                 if (cards.size() > CARDS_PER_LINE && cards.size() <= CARDS_PER_LINE * 2 && HasLongCard(cards) || cards.size() > CARDS_PER_LINE * 2)
                 {
-                    scrollUpperBound.setFloat(deck, Settings.DEFAULT_SCROLL_LIMIT + GetPadHeight(cards.size() - 1, true));
+                    scrollUpperBound.setFloat(deck, Settings.DEFAULT_SCROLL_LIMIT + GetPadHeight(cards.size() + 1, true));
                 }
                 else
                 {
                     scrollUpperBound.setFloat(deck, Settings.DEFAULT_SCROLL_LIMIT);
                 }
-                Field prevDeckSize = Utility.GetFieldByReflect(deck, MasterDeckViewScreen.class, "prevDeckSize");
+                Field prevDeckSize = Utility.GetFieldByReflect(deck, DiscardPileViewScreen.class, "prevDeckSize");
                 prevDeckSize.setInt(deck, AbstractDungeon.player.masterDeck.size());
                 return SpireReturn.Return(null);
             }
@@ -138,10 +138,10 @@ public class MasterDeckViewScreenPatch
         }
     }
 
-    @SpirePatch(clz = MasterDeckViewScreen.class, method = "hideCards", paramtypez = {})
+    @SpirePatch(clz = DiscardPileViewScreen.class, method = "hideCards", paramtypez = {})
     public static class hideCards
     {
-        public static SpireReturn<Object> Prefix(MasterDeckViewScreen deck) throws NoSuchFieldException, IllegalAccessException
+        public static SpireReturn<Object> Prefix(DiscardPileViewScreen deck) throws NoSuchFieldException, IllegalAccessException
         {
             ArrayList<AbstractCard> cards = AbstractDungeon.player.masterDeck.group;
             if (HasLongCard(cards))
@@ -150,7 +150,7 @@ public class MasterDeckViewScreenPatch
                 {
                     AbstractCard card = cards.get(i);
                     int mod = i % 5;
-                    Float currentDiffY = Utility.GetFieldByReflect(deck, MasterDeckViewScreen.class, "currentDiffY").getFloat(deck);
+                    Float currentDiffY = Utility.GetFieldByReflect(deck, DiscardPileViewScreen.class, "currentDiffY").getFloat(deck);
                     card.current_x = DRAW_START_X + mod * PAD_X;
                     card.current_y = DRAW_START_Y + currentDiffY - GetPadHeight(i, false) - MathUtils.random(100.0F * Settings.scale, 200.0F * Settings.scale);
                     card.targetDrawScale = 0.75F;
