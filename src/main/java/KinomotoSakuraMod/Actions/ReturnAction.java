@@ -54,7 +54,6 @@ public class ReturnAction extends AbstractGameAction
                     group.group.add(card);
                 }
             }
-            Utility.Logger.info(count);
             if (count == 0)
             {
                 this.isDone = true;

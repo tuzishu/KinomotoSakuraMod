@@ -20,8 +20,8 @@ public class GridCardSelectScreenPatch
     private static float DRAW_START_X = ((float) Settings.WIDTH - 5.0F * AbstractCard.IMG_WIDTH * 0.75F - 4.0F * Settings.CARD_VIEW_PAD_X) / 2.0F + AbstractCard.IMG_WIDTH * 0.75F / 2.0F;
     private static float DRAW_START_Y;
     private static float PAD_X = AbstractCard.IMG_WIDTH * 0.75F + Settings.CARD_VIEW_PAD_X;
-    private static float PAD_Y = AbstractCard.IMG_HEIGHT * 0.83F + Settings.CARD_VIEW_PAD_Y;
-    private static float PAD_LONG_Y = AbstractMagicCard.IMG_HEIGHT * 0.75F + Settings.CARD_VIEW_PAD_Y;
+    private static float PAD_Y = AbstractCard.IMG_HEIGHT * 0.75F + Settings.CARD_VIEW_PAD_Y;
+    private static float PAD_LONG_Y = AbstractMagicCard.IMG_HEIGHT * 0.79F + Settings.CARD_VIEW_PAD_Y;
 
     public static boolean IsLongCard(AbstractCard card)
     {
@@ -242,7 +242,7 @@ public class GridCardSelectScreenPatch
             {
                 Field cardSelectAmount = Utility.GetFieldByReflect(grid, GridCardSelectScreen.class, "cardSelectAmount");
                 Field hoveredCard = Utility.GetFieldByReflect(grid, GridCardSelectScreen.class, "hoveredCard");
-                cardSelectAmount.setFloat(grid, 0);
+                cardSelectAmount.setInt(grid, 0);
                 grid.confirmScreenUp = false;
                 grid.confirmButton.hide();
                 grid.confirmButton.isDisabled = true;

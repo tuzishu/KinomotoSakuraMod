@@ -31,9 +31,11 @@ public class ImageConst
     public static final String FRAME_UNCOMMON_PATH = "img/cardui/clowcard/frame/uncommon.png";
     public static final String FRAME_RARE_PATH = "img/cardui/clowcard/frame/rare.png";
     // 卡牌描述遮罩
-    public static final String MASK_IMAGE_PATH = "img/cardui/clowcard/mask/mask.png";
+    public static final String MASK_PATH = "img/cardui/clowcard/mask/mask.png";
     // 卡牌轮廓
     public static final String SILHOUETTE_PATH = "img/cardui/clowcard/silhouette/silhouette.png";
+    // 卡牌闪光效果
+    public static final String FLASH_PATH = "img/cardui/clowcard/flash/flash.png";
     // 角色图片素材路径
     public static final String SELECT_BUTTON_PATH = "img/charSelect/MarisaButton.png";
     public static final String PORTRAIT_PATH = "img/charSelect/marisaPortrait.jpg";
@@ -60,6 +62,8 @@ public class ImageConst
     public static final Texture MASK;
     // 卡牌轮廓
     public static final Texture SILHOUETTE;
+    // 卡牌闪光效果
+    public static final Texture FLASH;
 
     static
     {
@@ -75,7 +79,8 @@ public class ImageConst
         FRAME_COMMON = ImageMaster.loadImage(FRAME_COMMON_PATH);
         FRAME_UNCOMMON = ImageMaster.loadImage(FRAME_UNCOMMON_PATH);
         FRAME_RARE = ImageMaster.loadImage(FRAME_RARE_PATH);
-        MASK = ImageMaster.loadImage(MASK_IMAGE_PATH);
+        MASK = ImageMaster.loadImage(MASK_PATH);
         SILHOUETTE = ImageMaster.loadImage(SILHOUETTE_PATH);
+        FLASH = ImageMaster.loadImage(FLASH_PATH);
     }
 }

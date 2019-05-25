@@ -796,6 +796,10 @@ public abstract class AbstractMagicCard extends CustomCard
     {
     }
 
+    @SpireOverride
+    public void renderDynamicFrame(SpriteBatch sb, float x, float y, float typeOffset, float typeWidth)
+    {}
+
     @Override
     public Texture getCardBg()
     {

@@ -1,7 +1,6 @@
 package KinomotoSakuraMod.Characters;
 
-import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheShield;
-import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheSword;
+import KinomotoSakuraMod.Cards.ClowCard.*;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardRelease;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardSeal;
 import KinomotoSakuraMod.KinomotoSakuraMod;
@@ -105,20 +104,36 @@ public class KinomotoSakura extends CustomPlayer
     public ArrayList<String> getStartingDeck()
     {
         // 正式初始牌
-        ArrayList<String> startCards = new ArrayList<String>();
+        // ArrayList<String> startCards = new ArrayList<String>();
+        //
+        // startCards.add(ClowCardTheSword.ID);
+        // startCards.add(ClowCardTheSword.ID);
+        // startCards.add(ClowCardTheSword.ID);
+        // startCards.add(ClowCardTheSword.ID);
+        // startCards.add(ClowCardTheShield.ID);
+        // startCards.add(ClowCardTheShield.ID);
+        // startCards.add(ClowCardTheShield.ID);
+        // startCards.add(ClowCardTheShield.ID);
+        // startCards.add(SpellCardSeal.ID);
+        // startCards.add(SpellCardRelease.ID);
+        //
+        // return startCards;
 
-        startCards.add(ClowCardTheSword.ID);
-        startCards.add(ClowCardTheSword.ID);
-        startCards.add(ClowCardTheSword.ID);
-        startCards.add(ClowCardTheSword.ID);
-        startCards.add(ClowCardTheShield.ID);
-        startCards.add(ClowCardTheShield.ID);
-        startCards.add(ClowCardTheShield.ID);
-        startCards.add(ClowCardTheShield.ID);
-        startCards.add(SpellCardSeal.ID);
-        startCards.add(SpellCardRelease.ID);
+        // 元素、物理各一半
+        ArrayList<String> startCards_2 = new ArrayList<String>();
 
-        return startCards;
+        startCards_2.add(ClowCardTheSword.ID);
+        startCards_2.add(ClowCardTheSword.ID);
+        startCards_2.add(ClowCardTheSword.ID);
+        startCards_2.add(ClowCardTheSword.ID);
+        startCards_2.add(ClowCardTheShadow.ID);
+        startCards_2.add(ClowCardTheShadow.ID);
+        startCards_2.add(ClowCardTheShadow.ID);
+        startCards_2.add(ClowCardTheShadow.ID);
+        startCards_2.add(ClowCardTheWood.ID);
+        startCards_2.add(SpellCardRelease.ID);
+
+        return startCards_2;
     }
 
     public ArrayList<String> getStartingRelics()
