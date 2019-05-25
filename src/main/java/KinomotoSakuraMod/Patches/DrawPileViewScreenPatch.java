@@ -19,7 +19,7 @@ public class DrawPileViewScreenPatch
     private static float DRAW_START_X = ((float) Settings.WIDTH - 5.0F * AbstractCard.IMG_WIDTH * 0.75F - 4.0F * Settings.CARD_VIEW_PAD_X) / 2.0F + AbstractCard.IMG_WIDTH * 0.75F / 2.0F;
     private static float DRAW_START_Y = Settings.HEIGHT * 0.66F;
     private static float PAD_X = AbstractCard.IMG_WIDTH * 0.75F + Settings.CARD_VIEW_PAD_X;
-    private static float PAD_Y = AbstractCard.IMG_HEIGHT * 0.75F + Settings.CARD_VIEW_PAD_Y;
+    private static float PAD_Y = AbstractCard.IMG_HEIGHT * 0.83F + Settings.CARD_VIEW_PAD_Y;
     private static float PAD_LONG_Y = AbstractMagicCard.IMG_HEIGHT * 0.75F + Settings.CARD_VIEW_PAD_Y;
 
     public static boolean IsLongCard(AbstractCard card)
@@ -45,7 +45,7 @@ public class DrawPileViewScreenPatch
     public static float GetPadHeight(int index, boolean includeLastLine)
     {
         float pad = 0F;
-        ArrayList<AbstractCard> cards = AbstractDungeon.player.masterDeck.group;
+        ArrayList<AbstractCard> cards = AbstractDungeon.player.drawPile.group;
         int lineNum = index / CARDS_PER_LINE;
         for (int i = 0; i < lineNum; i++)
         {
@@ -64,16 +64,16 @@ public class DrawPileViewScreenPatch
         {
             return pad;
         }
+        boolean hasLongCard = false;
         for (int i = lineNum * CARDS_PER_LINE - 1; i < index; i++)
         {
-            boolean hasLongCard = false;
             if (IsLongCard(cards.get(i)))
             {
                 hasLongCard = true;
                 break;
             }
-            pad += hasLongCard ? PAD_LONG_Y : PAD_Y;
         }
+        pad += hasLongCard ? PAD_LONG_Y : PAD_Y;
         return pad;
     }
 
@@ -82,7 +82,7 @@ public class DrawPileViewScreenPatch
     {
         public static SpireReturn<Object> Prefix(DrawPileViewScreen deck) throws NoSuchFieldException, IllegalAccessException
         {
-            ArrayList<AbstractCard> cards = AbstractDungeon.player.masterDeck.group;
+            ArrayList<AbstractCard> cards = AbstractDungeon.player.drawPile.group;
             if (HasLongCard(cards))
             {
                 Field hoveredCard = Utility.GetFieldByReflect(deck, DrawPileViewScreen.class, "hoveredCard");
@@ -115,13 +115,13 @@ public class DrawPileViewScreenPatch
     {
         public static SpireReturn<Object> Prefix(DrawPileViewScreen deck) throws NoSuchFieldException, IllegalAccessException
         {
-            ArrayList<AbstractCard> cards = AbstractDungeon.player.masterDeck.group;
+            ArrayList<AbstractCard> cards = AbstractDungeon.player.drawPile.group;
             if (HasLongCard(cards))
             {
                 Field scrollUpperBound = Utility.GetFieldByReflect(deck, DrawPileViewScreen.class, "scrollUpperBound");
                 if (cards.size() > CARDS_PER_LINE && cards.size() <= CARDS_PER_LINE * 2 && HasLongCard(cards) || cards.size() > CARDS_PER_LINE * 2)
                 {
-                    scrollUpperBound.setFloat(deck, Settings.DEFAULT_SCROLL_LIMIT + GetPadHeight(cards.size() + 1, true));
+                    scrollUpperBound.setFloat(deck, Settings.DEFAULT_SCROLL_LIMIT + GetPadHeight(cards.size() - 1, true));
                 }
                 else
                 {
@@ -143,7 +143,7 @@ public class DrawPileViewScreenPatch
     {
         public static SpireReturn<Object> Prefix(DrawPileViewScreen deck) throws NoSuchFieldException, IllegalAccessException
         {
-            ArrayList<AbstractCard> cards = AbstractDungeon.player.masterDeck.group;
+            ArrayList<AbstractCard> cards = AbstractDungeon.player.drawPile.group;
             if (HasLongCard(cards))
             {
                 for (int i = 0; i < cards.size(); ++i)

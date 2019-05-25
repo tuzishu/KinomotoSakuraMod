@@ -19,7 +19,7 @@ public class MasterDeckViewScreenPatch
     private static float DRAW_START_X = ((float) Settings.WIDTH - 5.0F * AbstractCard.IMG_WIDTH * 0.75F - 4.0F * Settings.CARD_VIEW_PAD_X) / 2.0F + AbstractCard.IMG_WIDTH * 0.75F / 2.0F;
     private static float DRAW_START_Y = Settings.HEIGHT * 0.66F;
     private static float PAD_X = AbstractCard.IMG_WIDTH * 0.75F + Settings.CARD_VIEW_PAD_X;
-    private static float PAD_Y = AbstractCard.IMG_HEIGHT * 0.75F + Settings.CARD_VIEW_PAD_Y;
+    private static float PAD_Y = AbstractCard.IMG_HEIGHT * 0.83F + Settings.CARD_VIEW_PAD_Y;
     private static float PAD_LONG_Y = AbstractMagicCard.IMG_HEIGHT * 0.75F + Settings.CARD_VIEW_PAD_Y;
 
     public static boolean IsLongCard(AbstractCard card)
@@ -64,16 +64,16 @@ public class MasterDeckViewScreenPatch
         {
             return pad;
         }
+        boolean hasLongCard = false;
         for (int i = lineNum * CARDS_PER_LINE - 1; i < index; i++)
         {
-            boolean hasLongCard = false;
             if (IsLongCard(cards.get(i)))
             {
                 hasLongCard = true;
                 break;
             }
-            pad += hasLongCard ? PAD_LONG_Y : PAD_Y;
         }
+        pad += hasLongCard ? PAD_LONG_Y : PAD_Y;
         return pad;
     }
 

@@ -67,6 +67,7 @@ public class Utility
      * 通过输入一个伤害值，来返回一个用于DamageAllEnemy的伤害列表
      *
      * @param damage int 伤害值
+     *
      * @return int[] 伤害列表
      */
     public static int[] GetDamageList(int damage)
@@ -80,7 +81,7 @@ public class Utility
         return damageList;
     }
 
-    private static HashMap<Object, HashMap<Class, HashMap<String, Field>>> fieldMap = new HashMap<Object, HashMap<Class, HashMap<String, Field>>>();
+    private static HashMap<String, Field> fieldMap = new HashMap<>();
 
     /**
      * 通过反射的方法获取实例包括基类中的变量
@@ -88,43 +89,33 @@ public class Utility
      * @param obj         实例
      * @param fieldName   变量名
      * @param targetClass 目标类型
+     *
      * @return 目标变量
+     *
      * @throws NoSuchFieldException
      * @throws IllegalAccessException
      */
     public static Field GetFieldByReflect(Object obj, Class targetClass, String fieldName) throws NoSuchFieldException, IllegalAccessException
     {
-        HashMap<Class, HashMap<String, Field>> classMap;
-        HashMap<String, Field> nameMap;
-
-        if (!fieldMap.containsKey(obj))
-        {
-            fieldMap.put(obj, new HashMap<>());
-        }
-        classMap = fieldMap.get(obj);
-
-        if (!classMap.containsKey(targetClass))
-        {
-            classMap.put(targetClass, new HashMap<>());
-        }
-        nameMap = classMap.get(targetClass);
-
-        if (!nameMap.containsKey(fieldName))
+        String key = targetClass.getName() + "_" + fieldName;
+        Field field = null;
+        if (!fieldMap.containsKey(key))
         {
             Class cls = obj.getClass();
             while (cls.getName() != targetClass.getName())
             {
                 cls = cls.getSuperclass();
             }
-            Field field = cls.getDeclaredField(fieldName);
+            field = cls.getDeclaredField(fieldName);
             field.setAccessible(true);
-            nameMap.put(fieldName, field);
-            return field;
+            fieldMap.put(key, field);
+            Logger.info("field cache add: " + key);
         }
         else
         {
-            return nameMap.get(fieldName);
+            field = fieldMap.get(key);
         }
+        return field;
     }
 
     private static HashMap<String, Method> methodMap = new HashMap<>();
@@ -135,7 +126,9 @@ public class Utility
      * @param obj        实例
      * @param methodName 方法名
      * @param paramTypes 方法参数列表
+     *
      * @return 目标函数
+     *
      * @throws NoSuchMethodException
      */
     public static Method GetMethodByReflect(Object obj, Class targetClass, String methodName, Class<?>... paramTypes) throws NoSuchMethodException
