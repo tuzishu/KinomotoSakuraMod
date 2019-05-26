@@ -5,6 +5,7 @@ import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
 import KinomotoSakuraMod.Powers.DarkElementPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -67,6 +68,7 @@ public class ClowCardTheShadow extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.correctBlock()));
         int amount = 0;
         for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters)
         {

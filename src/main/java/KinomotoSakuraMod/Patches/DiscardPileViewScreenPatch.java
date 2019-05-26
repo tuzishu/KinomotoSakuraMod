@@ -74,6 +74,7 @@ public class DiscardPileViewScreenPatch
             }
         }
         pad += hasLongCard ? PAD_LONG_Y : PAD_Y;
+        pad -= PAD_Y * 2;
         return pad;
     }
 

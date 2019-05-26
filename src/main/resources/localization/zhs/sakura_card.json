@@ -149,7 +149,7 @@
   "ClowCardTheShot": {
     "NAME": "击",
     "DESCRIPTION": "【 物理牌 】造成 !D! 点伤害并给与1层 易伤 2次。",
-    "UPGRADE_DESCRIPTION": "【 物理牌 】造成 !D! 点伤害并给与1层 易伤 2次。额外给与1层 易伤 。额外给与1层 易伤 。"
+    "UPGRADE_DESCRIPTION": "【 物理牌 】造成 !D! 点伤害并给与1层 易伤 2次。额外给与1层 易伤 。"
   },
   "ClowCardTheSilent": {
     "NAME": "静",

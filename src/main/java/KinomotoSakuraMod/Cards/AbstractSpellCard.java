@@ -95,7 +95,7 @@ public abstract class AbstractSpellCard extends CustomCard
             {
                 this.initializeDescription();
             }
-            if (justUnhovered)
+            if (justUnhovered && AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this) && !this.hb.hovered)
             {
                 this.description.clear();
             }
@@ -210,16 +210,17 @@ public abstract class AbstractSpellCard extends CustomCard
         Field renderColor = Utility.GetFieldByReflect(this, AbstractCard.class, "renderColor");
         sb.setColor((Color) renderColor.get(this));
         sb.draw(GetBannerImage(), drawX, drawY, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
-        if (this.hb.hovered)
+        if (AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this) && !this.hb.hovered)
         {
-            sb.draw(ImageConst.MASK, drawX, drawY, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
+            return;
         }
+        sb.draw(ImageConst.MASK, drawX, drawY, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
     }
 
     @SpireOverride
     public void renderDescriptionCN(SpriteBatch sb) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException
     {
-        if (!this.hb.hovered)
+        if (AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this) && !this.hb.hovered)
         {
             return;
         }
@@ -731,12 +732,14 @@ public abstract class AbstractSpellCard extends CustomCard
 
     @SpireOverride
     public void renderDynamicFrame(SpriteBatch sb, float x, float y, float typeOffset, float typeWidth)
-    {}
+    {
+    }
 
     @Override
     public Texture getCardBg()
     {
-        switch(this.type) {
+        switch (this.type)
+        {
             case ATTACK:
             case SKILL:
             case POWER:

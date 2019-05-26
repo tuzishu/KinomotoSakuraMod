@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.screens.ExhaustPileViewScreen;
@@ -74,6 +75,7 @@ public class ExhaustPileViewScreenPatch
             }
         }
         pad += hasLongCard ? PAD_LONG_Y : PAD_Y;
+        pad -= PAD_Y * 2;
         return pad;
     }
 
@@ -82,7 +84,8 @@ public class ExhaustPileViewScreenPatch
     {
         public static SpireReturn<Object> Prefix(ExhaustPileViewScreen deck) throws NoSuchFieldException, IllegalAccessException
         {
-            ArrayList<AbstractCard> cards = AbstractDungeon.player.exhaustPile.group;
+            CardGroup exhaustPileCopy = (CardGroup) Utility.GetFieldByReflect(deck, ExhaustPileViewScreen.class, "exhaustPileCopy").get(deck);
+            ArrayList<AbstractCard> cards = exhaustPileCopy.group;
             if (HasLongCard(cards))
             {
                 Field hoveredCard = Utility.GetFieldByReflect(deck, ExhaustPileViewScreen.class, "hoveredCard");
@@ -94,6 +97,7 @@ public class ExhaustPileViewScreenPatch
                     Float currentDiffY = Utility.GetFieldByReflect(deck, ExhaustPileViewScreen.class, "currentDiffY").getFloat(deck);
                     card.target_x = DRAW_START_X + (float) mod * PAD_X;
                     card.target_y = DRAW_START_Y + currentDiffY - GetPadHeight(i, false);
+                    Utility.Logger.info(card.target_x + ", " + card.target_y);
                     card.update();
                     card.updateHoverLogic();
                     if (card.hb.hovered)
