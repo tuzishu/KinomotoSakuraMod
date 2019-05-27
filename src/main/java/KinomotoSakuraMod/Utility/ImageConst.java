@@ -9,12 +9,12 @@ public class ImageConst
     // 资源路径
     //////////
     // 卡牌背景
-    public static final String ATTACK_BG_PATH = "img/cardui/clowcard/bg/attack.png";
-    public static final String ATTACK_BG_LARGE_PATH = "img/cardui/clowcard/bg/attack_p.png";
-    public static final String SKILL_BG_PATH = "img/cardui/clowcard/bg/skill.png";
-    public static final String SKILL_BG_LARGE_PATH = "img/cardui/clowcard/bg/skill_p.png";
-    public static final String POWER_BG_PATH = "img/cardui/clowcard/bg/power.png";
-    public static final String POWER_BG_LARGE_PATH = "img/cardui/clowcard/bg/power_p.png";
+    public static final String CLOWCARD_BG_PATH = "img/cardui/clowcard/bg/attack.png";
+    public static final String CLOWCARD_BG_LARGE_PATH = "img/cardui/clowcard/bg/attack_p.png";
+    public static final String SAKURACARD_BG_PATH = "img/cardui/sakuracard/bg/attack.png";
+    public static final String SAKURACARD_BG_LARGE_PATH = "img/cardui/sakuracard/bg/attack_p.png";
+    public static final String SPELLCARD_BG_PATH = "img/cardui/spellcard/bg/attack.png";
+    public static final String SPELLCARD_BG_LARGE_PATH = "img/cardui/spellcard/bg/attack_p.png";
     // 卡牌能量标识
     public static final String ORB_ATTACK_PATH = "img/cardui/clowcard/orb/orb_attack.png";
     public static final String ORB_ATTACK_LARGE_PATH = "img/cardui/clowcard/orb/orb_attack_p.png";
@@ -31,11 +31,11 @@ public class ImageConst
     public static final String FRAME_UNCOMMON_PATH = "img/cardui/clowcard/frame/uncommon.png";
     public static final String FRAME_RARE_PATH = "img/cardui/clowcard/frame/rare.png";
     // 卡牌描述遮罩
-    public static final String MASK_PATH = "img/cardui/clowcard/mask/mask.png";
+    public static final String MASK_PATH = "img/cardui/general/mask/mask.png";
     // 卡牌轮廓
-    public static final String SILHOUETTE_PATH = "img/cardui/clowcard/silhouette/silhouette.png";
+    public static final String SILHOUETTE_PATH = "img/cardui/general/silhouette/silhouette.png";
     // 卡牌闪光效果
-    public static final String FLASH_PATH = "img/cardui/clowcard/flash/flash.png";
+    public static final String FLASH_PATH = "img/cardui/general/flash/flash.png";
     // 角色图片素材路径
     public static final String SELECT_BUTTON_PATH = "img/charSelect/MarisaButton.png";
     public static final String PORTRAIT_PATH = "img/charSelect/marisaPortrait.jpg";
@@ -43,6 +43,13 @@ public class ImageConst
     //////////
     // 资源贴图
     //////////
+    // 卡牌背景
+    public static final Texture CLOWCARD_BG;
+    public static final Texture CLOWCARD_BG_LARGE;
+    public static final Texture SAKURACARD_BG;
+    public static final Texture SAKURACARD_BG_LARGE;
+    public static final Texture SPELLCARD_BG;
+    public static final Texture SPELLCARD_BG_LARGE;
     // 卡牌能量标识
     public static final Texture ORB_ATTACK;
     public static final Texture ORB_ATTACK_LARGE;
@@ -67,6 +74,12 @@ public class ImageConst
 
     static
     {
+        CLOWCARD_BG = ImageMaster.loadImage(CLOWCARD_BG_PATH);
+        CLOWCARD_BG_LARGE = ImageMaster.loadImage(CLOWCARD_BG_LARGE_PATH);
+        SAKURACARD_BG = ImageMaster.loadImage(SAKURACARD_BG_PATH);
+        SAKURACARD_BG_LARGE = ImageMaster.loadImage(SAKURACARD_BG_LARGE_PATH);
+        SPELLCARD_BG = ImageMaster.loadImage(SPELLCARD_BG_PATH);
+        SPELLCARD_BG_LARGE = ImageMaster.loadImage(SPELLCARD_BG_LARGE_PATH);
         ORB_ATTACK = ImageMaster.loadImage(ORB_ATTACK_PATH);
         ORB_ATTACK_LARGE = ImageMaster.loadImage(ORB_ATTACK_LARGE_PATH);
         ORB_SKILL = ImageMaster.loadImage(ORB_SKILL_PATH);

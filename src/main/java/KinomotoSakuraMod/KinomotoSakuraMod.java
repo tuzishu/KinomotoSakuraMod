@@ -39,8 +39,8 @@ public class KinomotoSakuraMod implements ISubscriber, PostInitializeSubscriber,
     public KinomotoSakuraMod()
     {
         BaseMod.subscribe(this);
-        BaseMod.addColor(CustomCardColor.CLOWCARD_COLOR, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, ImageConst.ATTACK_BG_PATH, ImageConst.SKILL_BG_PATH, ImageConst.POWER_BG_PATH, ImageConst.ORB_ATTACK_PATH, ImageConst.ATTACK_BG_LARGE_PATH, ImageConst.SKILL_BG_LARGE_PATH, ImageConst.POWER_BG_LARGE_PATH, ImageConst.ORB_ATTACK_LARGE_PATH);
-        BaseMod.addColor(CustomCardColor.SPELL_COLOR, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, ImageConst.ATTACK_BG_PATH, ImageConst.SKILL_BG_PATH, ImageConst.POWER_BG_PATH, ImageConst.ORB_ATTACK_PATH, ImageConst.ATTACK_BG_LARGE_PATH, ImageConst.SKILL_BG_LARGE_PATH, ImageConst.POWER_BG_LARGE_PATH, ImageConst.ORB_ATTACK_LARGE_PATH);
+        BaseMod.addColor(CustomCardColor.CLOWCARD_COLOR, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, ImageConst.CLOWCARD_BG_PATH, ImageConst.CLOWCARD_BG_PATH, ImageConst.CLOWCARD_BG_PATH, ImageConst.ORB_ATTACK_PATH, ImageConst.CLOWCARD_BG_LARGE_PATH, ImageConst.CLOWCARD_BG_LARGE_PATH, ImageConst.CLOWCARD_BG_LARGE_PATH, ImageConst.ORB_ATTACK_LARGE_PATH);
+        BaseMod.addColor(CustomCardColor.SPELL_COLOR, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, ImageConst.CLOWCARD_BG_PATH, ImageConst.CLOWCARD_BG_PATH, ImageConst.CLOWCARD_BG_PATH, ImageConst.ORB_ATTACK_PATH, ImageConst.CLOWCARD_BG_LARGE_PATH, ImageConst.CLOWCARD_BG_LARGE_PATH, ImageConst.CLOWCARD_BG_LARGE_PATH, ImageConst.ORB_ATTACK_LARGE_PATH);
     }
 
     public static void initialize()
