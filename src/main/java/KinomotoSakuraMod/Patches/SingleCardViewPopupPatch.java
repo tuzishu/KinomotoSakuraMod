@@ -4,12 +4,23 @@ import KinomotoSakuraMod.Utility.ImageConst;
 import KinomotoSakuraMod.Utility.Utility;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DescriptionLine;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.screens.SingleCardViewPopup;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Scanner;
 
 public class SingleCardViewPopupPatch
 {
@@ -102,16 +113,153 @@ public class SingleCardViewPopupPatch
                 switch (card.rarity)
                 {
                     case RARE:
-                        frameImg = ImageConst.FRAME_RARE;
+                        frameImg = ImageConst.FRAME_RARE_LARGE;
                         break;
                     case UNCOMMON:
-                        frameImg = ImageConst.FRAME_UNCOMMON;
+                        frameImg = ImageConst.FRAME_UNCOMMON_LARGE;
                         break;
                     default:
-                        frameImg = ImageConst.FRAME_COMMON;
+                        frameImg = ImageConst.FRAME_COMMON_LARGE;
                         break;
                 }
                 sb.draw(frameImg, (float) Settings.WIDTH / 2.0F - 512.0F, (float) Settings.HEIGHT / 2.0F - 512.0F, 512.0F, 512.0F, 1024.0F, 1024.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 1024, 1024, false, false);
+                return SpireReturn.Return(null);
+            }
+            else
+            {
+                return SpireReturn.Continue();
+            }
+        }
+    }
+
+    @SpirePatch(clz = SingleCardViewPopup.class, method = "renderCardBanner", paramtypez = {SpriteBatch.class})
+    public static class renderCardBanner
+    {
+        public static SpireReturn<Object> Prefix(SingleCardViewPopup view, SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException
+        {
+            AbstractCard card = (AbstractCard) Utility.GetFieldByReflect(view, SingleCardViewPopup.class, "card").get(view);
+            if (IsKSCard(card))
+            {
+                Texture bannerImg = null;
+                switch(card.rarity) {
+                    case RARE:
+                        bannerImg = ImageConst.BANNER_RARE_LARGE;
+                        break;
+                    case UNCOMMON:
+                        bannerImg = ImageConst.BANNER_UNCOMMON_LARGE;
+                        break;
+                    default:
+                        bannerImg = ImageConst.BANNER_COMMON_LARGE;
+                }
+                sb.draw(bannerImg, (float)Settings.WIDTH / 2.0F - 512.0F, (float)Settings.HEIGHT / 2.0F - 512.0F, 512.0F, 512.0F, 1024.0F, 1024.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 1024, 1024, false, false);
+                return SpireReturn.Return(null);
+            }
+            else
+            {
+                return SpireReturn.Continue();
+            }
+        }
+    }
+
+    @SpirePatch(clz = SingleCardViewPopup.class, method = "renderDescriptionCN", paramtypez = {SpriteBatch.class})
+    public static class renderDescriptionCN
+    {
+        public static SpireReturn<Object> Prefix(SingleCardViewPopup view, SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException
+        {
+            AbstractCard card = (AbstractCard) Utility.GetFieldByReflect(view, SingleCardViewPopup.class, "card").get(view);
+            if (IsKSCard(card))
+            {
+                float current_y = Utility.GetFieldByReflect(view, SingleCardViewPopup.class, "current_y").getFloat(view);
+                float current_x = Utility.GetFieldByReflect(view, SingleCardViewPopup.class, "current_x").getFloat(view);
+                float drawScale = Utility.GetFieldByReflect(view, SingleCardViewPopup.class, "current_x").getFloat(view);
+                Field scannerField = Utility.GetFieldByReflect(view, SingleCardViewPopup.class, "scanner");
+                Method getDynamicValue = Utility.GetMethodByReflect(view, SingleCardViewPopup.class, "getDynamicValue", char.class);
+                float card_energy_w =Utility.GetFieldByReflect(view, SingleCardViewPopup.class, "card_energy_w").getFloat(view);
+                Method renderSmallEnergy = Utility.GetMethodByReflect(view, SingleCardViewPopup.class, "renderSmallEnergy", SpriteBatch.class, TextureAtlas.AtlasRegion.class, float.class, float.class);
+
+                if (!card.isLocked && card.isSeen) {
+                    BitmapFont font = FontHelper.SCP_cardDescFont;
+                    float draw_y = current_y + 100.0F * Settings.scale;
+                    draw_y += (float)card.description.size() * font.getCapHeight() * 0.775F - font.getCapHeight() * 0.375F;
+                    float spacing = 1.53F * -font.getCapHeight() / Settings.scale / drawScale;
+                    GlyphLayout gl = new GlyphLayout();
+
+                    for(int i = 0; i < card.description.size(); ++i) {
+                        float start_x = 0.0F;
+                        if (Settings.leftAlignCards) {
+                            start_x = current_x - 214.0F * Settings.scale;
+                        } else {
+                            start_x = current_x - card.description.get(i).width * drawScale / 2.0F - 20.0F * Settings.scale;
+                        }
+                        scannerField.set(view, new Scanner(card.description.get(i).text));
+                        Scanner scanner = (Scanner) scannerField.get(view);
+                        while(scanner.hasNext()) {
+                            String tmp = scanner.next();
+                            tmp = tmp.replace("!", "");
+                            String updateTmp = null;
+
+                            int j;
+                            for(j = 0; j < tmp.length(); ++j) {
+                                if (tmp.charAt(j) == 'D' || tmp.charAt(j) == 'B' && !tmp.contains("[B]") || tmp.charAt(j) == 'M') {
+                                    updateTmp = tmp.substring(0, j);
+                                    updateTmp = updateTmp + getDynamicValue.invoke(view, tmp.charAt(j));
+                                    updateTmp = updateTmp + tmp.substring(j + 1);
+                                    break;
+                                }
+                            }
+                            if (updateTmp != null) {
+                                tmp = updateTmp;
+                            }
+                            for(j = 0; j < tmp.length(); ++j) {
+                                if (tmp.charAt(j) == 'D' || tmp.charAt(j) == 'B' && !tmp.contains("[B]") || tmp.charAt(j) == 'M') {
+                                    updateTmp = tmp.substring(0, j);
+                                    updateTmp = updateTmp + getDynamicValue.invoke(view, tmp.charAt(j));
+                                    updateTmp = updateTmp + tmp.substring(j + 1);
+                                    break;
+                                }
+                            }
+                            if (updateTmp != null) {
+                                tmp = updateTmp;
+                            }
+                            if (tmp.charAt(0) == '*') {
+                                tmp = tmp.substring(1);
+                                String punctuation = "";
+                                if (tmp.length() > 1 && !Character.isLetter(tmp.charAt(tmp.length() - 2))) {
+                                    punctuation = punctuation + tmp.charAt(tmp.length() - 2);
+                                    tmp = tmp.substring(0, tmp.length() - 2);
+                                    punctuation = punctuation + ' ';
+                                }
+
+                                gl.setText(font, tmp);
+                                FontHelper.renderRotatedText(sb, font, tmp, current_x, current_y, start_x - current_x + gl.width / 2.0F, (float)i * 1.53F * -font.getCapHeight() + draw_y - current_y + -12.0F, 0.0F, true, Settings.GOLD_COLOR.cpy());
+                                start_x = (float)Math.round(start_x + gl.width);
+                                gl.setText(font, punctuation);
+                                FontHelper.renderRotatedText(sb, font, punctuation, current_x, current_y, start_x - current_x + gl.width / 2.0F, (float)i * 1.53F * -font.getCapHeight() + draw_y - current_y + -12.0F, 0.0F, true, Settings.CREAM_COLOR.cpy());
+                                gl.setText(font, punctuation);
+                                start_x += gl.width;
+                            } else if (tmp.equals("[R]")) {
+                                gl.width = card_energy_w * drawScale;
+                                renderSmallEnergy.invoke(view, sb, ImageMaster.RED_ORB, (start_x - current_x) / Settings.scale / drawScale, -87.0F - (((float)card.description.size() - 4.0F) / 2.0F - (float)i + 1.0F) * spacing);
+                                start_x += gl.width;
+                            } else if (tmp.equals("[G]")) {
+                                gl.width = card_energy_w * drawScale;
+                                renderSmallEnergy.invoke(view, sb, ImageMaster.GREEN_ORB, (start_x - current_x) / Settings.scale / drawScale, -87.0F - (((float)card.description.size() - 4.0F) / 2.0F - (float)i + 1.0F) * spacing);
+                                start_x += gl.width;
+                            } else if (tmp.equals("[B]")) {
+                                gl.width = card_energy_w * drawScale;
+                                renderSmallEnergy.invoke(view, sb, ImageMaster.BLUE_ORB, (start_x - current_x) / Settings.scale / drawScale, -87.0F - (((float)card.description.size() - 4.0F) / 2.0F - (float)i + 1.0F) * spacing);
+                                start_x += gl.width;
+                            } else {
+                                gl.setText(font, tmp);
+                                FontHelper.renderRotatedText(sb, font, tmp, current_x, current_y, start_x - current_x + gl.width / 2.0F, (float)i * 1.53F * -font.getCapHeight() + draw_y - current_y + -12.0F, 0.0F, true, Settings.CREAM_COLOR);
+                                start_x += gl.width;
+                            }
+                        }
+                    }
+                    font.getData().setScale(1.0F);
+                } else {
+                    FontHelper.renderFontCentered(sb, FontHelper.largeCardFont, "? ? ?", (float)Settings.WIDTH / 2.0F, (float)Settings.HEIGHT / 2.0F - 195.0F * Settings.scale, Settings.CREAM_COLOR);
+                }
                 return SpireReturn.Return(null);
             }
             else
