@@ -89,4 +89,35 @@ public class SingleCardViewPopupPatch
             }
         }
     }
+
+    @SpirePatch(clz = SingleCardViewPopup.class, method = "renderFrame", paramtypez = {SpriteBatch.class})
+    public static class renderFrame
+    {
+        public static SpireReturn<Object> Prefix(SingleCardViewPopup view, SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException
+        {
+            AbstractCard card = (AbstractCard) Utility.GetFieldByReflect(view, SingleCardViewPopup.class, "card").get(view);
+            if (IsKSCard(card))
+            {
+                Texture frameImg = null;
+                switch (card.rarity)
+                {
+                    case RARE:
+                        frameImg = ImageConst.FRAME_RARE;
+                        break;
+                    case UNCOMMON:
+                        frameImg = ImageConst.FRAME_UNCOMMON;
+                        break;
+                    default:
+                        frameImg = ImageConst.FRAME_COMMON;
+                        break;
+                }
+                sb.draw(frameImg, (float) Settings.WIDTH / 2.0F - 512.0F, (float) Settings.HEIGHT / 2.0F - 512.0F, 512.0F, 512.0F, 1024.0F, 1024.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 1024, 1024, false, false);
+                return SpireReturn.Return(null);
+            }
+            else
+            {
+                return SpireReturn.Continue();
+            }
+        }
+    }
 }
