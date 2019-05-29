@@ -304,32 +304,28 @@ public class SingleCardViewPopupPatch
         public static SpireReturn<Object> Prefix(SingleCardViewPopup view, SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException, InvocationTargetException, NoSuchMethodException
         {
             AbstractCard card = (AbstractCard) Utility.GetFieldByReflect(SingleCardViewPopup.class, "card").get(view);
+            Utility.Logger.info(FontHelper.SCP_cardTitleFont_small);
             if (IsKSCard(card))
             {
-                if (FontHelper.SCP_cardTitleFont_small == null)
-                {
-                    Method prepFont = Utility.GetMethodByReflect(FontHelper.class, "prepFont", float.class, boolean.class);
-                    FontHelper.SCP_cardTitleFont_small = (BitmapFont) prepFont.invoke(null, 46F, true);
-                }
                 if (card.isLocked)
                 {
-                    FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, TEXT[4], Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F + TITLE_HEIGHT_TO_CENTER * Settings.scale, Settings.CREAM_COLOR);
+                    RenderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, TEXT[4], Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F + TITLE_HEIGHT_TO_CENTER * Settings.scale, Settings.CREAM_COLOR);
                 }
                 else if (card.isSeen)
                 {
                     Method allowUpgradePreview = Utility.GetMethodByReflect(SingleCardViewPopup.class, "allowUpgradePreview");
                     if (SingleCardViewPopup.isViewingUpgrade && !((Boolean) allowUpgradePreview.invoke(view)))
                     {
-                        FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, card.name, Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F + TITLE_HEIGHT_TO_CENTER * Settings.scale, Settings.GREEN_TEXT_COLOR);
+                        RenderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, card.name, Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F + TITLE_HEIGHT_TO_CENTER * Settings.scale, Settings.GREEN_TEXT_COLOR);
                     }
                     else
                     {
-                        FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, card.name, Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F + TITLE_HEIGHT_TO_CENTER * Settings.scale, Settings.CREAM_COLOR);
+                        RenderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, card.name, Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F + TITLE_HEIGHT_TO_CENTER * Settings.scale, Settings.CREAM_COLOR);
                     }
                 }
                 else
                 {
-                    FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, TEXT[5], Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F + TITLE_HEIGHT_TO_CENTER * Settings.scale, Settings.CREAM_COLOR);
+                    RenderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, TEXT[5], Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F + TITLE_HEIGHT_TO_CENTER * Settings.scale, Settings.CREAM_COLOR);
                 }
                 return SpireReturn.Return(null);
             }
@@ -337,6 +333,12 @@ public class SingleCardViewPopupPatch
             {
                 return SpireReturn.Continue();
             }
+        }
+
+        public static void RenderFontCentered(SpriteBatch sb, BitmapFont font, String msg, float x, float y, Color c)
+        {
+            FontHelper.layout.setText(font, msg);
+            FontHelper.renderFont(sb, font, msg, x - FontHelper.layout.width / 2.0F, y + FontHelper.layout.height / 2.0F, c);
         }
     }
 
