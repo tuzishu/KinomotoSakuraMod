@@ -68,8 +68,8 @@ public abstract class AbstractSpellCard extends CustomCard
     {
         try
         {
-            Field hoverDuration = Utility.GetFieldByReflect(this, AbstractCard.class, "hoverDuration");
-            Field renderTip = Utility.GetFieldByReflect(this, AbstractCard.class, "renderTip");
+            Field hoverDuration = Utility.GetFieldByReflect(AbstractCard.class, "hoverDuration");
+            Field renderTip = Utility.GetFieldByReflect(AbstractCard.class, "renderTip");
             boolean justHovered = this.hb.hovered;
             boolean justUnhovered = false;
             this.hb.update();
@@ -109,14 +109,14 @@ public abstract class AbstractSpellCard extends CustomCard
     @SpireOverride
     public void renderEnergy(SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException
     {
-        boolean darken = Utility.GetFieldByReflect(this, AbstractCard.class, "darken").getBoolean(this);
+        boolean darken = Utility.GetFieldByReflect(AbstractCard.class, "darken").getBoolean(this);
         if (this.cost > -2 && !darken && !this.isLocked && this.isSeen)
         {
             float drawX = this.current_x - 256.0F;
             float drawY = this.current_y - 256.0F;
 
-            Method renderHelper = Utility.GetMethodByReflect(this, AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, Texture.class, float.class, float.class);
-            Color renderColor = (Color) Utility.GetFieldByReflect(this, AbstractCard.class, "renderColor").get(this);
+            Method renderHelper = Utility.GetMethodByReflect(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, Texture.class, float.class, float.class);
+            Color renderColor = (Color) Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
             renderHelper.invoke(this, sb, renderColor, ImageConst.ORB_ATTACK, drawX, drawY);
 
             Color costColor = Color.WHITE.cpy();
@@ -131,10 +131,10 @@ public abstract class AbstractSpellCard extends CustomCard
 
             costColor.a = this.transparency;
 
-            Method getCost = Utility.GetMethodByReflect(this, AbstractCard.class, "getCost");
+            Method getCost = Utility.GetMethodByReflect(AbstractCard.class, "getCost");
             String text = (String) getCost.invoke(this);
 
-            Method getEnergyFont = Utility.GetMethodByReflect(this, AbstractCard.class, "getEnergyFont");
+            Method getEnergyFont = Utility.GetMethodByReflect(AbstractCard.class, "getEnergyFont");
             BitmapFont font = (BitmapFont) getEnergyFont.invoke(this);
 
             if ((this.type != AbstractCard.CardType.STATUS || this.cardID.equals("Slimed")) && (this.color != AbstractCard.CardColor.CURSE || this.cardID.equals("Pride")))
@@ -165,7 +165,7 @@ public abstract class AbstractSpellCard extends CustomCard
     @SpireOverride
     public void renderAttackPortrait(SpriteBatch sb, float x, float y) throws NoSuchFieldException, IllegalAccessException
     {
-        Field renderColor = Utility.GetFieldByReflect(this, AbstractCard.class, "renderColor");
+        Field renderColor = Utility.GetFieldByReflect(AbstractCard.class, "renderColor");
         sb.setColor((Color) renderColor.get(this));
         sb.draw(GetFrameImage(), x, y, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
     }
@@ -173,7 +173,7 @@ public abstract class AbstractSpellCard extends CustomCard
     @SpireOverride
     public void renderSkillPortrait(SpriteBatch sb, float x, float y) throws NoSuchFieldException, IllegalAccessException
     {
-        Field renderColor = Utility.GetFieldByReflect(this, AbstractCard.class, "renderColor");
+        Field renderColor = Utility.GetFieldByReflect(AbstractCard.class, "renderColor");
         sb.setColor((Color) renderColor.get(this));
         sb.draw(GetFrameImage(), x, y, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
     }
@@ -181,7 +181,7 @@ public abstract class AbstractSpellCard extends CustomCard
     @SpireOverride
     public void renderPowerPortrait(SpriteBatch sb, float x, float y) throws NoSuchFieldException, IllegalAccessException
     {
-        Field renderColor = Utility.GetFieldByReflect(this, AbstractCard.class, "renderColor");
+        Field renderColor = Utility.GetFieldByReflect(AbstractCard.class, "renderColor");
         sb.setColor((Color) renderColor.get(this));
         sb.draw(GetFrameImage(), x, y, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
     }
@@ -207,7 +207,7 @@ public abstract class AbstractSpellCard extends CustomCard
     @SpireOverride
     public void renderBannerImage(SpriteBatch sb, float drawX, float drawY) throws NoSuchFieldException, IllegalAccessException
     {
-        Field renderColor = Utility.GetFieldByReflect(this, AbstractCard.class, "renderColor");
+        Field renderColor = Utility.GetFieldByReflect(AbstractCard.class, "renderColor");
         sb.setColor((Color) renderColor.get(this));
         sb.draw(GetBannerImage(), drawX, drawY, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
         if (AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this) && !this.hb.hovered)
@@ -226,7 +226,7 @@ public abstract class AbstractSpellCard extends CustomCard
         }
         if (this.isSeen && !this.isLocked)
         {
-            Method getDescFont = Utility.GetMethodByReflect(this, AbstractCard.class, "getDescFont");
+            Method getDescFont = Utility.GetMethodByReflect(AbstractCard.class, "getDescFont");
             BitmapFont font = (BitmapFont) getDescFont.invoke(this);
             float draw_y = this.current_y - IMG_HEIGHT * this.drawScale / 2.0F + IMG_HEIGHT * DESC_OFFSET_TO_BOTTOM_Y * this.drawScale;
             draw_y += (float) this.description.size() * font.getCapHeight() * 0.775F - font.getCapHeight() * 0.375F;
@@ -261,7 +261,7 @@ public abstract class AbstractSpellCard extends CustomCard
                         if (tmp.charAt(j) == 'D' || tmp.charAt(j) == 'B' && !tmp.contains("[B]") || tmp.charAt(j) == 'M')
                         {
                             updateTmp = tmp.substring(0, j);
-                            Method getDynamicValue = Utility.GetMethodByReflect(this, AbstractCard.class, "getDynamicValue", char.class);
+                            Method getDynamicValue = Utility.GetMethodByReflect(AbstractCard.class, "getDynamicValue", char.class);
                             updateTmp = updateTmp + getDynamicValue.invoke(this, tmp.charAt(j));
                             updateTmp = updateTmp + tmp.substring(j + 1);
                             break;
@@ -278,7 +278,7 @@ public abstract class AbstractSpellCard extends CustomCard
                         if (tmp.charAt(j) == 'D' || tmp.charAt(j) == 'B' && !tmp.contains("[B]") || tmp.charAt(j) == 'M')
                         {
                             updateTmp = tmp.substring(0, j);
-                            Method getDynamicValue = Utility.GetMethodByReflect(this, AbstractCard.class, "getDynamicValue", char.class);
+                            Method getDynamicValue = Utility.GetMethodByReflect(AbstractCard.class, "getDynamicValue", char.class);
                             updateTmp = updateTmp + getDynamicValue.invoke(this, tmp.charAt(j));
                             updateTmp = updateTmp + tmp.substring(j + 1);
                             break;
@@ -302,11 +302,11 @@ public abstract class AbstractSpellCard extends CustomCard
                         }
 
                         gl.setText(font, tmp);
-                        Color goldColor = (Color) Utility.GetFieldByReflect(this, AbstractCard.class, "goldColor").get(this);
+                        Color goldColor = (Color) Utility.GetFieldByReflect(AbstractCard.class, "goldColor").get(this);
                         FontHelper.renderRotatedText(sb, font, tmp, this.current_x, this.current_y, start_x - this.current_x + gl.width / 2.0F, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, goldColor);
                         start_x = (float) Math.round(start_x + gl.width);
                         gl.setText(font, punctuation);
-                        Color textColor = (Color) Utility.GetFieldByReflect(this, AbstractCard.class, "textColor").get(this);
+                        Color textColor = (Color) Utility.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
                         FontHelper.renderRotatedText(sb, font, punctuation, this.current_x, this.current_y, start_x - this.current_x + gl.width / 2.0F, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, textColor);
                         gl.setText(font, punctuation);
                         start_x += gl.width;
@@ -332,7 +332,7 @@ public abstract class AbstractSpellCard extends CustomCard
                     else
                     {
                         gl.setText(font, tmp);
-                        Color textColor = (Color) Utility.GetFieldByReflect(this, AbstractCard.class, "textColor").get(this);
+                        Color textColor = (Color) Utility.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
                         FontHelper.renderRotatedText(sb, font, tmp, this.current_x, this.current_y, start_x - this.current_x + gl.width / 2.0F, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, textColor);
                         start_x += gl.width;
                     }
@@ -344,7 +344,7 @@ public abstract class AbstractSpellCard extends CustomCard
         else
         {
             FontHelper.menuBannerFont.getData().setScale(this.drawScale * 1.25F);
-            Color textColor = (Color) Utility.GetFieldByReflect(this, AbstractCard.class, "textColor").get(this);
+            Color textColor = (Color) Utility.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
             FontHelper.renderRotatedText(sb, FontHelper.menuBannerFont, "? ? ?", this.current_x, this.current_y, 0.0F, -200.0F * Settings.scale * this.drawScale / 2.0F, this.angle, true, textColor);
             FontHelper.menuBannerFont.getData().setScale(1.0F);
         }
@@ -369,7 +369,7 @@ public abstract class AbstractSpellCard extends CustomCard
                 if (!word.contains("NL"))
                 {
                     String keywordTmp = word.toLowerCase();
-                    Method dedupeKeyword = Utility.GetMethodByReflect(this, AbstractCard.class, "dedupeKeyword", String.class);
+                    Method dedupeKeyword = Utility.GetMethodByReflect(AbstractCard.class, "dedupeKeyword", String.class);
                     keywordTmp = (String) dedupeKeyword.invoke(this, keywordTmp);
                     GlyphLayout gl;
                     if (GameDictionary.keywords.containsKey(keywordTmp))
@@ -549,7 +549,7 @@ public abstract class AbstractSpellCard extends CustomCard
     {
         try
         {
-            Method updateFlashVfx = Utility.GetMethodByReflect(this, AbstractCard.class, "updateFlashVfx");
+            Method updateFlashVfx = Utility.GetMethodByReflect(AbstractCard.class, "updateFlashVfx");
             updateFlashVfx.invoke(this);
             if (this.hoverTimer != 0.0F)
             {
@@ -602,8 +602,8 @@ public abstract class AbstractSpellCard extends CustomCard
                 this.angle = MathHelper.angleLerpSnap(this.angle, this.targetAngle);
             }
 
-            Method updateTransparency = Utility.GetMethodByReflect(this, AbstractCard.class, "updateTransparency");
-            Method updateColor = Utility.GetMethodByReflect(this, AbstractCard.class, "updateColor");
+            Method updateTransparency = Utility.GetMethodByReflect(AbstractCard.class, "updateTransparency");
+            Method updateColor = Utility.GetMethodByReflect(AbstractCard.class, "updateColor");
             updateTransparency.invoke(this);
             updateColor.invoke(this);
         }
@@ -619,7 +619,7 @@ public abstract class AbstractSpellCard extends CustomCard
         try
         {
             BitmapFont font = null;
-            Color renderColor = (Color) Utility.GetFieldByReflect(this, AbstractCard.class, "renderColor").get(this);
+            Color renderColor = (Color) Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
             if (this.isLocked)
             {
                 if (this.angle == 0.0F && this.drawScale == 1.0F)
@@ -651,7 +651,7 @@ public abstract class AbstractSpellCard extends CustomCard
             }
             else
             {
-                boolean useSmallTitleFont = Utility.GetFieldByReflect(this, AbstractCard.class, "useSmallTitleFont").getBoolean(this);
+                boolean useSmallTitleFont = Utility.GetFieldByReflect(AbstractCard.class, "useSmallTitleFont").getBoolean(this);
                 if (!useSmallTitleFont)
                 {
                     if (this.angle == 0.0F && this.drawScale == 1.0F)
@@ -704,7 +704,7 @@ public abstract class AbstractSpellCard extends CustomCard
 
         if (!this.isLocked)
         {
-            Color renderColor = (Color) Utility.GetFieldByReflect(this, AbstractCard.class, "renderColor").get(this);
+            Color renderColor = (Color) Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
             if (this.portrait != null)
             {
                 drawX = this.current_x - PORTRAIT_ORIGIN_X;

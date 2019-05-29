@@ -24,11 +24,11 @@ public class CardLibraryScreenPatch
 
     public static SpireReturn<Object> Prefix(CardLibraryScreen lib) throws NoSuchFieldException, IllegalAccessException
     {
-        CardGroup visibleCards = (CardGroup) Utility.GetFieldByReflect(lib, CardLibraryScreen.class, "visibleCards").get(lib);
+        CardGroup visibleCards = (CardGroup) Utility.GetFieldByReflect(CardLibraryScreen.class, "visibleCards").get(lib);
         ArrayList<AbstractCard> cards = visibleCards.group;
         if (Check(cards))
         {
-            Field hoveredCard = Utility.GetFieldByReflect(lib, CardLibraryScreen.class, "hoveredCard");
+            Field hoveredCard = Utility.GetFieldByReflect(CardLibraryScreen.class, "hoveredCard");
             hoveredCard.set(lib, null);
             int lineNum = 0;
             for (int i = 0; i < cards.size(); ++i)
@@ -39,7 +39,7 @@ public class CardLibraryScreenPatch
                 {
                     ++lineNum;
                 }
-                float currentDiffY = Utility.GetFieldByReflect(lib, CardLibraryScreen.class, "currentDiffY").getFloat(lib);
+                float currentDiffY = Utility.GetFieldByReflect(CardLibraryScreen.class, "currentDiffY").getFloat(lib);
                 card.target_x = DRAW_START_X + (float) mod * PAD_X;
                 card.target_y = DRAW_START_Y + currentDiffY - (float) lineNum * PAD_Y;
                 card.update();
@@ -49,7 +49,7 @@ public class CardLibraryScreenPatch
                     hoveredCard.set(lib, card);
                 }
             }
-            CardLibSortHeader sortHeader = (CardLibSortHeader) Utility.GetFieldByReflect(lib, CardLibraryScreen.class, "sortHeader").get(lib);
+            CardLibSortHeader sortHeader = (CardLibSortHeader) Utility.GetFieldByReflect(CardLibraryScreen.class, "sortHeader").get(lib);
             if (sortHeader.justSorted)
             {
                 for (AbstractCard card : cards)

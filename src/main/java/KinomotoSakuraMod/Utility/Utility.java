@@ -95,21 +95,15 @@ public class Utility
      * @throws NoSuchFieldException
      * @throws IllegalAccessException
      */
-    public static Field GetFieldByReflect(Object obj, Class targetClass, String fieldName) throws NoSuchFieldException, IllegalAccessException
+    public static Field GetFieldByReflect(Class targetClass, String fieldName) throws NoSuchFieldException, IllegalAccessException
     {
         String key = targetClass.getName() + "_" + fieldName;
         Field field = null;
         if (!fieldMap.containsKey(key))
         {
-            Class cls = obj.getClass();
-            while (cls.getName() != targetClass.getName())
-            {
-                cls = cls.getSuperclass();
-            }
-            field = cls.getDeclaredField(fieldName);
+            field = targetClass.getDeclaredField(fieldName);
             field.setAccessible(true);
             fieldMap.put(key, field);
-            Logger.info("field cache add: " + key);
         }
         else
         {
@@ -123,7 +117,6 @@ public class Utility
     /**
      * 通过反射的方法获取实例包括基类中的方法
      *
-     * @param obj        实例
      * @param methodName 方法名
      * @param paramTypes 方法参数列表
      *
@@ -131,7 +124,7 @@ public class Utility
      *
      * @throws NoSuchMethodException
      */
-    public static Method GetMethodByReflect(Object obj, Class targetClass, String methodName, Class<?>... paramTypes) throws NoSuchMethodException
+    public static Method GetMethodByReflect(Class targetClass, String methodName, Class<?>... paramTypes) throws NoSuchMethodException
     {
         String key = targetClass.getName() + "_" + methodName;
         for (Class cls : paramTypes)
@@ -142,15 +135,9 @@ public class Utility
         Method method = null;
         if (!methodMap.containsKey(key))
         {
-            Class cls = obj.getClass();
-            while (cls != targetClass)
-            {
-                cls = cls.getSuperclass();
-            }
-            method = cls.getDeclaredMethod(methodName, paramTypes);
+            method = targetClass.getDeclaredMethod(methodName, paramTypes);
             method.setAccessible(true);
             methodMap.put(key, method);
-            Logger.info("method cache add: " + key);
         }
         else
         {

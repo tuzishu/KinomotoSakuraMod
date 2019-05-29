@@ -86,13 +86,13 @@ public class DrawPileViewScreenPatch
             ArrayList<AbstractCard> cards = AbstractDungeon.player.drawPile.group;
             if (HasLongCard(cards))
             {
-                Field hoveredCard = Utility.GetFieldByReflect(deck, DrawPileViewScreen.class, "hoveredCard");
+                Field hoveredCard = Utility.GetFieldByReflect(DrawPileViewScreen.class, "hoveredCard");
                 hoveredCard.set(deck, null);
                 for (int i = 0; i < cards.size(); ++i)
                 {
                     AbstractCard card = cards.get(i);
                     int mod = i % CARDS_PER_LINE;
-                    Float currentDiffY = Utility.GetFieldByReflect(deck, DrawPileViewScreen.class, "currentDiffY").getFloat(deck);
+                    Float currentDiffY = Utility.GetFieldByReflect(DrawPileViewScreen.class, "currentDiffY").getFloat(deck);
                     card.target_x = DRAW_START_X + (float) mod * PAD_X;
                     card.target_y = DRAW_START_Y + currentDiffY - GetPadHeight(i, false);
                     card.update();
@@ -119,7 +119,7 @@ public class DrawPileViewScreenPatch
             ArrayList<AbstractCard> cards = AbstractDungeon.player.drawPile.group;
             if (HasLongCard(cards))
             {
-                Field scrollUpperBound = Utility.GetFieldByReflect(deck, DrawPileViewScreen.class, "scrollUpperBound");
+                Field scrollUpperBound = Utility.GetFieldByReflect(DrawPileViewScreen.class, "scrollUpperBound");
                 if (cards.size() > CARDS_PER_LINE && cards.size() <= CARDS_PER_LINE * 2 && HasLongCard(cards) || cards.size() > CARDS_PER_LINE * 2)
                 {
                     scrollUpperBound.setFloat(deck, Settings.DEFAULT_SCROLL_LIMIT + GetPadHeight(cards.size() - 1, true));
@@ -128,7 +128,7 @@ public class DrawPileViewScreenPatch
                 {
                     scrollUpperBound.setFloat(deck, Settings.DEFAULT_SCROLL_LIMIT);
                 }
-                Field prevDeckSize = Utility.GetFieldByReflect(deck, DrawPileViewScreen.class, "prevDeckSize");
+                Field prevDeckSize = Utility.GetFieldByReflect(DrawPileViewScreen.class, "prevDeckSize");
                 prevDeckSize.setInt(deck, AbstractDungeon.player.masterDeck.size());
                 return SpireReturn.Return(null);
             }
@@ -151,7 +151,7 @@ public class DrawPileViewScreenPatch
                 {
                     AbstractCard card = cards.get(i);
                     int mod = i % 5;
-                    Float currentDiffY = Utility.GetFieldByReflect(deck, DrawPileViewScreen.class, "currentDiffY").getFloat(deck);
+                    Float currentDiffY = Utility.GetFieldByReflect(DrawPileViewScreen.class, "currentDiffY").getFloat(deck);
                     card.current_x = DRAW_START_X + mod * PAD_X;
                     card.current_y = DRAW_START_Y + currentDiffY - GetPadHeight(i, false) - MathUtils.random(100.0F * Settings.scale, 200.0F * Settings.scale);
                     card.targetDrawScale = 0.75F;

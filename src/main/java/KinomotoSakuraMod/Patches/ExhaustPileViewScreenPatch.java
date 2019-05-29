@@ -84,17 +84,17 @@ public class ExhaustPileViewScreenPatch
     {
         public static SpireReturn<Object> Prefix(ExhaustPileViewScreen deck) throws NoSuchFieldException, IllegalAccessException
         {
-            CardGroup exhaustPileCopy = (CardGroup) Utility.GetFieldByReflect(deck, ExhaustPileViewScreen.class, "exhaustPileCopy").get(deck);
+            CardGroup exhaustPileCopy = (CardGroup) Utility.GetFieldByReflect(ExhaustPileViewScreen.class, "exhaustPileCopy").get(deck);
             ArrayList<AbstractCard> cards = exhaustPileCopy.group;
             if (HasLongCard(cards))
             {
-                Field hoveredCard = Utility.GetFieldByReflect(deck, ExhaustPileViewScreen.class, "hoveredCard");
+                Field hoveredCard = Utility.GetFieldByReflect(ExhaustPileViewScreen.class, "hoveredCard");
                 hoveredCard.set(deck, null);
                 for (int i = 0; i < cards.size(); ++i)
                 {
                     AbstractCard card = cards.get(i);
                     int mod = i % CARDS_PER_LINE;
-                    Float currentDiffY = Utility.GetFieldByReflect(deck, ExhaustPileViewScreen.class, "currentDiffY").getFloat(deck);
+                    Float currentDiffY = Utility.GetFieldByReflect(ExhaustPileViewScreen.class, "currentDiffY").getFloat(deck);
                     card.target_x = DRAW_START_X + (float) mod * PAD_X;
                     card.target_y = DRAW_START_Y + currentDiffY - GetPadHeight(i, false);
                     Utility.Logger.info(card.target_x + ", " + card.target_y);
@@ -122,7 +122,7 @@ public class ExhaustPileViewScreenPatch
             ArrayList<AbstractCard> cards = AbstractDungeon.player.exhaustPile.group;
             if (HasLongCard(cards))
             {
-                Field scrollUpperBound = Utility.GetFieldByReflect(deck, ExhaustPileViewScreen.class, "scrollUpperBound");
+                Field scrollUpperBound = Utility.GetFieldByReflect(ExhaustPileViewScreen.class, "scrollUpperBound");
                 if (cards.size() > CARDS_PER_LINE && cards.size() <= CARDS_PER_LINE * 2 && HasLongCard(cards) || cards.size() > CARDS_PER_LINE * 2)
                 {
                     scrollUpperBound.setFloat(deck, Settings.DEFAULT_SCROLL_LIMIT + GetPadHeight(cards.size() - 1, true));
@@ -131,7 +131,7 @@ public class ExhaustPileViewScreenPatch
                 {
                     scrollUpperBound.setFloat(deck, Settings.DEFAULT_SCROLL_LIMIT);
                 }
-                Field prevDeckSize = Utility.GetFieldByReflect(deck, ExhaustPileViewScreen.class, "prevDeckSize");
+                Field prevDeckSize = Utility.GetFieldByReflect(ExhaustPileViewScreen.class, "prevDeckSize");
                 prevDeckSize.setInt(deck, AbstractDungeon.player.masterDeck.size());
                 return SpireReturn.Return(null);
             }
@@ -154,7 +154,7 @@ public class ExhaustPileViewScreenPatch
                 {
                     AbstractCard card = cards.get(i);
                     int mod = i % 5;
-                    Float currentDiffY = Utility.GetFieldByReflect(deck, ExhaustPileViewScreen.class, "currentDiffY").getFloat(deck);
+                    Float currentDiffY = Utility.GetFieldByReflect(ExhaustPileViewScreen.class, "currentDiffY").getFloat(deck);
                     card.current_x = DRAW_START_X + mod * PAD_X;
                     card.current_y = DRAW_START_Y + currentDiffY - GetPadHeight(i, false) - MathUtils.random(100.0F * Settings.scale, 200.0F * Settings.scale);
                     card.targetDrawScale = 0.75F;

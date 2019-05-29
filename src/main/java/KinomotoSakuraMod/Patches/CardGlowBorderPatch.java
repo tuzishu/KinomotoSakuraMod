@@ -18,14 +18,14 @@ public class CardGlowBorderPatch
 {
     public static SpireReturn<Object> Prefix(CardGlowBorder border, AbstractCard card) throws NoSuchFieldException, IllegalAccessException
     {
-        Field thisCard = Utility.GetFieldByReflect(border, CardGlowBorder.class, "card");
+        Field thisCard = Utility.GetFieldByReflect(CardGlowBorder.class, "card");
         if (card.color == CustomCardColor.CLOWCARD_COLOR || card.color == CustomCardColor.SAKURACARD_COLOR || card.color == CustomCardColor.SPELL_COLOR)
         {
             thisCard.set(border, card);
-            Field img = Utility.GetFieldByReflect(border, CardGlowBorder.class, "img");
+            Field img = Utility.GetFieldByReflect(CardGlowBorder.class, "img");
             img.set(border, ImageConst.SILHOUETTE);
             border.duration = 1.2F;
-            Field color = Utility.GetFieldByReflect(border, AbstractGameEffect.class, "color");
+            Field color = Utility.GetFieldByReflect(AbstractGameEffect.class, "color");
             if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT)
             {
                 color.set(border, Color.valueOf("30c8dcff"));

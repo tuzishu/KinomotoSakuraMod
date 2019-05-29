@@ -24,12 +24,12 @@ public class CardFlashVfxPatch
         {
             if (card.color == CustomCardColor.CLOWCARD_COLOR || card.color == CustomCardColor.SAKURACARD_COLOR || card.color == CustomCardColor.SPELL_COLOR)
             {
-                Field thisColor = Utility.GetFieldByReflect(vfx, AbstractGameEffect.class, "color");
-                Field yScale = Utility.GetFieldByReflect(vfx, CardFlashVfx.class, "yScale");
-                Field thisCard = Utility.GetFieldByReflect(vfx, CardFlashVfx.class, "card");
-                Field thisIsSuper = Utility.GetFieldByReflect(vfx, CardFlashVfx.class, "isSuper");
-                Field duration = Utility.GetFieldByReflect(vfx, AbstractGameEffect.class, "duration");
-                Field img = Utility.GetFieldByReflect(vfx, CardFlashVfx.class, "img");
+                Field thisColor = Utility.GetFieldByReflect(AbstractGameEffect.class, "color");
+                Field yScale = Utility.GetFieldByReflect(CardFlashVfx.class, "yScale");
+                Field thisCard = Utility.GetFieldByReflect(CardFlashVfx.class, "card");
+                Field thisIsSuper = Utility.GetFieldByReflect(CardFlashVfx.class, "isSuper");
+                Field duration = Utility.GetFieldByReflect(AbstractGameEffect.class, "duration");
+                Field img = Utility.GetFieldByReflect(CardFlashVfx.class, "img");
                 thisColor.set(vfx, color);
                 yScale.setFloat(vfx, 0.0F);
                 thisCard.set(vfx, card);
