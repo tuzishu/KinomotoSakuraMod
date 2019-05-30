@@ -558,7 +558,7 @@ public abstract class AbstractMagicCard extends CustomCard
                                 }
                                 break;
                             default:
-                                Utility.Logger.info("ERROR: Tried to display an invalid energy type");
+                                Utility.Logger.error("ERROR: Tried to display an invalid energy type");
                                 break;
                         }
 
@@ -593,11 +593,6 @@ public abstract class AbstractMagicCard extends CustomCard
                 DescriptionLine var10006 = (DescriptionLine) this.description.get(this.description.size() - 2);
                 var10000.set(var10001, new DescriptionLine(var10006.text = var10004.append(var10006.text).append("。").toString(), ((DescriptionLine) this.description.get(this.description.size() - 2)).width));
                 this.description.remove(this.description.size() - 1);
-            }
-
-            if (numLines > 8)
-            {
-                Utility.Logger.info("WARNING: Card " + this.name + " has lots of text");
             }
         }
         catch (Exception e)
