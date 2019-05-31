@@ -9,8 +9,8 @@ public class ImageConst
     // 资源路径
     //////////
     // 卡牌背景
-    public static final String CLOWCARD_BG_PATH = "img/cardui/clowcard/bg/attack.png";
-    public static final String CLOWCARD_BG_LARGE_PATH = "img/cardui/clowcard/bg/attack_p.png";
+    public static final String CLOWCARD_BG_PATH = "img/cardui/clowcard/bg/bg.png";
+    public static final String CLOWCARD_BG_LARGE_PATH = "img/cardui/clowcard/bg/bg_p.png";
     public static final String SAKURACARD_BG_PATH = "img/cardui/sakuracard/bg/attack.png";
     public static final String SAKURACARD_BG_LARGE_PATH = "img/cardui/sakuracard/bg/attack_p.png";
     public static final String SPELLCARD_BG_PATH = "img/cardui/spellcard/bg/attack.png";
