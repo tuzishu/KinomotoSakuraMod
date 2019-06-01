@@ -370,7 +370,7 @@ public class SingleCardViewPopupPatch
                             img = ImageConst.ORB_SKILL_LARGE;
                             break;
                     }
-                    sb.draw(img, Settings.WIDTH * 0.5F - ENERGY_ICON_WIDTH / 2F + ENERGY_COST_OFFSET_X * Settings.scale, Settings.HEIGHT * 0.5F - ENERGY_ICON_WIDTH / 2F + ENERGY_COST_OFFSET_Y * Settings.scale, ENERGY_ICON_WIDTH / 2F, ENERGY_ICON_WIDTH / 2F, ENERGY_ICON_WIDTH, ENERGY_ICON_WIDTH, Settings.scale, Settings.scale, 0.0F, 0, 0, (int) ENERGY_ICON_WIDTH, (int) ENERGY_ICON_WIDTH, false, false);
+                    sb.draw(img, Settings.WIDTH * 0.5F - ENERGY_ICON_WIDTH / 2F + (ENERGY_COST_OFFSET_X - 2F) * Settings.scale, Settings.HEIGHT * 0.5F - ENERGY_ICON_WIDTH / 2F + ENERGY_COST_OFFSET_Y * Settings.scale, ENERGY_ICON_WIDTH / 2F, ENERGY_ICON_WIDTH / 2F, ENERGY_ICON_WIDTH, ENERGY_ICON_WIDTH, Settings.scale, Settings.scale, 0.0F, 0, 0, (int) ENERGY_ICON_WIDTH, (int) ENERGY_ICON_WIDTH, false, false);
                     Color color = card.isCostModified ? Settings.GREEN_TEXT_COLOR : Settings.CREAM_COLOR;
                     switch (card.cost)
                     {

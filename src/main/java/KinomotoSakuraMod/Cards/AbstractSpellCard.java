@@ -117,7 +117,23 @@ public abstract class AbstractSpellCard extends CustomCard
 
             Method renderHelper = Utility.GetMethodByReflect(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, Texture.class, float.class, float.class);
             Color renderColor = (Color) Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
-            renderHelper.invoke(this, sb, renderColor, ImageConst.ORB_ATTACK, drawX, drawY);
+            Texture img;
+            switch (this.type)
+            {
+                case ATTACK:
+                    img = ImageConst.ORB_ATTACK;
+                    break;
+                case SKILL:
+                    img = ImageConst.ORB_SKILL;
+                    break;
+                case POWER:
+                    img = ImageConst.ORB_POWER;
+                    break;
+                default:
+                    img = ImageConst.ORB_SKILL;
+                    break;
+            }
+            renderHelper.invoke(this, sb, renderColor, img, drawX, drawY);
 
             Color costColor = Color.WHITE.cpy();
             if (AbstractDungeon.player != null && AbstractDungeon.player.hand.contains(this) && !this.hasEnoughEnergy())

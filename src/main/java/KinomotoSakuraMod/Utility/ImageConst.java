@@ -16,12 +16,12 @@ public class ImageConst
     public static final String SPELLCARD_BG_PATH = "img/cardui/spellcard/bg/attack.png";
     public static final String SPELLCARD_BG_LARGE_PATH = "img/cardui/spellcard/bg/attack_p.png";
     // 卡牌能量标识
-    public static final String ORB_ATTACK_PATH = "img/cardui/clowcard/orb/orb_attack.png";
-    public static final String ORB_ATTACK_LARGE_PATH = "img/cardui/clowcard/orb/orb_attack_p.png";
-    public static final String ORB_SKILL_PATH = "img/cardui/clowcard/orb/orb_skill.png";
-    public static final String ORB_SKILL_LARGE_PATH = "img/cardui/clowcard/orb/orb_skill_p.png";
-    public static final String ORB_POWER_PATH = "img/cardui/clowcard/orb/orb_power.png";
-    public static final String ORB_POWER_LARGE_PATH = "img/cardui/clowcard/orb/orb_power_p.png";
+    public static final String ORB_ATTACK_PATH = "img/cardui/clowcard/orb/attack.png";
+    public static final String ORB_ATTACK_LARGE_PATH = "img/cardui/clowcard/orb/attack_p.png";
+    public static final String ORB_SKILL_PATH = "img/cardui/clowcard/orb/skill.png";
+    public static final String ORB_SKILL_LARGE_PATH = "img/cardui/clowcard/orb/skill_p.png";
+    public static final String ORB_POWER_PATH = "img/cardui/clowcard/orb/power.png";
+    public static final String ORB_POWER_LARGE_PATH = "img/cardui/clowcard/orb/power_p.png";
     // 卡牌稀有旗
     public static final String BANNER_COMMON_PATH = "img/cardui/clowcard/banner/common.png";
     public static final String BANNER_COMMON_LARGE_PATH = "img/cardui/clowcard/banner/common_p.png";
