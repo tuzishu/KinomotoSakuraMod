@@ -47,23 +47,37 @@ public abstract class AbstractMagicCard extends CustomCard
     private static final float HB_W = IMG_WIDTH;
     private static final float HB_H = IMG_HEIGHT;
     private static final float TITLE_HEIGHT_TO_CENTER = 222.0F;
+    private static final float TITLE_BOTTOM_HEIGHT_TO_CENTER = -205.0F;
     private static final float PORTRAIT_WIDTH = 151F;
     private static final float PORTRAIT_HEIGHT = 393F;
     private static final float PORTRAIT_ORIGIN_X = 75F;
     private static final float PORTRAIT_ORIGIN_Y = 178F;
 
+    private String BOTTOM_TITLE = "";
     private boolean hasReleased = false;
     private float releaseRate = 0F;
 
     public AbstractMagicCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target)
     {
         super(id, name, img, cost, rawDescription, type, color, rarity, target);
+        InitMagicCard();
     }
 
     public AbstractMagicCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target, AbstractCard.CardTags tag)
     {
         this(id, name, img, cost, rawDescription, type, color, rarity, target);
         this.tags.add(tag);
+    }
+
+    private void InitMagicCard()
+    {
+        String bottomTitle = this.getClass().getSimpleName();
+        if (BOTTOM_TITLE.isEmpty() && bottomTitle.contains("ClowCardThe") || bottomTitle.contains("SakuraCardThe"))
+        {
+            bottomTitle = bottomTitle.replaceAll("ClowCardThe", "THE ");
+            bottomTitle = bottomTitle.replaceAll("SakuraCardThe", "THE ");
+            BOTTOM_TITLE = bottomTitle.toUpperCase();
+        }
     }
 
     public abstract void upgrade();
@@ -704,10 +718,9 @@ public abstract class AbstractMagicCard extends CustomCard
                 {
                     font = FontHelper.cardTitleFont_L;
                 }
-
                 font.getData().setScale(this.drawScale);
-
                 FontHelper.renderRotatedText(sb, font, LOCKED_STRING, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
+                FontHelper.renderRotatedText(sb, font, LOCKED_STRING, this.current_x, this.current_y, 0.0F, TITLE_BOTTOM_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
             }
             else if (!this.isSeen)
             {
@@ -719,9 +732,9 @@ public abstract class AbstractMagicCard extends CustomCard
                 {
                     font = FontHelper.cardTitleFont_L;
                 }
-
                 font.getData().setScale(this.drawScale);
                 FontHelper.renderRotatedText(sb, font, UNKNOWN_STRING, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
+                FontHelper.renderRotatedText(sb, font, UNKNOWN_STRING, this.current_x, this.current_y, 0.0F, TITLE_BOTTOM_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
             }
             else
             {
@@ -752,10 +765,12 @@ public abstract class AbstractMagicCard extends CustomCard
                     Color color = Settings.GREEN_TEXT_COLOR.cpy();
                     color.a = renderColor.a;
                     FontHelper.renderRotatedText(sb, font, this.name, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, color);
+                    FontHelper.renderRotatedText(sb, font, BOTTOM_TITLE, this.current_x, this.current_y, 0.0F, TITLE_BOTTOM_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, color);
                 }
                 else
                 {
                     FontHelper.renderRotatedText(sb, font, this.name, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
+                    FontHelper.renderRotatedText(sb, font, BOTTOM_TITLE, this.current_x, this.current_y, 0.0F, TITLE_BOTTOM_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
                 }
             }
         }

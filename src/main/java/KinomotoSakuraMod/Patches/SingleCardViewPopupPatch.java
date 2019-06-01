@@ -1,5 +1,6 @@
 package KinomotoSakuraMod.Patches;
 
+import KinomotoSakuraMod.Cards.AbstractMagicCard;
 import KinomotoSakuraMod.Utility.ImageConst;
 import KinomotoSakuraMod.Utility.Utility;
 import com.badlogic.gdx.graphics.Color;
@@ -20,6 +21,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.screens.SingleCardViewPopup;
 
+import javax.swing.plaf.TableUI;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -35,6 +37,7 @@ public class SingleCardViewPopupPatch
     private static final float HB_W = IMG_WIDTH;
     private static final float HB_H = IMG_HEIGHT;
     private static final float TITLE_HEIGHT_TO_CENTER = 444.0F;
+    private static final float TITLE_BOTTOM_HEIGHT_TO_CENTER = -410.0F;
     private static final float PORTRAIT_WIDTH = 303F;
     private static final float PORTRAIT_HEIGHT = 786F;
     private static final float PORTRAIT_ORIGIN_X = 151F;
@@ -284,7 +287,7 @@ public class SingleCardViewPopupPatch
                             else
                             {
                                 gl.setText(font, tmp);
-                                FontHelper.renderRotatedText(sb, font, tmp, card.current_x, card.current_y, start_x - card.current_x + gl.width * 0.5F, i * 1.53F * -font.getCapHeight() + draw_y - card.current_y + -12.0F, 0.0F, true, Settings.CREAM_COLOR);
+                                FontHelper.renderRotatedText(sb, font, tmp, card.current_x, card.current_y, start_x - card.current_x + gl.width * 0.5F, i * 1.53F * -font.getCapHeight() + draw_y - card.current_y + -12.0F, 0.0F, true, Settings.CREAM_COLOR.cpy());
                                 start_x += gl.width;
                             }
                         }
@@ -293,7 +296,7 @@ public class SingleCardViewPopupPatch
                 }
                 else
                 {
-                    FontHelper.renderFontCentered(sb, FontHelper.largeCardFont, "? ? ?", Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F - 195.0F * Settings.scale, Settings.CREAM_COLOR);
+                    FontHelper.renderFontCentered(sb, FontHelper.largeCardFont, "? ? ?", Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F - 195.0F * Settings.scale, Settings.CREAM_COLOR.cpy());
                 }
                 return SpireReturn.Return(null);
             }
@@ -316,23 +319,28 @@ public class SingleCardViewPopupPatch
             {
                 if (card.isLocked)
                 {
-                    FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, TEXT[4], Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + TITLE_HEIGHT_TO_CENTER * Settings.scale, Settings.CREAM_COLOR);
+                    FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, TEXT[4], Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + TITLE_HEIGHT_TO_CENTER * Settings.scale, Settings.CREAM_COLOR.cpy());
+                    FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, TEXT[4], Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + TITLE_BOTTOM_HEIGHT_TO_CENTER * Settings.scale, Settings.CREAM_COLOR.cpy());
                 }
                 else if (card.isSeen)
                 {
                     Method allowUpgradePreview = Utility.GetMethodByReflect(SingleCardViewPopup.class, "allowUpgradePreview");
+                    String BOTTOM_TITLE = (String) Utility.GetFieldByReflect(AbstractMagicCard.class, "BOTTOM_TITLE").get(card);
                     if (SingleCardViewPopup.isViewingUpgrade && !((Boolean) allowUpgradePreview.invoke(view)))
                     {
-                        FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, card.name, Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + TITLE_HEIGHT_TO_CENTER * Settings.scale, Settings.GREEN_TEXT_COLOR);
+                        FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, card.name, Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + TITLE_HEIGHT_TO_CENTER * Settings.scale, Settings.GREEN_TEXT_COLOR.cpy());
+                        FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, BOTTOM_TITLE, Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + TITLE_BOTTOM_HEIGHT_TO_CENTER * Settings.scale, Settings.GREEN_TEXT_COLOR.cpy());
                     }
                     else
                     {
-                        FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, card.name, Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + TITLE_HEIGHT_TO_CENTER * Settings.scale, Settings.CREAM_COLOR);
+                        FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, card.name, Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + TITLE_HEIGHT_TO_CENTER * Settings.scale, Settings.CREAM_COLOR.cpy());
+                        FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, BOTTOM_TITLE, Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + TITLE_BOTTOM_HEIGHT_TO_CENTER * Settings.scale, Settings.CREAM_COLOR.cpy());
                     }
                 }
                 else
                 {
-                    FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, TEXT[5], Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + TITLE_HEIGHT_TO_CENTER * Settings.scale, Settings.CREAM_COLOR);
+                    FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, TEXT[5], Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + TITLE_HEIGHT_TO_CENTER * Settings.scale, Settings.CREAM_COLOR.cpy());
+                    FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, TEXT[5], Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + TITLE_BOTTOM_HEIGHT_TO_CENTER * Settings.scale, Settings.CREAM_COLOR.cpy());
                 }
                 return SpireReturn.Return(null);
             }
@@ -371,7 +379,7 @@ public class SingleCardViewPopupPatch
                             break;
                     }
                     sb.draw(img, Settings.WIDTH * 0.5F - ENERGY_ICON_WIDTH / 2F + (ENERGY_COST_OFFSET_X - 2F) * Settings.scale, Settings.HEIGHT * 0.5F - ENERGY_ICON_WIDTH / 2F + ENERGY_COST_OFFSET_Y * Settings.scale, ENERGY_ICON_WIDTH / 2F, ENERGY_ICON_WIDTH / 2F, ENERGY_ICON_WIDTH, ENERGY_ICON_WIDTH, Settings.scale, Settings.scale, 0.0F, 0, 0, (int) ENERGY_ICON_WIDTH, (int) ENERGY_ICON_WIDTH, false, false);
-                    Color color = card.isCostModified ? Settings.GREEN_TEXT_COLOR : Settings.CREAM_COLOR;
+                    Color color = card.isCostModified ? Settings.GREEN_TEXT_COLOR.cpy() : Settings.CREAM_COLOR.cpy();
                     switch (card.cost)
                     {
                         case -1:
