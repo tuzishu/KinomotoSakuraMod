@@ -16,7 +16,7 @@ public class ClowCardTheEarthy extends AbstractMagicCard
     public static final String ID = "ClowCardTheEarthy";
     private static final String NAME;
     private static final String DESCRIPTION;
-    private static final String IMAGE_PATH = "img/cards/default_power_card.png";
+    private static final String IMAGE_PATH = "img/cards/clowcard/the_earthy.png";
     private static final int COST = 1;
     private static final CardType CARD_TYPE = CardType.POWER;
     private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;

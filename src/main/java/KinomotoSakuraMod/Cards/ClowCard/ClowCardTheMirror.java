@@ -15,7 +15,7 @@ public class ClowCardTheMirror extends AbstractMagicCard
     public static final String ID = "ClowCardTheMirror";
     private static final String NAME;
     private static final String DESCRIPTION;
-    private static final String IMAGE_PATH = "img/cards/default_skill_card.png";
+    private static final String IMAGE_PATH = "img/cards/clowcard/the_mirror.png";
     private static final int COST = 1;
     private static final int UPGRADED_COST = 0;
     private static final CardType CARD_TYPE = CardType.SKILL;

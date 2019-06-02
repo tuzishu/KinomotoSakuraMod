@@ -423,8 +423,9 @@ public class SingleCardViewPopupPatch
         {
             if (IsKSCard(card))
             {
-                Field cardHb = Utility.GetFieldByReflect(SingleCardViewPopup.class, "cardHb");
-                cardHb.set(view, new Hitbox(HB_W, HB_H));
+                Hitbox cardHb = (Hitbox) Utility.GetFieldByReflect(SingleCardViewPopup.class, "cardHb").get(view);
+                cardHb.resize(HB_W, HB_H);
+                cardHb.move(Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F);
                 Hitbox upgradeHb = (Hitbox) Utility.GetFieldByReflect(SingleCardViewPopup.class, "upgradeHb").get(view);
                 upgradeHb.move(TOGGLE_X, TOGGLE_Y);
             }
@@ -441,8 +442,9 @@ public class SingleCardViewPopupPatch
         {
             if (IsKSCard(card))
             {
-                Field cardHb = Utility.GetFieldByReflect(SingleCardViewPopup.class, "cardHb");
-                cardHb.set(view, new Hitbox(HB_W, HB_H));
+                Hitbox cardHb = (Hitbox) Utility.GetFieldByReflect(SingleCardViewPopup.class, "cardHb").get(view);
+                cardHb.resize(HB_W, HB_H);
+                cardHb.move(Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F);
                 Hitbox upgradeHb = (Hitbox) Utility.GetFieldByReflect(SingleCardViewPopup.class, "upgradeHb").get(view);
                 upgradeHb.move(TOGGLE_X, TOGGLE_Y);
             }

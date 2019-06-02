@@ -21,7 +21,7 @@ public class ClowCardTheErase extends AbstractMagicCard
     public static final String ID = "ClowCardTheErase";
     private static final String NAME;
     private static final String DESCRIPTION;
-    private static final String IMAGE_PATH = "img/cards/default_attack_card.png";
+    private static final String IMAGE_PATH = "img/cards/clowcard/the_erase.png";
     private static final int COST = 1;
     private static final CardType CARD_TYPE = CardType.ATTACK;
     private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;

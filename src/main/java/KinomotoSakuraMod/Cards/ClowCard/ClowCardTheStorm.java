@@ -23,7 +23,7 @@ public class ClowCardTheStorm extends AbstractMagicCard
     public static final String ID = "ClowCardTheStorm";
     private static final String NAME;
     private static final String DESCRIPTION;
-    private static final String IMAGE_PATH = "img/cards/default_attack_card.png";
+    private static final String IMAGE_PATH = "img/cards/clowcard/the_storm.png";
     private static final int COST = 2;
     private static final int UPGRADED_COST = 1;
     private static final AbstractCard.CardType CARD_TYPE = AbstractCard.CardType.ATTACK;

@@ -16,7 +16,7 @@ public class ClowCardTheLibra extends AbstractMagicCard
     public static final String ID = "ClowCardTheLibra";
     private static final String NAME;
     private static final String DESCRIPTION;
-    private static final String IMAGE_PATH = "img/cards/default_skill_card.png";
+    private static final String IMAGE_PATH = "img/cards/clowcard/the_libra.png";
     private static final int COST = 0;
     private static final CardType CARD_TYPE = CardType.SKILL;
     private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;

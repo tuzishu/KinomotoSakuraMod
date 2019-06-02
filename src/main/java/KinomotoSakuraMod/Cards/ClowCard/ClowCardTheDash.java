@@ -16,7 +16,7 @@ public class ClowCardTheDash extends AbstractMagicCard
     public static final String ID = "ClowCardTheDash";
     private static final String NAME;
     private static final String DESCRIPTION;
-    private static final String IMAGE_PATH = "img/cards/default_power_card.png";
+    private static final String IMAGE_PATH = "img/cards/clowcard/the_dash.png";
     private static final int COST = 2;
     private static final int UPGRADED_COST = 1;
     private static final CardType CARD_TYPE = CardType.POWER;

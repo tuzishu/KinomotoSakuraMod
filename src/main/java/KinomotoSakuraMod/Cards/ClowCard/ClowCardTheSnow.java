@@ -26,7 +26,7 @@ public class ClowCardTheSnow extends AbstractMagicCard
     private static final String NAME;
     private static final String DESCRIPTION;
     private static final String UPGRADE_DESCRIPTION;
-    private static final String IMAGE_PATH = "img/cards/default_attack_card.png";
+    private static final String IMAGE_PATH = "img/cards/clowcard/the_snow.png";
     private static final int COST = 2;
     private static final AbstractCard.CardType CARD_TYPE = AbstractCard.CardType.ATTACK;
     private static final AbstractCard.CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
