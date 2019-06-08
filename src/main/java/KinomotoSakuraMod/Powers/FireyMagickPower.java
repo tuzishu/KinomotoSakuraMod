@@ -7,7 +7,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 
-public class FireyMagickPower extends CustomPower
+public class FireyMagickPower extends KSMOD_CustomPower
 {
     public static final String POWER_ID = "FireyMagickPower";
     private static final String POWER_NAME;

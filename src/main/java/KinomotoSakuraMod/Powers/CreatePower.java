@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 
-public class CreatePower extends CustomPower
+public class CreatePower extends KSMOD_CustomPower
 {
 
     public static final String POWER_ID = "CreatePower";

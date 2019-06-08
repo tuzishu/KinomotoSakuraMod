@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Powers.CreatePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
-public class ClowCardTheCreate extends AbstractMagicCard
+public class ClowCardTheCreate extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheCreate";
     private static final String NAME;
@@ -52,7 +52,7 @@ public class ClowCardTheCreate extends AbstractMagicCard
     }
 
     @Override
-    public AbstractMagicCard makeCopy()
+    public KSMOD_AbstractMagicCard makeCopy()
     {
         return new ClowCardTheCreate();
     }

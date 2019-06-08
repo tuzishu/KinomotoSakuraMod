@@ -1,10 +1,9 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Actions.ApplyElementAction;
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
-import KinomotoSakuraMod.Powers.EarthyElementPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -17,7 +16,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.*;
 
-public class ClowCardTheWood extends AbstractMagicCard
+public class ClowCardTheWood extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheWood";
     private static final String NAME;
@@ -60,7 +59,7 @@ public class ClowCardTheWood extends AbstractMagicCard
     }
 
     @Override
-    public AbstractMagicCard makeCopy()
+    public KSMOD_AbstractMagicCard makeCopy()
     {
         return new ClowCardTheWood();
     }
@@ -68,12 +67,12 @@ public class ClowCardTheWood extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.correctDamage(), DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
 
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new StrengthPower(monster, -this.correctDamage()), -this.correctDamage()));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new StrengthPower(monster, -this.damage), -this.damage));
         if (!monster.hasPower(ArtifactPower.POWER_ID))
         {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new GainStrengthPower(monster, this.correctDamage()), this.correctDamage()));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new GainStrengthPower(monster, this.damage), this.damage));
         }
 
         if (EarthyElementPower.TryActiveEarthyElement(monster, ACTIVE_ELEMENT_NUMBER, true))
@@ -82,6 +81,6 @@ public class ClowCardTheWood extends AbstractMagicCard
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new ConstrictedPower(monster, player, CONSTRICTED_NUMBER), CONSTRICTED_NUMBER));
         }
 
-        AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(monster, player, new EarthyElementPower(monster, this.correctMagicNumber()), this.correctMagicNumber(), true));
+        AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(monster, player, new EarthyElementPower(monster, this.magicNumber), this.magicNumber, true));
     }
 }

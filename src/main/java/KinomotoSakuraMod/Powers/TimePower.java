@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class TimePower extends CustomPower
+public class TimePower extends KSMOD_CustomPower
 {
     public static final String POWER_ID = "TimePower";
     public static final String POWER_NAME;

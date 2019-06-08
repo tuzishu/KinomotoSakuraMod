@@ -1,11 +1,10 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Actions.ApplyElementAction;
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
 import KinomotoSakuraMod.Powers.FireyElementPower;
-import KinomotoSakuraMod.Powers.LightElementPower;
 import com.megacrit.cardcrawl.actions.defect.ThunderStrikeAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -17,7 +16,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.util.ArrayList;
 
-public class ClowCardTheThunder extends AbstractMagicCard
+public class ClowCardTheThunder extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheThunder";
     private static final String NAME;
@@ -60,7 +59,7 @@ public class ClowCardTheThunder extends AbstractMagicCard
     }
 
     @Override
-    public AbstractMagicCard makeCopy()
+    public KSMOD_AbstractMagicCard makeCopy()
     {
         return new ClowCardTheThunder();
     }
@@ -72,11 +71,11 @@ public class ClowCardTheThunder extends AbstractMagicCard
         for (int i = 0; i < ATTACK_COUNT; i++)
         {
             AbstractMonster mon = AbstractDungeon.getRandomMonster();
-            AbstractDungeon.actionManager.addToBottom(new ThunderStrikeAction(mon, new DamageInfo(player, this.correctDamage(), DamageInfo.DamageType.HP_LOSS), 1));
+            AbstractDungeon.actionManager.addToBottom(new ThunderStrikeAction(mon, new DamageInfo(player, this.damage, DamageInfo.DamageType.HP_LOSS), 1));
             if (!monList.contains(mon) && mon.hasPower(LightElementPower.POWER_ID))
             {
                 int amount = mon.getPower(LightElementPower.POWER_ID).amount;
-                amount *= this.correctMagicNumber();
+                amount *= this.magicNumber;
                 LightElementPower.TryActiveLightElement(mon, amount, true);
                 for (int j = 0; j < amount; j++)
                 {
@@ -84,10 +83,10 @@ public class ClowCardTheThunder extends AbstractMagicCard
                     {
                         break;
                     }
-                    AbstractDungeon.actionManager.addToBottom(new ThunderStrikeAction(mon, new DamageInfo(player, this.correctDamage(), DamageInfo.DamageType.HP_LOSS), 1));
+                    AbstractDungeon.actionManager.addToBottom(new ThunderStrikeAction(mon, new DamageInfo(player, this.damage, DamageInfo.DamageType.HP_LOSS), 1));
                 }
             }
-            AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(mon, player, new FireyElementPower(mon, this.correctMagicNumber()), this.correctMagicNumber(), true));
+            AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(mon, player, new FireyElementPower(mon, this.magicNumber), this.magicNumber, true));
             if (!monList.contains(mon))
             {
                 monList.add(mon);

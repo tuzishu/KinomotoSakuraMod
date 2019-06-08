@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class ClowCardTheIllusion extends AbstractMagicCard
+public class ClowCardTheIllusion extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheIllusion";
     private static final String NAME;
@@ -49,7 +49,7 @@ public class ClowCardTheIllusion extends AbstractMagicCard
     }
 
     @Override
-    public AbstractMagicCard makeCopy()
+    public KSMOD_AbstractMagicCard makeCopy()
     {
         return new ClowCardTheIllusion();
     }
@@ -57,10 +57,10 @@ public class ClowCardTheIllusion extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, correctDamage()), AbstractGameAction.AttackEffect.FIRE));
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage), AbstractGameAction.AttackEffect.FIRE));
         for (int i = 0; i < player.exhaustPile.size() / 2; i++)
         {
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, correctDamage()), AbstractGameAction.AttackEffect.FIRE));
+            AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage), AbstractGameAction.AttackEffect.FIRE));
         }
     }
 }

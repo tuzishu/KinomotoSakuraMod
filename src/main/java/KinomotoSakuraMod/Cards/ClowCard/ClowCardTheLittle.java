@@ -1,10 +1,10 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
-import KinomotoSakuraMod.Powers.BigPower;
-import KinomotoSakuraMod.Powers.LittlePower;
+import KinomotoSakuraMod.Powers.KSMOD_BigPower;
+import KinomotoSakuraMod.Powers.KSMOD_LittlePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -12,8 +12,10 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.DexterityPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 
-public class ClowCardTheLittle extends AbstractMagicCard
+public class ClowCardTheLittle extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheLittle";
     private static final String NAME;
@@ -24,8 +26,8 @@ public class ClowCardTheLittle extends AbstractMagicCard
     private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
-    private static final int BASE_MAGIC_NUMBER = 10;
-    private static final int UPGRADE_MAGIC_NUMBER = 10;
+    private static final int BASE_MAGIC_NUMBER = 2;
+    private static final int UPGRADE_MAGIC_NUMBER = 1;
 
     static
     {
@@ -40,7 +42,7 @@ public class ClowCardTheLittle extends AbstractMagicCard
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
-    public AbstractMagicCard makeCopy()
+    public KSMOD_AbstractMagicCard makeCopy()
     {
         return new ClowCardTheLittle();
     }
@@ -55,12 +57,9 @@ public class ClowCardTheLittle extends AbstractMagicCard
     }
 
     @Override
-    public void use(AbstractPlayer player, AbstractMonster monster)
+    public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        if (player.hasPower(BigPower.POWER_ID))
-        {
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(player,player,BigPower.POWER_ID));
-        }
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new LittlePower(this.correctMagicNumber()), this.correctMagicNumber()));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new DexterityPower(player, this.magicNumber), this.magicNumber));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new StrengthPower(player, -1), -1));
     }
 }

@@ -9,8 +9,8 @@ import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomCharacter;
 import KinomotoSakuraMod.Patches.CustomKeywords;
-import KinomotoSakuraMod.Relics.SealedBook;
-import KinomotoSakuraMod.Relics.SealedWand;
+import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
+import KinomotoSakuraMod.Relics.KSMOD_SealedWand;
 import KinomotoSakuraMod.Utility.ImageConst;
 import KinomotoSakuraMod.Utility.Utility;
 import basemod.BaseMod;
@@ -94,8 +94,8 @@ public class KinomotoSakuraMod implements ISubscriber, PostInitializeSubscriber,
     {
         ArrayList<AbstractRelic> relicList = new ArrayList<AbstractRelic>();
 
-        relicList.add(new SealedWand());
-        relicList.add(new SealedBook());
+        relicList.add(new KSMOD_SealedWand());
+        relicList.add(new KSMOD_SealedBook());
 
         return relicList;
     }

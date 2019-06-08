@@ -16,7 +16,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class CloudPower extends CustomPower
+public class CloudPower extends KSMOD_CustomPower
 {
     public static final String POWER_ID = "CloudPower";
     private static final String POWER_NAME;

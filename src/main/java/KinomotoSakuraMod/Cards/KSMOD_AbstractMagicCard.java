@@ -1,11 +1,12 @@
 package KinomotoSakuraMod.Cards;
 
-import KinomotoSakuraMod.Patches.CustomTag;
-import KinomotoSakuraMod.Powers.ElementMagickPower;
-import KinomotoSakuraMod.Powers.EnhancementMagickPower;
+import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
+import KinomotoSakuraMod.Powers.LockPower;
+import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import KinomotoSakuraMod.Utility.ImageConst;
 import KinomotoSakuraMod.Utility.Utility;
 import basemod.abstracts.CustomCard;
+import basemod.interfaces.PostPowerApplySubscriber;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -13,9 +14,13 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DescriptionLine;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
@@ -29,7 +34,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
-public abstract class AbstractMagicCard extends CustomCard
+public abstract class KSMOD_AbstractMagicCard extends CustomCard implements PostPowerApplySubscriber
 {
     //////////
     // Override Method Usage
@@ -52,43 +57,117 @@ public abstract class AbstractMagicCard extends CustomCard
     private static final float PORTRAIT_HEIGHT = 393F;
     private static final float PORTRAIT_ORIGIN_X = 75F;
     private static final float PORTRAIT_ORIGIN_Y = 178F;
-
     private String BOTTOM_TITLE = "";
+
+    //////////
+    // Custom Value
+    //////////
     private boolean hasReleased = false;
     private float releaseRate = 0F;
+    private int[] valueBuffer = new int[3];
+    private boolean hasExtraEffect = false;
 
-    public AbstractMagicCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target)
+    public KSMOD_AbstractMagicCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target)
     {
         super(id, name, img, cost, rawDescription, type, color, rarity, target);
         InitMagicCard();
     }
 
-    public AbstractMagicCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target, AbstractCard.CardTags tag)
+    public KSMOD_AbstractMagicCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target, AbstractCard.CardTags tag)
     {
         this(id, name, img, cost, rawDescription, type, color, rarity, target);
         this.tags.add(tag);
     }
 
+    public KSMOD_AbstractMagicCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target, AbstractCard.CardTags tag, boolean hasExtraEffect)
+    {
+        this(id, name, img, cost, rawDescription, type, color, rarity, target);
+        this.tags.add(tag);
+        this.hasExtraEffect = hasExtraEffect;
+    }
+
+    public abstract void upgrade();
+
+    public abstract KSMOD_AbstractMagicCard makeCopy();
+
+    public void triggerOnExhaust()
+    {
+        this.damage = this.valueBuffer[0];
+        this.block = this.valueBuffer[1];
+        this.magicNumber = this.valueBuffer[2];
+        this.valueBuffer = new int[3];
+        this.hasReleased = false;
+    }
+
+    public void receivePostPowerApplySubscriber(AbstractPower power, AbstractCreature target, AbstractCreature source)
+    {
+        if (power instanceof KSMOD_MagickChargePower)
+        {
+            this.initializeDescription();
+        }
+    }
+
+    public final void use(AbstractPlayer player, AbstractMonster monster)
+    {
+        if (this.hasExtraEffect && hasCharged() && !hasLockPower())
+        {
+            this.applyExtraEffect(player, monster);
+            AbstractPower power = player.getPower(KSMOD_MagickChargePower.POWER_ID);
+            if (power.amount == KSMOD_SealedBook.CHARGE_ACTIVE_NUMBER)
+            {
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(player, player, power));
+            }
+            else
+            {
+                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(player, player, power, KSMOD_SealedBook.CHARGE_ACTIVE_NUMBER));
+            }
+        }
+        else
+        {
+            this.applyNormalEffect(player, monster);
+        }
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_MagickChargePower(player, KSMOD_SealedBook.applyPowerNumberOnce()), KSMOD_SealedBook.applyPowerNumberOnce()));
+    }
+
     private void InitMagicCard()
     {
         String bottomTitle = this.getClass().getSimpleName();
-        if (BOTTOM_TITLE.isEmpty() && bottomTitle.contains("ClowCardThe") || bottomTitle.contains("SakuraCardThe"))
+        if (BOTTOM_TITLE.isEmpty() && bottomTitle.contains("ClowCardThe"))
         {
             bottomTitle = bottomTitle.replaceAll("ClowCardThe", "THE ");
+            BOTTOM_TITLE = bottomTitle.toUpperCase();
+        }
+        if (BOTTOM_TITLE.isEmpty() && bottomTitle.contains("SakuraCardThe"))
+        {
             bottomTitle = bottomTitle.replaceAll("SakuraCardThe", "THE ");
             BOTTOM_TITLE = bottomTitle.toUpperCase();
         }
     }
 
-    public abstract void upgrade();
-
-    public abstract AbstractMagicCard makeCopy();
-
-    public abstract void use(AbstractPlayer player, AbstractMonster monster);
-
-    public void triggerOnExhaust()
+    private boolean hasCharged()
     {
-        this.hasReleased = false;
+        if (AbstractDungeon.player.hasPower(KSMOD_MagickChargePower.POWER_ID))
+        {
+            return AbstractDungeon.player.getPower(KSMOD_MagickChargePower.POWER_ID).amount >= KSMOD_SealedBook.CHARGE_ACTIVE_NUMBER;
+        }
+        return false;
+    }
+
+    private boolean hasLockPower()
+    {
+        return AbstractDungeon.player.hasPower(LockPower.POWER_ID);
+    }
+
+    public abstract void applyNormalEffect(AbstractPlayer player, AbstractMonster monster);
+
+    public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
+    {
+
+    }
+
+    public String getExtraDescription()
+    {
+        return this.rawDescription;
     }
 
     public void setBaseMagicNumber(int value)
@@ -97,45 +176,17 @@ public abstract class AbstractMagicCard extends CustomCard
         this.magicNumber = value;
     }
 
-    public int correctDamage()
-    {
-        return getCorrentValue(this.damage);
-    }
-
-    public int correctBlock()
-    {
-        return getCorrentValue(this.block);
-    }
-
-    public int correctMagicNumber()
-    {
-        return getCorrentValue(this.magicNumber);
-    }
-
-    public int getCorrentValue(int value)
-    {
-        if (this.tags.contains(CustomTag.PHYSICS_CARD))
-        {
-            AbstractPower power = AbstractDungeon.player.getPower(EnhancementMagickPower.POWER_ID);
-            int count = power != null ? power.amount : 0;
-            float rate = EnhancementMagickPower.CORRECTION_RATE;
-            value = (int) (value * (1F + count * rate) * (1F + (hasReleased ? releaseRate : 0F)));
-        }
-        if (this.tags.contains(CustomTag.ELEMENT_CARD))
-        {
-            AbstractPower power = AbstractDungeon.player.getPower(ElementMagickPower.POWER_ID);
-            int count = power != null ? power.amount : 0;
-            float rate = ElementMagickPower.CORRECTION_RATE;
-            value = (int) (value * (1F + count * rate) * (1F + (hasReleased ? releaseRate : 0F)));
-        }
-        return value;
-    }
-
     public void release(float releaseRate)
     {
         if (!hasReleased)
         {
             this.releaseRate = releaseRate;
+            this.valueBuffer[0] = this.damage;
+            this.valueBuffer[1] = this.block;
+            this.valueBuffer[2] = this.magicNumber;
+            this.damage *= 1 + this.releaseRate;
+            this.block *= 1 + this.releaseRate;
+            this.magicNumber *= 1 + this.releaseRate;
             hasReleased = true;
         }
     }
@@ -452,7 +503,8 @@ public abstract class AbstractMagicCard extends CustomCard
             int numLines = 1;
             StringBuilder currentLine = new StringBuilder("");
             float currentWidth = 0.0F;
-            String[] var4 = this.rawDescription.split(" ");
+            String desc = (this.hasExtraEffect && hasCharged() && !hasLockPower()) ? this.rawDescription : this.getExtraDescription();
+            String[] var4 = desc.split(" ");
             int var5 = var4.length;
 
             for (int var6 = 0; var6 < var5; ++var6)

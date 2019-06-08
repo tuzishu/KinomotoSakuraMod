@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Powers.*;
 import com.badlogic.gdx.math.MathUtils;
@@ -15,7 +15,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.CleaveEffect;
 
-public class ClowCardTheThrough extends AbstractMagicCard
+public class ClowCardTheThrough extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheThrough";
     private static final String NAME;
@@ -55,7 +55,7 @@ public class ClowCardTheThrough extends AbstractMagicCard
     }
 
     @Override
-    public AbstractMagicCard makeCopy()
+    public KSMOD_AbstractMagicCard makeCopy()
     {
         return new ClowCardTheThrough();
     }

@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Powers;
 
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -15,7 +15,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.util.ArrayList;
 
-public class WavePower extends CustomPower
+public class WavePower extends KSMOD_CustomPower
 {
     public static final String POWER_ID = "WavePower";
     private static final String POWER_NAME;
@@ -51,7 +51,7 @@ public class WavePower extends CustomPower
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action)
     {
-        if (card instanceof AbstractMagicCard && card.type == AbstractCard.CardType.ATTACK && card.target == AbstractCard.CardTarget.ENEMY)
+        if (card instanceof KSMOD_AbstractMagicCard && card.type == AbstractCard.CardType.ATTACK && card.target == AbstractCard.CardTarget.ENEMY)
         {
             currentCard = card;
         }

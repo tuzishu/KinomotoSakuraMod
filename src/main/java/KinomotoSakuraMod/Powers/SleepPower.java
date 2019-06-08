@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
-public class SleepPower extends CustomPower
+public class SleepPower extends KSMOD_CustomPower
 {
     public static final String POWER_ID = "SleepPower";
     public static final String POWER_NAME;

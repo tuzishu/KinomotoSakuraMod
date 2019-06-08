@@ -1,13 +1,11 @@
 package KinomotoSakuraMod.Powers;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class SealPower extends CustomPower
+public class SealPower extends KSMOD_CustomPower
 {
     public static final String POWER_ID = "SealPower";
     private static final String POWER_NAME;

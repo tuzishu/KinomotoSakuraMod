@@ -8,9 +8,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class LittlePower extends CustomPower
+public class KSMOD_BigPower extends KSMOD_CustomPower
 {
-    public static final String POWER_ID = "LittlePower";
+    public static final String POWER_ID = "KSMOD_BigPower";
     private static final String POWER_NAME;
     private static final String[] POWER_DESCRIPTIONS;
     private static final String POWER_IMG_PATH = "img/powers/default_power.png";
@@ -25,12 +25,12 @@ public class LittlePower extends CustomPower
         POWER_DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     }
 
-    public LittlePower(int amount)
+    public KSMOD_BigPower(int amount)
     {
         this(AbstractDungeon.player, amount);
     }
 
-    public LittlePower(AbstractCreature target, int amount)
+    public KSMOD_BigPower(AbstractCreature target, int amount)
     {
         super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, amount);
         this.updateDescription();
@@ -43,7 +43,7 @@ public class LittlePower extends CustomPower
 
     public float atDamageGive(float damage, DamageInfo.DamageType type)
     {
-        damage = (int) (damage * (1 - DAMAGE_CORRECTION * this.amount));
+        damage = (int) (damage * (1 + DAMAGE_CORRECTION * this.amount));
         return damage;
     }
 
@@ -52,7 +52,7 @@ public class LittlePower extends CustomPower
         AbstractPlayer player = AbstractDungeon.player;
         if (info.owner instanceof AbstractMonster && info.type == DamageInfo.DamageType.NORMAL)
         {
-            damage = (int) (damage * (1 - DEFENCE_CORRECTION * this.amount));
+            damage = (int) (damage * (1 + DEFENCE_CORRECTION * this.amount));
         }
         return damage;
     }

@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Powers;
 
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 
-public class DashPower extends CustomPower
+public class DashPower extends KSMOD_CustomPower
 {
     public static final String POWER_ID = "DashPower";
     private static final String POWER_NAME;
@@ -44,7 +44,7 @@ public class DashPower extends CustomPower
         {
             return;
         }
-        if (card instanceof AbstractMagicCard)
+        if (card instanceof KSMOD_AbstractMagicCard)
         {
             counter += 1;
             if (counter >= TRIGGER_NUMBER)

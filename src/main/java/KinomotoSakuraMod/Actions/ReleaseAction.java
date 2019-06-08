@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Actions;
 
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardRelease;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Utility.Utility;
@@ -126,7 +126,7 @@ public class ReleaseAction extends AbstractGameAction
         }
         else
         {
-            ((AbstractMagicCard) card).release(releaseRate);
+            ((KSMOD_AbstractMagicCard) card).release(releaseRate);
             reloadCardDescription(card, !card.isEthereal, !card.exhaust);
             card.isEthereal = true;
             card.exhaust = true;

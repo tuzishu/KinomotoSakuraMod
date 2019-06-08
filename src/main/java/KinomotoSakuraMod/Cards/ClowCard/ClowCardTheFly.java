@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
 import KinomotoSakuraMod.Powers.FlyPower;
@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class ClowCardTheFly extends AbstractMagicCard
+public class ClowCardTheFly extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheFly";
     private static final String NAME;
@@ -42,7 +42,7 @@ public class ClowCardTheFly extends AbstractMagicCard
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
-    public AbstractMagicCard makeCopy()
+    public KSMOD_AbstractMagicCard makeCopy()
     {
         return new ClowCardTheFly();
     }
@@ -60,7 +60,7 @@ public class ClowCardTheFly extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new FlyPower(player, this.correctMagicNumber()), this.correctMagicNumber()));
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.correctBlock()));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new FlyPower(player, this.magicNumber), this.magicNumber));
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
     }
 }

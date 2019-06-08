@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -16,7 +16,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.vfx.combat.ThrowDaggerEffect;
 
-public class ClowCardTheShot extends AbstractMagicCard
+public class ClowCardTheShot extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheShot";
     private static final String NAME;
@@ -60,7 +60,7 @@ public class ClowCardTheShot extends AbstractMagicCard
     }
 
     @Override
-    public AbstractMagicCard makeCopy()
+    public KSMOD_AbstractMagicCard makeCopy()
     {
         return new ClowCardTheShot();
     }
@@ -72,14 +72,14 @@ public class ClowCardTheShot extends AbstractMagicCard
         for (int i = 0; i < count; i++)
         {
             AbstractDungeon.actionManager.addToBottom(new VFXAction(new ThrowDaggerEffect(monster.hb.cX, monster.hb.cY)));
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.correctDamage(), this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new VulnerablePower(monster, this.correctMagicNumber(), false), this.correctMagicNumber(), true));
+            AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new VulnerablePower(monster, this.magicNumber, false), this.magicNumber, true));
         }
 
         if (this.upgradedMagicNumber)
         {
             AbstractDungeon.actionManager.addToBottom(new VFXAction(new ThrowDaggerEffect(monster.hb.cX, monster.hb.cY)));
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new VulnerablePower(player, this.correctMagicNumber(), false), this.correctMagicNumber()));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new VulnerablePower(player, this.magicNumber, false), this.magicNumber));
         }
     }
 }

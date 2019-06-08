@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
-public class ClowCardTheLibra extends AbstractMagicCard
+public class ClowCardTheLibra extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheLibra";
     private static final String NAME;
@@ -53,7 +53,7 @@ public class ClowCardTheLibra extends AbstractMagicCard
     }
 
     @Override
-    public AbstractMagicCard makeCopy()
+    public KSMOD_AbstractMagicCard makeCopy()
     {
         return new ClowCardTheLibra();
     }
@@ -61,10 +61,10 @@ public class ClowCardTheLibra extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.correctBlock()));
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
         if (CheckBalance())
         {
-            AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(this.correctMagicNumber()));
+            AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(this.magicNumber));
         }
     }
 

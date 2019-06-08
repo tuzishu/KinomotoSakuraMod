@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Powers.TimePower;
 import KinomotoSakuraMod.Utility.Utility;
@@ -19,7 +19,7 @@ import com.megacrit.cardcrawl.powers.ArtifactPower;
 
 import java.util.ArrayList;
 
-public class ClowCardTheTime extends AbstractMagicCard
+public class ClowCardTheTime extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheTime";
     private static final String NAME;
@@ -58,7 +58,7 @@ public class ClowCardTheTime extends AbstractMagicCard
     }
 
     @Override
-    public AbstractMagicCard makeCopy()
+    public KSMOD_AbstractMagicCard makeCopy()
     {
         return new ClowCardTheTime();
     }
@@ -82,6 +82,6 @@ public class ClowCardTheTime extends AbstractMagicCard
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new TimePower(mon, 1), 1));
             }
         }
-        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, Utility.GetDamageList(this.correctDamage()), DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.POISON));
+        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, Utility.GetDamageList(this.damage), DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.POISON));
     }
 }

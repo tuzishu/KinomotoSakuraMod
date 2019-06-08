@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Powers.SleepPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class ClowCardTheSleep extends AbstractMagicCard
+public class ClowCardTheSleep extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheSleep";
     private static final String NAME;
@@ -49,7 +49,7 @@ public class ClowCardTheSleep extends AbstractMagicCard
     }
 
     @Override
-    public AbstractMagicCard makeCopy()
+    public KSMOD_AbstractMagicCard makeCopy()
     {
         return new ClowCardTheSleep();
     }
@@ -57,6 +57,6 @@ public class ClowCardTheSleep extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new SleepPower(monster, this.correctMagicNumber()), this.correctMagicNumber()));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new SleepPower(monster, this.magicNumber), this.magicNumber));
     }
 }

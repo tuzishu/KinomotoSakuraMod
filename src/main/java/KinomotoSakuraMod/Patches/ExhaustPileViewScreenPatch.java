@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Patches;
 
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Utility.Utility;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
@@ -21,7 +21,7 @@ public class ExhaustPileViewScreenPatch
     private static float DRAW_START_Y = Settings.HEIGHT * 0.66F;
     private static float PAD_X = AbstractCard.IMG_WIDTH * 0.75F + Settings.CARD_VIEW_PAD_X;
     private static float PAD_Y = AbstractCard.IMG_HEIGHT * 0.75F + Settings.CARD_VIEW_PAD_Y;
-    private static float PAD_LONG_Y = AbstractMagicCard.IMG_HEIGHT * 0.79F + Settings.CARD_VIEW_PAD_Y;
+    private static float PAD_LONG_Y = KSMOD_AbstractMagicCard.IMG_HEIGHT * 0.79F + Settings.CARD_VIEW_PAD_Y;
 
     public static boolean IsLongCard(AbstractCard card)
     {

@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class FreezePower extends CustomPower
+public class FreezePower extends KSMOD_CustomPower
 {
     public static final String POWER_ID = "FreezePower";
     public static final String POWER_NAME;

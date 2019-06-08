@@ -2,12 +2,11 @@ package KinomotoSakuraMod.Characters;
 
 import KinomotoSakuraMod.Cards.ClowCard.*;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardRelease;
-import KinomotoSakuraMod.Cards.SpellCard.SpellCardSeal;
 import KinomotoSakuraMod.KinomotoSakuraMod;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomCharacter;
-import KinomotoSakuraMod.Relics.SealedBook;
-import KinomotoSakuraMod.Relics.SealedWand;
+import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
+import KinomotoSakuraMod.Relics.KSMOD_SealedWand;
 import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -139,9 +138,9 @@ public class KinomotoSakura extends CustomPlayer
     public ArrayList<String> getStartingRelics()
     {
         ArrayList<String> startRelics = new ArrayList<String>();
-        // startRelics.add(SealedWand.RELIC_ID);
-        startRelics.add(SealedBook.RELIC_ID);
-        UnlockTracker.markRelicAsSeen(SealedWand.class.getSimpleName());
+        // startRelics.add(KSMOD_SealedWand.RELIC_ID);
+        startRelics.add(KSMOD_SealedBook.RELIC_ID);
+        UnlockTracker.markRelicAsSeen(KSMOD_SealedWand.class.getSimpleName());
         return startRelics;
     }
 

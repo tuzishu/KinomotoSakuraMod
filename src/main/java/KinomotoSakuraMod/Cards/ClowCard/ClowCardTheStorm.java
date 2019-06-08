@@ -1,13 +1,10 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Actions.ApplyElementAction;
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
-import KinomotoSakuraMod.Powers.EarthyElementPower;
 import KinomotoSakuraMod.Powers.FireyElementPower;
-import KinomotoSakuraMod.Powers.WateryElementPower;
-import KinomotoSakuraMod.Powers.WindyElementPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -18,7 +15,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class ClowCardTheStorm extends AbstractMagicCard
+public class ClowCardTheStorm extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheStorm";
     private static final String NAME;
@@ -56,7 +53,7 @@ public class ClowCardTheStorm extends AbstractMagicCard
     }
 
     @Override
-    public AbstractMagicCard makeCopy()
+    public KSMOD_AbstractMagicCard makeCopy()
     {
         return new ClowCardTheStorm();
     }
@@ -92,9 +89,9 @@ public class ClowCardTheStorm extends AbstractMagicCard
 
         if (count > 0)
         {
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.getCorrentValue(count), DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.POISON));
+            AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, count, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.POISON));
         }
 
-        AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(monster, player, new WindyElementPower(monster, this.correctMagicNumber()), correctMagicNumber(), true));
+        AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(monster, player, new WindyElementPower(monster, this.magicNumber), this.magicNumber, true));
     }
 }

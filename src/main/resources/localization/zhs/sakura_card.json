@@ -1,12 +1,14 @@
 {
   "ClowCardTheArrow": {
     "NAME": "矢",
-    "DESCRIPTION": "【 物理牌 】选择丢弃任意数量手牌，对1名随机敌人造成丢弃牌数+X次 !D! 点伤害。",
-    "UPGRADE_DESCRIPTION": "【 物理牌 】选择丢弃任意数量手牌，对1名敌人造成丢弃牌数+X次 !D! 点伤害。"
+    "DESCRIPTION": "「 火元素牌 」选择丢弃任意数量手牌，对1名随机敌人造成丢弃牌数+X次 !D! 点伤害。",
+    "EXTENDED_DESCRIPTION": [
+      "「 火元素牌 」选择丢弃任意数量手牌，对1名敌人造成丢弃牌数+X次 !D! 点伤害。"
+    ]
   },
   "ClowCardTheBig": {
     "NAME": "大",
-    "DESCRIPTION": "【 物理牌 】受到伤害增加 !M! %，造成伤害增加 !M! %。"
+    "DESCRIPTION": "「 地元素牌 」获得 !M! 点 力量 ，失去1点 敏捷 。"
   },
   "ClowCardTheBubbles": {
     "NAME": "泡",
@@ -93,7 +95,7 @@
   },
   "ClowCardTheLittle": {
     "NAME": "小",
-    "DESCRIPTION": "【 物理牌 】受到伤害减少 !M! %，造成伤害减少 !M! %。"
+    "DESCRIPTION": "「 地元素牌 」获得 !M! 点 敏捷 ，失去1点 力量 。"
   },
   "ClowCardTheLock": {
     "NAME": "锁",

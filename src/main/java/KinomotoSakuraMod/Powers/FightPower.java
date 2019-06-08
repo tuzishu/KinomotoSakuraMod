@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
-public class FightPower extends CustomPower
+public class FightPower extends KSMOD_CustomPower
 {
     public static final String POWER_ID = "FightPower";
     private static final String POWER_NAME;

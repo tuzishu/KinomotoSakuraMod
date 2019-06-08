@@ -1,13 +1,10 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Actions.ApplyElementAction;
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
 import KinomotoSakuraMod.Powers.CloudPower;
-import KinomotoSakuraMod.Powers.DarkElementPower;
-import KinomotoSakuraMod.Powers.WateryElementPower;
-import KinomotoSakuraMod.Powers.WindyElementPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -15,9 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import java.util.ArrayList;
-
-public class ClowCardTheCloud extends AbstractMagicCard
+public class ClowCardTheCloud extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheCloud";
     private static final String NAME;
@@ -60,7 +55,7 @@ public class ClowCardTheCloud extends AbstractMagicCard
     }
 
     @Override
-    public AbstractMagicCard makeCopy()
+    public KSMOD_AbstractMagicCard makeCopy()
     {
         return new ClowCardTheCloud();
     }
@@ -68,7 +63,7 @@ public class ClowCardTheCloud extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new CloudPower(player, this.correctMagicNumber()), this.correctMagicNumber()));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new CloudPower(player, this.magicNumber), this.magicNumber));
 
         if (upgraded)
         {

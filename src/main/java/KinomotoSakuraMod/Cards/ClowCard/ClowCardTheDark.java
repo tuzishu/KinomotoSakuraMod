@@ -1,9 +1,8 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
-import KinomotoSakuraMod.Powers.DarkElementPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -11,7 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class ClowCardTheDark extends AbstractMagicCard
+public class ClowCardTheDark extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheDark";
     private static final String NAME;
@@ -49,7 +48,7 @@ public class ClowCardTheDark extends AbstractMagicCard
     }
 
     @Override
-    public AbstractMagicCard makeCopy()
+    public KSMOD_AbstractMagicCard makeCopy()
     {
         return new ClowCardTheDark();
     }
@@ -59,7 +58,7 @@ public class ClowCardTheDark extends AbstractMagicCard
     {
         for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters)
         {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new DarkElementPower(mon, this.correctMagicNumber()), this.correctMagicNumber()));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new DarkElementPower(mon, this.magicNumber), this.magicNumber));
         }
     }
 }

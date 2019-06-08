@@ -1,9 +1,8 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
-import KinomotoSakuraMod.Powers.DarkElementPower;
 import KinomotoSakuraMod.Powers.MistPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveAllBlockAction;
@@ -17,7 +16,7 @@ import com.megacrit.cardcrawl.powers.MetallicizePower;
 import com.megacrit.cardcrawl.powers.PlatedArmorPower;
 import com.megacrit.cardcrawl.powers.ThornsPower;
 
-public class ClowCardTheMist extends AbstractMagicCard
+public class ClowCardTheMist extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheMist";
     private static final String NAME;
@@ -60,7 +59,7 @@ public class ClowCardTheMist extends AbstractMagicCard
     }
 
     @Override
-    public AbstractMagicCard makeCopy()
+    public KSMOD_AbstractMagicCard makeCopy()
     {
         return new ClowCardTheMist();
     }
@@ -73,7 +72,7 @@ public class ClowCardTheMist extends AbstractMagicCard
             AbstractDungeon.actionManager.addToBottom(new RemoveAllBlockAction(mon, player));
             if (this.upgraded)
             {
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new MistPower(mon, this.correctMagicNumber()), correctMagicNumber(), true));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new MistPower(mon, this.magicNumber), this.magicNumber, true));
             }
             if (DarkElementPower.TryActiveDarkElement(mon, ACTIVE_NUMBER, true))
             {

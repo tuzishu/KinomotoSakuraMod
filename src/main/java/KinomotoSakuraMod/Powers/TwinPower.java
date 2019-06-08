@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class TwinPower extends CustomPower
+public class TwinPower extends KSMOD_CustomPower
 {
     public static final String POWER_ID = "TwinPower";
     private static final String POWER_NAME;

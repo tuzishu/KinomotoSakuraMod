@@ -1,7 +1,7 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Actions.MirrorAction;
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class ClowCardTheMirror extends AbstractMagicCard
+public class ClowCardTheMirror extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheMirror";
     private static final String NAME;
@@ -49,7 +49,7 @@ public class ClowCardTheMirror extends AbstractMagicCard
     }
 
     @Override
-    public AbstractMagicCard makeCopy()
+    public KSMOD_AbstractMagicCard makeCopy()
     {
         return new ClowCardTheMirror();
     }
@@ -57,6 +57,6 @@ public class ClowCardTheMirror extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new MirrorAction(this.correctMagicNumber()));
+        AbstractDungeon.actionManager.addToBottom(new MirrorAction(this.magicNumber));
     }
 }

@@ -1,8 +1,7 @@
 package KinomotoSakuraMod.Actions;
 
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Cards.AbstractSpellCard;
-import KinomotoSakuraMod.Utility.Utility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -48,7 +47,7 @@ public class ReturnAction extends AbstractGameAction
             int count = 0;
             for (AbstractCard card : this.player.exhaustPile.group)
             {
-                if (card instanceof AbstractMagicCard || card instanceof AbstractSpellCard)
+                if (card instanceof KSMOD_AbstractMagicCard || card instanceof AbstractSpellCard)
                 {
                     count += 1;
                     group.group.add(card);

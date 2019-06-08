@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.EntanglePower;
 
-public class SilentPower extends CustomPower
+public class SilentPower extends KSMOD_CustomPower
 {
     public static final String POWER_ID = "SilentPower";
     private static final String POWER_NAME;

@@ -1,14 +1,10 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Actions.ApplyElementAction;
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
-import KinomotoSakuraMod.Powers.EarthyElementPower;
-import KinomotoSakuraMod.Powers.WateryElementPower;
-import basemod.helpers.BaseModCardTags;
 import com.badlogic.gdx.math.MathUtils;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -18,7 +14,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class ClowCardTheFlower extends AbstractMagicCard
+public class ClowCardTheFlower extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheFlower";
     private static final String NAME;
@@ -61,7 +57,7 @@ public class ClowCardTheFlower extends AbstractMagicCard
     }
 
     @Override
-    public AbstractMagicCard makeCopy()
+    public KSMOD_AbstractMagicCard makeCopy()
     {
         return new ClowCardTheFlower();
     }
@@ -84,6 +80,6 @@ public class ClowCardTheFlower extends AbstractMagicCard
         {
             AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, MathUtils.ceil(amount * BLOCK_RATE)));
         }
-        AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(monster, player, new EarthyElementPower(monster, this.correctMagicNumber()), this.correctMagicNumber(), true));
+        AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(monster, player, new EarthyElementPower(monster, this.magicNumber), this.magicNumber, true));
     }
 }

@@ -1,8 +1,7 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
-import KinomotoSakuraMod.Powers.LoopPower;
 import KinomotoSakuraMod.Powers.WavePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -11,7 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class ClowCardTheWave extends AbstractMagicCard
+public class ClowCardTheWave extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheWave";
     private static final String NAME;
@@ -38,7 +37,7 @@ public class ClowCardTheWave extends AbstractMagicCard
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
-    public AbstractMagicCard makeCopy()
+    public KSMOD_AbstractMagicCard makeCopy()
     {
         return new ClowCardTheWave();
     }
@@ -55,6 +54,6 @@ public class ClowCardTheWave extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new WavePower(this.correctMagicNumber()), correctMagicNumber()));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new WavePower(this.magicNumber), this.magicNumber));
     }
 }

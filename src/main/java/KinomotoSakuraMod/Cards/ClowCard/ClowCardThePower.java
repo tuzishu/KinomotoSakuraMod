@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -16,7 +16,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.vfx.combat.VerticalImpactEffect;
 
-public class ClowCardThePower extends AbstractMagicCard
+public class ClowCardThePower extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardThePower";
     private static final String NAME;
@@ -45,7 +45,7 @@ public class ClowCardThePower extends AbstractMagicCard
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
-    public AbstractMagicCard makeCopy()
+    public KSMOD_AbstractMagicCard makeCopy()
     {
         return new ClowCardThePower();
     }
@@ -67,7 +67,7 @@ public class ClowCardThePower extends AbstractMagicCard
         }
         AbstractPower power = AbstractDungeon.player.getPower(StrengthPower.POWER_ID);
         int powerCnt = power != null ? power.amount : 0;
-        int damage = this.correctDamage() + powerCnt * correctMagicNumber();
+        int damage = this.damage + powerCnt * this.magicNumber;
         AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
     }
 }

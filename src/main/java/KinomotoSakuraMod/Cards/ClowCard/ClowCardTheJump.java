@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -15,7 +15,7 @@ import com.megacrit.cardcrawl.random.Random;
 
 import java.util.ArrayList;
 
-public class ClowCardTheJump extends AbstractMagicCard
+public class ClowCardTheJump extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheJump";
     private static final String NAME;
@@ -56,7 +56,7 @@ public class ClowCardTheJump extends AbstractMagicCard
     }
 
     @Override
-    public AbstractMagicCard makeCopy()
+    public KSMOD_AbstractMagicCard makeCopy()
     {
         return new ClowCardTheJump();
     }
@@ -64,7 +64,7 @@ public class ClowCardTheJump extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.correctBlock()));
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
         ArrayList<AbstractPower> debufflist = new ArrayList<AbstractPower>();
         for (int i = 0; i < player.powers.size(); i++)
         {

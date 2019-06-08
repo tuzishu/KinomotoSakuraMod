@@ -1,9 +1,8 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
-import KinomotoSakuraMod.Powers.EarthyElementPower;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -12,7 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class ClowCardTheMaze extends AbstractMagicCard
+public class ClowCardTheMaze extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheMaze";
     private static final String NAME;
@@ -51,7 +50,7 @@ public class ClowCardTheMaze extends AbstractMagicCard
     }
 
     @Override
-    public AbstractMagicCard makeCopy()
+    public KSMOD_AbstractMagicCard makeCopy()
     {
         return new ClowCardTheMaze();
     }
@@ -59,7 +58,7 @@ public class ClowCardTheMaze extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.correctBlock()));
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
         int count = 0;
         for (AbstractMonster mon: AbstractDungeon.getMonsters().monsters)
         {

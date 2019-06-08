@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Patches;
 
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Utility.ImageConst;
 import KinomotoSakuraMod.Utility.Utility;
 import com.badlogic.gdx.graphics.Color;
@@ -344,7 +344,7 @@ public class SingleCardViewPopupPatch
                     }
                     else if (card.isSeen)
                     {
-                        String BOTTOM_TITLE = (String) Utility.GetFieldByReflect(AbstractMagicCard.class, "BOTTOM_TITLE").get(card);
+                        String BOTTOM_TITLE = (String) Utility.GetFieldByReflect(KSMOD_AbstractMagicCard.class, "BOTTOM_TITLE").get(card);
                         if (SingleCardViewPopup.isViewingUpgrade && !((Boolean) allowUpgradePreview.invoke(view)))
                         {
                             FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, BOTTOM_TITLE, Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + TITLE_BOTTOM_HEIGHT_TO_CENTER * Settings.scale, Settings.GREEN_TEXT_COLOR.cpy());

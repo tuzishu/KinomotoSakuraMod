@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Relics;
 
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
 import basemod.abstracts.CustomRelic;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -12,16 +12,16 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
-public class SealedWand extends CustomRelic
+public class KSMOD_SealedWand extends CustomRelic
 {
-    public static final String RELIC_ID = "SealedWand";
+    public static final String RELIC_ID = "KSMOD_SealedWand";
     private static final String RELIC_IMG_PATH = "img/relics/icon/SealedWand.png";
     private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/SealedWand.png";
     private static final RelicTier RELIC_TIER = RelicTier.STARTER;
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
     private static int TriggerNumber = 100;
 
-    public SealedWand()
+    public KSMOD_SealedWand()
     {
         super(RELIC_ID, ImageMaster.loadImage(RELIC_IMG_PATH), ImageMaster.loadImage(RELIC_IMG_OTL_PATH), RELIC_TIER, RELIC_SOUND);
         this.counter = 0;
@@ -34,12 +34,12 @@ public class SealedWand extends CustomRelic
 
     public AbstractRelic makeCopy()
     {
-        return new SealedWand();
+        return new KSMOD_SealedWand();
     }
 
     public void onUseCard(AbstractCard card, UseCardAction action)
     {
-        if (card instanceof AbstractMagicCard)
+        if (card instanceof KSMOD_AbstractMagicCard)
         {
             ++this.counter;
             this.flash();

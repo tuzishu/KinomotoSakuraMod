@@ -1,7 +1,7 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Actions.SongAction;
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class ClowCardTheSong extends AbstractMagicCard
+public class ClowCardTheSong extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheSong";
     private static final String NAME;
@@ -51,7 +51,7 @@ public class ClowCardTheSong extends AbstractMagicCard
     }
 
     @Override
-    public AbstractMagicCard makeCopy()
+    public KSMOD_AbstractMagicCard makeCopy()
     {
         return new ClowCardTheSong();
     }
@@ -59,6 +59,6 @@ public class ClowCardTheSong extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new SongAction(this.correctDamage(), this.correctBlock()));
+        AbstractDungeon.actionManager.addToBottom(new SongAction(this.damage, this.block));
     }
 }

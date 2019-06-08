@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -15,9 +14,9 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import com.megacrit.cardcrawl.vfx.combat.ThrowDaggerEffect;
 
-public class ArrowAction extends AbstractGameAction
+public class KSMOD_ArrowAction extends AbstractGameAction
 {
-    public static final String ACTION_ID = "ArrowAction";
+    public static final String ACTION_ID = "KSMOD_ArrowAction";
     private static final String[] TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
     private static final float DURATION_ATTACK = 0.02F;
@@ -31,12 +30,12 @@ public class ArrowAction extends AbstractGameAction
         TEXT = uiStrings.TEXT;
     }
 
-    public ArrowAction(int damage)
+    public KSMOD_ArrowAction(int damage)
     {
         this(AbstractDungeon.getRandomMonster(), damage);
     }
 
-    public ArrowAction(AbstractMonster monster, int damage)
+    public KSMOD_ArrowAction(AbstractMonster monster, int damage)
     {
         this.actionType = ActionType.DAMAGE;
         this.player = AbstractDungeon.player;

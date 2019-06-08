@@ -1,17 +1,15 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
-import KinomotoSakuraMod.Actions.ChangeAction;
 import KinomotoSakuraMod.Actions.ReturnAction;
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
-import KinomotoSakuraMod.Patches.CustomTag;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class ClowCardTheReturn extends AbstractMagicCard
+public class ClowCardTheReturn extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheReturn";
     private static final String NAME;
@@ -39,7 +37,7 @@ public class ClowCardTheReturn extends AbstractMagicCard
         this.exhaust = true;
     }
 
-    public AbstractMagicCard makeCopy()
+    public KSMOD_AbstractMagicCard makeCopy()
     {
         return new ClowCardTheReturn();
     }
@@ -56,6 +54,6 @@ public class ClowCardTheReturn extends AbstractMagicCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ReturnAction(this.correctMagicNumber()));
+        AbstractDungeon.actionManager.addToBottom(new ReturnAction(this.magicNumber));
     }
 }

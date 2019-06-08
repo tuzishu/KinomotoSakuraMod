@@ -1,12 +1,10 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Actions.ApplyElementAction;
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
-import KinomotoSakuraMod.Powers.DarkElementPower;
 import KinomotoSakuraMod.Powers.FireyElementPower;
-import KinomotoSakuraMod.Powers.LightElementPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -15,7 +13,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class ClowCardTheGlow extends AbstractMagicCard
+public class ClowCardTheGlow extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheGlow";
     private static final String NAME;
@@ -61,7 +59,7 @@ public class ClowCardTheGlow extends AbstractMagicCard
     }
 
     @Override
-    public AbstractMagicCard makeCopy()
+    public KSMOD_AbstractMagicCard makeCopy()
     {
         return new ClowCardTheGlow();
     }
@@ -71,7 +69,7 @@ public class ClowCardTheGlow extends AbstractMagicCard
     {
         for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters)
         {
-            AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(mon, player, new FireyElementPower(mon, this.correctMagicNumber()), this.correctMagicNumber(), true));
+            AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(mon, player, new FireyElementPower(mon, this.magicNumber), this.magicNumber, true));
             if (this.upgraded)
             {
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new LightElementPower(mon, LIGHT_NUMBER), LIGHT_NUMBER, true));

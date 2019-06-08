@@ -1,11 +1,10 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Actions.ApplyElementAction;
-import KinomotoSakuraMod.Cards.AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
 import KinomotoSakuraMod.Powers.FireyElementPower;
-import KinomotoSakuraMod.Powers.WateryElementPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -14,7 +13,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
-public class ClowCardTheRain extends AbstractMagicCard
+public class ClowCardTheRain extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheRain";
     private static final String NAME;
@@ -57,7 +56,7 @@ public class ClowCardTheRain extends AbstractMagicCard
     }
 
     @Override
-    public AbstractMagicCard makeCopy()
+    public KSMOD_AbstractMagicCard makeCopy()
     {
         return new ClowCardTheRain();
     }
@@ -71,7 +70,7 @@ public class ClowCardTheRain extends AbstractMagicCard
         }
         for (int i = 0; i < BUFF_COUNT; i++)
         {
-            AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(monster, player, new WateryElementPower(monster, this.correctMagicNumber()), correctMagicNumber(), true));
+            AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(monster, player, new WateryElementPower(monster, this.magicNumber), this.magicNumber, true));
         }
     }
 }
