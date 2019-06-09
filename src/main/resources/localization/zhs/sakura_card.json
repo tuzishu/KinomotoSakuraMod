@@ -2,22 +2,32 @@
   "ClowCardTheArrow": {
     "NAME": "矢",
     "DESCRIPTION": "「 火元素牌 」选择丢弃任意数量手牌，对1名随机敌人造成丢弃牌数+X次 !D! 点伤害。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "「 火元素牌 」选择丢弃任意数量手牌，对1名敌人造成丢弃牌数+X次 !D! 点伤害。"
     ]
   },
   "ClowCardTheBig": {
     "NAME": "大",
-    "DESCRIPTION": "「 地元素牌 」获得 !M! 点 力量 ，失去1点 敏捷 。"
+    "DESCRIPTION": "「 地元素牌 」获得 !M! 点 力量 ，失去1点 敏捷 。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheBubbles": {
     "NAME": "泡",
-    "DESCRIPTION": "【 元素牌 】 消耗 。随机清除目标的1个增益， 水元素 大于18层时，清除所有增益。给与2层 水元素 。",
-    "UPGRADE_DESCRIPTION": "【 元素牌 】随机清除目标1的个增益， 水元素 大于18层时，清除所有增益。给与2层 水元素 。"
+    "DESCRIPTION": "「 水元素牌 」 消耗 。造成 !D! 点伤害，随机清除目标的1个增益。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      "「 水元素牌 」 消耗 。清除目标的所有增益。"
+    ]
   },
   "ClowCardTheChange": {
     "NAME": "替",
-    "DESCRIPTION": "【 物理牌 】丢弃最多 !M! 张手牌，并抽相同数量的牌。"
+    "DESCRIPTION": "「 地元素牌 」丢弃最多 !M! 张手牌，抽丢弃数量+1张牌。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      "额外抽2张牌。"
+    ]
   },
   "ClowCardTheCloud": {
     "NAME": "云",

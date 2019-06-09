@@ -2,7 +2,7 @@ package KinomotoSakuraMod.Characters;
 
 import KinomotoSakuraMod.Cards.ClowCard.*;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardRelease;
-import KinomotoSakuraMod.KinomotoSakuraMod;
+import KinomotoSakuraMod.KSMOD;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomCharacter;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
@@ -161,7 +161,7 @@ public class KinomotoSakura extends CustomPlayer
 
     public Color getCardRenderColor()
     {
-        return KinomotoSakuraMod.colorSakuraCard;
+        return KSMOD.colorSakuraCard;
     }
 
     public AbstractCard getStartCardForEvent()
@@ -171,7 +171,7 @@ public class KinomotoSakura extends CustomPlayer
 
     public Color getCardTrailColor()
     {
-        return KinomotoSakuraMod.colorSakuraCard;
+        return KSMOD.colorSakuraCard;
     }
 
     public int getAscensionMaxHPLoss()
@@ -212,7 +212,7 @@ public class KinomotoSakura extends CustomPlayer
 
     public Color getSlashAttackColor()
     {
-        return KinomotoSakuraMod.colorSakuraCard;
+        return KSMOD.colorSakuraCard;
     }
 
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect()

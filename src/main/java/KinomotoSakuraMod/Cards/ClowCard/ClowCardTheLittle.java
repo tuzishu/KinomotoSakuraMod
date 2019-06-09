@@ -24,7 +24,7 @@ public class ClowCardTheLittle extends KSMOD_AbstractMagicCard
     private static final int COST = 1;
     private static final CardType CARD_TYPE = CardType.POWER;
     private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
-    private static final CardRarity CARD_RARITY = CardRarity.COMMON;
+    private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
     private static final int BASE_MAGIC_NUMBER = 2;
     private static final int UPGRADE_MAGIC_NUMBER = 1;

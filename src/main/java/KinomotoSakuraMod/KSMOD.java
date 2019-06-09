@@ -29,14 +29,14 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 @SpireInitializer
-public class KinomotoSakuraMod implements ISubscriber, PostInitializeSubscriber, EditCharactersSubscriber, EditRelicsSubscriber, EditCardsSubscriber, EditStringsSubscriber, EditKeywordsSubscriber
+public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharactersSubscriber, EditRelicsSubscriber, EditCardsSubscriber, EditStringsSubscriber, EditKeywordsSubscriber
 {
     // CardColor卡片颜色，卡片总览中的tab按钮颜色
     public static final Color colorClowCard = CardHelper.getColor(255f, 152f, 74f);
     public static final Color colorSakuraCard = CardHelper.getColor(255f, 192f, 203f);
     public static final Color colorSpellCard = CardHelper.getColor(253f, 220f, 106f);
 
-    public KinomotoSakuraMod()
+    public KSMOD()
     {
         BaseMod.subscribe(this);
         BaseMod.addColor(CustomCardColor.CLOWCARD_COLOR, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, ImageConst.CLOWCARD_BG_PATH, ImageConst.CLOWCARD_BG_PATH, ImageConst.CLOWCARD_BG_PATH, ImageConst.ORB_ATTACK_PATH, ImageConst.CLOWCARD_BG_LARGE_PATH, ImageConst.CLOWCARD_BG_LARGE_PATH, ImageConst.CLOWCARD_BG_LARGE_PATH, ImageConst.ORB_ATTACK_LARGE_PATH);
@@ -45,11 +45,11 @@ public class KinomotoSakuraMod implements ISubscriber, PostInitializeSubscriber,
 
     public static void initialize()
     {
-        Utility.Logger.info("开始初始化 KinomotoSakuraMod");
+        Utility.Logger.info("开始初始化 KSMOD");
 
-        new KinomotoSakuraMod();
+        new KSMOD();
 
-        Utility.Logger.info("完成初始化 KinomotoSakuraMod");
+        Utility.Logger.info("完成初始化 KSMOD");
     }
 
     @SuppressWarnings("deprecation")
@@ -125,60 +125,14 @@ public class KinomotoSakuraMod implements ISubscriber, PostInitializeSubscriber,
     {
         ArrayList<AbstractCard> cardList = new ArrayList<AbstractCard>();
 
-        cardList.add(new ClowCardTheSword());
-        cardList.add(new ClowCardTheShield());
         cardList.add(new SpellCardTurn());
         cardList.add(new SpellCardSeal());
         cardList.add(new SpellCardRelease());
-        cardList.add(new ClowCardThePower());
-        cardList.add(new ClowCardTheShot());
-        cardList.add(new ClowCardTheFly());
-        cardList.add(new ClowCardTheChange());
-        cardList.add(new ClowCardTheDash());
         cardList.add(new ClowCardTheArrow());
-        cardList.add(new ClowCardTheJump());
-        cardList.add(new ClowCardTheMirror());
-        cardList.add(new ClowCardTheSilent());
-        cardList.add(new ClowCardTheTwin());
-        cardList.add(new ClowCardTheMove());
-        cardList.add(new ClowCardTheFight());
-        cardList.add(new ClowCardTheFloat());
-        cardList.add(new ClowCardTheLittle());
         cardList.add(new ClowCardTheBig());
-        cardList.add(new ClowCardTheCreate());
-        cardList.add(new ClowCardTheIllusion());
-        cardList.add(new ClowCardTheLibra());
-        cardList.add(new ClowCardTheLoop());
-        cardList.add(new ClowCardTheSweet());
-        cardList.add(new ClowCardTheTime());
-        cardList.add(new ClowCardTheVoice());
-        cardList.add(new ClowCardTheSong());
-        cardList.add(new ClowCardTheWave());
-        cardList.add(new ClowCardTheReturn());
-        cardList.add(new ClowCardTheSleep());
-        cardList.add(new ClowCardTheEarthy());
-        cardList.add(new ClowCardTheWood());
-        cardList.add(new ClowCardTheLock());
-        cardList.add(new ClowCardTheWatery());
-        cardList.add(new ClowCardTheFirey());
-        cardList.add(new ClowCardTheWindy());
-        cardList.add(new ClowCardTheLight());
-        cardList.add(new ClowCardTheDark());
-        cardList.add(new ClowCardTheFlower());
-        cardList.add(new ClowCardTheSand());
-        cardList.add(new ClowCardTheMaze());
         cardList.add(new ClowCardTheBubbles());
-        cardList.add(new ClowCardTheRain());
-        cardList.add(new ClowCardTheFreeze());
-        cardList.add(new ClowCardTheSnow());
-        cardList.add(new ClowCardTheCloud());
-        cardList.add(new ClowCardTheStorm());
-        cardList.add(new ClowCardTheThunder());
-        cardList.add(new ClowCardTheGlow());
-        cardList.add(new ClowCardTheShadow());
-        cardList.add(new ClowCardTheErase());
-        cardList.add(new ClowCardTheMist());
-        cardList.add(new ClowCardTheThrough());
+        cardList.add(new ClowCardTheChange());
+        cardList.add(new ClowCardTheLittle());
 
         cardList.add(new TestCard());
         return cardList;

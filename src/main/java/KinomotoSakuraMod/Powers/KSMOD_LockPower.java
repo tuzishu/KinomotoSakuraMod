@@ -7,9 +7,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 
-public class MistPower extends KSMOD_CustomPower
+public class KSMOD_LockPower extends KSMOD_CustomPower
 {
-    public static final String POWER_ID = "MistPower";
+    public static final String POWER_ID = "KSMOD_LockPower";
     private static final String POWER_NAME;
     private static final String[] POWER_DESCRIPTIONS;
     private static final String POWER_IMG_PATH = "img/powers/default_power.png";
@@ -22,7 +22,7 @@ public class MistPower extends KSMOD_CustomPower
         POWER_DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     }
 
-    public MistPower(AbstractCreature target, int amount)
+    public KSMOD_LockPower(AbstractCreature target, int amount)
     {
         super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, amount);
         this.updateDescription();
@@ -37,16 +37,24 @@ public class MistPower extends KSMOD_CustomPower
     {
         if (this.amount > 1)
         {
-            AbstractDungeon.actionManager.addToTop(new ReducePowerAction(this.owner, this.owner, this, 1));
+            AbstractDungeon.actionManager.addToTop(new ReducePowerAction(this.owner, AbstractDungeon.player, this, 1));
         }
         else
         {
-            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, AbstractDungeon.player, this));
         }
     }
 
-    public float modifyBlock(float blockAmount)
+    public void OnActived()
     {
-        return 0;
+        this.flash();
+        if (this.amount > 1)
+        {
+            AbstractDungeon.actionManager.addToTop(new ReducePowerAction(this.owner, AbstractDungeon.player, this, 1));
+        }
+        else
+        {
+            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, AbstractDungeon.player, this));
+        }
     }
 }

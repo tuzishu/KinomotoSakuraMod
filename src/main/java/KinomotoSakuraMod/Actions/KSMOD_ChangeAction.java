@@ -9,9 +9,9 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 
-public class ChangeAction extends AbstractGameAction
+public class KSMOD_ChangeAction extends AbstractGameAction
 {
-    private static final String ACTION_ID = "ChangeAction";
+    private static final String ACTION_ID = "KSMOD_ChangeAction";
     private static final String[] TEXT;
     private static final float DURATION = Settings.ACTION_DUR_XFAST;
     private AbstractPlayer player;
@@ -22,7 +22,7 @@ public class ChangeAction extends AbstractGameAction
         TEXT = uiStrings.TEXT;
     }
 
-    public ChangeAction(int amount)
+    public KSMOD_ChangeAction(int amount)
     {
         this.actionType = AbstractGameAction.ActionType.CARD_MANIPULATION;
         this.player = AbstractDungeon.player;
@@ -61,7 +61,7 @@ public class ChangeAction extends AbstractGameAction
             AbstractDungeon.handCardSelectScreen.selectedCards.group.clear();
             if (count > 0)
             {
-                AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, count));
+                AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, count + 1));
             }
         }
 

@@ -3,11 +3,7 @@ package KinomotoSakuraMod.Cards.ClowCard;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import KinomotoSakuraMod.Patches.CustomTag;
-import KinomotoSakuraMod.Powers.KSMOD_BigPower;
-import KinomotoSakuraMod.Powers.KSMOD_LittlePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -24,10 +20,10 @@ public class ClowCardTheBig extends KSMOD_AbstractMagicCard
     private static final String DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_big.png";
     private static final int COST = 1;
-    private static final AbstractCard.CardType CARD_TYPE = AbstractCard.CardType.POWER;
-    private static final AbstractCard.CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
-    private static final AbstractCard.CardRarity CARD_RARITY = CardRarity.COMMON;
-    private static final AbstractCard.CardTarget CARD_TARGET = AbstractCard.CardTarget.SELF;
+    private static final CardType CARD_TYPE = CardType.POWER;
+    private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
+    private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
+    private static final CardTarget CARD_TARGET = CardTarget.SELF;
     private static final int BASE_MAGIC_NUMBER = 2;
     private static final int UPGRADE_MAGIC_NUMBER = 1;
 

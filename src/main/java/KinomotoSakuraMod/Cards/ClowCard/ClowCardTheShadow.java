@@ -65,23 +65,8 @@ public class ClowCardTheShadow extends KSMOD_AbstractMagicCard
     }
 
     @Override
-    public void use(AbstractPlayer player, AbstractMonster monster)
+    public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
-        int amount = 0;
-        for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters)
-        {
-            if (mon.hasPower(DarkElementPower.POWER_ID))
-            {
-                int powerCount = mon.getPower(DarkElementPower.POWER_ID).amount;
-                amount += powerCount;
-                DarkElementPower.TryActiveDarkElement(mon, powerCount, true);
-            }
-        }
-        amount *= this.activeRate;
-        if (amount > 0)
-        {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new PlatedArmorPower(player, amount), amount));
-        }
     }
 }

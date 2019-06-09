@@ -1,7 +1,7 @@
 package KinomotoSakuraMod.Cards;
 
 import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
-import KinomotoSakuraMod.Powers.LockPower;
+import KinomotoSakuraMod.Powers.KSMOD_LockPower;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import KinomotoSakuraMod.Utility.ImageConst;
 import KinomotoSakuraMod.Utility.Utility;
@@ -113,20 +113,24 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
         {
             this.applyExtraEffect(player, monster);
             AbstractPower power = player.getPower(KSMOD_MagickChargePower.POWER_ID);
-            if (power.amount == KSMOD_SealedBook.CHARGE_ACTIVE_NUMBER)
+            if (power.amount == KSMOD_SealedBook.ACTIVE_NUMBER)
             {
                 AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(player, player, power));
             }
             else
             {
-                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(player, player, power, KSMOD_SealedBook.CHARGE_ACTIVE_NUMBER));
+                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(player, player, power, KSMOD_SealedBook.ACTIVE_NUMBER));
             }
         }
         else
         {
             this.applyNormalEffect(player, monster);
         }
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_MagickChargePower(player, KSMOD_SealedBook.applyPowerNumberOnce()), KSMOD_SealedBook.applyPowerNumberOnce()));
+        if (player.hasRelic(KSMOD_SealedBook.RELIC_ID))
+        {
+            KSMOD_SealedBook book = (KSMOD_SealedBook) player.getRelic(KSMOD_SealedBook.RELIC_ID);
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_MagickChargePower(player, book.applyPowerNumberOnce()), book.applyPowerNumberOnce()));
+        }
     }
 
     private void InitMagicCard()
@@ -148,14 +152,14 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
     {
         if (AbstractDungeon.player.hasPower(KSMOD_MagickChargePower.POWER_ID))
         {
-            return AbstractDungeon.player.getPower(KSMOD_MagickChargePower.POWER_ID).amount >= KSMOD_SealedBook.CHARGE_ACTIVE_NUMBER;
+            return AbstractDungeon.player.getPower(KSMOD_MagickChargePower.POWER_ID).amount >= KSMOD_SealedBook.ACTIVE_NUMBER;
         }
         return false;
     }
 
     private boolean hasLockPower()
     {
-        return AbstractDungeon.player.hasPower(LockPower.POWER_ID);
+        return AbstractDungeon.player.hasPower(KSMOD_LockPower.POWER_ID);
     }
 
     public abstract void applyNormalEffect(AbstractPlayer player, AbstractMonster monster);

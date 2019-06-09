@@ -11,7 +11,8 @@ public class KSMOD_SealedBook extends CustomRelic
     private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/SealedBook.png";
     private static final RelicTier RELIC_TIER = RelicTier.STARTER;
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
-    public static final int CHARGE_ACTIVE_NUMBER = 10;
+    public static final int ACTIVE_NUMBER = 10;
+    public static final int DRAW_NUMBER = 2;
 
     public KSMOD_SealedBook()
     {
@@ -28,7 +29,7 @@ public class KSMOD_SealedBook extends CustomRelic
         return new KSMOD_SealedBook();
     }
 
-    public static int applyPowerNumberOnce()
+    public int applyPowerNumberOnce()
     {
         int amount = 1;
         return amount;

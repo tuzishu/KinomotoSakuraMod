@@ -1,39 +1,38 @@
 {
-  "EnhancementMagickPower": {
-    "NAME": "强化魔法",
+  "KSMOD_MagickChargePower": {
+    "NAME": "魔力充能",
     "DESCRIPTIONS": [
-      " #y物理牌 的所有效果提高 #b",
-      "% 。"
+      "使用 #y库洛牌 或 #y小樱牌 时所产生的充能，数量大于",
+      "一定数量后可发动卡牌的额外效果。"
     ]
   },
-  "ElementMagickPower": {
-    "NAME": "元素魔法",
-    "DESCRIPTIONS": [
-      " #y元素牌 的所有效果提高 #b",
-      "% 。"
-    ]
-  },
-  "SealPower": {
+  "KSMOD_SealPower": {
     "NAME": "封印",
     "DESCRIPTIONS": [
       "战斗结束后，额外获得 #b",
       " 次卡牌奖励"
     ]
   },
-  "FlyPower": {
-    "NAME": "飞行",
+  "KSMOD_LockPower": {
+    "NAME": "锁定",
     "DESCRIPTIONS": [
-      "将所受到的 #y攻击 伤害降低 #b",
-      "% 。 如果在1回合内受到未被格挡的攻击 #b",
-      " 次，就会取消。"
+      "触发消耗 #y元素 时，消耗1层作为替代。回合结束时下降1层。"
     ]
   },
-  "DashPower": {
-    "NAME": "冲刺",
+  "KSMOD_BigPower": {
+    "NAME": "放大",
     "DESCRIPTIONS": [
-      "每使用 #b5 张 #y库洛牌 或 #y小樱牌 ，抽 #b",
-      " 张卡。再使用 #b",
-      " 张卡发动抽卡效果。"
+      "受到的伤害增加 #b",
+      "% 。造成的伤害增加 #b",
+      "% 。"
+    ]
+  },
+  "KSMOD_LittlePower": {
+    "NAME": "缩小",
+    "DESCRIPTIONS": [
+      "受到的伤害减少 #b",
+      "% 。造成的伤害减少 #b",
+      "% 。"
     ]
   },
   "SilentPower": {
@@ -64,22 +63,6 @@
       "受到的未被格挡的伤害减少 #b",
       " 点。",
       "每受到1次未被格挡的伤害，获得 #b3 点格挡。"
-    ]
-  },
-  "LittlePower": {
-    "NAME": "缩小",
-    "DESCRIPTIONS": [
-      "受到的伤害减少 #b",
-      "% 。造成的伤害减少 #b",
-      "% 。"
-    ]
-  },
-  "BigPower": {
-    "NAME": "放大",
-    "DESCRIPTIONS": [
-      "受到的伤害增加 #b",
-      "% 。造成的伤害增加 #b",
-      "% 。"
     ]
   },
   "CreatePower": {
@@ -117,98 +100,6 @@
     "DESCRIPTIONS": [
       " #b",
       " 回合内无法行动。"
-    ]
-  },
-  "LockPower": {
-    "NAME": "锁定",
-    "DESCRIPTIONS": [
-      "触发消耗 #y元素 时，消耗1层作为替代。回合结束时下降1层。"
-    ]
-  },
-  "EarthyMagickPower": {
-    "NAME": "地魔法",
-    "DESCRIPTIONS": [
-      "造成未被格挡的伤害时，给与 #b",
-      " 层 #y地元素 。从其他卡牌给与敌人 #y地元素 时，额外给与2层。"
-    ]
-  },
-  "WateryMagickPower": {
-    "NAME": "水魔法",
-    "DESCRIPTIONS": [
-      "造成未被格挡的伤害时，给与 #b",
-      " 层 #y水元素 。从其他卡牌给与敌人 #y水元素 时，额外给与2层。"
-    ]
-  },
-  "FireyMagickPower": {
-    "NAME": "火魔法",
-    "DESCRIPTIONS": [
-      "造成未被格挡的伤害时，给与 #b",
-      " 层 #y火元素 。从其他卡牌给与敌人 #y火元素 时，额外给与2层。"
-    ]
-  },
-  "WindyMagickPower": {
-    "NAME": "风魔法",
-    "DESCRIPTIONS": [
-      "造成未被格挡的伤害时，给与 #b",
-      " 层 #y风元素 。从其他卡牌给与敌人 #y风元素 时，额外给与2层。"
-    ]
-  },
-  "LightMagickPower": {
-    "NAME": "光魔法",
-    "DESCRIPTIONS": [
-      "回合开始时，给与所有敌人 #b",
-      " 层 #y光元素 。你的手牌上限+ #b",
-      " 。"
-    ]
-  },
-  "DarkMagickPower": {
-    "NAME": "暗魔法",
-    "DESCRIPTIONS": [
-      "回合开始时，给与所有敌人 #b",
-      " 层 #y暗元素 ，额外抽 #b",
-      " 张牌。"
-    ]
-  },
-  "EarthyElementPower": {
-    "NAME": "地元素",
-    "DESCRIPTIONS": [
-      "受到 #y地元素 的标记，能被特殊卡牌触发效果。被触发时，获得 #b",
-      " 点格挡。"
-    ]
-  },
-  "WateryElementPower": {
-    "NAME": "水元素",
-    "DESCRIPTIONS": [
-      "受到 #y水元素 的标记，能被特殊卡牌触发效果。被触发时，获得 #b",
-      " 点能量。"
-    ]
-  },
-  "FireyElementPower": {
-    "NAME": "火元素",
-    "DESCRIPTIONS": [
-      "受到 #y火元素 的标记，能被特殊卡牌触发效果。被触发时，造成 #b",
-      " 点伤害。"
-    ]
-  },
-  "WindyElementPower": {
-    "NAME": "风元素",
-    "DESCRIPTIONS": [
-      "受到 #y风元素 的标记，能被特殊卡牌触发效果。被触发时，抽 #b",
-      " 张牌。"
-    ]
-  },
-  "LightElementPower": {
-    "NAME": "光元素",
-    "DESCRIPTIONS": [
-      "受到 #y光元素 的标记，能被特殊卡牌触发效果。被触发时，给与 #b",
-      " 层易伤。"
-    ]
-  },
-  "DarkElementPower": {
-    "NAME": "暗元素",
-    "DESCRIPTIONS": [
-      "受到 #y暗元素 的标记，能被特殊卡牌触发效果。被触发时，给与 #b",
-      " 层虚弱。"
     ]
   },
   "FreezePower": {

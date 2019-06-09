@@ -5,13 +5,12 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 
-public class CreatePower extends KSMOD_CustomPower
+public class KSMOD_SealPower extends KSMOD_CustomPower
 {
-
-    public static final String POWER_ID = "CreatePower";
+    public static final String POWER_ID = "KSMOD_SealPower";
     private static final String POWER_NAME;
     private static final String[] POWER_DESCRIPTIONS;
-    private static final String POWER_IMG_PATH = "img/powers/default_power.png";
+    private static final String POWER_IMG = "img/powers/default_power.png";
     private static final PowerType POWER_TYPE = PowerType.BUFF;
 
     static
@@ -21,15 +20,15 @@ public class CreatePower extends KSMOD_CustomPower
         POWER_DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     }
 
-    public CreatePower()
+    public KSMOD_SealPower()
     {
         this(AbstractDungeon.player, 1);
     }
 
-    public CreatePower(AbstractCreature target, int amount)
+    public KSMOD_SealPower(AbstractCreature target, int amount)
     {
-        super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, amount);
-        this.updateDescription();
+        super(POWER_ID, POWER_NAME, POWER_IMG, POWER_TYPE, target, amount);
+        updateDescription();
     }
 
     public void updateDescription()
