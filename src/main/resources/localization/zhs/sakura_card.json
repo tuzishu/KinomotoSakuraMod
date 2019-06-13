@@ -57,7 +57,7 @@
   },
   "ClowCardTheEarthy": {
     "NAME": "地",
-    "DESCRIPTION": "【 元素牌 】造成未被 格挡 的伤害时，给与 !M! 层 地元素 。从其他卡牌给与 地元素 时，额外给与2层。"
+    "DESCRIPTION": "「 地元素牌 」本回合打出 地元素牌 时，额外获得1层 魔力充能 ，并获得 !B! 点格挡。"
   },
   "ClowCardTheErase": {
     "NAME": "消",
@@ -70,7 +70,7 @@
   },
   "ClowCardTheFirey": {
     "NAME": "火",
-    "DESCRIPTION": "【 元素牌 】造成未被 格挡 的伤害时，给与 !M! 层 火元素 。从其他卡牌给与 火元素 时，额外给与2层。"
+    "DESCRIPTION": "「 火元素牌 」本回合打出 火元素牌 时，额外获得1层 魔力充能 ，对全体敌人造成 !B! 点伤害。"
   },
   "ClowCardTheFloat": {
     "NAME": "浮",
@@ -229,7 +229,7 @@
   },
   "ClowCardTheWatery": {
     "NAME": "水",
-    "DESCRIPTION": "【 元素牌 】造成未被 格挡 的伤害时，给与 !M! 层 水元素 。从其他卡牌给与 水元素 时，额外给与2层。"
+    "DESCRIPTION": "「 水元素牌 」本回合打出 水元素牌 时，额外获得1层 魔力充能 ，并获得 !M! 点能量。"
   },
   "ClowCardTheWave": {
     "NAME": "波",
@@ -237,7 +237,7 @@
   },
   "ClowCardTheWindy": {
     "NAME": "风",
-    "DESCRIPTION": "【 元素牌 】造成未被 格挡 的伤害时，给与 !M! 层 风元素 。从其他卡牌给与 风元素 时，额外给与2层。"
+    "DESCRIPTION": "「 风元素牌 」本回合打出 风元素牌 时，额外获得1层 魔力充能 ，并抽 !M! 张牌。"
   },
   "ClowCardTheWood": {
     "NAME": "树",

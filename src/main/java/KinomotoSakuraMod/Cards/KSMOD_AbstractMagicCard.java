@@ -4,7 +4,7 @@ import KinomotoSakuraMod.Powers.KSMOD_LockPower;
 import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import KinomotoSakuraMod.Utility.ImageConst;
-import KinomotoSakuraMod.Utility.Utility;
+import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import basemod.abstracts.CustomCard;
 import basemod.interfaces.PostPowerApplySubscriber;
 import com.badlogic.gdx.Gdx;
@@ -210,8 +210,8 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
     {
         try
         {
-            Field hoverDuration = Utility.GetFieldByReflect(AbstractCard.class, "hoverDuration");
-            Field renderTip = Utility.GetFieldByReflect(AbstractCard.class, "renderTip");
+            Field hoverDuration = KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "hoverDuration");
+            Field renderTip = KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderTip");
             boolean justHovered = this.hb.hovered;
             boolean justUnhovered = false;
             this.hb.update();
@@ -251,14 +251,14 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
     @SpireOverride
     public void renderEnergy(SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException
     {
-        boolean darken = Utility.GetFieldByReflect(AbstractCard.class, "darken").getBoolean(this);
+        boolean darken = KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "darken").getBoolean(this);
         if (this.cost > -2 && !darken && !this.isLocked && this.isSeen)
         {
             float drawX = this.current_x - 256.0F;
             float drawY = this.current_y - 256.0F;
 
-            Method renderHelper = Utility.GetMethodByReflect(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, Texture.class, float.class, float.class);
-            Color renderColor = (Color) Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
+            Method renderHelper = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, Texture.class, float.class, float.class);
+            Color renderColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
             Texture img;
             switch (this.type)
             {
@@ -289,10 +289,10 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
 
             costColor.a = this.transparency;
 
-            Method getCost = Utility.GetMethodByReflect(AbstractCard.class, "getCost");
+            Method getCost = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "getCost");
             String text = (String) getCost.invoke(this);
 
-            Method getEnergyFont = Utility.GetMethodByReflect(AbstractCard.class, "getEnergyFont");
+            Method getEnergyFont = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "getEnergyFont");
             BitmapFont font = (BitmapFont) getEnergyFont.invoke(this);
 
             if ((this.type != AbstractCard.CardType.STATUS || this.cardID.equals("Slimed")) && (this.color != AbstractCard.CardColor.CURSE || this.cardID.equals("Pride")))
@@ -323,7 +323,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
     @SpireOverride
     public void renderAttackPortrait(SpriteBatch sb, float x, float y) throws NoSuchFieldException, IllegalAccessException
     {
-        Field renderColor = Utility.GetFieldByReflect(AbstractCard.class, "renderColor");
+        Field renderColor = KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor");
         sb.setColor((Color) renderColor.get(this));
         sb.draw(GetFrameImage(), x, y, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
     }
@@ -331,7 +331,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
     @SpireOverride
     public void renderSkillPortrait(SpriteBatch sb, float x, float y) throws NoSuchFieldException, IllegalAccessException
     {
-        Field renderColor = Utility.GetFieldByReflect(AbstractCard.class, "renderColor");
+        Field renderColor = KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor");
         sb.setColor((Color) renderColor.get(this));
         sb.draw(GetFrameImage(), x, y, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
     }
@@ -339,7 +339,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
     @SpireOverride
     public void renderPowerPortrait(SpriteBatch sb, float x, float y) throws NoSuchFieldException, IllegalAccessException
     {
-        Field renderColor = Utility.GetFieldByReflect(AbstractCard.class, "renderColor");
+        Field renderColor = KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor");
         sb.setColor((Color) renderColor.get(this));
         sb.draw(GetFrameImage(), x, y, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
     }
@@ -365,7 +365,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
     @SpireOverride
     public void renderBannerImage(SpriteBatch sb, float drawX, float drawY) throws NoSuchFieldException, IllegalAccessException
     {
-        Field renderColor = Utility.GetFieldByReflect(AbstractCard.class, "renderColor");
+        Field renderColor = KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor");
         sb.setColor((Color) renderColor.get(this));
         sb.draw(GetBannerImage(), drawX, drawY, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
     }
@@ -380,7 +380,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
         sb.draw(ImageConst.MASK, this.current_x - 256.0F, this.current_y - 256.0F, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
         if (this.isSeen && !this.isLocked)
         {
-            Method getDescFont = Utility.GetMethodByReflect(AbstractCard.class, "getDescFont");
+            Method getDescFont = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "getDescFont");
             BitmapFont font = (BitmapFont) getDescFont.invoke(this);
             float draw_y = this.current_y - IMG_HEIGHT * this.drawScale / 2.0F + IMG_HEIGHT * DESC_OFFSET_TO_BOTTOM_Y * this.drawScale;
             draw_y += (float) this.description.size() * font.getCapHeight() * 0.775F - font.getCapHeight() * 0.375F;
@@ -415,7 +415,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
                         if (tmp.charAt(j) == 'D' || tmp.charAt(j) == 'B' && !tmp.contains("[B]") || tmp.charAt(j) == 'M')
                         {
                             updateTmp = tmp.substring(0, j);
-                            Method getDynamicValue = Utility.GetMethodByReflect(AbstractCard.class, "getDynamicValue", char.class);
+                            Method getDynamicValue = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "getDynamicValue", char.class);
                             updateTmp = updateTmp + getDynamicValue.invoke(this, tmp.charAt(j));
                             updateTmp = updateTmp + tmp.substring(j + 1);
                             break;
@@ -432,7 +432,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
                         if (tmp.charAt(j) == 'D' || tmp.charAt(j) == 'B' && !tmp.contains("[B]") || tmp.charAt(j) == 'M')
                         {
                             updateTmp = tmp.substring(0, j);
-                            Method getDynamicValue = Utility.GetMethodByReflect(AbstractCard.class, "getDynamicValue", char.class);
+                            Method getDynamicValue = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "getDynamicValue", char.class);
                             updateTmp = updateTmp + getDynamicValue.invoke(this, tmp.charAt(j));
                             updateTmp = updateTmp + tmp.substring(j + 1);
                             break;
@@ -456,11 +456,11 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
                         }
 
                         gl.setText(font, tmp);
-                        Color goldColor = (Color) Utility.GetFieldByReflect(AbstractCard.class, "goldColor").get(this);
+                        Color goldColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "goldColor").get(this);
                         FontHelper.renderRotatedText(sb, font, tmp, this.current_x, this.current_y, start_x - this.current_x + gl.width / 2.0F, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, goldColor);
                         start_x = (float) Math.round(start_x + gl.width);
                         gl.setText(font, punctuation);
-                        Color textColor = (Color) Utility.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
+                        Color textColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
                         FontHelper.renderRotatedText(sb, font, punctuation, this.current_x, this.current_y, start_x - this.current_x + gl.width / 2.0F, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, textColor);
                         gl.setText(font, punctuation);
                         start_x += gl.width;
@@ -486,7 +486,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
                     else
                     {
                         gl.setText(font, tmp);
-                        Color textColor = (Color) Utility.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
+                        Color textColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
                         FontHelper.renderRotatedText(sb, font, tmp, this.current_x, this.current_y, start_x - this.current_x + gl.width / 2.0F, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, textColor);
                         start_x += gl.width;
                     }
@@ -498,7 +498,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
         else
         {
             FontHelper.menuBannerFont.getData().setScale(this.drawScale * 1.25F);
-            Color textColor = (Color) Utility.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
+            Color textColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
             FontHelper.renderRotatedText(sb, FontHelper.menuBannerFont, "? ? ?", this.current_x, this.current_y, 0.0F, -200.0F * Settings.scale * this.drawScale / 2.0F, this.angle, true, textColor);
             FontHelper.menuBannerFont.getData().setScale(1.0F);
         }
@@ -524,7 +524,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
                 if (!word.contains("NL"))
                 {
                     String keywordTmp = word.toLowerCase();
-                    Method dedupeKeyword = Utility.GetMethodByReflect(AbstractCard.class, "dedupeKeyword", String.class);
+                    Method dedupeKeyword = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "dedupeKeyword", String.class);
                     keywordTmp = (String) dedupeKeyword.invoke(this, keywordTmp);
                     GlyphLayout gl;
                     if (GameDictionary.keywords.containsKey(keywordTmp))
@@ -650,7 +650,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
                                 }
                                 break;
                             default:
-                                Utility.Logger.error("ERROR: Tried to display an invalid energy type");
+                                KSMOD_Utility.Logger.error("ERROR: Tried to display an invalid energy type");
                                 break;
                         }
 
@@ -699,7 +699,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
     {
         try
         {
-            Method updateFlashVfx = Utility.GetMethodByReflect(AbstractCard.class, "updateFlashVfx");
+            Method updateFlashVfx = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "updateFlashVfx");
             updateFlashVfx.invoke(this);
             if (this.hoverTimer != 0.0F)
             {
@@ -752,8 +752,8 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
                 this.angle = MathHelper.angleLerpSnap(this.angle, this.targetAngle);
             }
 
-            Method updateTransparency = Utility.GetMethodByReflect(AbstractCard.class, "updateTransparency");
-            Method updateColor = Utility.GetMethodByReflect(AbstractCard.class, "updateColor");
+            Method updateTransparency = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "updateTransparency");
+            Method updateColor = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "updateColor");
             updateTransparency.invoke(this);
             updateColor.invoke(this);
         }
@@ -769,7 +769,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
         try
         {
             BitmapFont font = null;
-            Color renderColor = (Color) Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
+            Color renderColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
             if (this.isLocked)
             {
                 if (this.angle == 0.0F && this.drawScale == 1.0F)
@@ -800,7 +800,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
             }
             else
             {
-                boolean useSmallTitleFont = Utility.GetFieldByReflect(AbstractCard.class, "useSmallTitleFont").getBoolean(this);
+                boolean useSmallTitleFont = KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "useSmallTitleFont").getBoolean(this);
                 if (!useSmallTitleFont)
                 {
                     if (this.angle == 0.0F && this.drawScale == 1.0F)
@@ -855,7 +855,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
 
         if (!this.isLocked)
         {
-            Color renderColor = (Color) Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
+            Color renderColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
             if (this.portrait != null)
             {
                 drawX = this.current_x - PORTRAIT_ORIGIN_X;

@@ -2,7 +2,7 @@ package KinomotoSakuraMod.Patches;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Utility.ImageConst;
-import KinomotoSakuraMod.Utility.Utility;
+import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -63,7 +63,7 @@ public class SingleCardViewPopupPatch
     {
         public static SpireReturn<Object> Prefix(SingleCardViewPopup view, SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException
         {
-            AbstractCard card = (AbstractCard) Utility.GetFieldByReflect(SingleCardViewPopup.class, "card").get(view);
+            AbstractCard card = (AbstractCard) KSMOD_Utility.GetFieldByReflect(SingleCardViewPopup.class, "card").get(view);
             if (IsKSCard(card))
             {
                 Texture img = null;
@@ -98,10 +98,10 @@ public class SingleCardViewPopupPatch
     {
         public static SpireReturn<Object> Prefix(SingleCardViewPopup view, SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException
         {
-            AbstractCard card = (AbstractCard) Utility.GetFieldByReflect(SingleCardViewPopup.class, "card").get(view);
+            AbstractCard card = (AbstractCard) KSMOD_Utility.GetFieldByReflect(SingleCardViewPopup.class, "card").get(view);
             if (IsKSCard(card))
             {
-                Texture portraitImg = (Texture) Utility.GetFieldByReflect(SingleCardViewPopup.class, "portraitImg").get(view);
+                Texture portraitImg = (Texture) KSMOD_Utility.GetFieldByReflect(SingleCardViewPopup.class, "portraitImg").get(view);
                 sb.draw(portraitImg, Settings.WIDTH * 0.5F - PORTRAIT_ORIGIN_X, Settings.HEIGHT * 0.5F - PORTRAIT_ORIGIN_Y, PORTRAIT_ORIGIN_X, PORTRAIT_ORIGIN_Y, PORTRAIT_WIDTH, PORTRAIT_HEIGHT, Settings.scale, Settings.scale, 0.0F, 0, 0, (int) PORTRAIT_WIDTH, (int) PORTRAIT_HEIGHT, false, false);
                 return SpireReturn.Return(null);
             }
@@ -117,7 +117,7 @@ public class SingleCardViewPopupPatch
     {
         public static SpireReturn<Object> Prefix(SingleCardViewPopup view, SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException
         {
-            AbstractCard card = (AbstractCard) Utility.GetFieldByReflect(SingleCardViewPopup.class, "card").get(view);
+            AbstractCard card = (AbstractCard) KSMOD_Utility.GetFieldByReflect(SingleCardViewPopup.class, "card").get(view);
             if (IsKSCard(card))
             {
                 Texture frameImg = null;
@@ -148,7 +148,7 @@ public class SingleCardViewPopupPatch
     {
         public static SpireReturn<Object> Prefix(SingleCardViewPopup view, SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException
         {
-            AbstractCard card = (AbstractCard) Utility.GetFieldByReflect(SingleCardViewPopup.class, "card").get(view);
+            AbstractCard card = (AbstractCard) KSMOD_Utility.GetFieldByReflect(SingleCardViewPopup.class, "card").get(view);
             if (IsKSCard(card))
             {
                 Texture bannerImg = null;
@@ -178,7 +178,7 @@ public class SingleCardViewPopupPatch
     {
         public static SpireReturn<Object> Prefix(SingleCardViewPopup view, SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException
         {
-            AbstractCard card = (AbstractCard) Utility.GetFieldByReflect(SingleCardViewPopup.class, "card").get(view);
+            AbstractCard card = (AbstractCard) KSMOD_Utility.GetFieldByReflect(SingleCardViewPopup.class, "card").get(view);
             if (IsKSCard(card))
             {
                 return SpireReturn.Return(null);
@@ -195,7 +195,7 @@ public class SingleCardViewPopupPatch
     {
         public static SpireReturn<Object> Prefix(SingleCardViewPopup view, SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException
         {
-            AbstractCard card = (AbstractCard) Utility.GetFieldByReflect(SingleCardViewPopup.class, "card").get(view);
+            AbstractCard card = (AbstractCard) KSMOD_Utility.GetFieldByReflect(SingleCardViewPopup.class, "card").get(view);
             if (IsKSCard(card))
             {
                 if (!card.isLocked && card.isSeen)
@@ -207,10 +207,10 @@ public class SingleCardViewPopupPatch
                     for (int i = 0; i < card.description.size(); ++i)
                     {
                         float start_x = DESC_X;
-                        Field scannerField = Utility.GetFieldByReflect(SingleCardViewPopup.class, "scanner");
+                        Field scannerField = KSMOD_Utility.GetFieldByReflect(SingleCardViewPopup.class, "scanner");
                         scannerField.set(view, new Scanner(card.description.get(i).text));
                         Scanner scanner = (Scanner) scannerField.get(view);
-                        Method getDynamicValue = Utility.GetMethodByReflect(SingleCardViewPopup.class, "getDynamicValue", char.class);
+                        Method getDynamicValue = KSMOD_Utility.GetMethodByReflect(SingleCardViewPopup.class, "getDynamicValue", char.class);
                         while (scanner.hasNext())
                         {
                             String tmp = scanner.next();
@@ -245,8 +245,8 @@ public class SingleCardViewPopupPatch
                             {
                                 tmp = updateTmp;
                             }
-                            float card_energy_w = Utility.GetFieldByReflect(SingleCardViewPopup.class, "card_energy_w").getFloat(view);
-                            Method renderSmallEnergy = Utility.GetMethodByReflect(SingleCardViewPopup.class, "renderSmallEnergy", SpriteBatch.class, TextureAtlas.AtlasRegion.class, float.class, float.class);
+                            float card_energy_w = KSMOD_Utility.GetFieldByReflect(SingleCardViewPopup.class, "card_energy_w").getFloat(view);
+                            Method renderSmallEnergy = KSMOD_Utility.GetMethodByReflect(SingleCardViewPopup.class, "renderSmallEnergy", SpriteBatch.class, TextureAtlas.AtlasRegion.class, float.class, float.class);
                             if (tmp.charAt(0) == '*')
                             {
                                 tmp = tmp.substring(1);
@@ -313,10 +313,10 @@ public class SingleCardViewPopupPatch
 
         public static SpireReturn<Object> Prefix(SingleCardViewPopup view, SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException, InvocationTargetException, NoSuchMethodException
         {
-            AbstractCard card = (AbstractCard) Utility.GetFieldByReflect(SingleCardViewPopup.class, "card").get(view);
+            AbstractCard card = (AbstractCard) KSMOD_Utility.GetFieldByReflect(SingleCardViewPopup.class, "card").get(view);
             if (IsKSCard(card) && hasInit)
             {
-                Method allowUpgradePreview = Utility.GetMethodByReflect(SingleCardViewPopup.class, "allowUpgradePreview");
+                Method allowUpgradePreview = KSMOD_Utility.GetMethodByReflect(SingleCardViewPopup.class, "allowUpgradePreview");
                 if (card.isLocked)
                 {
                     FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, TEXT[4], Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + TITLE_HEIGHT_TO_CENTER * Settings.scale, Settings.CREAM_COLOR.cpy());
@@ -344,7 +344,7 @@ public class SingleCardViewPopupPatch
                     }
                     else if (card.isSeen)
                     {
-                        String BOTTOM_TITLE = (String) Utility.GetFieldByReflect(KSMOD_AbstractMagicCard.class, "BOTTOM_TITLE").get(card);
+                        String BOTTOM_TITLE = (String) KSMOD_Utility.GetFieldByReflect(KSMOD_AbstractMagicCard.class, "BOTTOM_TITLE").get(card);
                         if (SingleCardViewPopup.isViewingUpgrade && !((Boolean) allowUpgradePreview.invoke(view)))
                         {
                             FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, BOTTOM_TITLE, Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + TITLE_BOTTOM_HEIGHT_TO_CENTER * Settings.scale, Settings.GREEN_TEXT_COLOR.cpy());
@@ -374,7 +374,7 @@ public class SingleCardViewPopupPatch
     {
         public static SpireReturn<Object> Prefix(SingleCardViewPopup view, SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException, InvocationTargetException, NoSuchMethodException
         {
-            AbstractCard card = (AbstractCard) Utility.GetFieldByReflect(SingleCardViewPopup.class, "card").get(view);
+            AbstractCard card = (AbstractCard) KSMOD_Utility.GetFieldByReflect(SingleCardViewPopup.class, "card").get(view);
             if (IsKSCard(card))
             {
                 if (!card.isLocked && card.isSeen && card.cost > -2)
@@ -423,10 +423,10 @@ public class SingleCardViewPopupPatch
         {
             if (IsKSCard(card))
             {
-                Hitbox cardHb = (Hitbox) Utility.GetFieldByReflect(SingleCardViewPopup.class, "cardHb").get(view);
+                Hitbox cardHb = (Hitbox) KSMOD_Utility.GetFieldByReflect(SingleCardViewPopup.class, "cardHb").get(view);
                 cardHb.resize(HB_W, HB_H);
                 cardHb.move(Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F);
-                Hitbox upgradeHb = (Hitbox) Utility.GetFieldByReflect(SingleCardViewPopup.class, "upgradeHb").get(view);
+                Hitbox upgradeHb = (Hitbox) KSMOD_Utility.GetFieldByReflect(SingleCardViewPopup.class, "upgradeHb").get(view);
                 upgradeHb.move(TOGGLE_X, TOGGLE_Y);
             }
         }
@@ -442,10 +442,10 @@ public class SingleCardViewPopupPatch
         {
             if (IsKSCard(card))
             {
-                Hitbox cardHb = (Hitbox) Utility.GetFieldByReflect(SingleCardViewPopup.class, "cardHb").get(view);
+                Hitbox cardHb = (Hitbox) KSMOD_Utility.GetFieldByReflect(SingleCardViewPopup.class, "cardHb").get(view);
                 cardHb.resize(HB_W, HB_H);
                 cardHb.move(Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F);
-                Hitbox upgradeHb = (Hitbox) Utility.GetFieldByReflect(SingleCardViewPopup.class, "upgradeHb").get(view);
+                Hitbox upgradeHb = (Hitbox) KSMOD_Utility.GetFieldByReflect(SingleCardViewPopup.class, "upgradeHb").get(view);
                 upgradeHb.move(TOGGLE_X, TOGGLE_Y);
             }
         }

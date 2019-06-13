@@ -8,7 +8,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 
-public class Utility
+public class KSMOD_Utility
 {
     /**
      * 日志管理器

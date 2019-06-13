@@ -49,10 +49,32 @@
       " 点能量。"
     ]
   },
-  "SilentPower": {
-    "NAME": "寂静",
+  "KSMOD_EarthyPower": {
+    "NAME": "地元素",
     "DESCRIPTIONS": [
-      "下回开始时，将获得 #y缠身 ，无法使用攻击卡。"
+      "本回合打出 #y地元素牌 时，额外获得1层 #y魔力充能 ，并获得 #b",
+      " 点格挡。"
+    ]
+  },
+  "KSMOD_WateryPower": {
+    "NAME": "水元素",
+    "DESCRIPTIONS": [
+      "本回合打出 #y地元素牌 时，额外获得1层 #y魔力充能 ，并获得 #b",
+      " 点能量。"
+    ]
+  },
+  "KSMOD_FireyPower": {
+    "NAME": "火元素",
+    "DESCRIPTIONS": [
+      "本回合打出 #y地元素牌 时，额外获得1层 #y魔力充能 ，并对全体敌人造成 #b",
+      " 点伤害。"
+    ]
+  },
+  "KSMOD_WindyPower": {
+    "NAME": "风元素",
+    "DESCRIPTIONS": [
+      "本回合打出 #y地元素牌 时，额外获得1层 #y魔力充能 ，并抽 #b",
+      " 张牌。"
     ]
   },
   "TwinPower": {
