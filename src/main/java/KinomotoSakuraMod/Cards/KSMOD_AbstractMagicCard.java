@@ -1,7 +1,7 @@
 package KinomotoSakuraMod.Cards;
 
-import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
 import KinomotoSakuraMod.Powers.KSMOD_LockPower;
+import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import KinomotoSakuraMod.Utility.ImageConst;
 import KinomotoSakuraMod.Utility.Utility;

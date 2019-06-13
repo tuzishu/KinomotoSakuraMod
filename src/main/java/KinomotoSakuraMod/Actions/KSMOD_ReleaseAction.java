@@ -17,9 +17,9 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 
 import java.util.ArrayList;
 
-public class ReleaseAction extends AbstractGameAction
+public class KSMOD_ReleaseAction extends AbstractGameAction
 {
-    private static final String ACTION_ID = "ReleaseAction";
+    private static final String ACTION_ID = "KSMOD_ReleaseAction";
     private static final String[] TEXT;
     private AbstractPlayer player;
     private static final float DURATION = Settings.ACTION_DUR_XFAST;
@@ -33,7 +33,7 @@ public class ReleaseAction extends AbstractGameAction
         TEXT = uiStrings.TEXT;
     }
 
-    public ReleaseAction(int damage, float rate)
+    public KSMOD_ReleaseAction(int damage, float rate)
     {
         this.actionType = AbstractGameAction.ActionType.CARD_MANIPULATION;
         this.player = AbstractDungeon.player;

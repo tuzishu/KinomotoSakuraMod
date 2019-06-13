@@ -36,7 +36,7 @@ public class ClowCardTheCloud extends KSMOD_AbstractMagicCard
 
     public ClowCardTheCloud()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.ELEMENT_CARD);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.ELEMENT_CARD, true);
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
         this.exhaust = true;
     }

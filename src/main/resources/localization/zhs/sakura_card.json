@@ -43,7 +43,8 @@
   },
   "ClowCardTheDark": {
     "NAME": "暗",
-    "DESCRIPTION": "【 元素牌 】给与所有敌人 !M! 层暗元素。"
+    "DESCRIPTION": "「 暗元素牌 」回合结束时，可以消耗最多 !M! 张手牌。",
+    "UPGRADE_DESCRIPTION": "「 暗元素牌 」回合结束时，可以消耗最多 !M! 张手牌。下回合获得相应数量的能量。"
   },
   "ClowCardTheDash": {
     "NAME": "驱",

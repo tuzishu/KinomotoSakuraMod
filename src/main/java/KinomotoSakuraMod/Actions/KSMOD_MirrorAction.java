@@ -12,9 +12,9 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 
 import java.util.ArrayList;
 
-public class MirrorAction extends AbstractGameAction
+public class KSMOD_MirrorAction extends AbstractGameAction
 {
-    public static final String ACTION_ID = "MirrorAction";
+    public static final String ACTION_ID = "KSMOD_MirrorAction";
     private static final String[] TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
     private AbstractPlayer player;
@@ -26,7 +26,7 @@ public class MirrorAction extends AbstractGameAction
         TEXT = uiStrings.TEXT;
     }
 
-    public MirrorAction(int amount)
+    public KSMOD_MirrorAction(int amount)
     {
         this.setValues(AbstractDungeon.player, AbstractDungeon.player, amount);
         this.actionType = ActionType.CARD_MANIPULATION;

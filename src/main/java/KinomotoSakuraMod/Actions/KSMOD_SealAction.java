@@ -11,14 +11,14 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.MinionPower;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 
-public class SealAction extends AbstractGameAction
+public class KSMOD_SealAction extends AbstractGameAction
 {
     private static final float DURATION = Settings.ACTION_DUR_XFAST;
     private AbstractPlayer player;
     private AbstractMonster monster;
     private int damage;
 
-    public SealAction(AbstractMonster monster, int damage)
+    public KSMOD_SealAction(AbstractMonster monster, int damage)
     {
         this.actionType = AbstractGameAction.ActionType.CARD_MANIPULATION;
         this.player = AbstractDungeon.player;

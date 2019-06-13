@@ -1,9 +1,8 @@
 package KinomotoSakuraMod.Cards.SpellCard;
 
-import KinomotoSakuraMod.Actions.ReleaseAction;
+import KinomotoSakuraMod.Actions.KSMOD_ReleaseAction;
 import KinomotoSakuraMod.Cards.AbstractSpellCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
-import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -61,6 +60,6 @@ public class SpellCardRelease extends AbstractSpellCard
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
         // 剑玉未添加
-        AbstractDungeon.actionManager.addToBottom(new ReleaseAction(this.damage, BASE_RELEASE_UPGRADE_RATE));
+        AbstractDungeon.actionManager.addToBottom(new KSMOD_ReleaseAction(this.damage, BASE_RELEASE_UPGRADE_RATE));
     }
 }

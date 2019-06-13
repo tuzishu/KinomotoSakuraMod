@@ -1,35 +1,40 @@
 {
-  "ChangeAction": {
-    "TEXT": [
-      "替换"
-    ]
-  },
-  "ReleaseAction": {
+  "KSMOD_ReleaseAction": {
     "TEXT": [
       "封印解除"
     ]
   },
-  "ArrowAction": {
+  "KSMOD_ArrowAction": {
     "TEXT": [
       "作为箭矢"
     ]
   },
-  "MirrorAction": {
+  "KSMOD_ChangeAction": {
+    "TEXT": [
+      "替换"
+    ]
+  },
+  "KSMOD_DarkAction": {
+    "TEXT": [
+      "消耗"
+    ]
+  },
+  "KSMOD_MirrorAction": {
     "TEXT": [
       "复制"
     ]
   },
-  "MoveAction": {
+  "KSMOD_MoveAction": {
     "TEXT": [
       "返回抽排堆"
     ]
   },
-  "SongAction": {
+  "KSMOD_SongAction": {
     "TEXT": [
       "唱歌"
     ]
   },
-  "ReturnAction": {
+  "KSMOD_ReturnAction": {
     "TEXT": [
       "轮回：请选择最多",
       "张牌返回牌堆"

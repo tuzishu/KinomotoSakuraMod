@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Cards.SpellCard;
 
-import KinomotoSakuraMod.Actions.SealAction;
+import KinomotoSakuraMod.Actions.KSMOD_SealAction;
 import KinomotoSakuraMod.Cards.AbstractSpellCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -55,6 +55,6 @@ public class SpellCardSeal extends AbstractSpellCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new SealAction(monster, this.damage));
+        AbstractDungeon.actionManager.addToBottom(new KSMOD_SealAction(monster, this.damage));
     }
 }

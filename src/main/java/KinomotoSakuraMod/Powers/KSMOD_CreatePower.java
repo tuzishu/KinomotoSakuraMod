@@ -1,13 +1,14 @@
 package KinomotoSakuraMod.Powers;
 
-import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 
-public class KSMOD_MagickChargePower extends KSMOD_CustomPower
+public class KSMOD_CreatePower extends KSMOD_CustomPower
 {
-    public static final String POWER_ID = "KSMOD_MagickChargePower";
+
+    public static final String POWER_ID = "KSMOD_CreatePower";
     private static final String POWER_NAME;
     private static final String[] POWER_DESCRIPTIONS;
     private static final String POWER_IMG_PATH = "img/powers/default_power.png";
@@ -20,7 +21,12 @@ public class KSMOD_MagickChargePower extends KSMOD_CustomPower
         POWER_DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     }
 
-    public KSMOD_MagickChargePower(AbstractCreature target, int amount)
+    public KSMOD_CreatePower()
+    {
+        this(AbstractDungeon.player, 1);
+    }
+
+    public KSMOD_CreatePower(AbstractCreature target, int amount)
     {
         super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, amount);
         this.updateDescription();
@@ -28,6 +34,6 @@ public class KSMOD_MagickChargePower extends KSMOD_CustomPower
 
     public void updateDescription()
     {
-        this.description = POWER_DESCRIPTIONS[0] + KSMOD_SealedBook.ACTIVE_NUMBER + POWER_DESCRIPTIONS[1];
+        this.description = POWER_DESCRIPTIONS[0] + this.amount + POWER_DESCRIPTIONS[1];
     }
 }

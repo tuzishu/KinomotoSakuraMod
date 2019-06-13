@@ -12,9 +12,9 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 
-public class ReturnAction extends AbstractGameAction
+public class KSMOD_ReturnAction extends AbstractGameAction
 {
-    private static final String ACTION_ID = "ReturnAction";
+    private static final String ACTION_ID = "KSMOD_ReturnAction";
     private static final String[] TEXT;
     private static final float DURATION = Settings.ACTION_DUR_XFAST;
     private AbstractPlayer player;
@@ -26,7 +26,7 @@ public class ReturnAction extends AbstractGameAction
         TEXT = uiStrings.TEXT;
     }
 
-    public ReturnAction(int amount)
+    public KSMOD_ReturnAction(int amount)
     {
         this.actionType = AbstractGameAction.ActionType.CARD_MANIPULATION;
         this.player = AbstractDungeon.player;
