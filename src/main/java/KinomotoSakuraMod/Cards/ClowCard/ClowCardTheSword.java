@@ -70,12 +70,12 @@ public class ClowCardTheSword extends KSMOD_AbstractMagicCard
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, KSMOD_SealedBook.EXTRA_DAMAGE, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.SLASH_HEAVY));
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, KSMOD_SealedBook.REAL_DAMAGE, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.SLASH_HEAVY));
     }
 
     @Override
     public String getExtraDescription()
     {
-        return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.EXTRA_DAMAGE + EXTENDED_DESCRIPTION[1];
+        return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.REAL_DAMAGE + EXTENDED_DESCRIPTION[1];
     }
 }
