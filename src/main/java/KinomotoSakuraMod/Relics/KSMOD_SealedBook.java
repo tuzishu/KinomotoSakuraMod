@@ -12,7 +12,10 @@ public class KSMOD_SealedBook extends CustomRelic
     private static final RelicTier RELIC_TIER = RelicTier.STARTER;
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
     public static final int ACTIVE_NUMBER = 10;
+
+    public static final int EXTRA_DAMAGE = 12;
     public static final int DRAW_NUMBER = 2;
+    public static final int WEAKENED_NUMBER = 2;
 
     public KSMOD_SealedBook()
     {

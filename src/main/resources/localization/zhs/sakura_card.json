@@ -151,8 +151,10 @@
   },
   "ClowCardTheShadow": {
     "NAME": "影",
-    "DESCRIPTION": "【 物理牌 】获得 !B! 点 格挡 。 消耗 场上所有 暗元素 ，获得层数和一半的多层护甲。",
-    "UPGRADE_DESCRIPTION": "【 物理牌 】获得 !B! 点 格挡 。 消耗 场上所有 暗元素 ，获得层数和的多层护甲。"
+    "DESCRIPTION": "「 地元素牌 」获得 !B! 点 格挡 。",
+    "EXTENDED_DESCRIPTION": [
+      "「 地元素牌 」获得 !M! 层 多层护甲 。"
+    ]
   },
   "ClowCardTheShield": {
     "NAME": "盾",
@@ -190,7 +192,11 @@
   },
   "ClowCardTheSword": {
     "NAME": "剑",
-    "DESCRIPTION": "【 物理牌 】造成 !D! 点伤害。"
+    "DESCRIPTION": "「 火元素牌 」造成 !D! 点伤害。",
+    "EXTENDED_DESCRIPTION": [
+      "额外造成",
+      "点 真实伤害 。"
+    ]
   },
   "ClowCardTheThrough": {
     "NAME": "拔",
@@ -227,7 +233,11 @@
   },
   "ClowCardTheWood": {
     "NAME": "树",
-    "DESCRIPTION": "【 元素牌 】造成 !D! 点伤害，本回合减少 !D! 点力量，给与 !M! 层 地元素。目标携带 地元素 大于8时，消耗8层额外对其施加2次 缠绕 。"
+    "DESCRIPTION": "【 元素牌 】造成 !D! 点伤害，本回合减少 !D! 点力量，给与 !M! 层 地元素。目标携带 地元素 大于8时，消耗8层额外对其施加2次 缠绕 。",
+    "EXTENDED_DESCRIPTION": [
+      "额外给与",
+      "层 虚弱 。"
+    ]
   },
 
   "SpellCardRelease": {

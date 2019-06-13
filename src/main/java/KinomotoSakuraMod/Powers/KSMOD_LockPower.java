@@ -30,7 +30,7 @@ public class KSMOD_LockPower extends KSMOD_CustomPower
 
     public void updateDescription()
     {
-        this.description = POWER_DESCRIPTIONS[0];
+        this.description = POWER_DESCRIPTIONS[0] + this.amount + POWER_DESCRIPTIONS[1];
     }
 
     public void atEndOfTurn(boolean isPlayer)

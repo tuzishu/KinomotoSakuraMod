@@ -17,7 +17,7 @@ public class ClowCardTheShadow extends KSMOD_AbstractMagicCard
     public static final String ID = "ClowCardTheShadow";
     private static final String NAME;
     private static final String DESCRIPTION;
-    private static final String UPGRADE_DESCRIPTION;
+    private static final String[] EXTENDED_DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_shadow.png";
     private static final int COST = 1;
     private static final CardType CARD_TYPE = CardType.SKILL;
@@ -26,23 +26,22 @@ public class ClowCardTheShadow extends KSMOD_AbstractMagicCard
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
     private static final int BASE_BLOCK = 5;
     private static final int UPGRADE_BLOCK = 3;
-    private static final float BASE_ACTIVE_RATE = 0.5F;
-    private static final float UPGRADED_ACTIVE_RATE = 1F;
-    private float activeRate;
+    private static final int BASE_MAGIC_NUMBER = 5;
+    private static final int UPGRADE_MAGIC_NUMBER = 3;
 
     static
     {
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
         NAME = cardStrings.NAME;
         DESCRIPTION = cardStrings.DESCRIPTION;
-        UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+        EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     }
 
     public ClowCardTheShadow()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.ELEMENT_CARD);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.ELEMENT_CARD, true);
         this.baseBlock = BASE_BLOCK;
-        this.activeRate = BASE_ACTIVE_RATE;
+        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
     @Override
@@ -52,9 +51,7 @@ public class ClowCardTheShadow extends KSMOD_AbstractMagicCard
         {
             this.upgradeName();
             this.upgradeBlock(UPGRADE_BLOCK);
-            this.activeRate = UPGRADED_ACTIVE_RATE;
-            this.rawDescription = UPGRADE_DESCRIPTION;
-            this.initializeDescription();
+            this.upgradeMagicNumber(UPGRADE_MAGIC_NUMBER);
         }
     }
 
@@ -68,5 +65,17 @@ public class ClowCardTheShadow extends KSMOD_AbstractMagicCard
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
+    }
+
+    @Override
+    public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
+    {
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new PlatedArmorPower(player, this.magicNumber), this.magicNumber));
+    }
+
+    @Override
+    public String getExtraDescription()
+    {
+        return EXTENDED_DESCRIPTION[0];
     }
 }

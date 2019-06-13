@@ -37,7 +37,7 @@ public class ClowCardTheChange extends KSMOD_AbstractMagicCard
 
     public ClowCardTheChange()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.PHYSICS_CARD);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.PHYSICS_CARD, true);
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
@@ -71,6 +71,6 @@ public class ClowCardTheChange extends KSMOD_AbstractMagicCard
     @Override
     public String getExtraDescription()
     {
-        return this.rawDescription + EXTENDED_DESCRIPTION[0];
+        return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.DRAW_NUMBER + EXTENDED_DESCRIPTION[1];
     }
 }

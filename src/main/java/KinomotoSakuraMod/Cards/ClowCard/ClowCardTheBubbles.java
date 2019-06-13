@@ -42,7 +42,7 @@ public class ClowCardTheBubbles extends KSMOD_AbstractMagicCard
 
     public ClowCardTheBubbles()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.ELEMENT_CARD);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.ELEMENT_CARD, true);
         this.baseDamage = BASE_DAMAGE;
         this.exhaust = true;
     }

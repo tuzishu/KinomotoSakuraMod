@@ -16,23 +16,8 @@
   "KSMOD_LockPower": {
     "NAME": "锁定",
     "DESCRIPTIONS": [
-      "触发消耗 #y元素 时，消耗1层作为替代。回合结束时下降1层。"
-    ]
-  },
-  "KSMOD_BigPower": {
-    "NAME": "放大",
-    "DESCRIPTIONS": [
-      "受到的伤害增加 #b",
-      "% 。造成的伤害增加 #b",
-      "% 。"
-    ]
-  },
-  "KSMOD_LittlePower": {
-    "NAME": "缩小",
-    "DESCRIPTIONS": [
-      "受到的伤害减少 #b",
-      "% 。造成的伤害减少 #b",
-      "% 。"
+      " #b",
+      " 回合不触发魔力充能的效果。"
     ]
   },
   "SilentPower": {
