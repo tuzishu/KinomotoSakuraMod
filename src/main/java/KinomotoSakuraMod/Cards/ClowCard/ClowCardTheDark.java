@@ -2,7 +2,6 @@ package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
-import KinomotoSakuraMod.Patches.CustomTag;
 import KinomotoSakuraMod.Powers.KSMOD_DarkPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -35,7 +34,7 @@ public class ClowCardTheDark extends KSMOD_AbstractMagicCard
 
     public ClowCardTheDark()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.ELEMENT_CARD);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
@@ -62,7 +61,7 @@ public class ClowCardTheDark extends KSMOD_AbstractMagicCard
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_DarkPower(player, this.magicNumber), this.magicNumber));
         if (upgraded)
         {
-            KSMOD_DarkPower power = (KSMOD_DarkPower)player.getPower(KSMOD_DarkPower.POWER_ID);
+            KSMOD_DarkPower power = (KSMOD_DarkPower) player.getPower(KSMOD_DarkPower.POWER_ID);
             power.upgrade();
         }
     }

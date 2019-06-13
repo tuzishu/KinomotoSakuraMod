@@ -2,7 +2,6 @@ package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
-import KinomotoSakuraMod.Patches.CustomTag;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -42,7 +41,7 @@ public class ClowCardTheBubbles extends KSMOD_AbstractMagicCard
 
     public ClowCardTheBubbles()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.ELEMENT_CARD, true);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
         this.baseDamage = BASE_DAMAGE;
         this.exhaust = true;
     }
@@ -91,7 +90,7 @@ public class ClowCardTheBubbles extends KSMOD_AbstractMagicCard
                 buffs.add(power);
             }
         }
-        for (AbstractPower buff: buffs)
+        for (AbstractPower buff : buffs)
         {
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(monster, player, buff));
         }
