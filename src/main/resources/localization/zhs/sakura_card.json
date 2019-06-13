@@ -26,7 +26,8 @@
     "DESCRIPTION": "「 地元素牌 」丢弃最多 !M! 张手牌，抽丢弃数量+1张牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "额外抽2张牌。"
+      "额外抽",
+      "张牌。"
     ]
   },
   "ClowCardTheCloud": {
@@ -48,7 +49,11 @@
   },
   "ClowCardTheDash": {
     "NAME": "驱",
-    "DESCRIPTION": "【 物理牌 】每使用5张 库洛牌 或 小樱牌 ，抽 !M! 张牌。"
+    "DESCRIPTION": " 「 风元素牌 」消耗 。抽 !M! 张牌。",
+    "EXTENDED_DESCRIPTION": [
+      "额外抽",
+      "张牌。"
+    ]
   },
   "ClowCardTheEarthy": {
     "NAME": "地",

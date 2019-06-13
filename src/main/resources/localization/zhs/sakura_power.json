@@ -79,13 +79,6 @@
       "每受到1次未被格挡的伤害，获得 #b3 点格挡。"
     ]
   },
-  "KSMOD_CreatePower": {
-    "NAME": "创造",
-    "DESCRIPTIONS": [
-      "战斗胜利后，额外获得 #b",
-      " 件随机遗物。"
-    ]
-  },
   "LoopPower": {
     "NAME": "圈环",
     "DESCRIPTIONS": [
