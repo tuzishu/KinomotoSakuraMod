@@ -28,6 +28,7 @@ public class KSMOD_SealedBook extends CustomRelic
     public static final int METALLICIZE_NUMBER = 2;
     public static final int VULNERABLE_NUMBER = 2;
     public static final int SLEEP_NUMBER = 2;
+    public static final int DAMAGE_INCREASE = 5;
 
     public KSMOD_SealedBook()
     {

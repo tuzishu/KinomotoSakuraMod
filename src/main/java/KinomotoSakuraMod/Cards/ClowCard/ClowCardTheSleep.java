@@ -22,7 +22,7 @@ public class ClowCardTheSleep extends KSMOD_AbstractMagicCard
     private static final int UPGRADED_COST = 0;
     private static final CardType CARD_TYPE = CardType.SKILL;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
-    private static final CardRarity CARD_RARITY = CardRarity.RARE;
+    private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
     private static final int BASE_MAGIC_NUMBER = 2;
 

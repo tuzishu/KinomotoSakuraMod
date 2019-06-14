@@ -1,13 +1,12 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
-import KinomotoSakuraMod.Actions.ApplyElementAction;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
-import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
-import KinomotoSakuraMod.Powers.FreezePower;
+import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
+import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -16,41 +15,35 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.WeakPower;
+import com.megacrit.cardcrawl.vfx.combat.BlizzardEffect;
 
 public class ClowCardTheSnow extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheSnow";
     private static final String NAME;
     private static final String DESCRIPTION;
-    private static final String UPGRADE_DESCRIPTION;
+    private static final String[] EXTENDED_DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_snow.png";
     private static final int COST = 2;
     private static final AbstractCard.CardType CARD_TYPE = AbstractCard.CardType.ATTACK;
     private static final AbstractCard.CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
-    private static final CardRarity CARD_RARITY = CardRarity.COMMON;
+    private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
-    private static final int BASE_DAMAGE = 9;
-    private static final int UPGRADE_DAMAGE = 5;
-    private static final int BASE_MAGIC_NUMBER = 2;
-    private static final int FREEZE_ACTIVE_NUMBER = 16;
-    private static final int FREEZE_COUNT = 1;
-    private static final int WEAKENED_ACTIVE_NUMBER = 18;
-    private static final int WEAKENED_COUNT = 2;
+    private static final int BASE_DAMAGE = 2;
+    private static final int UPGRADE_DAMAGE = 4;
 
     static
     {
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
         NAME = cardStrings.NAME;
         DESCRIPTION = cardStrings.DESCRIPTION;
-        UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+        EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     }
 
     public ClowCardTheSnow()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, KSMOD_CustomTag.ELEMENT_CARD);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.baseDamage = BASE_DAMAGE;
-        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
     @Override
@@ -60,8 +53,6 @@ public class ClowCardTheSnow extends KSMOD_AbstractMagicCard
         {
             this.upgradeName();
             this.upgradeDamage(UPGRADE_DAMAGE);
-            this.rawDescription = UPGRADE_DESCRIPTION;
-            this.initializeDescription();
         }
     }
 
@@ -72,32 +63,31 @@ public class ClowCardTheSnow extends KSMOD_AbstractMagicCard
     }
 
     @Override
-    public void use(AbstractPlayer player, AbstractMonster monster)
+    public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.POISON, true));
-
-        if (upgraded)
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(new BlizzardEffect(this.damage, AbstractDungeon.getMonsters().shouldFlipVfx()), 1.0F));
+        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        if (player.hasPower(KSMOD_MagickChargePower.POWER_ID))
         {
-            for (AbstractMonster mon: AbstractDungeon.getMonsters().monsters)
-            {
-                if (WateryElementPower.TryActiveWateryElement(mon, FREEZE_ACTIVE_NUMBER, true))
-                {
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new FreezePower(mon, FREEZE_COUNT), FREEZE_COUNT, true));
-                }
-            }
-            for (AbstractMonster mon: AbstractDungeon.getMonsters().monsters)
-            {
-                if (WindyElementPower.TryActiveWindyElement(mon, WEAKENED_ACTIVE_NUMBER, true))
-                {
-                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new WeakPower(mon, WEAKENED_COUNT, false), WEAKENED_COUNT, true));
-                }
-            }
+            this.damage += player.getPower(KSMOD_MagickChargePower.POWER_ID).amount;
         }
+    }
 
-        for (AbstractMonster mon: AbstractDungeon.getMonsters().monsters)
+    @Override
+    public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
+    {
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(new BlizzardEffect(this.damage, AbstractDungeon.getMonsters().shouldFlipVfx()), 1.0F));
+        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        if (player.hasPower(KSMOD_MagickChargePower.POWER_ID))
         {
-            AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(mon, player, new WateryElementPower(mon, this.magicNumber), this.magicNumber, true));
-            AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(mon, player, new WindyElementPower(mon, this.magicNumber), this.magicNumber, true));
+            this.damage += player.getPower(KSMOD_MagickChargePower.POWER_ID).amount;
         }
+        this.damage += KSMOD_SealedBook.DAMAGE_INCREASE;
+    }
+
+    @Override
+    public String getExtraDescription()
+    {
+        return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.DAMAGE_INCREASE + EXTENDED_DESCRIPTION[1];
     }
 }
