@@ -107,7 +107,7 @@
   },
   "ClowCardTheIllusion": {
     "NAME": "幻",
-    "DESCRIPTION": "造成 !D! 点伤害。消耗区每有2张牌，额外造成1次伤害。"
+    "DESCRIPTION": "「 火元素牌 」造成 !D! 点伤害。消耗区每有3张牌，额外造成 !M! 次伤害。"
   },
   "ClowCardTheJump": {
     "NAME": "跳",
