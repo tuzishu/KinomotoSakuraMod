@@ -61,7 +61,10 @@
   },
   "ClowCardTheErase": {
     "NAME": "消",
-    "DESCRIPTION": "【 元素牌 】造成 !D! 点伤害，如果目标为 爪牙 则立即消灭。给与 !M! 层 暗元素 。"
+    "DESCRIPTION": "「 风元素牌 」造成 !D! 点伤害，如果目标是 爪牙 ，则直接击杀。",
+    "EXTENDED_DESCRIPTION": [
+      "「 风元素牌 」造成 !D! 点伤害，如果目标是不是精英或boss，则直接击杀。"
+    ]
   },
   "ClowCardTheFight": {
     "NAME": "斗",
