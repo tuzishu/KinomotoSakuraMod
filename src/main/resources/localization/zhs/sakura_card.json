@@ -84,8 +84,11 @@
   },
   "ClowCardTheFlower": {
     "NAME": "花",
-    "DESCRIPTION": "【 元素牌 】 消耗 。回复场上所有 水元素 层数和1/4的生命。给与目标 !M! 层 地元素 。",
-    "UPGRADE_DESCRIPTION": "【 元素牌 】 消耗 。回复场上所有 水元素 层数和1/4的生命。获得场上所有 地元素 层数和1/2的 格挡 。给与目标 !M! 层 地元素 。"
+    "DESCRIPTION": " 消耗 。获得 1 点能量。",
+    "UPGRADE_DESCRIPTION": "获得 1 点能量。",
+    "EXTENDED_DESCRIPTION": [
+      "额外获得2点能量。"
+    ]
   },
   "ClowCardTheFly": {
     "NAME": "飞",
