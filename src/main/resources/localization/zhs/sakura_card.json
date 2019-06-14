@@ -231,7 +231,11 @@
   },
   "ClowCardTheSleep": {
     "NAME": "睡",
-    "DESCRIPTION": " 消耗 。使非boss目标沉睡 !M! 回合，受到伤害时会醒来。自然醒来时将恢复所有生命值，并获得2层 虚弱 。"
+    "DESCRIPTION": "「 风元素牌 」 消耗 。使非boss目标沉睡 !M! 回合，受到伤害时会醒来。自然醒来时将恢复所有生命值，并获得2层 虚弱 。",
+    "EXTENDED_DESCRIPTION": [
+      "额外睡眠",
+      "回合"
+    ]
   },
   "ClowCardTheSnow": {
     "NAME": "雪",
