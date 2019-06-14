@@ -87,7 +87,8 @@
     "DESCRIPTION": " 「 地元素牌 」消耗 。获得 1 点能量。",
     "UPGRADE_DESCRIPTION": "「 地元素牌 」获得 1 点能量。",
     "EXTENDED_DESCRIPTION": [
-      "额外获得2点能量。"
+      "额外获得",
+      "点能量。"
     ]
   },
   "ClowCardTheFly": {
@@ -118,7 +119,11 @@
   },
   "ClowCardTheLibra": {
     "NAME": "秤",
-    "DESCRIPTION": "获得 !B! 点 格挡 。当前能量大于抽排堆和弃牌堆的牌数差时，获得 !M! 点能量。"
+    "DESCRIPTION": "「 地元素牌 」获得 !B! 点 格挡 。当抽排堆和弃牌堆的数量差小于最大能量值时，获得1点能量。",
+    "EXTENDED_DESCRIPTION": [
+      "额外获得",
+      "点能量。"
+    ]
   },
   "ClowCardTheLight": {
     "NAME": "光",

@@ -2,6 +2,7 @@ package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
+import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -16,29 +17,28 @@ public class ClowCardTheLibra extends KSMOD_AbstractMagicCard
     public static final String ID = "ClowCardTheLibra";
     private static final String NAME;
     private static final String DESCRIPTION;
+    private static final String[] EXTENDED_DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_libra.png";
     private static final int COST = 0;
     private static final CardType CARD_TYPE = CardType.SKILL;
     private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
-    private static final CardTarget CARD_TARGET = CardTarget.SELF;
-    private static final int BASE_BLOCK = 3;
-    private static final int UPGRADE_BLOCK = 2;
-    private static final int BASE_MAGIC_NUMBER = 1;
-    private static final int UPGRADED_MAGIC_NUMBER = 1;
+    private static final CardTarget CARD_TARGET = CardTarget.NONE;
+    private static final int BASE_BLOCK = 4;
+    private static final int UPGRADE_BLOCK = 4;
 
     static
     {
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
         NAME = cardStrings.NAME;
         DESCRIPTION = cardStrings.DESCRIPTION;
+        EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     }
 
     public ClowCardTheLibra()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.baseBlock = BASE_BLOCK;
-        this.baseMagicNumber = BASE_MAGIC_NUMBER;
     }
 
     @Override
@@ -48,7 +48,6 @@ public class ClowCardTheLibra extends KSMOD_AbstractMagicCard
         {
             this.upgradeName();
             this.upgradeBlock(UPGRADE_BLOCK);
-            this.upgradeMagicNumber(UPGRADED_MAGIC_NUMBER);
         }
     }
 
@@ -59,18 +58,35 @@ public class ClowCardTheLibra extends KSMOD_AbstractMagicCard
     }
 
     @Override
-    public void use(AbstractPlayer player, AbstractMonster monster)
+    public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
         if (CheckBalance())
         {
-            AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(this.magicNumber));
+            AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
         }
+    }
+
+    @Override
+    public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
+    {
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
+        if (CheckBalance())
+        {
+            AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
+        }
+        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(KSMOD_SealedBook.ENERGY_NUMBER));
+    }
+
+    @Override
+    public String getExtraDescription()
+    {
+        return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.ENERGY_NUMBER + EXTENDED_DESCRIPTION[1];
     }
 
     private boolean CheckBalance()
     {
         int cardDiff = AbstractDungeon.player.drawPile.size() - AbstractDungeon.player.discardPile.size();
-        return Math.abs(cardDiff) <= EnergyPanel.getCurrentEnergy();
+        return Math.abs(cardDiff) <= EnergyPanel.totalCount;
     }
 }

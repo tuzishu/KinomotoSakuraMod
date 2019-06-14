@@ -73,6 +73,7 @@ public class ClowCardTheJump extends KSMOD_AbstractMagicCard
         }
     }
 
+    @Override
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
@@ -83,6 +84,7 @@ public class ClowCardTheJump extends KSMOD_AbstractMagicCard
         }
     }
 
+    @Override
     public String getExtraDescription()
     {
         return EXTENDED_DESCRIPTION[0];

@@ -73,6 +73,6 @@ public class ClowCardTheFlower extends KSMOD_AbstractMagicCard
     @Override
     public String getExtraDescription()
     {
-        return this.rawDescription + EXTENDED_DESCRIPTION[0];
+        return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.ENERGY_NUMBER + EXTENDED_DESCRIPTION[1];
     }
 }
