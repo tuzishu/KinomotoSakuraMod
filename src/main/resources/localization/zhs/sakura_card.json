@@ -80,8 +80,7 @@
   },
   "ClowCardTheFloat": {
     "NAME": "浮",
-    "DESCRIPTION": "【 物理牌 】受到的未被 格挡 的伤害减少 !M! 点。",
-    "UPGRADE_DESCRIPTION": "【 物理牌 】受到的未被 格挡 的伤害减少 !M! 点。每受到1次未被 格挡 的伤害，获得3点 格挡 。"
+    "DESCRIPTION": "「 风元素牌 」每受到1次未被格挡的伤害，获得1层 敏捷 。"
   },
   "ClowCardTheFlower": {
     "NAME": "花",

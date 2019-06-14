@@ -77,6 +77,13 @@
       " 张牌。"
     ]
   },
+  "KSMOD_FloatPower": {
+    "NAME": "漂浮",
+    "DESCRIPTIONS": [
+      "每受到1次 #r未被格挡 的伤害，获得 #b",
+      " 层 #y敏捷 。"
+    ]
+  },
   "TwinPower": {
     "NAME": "双生",
     "DESCRIPTIONS": [
