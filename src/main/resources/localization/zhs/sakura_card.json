@@ -181,8 +181,10 @@
   },
   "ClowCardTheRain": {
     "NAME": "雨",
-    "DESCRIPTION": "【 元素牌 】给与 !M! 层 水元素 5次。",
-    "UPGRADE_DESCRIPTION": "【 元素牌 】给与 !M! 层 水元素 5次。目标携带 火元素 大于12层时，降低2点力量。"
+    "DESCRIPTION": "「 水元素牌 」 消耗 。所有手牌的耗能下降1。",
+    "EXTENDED_DESCRIPTION": [
+      "「 水元素牌 」所有手牌的耗能下降1。"
+    ]
   },
   "ClowCardTheReturn": {
     "NAME": "回",
