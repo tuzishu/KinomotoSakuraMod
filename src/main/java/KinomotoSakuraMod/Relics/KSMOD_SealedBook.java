@@ -1,6 +1,9 @@
 package KinomotoSakuraMod.Relics;
 
 import KinomotoSakuraMod.Powers.KSMOD_EarthyPower;
+import KinomotoSakuraMod.Powers.KSMOD_FireyPower;
+import KinomotoSakuraMod.Powers.KSMOD_WateryPower;
+import KinomotoSakuraMod.Powers.KSMOD_WindyPower;
 import basemod.abstracts.CustomRelic;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -45,18 +48,18 @@ public class KSMOD_SealedBook extends CustomRelic
         {
             amount += 1;
         }
-        // if (AbstractDungeon.player.hasPower(KSMOD_EarthyPower.POWER_ID))
-        // {
-        //     amount += 1;
-        // }
-        // if (AbstractDungeon.player.hasPower(KSMOD_EarthyPower.POWER_ID))
-        // {
-        //     amount += 1;
-        // }
-        // if (AbstractDungeon.player.hasPower(KSMOD_EarthyPower.POWER_ID))
-        // {
-        //     amount += 1;
-        // }
+        if (AbstractDungeon.player.hasPower(KSMOD_WateryPower.POWER_ID))
+        {
+            amount += 1;
+        }
+        if (AbstractDungeon.player.hasPower(KSMOD_FireyPower.POWER_ID))
+        {
+            amount += 1;
+        }
+        if (AbstractDungeon.player.hasPower(KSMOD_WindyPower.POWER_ID))
+        {
+            amount += 1;
+        }
         return amount;
     }
 }

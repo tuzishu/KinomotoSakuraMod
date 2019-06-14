@@ -193,7 +193,11 @@
   },
   "ClowCardTheSand": {
     "NAME": "沙",
-    "DESCRIPTION": "【 元素牌 】造成 !D! 点伤害。目标携带 地元素 大于15层时，消耗15层 地元素 给与 !M! 层 易伤 。给与3层 地元素 。"
+    "DESCRIPTION": "「 地元素牌 」造成 !D! 点伤害。",
+    "EXTENDED_DESCRIPTION": [
+      "额外获得",
+      "点格挡。"
+    ]
   },
   "ClowCardTheShadow": {
     "NAME": "影",
