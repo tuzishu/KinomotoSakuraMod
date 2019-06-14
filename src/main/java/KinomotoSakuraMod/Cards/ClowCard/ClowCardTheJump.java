@@ -1,8 +1,7 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
-import KinomotoSakuraMod.Patches.CustomCardColor;
-import KinomotoSakuraMod.Patches.CustomTag;
+import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -24,7 +23,7 @@ public class ClowCardTheJump extends KSMOD_AbstractMagicCard
     private static final String IMAGE_PATH = "img/cards/clowcard/the_jump.png";
     private static final int COST = 1;
     private static final CardType CARD_TYPE = CardType.SKILL;
-    private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
+    private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
     private static final int BASE_BLOCK = 8;

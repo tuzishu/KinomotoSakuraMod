@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Powers;
 
-import KinomotoSakuraMod.Patches.CustomTag;
+import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -39,7 +39,7 @@ public class KSMOD_WateryPower extends KSMOD_CustomPower
 
     public void onUseCard(AbstractCard card, UseCardAction action)
     {
-        if (card.hasTag(CustomTag.KSMOD_WATERY_CARD))
+        if (card.hasTag(KSMOD_CustomTag.KSMOD_WATERY_CARD))
         {
             AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(this.amount));
         }

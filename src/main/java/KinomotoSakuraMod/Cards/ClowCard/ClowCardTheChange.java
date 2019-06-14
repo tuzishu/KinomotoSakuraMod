@@ -2,7 +2,7 @@ package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Actions.KSMOD_ChangeAction;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
-import KinomotoSakuraMod.Patches.CustomCardColor;
+import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -20,7 +20,7 @@ public class ClowCardTheChange extends KSMOD_AbstractMagicCard
     private static final String IMAGE_PATH = "img/cards/clowcard/the_change.png";
     private static final int COST = 0;
     private static final CardType CARD_TYPE = CardType.SKILL;
-    private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
+    private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.NONE;
     private static final int BASE_MAGIC_NUMBER = 1;

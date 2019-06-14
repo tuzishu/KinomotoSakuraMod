@@ -2,8 +2,8 @@ package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Actions.ApplyElementAction;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
-import KinomotoSakuraMod.Patches.CustomCardColor;
-import KinomotoSakuraMod.Patches.CustomTag;
+import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
+import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -23,7 +23,7 @@ public class ClowCardTheSand extends KSMOD_AbstractMagicCard
     private static final String IMAGE_PATH = "img/cards/clowcard/the_sand.png";
     private static final int COST = 0;
     private static final CardType CARD_TYPE = CardType.ATTACK;
-    private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
+    private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
     private static final int BASE_DAMAGE = 6;
@@ -41,7 +41,7 @@ public class ClowCardTheSand extends KSMOD_AbstractMagicCard
 
     public ClowCardTheSand()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.ELEMENT_CARD);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, KSMOD_CustomTag.ELEMENT_CARD);
         this.baseDamage = BASE_DAMAGE;
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }

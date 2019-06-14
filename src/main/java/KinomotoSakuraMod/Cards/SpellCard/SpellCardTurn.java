@@ -1,13 +1,13 @@
 package KinomotoSakuraMod.Cards.SpellCard;
 
-import KinomotoSakuraMod.Cards.AbstractSpellCard;
-import KinomotoSakuraMod.Patches.CustomCardColor;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractSpellCard;
+import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class SpellCardTurn extends AbstractSpellCard
+public class SpellCardTurn extends KSMOD_AbstractSpellCard
 {
     public static final String ID = "SpellCardTurn";
     private static final String NAME;
@@ -15,7 +15,7 @@ public class SpellCardTurn extends AbstractSpellCard
     private static final String IMAGE_PATH = "img/cards/default_card.png";
     private static final int COST = 0;
     private static final CardType CARD_TYPE = CardType.SKILL;
-    private static final CardColor CARD_COLOR = CustomCardColor.SPELL_COLOR;
+    private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SPELL_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
 
@@ -43,7 +43,7 @@ public class SpellCardTurn extends AbstractSpellCard
     }
 
     @Override
-    public AbstractSpellCard makeCopy()
+    public KSMOD_AbstractSpellCard makeCopy()
     {
         return new SpellCardTurn();
     }

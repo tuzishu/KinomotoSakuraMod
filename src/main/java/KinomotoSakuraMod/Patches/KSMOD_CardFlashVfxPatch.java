@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Patches;
 
-import KinomotoSakuraMod.Utility.ImageConst;
+import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.vfx.cardManip.CardFlashVfx;
 
 import java.lang.reflect.Field;
 
-public class CardFlashVfxPatch
+public class KSMOD_CardFlashVfxPatch
 {
     @SpirePatch(clz = CardFlashVfx.class, method = SpirePatch.CONSTRUCTOR, paramtypez = {
             AbstractCard.class,
@@ -22,7 +22,7 @@ public class CardFlashVfxPatch
     {
         public static SpireReturn<Object> Prefix(CardFlashVfx vfx, AbstractCard card, Color color, boolean isSuper) throws NoSuchFieldException, IllegalAccessException
         {
-            if (card.color == CustomCardColor.CLOWCARD_COLOR || card.color == CustomCardColor.SAKURACARD_COLOR || card.color == CustomCardColor.SPELL_COLOR)
+            if (card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR || card.color == KSMOD_CustomCardColor.SAKURACARD_COLOR || card.color == KSMOD_CustomCardColor.SPELL_COLOR)
             {
                 Field thisColor = KSMOD_Utility.GetFieldByReflect(AbstractGameEffect.class, "color");
                 Field yScale = KSMOD_Utility.GetFieldByReflect(CardFlashVfx.class, "yScale");
@@ -35,7 +35,7 @@ public class CardFlashVfxPatch
                 thisCard.set(vfx, card);
                 thisIsSuper.setBoolean(vfx, isSuper);
                 duration.setFloat(vfx, 0.5F);
-                img.set(vfx, ImageConst.FLASH);
+                img.set(vfx, KSMOD_ImageConst.FLASH);
                 return SpireReturn.Return(null);
             }
             else
@@ -54,7 +54,7 @@ public class CardFlashVfxPatch
     {
         public static SpireReturn<Object> Prefix(CardFlashVfx vfx, AbstractCard card, Color c) throws NoSuchFieldException, IllegalAccessException
         {
-            if (card.color == CustomCardColor.CLOWCARD_COLOR || card.color == CustomCardColor.SAKURACARD_COLOR || card.color == CustomCardColor.SPELL_COLOR)
+            if (card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR || card.color == KSMOD_CustomCardColor.SAKURACARD_COLOR || card.color == KSMOD_CustomCardColor.SPELL_COLOR)
             {
                 CardFlashVfx_1.Prefix(vfx, card, c, false);
                 return SpireReturn.Return(null);

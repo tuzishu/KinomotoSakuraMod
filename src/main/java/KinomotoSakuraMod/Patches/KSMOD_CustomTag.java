@@ -3,7 +3,7 @@ package KinomotoSakuraMod.Patches;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 
-public class CustomTag
+public class KSMOD_CustomTag
 {
     @SpireEnum
     public static AbstractCard.CardTags KSMOD_FIREY_CARD;

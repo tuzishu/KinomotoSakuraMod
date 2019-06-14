@@ -2,8 +2,8 @@ package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Actions.ApplyElementAction;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
-import KinomotoSakuraMod.Patches.CustomCardColor;
-import KinomotoSakuraMod.Patches.CustomTag;
+import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
+import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Powers.FireyElementPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -24,7 +24,7 @@ public class ClowCardTheStorm extends KSMOD_AbstractMagicCard
     private static final int COST = 2;
     private static final int UPGRADED_COST = 1;
     private static final AbstractCard.CardType CARD_TYPE = AbstractCard.CardType.ATTACK;
-    private static final AbstractCard.CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
+    private static final AbstractCard.CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
     private static final int BASE_MAGIC_NUMBER = 3;
@@ -38,7 +38,7 @@ public class ClowCardTheStorm extends KSMOD_AbstractMagicCard
 
     public ClowCardTheStorm()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.ELEMENT_CARD);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, KSMOD_CustomTag.ELEMENT_CARD);
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 

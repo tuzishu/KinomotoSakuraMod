@@ -1,7 +1,7 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
-import KinomotoSakuraMod.Patches.CustomCardColor;
+import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Powers.TimePower;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -27,7 +27,7 @@ public class ClowCardTheTime extends KSMOD_AbstractMagicCard
     private static final String IMAGE_PATH = "img/cards/clowcard/the_time.png";
     private static final int COST = 3;
     private static final AbstractCard.CardType CARD_TYPE = AbstractCard.CardType.ATTACK;
-    private static final AbstractCard.CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
+    private static final AbstractCard.CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.RARE;
     private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
     private static final int BASE_DAMAGE = 8;

@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.screens.MasterDeckViewScreen;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-public class MasterDeckViewScreenPatch
+public class KSMOD_MasterDeckViewScreenPatch
 {
     private static final int CARDS_PER_LINE = 5;
     private static float DRAW_START_X = ((float) Settings.WIDTH - 5.0F * AbstractCard.IMG_WIDTH * 0.75F - 4.0F * Settings.CARD_VIEW_PAD_X) / 2.0F + AbstractCard.IMG_WIDTH * 0.75F / 2.0F;
@@ -24,7 +24,7 @@ public class MasterDeckViewScreenPatch
 
     public static boolean IsLongCard(AbstractCard card)
     {
-        return card.color == CustomCardColor.CLOWCARD_COLOR || card.color == CustomCardColor.SAKURACARD_COLOR || card.color == CustomCardColor.SPELL_COLOR;
+        return card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR || card.color == KSMOD_CustomCardColor.SAKURACARD_COLOR || card.color == KSMOD_CustomCardColor.SPELL_COLOR;
     }
 
     public static boolean HasLongCard(ArrayList<AbstractCard> cards)

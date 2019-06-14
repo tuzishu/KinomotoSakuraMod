@@ -1,8 +1,8 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
-import KinomotoSakuraMod.Patches.CustomCardColor;
-import KinomotoSakuraMod.Patches.CustomTag;
+import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
+import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -19,7 +19,7 @@ public class ClowCardTheShield extends KSMOD_AbstractMagicCard
     private static final String IMAGE_PATH = "img/cards/clowcard/the_shield.png";
     private static final int COST = 1;
     private static final CardType CARD_TYPE = CardType.SKILL;
-    private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
+    private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.BASIC;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
     private static final int BASE_BLOCK = 5;
@@ -34,7 +34,7 @@ public class ClowCardTheShield extends KSMOD_AbstractMagicCard
 
     public ClowCardTheShield()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.PHYSICS_CARD);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, KSMOD_CustomTag.PHYSICS_CARD);
         this.tags.add(BaseModCardTags.BASIC_DEFEND);
         this.baseBlock = BASE_BLOCK;
     }

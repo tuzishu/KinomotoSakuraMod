@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Patches;
 
-import KinomotoSakuraMod.Utility.ImageConst;
+import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
@@ -14,16 +14,16 @@ import com.megacrit.cardcrawl.vfx.cardManip.CardGlowBorder;
 import java.lang.reflect.Field;
 
 @SpirePatch(clz = CardGlowBorder.class, method = SpirePatch.CONSTRUCTOR, paramtypez = {AbstractCard.class})
-public class CardGlowBorderPatch
+public class KSMOD_CardGlowBorderPatch
 {
     public static SpireReturn<Object> Prefix(CardGlowBorder border, AbstractCard card) throws NoSuchFieldException, IllegalAccessException
     {
         Field thisCard = KSMOD_Utility.GetFieldByReflect(CardGlowBorder.class, "card");
-        if (card.color == CustomCardColor.CLOWCARD_COLOR || card.color == CustomCardColor.SAKURACARD_COLOR || card.color == CustomCardColor.SPELL_COLOR)
+        if (card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR || card.color == KSMOD_CustomCardColor.SAKURACARD_COLOR || card.color == KSMOD_CustomCardColor.SPELL_COLOR)
         {
             thisCard.set(border, card);
             Field img = KSMOD_Utility.GetFieldByReflect(CardGlowBorder.class, "img");
-            img.set(border, ImageConst.SILHOUETTE);
+            img.set(border, KSMOD_ImageConst.SILHOUETTE);
             border.duration = 1.2F;
             Field color = KSMOD_Utility.GetFieldByReflect(AbstractGameEffect.class, "color");
             if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT)

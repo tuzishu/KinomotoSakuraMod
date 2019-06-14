@@ -8,12 +8,12 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.screens.DiscardPileViewScreen;
+import com.megacrit.cardcrawl.screens.DrawPileViewScreen;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-public class DiscardPileViewScreenPatch
+public class KSMOD_DrawPileViewScreenPatch
 {
     private static final int CARDS_PER_LINE = 5;
     private static float DRAW_START_X = ((float) Settings.WIDTH - 5.0F * AbstractCard.IMG_WIDTH * 0.75F - 4.0F * Settings.CARD_VIEW_PAD_X) / 2.0F + AbstractCard.IMG_WIDTH * 0.75F / 2.0F;
@@ -24,7 +24,7 @@ public class DiscardPileViewScreenPatch
 
     public static boolean IsLongCard(AbstractCard card)
     {
-        return card.color == CustomCardColor.CLOWCARD_COLOR || card.color == CustomCardColor.SAKURACARD_COLOR || card.color == CustomCardColor.SPELL_COLOR;
+        return card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR || card.color == KSMOD_CustomCardColor.SAKURACARD_COLOR || card.color == KSMOD_CustomCardColor.SPELL_COLOR;
     }
 
     public static boolean HasLongCard(ArrayList<AbstractCard> cards)
@@ -45,7 +45,7 @@ public class DiscardPileViewScreenPatch
     public static float GetPadHeight(int index, boolean includeLastLine)
     {
         float pad = 0F;
-        ArrayList<AbstractCard> cards = AbstractDungeon.player.discardPile.group;
+        ArrayList<AbstractCard> cards = AbstractDungeon.player.drawPile.group;
         int lineNum = index / CARDS_PER_LINE;
         for (int i = 0; i < lineNum; i++)
         {
@@ -78,21 +78,21 @@ public class DiscardPileViewScreenPatch
         return pad;
     }
 
-    @SpirePatch(clz = DiscardPileViewScreen.class, method = "updatePositions", paramtypez = {})
+    @SpirePatch(clz = DrawPileViewScreen.class, method = "updatePositions", paramtypez = {})
     public static class updatePositions
     {
-        public static SpireReturn<Object> Prefix(DiscardPileViewScreen deck) throws NoSuchFieldException, IllegalAccessException
+        public static SpireReturn<Object> Prefix(DrawPileViewScreen deck) throws NoSuchFieldException, IllegalAccessException
         {
-            ArrayList<AbstractCard> cards = AbstractDungeon.player.discardPile.group;
+            ArrayList<AbstractCard> cards = AbstractDungeon.player.drawPile.group;
             if (HasLongCard(cards))
             {
-                Field hoveredCard = KSMOD_Utility.GetFieldByReflect(DiscardPileViewScreen.class, "hoveredCard");
+                Field hoveredCard = KSMOD_Utility.GetFieldByReflect(DrawPileViewScreen.class, "hoveredCard");
                 hoveredCard.set(deck, null);
                 for (int i = 0; i < cards.size(); ++i)
                 {
                     AbstractCard card = cards.get(i);
                     int mod = i % CARDS_PER_LINE;
-                    Float currentDiffY = KSMOD_Utility.GetFieldByReflect(DiscardPileViewScreen.class, "currentDiffY").getFloat(deck);
+                    Float currentDiffY = KSMOD_Utility.GetFieldByReflect(DrawPileViewScreen.class, "currentDiffY").getFloat(deck);
                     card.target_x = DRAW_START_X + (float) mod * PAD_X;
                     card.target_y = DRAW_START_Y + currentDiffY - GetPadHeight(i, false);
                     card.update();
@@ -111,15 +111,15 @@ public class DiscardPileViewScreenPatch
         }
     }
 
-    @SpirePatch(clz = DiscardPileViewScreen.class, method = "calculateScrollBounds", paramtypez = {})
+    @SpirePatch(clz = DrawPileViewScreen.class, method = "calculateScrollBounds", paramtypez = {})
     public static class calculateScrollBounds
     {
-        public static SpireReturn<Object> Prefix(DiscardPileViewScreen deck) throws NoSuchFieldException, IllegalAccessException
+        public static SpireReturn<Object> Prefix(DrawPileViewScreen deck) throws NoSuchFieldException, IllegalAccessException
         {
-            ArrayList<AbstractCard> cards = AbstractDungeon.player.discardPile.group;
+            ArrayList<AbstractCard> cards = AbstractDungeon.player.drawPile.group;
             if (HasLongCard(cards))
             {
-                Field scrollUpperBound = KSMOD_Utility.GetFieldByReflect(DiscardPileViewScreen.class, "scrollUpperBound");
+                Field scrollUpperBound = KSMOD_Utility.GetFieldByReflect(DrawPileViewScreen.class, "scrollUpperBound");
                 if (cards.size() > CARDS_PER_LINE && cards.size() <= CARDS_PER_LINE * 2 && HasLongCard(cards) || cards.size() > CARDS_PER_LINE * 2)
                 {
                     scrollUpperBound.setFloat(deck, Settings.DEFAULT_SCROLL_LIMIT + GetPadHeight(cards.size() - 1, true));
@@ -128,7 +128,7 @@ public class DiscardPileViewScreenPatch
                 {
                     scrollUpperBound.setFloat(deck, Settings.DEFAULT_SCROLL_LIMIT);
                 }
-                Field prevDeckSize = KSMOD_Utility.GetFieldByReflect(DiscardPileViewScreen.class, "prevDeckSize");
+                Field prevDeckSize = KSMOD_Utility.GetFieldByReflect(DrawPileViewScreen.class, "prevDeckSize");
                 prevDeckSize.setInt(deck, AbstractDungeon.player.masterDeck.size());
                 return SpireReturn.Return(null);
             }
@@ -139,19 +139,19 @@ public class DiscardPileViewScreenPatch
         }
     }
 
-    @SpirePatch(clz = DiscardPileViewScreen.class, method = "hideCards", paramtypez = {})
+    @SpirePatch(clz = DrawPileViewScreen.class, method = "hideCards", paramtypez = {})
     public static class hideCards
     {
-        public static SpireReturn<Object> Prefix(DiscardPileViewScreen deck) throws NoSuchFieldException, IllegalAccessException
+        public static SpireReturn<Object> Prefix(DrawPileViewScreen deck) throws NoSuchFieldException, IllegalAccessException
         {
-            ArrayList<AbstractCard> cards = AbstractDungeon.player.discardPile.group;
+            ArrayList<AbstractCard> cards = AbstractDungeon.player.drawPile.group;
             if (HasLongCard(cards))
             {
                 for (int i = 0; i < cards.size(); ++i)
                 {
                     AbstractCard card = cards.get(i);
                     int mod = i % 5;
-                    Float currentDiffY = KSMOD_Utility.GetFieldByReflect(DiscardPileViewScreen.class, "currentDiffY").getFloat(deck);
+                    Float currentDiffY = KSMOD_Utility.GetFieldByReflect(DrawPileViewScreen.class, "currentDiffY").getFloat(deck);
                     card.current_x = DRAW_START_X + mod * PAD_X;
                     card.current_y = DRAW_START_Y + currentDiffY - GetPadHeight(i, false) - MathUtils.random(100.0F * Settings.scale, 200.0F * Settings.scale);
                     card.targetDrawScale = 0.75F;

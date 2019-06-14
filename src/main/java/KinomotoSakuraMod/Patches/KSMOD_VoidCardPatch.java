@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class VoidCardPatch
+public class KSMOD_VoidCardPatch
 {
     @SpirePatch(clz = VoidCard.class, method = "triggerWhenDrawn", paramtypez = {})
     public static class triggerWhenDrawn

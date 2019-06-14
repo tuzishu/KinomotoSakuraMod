@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Powers;
 
-import KinomotoSakuraMod.Patches.CustomTag;
+import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
@@ -42,7 +42,7 @@ public class KSMOD_FireyPower extends KSMOD_CustomPower
 
     public void onUseCard(AbstractCard card, UseCardAction action)
     {
-        if (card.hasTag(CustomTag.KSMOD_FIREY_CARD))
+        if (card.hasTag(KSMOD_CustomTag.KSMOD_FIREY_CARD))
         {
             AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(this.owner, KSMOD_Utility.GetDamageList(this.amount), DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.FIRE));
         }

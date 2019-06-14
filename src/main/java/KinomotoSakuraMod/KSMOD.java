@@ -6,12 +6,12 @@ import KinomotoSakuraMod.Cards.SpellCard.SpellCardSeal;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
 import KinomotoSakuraMod.Cards.SpellCard.TestCard;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
-import KinomotoSakuraMod.Patches.CustomCardColor;
-import KinomotoSakuraMod.Patches.CustomCharacter;
-import KinomotoSakuraMod.Patches.CustomKeywords;
+import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
+import KinomotoSakuraMod.Patches.KSMOD_CustomCharacter;
+import KinomotoSakuraMod.Patches.KSMOD_CustomKeywords;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import KinomotoSakuraMod.Relics.KSMOD_SealedWand;
-import KinomotoSakuraMod.Utility.ImageConst;
+import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import basemod.BaseMod;
 import basemod.interfaces.*;
@@ -39,8 +39,8 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
     public KSMOD()
     {
         BaseMod.subscribe(this);
-        BaseMod.addColor(CustomCardColor.CLOWCARD_COLOR, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, ImageConst.CLOWCARD_BG_PATH, ImageConst.CLOWCARD_BG_PATH, ImageConst.CLOWCARD_BG_PATH, ImageConst.ORB_ATTACK_PATH, ImageConst.CLOWCARD_BG_LARGE_PATH, ImageConst.CLOWCARD_BG_LARGE_PATH, ImageConst.CLOWCARD_BG_LARGE_PATH, ImageConst.ORB_ATTACK_LARGE_PATH);
-        BaseMod.addColor(CustomCardColor.SPELL_COLOR, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, ImageConst.CLOWCARD_BG_PATH, ImageConst.CLOWCARD_BG_PATH, ImageConst.CLOWCARD_BG_PATH, ImageConst.ORB_ATTACK_PATH, ImageConst.CLOWCARD_BG_LARGE_PATH, ImageConst.CLOWCARD_BG_LARGE_PATH, ImageConst.CLOWCARD_BG_LARGE_PATH, ImageConst.ORB_ATTACK_LARGE_PATH);
+        BaseMod.addColor(KSMOD_CustomCardColor.CLOWCARD_COLOR, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, KSMOD_ImageConst.CLOWCARD_BG_PATH, KSMOD_ImageConst.CLOWCARD_BG_PATH, KSMOD_ImageConst.CLOWCARD_BG_PATH, KSMOD_ImageConst.ORB_ATTACK_PATH, KSMOD_ImageConst.CLOWCARD_BG_LARGE_PATH, KSMOD_ImageConst.CLOWCARD_BG_LARGE_PATH, KSMOD_ImageConst.CLOWCARD_BG_LARGE_PATH, KSMOD_ImageConst.ORB_ATTACK_LARGE_PATH);
+        BaseMod.addColor(KSMOD_CustomCardColor.SPELL_COLOR, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, KSMOD_ImageConst.CLOWCARD_BG_PATH, KSMOD_ImageConst.CLOWCARD_BG_PATH, KSMOD_ImageConst.CLOWCARD_BG_PATH, KSMOD_ImageConst.ORB_ATTACK_PATH, KSMOD_ImageConst.CLOWCARD_BG_LARGE_PATH, KSMOD_ImageConst.CLOWCARD_BG_LARGE_PATH, KSMOD_ImageConst.CLOWCARD_BG_LARGE_PATH, KSMOD_ImageConst.ORB_ATTACK_LARGE_PATH);
     }
 
     public static void initialize()
@@ -71,7 +71,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
     {
         KSMOD_Utility.Logger.info("开始编辑角色");
 
-        BaseMod.addCharacter(new KinomotoSakura(), ImageConst.SELECT_BUTTON_PATH, ImageConst.PORTRAIT_PATH, CustomCharacter.KINOMOTOSAKURA);
+        BaseMod.addCharacter(new KinomotoSakura(), KSMOD_ImageConst.SELECT_BUTTON_PATH, KSMOD_ImageConst.PORTRAIT_PATH, KSMOD_CustomCharacter.KINOMOTOSAKURA);
 
         KSMOD_Utility.Logger.info("结束编辑角色");
     }
@@ -83,7 +83,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
 
         for (AbstractRelic relic : GetRelicList())
         {
-            BaseMod.addRelicToCustomPool(relic, CustomCardColor.CLOWCARD_COLOR);
+            BaseMod.addRelicToCustomPool(relic, KSMOD_CustomCardColor.CLOWCARD_COLOR);
             KSMOD_Utility.Logger.info("Loading relic : " + relic.name);
         }
 
@@ -238,7 +238,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         path += "sakura_keyword.json";
         Gson gson = new Gson();
         String json = Gdx.files.internal(path).readString(String.valueOf(StandardCharsets.UTF_8));
-        CustomKeywords keywords = (CustomKeywords) gson.fromJson(json, CustomKeywords.class);
+        KSMOD_CustomKeywords keywords = (KSMOD_CustomKeywords) gson.fromJson(json, KSMOD_CustomKeywords.class);
         Keyword[] keywordList = keywords.keywords;
 
         for (int i = 0; i < keywordList.length; ++i)

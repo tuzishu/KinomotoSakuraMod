@@ -1,7 +1,7 @@
 package KinomotoSakuraMod.Patches;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
-import KinomotoSakuraMod.Utility.ImageConst;
+import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -26,7 +26,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Scanner;
 
-public class SingleCardViewPopupPatch
+public class KSMOD_SingleCardViewPopupPatch
 {
     private static final float ENERGY_COST_OFFSET_X = -180F;
     private static final float ENERGY_COST_OFFSET_Y = 444F;
@@ -55,7 +55,7 @@ public class SingleCardViewPopupPatch
 
     public static boolean IsKSCard(AbstractCard card)
     {
-        return card.color == CustomCardColor.CLOWCARD_COLOR || card.color == CustomCardColor.SAKURACARD_COLOR || card.color == CustomCardColor.SPELL_COLOR;
+        return card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR || card.color == KSMOD_CustomCardColor.SAKURACARD_COLOR || card.color == KSMOD_CustomCardColor.SPELL_COLOR;
     }
 
     @SpirePatch(clz = SingleCardViewPopup.class, method = "renderCardBack", paramtypez = {SpriteBatch.class})
@@ -67,17 +67,17 @@ public class SingleCardViewPopupPatch
             if (IsKSCard(card))
             {
                 Texture img = null;
-                if (card.color == CustomCardColor.CLOWCARD_COLOR)
+                if (card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR)
                 {
-                    img = ImageConst.CLOWCARD_BG_LARGE;
+                    img = KSMOD_ImageConst.CLOWCARD_BG_LARGE;
                 }
-                else if (card.color == CustomCardColor.SAKURACARD_COLOR)
+                else if (card.color == KSMOD_CustomCardColor.SAKURACARD_COLOR)
                 {
-                    img = ImageConst.SAKURACARD_BG_LARGE;
+                    img = KSMOD_ImageConst.SAKURACARD_BG_LARGE;
                 }
-                else if (card.color == CustomCardColor.SPELL_COLOR)
+                else if (card.color == KSMOD_CustomCardColor.SPELL_COLOR)
                 {
-                    img = ImageConst.SPELLCARD_BG_LARGE;
+                    img = KSMOD_ImageConst.SPELLCARD_BG_LARGE;
                 }
 
                 if (img != null)
@@ -124,13 +124,13 @@ public class SingleCardViewPopupPatch
                 switch (card.rarity)
                 {
                     case RARE:
-                        frameImg = ImageConst.FRAME_RARE_LARGE;
+                        frameImg = KSMOD_ImageConst.FRAME_RARE_LARGE;
                         break;
                     case UNCOMMON:
-                        frameImg = ImageConst.FRAME_UNCOMMON_LARGE;
+                        frameImg = KSMOD_ImageConst.FRAME_UNCOMMON_LARGE;
                         break;
                     default:
-                        frameImg = ImageConst.FRAME_COMMON_LARGE;
+                        frameImg = KSMOD_ImageConst.FRAME_COMMON_LARGE;
                         break;
                 }
                 sb.draw(frameImg, Settings.WIDTH * 0.5F - 512.0F, Settings.HEIGHT * 0.5F - 512.0F, 512.0F, 512.0F, 1024.0F, 1024.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 1024, 1024, false, false);
@@ -155,13 +155,13 @@ public class SingleCardViewPopupPatch
                 switch (card.rarity)
                 {
                     case RARE:
-                        bannerImg = ImageConst.BANNER_RARE_LARGE;
+                        bannerImg = KSMOD_ImageConst.BANNER_RARE_LARGE;
                         break;
                     case UNCOMMON:
-                        bannerImg = ImageConst.BANNER_UNCOMMON_LARGE;
+                        bannerImg = KSMOD_ImageConst.BANNER_UNCOMMON_LARGE;
                         break;
                     default:
-                        bannerImg = ImageConst.BANNER_COMMON_LARGE;
+                        bannerImg = KSMOD_ImageConst.BANNER_COMMON_LARGE;
                 }
                 sb.draw(bannerImg, Settings.WIDTH * 0.5F - 512.0F, Settings.HEIGHT * 0.5F - 512.0F, 512.0F, 512.0F, 1024.0F, 1024.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 1024, 1024, false, false);
                 return SpireReturn.Return(null);
@@ -336,7 +336,7 @@ public class SingleCardViewPopupPatch
                 {
                     FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, TEXT[5], Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + TITLE_HEIGHT_TO_CENTER * Settings.scale, Settings.CREAM_COLOR.cpy());
                 }
-                if (card.color != CustomCardColor.SPELL_COLOR)
+                if (card.color != KSMOD_CustomCardColor.SPELL_COLOR)
                 {
                     if (card.isLocked)
                     {
@@ -383,16 +383,16 @@ public class SingleCardViewPopupPatch
                     switch (card.type)
                     {
                         case ATTACK:
-                            img = ImageConst.ORB_ATTACK_LARGE;
+                            img = KSMOD_ImageConst.ORB_ATTACK_LARGE;
                             break;
                         case SKILL:
-                            img = ImageConst.ORB_SKILL_LARGE;
+                            img = KSMOD_ImageConst.ORB_SKILL_LARGE;
                             break;
                         case POWER:
-                            img = ImageConst.ORB_POWER_LARGE;
+                            img = KSMOD_ImageConst.ORB_POWER_LARGE;
                             break;
                         default:
-                            img = ImageConst.ORB_SKILL_LARGE;
+                            img = KSMOD_ImageConst.ORB_SKILL_LARGE;
                             break;
                     }
                     sb.draw(img, Settings.WIDTH * 0.5F - ENERGY_ICON_WIDTH / 2F + (ENERGY_COST_OFFSET_X - 2F) * Settings.scale, Settings.HEIGHT * 0.5F - ENERGY_ICON_WIDTH / 2F + ENERGY_COST_OFFSET_Y * Settings.scale, ENERGY_ICON_WIDTH / 2F, ENERGY_ICON_WIDTH / 2F, ENERGY_ICON_WIDTH, ENERGY_ICON_WIDTH, Settings.scale, Settings.scale, 0.0F, 0, 0, (int) ENERGY_ICON_WIDTH, (int) ENERGY_ICON_WIDTH, false, false);

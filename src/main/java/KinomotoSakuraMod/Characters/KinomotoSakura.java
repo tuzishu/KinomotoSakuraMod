@@ -3,8 +3,8 @@ package KinomotoSakuraMod.Characters;
 import KinomotoSakuraMod.Cards.ClowCard.*;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardRelease;
 import KinomotoSakuraMod.KSMOD;
-import KinomotoSakuraMod.Patches.CustomCardColor;
-import KinomotoSakuraMod.Patches.CustomCharacter;
+import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
+import KinomotoSakuraMod.Patches.KSMOD_CustomCharacter;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import KinomotoSakuraMod.Relics.KSMOD_SealedWand;
 import basemod.abstracts.CustomPlayer;
@@ -77,7 +77,7 @@ public class KinomotoSakura extends CustomPlayer
     public KinomotoSakura()
     {
         // 参数列表：角色名，角色类枚举，能量面板贴图路径列表，能量面板特效贴图路径，能量面板贴图旋转速度列表，能量面板，模型资源路径，动画资源路径
-        super(ID, CustomCharacter.KINOMOTOSAKURA, ORB_TEXTURES, ORB_VFX, LAYER_SPEED, null, null);
+        super(ID, KSMOD_CustomCharacter.KINOMOTOSAKURA, ORB_TEXTURES, ORB_VFX, LAYER_SPEED, null, null);
 
         // 本地化字段
         KinomotoSakuraLocalizationData charData = CharacterLocalization.KINOMOTO_SAKURA_MAP.get(Settings.language);
@@ -156,7 +156,7 @@ public class KinomotoSakura extends CustomPlayer
 
     public AbstractCard.CardColor getCardColor()
     {
-        return CustomCardColor.CLOWCARD_COLOR;
+        return KSMOD_CustomCardColor.CLOWCARD_COLOR;
     }
 
     public Color getCardRenderColor()

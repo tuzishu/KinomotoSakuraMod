@@ -3,7 +3,7 @@ package KinomotoSakuraMod.Utility;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 
-public class ImageConst
+public class KSMOD_ImageConst
 {
     //////////
     // 资源路径

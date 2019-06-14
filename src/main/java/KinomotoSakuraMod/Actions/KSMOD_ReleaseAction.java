@@ -2,7 +2,7 @@ package KinomotoSakuraMod.Actions;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardRelease;
-import KinomotoSakuraMod.Patches.CustomCardColor;
+import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -109,7 +109,7 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
 
     private boolean IsCorrectCardType(AbstractCard card)
     {
-        return card.color == CustomCardColor.CLOWCARD_COLOR || card.color == CustomCardColor.SAKURACARD_COLOR;
+        return card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR || card.color == KSMOD_CustomCardColor.SAKURACARD_COLOR;
     }
 
     private void ReleaseCard(AbstractCard card)

@@ -3,7 +3,7 @@ package KinomotoSakuraMod.Patches;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 
-public class CustomCardColor
+public class KSMOD_CustomCardColor
 {
     @SpireEnum
     public static AbstractCard.CardColor CLOWCARD_COLOR;

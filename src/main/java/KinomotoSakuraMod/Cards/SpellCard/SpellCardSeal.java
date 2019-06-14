@@ -1,15 +1,15 @@
 package KinomotoSakuraMod.Cards.SpellCard;
 
 import KinomotoSakuraMod.Actions.KSMOD_SealAction;
-import KinomotoSakuraMod.Cards.AbstractSpellCard;
-import KinomotoSakuraMod.Patches.CustomCardColor;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractSpellCard;
+import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class SpellCardSeal extends AbstractSpellCard
+public class SpellCardSeal extends KSMOD_AbstractSpellCard
 {
     public static final String ID = "SpellCardSeal";
     private static final String NAME;
@@ -17,7 +17,7 @@ public class SpellCardSeal extends AbstractSpellCard
     private static final String IMAGE_PATH = "img/cards/default_card.png";
     private static final int COST = 2;
     private static final CardType CARD_TYPE = CardType.ATTACK;
-    private static final CardColor CARD_COLOR = CustomCardColor.SPELL_COLOR;
+    private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SPELL_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.BASIC;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
     private static final int BASE_DAMAGE = 9;
@@ -47,7 +47,7 @@ public class SpellCardSeal extends AbstractSpellCard
     }
 
     @Override
-    public AbstractSpellCard makeCopy()
+    public KSMOD_AbstractSpellCard makeCopy()
     {
         return new SpellCardSeal();
     }

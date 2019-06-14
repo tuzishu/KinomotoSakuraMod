@@ -3,7 +3,7 @@ package KinomotoSakuraMod.Cards;
 import KinomotoSakuraMod.Powers.KSMOD_LockPower;
 import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
-import KinomotoSakuraMod.Utility.ImageConst;
+import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import basemod.abstracts.CustomCard;
 import basemod.interfaces.PostPowerApplySubscriber;
@@ -263,16 +263,16 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
             switch (this.type)
             {
                 case ATTACK:
-                    img = ImageConst.ORB_ATTACK;
+                    img = KSMOD_ImageConst.ORB_ATTACK;
                     break;
                 case SKILL:
-                    img = ImageConst.ORB_SKILL;
+                    img = KSMOD_ImageConst.ORB_SKILL;
                     break;
                 case POWER:
-                    img = ImageConst.ORB_POWER;
+                    img = KSMOD_ImageConst.ORB_POWER;
                     break;
                 default:
-                    img = ImageConst.ORB_SKILL;
+                    img = KSMOD_ImageConst.ORB_SKILL;
                     break;
             }
             renderHelper.invoke(this, sb, renderColor, img, drawX, drawY);
@@ -308,13 +308,13 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
         switch (this.rarity)
         {
             case RARE:
-                texture = ImageConst.FRAME_RARE;
+                texture = KSMOD_ImageConst.FRAME_RARE;
                 break;
             case UNCOMMON:
-                texture = ImageConst.FRAME_UNCOMMON;
+                texture = KSMOD_ImageConst.FRAME_UNCOMMON;
                 break;
             default:
-                texture = ImageConst.FRAME_COMMON;
+                texture = KSMOD_ImageConst.FRAME_COMMON;
                 break;
         }
         return texture;
@@ -350,13 +350,13 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
         switch (this.rarity)
         {
             case RARE:
-                texture = ImageConst.BANNER_RARE;
+                texture = KSMOD_ImageConst.BANNER_RARE;
                 break;
             case UNCOMMON:
-                texture = ImageConst.BANNER_UNCOMMON;
+                texture = KSMOD_ImageConst.BANNER_UNCOMMON;
                 break;
             default:
-                texture = ImageConst.BANNER_COMMON;
+                texture = KSMOD_ImageConst.BANNER_COMMON;
                 break;
         }
         return texture;
@@ -377,7 +377,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
         {
             return;
         }
-        sb.draw(ImageConst.MASK, this.current_x - 256.0F, this.current_y - 256.0F, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
+        sb.draw(KSMOD_ImageConst.MASK, this.current_x - 256.0F, this.current_y - 256.0F, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
         if (this.isSeen && !this.isLocked)
         {
             Method getDescFont = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "getDescFont");
@@ -894,7 +894,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
             case ATTACK:
             case SKILL:
             case POWER:
-                return ImageConst.SILHOUETTE;
+                return KSMOD_ImageConst.SILHOUETTE;
             default:
                 return null;
         }

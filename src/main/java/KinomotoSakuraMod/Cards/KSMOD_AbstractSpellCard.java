@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Cards;
 
-import KinomotoSakuraMod.Utility.ImageConst;
+import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import basemod.abstracts.CustomCard;
 import com.badlogic.gdx.Gdx;
@@ -25,7 +25,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
-public abstract class AbstractSpellCard extends CustomCard
+public abstract class KSMOD_AbstractSpellCard extends CustomCard
 {
     //////////
     // Override Method Usage
@@ -48,14 +48,14 @@ public abstract class AbstractSpellCard extends CustomCard
     private static final float PORTRAIT_ORIGIN_X = 75F;
     private static final float PORTRAIT_ORIGIN_Y = 178F;
 
-    public AbstractSpellCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target)
+    public KSMOD_AbstractSpellCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target)
     {
         super(id, name, img, cost, rawDescription, type, color, rarity, target);
     }
 
     public abstract void upgrade();
 
-    public abstract AbstractSpellCard makeCopy();
+    public abstract KSMOD_AbstractSpellCard makeCopy();
 
     public abstract void use(AbstractPlayer player, AbstractMonster monster);
 
@@ -121,16 +121,16 @@ public abstract class AbstractSpellCard extends CustomCard
             switch (this.type)
             {
                 case ATTACK:
-                    img = ImageConst.ORB_ATTACK;
+                    img = KSMOD_ImageConst.ORB_ATTACK;
                     break;
                 case SKILL:
-                    img = ImageConst.ORB_SKILL;
+                    img = KSMOD_ImageConst.ORB_SKILL;
                     break;
                 case POWER:
-                    img = ImageConst.ORB_POWER;
+                    img = KSMOD_ImageConst.ORB_POWER;
                     break;
                 default:
-                    img = ImageConst.ORB_SKILL;
+                    img = KSMOD_ImageConst.ORB_SKILL;
                     break;
             }
             renderHelper.invoke(this, sb, renderColor, img, drawX, drawY);
@@ -166,13 +166,13 @@ public abstract class AbstractSpellCard extends CustomCard
         switch (this.rarity)
         {
             case RARE:
-                texture = ImageConst.FRAME_RARE;
+                texture = KSMOD_ImageConst.FRAME_RARE;
                 break;
             case UNCOMMON:
-                texture = ImageConst.FRAME_UNCOMMON;
+                texture = KSMOD_ImageConst.FRAME_UNCOMMON;
                 break;
             default:
-                texture = ImageConst.FRAME_COMMON;
+                texture = KSMOD_ImageConst.FRAME_COMMON;
                 break;
         }
         return texture;
@@ -208,13 +208,13 @@ public abstract class AbstractSpellCard extends CustomCard
         switch (this.rarity)
         {
             case RARE:
-                texture = ImageConst.BANNER_RARE;
+                texture = KSMOD_ImageConst.BANNER_RARE;
                 break;
             case UNCOMMON:
-                texture = ImageConst.BANNER_UNCOMMON;
+                texture = KSMOD_ImageConst.BANNER_UNCOMMON;
                 break;
             default:
-                texture = ImageConst.BANNER_COMMON;
+                texture = KSMOD_ImageConst.BANNER_COMMON;
                 break;
         }
         return texture;
@@ -230,7 +230,7 @@ public abstract class AbstractSpellCard extends CustomCard
         {
             return;
         }
-        sb.draw(ImageConst.MASK, drawX, drawY, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
+        sb.draw(KSMOD_ImageConst.MASK, drawX, drawY, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
     }
 
     @SpireOverride
@@ -759,7 +759,7 @@ public abstract class AbstractSpellCard extends CustomCard
             case ATTACK:
             case SKILL:
             case POWER:
-                return ImageConst.SILHOUETTE;
+                return KSMOD_ImageConst.SILHOUETTE;
             default:
                 return null;
         }
