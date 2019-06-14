@@ -16,6 +16,8 @@ public class KSMOD_SealedBook extends CustomRelic
     public static final int ACTIVE_NUMBER = 10;
 
     public static final int REAL_DAMAGE = 12;
+    public static final int BASE_BLOCK = 10;
+    public static final int EXTRA_BLOCK = 14;
     public static final int DRAW_NUMBER = 2;
     public static final int WEAKENED_NUMBER = 2;
     public static final int STRENGTH_NUMBER = 2;

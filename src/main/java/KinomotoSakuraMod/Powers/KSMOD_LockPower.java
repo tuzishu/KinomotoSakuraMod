@@ -44,17 +44,4 @@ public class KSMOD_LockPower extends KSMOD_CustomPower
             AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, AbstractDungeon.player, this));
         }
     }
-
-    public void OnActived()
-    {
-        this.flash();
-        if (this.amount > 1)
-        {
-            AbstractDungeon.actionManager.addToTop(new ReducePowerAction(this.owner, AbstractDungeon.player, this, 1));
-        }
-        else
-        {
-            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, AbstractDungeon.player, this));
-        }
-    }
 }

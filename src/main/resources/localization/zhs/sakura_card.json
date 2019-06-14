@@ -136,15 +136,19 @@
   },
   "ClowCardTheLock": {
     "NAME": "锁",
-    "DESCRIPTION": "给与 !M! 层 锁定 。触发消耗 元素 时，消耗1层 锁定 作为替代。回合结束时下降1层。"
+    "DESCRIPTION": "「 风元素牌 」1回合不触发魔力充能的效果。"
   },
   "ClowCardTheLoop": {
     "NAME": "轮",
-    "DESCRIPTION": "回合开始时，额外抽 !M! 张牌，丢弃 !M! 张牌。"
+    "DESCRIPTION": "「 火元素牌 」回合开始时，额外抽 !M! 张牌，丢弃 !M! 张牌。"
   },
   "ClowCardTheMaze": {
     "NAME": "迷",
-    "DESCRIPTION": "【 元素牌 】获得 !B! 点 格挡 。额外获得场上所有 地元素 层数和的 格挡 。"
+    "DESCRIPTION": "「 地元素牌 」获得 !B! 点 格挡 。",
+    "EXTENDED_DESCRIPTION": [
+      "额外获得",
+      "点 格挡 。"
+    ]
   },
   "ClowCardTheMist": {
     "NAME": "雾",

@@ -13,13 +13,6 @@
       " 次卡牌奖励"
     ]
   },
-  "KSMOD_LockPower": {
-    "NAME": "锁定",
-    "DESCRIPTIONS": [
-      " #b",
-      " 回合不触发魔力充能的效果。"
-    ]
-  },
   "KSMOD_CloudPower": {
     "NAME": "云层",
     "DESCRIPTIONS": [
@@ -110,6 +103,13 @@
       "回合开始时，额外抽 #b",
       " 张牌，丢弃 #b",
       " 张牌。"
+    ]
+  },
+  "KSMOD_LockPower": {
+    "NAME": "锁定",
+    "DESCRIPTIONS": [
+      " #b",
+      " 回合不触发魔力充能的效果。"
     ]
   },
   "TwinPower": {

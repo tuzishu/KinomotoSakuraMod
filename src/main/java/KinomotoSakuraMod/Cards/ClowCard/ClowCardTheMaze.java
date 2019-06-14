@@ -2,8 +2,7 @@ package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
-import KinomotoSakuraMod.Patches.CustomTag;
-import com.badlogic.gdx.math.MathUtils;
+import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -16,26 +15,27 @@ public class ClowCardTheMaze extends KSMOD_AbstractMagicCard
     public static final String ID = "ClowCardTheMaze";
     private static final String NAME;
     private static final String DESCRIPTION;
+    private static final String[] EXTENDED_DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_maze.png";
     private static final int COST = 2;
     private static final CardType CARD_TYPE = CardType.SKILL;
     private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
-    private static final int BASE_BLOCK = 16;
+    private static final int BASE_BLOCK = 14;
     private static final int UPGRADE_BLOCK = 8;
-    private static final float ELEMENT_RATE = 1F;
 
     static
     {
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
         NAME = cardStrings.NAME;
         DESCRIPTION = cardStrings.DESCRIPTION;
+        EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     }
 
     public ClowCardTheMaze()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.ELEMENT_CARD);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
         this.baseBlock = BASE_BLOCK;
     }
 
@@ -56,20 +56,19 @@ public class ClowCardTheMaze extends KSMOD_AbstractMagicCard
     }
 
     @Override
-    public void use(AbstractPlayer player, AbstractMonster monster)
+    public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
-        int count = 0;
-        for (AbstractMonster mon: AbstractDungeon.getMonsters().monsters)
-        {
-            if (mon.hasPower(EarthyElementPower.POWER_ID))
-            {
-                count += mon.getPower(EarthyElementPower.POWER_ID).amount;
-            }
-        }
-        if (count > 0)
-        {
-            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, MathUtils.ceil(count * ELEMENT_RATE)));
-        }
+    }
+
+    public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
+    {
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, KSMOD_SealedBook.EXTRA_BLOCK));
+    }
+
+    public String getExtraDescription()
+    {
+        return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.EXTRA_BLOCK + EXTENDED_DESCRIPTION[1];
     }
 }
