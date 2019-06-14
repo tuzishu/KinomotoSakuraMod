@@ -1,0 +1,14 @@
+diff a/src/main/resources/localization/zhs/sakura_power.json b/src/main/resources/localization/zhs/sakura_power.json	(rejected hunks)
+@@ -35,5 +35,11 @@
+       " 张卡。再使用 #b",
+       " 张卡发动抽卡效果。"
+     ]
++  },
++  "SilentPower": {
++    "NAME": "寂静",
++    "DESCRIPTIONS": [
++      "下回开始时，将获得 缠身 ，无法使用攻击卡。"
++    ]
+   }
+ }
+\ No newline at end of file
