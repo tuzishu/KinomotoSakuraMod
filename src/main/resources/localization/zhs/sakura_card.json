@@ -150,14 +150,17 @@
       "点 格挡 。"
     ]
   },
+  "ClowCardTheMirror": {
+    "NAME": "镜",
+    "DESCRIPTION": "「 水元素牌 」 消耗 。选择复制1张手牌中的 库洛牌 或 小樱牌 对应的 库洛牌 。",
+    "EXTENDED_DESCRIPTION": [
+      "额外添加1张复制牌到手中。"
+    ]
+  },
   "ClowCardTheMist": {
     "NAME": "雾",
     "DESCRIPTION": "【 元素牌 】 消耗 。去除所有敌人的 格挡 。携带 暗元素 大于10层时，消耗10层，移除其身上所有 多层护甲 、 金属化 和 荆棘 。给与所有敌人1层 暗元素 。",
     "UPGRADE_DESCRIPTION": "【 元素牌 】 消耗 。去除所有敌人的 格挡 ，并在3回合内无法获得 格挡 。携带 暗元素 大于10层时，消耗10层，移除其身上所有 多层护甲 、 金属化 和 荆棘 。给与所有敌人1层 暗元素 。"
-  },
-  "ClowCardTheMirror": {
-    "NAME": "镜",
-    "DESCRIPTION": "【 物理牌 】 消耗 。选择1张手中的 库洛牌 或 小樱牌 ，复制 !M! 张加入手中。"
   },
   "ClowCardTheMove": {
     "NAME": "移",

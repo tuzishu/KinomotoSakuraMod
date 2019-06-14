@@ -1,5 +1,7 @@
 package KinomotoSakuraMod.Actions;
 
+import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheCreate;
+import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheMirror;
 import KinomotoSakuraMod.Patches.CustomCardColor;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
@@ -106,6 +108,14 @@ public class KSMOD_MirrorAction extends AbstractGameAction
 
     private boolean IsCorrectCardType(AbstractCard card)
     {
-        return card.color == CustomCardColor.CLOWCARD_COLOR || card.color == CustomCardColor.SAKURACARD_COLOR;
+        if (card.color == CustomCardColor.CLOWCARD_COLOR)
+        {
+            return !(card instanceof ClowCardTheMirror) && !(card instanceof ClowCardTheCreate);
+        }
+        if (card.color == CustomCardColor.SAKURACARD_COLOR)
+        {
+            return true;
+        }
+        return false;
     }
 }
