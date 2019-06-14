@@ -208,7 +208,11 @@
   },
   "ClowCardTheShield": {
     "NAME": "盾",
-    "DESCRIPTION": "【 物理牌 】获得 !B! 点 格挡 。"
+    "DESCRIPTION": "「 火元素牌 」获得 !B! 点 格挡 。",
+    "EXTENDED_DESCRIPTION": [
+      "额外获得",
+      "层 金属化 。"
+    ]
   },
   "ClowCardTheShot": {
     "NAME": "击",
