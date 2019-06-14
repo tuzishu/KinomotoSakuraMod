@@ -216,8 +216,11 @@
   },
   "ClowCardTheShot": {
     "NAME": "击",
-    "DESCRIPTION": "【 物理牌 】造成 !D! 点伤害并给与1层 易伤 2次。",
-    "UPGRADE_DESCRIPTION": "【 物理牌 】造成 !D! 点伤害并给与1层 易伤 2次。额外给与1层 易伤 。"
+    "DESCRIPTION": "「 火元素牌 」造成 !D! 点伤害2次。",
+    "EXTENDED_DESCRIPTION": [
+      "额外给与",
+      "层 易伤 。"
+    ]
   },
   "ClowCardTheSilent": {
     "NAME": "静",
