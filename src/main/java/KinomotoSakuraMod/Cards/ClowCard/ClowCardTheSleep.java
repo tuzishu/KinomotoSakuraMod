@@ -36,7 +36,7 @@ public class ClowCardTheSleep extends KSMOD_AbstractMagicCard
 
     public ClowCardTheSleep()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
         this.exhaust = true;
     }
