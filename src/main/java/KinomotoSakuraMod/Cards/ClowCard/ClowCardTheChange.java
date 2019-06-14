@@ -70,6 +70,6 @@ public class ClowCardTheChange extends KSMOD_AbstractMagicCard
     @Override
     public String getExtraDescription()
     {
-        return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.DRAW_NUMBER + EXTENDED_DESCRIPTION[1];
+        return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.DRAW_NUMBER +EXTENDED_DESCRIPTION[1];
     }
 }

@@ -85,14 +85,6 @@
       " 张 #y库洛牌 或 #y小樱牌 将被打出 #b2 次。"
     ]
   },
-  "FightPower": {
-    "NAME": "格斗",
-    "DESCRIPTIONS": [
-      "你每造成1次大于 #b",
-      " 的伤害时，获得 #b",
-      " 层 #y力量 。"
-    ]
-  },
   "FloatPower": {
     "NAME": "漂浮",
     "DESCRIPTIONS": [

@@ -68,8 +68,11 @@
   },
   "ClowCardTheFight": {
     "NAME": "斗",
-    "DESCRIPTION": "【 物理牌 】你每造成1次大于12的伤害时，获得1层 力量 。",
-    "UPGRADE_DESCRIPTION": "【 物理牌 】你每造成1次大于8的伤害时，获得1层 力量 。"
+    "DESCRIPTION": "「 地元素牌 」造成 !D! 点伤害。伤害完全发挥时，获得1点 力量 。",
+    "EXTENDED_DESCRIPTION": [
+      "额外获得",
+      "点力量。"
+    ]
   },
   "ClowCardTheFirey": {
     "NAME": "火",
