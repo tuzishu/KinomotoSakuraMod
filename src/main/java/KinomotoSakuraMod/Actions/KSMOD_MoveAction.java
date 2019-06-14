@@ -14,6 +14,7 @@ public class KSMOD_MoveAction extends AbstractGameAction
     private static final String[] TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FASTER;
     private AbstractPlayer player;
+    private boolean isCardToHand;
 
     static
     {
@@ -21,12 +22,13 @@ public class KSMOD_MoveAction extends AbstractGameAction
         TEXT = uiStrings.TEXT;
     }
 
-    public KSMOD_MoveAction(int amount)
+    public KSMOD_MoveAction(int amount, boolean isCardToHand)
     {
         this.player = AbstractDungeon.player;
         this.actionType = ActionType.CARD_MANIPULATION;
         this.duration = DURATION;
         this.amount = amount;
+        this.isCardToHand = isCardToHand;
     }
 
     public void update()
@@ -64,8 +66,15 @@ public class KSMOD_MoveAction extends AbstractGameAction
             {
                 for (AbstractCard c : AbstractDungeon.gridSelectScreen.selectedCards)
                 {
-                    this.player.discardPile.removeCard(c);
-                    this.player.hand.moveToDeck(c, true);
+                    this.player.exhaustPile.removeCard(c);
+                    if (isCardToHand)
+                    {
+                        this.player.exhaustPile.moveToHand(c, this.player.exhaustPile);
+                    }
+                    else
+                    {
+                        this.player.exhaustPile.moveToDeck(c, true);
+                    }
                 }
                 AbstractDungeon.gridSelectScreen.selectedCards.clear();
                 AbstractDungeon.player.hand.refreshHandLayout();

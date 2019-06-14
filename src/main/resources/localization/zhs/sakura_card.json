@@ -166,7 +166,10 @@
   },
   "ClowCardTheMove": {
     "NAME": "移",
-    "DESCRIPTION": "【 物理牌 】获得 !B! 点 格挡 。从弃牌堆选择 !M! 张牌返回抽排堆。"
+    "DESCRIPTION": "「 火元素牌 」 消耗 。选择1张消耗堆中的牌返回抽排堆。",
+    "EXTENDED_DESCRIPTION": [
+      "「 火元素牌 」 消耗 。选择1张消耗堆中的牌返回手牌。"
+    ]
   },
   "ClowCardThePower": {
     "NAME": "力",
