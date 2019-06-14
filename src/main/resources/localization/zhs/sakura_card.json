@@ -173,7 +173,11 @@
   },
   "ClowCardThePower": {
     "NAME": "力",
-    "DESCRIPTION": "【 物理牌 】造成 !D! 点伤害，力量 发挥额外 !M! 倍效果。"
+    "DESCRIPTION": "「 火元素牌 」造成 !D! 点伤害，可多次升级。",
+    "EXTENDED_DESCRIPTION": [
+      "力量额外产生",
+      "（升级次数）倍效果。"
+    ]
   },
   "ClowCardTheRain": {
     "NAME": "雨",
