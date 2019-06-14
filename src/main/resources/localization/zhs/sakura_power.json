@@ -84,6 +84,13 @@
       " 层 #y敏捷 。"
     ]
   },
+  "KSMOD_FlyPower": {
+    "NAME": "飞行",
+    "DESCRIPTIONS": [
+      "回合开始时额外抽 #b",
+      " 张牌。"
+    ]
+  },
   "TwinPower": {
     "NAME": "双生",
     "DESCRIPTIONS": [

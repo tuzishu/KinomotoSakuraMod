@@ -84,15 +84,15 @@
   },
   "ClowCardTheFlower": {
     "NAME": "花",
-    "DESCRIPTION": " 消耗 。获得 1 点能量。",
-    "UPGRADE_DESCRIPTION": "获得 1 点能量。",
+    "DESCRIPTION": " 「 地元素牌 」消耗 。获得 1 点能量。",
+    "UPGRADE_DESCRIPTION": "「 地元素牌 」获得 1 点能量。",
     "EXTENDED_DESCRIPTION": [
       "额外获得2点能量。"
     ]
   },
   "ClowCardTheFly": {
     "NAME": "飞",
-    "DESCRIPTION": "【 物理牌 】获得 !B! 点 格挡 ，获得 !M! 层 飞行 。"
+    "DESCRIPTION": "「 风元素牌 」回合开始时额外抽 !M! 张牌。"
   },
   "ClowCardTheFreeze": {
     "NAME": "冻",
