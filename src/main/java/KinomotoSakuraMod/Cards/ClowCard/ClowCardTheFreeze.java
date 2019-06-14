@@ -2,11 +2,11 @@ package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.CustomCardColor;
-import KinomotoSakuraMod.Patches.CustomTag;
-import KinomotoSakuraMod.Powers.FreezePower;
+import KinomotoSakuraMod.Powers.KSMOD_FreezePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -19,31 +19,31 @@ public class ClowCardTheFreeze extends KSMOD_AbstractMagicCard
     public static final String ID = "ClowCardTheFreeze";
     private static final String NAME;
     private static final String DESCRIPTION;
+    private static final String[] EXTENDED_DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_freeze.png";
     private static final int COST = 1;
     private static final CardType CARD_TYPE = CardType.ATTACK;
     private static final CardColor CARD_COLOR = CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final int BASE_DAMATE = 4;
-    private static final int UPGRADE_DAMATE = 4;
-    private static final int ACTIVE_NUMBER = 12;
-    private static final int BASE_MAGIC_NUMBER = 6;
-    private static final int UPGRADE_MAGIC_NUMBER = 6;
-    private static final int DEBUFF_NUMBER = 2;
+    private static final int BASE_DAMATE = 5;
+    private static final int UPGRADE_DAMATE = 3;
+    private static final int BASE_BLOCK = 5;
+    private static final int UPGRADE_BLOCK = 3;
 
     static
     {
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
         NAME = cardStrings.NAME;
         DESCRIPTION = cardStrings.DESCRIPTION;
+        EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     }
 
     public ClowCardTheFreeze()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.ELEMENT_CARD);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
         this.baseDamage = BASE_DAMATE;
-        setBaseMagicNumber(BASE_MAGIC_NUMBER);
+        this.baseBlock = BASE_BLOCK;
     }
 
     @Override
@@ -53,7 +53,7 @@ public class ClowCardTheFreeze extends KSMOD_AbstractMagicCard
         {
             this.upgradeName();
             this.upgradeDamage(UPGRADE_DAMATE);
-            this.upgradeMagicNumber(UPGRADE_MAGIC_NUMBER);
+            this.upgradeBlock(UPGRADE_BLOCK);
         }
     }
 
@@ -64,13 +64,26 @@ public class ClowCardTheFreeze extends KSMOD_AbstractMagicCard
     }
 
     @Override
-    public void use(AbstractPlayer player, AbstractMonster monster)
+    public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new FreezePower(monster, DEBUFF_NUMBER), DEBUFF_NUMBER));
-        if (WateryElementPower.TryActiveWateryElement(monster, ACTIVE_NUMBER, true))
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
+    }
+
+    @Override
+    public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
+    {
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
+        if (monster.type != AbstractMonster.EnemyType.BOSS && monster.type != AbstractMonster.EnemyType.ELITE)
         {
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.magicNumber, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new KSMOD_FreezePower(monster, 1)));
         }
+    }
+
+    @Override
+    public String getExtraDescription()
+    {
+        return this.rawDescription + EXTENDED_DESCRIPTION[0];
     }
 }

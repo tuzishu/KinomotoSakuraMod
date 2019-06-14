@@ -96,7 +96,10 @@
   },
   "ClowCardTheFreeze": {
     "NAME": "冻",
-    "DESCRIPTION": "【 元素牌 】造成 !D! 点伤害，给与2层 冰冻 。目标携带 水元素 大于12层时，消耗12层 水元素 造成额外 !M! 点伤害。"
+    "DESCRIPTION": "「 火元素牌 」造成 !D! 点伤害，获得 !B! 格挡。",
+    "EXTENDED_DESCRIPTION": [
+      "目标不是boss或精英时，打断当前动作。"
+    ]
   },
   "ClowCardTheGlow": {
     "NAME": "灯",

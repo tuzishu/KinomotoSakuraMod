@@ -91,6 +91,12 @@
       " 张牌。"
     ]
   },
+  "KSMOD_FreezePower": {
+    "NAME": "冰冻",
+    "DESCRIPTIONS": [
+      "回合开始时，如果目标不是boss或精英怪，这回合无法行动。"
+    ]
+  },
   "TwinPower": {
     "NAME": "双生",
     "DESCRIPTIONS": [
@@ -135,12 +141,6 @@
     "DESCRIPTIONS": [
       " #b",
       " 回合内无法行动。"
-    ]
-  },
-  "FreezePower": {
-    "NAME": "冰冻",
-    "DESCRIPTIONS": [
-      "回合开始时，如果目标不是boss或精英怪，这回合无法行动。回合结束时移除，并给与 #b相同层数 的 #y水元素 。"
     ]
   },
   "MistPower": {
