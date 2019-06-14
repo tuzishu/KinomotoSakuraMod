@@ -188,7 +188,8 @@
   },
   "ClowCardTheReturn": {
     "NAME": "回",
-    "DESCRIPTION": " 消耗 。选择最多 !M! 张消耗区的牌返回抽排堆，并抽1张牌。"
+    "DESCRIPTION": "「 水元素牌 」记录当前的生命值和增益状态，3回合后回到当前状态。",
+    "UPGRADE_DESCRIPTION": "「 水元素牌 」 保留 。记录当前的生命值和增益状态，3回合后回到当前状态。"
   },
   "ClowCardTheSand": {
     "NAME": "沙",

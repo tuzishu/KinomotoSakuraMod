@@ -112,6 +112,13 @@
       " 回合不触发魔力充能的效果。"
     ]
   },
+  "KSMOD_ReturnPower": {
+    "NAME": "回溯",
+    "DESCRIPTIONS": [
+      " #b",
+      " 回合后恢复到回溯之前的状态。"
+    ]
+  },
   "TwinPower": {
     "NAME": "双生",
     "DESCRIPTIONS": [
