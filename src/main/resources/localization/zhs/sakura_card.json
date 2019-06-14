@@ -140,7 +140,7 @@
   },
   "ClowCardTheLoop": {
     "NAME": "轮",
-    "DESCRIPTION": "每回合第1张 库洛牌 、 小樱牌 或 符咒 被打出并进入弃牌堆时，抽1张牌。"
+    "DESCRIPTION": "回合开始时，额外抽 !M! 张牌，丢弃 !M! 张牌。"
   },
   "ClowCardTheMaze": {
     "NAME": "迷",
