@@ -111,7 +111,10 @@
   },
   "ClowCardTheJump": {
     "NAME": "跳",
-    "DESCRIPTION": "【 物理牌 】 消耗 。获得 !B! 点 格挡 。并随机移除 !M! 个减益。"
+    "DESCRIPTION": "「 风元素牌 」 消耗 。获得 !B! 点格挡。随机清除1个负面状态。",
+    "EXTENDED_DESCRIPTION": [
+      "「 风元素牌 」 消耗 。获得 !B! 点格挡。清除所有负面状态。"
+    ]
   },
   "ClowCardTheLibra": {
     "NAME": "秤",

@@ -20,6 +20,7 @@ public class ClowCardTheJump extends KSMOD_AbstractMagicCard
     public static final String ID = "ClowCardTheJump";
     private static final String NAME;
     private static final String DESCRIPTION;
+    private static final String[] EXTENDED_DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_jump.png";
     private static final int COST = 1;
     private static final CardType CARD_TYPE = CardType.SKILL;
@@ -28,20 +29,19 @@ public class ClowCardTheJump extends KSMOD_AbstractMagicCard
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
     private static final int BASE_BLOCK = 8;
     private static final int UPGRADE_BLOCK = 4;
-    private static final int BASE_MAGIC_NUMBER = 1;
 
     static
     {
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
         NAME = cardStrings.NAME;
         DESCRIPTION = cardStrings.DESCRIPTION;
+        EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     }
 
     public ClowCardTheJump()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, CustomTag.PHYSICS_CARD);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
         this.baseBlock = BASE_BLOCK;
-        setBaseMagicNumber(BASE_MAGIC_NUMBER);
         this.exhaust = true;
     }
 
@@ -62,22 +62,43 @@ public class ClowCardTheJump extends KSMOD_AbstractMagicCard
     }
 
     @Override
-    public void use(AbstractPlayer player, AbstractMonster monster)
+    public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
-        ArrayList<AbstractPower> debufflist = new ArrayList<AbstractPower>();
-        for (int i = 0; i < player.powers.size(); i++)
+        ArrayList<AbstractPower> debuffList = GetDebuffList();
+        if (debuffList.size() > 0)
         {
-            AbstractPower power = player.powers.get(i);
+            int index = new Random().random(debuffList.size() - 1);
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(player, player, debuffList.get(index)));
+        }
+    }
+
+    public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
+    {
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
+        ArrayList<AbstractPower> debuffList = GetDebuffList();
+        for (AbstractPower power : debuffList)
+        {
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(player, player, power));
+        }
+    }
+
+    public String getExtraDescription()
+    {
+        return EXTENDED_DESCRIPTION[0];
+    }
+
+    private ArrayList<AbstractPower> GetDebuffList()
+    {
+        ArrayList<AbstractPower> debuffList = new ArrayList<>();
+        for (int i = 0; i < AbstractDungeon.player.powers.size(); i++)
+        {
+            AbstractPower power = AbstractDungeon.player.powers.get(i);
             if (power.type == AbstractPower.PowerType.DEBUFF)
             {
-                debufflist.add(power);
+                debuffList.add(power);
             }
         }
-        if (debufflist.size() > 0)
-        {
-            int index = new Random().random(debufflist.size() - 1);
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(player, player, debufflist.get(index)));
-        }
+        return debuffList;
     }
 }
