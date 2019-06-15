@@ -82,8 +82,8 @@ public class KSMOD_UpdateMagickChargePowerHook
             if (card instanceof KSMOD_AbstractMagicCard)
             {
                 AbstractPower reduceMe = null;
-                String powerToRemove = (String) KSMOD_Utility.GetFieldByReflect(ReducePowerAction.class, "powerToRemove").get(action);
-                AbstractPower powerInstance = (AbstractPower) KSMOD_Utility.GetFieldByReflect(ReducePowerAction.class, "powerInstance").get(action);
+                String powerToRemove = (String) KSMOD_Utility.GetFieldByReflect(RemoveSpecificPowerAction.class, "powerToRemove").get(action);
+                AbstractPower powerInstance = (AbstractPower) KSMOD_Utility.GetFieldByReflect(RemoveSpecificPowerAction.class, "powerInstance").get(action);
                 if (powerToRemove != null)
                 {
                     reduceMe = action.target.getPower(powerToRemove);

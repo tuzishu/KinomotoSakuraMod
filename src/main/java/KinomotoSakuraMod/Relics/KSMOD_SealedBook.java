@@ -41,7 +41,7 @@ public class KSMOD_SealedBook extends CustomRelic
 
     public String getUpdatedDescription()
     {
-        return this.DESCRIPTIONS[0];
+        return this.DESCRIPTIONS[0] + ACTIVE_NUMBER + this.DESCRIPTIONS[0];
     }
 
     public AbstractRelic makeCopy()

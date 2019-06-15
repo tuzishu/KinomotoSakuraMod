@@ -61,9 +61,12 @@ public class KSMOD_SleepPower extends KSMOD_CustomPower
 
     public float atDamageReceive(float damage, DamageInfo.DamageType damageType)
     {
-        AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
-        AbstractDungeon.actionManager.addToTop(new HealAction(this.owner, this.owner, this.owner.maxHealth - this.owner.currentHealth));
-        AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this.owner, this.owner, new WeakPower(this.owner, WEAKENED_NUMBER, false), WEAKENED_NUMBER));
+        if (damage > 0)
+        {
+            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+            AbstractDungeon.actionManager.addToTop(new HealAction(this.owner, this.owner, this.owner.maxHealth - this.owner.currentHealth));
+            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this.owner, this.owner, new WeakPower(this.owner, WEAKENED_NUMBER, false), WEAKENED_NUMBER));
+        }
         return damage;
     }
 

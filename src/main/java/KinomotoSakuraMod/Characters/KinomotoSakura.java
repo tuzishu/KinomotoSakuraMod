@@ -125,10 +125,10 @@ public class KinomotoSakura extends CustomPlayer
         startCards_2.add(ClowCardTheSword.ID);
         startCards_2.add(ClowCardTheSword.ID);
         startCards_2.add(ClowCardTheSword.ID);
-        startCards_2.add(ClowCardTheShadow.ID);
-        startCards_2.add(ClowCardTheShadow.ID);
-        startCards_2.add(ClowCardTheShadow.ID);
-        startCards_2.add(ClowCardTheShadow.ID);
+        startCards_2.add(ClowCardTheShield.ID);
+        startCards_2.add(ClowCardTheShield.ID);
+        startCards_2.add(ClowCardTheShield.ID);
+        startCards_2.add(ClowCardTheShield.ID);
         startCards_2.add(ClowCardTheWood.ID);
         startCards_2.add(SpellCardRelease.ID);
 
