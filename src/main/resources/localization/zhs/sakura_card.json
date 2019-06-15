@@ -302,8 +302,8 @@
   },
   "ClowCardTheTwin": {
     "NAME": "双",
-    "DESCRIPTION": "【 物理牌 】每回合打出的第 !M! 张 库洛牌 或 小樱牌 会打额外打出1次。",
-    "UPGRADE_DESCRIPTION": "【 物理牌 】 保留 。每回合打出的第 !M! 张 库洛牌 或 小樱牌 会额外打出1次。"
+    "DESCRIPTION": "「 水元素牌 」「 火元素牌 」每回合打出的第 !M! 张 库洛牌 或 小樱牌 会打额外打出1次。",
+    "UPGRADE_DESCRIPTION": "「 水元素牌 」「 火元素牌 」 保留 。每回合打出的第 !M! 张 库洛牌 或 小樱牌 会额外打出1次。"
   },
   "ClowCardTheVoice": {
     "NAME": "声",

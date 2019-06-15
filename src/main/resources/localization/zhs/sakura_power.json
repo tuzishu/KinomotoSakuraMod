@@ -139,7 +139,7 @@
       " 回合内无法行动。"
     ]
   },
-  "TwinPower": {
+  "KSMOD_TwinPower": {
     "NAME": "双生",
     "DESCRIPTIONS": [
       "你在每回合打出的第 #b1 张 #y库洛牌 或 #y小樱牌 将被打出 #b2 次。",
