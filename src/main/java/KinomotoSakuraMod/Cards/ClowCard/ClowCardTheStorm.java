@@ -1,12 +1,13 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
-import KinomotoSakuraMod.Actions.ApplyElementAction;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
-import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
-import KinomotoSakuraMod.Powers.FireyElementPower;
+import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -14,32 +15,38 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.CleaveEffect;
+import com.megacrit.cardcrawl.vfx.combat.WhirlwindEffect;
 
 public class ClowCardTheStorm extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheStorm";
     private static final String NAME;
     private static final String DESCRIPTION;
+    private static final String[] EXTENDED_DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_storm.png";
-    private static final int COST = 2;
-    private static final int UPGRADED_COST = 1;
+    private static final int COST = 1;
     private static final AbstractCard.CardType CARD_TYPE = AbstractCard.CardType.ATTACK;
     private static final AbstractCard.CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final int BASE_MAGIC_NUMBER = 3;
+    private static final int BASE_DAMAGE = 3;
+    private static final int UPGRADE_DAMAGE = 2;
+    private static final String SFX_EFFECT_ID = "ATTACK_WHIRLWIND";
+    private static final String SFX_ATTACK_ID = "ATTACK_HEAVY";
 
     static
     {
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
         NAME = cardStrings.NAME;
         DESCRIPTION = cardStrings.DESCRIPTION;
+        EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     }
 
     public ClowCardTheStorm()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, KSMOD_CustomTag.ELEMENT_CARD);
-        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
+        this.baseDamage = BASE_DAMAGE;
     }
 
     @Override
@@ -48,7 +55,7 @@ public class ClowCardTheStorm extends KSMOD_AbstractMagicCard
         if (!this.upgraded)
         {
             this.upgradeName();
-            this.upgradeBaseCost(UPGRADED_COST);
+            this.upgradeDamage(UPGRADE_DAMAGE);
         }
     }
 
@@ -59,39 +66,37 @@ public class ClowCardTheStorm extends KSMOD_AbstractMagicCard
     }
 
     @Override
-    public void use(AbstractPlayer player, AbstractMonster monster)
+    public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        int count = 0;
-        if (monster.hasPower(EarthyElementPower.POWER_ID))
+        this.target = CardTarget.ENEMY;
+        AbstractDungeon.actionManager.addToBottom(new SFXAction(SFX_EFFECT_ID));
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(new WhirlwindEffect(), 0.0F));
+        for (int i = 0; i < 4; ++i)
         {
-            int amount = monster.getPower(EarthyElementPower.POWER_ID).amount;
-            count += amount;
-            EarthyElementPower.TryActiveEarthyElement(monster, amount, true);
-        }
-        if (monster.hasPower(WateryElementPower.POWER_ID))
-        {
-            int amount = monster.getPower(WateryElementPower.POWER_ID).amount;
-            count += amount;
-            WateryElementPower.TryActiveWateryElement(monster, amount, true);
-        }
-        if (monster.hasPower(FireyElementPower.POWER_ID))
-        {
-            int amount = monster.getPower(FireyElementPower.POWER_ID).amount;
-            count += amount;
-            FireyElementPower.TryActiveFireyElement(monster, amount, true);
-        }
-        if (monster.hasPower(WindyElementPower.POWER_ID))
-        {
-            int amount = monster.getPower(WindyElementPower.POWER_ID).amount;
-            count += amount;
-            WindyElementPower.TryActiveWindyElement(monster, amount, true);
+            AbstractDungeon.actionManager.addToBottom(new SFXAction(SFX_ATTACK_ID));
+            AbstractDungeon.actionManager.addToBottom(new VFXAction(player, new CleaveEffect(), 0.0F));
+            AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
         }
 
-        if (count > 0)
-        {
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, count, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.POISON));
-        }
+    }
 
-        AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(monster, player, new WindyElementPower(monster, this.magicNumber), this.magicNumber, true));
+    @Override
+    public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
+    {
+        this.target = CardTarget.ALL_ENEMY;
+        AbstractDungeon.actionManager.addToBottom(new SFXAction(SFX_EFFECT_ID));
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(new WhirlwindEffect(), 0.0F));
+        for (int i = 0; i < 4; ++i)
+        {
+            AbstractDungeon.actionManager.addToBottom(new SFXAction(SFX_ATTACK_ID));
+            AbstractDungeon.actionManager.addToBottom(new VFXAction(player, new CleaveEffect(), 0.0F));
+            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
+        }
+    }
+
+    @Override
+    public String getExtraDescription()
+    {
+        return EXTENDED_DESCRIPTION[0];
     }
 }

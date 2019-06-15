@@ -255,7 +255,10 @@
   },
   "ClowCardTheStorm": {
     "NAME": "岚",
-    "DESCRIPTION": "【 元素牌 】消耗目标身上所有 元素 ，造成层数之和的伤害。给与目标 !M! 层 风元素 。"
+    "DESCRIPTION": "「 风元素牌 」造成 !D! 点伤害4次。",
+    "EXTENDED_DESCRIPTION": [
+      "「 风元素牌 」对全体敌人造成 !D! 点伤害4次。"
+    ]
   },
   "ClowCardTheSweet": {
     "NAME": "甘",
