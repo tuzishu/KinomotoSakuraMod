@@ -32,6 +32,7 @@ public class KSMOD_SealedBook extends CustomRelic
     public static final int SONG_NUMBER = 2;
     public static final float PERCENTAGE_RATE = 0.2F;
     public static final int THUNDER_NUMBER = 3;
+    public static final int TEMPCARD_NUMBER = 2;
 
     public KSMOD_SealedBook()
     {

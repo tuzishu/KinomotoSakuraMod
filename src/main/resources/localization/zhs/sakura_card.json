@@ -55,6 +55,14 @@
       "张牌。"
     ]
   },
+  "ClowCardTheDream": {
+    "NAME": "梦",
+    "DESCRIPTION": " 「 风元素牌 」消耗 。添加 !M! 张随机 库洛牌 到手中。",
+    "EXTENDED_DESCRIPTION": [
+      "额外获得",
+      "张随机库洛牌。"
+    ]
+  },
   "ClowCardTheEarthy": {
     "NAME": "地",
     "DESCRIPTION": "「 地元素牌 」本回合打出 地元素牌 时，额外获得1层 魔力充能 ，并获得 !B! 点格挡。"

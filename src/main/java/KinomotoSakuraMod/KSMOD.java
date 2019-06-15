@@ -137,6 +137,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         cardList.add(new ClowCardTheCreate());
         cardList.add(new ClowCardTheDark());
         cardList.add(new ClowCardTheDash());
+        cardList.add(new ClowCardTheDream());
         cardList.add(new ClowCardTheEarthy());
         cardList.add(new ClowCardTheErase());
         cardList.add(new ClowCardTheFight());
@@ -182,7 +183,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         cardList.add(new ClowCardTheWood());
 
         cardList.add(new TestCard());
-        
+
         return cardList;
     }
 
