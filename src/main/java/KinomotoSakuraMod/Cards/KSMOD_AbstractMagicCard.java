@@ -1,14 +1,12 @@
 package KinomotoSakuraMod.Cards;
 
 import KinomotoSakuraMod.Actions.KSMOD_ReleaseAction;
-import KinomotoSakuraMod.Cards.SpellCard.SpellCardRelease;
 import KinomotoSakuraMod.Powers.KSMOD_LockPower;
 import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import basemod.abstracts.CustomCard;
-import basemod.interfaces.OnPowersModifiedSubscriber;
 import basemod.interfaces.PostPowerApplySubscriber;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -60,6 +58,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
     private static final float PORTRAIT_HEIGHT = 393F;
     private static final float PORTRAIT_ORIGIN_X = 75F;
     private static final float PORTRAIT_ORIGIN_Y = 178F;
+    public static boolean isHandSelectScreenOpened = false;
     private String BOTTOM_TITLE = "";
 
     //////////
@@ -154,7 +153,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
         if (player.hasRelic(KSMOD_SealedBook.RELIC_ID))
         {
             KSMOD_SealedBook book = (KSMOD_SealedBook) player.getRelic(KSMOD_SealedBook.RELIC_ID);
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_MagickChargePower(player, book.applyPowerNumberOnce()), book.applyPowerNumberOnce()));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_MagickChargePower(player, book.applyPowerNumberOnce(this)), book.applyPowerNumberOnce(this)));
         }
     }
 
@@ -213,9 +212,9 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
             this.valueBuffer[0] = this.damage;
             this.valueBuffer[1] = this.block;
             this.valueBuffer[2] = this.magicNumber;
-            this.damage *= 1 + this.releaseRate;
-            this.block *= 1 + this.releaseRate;
-            this.magicNumber *= 1 + this.releaseRate;
+            this.damage = (int) (this.damage * (1 + this.releaseRate));
+            this.block = (int) (this.damage * (1 + this.releaseRate));
+            this.magicNumber = (int) (this.damage * (1 + this.releaseRate));
             hasReleased = true;
         }
     }
@@ -392,7 +391,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
     @SpireOverride
     public void renderDescriptionCN(SpriteBatch sb) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException
     {
-        if (AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this) && !this.hb.hovered)
+        if (AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this) && !this.hb.hovered && !this.isHandSelectScreenOpened)
         {
             return;
         }

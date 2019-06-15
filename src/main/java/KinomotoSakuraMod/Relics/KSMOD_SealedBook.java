@@ -5,6 +5,7 @@ import KinomotoSakuraMod.Powers.KSMOD_FireyPower;
 import KinomotoSakuraMod.Powers.KSMOD_WateryPower;
 import KinomotoSakuraMod.Powers.KSMOD_WindyPower;
 import basemod.abstracts.CustomRelic;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -41,7 +42,7 @@ public class KSMOD_SealedBook extends CustomRelic
 
     public String getUpdatedDescription()
     {
-        return this.DESCRIPTIONS[0] + ACTIVE_NUMBER + this.DESCRIPTIONS[0];
+        return this.DESCRIPTIONS[0] + ACTIVE_NUMBER + this.DESCRIPTIONS[1];
     }
 
     public AbstractRelic makeCopy()
@@ -49,9 +50,9 @@ public class KSMOD_SealedBook extends CustomRelic
         return new KSMOD_SealedBook();
     }
 
-    public int applyPowerNumberOnce()
+    public int applyPowerNumberOnce(AbstractCard card)
     {
-        int amount = 1;
+        int amount = card.type == AbstractCard.CardType.POWER ? 2 : 1;
         if (AbstractDungeon.player.hasPower(KSMOD_EarthyPower.POWER_ID))
         {
             amount += 1;

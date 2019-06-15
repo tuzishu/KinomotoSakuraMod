@@ -69,14 +69,20 @@ public class ClowCardTheIllusion extends KSMOD_AbstractMagicCard
     {
         AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
         int count = player.exhaustPile.size() / INCREASE_NUMBER;
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.magicNumber * count, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
+        if (count > 0)
+        {
+            AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.magicNumber * count, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
+        }
     }
 
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
         int count = player.exhaustPile.size() / CHARGED_INCREASE_NUMBER;
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.magicNumber * count, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
+        if (count > 0)
+        {
+            AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.magicNumber * count, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
+        }
     }
 
     public String getExtraDescription()
