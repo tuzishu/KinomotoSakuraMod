@@ -341,14 +341,7 @@
 
   "SpellCardRelease": {
     "NAME": "解",
-    "DESCRIPTION": "选择手牌中最多1张 库洛牌 ， 封印解除 。并使所有敌人流失 !D! 点生命。",
-    "EXTENDED_DESCRIPTION": [
-      "【 物理牌 】",
-      "【 元素牌 】",
-      " 虚无 。",
-      " 消耗 。",
-      " 封印解除 。"
-    ]
+    "DESCRIPTION": "选择手牌中最多1张 库洛牌 ， 封印解除 。并使所有敌人流失 !D! 点生命。"
   },
   "SpellCardSeal": {
     "NAME": "封",

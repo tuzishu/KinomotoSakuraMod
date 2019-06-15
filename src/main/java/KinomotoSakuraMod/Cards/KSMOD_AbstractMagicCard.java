@@ -1,5 +1,7 @@
 package KinomotoSakuraMod.Cards;
 
+import KinomotoSakuraMod.Actions.KSMOD_ReleaseAction;
+import KinomotoSakuraMod.Cards.SpellCard.SpellCardRelease;
 import KinomotoSakuraMod.Powers.KSMOD_LockPower;
 import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
@@ -530,7 +532,19 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
             int numLines = 1;
             StringBuilder currentLine = new StringBuilder("");
             float currentWidth = 0.0F;
-            String desc = (this.hasExtraEffect && hasCharged() && !hasLockPower()) ? this.rawDescription : this.getExtraDescription();
+            String desc;
+            if (this.hasExtraEffect && hasCharged() && !hasLockPower())
+            {
+                desc = this.rawDescription;
+            }
+            else
+            {
+                desc = this.getExtraDescription();
+                if (this.hasReleased)
+                {
+                    desc = KSMOD_ReleaseAction.reloadReleasedCardDescription(desc, !this.isEthereal, !this.exhaust);
+                }
+            }
             String[] var4 = desc.split(" ");
             int var5 = var4.length;
 

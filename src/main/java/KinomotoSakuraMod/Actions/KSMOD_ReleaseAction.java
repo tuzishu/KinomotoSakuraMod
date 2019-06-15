@@ -1,7 +1,6 @@
 package KinomotoSakuraMod.Actions;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
-import KinomotoSakuraMod.Cards.SpellCard.SpellCardRelease;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.badlogic.gdx.graphics.Color;
@@ -121,43 +120,57 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
         }
         if (card.type == AbstractCard.CardType.POWER)
         {
-            reloadCardDescription(card, !card.isEthereal, !card.exhaust);
+            card.rawDescription = reloadReleasedCardDescription(card.rawDescription, !card.isEthereal, !card.exhaust);
+            card.initializeDescription();
             card.isEthereal = true;
         }
         else
         {
             ((KSMOD_AbstractMagicCard) card).release(releaseRate);
-            reloadCardDescription(card, !card.isEthereal, !card.exhaust);
+            card.rawDescription = reloadReleasedCardDescription(card.rawDescription, !card.isEthereal, !card.exhaust);
+            card.initializeDescription();
             card.isEthereal = true;
             card.exhaust = true;
         }
         AbstractDungeon.player.hand.addToTop(card);
     }
 
-    private void reloadCardDescription(AbstractCard card, boolean isAddEthereal, boolean isAddExhaust)
+    public static String reloadReleasedCardDescription(String desc, boolean isAddEthereal, boolean isAddExhaust)
     {
-        String cardHeadStr = "";
-        if (card.rawDescription.contains(SpellCardRelease.EXTENDED_DESCRIPTION[0]))
+        if (!desc.contains(TEXT[5] + TEXT[6] + TEXT[7]))
         {
-            cardHeadStr = SpellCardRelease.EXTENDED_DESCRIPTION[0];
-            card.rawDescription = card.rawDescription.replace(cardHeadStr, "");
+            String cardHeadStr = "";
+            if (desc.contains(TEXT[1]))
+            {
+                cardHeadStr = TEXT[1];
+                desc = desc.replace(cardHeadStr, "");
+            }
+            else if (desc.contains(TEXT[2]))
+            {
+                cardHeadStr = TEXT[2];
+                desc = desc.replace(cardHeadStr, "");
+            }
+            else if (desc.contains(TEXT[3]))
+            {
+                cardHeadStr = TEXT[3];
+                desc = desc.replace(cardHeadStr, "");
+            }
+            else if (desc.contains(TEXT[4]))
+            {
+                cardHeadStr = TEXT[4];
+                desc = desc.replace(cardHeadStr, "");
+            }
+            cardHeadStr = cardHeadStr + TEXT[5];
+            if (isAddEthereal)
+            {
+                cardHeadStr = cardHeadStr + TEXT[6];
+            }
+            if (isAddExhaust)
+            {
+                cardHeadStr = cardHeadStr + TEXT[7];
+            }
+            desc = cardHeadStr + desc;
         }
-        else if (card.rawDescription.contains(SpellCardRelease.EXTENDED_DESCRIPTION[1]))
-        {
-            cardHeadStr = SpellCardRelease.EXTENDED_DESCRIPTION[1];
-            card.rawDescription = card.rawDescription.replace(cardHeadStr, "");
-        }
-
-        if (isAddEthereal)
-        {
-            card.rawDescription = SpellCardRelease.EXTENDED_DESCRIPTION[2] + card.rawDescription;
-        }
-        if (isAddExhaust)
-        {
-            card.rawDescription = SpellCardRelease.EXTENDED_DESCRIPTION[3] + card.rawDescription;
-        }
-        card.rawDescription = SpellCardRelease.EXTENDED_DESCRIPTION[4] + card.rawDescription;
-        card.rawDescription = cardHeadStr + card.rawDescription;
-        card.initializeDescription();
+        return desc;
     }
 }
