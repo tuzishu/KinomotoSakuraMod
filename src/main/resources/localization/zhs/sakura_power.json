@@ -132,6 +132,13 @@
       " 回合。受到伤害时醒来。 #r自然醒来 后恢复所有生命，并获得 #b2 层 虚弱 。"
     ]
   },
+  "KSMOD_TimePower": {
+    "NAME": "时停",
+    "DESCRIPTIONS": [
+      " #b",
+      " 回合内无法行动。"
+    ]
+  },
   "TwinPower": {
     "NAME": "双生",
     "DESCRIPTIONS": [
@@ -153,13 +160,6 @@
     "DESCRIPTIONS": [
       "打出的 #y库洛牌 或 #y小樱牌 对单个目标造成伤害时，对所有其他敌人造成 #b",
       "% 的伤害。最大 #b75% 。多段伤害只触发1次。"
-    ]
-  },
-  "TimePower": {
-    "NAME": "时停",
-    "DESCRIPTIONS": [
-      " #b",
-      " 回合内无法行动。"
     ]
   },
   "MistPower": {

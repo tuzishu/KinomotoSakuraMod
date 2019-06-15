@@ -3,9 +3,11 @@ package KinomotoSakuraMod.Cards.ClowCard;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.defect.ThunderStrikeAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.status.VoidCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -66,6 +68,8 @@ public class ClowCardTheThunder extends KSMOD_AbstractMagicCard
             AbstractMonster mon = AbstractDungeon.getRandomMonster();
             AbstractDungeon.actionManager.addToBottom(new ThunderStrikeAction(mon, new DamageInfo(player, this.damage, DamageInfo.DamageType.HP_LOSS), 1));
         }
+        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new VoidCard(), 1));
+
     }
 
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
@@ -75,6 +79,7 @@ public class ClowCardTheThunder extends KSMOD_AbstractMagicCard
             AbstractMonster mon = AbstractDungeon.getRandomMonster();
             AbstractDungeon.actionManager.addToBottom(new ThunderStrikeAction(mon, new DamageInfo(player, this.damage, DamageInfo.DamageType.HP_LOSS), 1));
         }
+        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new VoidCard(), 1));
     }
 
     public String getExtraDescription()
