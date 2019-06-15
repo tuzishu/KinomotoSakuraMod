@@ -1,10 +1,8 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
-import KinomotoSakuraMod.Actions.ApplyElementAction;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
-import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
-import KinomotoSakuraMod.Powers.FireyElementPower;
+import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import com.megacrit.cardcrawl.actions.defect.ThunderStrikeAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -14,23 +12,20 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import java.util.ArrayList;
-
 public class ClowCardTheThunder extends KSMOD_AbstractMagicCard
 {
     public static final String ID = "ClowCardTheThunder";
     private static final String NAME;
     private static final String DESCRIPTION;
+    private static final String[] EXTENDED_DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_thunder.png";
     private static final int COST = 3;
     private static final AbstractCard.CardType CARD_TYPE = AbstractCard.CardType.ATTACK;
     private static final AbstractCard.CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.RARE;
     private static final CardTarget CARD_TARGET = CardTarget.NONE;
-    private static final int BASE_DAMAGE = 7;
-    private static final int UPGRADE_DAMAGE = 4;
-    private static final int BASE_MAGIC_NUMBER = 1;
-    private static final int UPGRADE_MAGIC_NUMBER = 1;
+    private static final int BASE_DAMAGE = 14;
+    private static final int UPGRADE_DAMAGE = 6;
     private static final int ATTACK_COUNT = 3;
 
     static
@@ -38,13 +33,13 @@ public class ClowCardTheThunder extends KSMOD_AbstractMagicCard
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
         NAME = cardStrings.NAME;
         DESCRIPTION = cardStrings.DESCRIPTION;
+        EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     }
 
     public ClowCardTheThunder()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, KSMOD_CustomTag.ELEMENT_CARD);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
         this.baseDamage = BASE_DAMAGE;
-        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
     @Override
@@ -54,7 +49,6 @@ public class ClowCardTheThunder extends KSMOD_AbstractMagicCard
         {
             this.upgradeName();
             this.upgradeDamage(UPGRADE_DAMAGE);
-            this.upgradeMagicNumber(UPGRADE_MAGIC_NUMBER);
         }
     }
 
@@ -65,32 +59,26 @@ public class ClowCardTheThunder extends KSMOD_AbstractMagicCard
     }
 
     @Override
-    public void use(AbstractPlayer player, AbstractMonster monster)
+    public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        ArrayList<AbstractMonster> monList = new ArrayList<>();
         for (int i = 0; i < ATTACK_COUNT; i++)
         {
             AbstractMonster mon = AbstractDungeon.getRandomMonster();
             AbstractDungeon.actionManager.addToBottom(new ThunderStrikeAction(mon, new DamageInfo(player, this.damage, DamageInfo.DamageType.HP_LOSS), 1));
-            if (!monList.contains(mon) && mon.hasPower(LightElementPower.POWER_ID))
-            {
-                int amount = mon.getPower(LightElementPower.POWER_ID).amount;
-                amount *= this.magicNumber;
-                LightElementPower.TryActiveLightElement(mon, amount, true);
-                for (int j = 0; j < amount; j++)
-                {
-                    if (mon.isDeadOrEscaped())
-                    {
-                        break;
-                    }
-                    AbstractDungeon.actionManager.addToBottom(new ThunderStrikeAction(mon, new DamageInfo(player, this.damage, DamageInfo.DamageType.HP_LOSS), 1));
-                }
-            }
-            AbstractDungeon.actionManager.addToBottom(new ApplyElementAction(mon, player, new FireyElementPower(mon, this.magicNumber), this.magicNumber, true));
-            if (!monList.contains(mon))
-            {
-                monList.add(mon);
-            }
         }
+    }
+
+    public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
+    {
+        for (int i = 0; i < ATTACK_COUNT + KSMOD_SealedBook.THUNDER_NUMBER; i++)
+        {
+            AbstractMonster mon = AbstractDungeon.getRandomMonster();
+            AbstractDungeon.actionManager.addToBottom(new ThunderStrikeAction(mon, new DamageInfo(player, this.damage, DamageInfo.DamageType.HP_LOSS), 1));
+        }
+    }
+
+    public String getExtraDescription()
+    {
+        return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.THUNDER_NUMBER + EXTENDED_DESCRIPTION[1];
     }
 }

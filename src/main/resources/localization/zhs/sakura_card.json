@@ -285,7 +285,11 @@
   },
   "ClowCardTheThunder": {
     "NAME": "雷",
-    "DESCRIPTION": "【 元素牌 】对随机3个目标造成 !D! 点伤害。消耗目标身上所有 光元素 ，每消耗1层额外造成 !M! 次伤害。每次伤害给与 !M! 层 火元素 。"
+    "DESCRIPTION": "「 火元素牌 」对随机3名敌人造成 !D! 点伤害。将1张 虚空 加入弃牌堆。",
+    "EXTENDED_DESCRIPTION": [
+      "额外造成",
+      "次伤害。"
+    ]
   },
   "ClowCardTheTime": {
     "NAME": "时",

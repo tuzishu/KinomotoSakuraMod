@@ -170,6 +170,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         cardList.add(new ClowCardTheStorm());
         cardList.add(new ClowCardTheSweet());
         cardList.add(new ClowCardTheThrough());
+        cardList.add(new ClowCardTheThunder());
 
         cardList.add(new ClowCardTheSword());
         cardList.add(new ClowCardTheWatery());
