@@ -33,6 +33,7 @@
   "ClowCardTheCloud": {
     "NAME": "云",
     "DESCRIPTION": "「 水元素牌 」 消耗 。下 !M! 张 雨牌 、 雪牌 、 岚牌 、 雷牌 、 雾牌 将被额外打出1次。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "「 水元素牌 」下 !M! 张 雨牌 、 雪牌 、 岚牌 、 雷牌 、 雾牌 将被额外打出1次。"
     ]
@@ -40,16 +41,19 @@
   "ClowCardTheCreate": {
     "NAME": "创",
     "DESCRIPTION": "「 地元素牌 」「 风元素牌 」战斗结束后获得1个随机遗物。不可被 镜牌 复制。",
-    "UPGRADE_DESCRIPTION": "「 地元素牌 」「 风元素牌 」 保留 。战斗结束后获得1个随机遗物。不可被 镜牌 复制。"
+    "UPGRADE_DESCRIPTION": "「 地元素牌 」「 风元素牌 」 保留 。战斗结束后获得1个随机遗物。不可被 镜牌 复制。",
+    "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheDark": {
     "NAME": "暗",
     "DESCRIPTION": "回合结束时，可以消耗最多 !M! 张手牌。",
-    "UPGRADE_DESCRIPTION": "回合结束时，可以消耗最多 !M! 张手牌。下回合获得相应数量的能量。"
+    "UPGRADE_DESCRIPTION": "回合结束时，可以消耗最多 !M! 张手牌。下回合获得相应数量的能量。",
+    "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheDash": {
     "NAME": "驱",
     "DESCRIPTION": " 「 风元素牌 」消耗 。抽 !M! 张牌。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外抽",
       "张牌。"
@@ -58,18 +62,22 @@
   "ClowCardTheDream": {
     "NAME": "梦",
     "DESCRIPTION": " 「 风元素牌 」消耗 。添加 !M! 张随机 库洛牌 到手中。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外获得",
-      "张随机库洛牌。"
+      "张随机 库洛牌 。"
     ]
   },
   "ClowCardTheEarthy": {
     "NAME": "地",
-    "DESCRIPTION": "「 地元素牌 」本回合打出 地元素牌 时，额外获得1层 魔力充能 ，并获得 !B! 点格挡。"
+    "DESCRIPTION": "「 地元素牌 」本回合打出 地元素牌 时，额外获得1层 魔力充能 ，并获得 !B! 点格挡。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheErase": {
     "NAME": "消",
     "DESCRIPTION": "「 风元素牌 」造成 !D! 点伤害，如果目标是 爪牙 ，则直接击杀。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "「 风元素牌 」造成 !D! 点伤害，如果目标是不是精英或boss，则直接击杀。"
     ]
@@ -77,18 +85,23 @@
   "ClowCardTheFight": {
     "NAME": "斗",
     "DESCRIPTION": "「 地元素牌 」造成 !D! 点伤害。伤害完全发挥时，获得1点 力量 。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外获得",
-      "点力量。"
+      "点 力量 。"
     ]
   },
   "ClowCardTheFirey": {
     "NAME": "火",
-    "DESCRIPTION": "「 火元素牌 」本回合打出 火元素牌 时，额外获得1层 魔力充能 ，对全体敌人造成 !B! 点伤害。"
+    "DESCRIPTION": "「 火元素牌 」本回合打出 火元素牌 时，额外获得1层 魔力充能 ，对全体敌人造成 !B! 点伤害。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheFloat": {
     "NAME": "浮",
-    "DESCRIPTION": "「 风元素牌 」每受到1次未被格挡的伤害，获得1层 敏捷 。"
+    "DESCRIPTION": "「 风元素牌 」每受到1次未被格挡的伤害，获得1层 敏捷 。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheFlower": {
     "NAME": "花",
@@ -101,26 +114,36 @@
   },
   "ClowCardTheFly": {
     "NAME": "飞",
-    "DESCRIPTION": "「 风元素牌 」回合开始时额外抽 !M! 张牌。"
+    "DESCRIPTION": "「 风元素牌 」回合开始时额外抽 !M! 张牌。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheFreeze": {
     "NAME": "冻",
     "DESCRIPTION": "「 水元素牌 」造成 !D! 点伤害，获得 !B! 格挡。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "目标不是boss或精英时，打断当前动作。"
     ]
   },
   "ClowCardTheGlow": {
     "NAME": "灯",
-    "DESCRIPTION": "「 火元素牌 」获得 !M! 层 魔力充能 。"
+    "DESCRIPTION": "「 火元素牌 」获得 !M! 层 魔力充能 。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheIllusion": {
     "NAME": "幻",
-    "DESCRIPTION": "「 火元素牌 」造成 !D! 点伤害。消耗区每有3张牌，额外造成 !M! 次伤害。"
+    "DESCRIPTION": "「 火元素牌 」造成 !D! 点伤害。消耗区每有3张牌，额外造成 !M! 次伤害。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      "「 火元素牌 」造成 !D! 点伤害。消耗区每有2张牌，额外造成 !M! 次伤害。"
+    ]
   },
   "ClowCardTheJump": {
     "NAME": "跳",
     "DESCRIPTION": "「 风元素牌 」 消耗 。获得 !B! 点格挡。随机清除1个负面状态。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "「 风元素牌 」 消耗 。获得 !B! 点格挡。清除所有负面状态。"
     ]
@@ -128,6 +151,7 @@
   "ClowCardTheLibra": {
     "NAME": "秤",
     "DESCRIPTION": "「 地元素牌 」获得 !B! 点 格挡 。当抽排堆和弃牌堆的数量差小于最大能量值时，获得1点能量。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外获得",
       "点能量。"
@@ -136,23 +160,31 @@
   "ClowCardTheLight": {
     "NAME": "光",
     "DESCRIPTION": "手牌上限+2。抽到 虚空 时，不再扣除能量。",
-    "UPGRADE_DESCRIPTION": "手牌上限+2。抽到 虚空 时，不再扣除能量。可以打出 虚空 消耗之，并抽1张牌。"
+    "UPGRADE_DESCRIPTION": "手牌上限+2。抽到 虚空 时，不再扣除能量。可以打出 虚空 消耗之，并抽1张牌。",
+    "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheLittle": {
     "NAME": "小",
-    "DESCRIPTION": "「 地元素牌 」获得 !M! 点 敏捷 ，失去1点 力量 。"
+    "DESCRIPTION": "「 地元素牌 」获得 !M! 点 敏捷 ，失去1点 力量 。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheLock": {
     "NAME": "锁",
-    "DESCRIPTION": "「 风元素牌 」1回合不触发魔力充能的效果。"
+    "DESCRIPTION": "「 风元素牌 」1回合不触发 魔力充能 的效果。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheLoop": {
     "NAME": "轮",
-    "DESCRIPTION": "「 火元素牌 」回合开始时，额外抽 !M! 张牌，丢弃 !M! 张牌。"
+    "DESCRIPTION": "「 火元素牌 」回合开始时，额外抽 !M! 张牌，丢弃 !M! 张牌。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheMaze": {
     "NAME": "迷",
     "DESCRIPTION": "「 地元素牌 」获得 !B! 点 格挡 。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外获得",
       "点 格挡 。"
@@ -161,6 +193,7 @@
   "ClowCardTheMirror": {
     "NAME": "镜",
     "DESCRIPTION": "「 水元素牌 」 消耗 。选择复制1张手牌中的 库洛牌 或 小樱牌 对应的 库洛牌 。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外添加1张复制牌到手中。"
     ]
@@ -168,6 +201,7 @@
   "ClowCardTheMist": {
     "NAME": "雾",
     "DESCRIPTION": "「 水元素牌 」 消耗 。给与全体敌人 中毒  !M! 次。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "去除所有敌人的所有格挡值、 金属化 、 多层护甲 、 人工制品 、 荆棘 、 缓冲 、 无实体 、 柔韧 。"
     ]
@@ -175,6 +209,7 @@
   "ClowCardTheMove": {
     "NAME": "移",
     "DESCRIPTION": "「 火元素牌 」 消耗 。选择1张消耗堆中的牌返回抽排堆。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "「 火元素牌 」 消耗 。选择1张消耗堆中的牌返回手牌。"
     ]
@@ -182,14 +217,16 @@
   "ClowCardThePower": {
     "NAME": "力",
     "DESCRIPTION": "「 火元素牌 」造成 !D! 点伤害，可多次升级。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "力量额外产生",
+      " 力量 额外产生",
       "（升级次数）倍效果。"
     ]
   },
   "ClowCardTheRain": {
     "NAME": "雨",
     "DESCRIPTION": "「 水元素牌 」 消耗 。所有手牌的耗能下降1。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "「 水元素牌 」所有手牌的耗能下降1。"
     ]
@@ -197,19 +234,22 @@
   "ClowCardTheReturn": {
     "NAME": "回",
     "DESCRIPTION": "「 水元素牌 」记录当前的生命值和增益状态，3回合后回到当前状态。",
-    "UPGRADE_DESCRIPTION": "「 水元素牌 」 保留 。记录当前的生命值和增益状态，3回合后回到当前状态。"
+    "UPGRADE_DESCRIPTION": "「 水元素牌 」 保留 。记录当前的生命值和增益状态，3回合后回到当前状态。",
+    "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheSand": {
     "NAME": "沙",
     "DESCRIPTION": "「 地元素牌 」造成 !D! 点伤害。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外获得",
-      "点格挡。"
+      "点 格挡 。"
     ]
   },
   "ClowCardTheShadow": {
     "NAME": "影",
     "DESCRIPTION": "「 地元素牌 」获得 !B! 点 格挡 。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "「 地元素牌 」获得 !M! 层 多层护甲 。"
     ]
@@ -217,6 +257,7 @@
   "ClowCardTheShield": {
     "NAME": "盾",
     "DESCRIPTION": "「 火元素牌 」获得 !B! 点 格挡 。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外获得",
       "层 金属化 。"
@@ -225,6 +266,7 @@
   "ClowCardTheShot": {
     "NAME": "击",
     "DESCRIPTION": "「 火元素牌 」造成 !D! 点伤害2次。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外给与",
       "层 易伤 。"
@@ -233,6 +275,7 @@
   "ClowCardTheSilent": {
     "NAME": "静",
     "DESCRIPTION": "「 水元素牌 」获得1层 缓冲 ，下回合无法打出攻击牌。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "「 水元素牌 」获得1层 缓冲 。"
     ]
@@ -240,6 +283,7 @@
   "ClowCardTheSleep": {
     "NAME": "睡",
     "DESCRIPTION": "「 风元素牌 」 消耗 。使非boss目标沉睡 !M! 回合，受到伤害时会醒来。自然醒来时将恢复所有生命值，并获得2层 虚弱 。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外睡眠",
       "回合。"
@@ -248,6 +292,7 @@
   "ClowCardTheSnow": {
     "NAME": "雪",
     "DESCRIPTION": "「 水元素牌 」对全体敌人造成 !D! 点伤害。每有1层 魔力充能 ，这张牌在本场战斗中的伤害提高1。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外提高",
       "点伤害。"
@@ -255,7 +300,8 @@
   },
   "ClowCardTheSong": {
     "NAME": "歌",
-    "DESCRIPTION": "「 风元素牌 」消耗最多X+1张手牌，每消耗1张手牌，对全体敌人造成 !D! 点伤害，获得 !B! 点格挡。",
+    "DESCRIPTION": "「 风元素牌 」消耗最多X+1张手牌，每消耗1张手牌，对全体敌人造成 !D! 点伤害，获得 !B! 点 格挡 。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外发动",
       "次效果。"
@@ -264,6 +310,7 @@
   "ClowCardTheStorm": {
     "NAME": "岚",
     "DESCRIPTION": "「 风元素牌 」造成 !D! 点伤害4次。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "「 风元素牌 」对全体敌人造成 !D! 点伤害4次。"
     ]
@@ -271,6 +318,7 @@
   "ClowCardTheSweet": {
     "NAME": "甘",
     "DESCRIPTION": "「 火元素牌 」 消耗 。回复 !M! 生命。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "「 火元素牌 」 消耗 。获得 !M! 层 再生 。"
     ]
@@ -278,6 +326,7 @@
   "ClowCardTheSword": {
     "NAME": "剑",
     "DESCRIPTION": "「 火元素牌 」造成 !D! 点伤害。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外造成",
       "点 真实伤害 。"
@@ -286,6 +335,7 @@
   "ClowCardTheThrough": {
     "NAME": "拔",
     "DESCRIPTION": "「 地元素牌 」对全体敌人造成 魔力充能 数量 !M! 倍的伤害。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外造成最大生命",
       "%的伤害。"
@@ -294,6 +344,7 @@
   "ClowCardTheThunder": {
     "NAME": "雷",
     "DESCRIPTION": "「 火元素牌 」对随机3名敌人造成 !D! 点伤害。将1张 虚空 加入弃牌堆。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外造成",
       "次伤害。"
@@ -311,23 +362,32 @@
   "ClowCardTheTwin": {
     "NAME": "双",
     "DESCRIPTION": "「 水元素牌 」「 火元素牌 」每回合打出的第 !M! 张 库洛牌 或 小樱牌 会打额外打出1次。",
-    "UPGRADE_DESCRIPTION": "「 水元素牌 」「 火元素牌 」 保留 。每回合打出的第 !M! 张 库洛牌 或 小樱牌 会额外打出1次。"
+    "UPGRADE_DESCRIPTION": "「 水元素牌 」「 火元素牌 」 保留 。每回合打出的第 !M! 张 库洛牌 或 小樱牌 会额外打出1次。",
+    "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheVoice": {
     "NAME": "声",
-    "DESCRIPTION": "「 风元素牌 」无法被打出。抽到这张牌时，额外抽1张牌。被消耗时，获得 !B! 点格挡。被 歌牌 消耗时，额外触发 !M! 次 歌牌 的效果。"
+    "DESCRIPTION": "「 风元素牌 」无法被打出。抽到这张牌时，额外抽1张牌。被 消耗 时，获得 !B! 点 格挡 。被 歌牌  消耗 时，额外触发 !M! 次 歌牌 的效果。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheWatery": {
     "NAME": "水",
-    "DESCRIPTION": "「 水元素牌 」本回合打出 水元素牌 时，额外获得1层 魔力充能 ，并获得 !M! 点能量。"
+    "DESCRIPTION": "「 水元素牌 」本回合打出 水元素牌 时，额外获得1层 魔力充能 ，并获得 !M! 点能量。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheWave": {
     "NAME": "波",
-    "DESCRIPTION": "「 水元素牌 」使用攻击牌时获得 !M! 点格挡。"
+    "DESCRIPTION": "「 水元素牌 」使用攻击牌时获得 !M! 点 格挡 。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheWindy": {
     "NAME": "风",
-    "DESCRIPTION": "「 风元素牌 」本回合打出 风元素牌 时，额外获得1层 魔力充能 ，并抽 !M! 张牌。"
+    "DESCRIPTION": "「 风元素牌 」本回合打出 风元素牌 时，额外获得1层 魔力充能 ，并抽 !M! 张牌。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheWood": {
     "NAME": "树",
@@ -341,14 +401,20 @@
 
   "SpellCardRelease": {
     "NAME": "解",
-    "DESCRIPTION": "选择手牌中最多1张 库洛牌 ， 封印解除 。并使所有敌人流失 !D! 点生命。"
+    "DESCRIPTION": " 封印解除 手牌中的1张 库洛牌 。并对全体敌人造成 !D! 点伤害。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
   },
   "SpellCardSeal": {
     "NAME": "封",
-    "DESCRIPTION": "造成 !D! 点伤害。如果击杀了1名不是 爪牙 的敌人，额外获得1次选牌奖励。"
+    "DESCRIPTION": "造成 !D! 点伤害。如果击杀了1名不是 爪牙 的敌人，则为 封印之杖 额外充能。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
   },
   "SpellCardTurn": {
     "NAME": "转",
-    "DESCRIPTION": " 保留 。选择1张手牌 消耗 。如果 消耗 的是 库洛牌 ，且卡组中没有对应的 小樱牌 时，则将其转化为对应的 小樱牌 。"
+    "DESCRIPTION": " 保留 。选择1张手牌 消耗 。如果 消耗 的是 库洛牌 ，且卡组中没有对应的 小樱牌 时，则将其转化为对应的 小樱牌 。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
   }
 }

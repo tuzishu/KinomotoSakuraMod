@@ -50,7 +50,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
     public static final float IMG_HEIGHT = 500F * Settings.scale;
     private static final float DESC_LINE_WIDTH = 190F * Settings.scale;
     private static final float DESC_SCALE_RATE_X = 0.83F;
-    private static final float DESC_OFFSET_TO_BOTTOM_Y = 0.367F;
+    private static final float DESC_OFFSET_TO_BOTTOM_Y = 0.35F;
     private static final float CARD_ENERGY_IMG_WIDTH = 24.0F * Settings.scale;
     private static final float HB_W = IMG_WIDTH;
     private static final float HB_H = IMG_HEIGHT;
@@ -175,7 +175,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
 
     private boolean hasCharged()
     {
-        if (AbstractDungeon.player.hasPower(KSMOD_MagickChargePower.POWER_ID))
+        if (AbstractDungeon.player != null && AbstractDungeon.player.hasPower(KSMOD_MagickChargePower.POWER_ID))
         {
             return AbstractDungeon.player.getPower(KSMOD_MagickChargePower.POWER_ID).amount >= KSMOD_SealedBook.ACTIVE_NUMBER;
         }
@@ -184,7 +184,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
 
     private boolean hasLockPower()
     {
-        return AbstractDungeon.player.hasPower(KSMOD_LockPower.POWER_ID);
+        return AbstractDungeon.player != null && AbstractDungeon.player.hasPower(KSMOD_LockPower.POWER_ID);
     }
 
     public abstract void applyNormalEffect(AbstractPlayer player, AbstractMonster monster);
@@ -415,10 +415,10 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
                 }
                 else
                 {
-                    start_x = this.current_x - ((DescriptionLine) this.description.get(i)).width * this.drawScale / 2.0F - 14.0F * Settings.scale;
+                    start_x = this.current_x - this.description.get(i).width * this.drawScale / 2.0F - 14.0F * Settings.scale;
                 }
 
-                String desc = ((DescriptionLine) this.description.get(i)).text;
+                String desc = this.description.get(i).text;
                 String[] var9 = desc.split(" ");
                 int var10 = var9.length;
 
@@ -535,15 +535,15 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
             String desc;
             if (this.hasExtraEffect && hasCharged() && !hasLockPower())
             {
-                desc = this.rawDescription;
-            }
-            else
-            {
                 desc = this.getExtraDescription();
                 if (this.hasReleased)
                 {
                     desc = KSMOD_ReleaseAction.reloadReleasedCardDescription(desc, !this.isEthereal, !this.exhaust);
                 }
+            }
+            else
+            {
+                desc = this.rawDescription;
             }
             String[] var4 = desc.split(" ");
             int var5 = var4.length;
@@ -799,7 +799,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
     {
         try
         {
-            BitmapFont font = null;
+            BitmapFont font;
             Color renderColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
             if (this.isLocked)
             {

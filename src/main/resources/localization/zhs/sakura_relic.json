@@ -1,12 +1,12 @@
 {
-  "SealedWand": {
+  "KSMOD_SealedWand": {
     "NAME": "封印之杖",
     "FLAVOR": "被封印着黑暗力量的法杖。",
     "DESCRIPTIONS": [
       "每打出 #b1 张卡，获得 #b1 层 #y充能 。 NL 当 #y充能 达到 #b100 时，添加 #b1 张 转 到手牌中。"
     ]
   },
-  "SealedBook": {
+  "KSMOD_SealedBook": {
     "NAME": "封印之书",
     "FLAVOR": "封印着具有强大魔力卡片的魔法书，封面和封底分别是封印兽 #y可鲁贝洛斯 和 审判者 #月 。",
     "DESCRIPTIONS": [
