@@ -119,7 +119,7 @@
       " 回合后恢复到回溯之前的状态。"
     ]
   },
-  "KSMOD_SlientPower": {
+  "KSMOD_SilentPower": {
     "NAME": "寂静",
     "DESCRIPTIONS": [
       "下回合将无法打出攻击牌。"
