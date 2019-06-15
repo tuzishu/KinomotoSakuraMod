@@ -6,6 +6,7 @@ import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import basemod.abstracts.CustomCard;
+import basemod.interfaces.OnPowersModifiedSubscriber;
 import basemod.interfaces.PostPowerApplySubscriber;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -34,7 +35,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
-public abstract class KSMOD_AbstractMagicCard extends CustomCard implements PostPowerApplySubscriber
+public abstract class KSMOD_AbstractMagicCard extends CustomCard implements PostPowerApplySubscriber, OnPowersModifiedSubscriber
 {
     //////////
     // Override Method Usage
@@ -106,6 +107,22 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
     }
 
     public void receivePostPowerApplySubscriber(AbstractPower power, AbstractCreature target, AbstractCreature source)
+    {
+        if (power instanceof KSMOD_MagickChargePower)
+        {
+            this.initializeDescription();
+        }
+    }
+
+    public void receivePostPowerReduceSubscriber(AbstractPower power)
+    {
+        if (power instanceof KSMOD_MagickChargePower)
+        {
+            this.initializeDescription();
+        }
+    }
+
+    public void receivePostPowerRemoveSubscriber(AbstractPower power)
     {
         if (power instanceof KSMOD_MagickChargePower)
         {

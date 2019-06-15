@@ -2,7 +2,7 @@ package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
-import KinomotoSakuraMod.Powers.WavePower;
+import KinomotoSakuraMod.Powers.KSMOD_WavePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -19,10 +19,10 @@ public class ClowCardTheWave extends KSMOD_AbstractMagicCard
     private static final int COST = 1;
     private static final CardType CARD_TYPE = CardType.POWER;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
-    private static final CardRarity CARD_RARITY = CardRarity.COMMON;
+    private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
-    private static final int BASE_MAGIC_NUMBER = 15;
-    private static final int UPGRADE_MAGIC_NUMBER = 15;
+    private static final int BASE_MAGIC_NUMBER = 2;
+    private static final int UPGRADE_MAGIC_NUMBER = 1;
 
     static
     {
@@ -52,8 +52,8 @@ public class ClowCardTheWave extends KSMOD_AbstractMagicCard
     }
 
     @Override
-    public void use(AbstractPlayer player, AbstractMonster monster)
+    public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new WavePower(this.magicNumber), this.magicNumber));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_WavePower(this.magicNumber), this.magicNumber));
     }
 }

@@ -128,6 +128,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         cardList.add(new SpellCardTurn());
         cardList.add(new SpellCardSeal());
         cardList.add(new SpellCardRelease());
+
         cardList.add(new ClowCardTheArrow());
         cardList.add(new ClowCardTheBig());
         cardList.add(new ClowCardTheBubbles());
@@ -169,18 +170,19 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         cardList.add(new ClowCardTheSong());
         cardList.add(new ClowCardTheStorm());
         cardList.add(new ClowCardTheSweet());
+        cardList.add(new ClowCardTheSword());
         cardList.add(new ClowCardTheThrough());
         cardList.add(new ClowCardTheThunder());
         cardList.add(new ClowCardTheTime());
         cardList.add(new ClowCardTheTwin());
         cardList.add(new ClowCardTheVoice());
-
-        cardList.add(new ClowCardTheSword());
         cardList.add(new ClowCardTheWatery());
+        cardList.add(new ClowCardTheWave());
         cardList.add(new ClowCardTheWindy());
         cardList.add(new ClowCardTheWood());
 
         cardList.add(new TestCard());
+        
         return cardList;
     }
 

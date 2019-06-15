@@ -315,7 +315,7 @@
   },
   "ClowCardTheWave": {
     "NAME": "波",
-    "DESCRIPTION": "打出的 库洛牌 或 小樱牌 对单个目标造成伤害时，对所有其他敌人造成 !M! %的伤害。多段伤害只触发1次。"
+    "DESCRIPTION": "「 水元素牌 」使用攻击牌时获得 !M! 点格挡。"
   },
   "ClowCardTheWindy": {
     "NAME": "风",
@@ -323,7 +323,8 @@
   },
   "ClowCardTheWood": {
     "NAME": "树",
-    "DESCRIPTION": "【 元素牌 】造成 !D! 点伤害，本回合减少 !D! 点力量，给与 !M! 层 地元素。目标携带 地元素 大于8时，消耗8层额外对其施加2次 缠绕 。",
+    "DESCRIPTION": "「 地元素牌 」使目标失去 !M!  力量 1回合。",
+    "UPGRADE_DESCRIPTION": "「 地元素牌 」使目标失去 !M!  力量 1回合，并给于5层 缠绕 。",
     "EXTENDED_DESCRIPTION": [
       "额外给与",
       "层 虚弱 。"

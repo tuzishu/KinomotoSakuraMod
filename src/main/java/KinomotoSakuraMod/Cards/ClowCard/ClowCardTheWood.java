@@ -40,7 +40,7 @@ public class ClowCardTheWood extends KSMOD_AbstractMagicCard
 
     public ClowCardTheWood()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
