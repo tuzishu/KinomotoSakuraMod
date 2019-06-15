@@ -262,7 +262,10 @@
   },
   "ClowCardTheSweet": {
     "NAME": "甘",
-    "DESCRIPTION": " 消耗 。回复 !M! 生命。"
+    "DESCRIPTION": "「 火元素牌 」 消耗 。回复 !M! 生命。",
+    "EXTENDED_DESCRIPTION": [
+      "「 火元素牌 」 消耗 。获得 !M! 层 再生 。"
+    ]
   },
   "ClowCardTheSword": {
     "NAME": "剑",
