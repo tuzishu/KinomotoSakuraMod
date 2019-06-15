@@ -71,7 +71,7 @@ public class ClowCardTheSnow extends KSMOD_AbstractMagicCard
         AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
         if (player.hasPower(KSMOD_MagickChargePower.POWER_ID))
         {
-            this.damage += player.getPower(KSMOD_MagickChargePower.POWER_ID).amount;
+            this.upgradeDamage(player.getPower(KSMOD_MagickChargePower.POWER_ID).amount);
         }
     }
 
@@ -82,9 +82,9 @@ public class ClowCardTheSnow extends KSMOD_AbstractMagicCard
         AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
         if (player.hasPower(KSMOD_MagickChargePower.POWER_ID))
         {
-            this.damage += player.getPower(KSMOD_MagickChargePower.POWER_ID).amount;
+            this.upgradeDamage(player.getPower(KSMOD_MagickChargePower.POWER_ID).amount);
         }
-        this.damage += KSMOD_SealedBook.DAMAGE_INCREASE;
+        this.upgradeDamage(KSMOD_SealedBook.DAMAGE_INCREASE);
     }
 
     @Override

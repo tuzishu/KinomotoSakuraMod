@@ -97,7 +97,6 @@ public class KSMOD_ExhaustPileViewScreenPatch
                     Float currentDiffY = KSMOD_Utility.GetFieldByReflect(ExhaustPileViewScreen.class, "currentDiffY").getFloat(deck);
                     card.target_x = DRAW_START_X + (float) mod * PAD_X;
                     card.target_y = DRAW_START_Y + currentDiffY - GetPadHeight(i, false);
-                    KSMOD_Utility.Logger.info(card.target_x + ", " + card.target_y);
                     card.update();
                     card.updateHoverLogic();
                     if (card.hb.hovered)

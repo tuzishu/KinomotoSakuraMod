@@ -78,15 +78,14 @@ public class ClowCardThePower extends KSMOD_AbstractMagicCard
 
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        int damage = this.damage;
+        int extraDamage = 0;
         if (player.hasPower(StrengthPower.POWER_ID) && this.timesUpgraded > 0)
         {
             StrengthPower power = (StrengthPower) player.getPower(StrengthPower.POWER_ID);
-            this.damage += this.timesUpgraded * power.amount;
+            extraDamage = this.timesUpgraded * power.amount;
         }
         AbstractDungeon.actionManager.addToBottom(new VFXAction(new VerticalImpactEffect(monster.hb.cX + monster.hb.width / 4.0F, monster.hb.cY - monster.hb.height / 4.0F)));
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        this.damage = damage;
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage + extraDamage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
     }
 
     public String getExtraDescription()

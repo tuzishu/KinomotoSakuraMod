@@ -44,6 +44,10 @@ public class KSMOD_ReturnPower extends KSMOD_CustomPower
         this.powerList = (ArrayList<AbstractPower>) this.owner.powers.clone();
         this.recordHP = this.owner.currentHealth;
         this.recordBlock = this.owner.currentBlock;
+        if (this.powerList.contains(this))
+        {
+            this.powerList.remove(this);
+        }
     }
 
     public void atStartOfTurn()

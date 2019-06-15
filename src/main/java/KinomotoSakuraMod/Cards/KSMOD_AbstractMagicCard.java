@@ -100,9 +100,9 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
 
     public void triggerOnExhaust()
     {
-        this.damage = this.valueBuffer[0];
-        this.block = this.valueBuffer[1];
-        this.magicNumber = this.valueBuffer[2];
+        this.upgradeDamage(-this.valueBuffer[0]);
+        this.upgradeBlock(-this.valueBuffer[1]);
+        this.upgradeMagicNumber(-this.valueBuffer[2]);
         this.valueBuffer = new int[3];
         this.hasReleased = false;
     }
@@ -209,12 +209,12 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
         if (!hasReleased)
         {
             this.releaseRate = releaseRate;
-            this.valueBuffer[0] = this.damage;
-            this.valueBuffer[1] = this.block;
-            this.valueBuffer[2] = this.magicNumber;
-            this.damage = (int) (this.damage * (1 + this.releaseRate));
-            this.block = (int) (this.damage * (1 + this.releaseRate));
-            this.magicNumber = (int) (this.damage * (1 + this.releaseRate));
+            this.valueBuffer[0] = (int) (this.damage * this.releaseRate);
+            this.valueBuffer[1] = (int) (this.block * this.releaseRate);
+            this.valueBuffer[2] = (int) (this.magicNumber * this.releaseRate);
+            this.upgradeDamage(this.valueBuffer[0]);
+            this.upgradeBlock(this.valueBuffer[1]);
+            this.upgradeMagicNumber(this.valueBuffer[2]);
             hasReleased = true;
         }
     }
@@ -255,7 +255,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
             {
                 this.initializeDescription();
             }
-            if (justUnhovered && AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this) && !this.hb.hovered)
+            if (justUnhovered && AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this) && !this.hb.hovered && !this.isHandSelectScreenOpened)
             {
                 this.description.clear();
             }

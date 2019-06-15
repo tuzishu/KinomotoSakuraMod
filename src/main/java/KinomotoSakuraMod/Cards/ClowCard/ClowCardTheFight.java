@@ -5,6 +5,7 @@ import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
+import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -66,7 +67,7 @@ public class ClowCardTheFight extends KSMOD_AbstractMagicCard
     {
         int recordHP = monster.currentHealth;
         AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-        AbstractDungeon.actionManager.addToBottom(new KSMOD_FightAction(monster, this.damage, recordHP, GAIN_STRENGTH_NUMBER));
+        AbstractDungeon.actionManager.addToBottom(new KSMOD_FightAction(monster, this.baseDamage, recordHP, GAIN_STRENGTH_NUMBER));
     }
 
     @Override
@@ -74,7 +75,7 @@ public class ClowCardTheFight extends KSMOD_AbstractMagicCard
     {
         int recordHP = monster.currentHealth;
         AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-        AbstractDungeon.actionManager.addToBottom(new KSMOD_FightAction(monster, this.damage, recordHP, GAIN_STRENGTH_NUMBER));
+        AbstractDungeon.actionManager.addToBottom(new KSMOD_FightAction(monster, this.baseDamage, recordHP, GAIN_STRENGTH_NUMBER));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new StrengthPower(player, KSMOD_SealedBook.STRENGTH_NUMBER), KSMOD_SealedBook.STRENGTH_NUMBER));
     }
 

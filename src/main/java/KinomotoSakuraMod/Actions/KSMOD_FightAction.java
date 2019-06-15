@@ -35,7 +35,12 @@ public class KSMOD_FightAction extends AbstractGameAction
         }
         if (this.duration == DURATION)
         {
-            if (this.target.currentHealth <= this.recordHP - this.targetDamage)
+            int strengthAmount = 0;
+            if (this.source.hasPower(StrengthPower.POWER_ID))
+            {
+                strengthAmount = this.source.getPower(StrengthPower.POWER_ID).amount;
+            }
+            if (this.recordHP - this.target.currentHealth >= this.targetDamage + strengthAmount)
             {
                 AbstractPlayer player = AbstractDungeon.player;
                 AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(player, player, new StrengthPower(player, this.gainStrength), this.gainStrength));

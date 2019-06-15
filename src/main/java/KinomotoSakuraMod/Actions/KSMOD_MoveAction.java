@@ -41,22 +41,22 @@ public class KSMOD_MoveAction extends AbstractGameAction
         {
             if (this.duration == DURATION)
             {
-                if (this.player.discardPile.isEmpty())
+                if (this.player.exhaustPile.isEmpty())
                 {
                     this.isDone = true;
                     return;
                 }
 
-                if (this.player.discardPile.size() == this.amount)
+                if (this.player.exhaustPile.size() == this.amount)
                 {
-                    AbstractCard tmp = this.player.discardPile.getTopCard();
-                    this.player.discardPile.removeCard(tmp);
-                    this.player.discardPile.moveToDeck(tmp, false);
+                    AbstractCard tmp = this.player.exhaustPile.getTopCard();
+                    this.player.exhaustPile.removeCard(tmp);
+                    this.player.exhaustPile.moveToDeck(tmp, false);
                 }
 
-                if (this.player.discardPile.group.size() > this.amount)
+                if (this.player.exhaustPile.group.size() > this.amount)
                 {
-                    AbstractDungeon.gridSelectScreen.open(this.player.discardPile, this.amount, TEXT[0], false, false, false, false);
+                    AbstractDungeon.gridSelectScreen.open(this.player.exhaustPile, this.amount, TEXT[0], false, false, false, false);
                     this.tickDuration();
                     return;
                 }

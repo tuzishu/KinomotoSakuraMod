@@ -1,7 +1,9 @@
 package KinomotoSakuraMod.Patches;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
+import KinomotoSakuraMod.Characters.KinomotoSakura;
 import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.screens.select.HandCardSelectScreen;
 import javassist.CtBehavior;
@@ -22,6 +24,13 @@ public class KSMOD_HandSelectScreenHook
         public static SpireReturn<Object> Prefix(HandCardSelectScreen screen, String msg, int amount, boolean anyNumber, boolean canPickZero, boolean forTransform, boolean forUpgrade, boolean upTo)
         {
             KSMOD_AbstractMagicCard.isHandSelectScreenOpened = true;
+            if (AbstractDungeon.player != null && AbstractDungeon.player instanceof KinomotoSakura && AbstractDungeon.player.hand != null)
+            {
+               for (AbstractCard card: AbstractDungeon.player.hand.group)
+               {
+                   card.initializeDescription();
+               }
+            }
             return SpireReturn.Continue();
         }
     }
@@ -37,6 +46,13 @@ public class KSMOD_HandSelectScreenHook
         public static SpireReturn<Object> Prefix(HandCardSelectScreen screen, String msg, int amount, boolean anyNumber, boolean canPickZero)
         {
             KSMOD_AbstractMagicCard.isHandSelectScreenOpened = true;
+            if (AbstractDungeon.player != null && AbstractDungeon.player instanceof KinomotoSakura && AbstractDungeon.player.hand != null)
+            {
+                for (AbstractCard card: AbstractDungeon.player.hand.group)
+                {
+                    card.initializeDescription();
+                }
+            }
             return SpireReturn.Continue();
         }
     }

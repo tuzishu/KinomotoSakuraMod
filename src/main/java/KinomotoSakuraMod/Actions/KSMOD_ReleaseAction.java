@@ -69,6 +69,7 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
                 ReleaseCard(this.player.hand.getTopCard());
                 this.returnCards();
                 this.isDone = true;
+                AbstractDungeon.actionManager.addToTop(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage), DamageInfo.DamageType.HP_LOSS, AttackEffect.FIRE));
                 return;
             }
 
