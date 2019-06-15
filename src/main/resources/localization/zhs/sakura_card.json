@@ -277,7 +277,11 @@
   },
   "ClowCardTheThrough": {
     "NAME": "拔",
-    "DESCRIPTION": "消耗目标所有 六种元素 ，对其造成层数和 !M! 倍的伤害。"
+    "DESCRIPTION": "「 地元素牌 」对全体敌人造成 魔力充能 数量 !M! 倍的伤害。",
+    "EXTENDED_DESCRIPTION": [
+      "额外造成最大生命",
+      "%的伤害。"
+    ]
   },
   "ClowCardTheThunder": {
     "NAME": "雷",

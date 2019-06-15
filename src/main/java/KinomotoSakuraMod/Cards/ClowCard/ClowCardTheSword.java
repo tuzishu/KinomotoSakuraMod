@@ -38,7 +38,7 @@ public class ClowCardTheSword extends KSMOD_AbstractMagicCard
 
     public ClowCardTheSword()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
         this.tags.add(BaseModCardTags.BASIC_STRIKE);
         this.baseDamage = BASE_DAMAGE;
     }
