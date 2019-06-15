@@ -3,7 +3,7 @@ package KinomotoSakuraMod.Cards.ClowCard;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -21,7 +21,9 @@ public class ClowCardTheVoice extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.NONE;
-    private static final int BASE_MAGIC_NUMBER = 1;
+    private static final int BASE_BLOCK = 3;
+    private static final int UPGRADE_BLOCK = 3;
+    private static final int BASE_MAGIC_NUMBER = 2;
     private static final int UPGRADE_MAGIC_NUMBER = 1;
 
     static
@@ -35,7 +37,8 @@ public class ClowCardTheVoice extends KSMOD_AbstractMagicCard
     public ClowCardTheVoice()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
-        setBaseMagicNumber(BASE_MAGIC_NUMBER);
+        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
+        this.baseBlock = BASE_BLOCK;
     }
 
     @Override
@@ -44,7 +47,8 @@ public class ClowCardTheVoice extends KSMOD_AbstractMagicCard
         if (!this.upgraded)
         {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_MAGIC_NUMBER);
+            this.upgradeBlock(UPGRADE_BLOCK);
+            this.upgradeMagicNumber(UPGRADE_MAGIC_NUMBER);
         }
     }
 
@@ -55,7 +59,7 @@ public class ClowCardTheVoice extends KSMOD_AbstractMagicCard
     }
 
     @Override
-    public void use(AbstractPlayer player, AbstractMonster monster)
+    public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
     }
 
@@ -73,6 +77,6 @@ public class ClowCardTheVoice extends KSMOD_AbstractMagicCard
     public void triggerOnExhaust()
     {
         applyPowers();
-        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(this.magicNumber));
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, this.block));
     }
 }

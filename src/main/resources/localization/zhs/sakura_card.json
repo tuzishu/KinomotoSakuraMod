@@ -307,7 +307,7 @@
   },
   "ClowCardTheVoice": {
     "NAME": "声",
-    "DESCRIPTION": "无法被打出。抽到此牌时额外抽1张牌。被 消耗 时获得 !M! 点能量。"
+    "DESCRIPTION": "「 风元素牌 」无法被打出。抽到这张牌时，额外抽1张牌。被消耗时，获得 !B! 点格挡。被 歌牌 消耗时，额外触发 !M! 次 歌牌 的效果。"
   },
   "ClowCardTheWatery": {
     "NAME": "水",

@@ -23,7 +23,6 @@ public class KSMOD_SongAction extends AbstractGameAction
     private static final String[] TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
     private static final float WAVE_EFFECT_DURATION = 0.6F;
-    private static final int VOICE_EXTRA_COUNT = 2;
     private AbstractPlayer player;
     private int damage;
     private int block;
@@ -74,7 +73,7 @@ public class KSMOD_SongAction extends AbstractGameAction
             int count = extraCount;
             for (AbstractCard card : AbstractDungeon.handCardSelectScreen.selectedCards.group)
             {
-                count += card instanceof ClowCardTheVoice ? 1 + VOICE_EXTRA_COUNT : 1;
+                count += card instanceof ClowCardTheVoice ? 1 + card.magicNumber : 1;
                 this.player.hand.moveToExhaustPile(card);
             }
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
