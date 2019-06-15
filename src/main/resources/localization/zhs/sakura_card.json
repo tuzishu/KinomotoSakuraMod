@@ -39,8 +39,8 @@
   },
   "ClowCardTheCreate": {
     "NAME": "创",
-    "DESCRIPTION": "战斗结束后获得1个随机遗物。不可被 镜牌 复制。",
-    "UPGRADE_DESCRIPTION": " 保留 。战斗结束后获得1个随机遗物。不可被 镜牌 复制。"
+    "DESCRIPTION": "「 地元素牌 」「 风元素牌 」战斗结束后获得1个随机遗物。不可被 镜牌 复制。",
+    "UPGRADE_DESCRIPTION": "「 地元素牌 」「 风元素牌 」 保留 。战斗结束后获得1个随机遗物。不可被 镜牌 复制。"
   },
   "ClowCardTheDark": {
     "NAME": "暗",

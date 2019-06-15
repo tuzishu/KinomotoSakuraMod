@@ -2,6 +2,7 @@ package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
+import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -40,6 +41,7 @@ public class ClowCardTheJump extends KSMOD_AbstractMagicCard
     public ClowCardTheJump()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
+        this.tags.add(KSMOD_CustomTag.KSMOD_WINDY_CARD);
         this.baseBlock = BASE_BLOCK;
         this.exhaust = true;
     }

@@ -2,6 +2,7 @@ package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
+import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -42,6 +43,7 @@ public class ClowCardTheBubbles extends KSMOD_AbstractMagicCard
     public ClowCardTheBubbles()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
+        this.tags.add(KSMOD_CustomTag.KSMOD_WATERY_CARD);
         this.baseDamage = BASE_DAMAGE;
         this.exhaust = true;
     }

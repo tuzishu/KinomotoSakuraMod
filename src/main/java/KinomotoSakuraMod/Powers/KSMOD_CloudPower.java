@@ -82,26 +82,26 @@ public class KSMOD_CloudPower extends KSMOD_CustomPower
 
     private boolean Check(AbstractCard card)
     {
-        // if (card instanceof ClowCardTheRain)
-        // {
-        //     return true;
-        // }
-        // else if (card instanceof ClowCardTheSnow)
-        // {
-        //     return true;
-        // }
-        // else if (card instanceof ClowCardTheStorm)
-        // {
-        //     return true;
-        // }
-        // else if (card instanceof ClowCardTheThunder)
-        // {
-        //     return true;
-        // }
-        // else if (card instanceof ClowCardTheMist)
-        // {
-        //     return true;
-        // }
+        if (card instanceof ClowCardTheRain)
+        {
+            return true;
+        }
+        else if (card instanceof ClowCardTheSnow)
+        {
+            return true;
+        }
+        else if (card instanceof ClowCardTheStorm)
+        {
+            return true;
+        }
+        else if (card instanceof ClowCardTheThunder)
+        {
+            return true;
+        }
+        else if (card instanceof ClowCardTheMist)
+        {
+            return true;
+        }
         return false;
     }
 }

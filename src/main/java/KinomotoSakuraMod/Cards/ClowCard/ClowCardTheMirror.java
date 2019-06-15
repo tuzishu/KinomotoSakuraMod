@@ -3,6 +3,7 @@ package KinomotoSakuraMod.Cards.ClowCard;
 import KinomotoSakuraMod.Actions.KSMOD_MirrorAction;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
+import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -36,6 +37,7 @@ public class ClowCardTheMirror extends KSMOD_AbstractMagicCard
     public ClowCardTheMirror()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
+        this.tags.add(KSMOD_CustomTag.KSMOD_WATERY_CARD);
         this.exhaust = true;
     }
 

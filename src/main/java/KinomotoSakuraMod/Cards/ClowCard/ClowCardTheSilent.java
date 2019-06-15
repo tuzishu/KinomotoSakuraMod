@@ -2,6 +2,7 @@ package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
+import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Powers.KSMOD_SilentPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -36,6 +37,7 @@ public class ClowCardTheSilent extends KSMOD_AbstractMagicCard
     public ClowCardTheSilent()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
+        this.tags.add(KSMOD_CustomTag.KSMOD_WATERY_CARD);
     }
 
     @Override

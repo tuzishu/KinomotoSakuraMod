@@ -2,6 +2,7 @@ package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
+import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
@@ -43,6 +44,7 @@ public class ClowCardTheSnow extends KSMOD_AbstractMagicCard
     public ClowCardTheSnow()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
+        this.tags.add(KSMOD_CustomTag.KSMOD_WATERY_CARD);
         this.baseDamage = BASE_DAMAGE;
     }
 

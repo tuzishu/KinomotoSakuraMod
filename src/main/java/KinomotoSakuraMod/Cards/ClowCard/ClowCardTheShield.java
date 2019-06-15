@@ -43,6 +43,7 @@ public class ClowCardTheShield extends KSMOD_AbstractMagicCard
     public ClowCardTheShield()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
+        this.tags.add(KSMOD_CustomTag.KSMOD_FIREY_CARD);
         this.tags.add(BaseModCardTags.BASIC_DEFEND);
         this.baseBlock = BASE_BLOCK;
     }

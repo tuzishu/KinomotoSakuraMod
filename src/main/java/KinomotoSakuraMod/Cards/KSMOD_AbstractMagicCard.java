@@ -35,7 +35,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
-public abstract class KSMOD_AbstractMagicCard extends CustomCard implements PostPowerApplySubscriber, OnPowersModifiedSubscriber
+public abstract class KSMOD_AbstractMagicCard extends CustomCard implements PostPowerApplySubscriber
 {
     //////////
     // Override Method Usage

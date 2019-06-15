@@ -2,6 +2,7 @@ package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
+import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -39,6 +40,7 @@ public class ClowCardTheSword extends KSMOD_AbstractMagicCard
     public ClowCardTheSword()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
+        this.tags.add(KSMOD_CustomTag.KSMOD_FIREY_CARD);
         this.tags.add(BaseModCardTags.BASIC_STRIKE);
         this.baseDamage = BASE_DAMAGE;
     }
