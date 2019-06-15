@@ -36,9 +36,9 @@ public class KSMOD_FightAction extends AbstractGameAction
         if (this.duration == DURATION)
         {
             int strengthAmount = 0;
-            if (this.source.hasPower(StrengthPower.POWER_ID))
+            if (this.target.hasPower(StrengthPower.POWER_ID))
             {
-                strengthAmount = this.source.getPower(StrengthPower.POWER_ID).amount;
+                strengthAmount = this.target.getPower(StrengthPower.POWER_ID).amount;
             }
             if (this.recordHP - this.target.currentHealth >= this.targetDamage + strengthAmount)
             {

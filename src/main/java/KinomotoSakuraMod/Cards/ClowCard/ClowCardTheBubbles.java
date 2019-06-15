@@ -78,8 +78,8 @@ public class ClowCardTheBubbles extends KSMOD_AbstractMagicCard
         }
         if (buffs.size() > 0)
         {
-            int randIndex = new Random().random(buffs.size());
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(monster, player, buffs.get(randIndex - 1)));
+            int randIndex = new Random().random(buffs.size() - 1);
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(monster, player, buffs.get(randIndex)));
         }
     }
 

@@ -1,5 +1,6 @@
 package KinomotoSakuraMod.Relics;
 
+import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Powers.KSMOD_EarthyPower;
 import KinomotoSakuraMod.Powers.KSMOD_FireyPower;
 import KinomotoSakuraMod.Powers.KSMOD_WateryPower;
@@ -53,19 +54,19 @@ public class KSMOD_SealedBook extends CustomRelic
     public int applyPowerNumberOnce(AbstractCard card)
     {
         int amount = card.type == AbstractCard.CardType.POWER ? 2 : 1;
-        if (AbstractDungeon.player.hasPower(KSMOD_EarthyPower.POWER_ID))
+        if (AbstractDungeon.player.hasPower(KSMOD_EarthyPower.POWER_ID) && card.hasTag(KSMOD_CustomTag.KSMOD_EARTHY_CARD))
         {
             amount += 1;
         }
-        if (AbstractDungeon.player.hasPower(KSMOD_WateryPower.POWER_ID))
+        if (AbstractDungeon.player.hasPower(KSMOD_WateryPower.POWER_ID) && card.hasTag(KSMOD_CustomTag.KSMOD_WATERY_CARD))
         {
             amount += 1;
         }
-        if (AbstractDungeon.player.hasPower(KSMOD_FireyPower.POWER_ID))
+        if (AbstractDungeon.player.hasPower(KSMOD_FireyPower.POWER_ID) && card.hasTag(KSMOD_CustomTag.KSMOD_FIREY_CARD))
         {
             amount += 1;
         }
-        if (AbstractDungeon.player.hasPower(KSMOD_WindyPower.POWER_ID))
+        if (AbstractDungeon.player.hasPower(KSMOD_WindyPower.POWER_ID) && card.hasTag(KSMOD_CustomTag.KSMOD_WINDY_CARD))
         {
             amount += 1;
         }
