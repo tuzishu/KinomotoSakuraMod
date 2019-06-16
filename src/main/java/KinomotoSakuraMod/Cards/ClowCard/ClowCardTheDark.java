@@ -61,8 +61,8 @@ public class ClowCardTheDark extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_DarkPower(player, this.magicNumber), this.magicNumber));
-        if (upgraded)
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_DarkPower(player, this.magicNumber, this.upgraded), this.magicNumber));
+        if (player.hasPower(KSMOD_DarkPower.POWER_ID) && this.upgraded)
         {
             KSMOD_DarkPower power = (KSMOD_DarkPower) player.getPower(KSMOD_DarkPower.POWER_ID);
             power.upgrade();

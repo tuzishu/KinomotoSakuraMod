@@ -23,9 +23,10 @@ public class KSMOD_DarkPower extends KSMOD_CustomPower
         POWER_DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     }
 
-    public KSMOD_DarkPower(AbstractCreature target, int amount)
+    public KSMOD_DarkPower(AbstractCreature target, int amount, boolean upgraded)
     {
         super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, amount);
+        this.upgradedNum += upgraded ? 1 : 0;
         this.updateDescription();
     }
 
