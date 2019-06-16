@@ -31,7 +31,7 @@ public class KSMOD_DarkPower extends KSMOD_CustomPower
 
     public void updateDescription()
     {
-        this.description = POWER_DESCRIPTIONS[0] + this.amount + POWER_DESCRIPTIONS[1] + (this.upgradedNum > 0 ? POWER_DESCRIPTIONS[2] : "");
+        this.description = POWER_DESCRIPTIONS[0] + this.amount + POWER_DESCRIPTIONS[1] + (this.upgradedNum > 0 ? (POWER_DESCRIPTIONS[2] + upgradedNum + POWER_DESCRIPTIONS[3]) : "");
     }
 
     public void atEndOfTurn(boolean isPlayer)

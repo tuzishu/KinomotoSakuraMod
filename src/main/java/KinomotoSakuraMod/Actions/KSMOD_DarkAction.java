@@ -61,9 +61,10 @@ public class KSMOD_DarkAction extends AbstractGameAction
             }
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
             AbstractDungeon.handCardSelectScreen.selectedCards.group.clear();
-            if (count > 0)
+            int energy = Math.min(count, this.maxEnergyAmount);
+            if (energy > 0)
             {
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_DarkGainEnergyPower(player, Math.min(count, this.maxEnergyAmount))));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_DarkGainEnergyPower(player, energy)));
             }
         }
 
