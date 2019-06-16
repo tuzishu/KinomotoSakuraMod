@@ -65,24 +65,24 @@ public class ClowCardTheJump extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
         ArrayList<AbstractPower> debuffList = GetDebuffList();
         if (debuffList.size() > 0)
         {
             int index = new Random().random(debuffList.size() - 1);
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(player, player, debuffList.get(index)));
         }
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
     }
 
     @Override
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
         ArrayList<AbstractPower> debuffList = GetDebuffList();
         for (AbstractPower power : debuffList)
         {
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(player, player, power));
         }
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
     }
 
     @Override
