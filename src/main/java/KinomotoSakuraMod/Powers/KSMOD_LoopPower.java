@@ -22,9 +22,9 @@ public class KSMOD_LoopPower extends KSMOD_CustomPower
         POWER_DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     }
 
-    public KSMOD_LoopPower(int amout)
+    public KSMOD_LoopPower(int amount)
     {
-        this(AbstractDungeon.player, amout);
+        this(AbstractDungeon.player, amount);
     }
 
     public KSMOD_LoopPower(AbstractCreature target, int amount)
@@ -38,7 +38,7 @@ public class KSMOD_LoopPower extends KSMOD_CustomPower
         this.description = POWER_DESCRIPTIONS[0] + this.amount + POWER_DESCRIPTIONS[1] + this.amount + POWER_DESCRIPTIONS[2];
     }
 
-    public void atStartOfTurn()
+    public void atStartOfTurnPostDraw()
     {
         AbstractDungeon.actionManager.addToBottom(new DrawCardAction(this.owner, this.amount));
         AbstractDungeon.actionManager.addToBottom(new DiscardAction(this.owner, this.owner, this.amount, false));

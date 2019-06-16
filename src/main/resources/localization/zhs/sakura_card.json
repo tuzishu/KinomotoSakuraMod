@@ -93,7 +93,7 @@
   },
   "ClowCardTheFirey": {
     "NAME": "火",
-    "DESCRIPTION": "「 火元素牌 」本回合打出 火元素牌 时，额外获得1层 魔力充能 ，对全体敌人造成 !B! 点伤害。",
+    "DESCRIPTION": "「 火元素牌 」本回合打出 火元素牌 时，额外获得1层 魔力充能 ，对全体敌人造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

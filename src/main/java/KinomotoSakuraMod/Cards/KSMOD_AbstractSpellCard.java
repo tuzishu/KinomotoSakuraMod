@@ -1,5 +1,6 @@
 package KinomotoSakuraMod.Cards;
 
+import KinomotoSakuraMod.Actions.KSMOD_ReleaseAction;
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import basemod.abstracts.CustomCard;
@@ -38,15 +39,18 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
     public static final float IMG_HEIGHT = 500F * Settings.scale;
     private static final float DESC_LINE_WIDTH = 190F * Settings.scale;
     private static final float DESC_SCALE_RATE_X = 0.83F;
-    private static final float DESC_OFFSET_TO_BOTTOM_Y = 0.367F;
+    private static final float DESC_OFFSET_TO_BOTTOM_Y = 0.35F;
     private static final float CARD_ENERGY_IMG_WIDTH = 24.0F * Settings.scale;
     private static final float HB_W = IMG_WIDTH;
     private static final float HB_H = IMG_HEIGHT;
     private static final float TITLE_HEIGHT_TO_CENTER = 222.0F;
+    private static final float TITLE_BOTTOM_HEIGHT_TO_CENTER = -205.0F;
     private static final float PORTRAIT_WIDTH = 151F;
     private static final float PORTRAIT_HEIGHT = 393F;
     private static final float PORTRAIT_ORIGIN_X = 75F;
     private static final float PORTRAIT_ORIGIN_Y = 178F;
+    public static boolean isHandSelectScreenOpened = false;
+    private String BOTTOM_TITLE = "";
 
     public KSMOD_AbstractSpellCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target)
     {
@@ -95,7 +99,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
             {
                 this.initializeDescription();
             }
-            if (justUnhovered && AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this) && !this.hb.hovered)
+            if (justUnhovered && AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this) && !this.hb.hovered && !this.isHandSelectScreenOpened)
             {
                 this.description.clear();
             }
@@ -226,20 +230,16 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
         Field renderColor = KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor");
         sb.setColor((Color) renderColor.get(this));
         sb.draw(GetBannerImage(), drawX, drawY, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
-        if (AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this) && !this.hb.hovered)
-        {
-            return;
-        }
-        sb.draw(KSMOD_ImageConst.MASK, drawX, drawY, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
     }
 
     @SpireOverride
     public void renderDescriptionCN(SpriteBatch sb) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException
     {
-        if (AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this) && !this.hb.hovered)
+        if (AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this) && !this.hb.hovered && !this.isHandSelectScreenOpened)
         {
             return;
         }
+        sb.draw(KSMOD_ImageConst.MASK, this.current_x - 256.0F, this.current_y - 256.0F, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
         if (this.isSeen && !this.isLocked)
         {
             Method getDescFont = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "getDescFont");
@@ -258,10 +258,10 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
                 }
                 else
                 {
-                    start_x = this.current_x - ((DescriptionLine) this.description.get(i)).width * this.drawScale / 2.0F - 14.0F * Settings.scale;
+                    start_x = this.current_x - this.description.get(i).width * this.drawScale / 2.0F - 14.0F * Settings.scale;
                 }
 
-                String desc = ((DescriptionLine) this.description.get(i)).text;
+                String desc = this.description.get(i).text;
                 String[] var9 = desc.split(" ");
                 int var10 = var9.length;
 
@@ -375,7 +375,8 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
             int numLines = 1;
             StringBuilder currentLine = new StringBuilder("");
             float currentWidth = 0.0F;
-            String[] var4 = this.rawDescription.split(" ");
+            String desc = this.rawDescription;
+            String[] var4 = desc.split(" ");
             int var5 = var4.length;
 
             for (int var6 = 0; var6 < var5; ++var6)
@@ -511,7 +512,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
                                 }
                                 break;
                             default:
-                                KSMOD_Utility.Logger.info("ERROR: Tried to display an invalid energy type");
+                                KSMOD_Utility.Logger.error("ERROR: Tried to display an invalid energy type");
                                 break;
                         }
 
@@ -546,11 +547,6 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
                 DescriptionLine var10006 = (DescriptionLine) this.description.get(this.description.size() - 2);
                 var10000.set(var10001, new DescriptionLine(var10006.text = var10004.append(var10006.text).append("。").toString(), ((DescriptionLine) this.description.get(this.description.size() - 2)).width));
                 this.description.remove(this.description.size() - 1);
-            }
-
-            if (numLines > 8)
-            {
-                KSMOD_Utility.Logger.info("WARNING: Card " + this.name + " has lots of text");
             }
         }
         catch (Exception e)
@@ -634,7 +630,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
     {
         try
         {
-            BitmapFont font = null;
+            BitmapFont font;
             Color renderColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
             if (this.isLocked)
             {
@@ -646,10 +642,9 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
                 {
                     font = FontHelper.cardTitleFont_L;
                 }
-
                 font.getData().setScale(this.drawScale);
-
                 FontHelper.renderRotatedText(sb, font, LOCKED_STRING, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
+                FontHelper.renderRotatedText(sb, font, LOCKED_STRING, this.current_x, this.current_y, 0.0F, TITLE_BOTTOM_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
             }
             else if (!this.isSeen)
             {
@@ -661,9 +656,9 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
                 {
                     font = FontHelper.cardTitleFont_L;
                 }
-
                 font.getData().setScale(this.drawScale);
                 FontHelper.renderRotatedText(sb, font, UNKNOWN_STRING, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
+                FontHelper.renderRotatedText(sb, font, UNKNOWN_STRING, this.current_x, this.current_y, 0.0F, TITLE_BOTTOM_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
             }
             else
             {
@@ -694,10 +689,12 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
                     Color color = Settings.GREEN_TEXT_COLOR.cpy();
                     color.a = renderColor.a;
                     FontHelper.renderRotatedText(sb, font, this.name, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, color);
+                    FontHelper.renderRotatedText(sb, font, BOTTOM_TITLE, this.current_x, this.current_y, 0.0F, TITLE_BOTTOM_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, color);
                 }
                 else
                 {
                     FontHelper.renderRotatedText(sb, font, this.name, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
+                    FontHelper.renderRotatedText(sb, font, BOTTOM_TITLE, this.current_x, this.current_y, 0.0F, TITLE_BOTTOM_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
                 }
             }
         }

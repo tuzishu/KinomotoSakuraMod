@@ -14,7 +14,6 @@ public class KSMOD_LightPower extends KSMOD_CustomPower
     private static final String POWER_IMG_PATH = "img/powers/default_power.png";
     private static final AbstractPower.PowerType POWER_TYPE = AbstractPower.PowerType.BUFF;
     public boolean upgraded;
-    private int handSize;
 
     static
     {
@@ -40,22 +39,11 @@ public class KSMOD_LightPower extends KSMOD_CustomPower
         this.description = POWER_DESCRIPTIONS[0] + (this.upgraded ? POWER_DESCRIPTIONS[1] : "");
     }
 
-    public void onInitialApplication()
-    {
-        handSize = AbstractDungeon.player.gameHandSize;
-        AbstractDungeon.player.gameHandSize += 2;
-    }
-
-    public void onRemove()
-    {
-        AbstractDungeon.player.gameHandSize = handSize;
-    }
-
     public void upgrade(boolean upgraded)
     {
         if (upgraded)
         {
-            this.upgraded = upgraded;
+            this.upgraded = true;
         }
     }
 }

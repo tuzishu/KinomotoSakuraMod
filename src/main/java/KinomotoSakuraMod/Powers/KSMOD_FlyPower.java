@@ -31,11 +31,11 @@ public class KSMOD_FlyPower extends KSMOD_CustomPower
         super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, amount);
         this.updateDescription();
     }
-
     public void atStartOfTurn()
     {
         AbstractDungeon.actionManager.addToBottom(new DrawCardAction(this.owner, this.amount));
     }
+
 
     public void updateDescription()
     {

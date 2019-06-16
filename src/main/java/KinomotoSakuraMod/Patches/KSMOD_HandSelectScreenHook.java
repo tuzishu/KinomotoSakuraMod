@@ -1,6 +1,7 @@
 package KinomotoSakuraMod.Patches;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractSpellCard;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -24,6 +25,7 @@ public class KSMOD_HandSelectScreenHook
         public static SpireReturn<Object> Prefix(HandCardSelectScreen screen, String msg, int amount, boolean anyNumber, boolean canPickZero, boolean forTransform, boolean forUpgrade, boolean upTo)
         {
             KSMOD_AbstractMagicCard.isHandSelectScreenOpened = true;
+            KSMOD_AbstractSpellCard.isHandSelectScreenOpened = true;
             if (AbstractDungeon.player != null && AbstractDungeon.player instanceof KinomotoSakura && AbstractDungeon.player.hand != null)
             {
                for (AbstractCard card: AbstractDungeon.player.hand.group)
@@ -46,6 +48,7 @@ public class KSMOD_HandSelectScreenHook
         public static SpireReturn<Object> Prefix(HandCardSelectScreen screen, String msg, int amount, boolean anyNumber, boolean canPickZero)
         {
             KSMOD_AbstractMagicCard.isHandSelectScreenOpened = true;
+            KSMOD_AbstractSpellCard.isHandSelectScreenOpened = true;
             if (AbstractDungeon.player != null && AbstractDungeon.player instanceof KinomotoSakura && AbstractDungeon.player.hand != null)
             {
                 for (AbstractCard card: AbstractDungeon.player.hand.group)
@@ -64,6 +67,7 @@ public class KSMOD_HandSelectScreenHook
         public static void Insert(HandCardSelectScreen screen)
         {
             KSMOD_AbstractMagicCard.isHandSelectScreenOpened = false;
+            KSMOD_AbstractSpellCard.isHandSelectScreenOpened = true;
         }
     }
 

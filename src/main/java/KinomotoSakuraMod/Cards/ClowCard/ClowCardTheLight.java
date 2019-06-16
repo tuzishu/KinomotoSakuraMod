@@ -64,7 +64,10 @@ public class ClowCardTheLight extends KSMOD_AbstractMagicCard
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_LightPower(this.upgraded)));
-        KSMOD_LightPower power = (KSMOD_LightPower) player.getPower(KSMOD_LightPower.POWER_ID);
-        power.upgrade(this.upgraded);
+        if (player.hasPower(KSMOD_LightPower.POWER_ID))
+        {
+            KSMOD_LightPower power = (KSMOD_LightPower) player.getPower(KSMOD_LightPower.POWER_ID);
+            power.upgrade(this.upgraded);
+        }
     }
 }
