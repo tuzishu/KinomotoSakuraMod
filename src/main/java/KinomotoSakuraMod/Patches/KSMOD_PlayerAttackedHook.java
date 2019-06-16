@@ -1,22 +1,22 @@
 package KinomotoSakuraMod.Patches;
 
-import KinomotoSakuraMod.Powers.KSMOD_SleepPower;
+import KinomotoSakuraMod.Powers.KSMOD_FloatPower;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import javassist.CtBehavior;
 
-public class KSMOD_MonsterAttackedHook
+public class KSMOD_PlayerAttackedHook
 {
-    @SpirePatch(clz = AbstractMonster.class, method = "damage", paramtypez = {DamageInfo.class})
+    @SpirePatch(clz = AbstractPlayer.class, method = "damage", paramtypez = {DamageInfo.class})
     public static class damage
     {
         @SpireInsertPatch(locator = Locator.class)
-        public static void Insert(AbstractMonster monster, DamageInfo info)
+        public static void Insert(AbstractPlayer player, DamageInfo info)
         {
-            if (monster.hasPower(KSMOD_SleepPower.POWER_ID))
+            if (player.hasPower(KSMOD_FloatPower.POWER_ID))
             {
-                ((KSMOD_SleepPower) monster.getPower(KSMOD_SleepPower.POWER_ID)).CustomOnAttacked(info);
+                ((KSMOD_FloatPower) player.getPower(KSMOD_FloatPower.POWER_ID)).CustomOnAttacked(info);
             }
         }
     }
@@ -25,7 +25,7 @@ public class KSMOD_MonsterAttackedHook
     {
         public int[] Locate(CtBehavior ctMethodToPatch) throws Exception
         {
-            Matcher finalMatcher = new Matcher.FieldAccessMatcher(AbstractMonster.class, "currentHealth");
+            Matcher finalMatcher = new Matcher.FieldAccessMatcher(AbstractPlayer.class, "currentHealth");
             int[] loc = LineFinder.findAllInOrder(ctMethodToPatch, finalMatcher);
             return new int[] {
                     loc[0]

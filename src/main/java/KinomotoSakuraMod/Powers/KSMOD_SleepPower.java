@@ -60,7 +60,7 @@ public class KSMOD_SleepPower extends KSMOD_CustomPower
         }
     }
 
-    public void CustomAttacked(DamageInfo info)
+    public void CustomOnAttacked(DamageInfo info)
     {
         if (info.output > 0)
         {

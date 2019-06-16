@@ -136,6 +136,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
         if (this.hasExtraEffect && hasCharged() && !hasLockPower())
         {
             AbstractPower power = player.getPower(KSMOD_MagickChargePower.POWER_ID);
+            power.flash();
             if (power.amount == KSMOD_SealedBook.ACTIVE_NUMBER)
             {
                 AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(player, player, power));

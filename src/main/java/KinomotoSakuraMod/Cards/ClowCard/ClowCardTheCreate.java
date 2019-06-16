@@ -64,22 +64,15 @@ public class ClowCardTheCreate extends KSMOD_AbstractMagicCard
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_CreatePower(), 1));
-        RemoveThisFromMasterDeck();
-    }
-
-    private void RemoveThisFromMasterDeck()
-    {
-        int size = AbstractDungeon.player.masterDeck.group.size();
-        for (int i = 0; i < size; i++)
+        for (AbstractCard card : AbstractDungeon.player.masterDeck.group)
         {
-            AbstractCard card = AbstractDungeon.player.masterDeck.group.get(i);
             if (card instanceof ClowCardTheCreate && card.name.equals(this.name) && card.upgraded == this.upgraded)
             {
                 AbstractDungeon.player.masterDeck.removeCard(card);
-                AbstractDungeon.getCurrRoom().addRelicToRewards(GetRandomTier());
                 break;
             }
         }
+        AbstractDungeon.getCurrRoom().addRelicToRewards(GetRandomTier());
     }
 
     private AbstractRelic.RelicTier GetRandomTier()

@@ -34,13 +34,12 @@ public class KSMOD_FloatPower extends KSMOD_CustomPower
         this.updateDescription();
     }
 
-    public float atDamageReceive(float damage, DamageInfo.DamageType damageType)
+    public void CustomOnAttacked(DamageInfo info)
     {
-        if (this.owner.currentBlock < damage)
+        if (info.output > 0 && info.output > this.owner.currentBlock)
         {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new DexterityPower(this.owner, this.amount), this.amount));
         }
-        return damage;
     }
 
     public void updateDescription()

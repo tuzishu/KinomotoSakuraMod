@@ -30,7 +30,7 @@ public class ClowCardTheThrough extends KSMOD_AbstractMagicCard
     private static final CardType CARD_TYPE = CardType.ATTACK;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.RARE;
-    private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
+    private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
     private static final int BASE_MAGIC_NUMBER = 2;
     private static final int UPGRADE_MAGIC_NUMBER = 1;
     private static final float CLEAVE_DURATION = 0.1F;
