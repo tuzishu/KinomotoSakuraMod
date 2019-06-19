@@ -8,9 +8,11 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.status.VoidCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -31,7 +33,7 @@ public class ClowCardTheStorm extends KSMOD_AbstractMagicCard
     private static final AbstractCard.CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final int BASE_DAMAGE = 3;
+    private static final int BASE_DAMAGE = 4;
     private static final int UPGRADE_DAMAGE = 2;
     private static final String SFX_EFFECT_ID = "ATTACK_WHIRLWIND";
     private static final String SFX_ATTACK_ID = "ATTACK_HEAVY";
@@ -79,7 +81,7 @@ public class ClowCardTheStorm extends KSMOD_AbstractMagicCard
             AbstractDungeon.actionManager.addToBottom(new VFXAction(player, new CleaveEffect(), 0.0F));
             AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
         }
-
+        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new VoidCard(), 1));
     }
 
     @Override
@@ -94,6 +96,7 @@ public class ClowCardTheStorm extends KSMOD_AbstractMagicCard
             AbstractDungeon.actionManager.addToBottom(new VFXAction(player, new CleaveEffect(), 0.0F));
             AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
         }
+        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new VoidCard(), 1));
     }
 
     @Override

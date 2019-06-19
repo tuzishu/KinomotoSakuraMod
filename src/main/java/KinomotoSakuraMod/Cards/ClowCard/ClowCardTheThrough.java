@@ -10,7 +10,9 @@ import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.status.VoidCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -26,11 +28,13 @@ public class ClowCardTheThrough extends KSMOD_AbstractMagicCard
     private static final String DESCRIPTION;
     private static final String[] EXTENDED_DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_through.png";
-    private static final int COST = 2;
+    private static final int COST = 1;
     private static final CardType CARD_TYPE = CardType.ATTACK;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.RARE;
     private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
+    private static final int BASE_DAMAGE = 5;
+    private static final int UPGRADE_DAMAGE = 3;
     private static final int BASE_MAGIC_NUMBER = 2;
     private static final int UPGRADE_MAGIC_NUMBER = 1;
     private static final float CLEAVE_DURATION = 0.1F;
@@ -48,6 +52,7 @@ public class ClowCardTheThrough extends KSMOD_AbstractMagicCard
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
         this.tags.add(KSMOD_CustomTag.KSMOD_EARTHY_CARD);
+        this.baseDamage = BASE_DAMAGE;
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
@@ -57,6 +62,7 @@ public class ClowCardTheThrough extends KSMOD_AbstractMagicCard
         if (!this.upgraded)
         {
             this.upgradeName();
+            this.upgradeDamage(UPGRADE_DAMAGE);
             this.upgradeMagicNumber(UPGRADE_MAGIC_NUMBER);
         }
     }
@@ -75,8 +81,9 @@ public class ClowCardTheThrough extends KSMOD_AbstractMagicCard
             AbstractPower power = player.getPower(KSMOD_MagickChargePower.POWER_ID);
             CardCrawlGame.sound.play(SOUND_KEY + MathUtils.random(1, 6));
             AbstractDungeon.actionManager.addToBottom(new VFXAction(player, new CleaveEffect(), CLEAVE_DURATION));
-            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(power.amount * this.magicNumber), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage + power.amount * this.magicNumber), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }
+        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new VoidCard(), 1));
     }
 
     @Override
@@ -87,9 +94,10 @@ public class ClowCardTheThrough extends KSMOD_AbstractMagicCard
             AbstractPower power = player.getPower(KSMOD_MagickChargePower.POWER_ID);
             CardCrawlGame.sound.play(SOUND_KEY + MathUtils.random(1, 6));
             AbstractDungeon.actionManager.addToBottom(new VFXAction(player, new CleaveEffect(), CLEAVE_DURATION));
-            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(power.amount * this.magicNumber), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage + power.amount * this.magicNumber), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }
         AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, GetPercentageDamageList(), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new VoidCard(), 1));
     }
 
     @Override

@@ -309,10 +309,10 @@
   },
   "ClowCardTheStorm": {
     "NAME": "岚",
-    "DESCRIPTION": "「 风元素牌 」造成 !D! 点伤害4次。",
+    "DESCRIPTION": "「 风元素牌 」造成 !D! 点伤害4次。将1张 虚空 放入弃牌堆。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "「 风元素牌 」对全体敌人造成 !D! 点伤害4次。"
+      "「 风元素牌 」对全体敌人造成 !D! 点伤害4次。将1张 虚空 放入弃牌堆。"
     ]
   },
   "ClowCardTheSweet": {
@@ -334,7 +334,7 @@
   },
   "ClowCardTheThrough": {
     "NAME": "拔",
-    "DESCRIPTION": "「 地元素牌 」对全体敌人造成 魔力充能 数量 !M! 倍的伤害。",
+    "DESCRIPTION": "「 地元素牌 」对全体敌人造成 !D! + 魔力充能 数量 !M! 倍的伤害。将1张 虚空 放入弃牌堆。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外造成最大生命",

@@ -8,7 +8,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class KSMOD_ReturnPower extends KSMOD_CustomPower
 {
@@ -17,7 +18,7 @@ public class KSMOD_ReturnPower extends KSMOD_CustomPower
     private static final String[] POWER_DESCRIPTIONS;
     private static final String POWER_IMG_PATH = "img/powers/default_power.png";
     private static final PowerType POWER_TYPE = PowerType.BUFF;
-    private ArrayList<AbstractPower> powerList = new ArrayList<>();
+    private HashMap<AbstractPower, Integer> recordPowerGroup = new HashMap<>();
     private int recordHP;
     private int recordBlock;
 
@@ -41,13 +42,16 @@ public class KSMOD_ReturnPower extends KSMOD_CustomPower
 
     public void onInitialApplication()
     {
-        this.powerList = (ArrayList<AbstractPower>) this.owner.powers.clone();
+        for (AbstractPower power : this.owner.powers)
+        {
+            if (!(power instanceof KSMOD_ReturnPower))
+            {
+                this.recordPowerGroup.put(power, power.amount);
+            }
+        }
         this.recordHP = this.owner.currentHealth;
         this.recordBlock = this.owner.currentBlock;
-        if (this.powerList.contains(this))
-        {
-            this.powerList.remove(this);
-        }
+
     }
 
     public void atStartOfTurn()
@@ -59,13 +63,20 @@ public class KSMOD_ReturnPower extends KSMOD_CustomPower
         else
         {
             AbstractDungeon.actionManager.addToBottom(new RemoveAllPowersAction(this.owner, false));
-            for (AbstractPower power : this.powerList)
-            {
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, power));
-            }
-            AbstractDungeon.actionManager.addToBottom(new HealAction(this.owner, this.owner, this.recordHP - this.owner.currentHealth));
-            AbstractDungeon.actionManager.addToBottom(new RemoveAllBlockAction(this.owner, this.owner));
-            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this.owner, this.owner, this.recordBlock));
         }
+    }
+
+    public void onRemove()
+    {
+        for (Map.Entry<AbstractPower, Integer> entry : this.recordPowerGroup.entrySet())
+        {
+            AbstractPower power = entry.getKey();
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, power));
+            power.amount = entry.getValue();
+            power.updateDescription();
+        }
+        AbstractDungeon.actionManager.addToBottom(new HealAction(this.owner, this.owner, this.recordHP - this.owner.currentHealth));
+        AbstractDungeon.actionManager.addToBottom(new RemoveAllBlockAction(this.owner, this.owner));
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this.owner, this.owner, this.recordBlock));
     }
 }
