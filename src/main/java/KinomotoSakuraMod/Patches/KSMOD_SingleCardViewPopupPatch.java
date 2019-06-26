@@ -115,25 +115,48 @@ public class KSMOD_SingleCardViewPopupPatch
     @SpirePatch(clz = SingleCardViewPopup.class, method = "renderFrame", paramtypez = {SpriteBatch.class})
     public static class renderFrame
     {
+        private static Texture GetFrameImage(AbstractCard card)
+        {
+            Texture texture;
+            if (card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR)
+            {
+                switch (card.rarity)
+                {
+                    case RARE:
+                        texture = KSMOD_ImageConst.FRAME_CLOWCARD_RARE_LARGE;
+                        break;
+                    case UNCOMMON:
+                        texture = KSMOD_ImageConst.FRAME_CLOWCARD_UNCOMMON_LARGE;
+                        break;
+                    default:
+                        texture = KSMOD_ImageConst.FRAME_CLOWCARD_COMMON_LARGE;
+                        break;
+                }
+            }
+            else
+            {
+                switch (card.rarity)
+                {
+                    case RARE:
+                        texture = KSMOD_ImageConst.FRAME_SAKURACARD_RARE_LARGE;
+                        break;
+                    case UNCOMMON:
+                        texture = KSMOD_ImageConst.FRAME_SAKURACARD_UNCOMMON_LARGE;
+                        break;
+                    default:
+                        texture = KSMOD_ImageConst.FRAME_SAKURACARD_COMMON_LARGE;
+                        break;
+                }
+            }
+            return texture;
+        }
+
         public static SpireReturn<Object> Prefix(SingleCardViewPopup view, SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException
         {
             AbstractCard card = (AbstractCard) KSMOD_Utility.GetFieldByReflect(SingleCardViewPopup.class, "card").get(view);
             if (IsKSCard(card))
             {
-                Texture frameImg = null;
-                switch (card.rarity)
-                {
-                    case RARE:
-                        frameImg = KSMOD_ImageConst.FRAME_CLOWCARD_RARE_LARGE;
-                        break;
-                    case UNCOMMON:
-                        frameImg = KSMOD_ImageConst.FRAME_CLOWCARD_UNCOMMON_LARGE;
-                        break;
-                    default:
-                        frameImg = KSMOD_ImageConst.FRAME_CLOWCARD_COMMON_LARGE;
-                        break;
-                }
-                sb.draw(frameImg, Settings.WIDTH * 0.5F - 512.0F, Settings.HEIGHT * 0.5F - 512.0F, 512.0F, 512.0F, 1024.0F, 1024.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 1024, 1024, false, false);
+                sb.draw(GetFrameImage(card), Settings.WIDTH * 0.5F - 512.0F, Settings.HEIGHT * 0.5F - 512.0F, 512.0F, 512.0F, 1024.0F, 1024.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 1024, 1024, false, false);
                 return SpireReturn.Return(null);
             }
             else
@@ -146,24 +169,46 @@ public class KSMOD_SingleCardViewPopupPatch
     @SpirePatch(clz = SingleCardViewPopup.class, method = "renderCardBanner", paramtypez = {SpriteBatch.class})
     public static class renderCardBanner
     {
+        private static Texture GetBannerImage(AbstractCard card)
+        {
+            Texture texture;
+            if (card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR)
+            {
+                switch (card.rarity)
+                {
+                    case RARE:
+                        texture = KSMOD_ImageConst.BANNER_CLOWCARD_RARE_LARGE;
+                        break;
+                    case UNCOMMON:
+                        texture = KSMOD_ImageConst.BANNER_CLOWCARD_UNCOMMON_LARGE;
+                        break;
+                    default:
+                        texture = KSMOD_ImageConst.BANNER_CLOWCARD_COMMON_LARGE;
+                }
+            }
+            else
+            {
+                switch (card.rarity)
+                {
+                    case RARE:
+                        texture = KSMOD_ImageConst.BANNER_SAKURACARD_RARE_LARGE;
+                        break;
+                    case UNCOMMON:
+                        texture = KSMOD_ImageConst.BANNER_SAKURACARD_UNCOMMON_LARGE;
+                        break;
+                    default:
+                        texture = KSMOD_ImageConst.BANNER_SAKURACARD_COMMON_LARGE;
+                }
+            }
+            return texture;
+        }
+
         public static SpireReturn<Object> Prefix(SingleCardViewPopup view, SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException
         {
             AbstractCard card = (AbstractCard) KSMOD_Utility.GetFieldByReflect(SingleCardViewPopup.class, "card").get(view);
             if (IsKSCard(card))
             {
-                Texture bannerImg = null;
-                switch (card.rarity)
-                {
-                    case RARE:
-                        bannerImg = KSMOD_ImageConst.BANNER_CLOWCARD_RARE_LARGE;
-                        break;
-                    case UNCOMMON:
-                        bannerImg = KSMOD_ImageConst.BANNER_CLOWCARD_UNCOMMON_LARGE;
-                        break;
-                    default:
-                        bannerImg = KSMOD_ImageConst.BANNER_CLOWCARD_COMMON_LARGE;
-                }
-                sb.draw(bannerImg, Settings.WIDTH * 0.5F - 512.0F, Settings.HEIGHT * 0.5F - 512.0F, 512.0F, 512.0F, 1024.0F, 1024.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 1024, 1024, false, false);
+                sb.draw(GetBannerImage(card), Settings.WIDTH * 0.5F - 512.0F, Settings.HEIGHT * 0.5F - 512.0F, 512.0F, 512.0F, 1024.0F, 1024.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 1024, 1024, false, false);
                 return SpireReturn.Return(null);
             }
             else
@@ -372,6 +417,48 @@ public class KSMOD_SingleCardViewPopupPatch
     @SpirePatch(clz = SingleCardViewPopup.class, method = "renderCost", paramtypez = {SpriteBatch.class})
     public static class renderCost
     {
+        private static Texture GetEnergyImage(AbstractCard card)
+        {
+            Texture texture;
+            if (card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR)
+            {
+                switch (card.type)
+                {
+                    case ATTACK:
+                        texture = KSMOD_ImageConst.ORB_CLOWCARD_ATTACK_LARGE;
+                        break;
+                    case SKILL:
+                        texture = KSMOD_ImageConst.ORB_CLOWCARD_SKILL_LARGE;
+                        break;
+                    case POWER:
+                        texture = KSMOD_ImageConst.ORB_CLOWCARD_POWER_LARGE;
+                        break;
+                    default:
+                        texture = KSMOD_ImageConst.ORB_CLOWCARD_SKILL_LARGE;
+                        break;
+                }
+            }
+            else
+            {
+                switch (card.type)
+                {
+                    case ATTACK:
+                        texture = KSMOD_ImageConst.ORB_SAKURACARD_ATTACK_LARGE;
+                        break;
+                    case SKILL:
+                        texture = KSMOD_ImageConst.ORB_SAKURACARD_SKILL_LARGE;
+                        break;
+                    case POWER:
+                        texture = KSMOD_ImageConst.ORB_SAKURACARD_POWER_LARGE;
+                        break;
+                    default:
+                        texture = KSMOD_ImageConst.ORB_SAKURACARD_SKILL_LARGE;
+                        break;
+                }
+            }
+            return texture;
+        }
+
         public static SpireReturn<Object> Prefix(SingleCardViewPopup view, SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException, InvocationTargetException, NoSuchMethodException
         {
             AbstractCard card = (AbstractCard) KSMOD_Utility.GetFieldByReflect(SingleCardViewPopup.class, "card").get(view);
@@ -379,23 +466,8 @@ public class KSMOD_SingleCardViewPopupPatch
             {
                 if (!card.isLocked && card.isSeen && card.cost > -2)
                 {
-                    Texture img;
-                    switch (card.type)
-                    {
-                        case ATTACK:
-                            img = KSMOD_ImageConst.ORB_CLOWCARD_ATTACK_LARGE;
-                            break;
-                        case SKILL:
-                            img = KSMOD_ImageConst.ORB_CLOWCARD_SKILL_LARGE;
-                            break;
-                        case POWER:
-                            img = KSMOD_ImageConst.ORB_CLOWCARD_POWER_LARGE;
-                            break;
-                        default:
-                            img = KSMOD_ImageConst.ORB_CLOWCARD_SKILL_LARGE;
-                            break;
-                    }
-                    sb.draw(img, Settings.WIDTH * 0.5F - ENERGY_ICON_WIDTH / 2F + (ENERGY_COST_OFFSET_X - 2F) * Settings.scale, Settings.HEIGHT * 0.5F - ENERGY_ICON_WIDTH / 2F + ENERGY_COST_OFFSET_Y * Settings.scale, ENERGY_ICON_WIDTH / 2F, ENERGY_ICON_WIDTH / 2F, ENERGY_ICON_WIDTH, ENERGY_ICON_WIDTH, Settings.scale, Settings.scale, 0.0F, 0, 0, (int) ENERGY_ICON_WIDTH, (int) ENERGY_ICON_WIDTH, false, false);
+
+                    sb.draw(GetEnergyImage(card), Settings.WIDTH * 0.5F - ENERGY_ICON_WIDTH / 2F + (ENERGY_COST_OFFSET_X - 2F) * Settings.scale, Settings.HEIGHT * 0.5F - ENERGY_ICON_WIDTH / 2F + ENERGY_COST_OFFSET_Y * Settings.scale, ENERGY_ICON_WIDTH / 2F, ENERGY_ICON_WIDTH / 2F, ENERGY_ICON_WIDTH, ENERGY_ICON_WIDTH, Settings.scale, Settings.scale, 0.0F, 0, 0, (int) ENERGY_ICON_WIDTH, (int) ENERGY_ICON_WIDTH, false, false);
                     Color color = card.isCostModified ? Settings.GREEN_TEXT_COLOR.cpy() : Settings.CREAM_COLOR.cpy();
                     switch (card.cost)
                     {
