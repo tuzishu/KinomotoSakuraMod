@@ -1,6 +1,7 @@
 package KinomotoSakuraMod.Cards;
 
 import KinomotoSakuraMod.Actions.KSMOD_ReleaseAction;
+import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Powers.KSMOD_LockPower;
 import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
@@ -230,6 +231,42 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
             this.upgradeMagicNumber(this.valueBuffer[2]);
             hasReleased = true;
         }
+    }
+
+    public boolean hasSameSakuraCard()
+    {
+        if (AbstractDungeon.player != null && AbstractDungeon.player instanceof KinomotoSakura)
+        {
+            for (AbstractCard card: AbstractDungeon.player.drawPile.group)
+            {
+                if (card.cardID == this.cardID)
+                {
+                    return true;
+                }
+            }
+            for (AbstractCard card: AbstractDungeon.player.hand.group)
+            {
+                if (card.cardID == this.cardID)
+                {
+                    return true;
+                }
+            }
+            for (AbstractCard card: AbstractDungeon.player.discardPile.group)
+            {
+                if (card.cardID == this.cardID)
+                {
+                    return true;
+                }
+            }
+            for (AbstractCard card: AbstractDungeon.player.exhaustPile.group)
+            {
+                if (card.cardID == this.cardID)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     //////////

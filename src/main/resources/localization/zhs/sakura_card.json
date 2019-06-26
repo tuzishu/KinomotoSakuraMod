@@ -399,6 +399,7 @@
     ]
   },
 
+
   "SpellCardRelease": {
     "NAME": "解",
     "DESCRIPTION": " 封印解除 手牌中的1张 库洛牌 。并对全体敌人造成 !D! 点伤害。",
@@ -414,6 +415,14 @@
   "SpellCardTurn": {
     "NAME": "转",
     "DESCRIPTION": " 保留 。选择1张手牌 消耗 。如果 消耗 的是 库洛牌 ，且卡组中没有对应的 小樱牌 时，则将其转化为对应的 小樱牌 。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+
+
+  "SakuraCardTheSword": {
+    "NAME": "剑",
+    "DESCRIPTION": "「 小樱牌 」「 火元素牌 」造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   }

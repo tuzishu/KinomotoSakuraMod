@@ -11,8 +11,8 @@ public class KSMOD_ImageConst
     // 卡牌背景
     public static final String CLOWCARD_BG_PATH = "img/cardui/clowcard/bg/bg.png";
     public static final String CLOWCARD_BG_LARGE_PATH = "img/cardui/clowcard/bg/bg_p.png";
-    public static final String SAKURACARD_BG_PATH = "img/cardui/sakuracard/bg/attack.png";
-    public static final String SAKURACARD_BG_LARGE_PATH = "img/cardui/sakuracard/bg/attack_p.png";
+    public static final String SAKURACARD_BG_PATH = "img/cardui/sakuracard/bg/bg.png";
+    public static final String SAKURACARD_BG_LARGE_PATH = "img/cardui/sakuracard/bg/bg_p.png";
     public static final String SPELLCARD_BG_PATH = "img/cardui/spellcard/bg/attack.png";
     public static final String SPELLCARD_BG_LARGE_PATH = "img/cardui/spellcard/bg/attack_p.png";
     // 卡牌能量标识

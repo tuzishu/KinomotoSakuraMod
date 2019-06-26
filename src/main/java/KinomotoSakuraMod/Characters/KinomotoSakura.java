@@ -26,6 +26,7 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class KinomotoSakura extends CustomPlayer
 {
@@ -73,6 +74,8 @@ public class KinomotoSakura extends CustomPlayer
     private static final String ATLAS_PATH = "img/char/Marisa/MarisaModelv3.atlas";
     private static final String SKELETON_PATH = "img/char/Marisa/MarisaModelv3.json";
     private static final float CHARACTER_SCALE_RATE = 2.0f;
+
+    public HashMap<String, AbstractCard> sakuraCardGroup = new HashMap<>();
 
     public KinomotoSakura()
     {

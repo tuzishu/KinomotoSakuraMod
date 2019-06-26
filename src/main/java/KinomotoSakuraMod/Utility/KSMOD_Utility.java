@@ -15,6 +15,17 @@ public class KSMOD_Utility
      */
     public static final Logger Logger = LogManager.getLogger("KSMOD");
 
+    public static void ShowStacktrace()
+    {
+        String log = "";
+        StackTraceElement[] element = Thread.currentThread().getStackTrace();
+        for (int i = 0; i < element.length - 2; i++)
+        {
+            log = log + "\n    " + i + " : " + element[i - 2];
+        }
+        Logger.info(log);
+    }
+
     /**
      * 获取该语句所在的类名
      *
@@ -86,7 +97,6 @@ public class KSMOD_Utility
     /**
      * 通过反射的方法获取实例包括基类中的变量
      *
-     * @param obj         实例
      * @param fieldName   变量名
      * @param targetClass 目标类型
      *
@@ -144,5 +154,23 @@ public class KSMOD_Utility
             method = methodMap.get(key);
         }
         return method;
+    }
+
+    /**
+     * 是否正在由拷贝卡牌动作调用makecopy函数
+     *
+     * @return
+     */
+    public static boolean IsReallyCopyingCard()
+    {
+        StackTraceElement[] elements = Thread.currentThread().getStackTrace();
+        for (int i = 0; i < elements.length; i++)
+        {
+            if (elements[i].getClassName().contains("MakeTempCard"))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

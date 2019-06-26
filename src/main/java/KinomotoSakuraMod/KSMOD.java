@@ -1,6 +1,7 @@
 package KinomotoSakuraMod;
 
 import KinomotoSakuraMod.Cards.ClowCard.*;
+import KinomotoSakuraMod.Cards.SakuraCard.SakuraCardTheSword;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardRelease;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardSeal;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
@@ -40,7 +41,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
     {
         BaseMod.subscribe(this);
         BaseMod.addColor(KSMOD_CustomCardColor.CLOWCARD_COLOR, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, KSMOD_ImageConst.CLOWCARD_BG_PATH, KSMOD_ImageConst.CLOWCARD_BG_PATH, KSMOD_ImageConst.CLOWCARD_BG_PATH, KSMOD_ImageConst.ORB_CLOWCARD_ATTACK_PATH, KSMOD_ImageConst.CLOWCARD_BG_LARGE_PATH, KSMOD_ImageConst.CLOWCARD_BG_LARGE_PATH, KSMOD_ImageConst.CLOWCARD_BG_LARGE_PATH, KSMOD_ImageConst.ORB_CLOWCARD_ATTACK_LARGE_PATH);
-        BaseMod.addColor(KSMOD_CustomCardColor.SAKURACARD_COLOR, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, KSMOD_ImageConst.SAKURACARD_BG_PATH, KSMOD_ImageConst.SAKURACARD_BG_PATH, KSMOD_ImageConst.SAKURACARD_BG_PATH, KSMOD_ImageConst.ORB_CLOWCARD_ATTACK_PATH, KSMOD_ImageConst.SAKURACARD_BG_LARGE_PATH, KSMOD_ImageConst.SAKURACARD_BG_LARGE_PATH, KSMOD_ImageConst.SAKURACARD_BG_LARGE_PATH, KSMOD_ImageConst.ORB_CLOWCARD_ATTACK_LARGE_PATH);
+        BaseMod.addColor(KSMOD_CustomCardColor.SAKURACARD_COLOR, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, KSMOD_ImageConst.SAKURACARD_BG_PATH, KSMOD_ImageConst.SAKURACARD_BG_PATH, KSMOD_ImageConst.SAKURACARD_BG_PATH, KSMOD_ImageConst.ORB_CLOWCARD_ATTACK_PATH, KSMOD_ImageConst.CLOWCARD_BG_LARGE_PATH, KSMOD_ImageConst.CLOWCARD_BG_LARGE_PATH, KSMOD_ImageConst.CLOWCARD_BG_LARGE_PATH, KSMOD_ImageConst.ORB_CLOWCARD_ATTACK_LARGE_PATH);
         BaseMod.addColor(KSMOD_CustomCardColor.SPELL_COLOR, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, KSMOD_ImageConst.CLOWCARD_BG_PATH, KSMOD_ImageConst.CLOWCARD_BG_PATH, KSMOD_ImageConst.CLOWCARD_BG_PATH, KSMOD_ImageConst.ORB_CLOWCARD_ATTACK_PATH, KSMOD_ImageConst.CLOWCARD_BG_LARGE_PATH, KSMOD_ImageConst.CLOWCARD_BG_LARGE_PATH, KSMOD_ImageConst.CLOWCARD_BG_LARGE_PATH, KSMOD_ImageConst.ORB_CLOWCARD_ATTACK_LARGE_PATH);
     }
 
@@ -126,10 +127,6 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
     {
         ArrayList<AbstractCard> cardList = new ArrayList<AbstractCard>();
 
-        cardList.add(new SpellCardTurn());
-        cardList.add(new SpellCardSeal());
-        cardList.add(new SpellCardRelease());
-
         cardList.add(new ClowCardTheArrow());
         cardList.add(new ClowCardTheBig());
         cardList.add(new ClowCardTheBubbles());
@@ -182,6 +179,12 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         cardList.add(new ClowCardTheWave());
         cardList.add(new ClowCardTheWindy());
         cardList.add(new ClowCardTheWood());
+
+        cardList.add(new SpellCardTurn());
+        cardList.add(new SpellCardSeal());
+        cardList.add(new SpellCardRelease());
+
+        cardList.add(new SakuraCardTheSword());
 
         cardList.add(new TestCard());
 
