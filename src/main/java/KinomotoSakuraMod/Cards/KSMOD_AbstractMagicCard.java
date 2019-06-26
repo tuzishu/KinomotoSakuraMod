@@ -1,6 +1,7 @@
 package KinomotoSakuraMod.Cards;
 
 import KinomotoSakuraMod.Actions.KSMOD_ReleaseAction;
+import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Powers.KSMOD_LockPower;
 import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
@@ -16,10 +17,12 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DescriptionLine;
+import com.megacrit.cardcrawl.cards.status.VoidCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
@@ -131,6 +134,11 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
         }
     }
 
+    public boolean canUpgrade()
+    {
+        return this.color != KSMOD_CustomCardColor.SAKURACARD_COLOR;
+    }
+
     public final void use(AbstractPlayer player, AbstractMonster monster)
     {
         if (this.hasExtraEffect && hasCharged() && !hasLockPower())
@@ -150,6 +158,10 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
         else
         {
             this.applyNormalEffect(player, monster);
+            if (this.color == KSMOD_CustomCardColor.SAKURACARD_COLOR)
+            {
+                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new VoidCard(), 1));
+            }
         }
         if (player.hasRelic(KSMOD_SealedBook.RELIC_ID))
         {
@@ -267,6 +279,49 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
         }
     }
 
+    private Texture GetEnergyImage()
+    {
+        Texture texture;
+        if (this.color == KSMOD_CustomCardColor.CLOWCARD_COLOR)
+        {
+            switch (this.type)
+            {
+                case ATTACK:
+                    texture = KSMOD_ImageConst.ORB_CLOWCARD_ATTACK;
+                    break;
+                case SKILL:
+                    texture = KSMOD_ImageConst.ORB_CLOWCARD_SKILL;
+                    break;
+                case POWER:
+                    texture = KSMOD_ImageConst.ORB_CLOWCARD_POWER;
+                    break;
+                default:
+                    texture = KSMOD_ImageConst.ORB_CLOWCARD_SKILL;
+                    break;
+            }
+        }
+        else
+        {
+
+            switch (this.type)
+            {
+                case ATTACK:
+                    texture = KSMOD_ImageConst.ORB_SAKURACARD_ATTACK;
+                    break;
+                case SKILL:
+                    texture = KSMOD_ImageConst.ORB_SAKURACARD_SKILL;
+                    break;
+                case POWER:
+                    texture = KSMOD_ImageConst.ORB_SAKURACARD_POWER;
+                    break;
+                default:
+                    texture = KSMOD_ImageConst.ORB_SAKURACARD_SKILL;
+                    break;
+            }
+        }
+        return texture;
+    }
+
     @SpireOverride
     public void renderEnergy(SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException
     {
@@ -278,23 +333,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
 
             Method renderHelper = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, Texture.class, float.class, float.class);
             Color renderColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
-            Texture img;
-            switch (this.type)
-            {
-                case ATTACK:
-                    img = KSMOD_ImageConst.ORB_ATTACK;
-                    break;
-                case SKILL:
-                    img = KSMOD_ImageConst.ORB_SKILL;
-                    break;
-                case POWER:
-                    img = KSMOD_ImageConst.ORB_POWER;
-                    break;
-                default:
-                    img = KSMOD_ImageConst.ORB_SKILL;
-                    break;
-            }
-            renderHelper.invoke(this, sb, renderColor, img, drawX, drawY);
+            renderHelper.invoke(this, sb, renderColor, GetEnergyImage(), drawX, drawY);
 
             Color costColor = Color.WHITE.cpy();
             if (AbstractDungeon.player != null && AbstractDungeon.player.hand.contains(this) && !this.hasEnoughEnergy())
@@ -324,17 +363,35 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
     private Texture GetFrameImage()
     {
         Texture texture;
-        switch (this.rarity)
+        if (this.color == KSMOD_CustomCardColor.CLOWCARD_COLOR)
         {
-            case RARE:
-                texture = KSMOD_ImageConst.FRAME_RARE;
-                break;
-            case UNCOMMON:
-                texture = KSMOD_ImageConst.FRAME_UNCOMMON;
-                break;
-            default:
-                texture = KSMOD_ImageConst.FRAME_COMMON;
-                break;
+            switch (this.rarity)
+            {
+                case RARE:
+                    texture = KSMOD_ImageConst.FRAME_CLOWCARD_RARE;
+                    break;
+                case UNCOMMON:
+                    texture = KSMOD_ImageConst.FRAME_CLOWCARD_UNCOMMON;
+                    break;
+                default:
+                    texture = KSMOD_ImageConst.FRAME_CLOWCARD_COMMON;
+                    break;
+            }
+        }
+        else
+        {
+            switch (this.rarity)
+            {
+                case RARE:
+                    texture = KSMOD_ImageConst.FRAME_SAKURACARD_RARE;
+                    break;
+                case UNCOMMON:
+                    texture = KSMOD_ImageConst.FRAME_SAKURACARD_UNCOMMON;
+                    break;
+                default:
+                    texture = KSMOD_ImageConst.FRAME_SAKURACARD_COMMON;
+                    break;
+            }
         }
         return texture;
     }
@@ -366,17 +423,35 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
     private Texture GetBannerImage()
     {
         Texture texture;
-        switch (this.rarity)
+        if (this.color == KSMOD_CustomCardColor.CLOWCARD_COLOR)
         {
-            case RARE:
-                texture = KSMOD_ImageConst.BANNER_RARE;
-                break;
-            case UNCOMMON:
-                texture = KSMOD_ImageConst.BANNER_UNCOMMON;
-                break;
-            default:
-                texture = KSMOD_ImageConst.BANNER_COMMON;
-                break;
+            switch (this.rarity)
+            {
+                case RARE:
+                    texture = KSMOD_ImageConst.BANNER_CLOWCARD_RARE;
+                    break;
+                case UNCOMMON:
+                    texture = KSMOD_ImageConst.BANNER_CLOWCARD_UNCOMMON;
+                    break;
+                default:
+                    texture = KSMOD_ImageConst.BANNER_CLOWCARD_COMMON;
+                    break;
+            }
+        }
+        else
+        {
+            switch (this.rarity)
+            {
+                case RARE:
+                    texture = KSMOD_ImageConst.BANNER_SAKURACARD_RARE;
+                    break;
+                case UNCOMMON:
+                    texture = KSMOD_ImageConst.BANNER_SAKURACARD_UNCOMMON;
+                    break;
+                default:
+                    texture = KSMOD_ImageConst.BANNER_SAKURACARD_COMMON;
+                    break;
+            }
         }
         return texture;
     }

@@ -124,13 +124,13 @@ public class KSMOD_SingleCardViewPopupPatch
                 switch (card.rarity)
                 {
                     case RARE:
-                        frameImg = KSMOD_ImageConst.FRAME_RARE_LARGE;
+                        frameImg = KSMOD_ImageConst.FRAME_CLOWCARD_RARE_LARGE;
                         break;
                     case UNCOMMON:
-                        frameImg = KSMOD_ImageConst.FRAME_UNCOMMON_LARGE;
+                        frameImg = KSMOD_ImageConst.FRAME_CLOWCARD_UNCOMMON_LARGE;
                         break;
                     default:
-                        frameImg = KSMOD_ImageConst.FRAME_COMMON_LARGE;
+                        frameImg = KSMOD_ImageConst.FRAME_CLOWCARD_COMMON_LARGE;
                         break;
                 }
                 sb.draw(frameImg, Settings.WIDTH * 0.5F - 512.0F, Settings.HEIGHT * 0.5F - 512.0F, 512.0F, 512.0F, 1024.0F, 1024.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 1024, 1024, false, false);
@@ -155,13 +155,13 @@ public class KSMOD_SingleCardViewPopupPatch
                 switch (card.rarity)
                 {
                     case RARE:
-                        bannerImg = KSMOD_ImageConst.BANNER_RARE_LARGE;
+                        bannerImg = KSMOD_ImageConst.BANNER_CLOWCARD_RARE_LARGE;
                         break;
                     case UNCOMMON:
-                        bannerImg = KSMOD_ImageConst.BANNER_UNCOMMON_LARGE;
+                        bannerImg = KSMOD_ImageConst.BANNER_CLOWCARD_UNCOMMON_LARGE;
                         break;
                     default:
-                        bannerImg = KSMOD_ImageConst.BANNER_COMMON_LARGE;
+                        bannerImg = KSMOD_ImageConst.BANNER_CLOWCARD_COMMON_LARGE;
                 }
                 sb.draw(bannerImg, Settings.WIDTH * 0.5F - 512.0F, Settings.HEIGHT * 0.5F - 512.0F, 512.0F, 512.0F, 1024.0F, 1024.0F, Settings.scale, Settings.scale, 0.0F, 0, 0, 1024, 1024, false, false);
                 return SpireReturn.Return(null);
@@ -383,16 +383,16 @@ public class KSMOD_SingleCardViewPopupPatch
                     switch (card.type)
                     {
                         case ATTACK:
-                            img = KSMOD_ImageConst.ORB_ATTACK_LARGE;
+                            img = KSMOD_ImageConst.ORB_CLOWCARD_ATTACK_LARGE;
                             break;
                         case SKILL:
-                            img = KSMOD_ImageConst.ORB_SKILL_LARGE;
+                            img = KSMOD_ImageConst.ORB_CLOWCARD_SKILL_LARGE;
                             break;
                         case POWER:
-                            img = KSMOD_ImageConst.ORB_POWER_LARGE;
+                            img = KSMOD_ImageConst.ORB_CLOWCARD_POWER_LARGE;
                             break;
                         default:
-                            img = KSMOD_ImageConst.ORB_SKILL_LARGE;
+                            img = KSMOD_ImageConst.ORB_CLOWCARD_SKILL_LARGE;
                             break;
                     }
                     sb.draw(img, Settings.WIDTH * 0.5F - ENERGY_ICON_WIDTH / 2F + (ENERGY_COST_OFFSET_X - 2F) * Settings.scale, Settings.HEIGHT * 0.5F - ENERGY_ICON_WIDTH / 2F + ENERGY_COST_OFFSET_Y * Settings.scale, ENERGY_ICON_WIDTH / 2F, ENERGY_ICON_WIDTH / 2F, ENERGY_ICON_WIDTH, ENERGY_ICON_WIDTH, Settings.scale, Settings.scale, 0.0F, 0, 0, (int) ENERGY_ICON_WIDTH, (int) ENERGY_ICON_WIDTH, false, false);

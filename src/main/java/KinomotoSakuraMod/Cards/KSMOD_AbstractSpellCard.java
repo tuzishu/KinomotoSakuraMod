@@ -1,6 +1,5 @@
 package KinomotoSakuraMod.Cards;
 
-import KinomotoSakuraMod.Actions.KSMOD_ReleaseAction;
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import basemod.abstracts.CustomCard;
@@ -110,6 +109,27 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
         }
     }
 
+    private Texture GetEnergyImage()
+    {
+        Texture texture;
+        switch (this.type)
+        {
+            case ATTACK:
+                texture = KSMOD_ImageConst.ORB_CLOWCARD_ATTACK;
+                break;
+            case SKILL:
+                texture = KSMOD_ImageConst.ORB_CLOWCARD_SKILL;
+                break;
+            case POWER:
+                texture = KSMOD_ImageConst.ORB_CLOWCARD_POWER;
+                break;
+            default:
+                texture = KSMOD_ImageConst.ORB_CLOWCARD_SKILL;
+                break;
+        }
+        return texture;
+    }
+
     @SpireOverride
     public void renderEnergy(SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException
     {
@@ -121,24 +141,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
 
             Method renderHelper = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, Texture.class, float.class, float.class);
             Color renderColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
-            Texture img;
-            switch (this.type)
-            {
-                case ATTACK:
-                    img = KSMOD_ImageConst.ORB_ATTACK;
-                    break;
-                case SKILL:
-                    img = KSMOD_ImageConst.ORB_SKILL;
-                    break;
-                case POWER:
-                    img = KSMOD_ImageConst.ORB_POWER;
-                    break;
-                default:
-                    img = KSMOD_ImageConst.ORB_SKILL;
-                    break;
-            }
-            renderHelper.invoke(this, sb, renderColor, img, drawX, drawY);
-
+            renderHelper.invoke(this, sb, renderColor, GetEnergyImage(), drawX, drawY);
             Color costColor = Color.WHITE.cpy();
             if (AbstractDungeon.player != null && AbstractDungeon.player.hand.contains(this) && !this.hasEnoughEnergy())
             {
@@ -170,13 +173,13 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
         switch (this.rarity)
         {
             case RARE:
-                texture = KSMOD_ImageConst.FRAME_RARE;
+                texture = KSMOD_ImageConst.FRAME_CLOWCARD_RARE;
                 break;
             case UNCOMMON:
-                texture = KSMOD_ImageConst.FRAME_UNCOMMON;
+                texture = KSMOD_ImageConst.FRAME_CLOWCARD_UNCOMMON;
                 break;
             default:
-                texture = KSMOD_ImageConst.FRAME_COMMON;
+                texture = KSMOD_ImageConst.FRAME_CLOWCARD_COMMON;
                 break;
         }
         return texture;
@@ -212,13 +215,13 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
         switch (this.rarity)
         {
             case RARE:
-                texture = KSMOD_ImageConst.BANNER_RARE;
+                texture = KSMOD_ImageConst.BANNER_CLOWCARD_RARE;
                 break;
             case UNCOMMON:
-                texture = KSMOD_ImageConst.BANNER_UNCOMMON;
+                texture = KSMOD_ImageConst.BANNER_CLOWCARD_UNCOMMON;
                 break;
             default:
-                texture = KSMOD_ImageConst.BANNER_COMMON;
+                texture = KSMOD_ImageConst.BANNER_CLOWCARD_COMMON;
                 break;
         }
         return texture;
