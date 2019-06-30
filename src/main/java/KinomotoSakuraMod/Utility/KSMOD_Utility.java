@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class KSMOD_Utility
@@ -159,7 +160,7 @@ public class KSMOD_Utility
     /**
      * 是否正在由拷贝卡牌动作调用makecopy函数
      *
-     * @return
+     * @return 是否为战斗中的卡牌复制（如：双持的复制效果）
      */
     public static boolean IsReallyCopyingCard()
     {
@@ -167,6 +168,24 @@ public class KSMOD_Utility
         for (int i = 0; i < elements.length; i++)
         {
             if (elements[i].getClassName().contains("MakeTempCard"))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * String类型的ArrayList列表中，是否包含目标字串
+     * @param stringList 目标数组
+     * @param targetStr 目标字符串
+     * @return 是否存在
+     */
+    public static boolean IsStringListContains(ArrayList<String> stringList, String targetStr)
+    {
+        for (String cardClassName : stringList)
+        {
+            if (cardClassName.equals(targetStr))
             {
                 return true;
             }

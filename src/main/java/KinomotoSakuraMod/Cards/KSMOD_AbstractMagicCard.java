@@ -100,7 +100,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
 
     public abstract void upgrade();
 
-    public abstract KSMOD_AbstractMagicCard makeCopy();
+    public abstract AbstractCard makeCopy();
 
     public KSMOD_AbstractMagicCard getSameNameClowCard()
     {

@@ -58,7 +58,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
 
     public abstract void upgrade();
 
-    public abstract KSMOD_AbstractSpellCard makeCopy();
+    public abstract AbstractCard makeCopy();
 
     public abstract void use(AbstractPlayer player, AbstractMonster monster);
 
