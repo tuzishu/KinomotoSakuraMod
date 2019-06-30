@@ -1,13 +1,19 @@
 package KinomotoSakuraMod.Characters;
 
-import KinomotoSakuraMod.Cards.ClowCard.*;
+import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheShield;
+import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheSword;
+import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheWood;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardRelease;
 import KinomotoSakuraMod.KSMOD;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCharacter;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import KinomotoSakuraMod.Relics.KSMOD_SealedWand;
+import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import basemod.abstracts.CustomPlayer;
+import basemod.interfaces.OnStartBattleSubscriber;
+import basemod.interfaces.PostBattleSubscriber;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
@@ -18,10 +24,12 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.beyond.SpireHeart;
 import com.megacrit.cardcrawl.events.city.Vampires;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
@@ -41,32 +49,9 @@ public class KinomotoSakura extends CustomPlayer
     private static final int CARD_DRAW = 5;
     private static final int START_ENERGY = 3;
     // 能量栏
-    private static final String[] ORB_TEXTURES = {
-            "img/UI/EPanel/layer5.png",
-            "img/UI/EPanel/layer4.png",
-            "img/UI/EPanel/layer3.png",
-            "img/UI/EPanel/layer2.png",
-            "img/UI/EPanel/layer1.png",
-            "img/UI/EPanel/layer0.png",
-            "img/UI/EPanel/layer5d.png",
-            "img/UI/EPanel/layer4d.png",
-            "img/UI/EPanel/layer3d.png",
-            "img/UI/EPanel/layer2d.png",
-            "img/UI/EPanel/layer1d.png"
-    };
+    private static final String[] ORB_TEXTURES = {"img/UI/EPanel/layer5.png", "img/UI/EPanel/layer4.png", "img/UI/EPanel/layer3.png", "img/UI/EPanel/layer2.png", "img/UI/EPanel/layer1.png", "img/UI/EPanel/layer0.png", "img/UI/EPanel/layer5d.png", "img/UI/EPanel/layer4d.png", "img/UI/EPanel/layer3d.png", "img/UI/EPanel/layer2d.png", "img/UI/EPanel/layer1d.png"};
     private static final String ORB_VFX = "img/UI/energyBlueVFX.png";
-    private static final float[] LAYER_SPEED = {
-            -40.0F,
-            -32.0F,
-            20.0F,
-            -20.0F,
-            0.0F,
-            -10.0F,
-            -8.0F,
-            5.0F,
-            -5.0F,
-            0.0F
-    };
+    private static final float[] LAYER_SPEED = {-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F, -5.0F, 0.0F};
     // 角色资源
     private static final String SHOULDER_1_IMAGE_PATH = "img/char/Marisa/shoulder1.png";
     private static final String SHOULDER_2_IMAGE_PATH = "img/char/Marisa/shoulder2.png";
@@ -220,14 +205,7 @@ public class KinomotoSakura extends CustomPlayer
 
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect()
     {
-        return new AbstractGameAction.AttackEffect[] {
-                AbstractGameAction.AttackEffect.SLASH_HEAVY,
-                AbstractGameAction.AttackEffect.FIRE,
-                AbstractGameAction.AttackEffect.SLASH_DIAGONAL,
-                AbstractGameAction.AttackEffect.SLASH_HEAVY,
-                AbstractGameAction.AttackEffect.FIRE,
-                AbstractGameAction.AttackEffect.SLASH_DIAGONAL
-        };
+        return new AbstractGameAction.AttackEffect[]{AbstractGameAction.AttackEffect.SLASH_HEAVY, AbstractGameAction.AttackEffect.FIRE, AbstractGameAction.AttackEffect.SLASH_DIAGONAL, AbstractGameAction.AttackEffect.SLASH_HEAVY, AbstractGameAction.AttackEffect.FIRE, AbstractGameAction.AttackEffect.SLASH_DIAGONAL};
     }
 
     public String getVampireText()

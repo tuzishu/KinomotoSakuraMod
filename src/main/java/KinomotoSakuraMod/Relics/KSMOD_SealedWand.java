@@ -2,6 +2,9 @@ package KinomotoSakuraMod.Relics;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
+import KinomotoSakuraMod.Characters.KinomotoSakura;
+import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
+import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import basemod.abstracts.CustomRelic;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
@@ -11,6 +14,9 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
+
+import java.util.ArrayList;
 
 public class KSMOD_SealedWand extends CustomRelic
 {
@@ -65,5 +71,57 @@ public class KSMOD_SealedWand extends CustomRelic
     public void setTriggerNumber(int value)
     {
         TriggerNumber = value;
+    }
+
+    public void atBattleStart()
+    {
+        KSMOD_Utility.Logger.info("receivePostBattle");
+        if (!(AbstractDungeon.player instanceof KinomotoSakura))
+        {
+            return;
+        }
+        ArrayList<String> sakuraCardList = new ArrayList<>();
+        ArrayList<AbstractCard> cardsToRemove = new ArrayList<>();
+        ArrayList<AbstractCard> cardsToAdd = new ArrayList<>();
+        for (AbstractCard card : AbstractDungeon.player.masterDeck.group)
+        {
+            if (card.color == KSMOD_CustomCardColor.SAKURACARD_COLOR)
+            {
+                String cardClassName = card.getClass().getName();
+                if (isStringListContains(sakuraCardList, cardClassName))
+                {
+                    cardsToRemove.add(card);
+                    cardsToAdd.add(((KSMOD_AbstractMagicCard)card).getSameNameClowCard());
+                }
+                else
+                {
+                    sakuraCardList.add(cardClassName);
+                }
+            }
+        }
+        for (AbstractCard card: cardsToRemove)
+        {
+            KSMOD_Utility.Logger.info("remove : "+card.name);
+        }
+        for (AbstractCard card: cardsToAdd)
+        {
+            KSMOD_Utility.Logger.info("add : "+card.name);
+        }
+        AbstractDungeon.player.masterDeck.group.removeAll(cardsToRemove);
+        AbstractDungeon.player.masterDeck.group.addAll(cardsToAdd);
+    }
+
+    private boolean isStringListContains(ArrayList<String> stringList, String targetStr)
+    {
+        for (String cardClassName : stringList)
+        {
+            if (cardClassName.equals(targetStr))
+            {
+                KSMOD_Utility.Logger.info("cardClassName equals targetStr : "+targetStr);
+                return true;
+            }
+        }
+        KSMOD_Utility.Logger.info("false : "+targetStr);
+        return false;
     }
 }

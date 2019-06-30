@@ -102,6 +102,11 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
 
     public abstract KSMOD_AbstractMagicCard makeCopy();
 
+    public KSMOD_AbstractMagicCard getSameNameClowCard()
+    {
+        return null;
+    }
+
     public void triggerOnExhaust()
     {
         this.upgradeDamage(-this.valueBuffer[0]);
@@ -173,6 +178,10 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
 
     private void InitMagicCard()
     {
+        if (this.color == KSMOD_CustomCardColor.SAKURACARD_COLOR)
+        {
+            this.upgraded = true;
+        }
         String bottomTitle = this.getClass().getSimpleName();
         if (BOTTOM_TITLE.isEmpty() && bottomTitle.contains("ClowCardThe"))
         {

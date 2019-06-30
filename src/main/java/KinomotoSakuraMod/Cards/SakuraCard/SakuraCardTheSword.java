@@ -53,9 +53,14 @@ public class SakuraCardTheSword extends KSMOD_AbstractMagicCard
     {
         if (KSMOD_Utility.IsReallyCopyingCard() && this.hasSameSakuraCard())
         {
-            return new ClowCardTheSword();
+            return getSameNameClowCard();
         }
         return new SakuraCardTheSword();
+    }
+
+    public KSMOD_AbstractMagicCard getSameNameClowCard()
+    {
+        return new ClowCardTheSword();
     }
 
     @Override
