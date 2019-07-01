@@ -24,6 +24,7 @@ public class KSMOD_SealedWand extends CustomRelic
     private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/SealedWand.png";
     private static final RelicTier RELIC_TIER = RelicTier.STARTER;
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
+    private static final int START_COUNT = 50;
     private static final int UPDATE_TRIGGER_NUMBER = 25;
     private static final int BASE_TRIGGER_NUMBER = 50;
     private boolean isCardFromWand = false;
@@ -31,7 +32,7 @@ public class KSMOD_SealedWand extends CustomRelic
     public KSMOD_SealedWand()
     {
         super(RELIC_ID, ImageMaster.loadImage(RELIC_IMG_PATH), ImageMaster.loadImage(RELIC_IMG_OTL_PATH), RELIC_TIER, RELIC_SOUND);
-        this.counter = 30;
+        this.counter = START_COUNT;
     }
 
     public String getUpdatedDescription()

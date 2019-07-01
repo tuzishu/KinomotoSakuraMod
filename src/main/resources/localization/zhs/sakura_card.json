@@ -420,6 +420,12 @@
   },
 
 
+  "SakuraCardTheArrow": {
+    "NAME": "矢",
+    "DESCRIPTION": "「 小樱牌 」「 火元素牌 」丢弃抽排堆所有牌，每丢弃1张，对随机目标造成 !D! 点伤害。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
   "SakuraCardTheSword": {
     "NAME": "剑",
     "DESCRIPTION": "「 小樱牌 」「 火元素牌 」造成 !D! 点伤害，并额外造成目标当前生命值25%的伤害。",
