@@ -1,12 +1,8 @@
 package KinomotoSakuraMod.Actions;
 
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
-import com.megacrit.cardcrawl.actions.unique.AddCardToDeckAction;
-import com.megacrit.cardcrawl.actions.utility.ShowCardAction;
-import com.megacrit.cardcrawl.actions.utility.ShowCardAndPoofAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -118,7 +114,7 @@ public class KSMOD_TurnAction extends AbstractGameAction
             String cardID = card.cardID;
             if (cardID.contains("ClowCardThe"))
             {
-                cardID =  cardID.replaceAll("ClowCardThe", "SakuraCardThe");
+                cardID = cardID.replaceAll("ClowCardThe", "SakuraCardThe");
             }
             if (!hasTargetSakuraCardInMasterDeck(cardID))
             {

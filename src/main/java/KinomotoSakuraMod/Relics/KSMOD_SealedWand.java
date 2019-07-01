@@ -24,19 +24,19 @@ public class KSMOD_SealedWand extends CustomRelic
     private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/SealedWand.png";
     private static final RelicTier RELIC_TIER = RelicTier.STARTER;
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
-    private static int TRIGGER_NUMBER_INCREASE = 25;
-    private static int triggerNumber = 30;
+    private static final int UPDATE_TRIGGER_NUMBER = 25;
+    private static final int BASE_TRIGGER_NUMBER = 30;
     private boolean isCardFromWand = false;
 
     public KSMOD_SealedWand()
     {
         super(RELIC_ID, ImageMaster.loadImage(RELIC_IMG_PATH), ImageMaster.loadImage(RELIC_IMG_OTL_PATH), RELIC_TIER, RELIC_SOUND);
-        this.counter = 0;
+        this.counter = 30;
     }
 
     public String getUpdatedDescription()
     {
-        return this.DESCRIPTIONS[0] + GetGainNumber() + this.DESCRIPTIONS[1] + triggerNumber + this.DESCRIPTIONS[2] + triggerNumber + this.DESCRIPTIONS[3] + TRIGGER_NUMBER_INCREASE + this.DESCRIPTIONS[4];
+        return this.DESCRIPTIONS[0] + GetGainNumber() + this.DESCRIPTIONS[1] + BASE_TRIGGER_NUMBER + this.DESCRIPTIONS[2] + BASE_TRIGGER_NUMBER + this.DESCRIPTIONS[3] + UPDATE_TRIGGER_NUMBER + this.DESCRIPTIONS[4];
     }
 
     public AbstractRelic makeCopy()
@@ -70,7 +70,7 @@ public class KSMOD_SealedWand extends CustomRelic
     public void GainCharge(int chargeNumber)
     {
         this.counter += chargeNumber;
-        if (this.counter >= triggerNumber && !AbstractDungeon.getCurrRoom().isBattleEnding())
+        if (this.counter >= GetTriggerNumber() && !AbstractDungeon.getCurrRoom().isBattleEnding())
         {
             this.flash();
             ActiveRelic();
@@ -79,13 +79,12 @@ public class KSMOD_SealedWand extends CustomRelic
 
     private int GetGainNumber()
     {
-        return 30;
+        return 3;
     }
 
     private void ActiveRelic()
     {
-        this.counter -= triggerNumber;
-        setTriggerNumber(triggerNumber + TRIGGER_NUMBER_INCREASE);
+        this.counter -= GetTriggerNumber();
         if (this.counter < 0)
         {
             this.counter = 0;
@@ -105,9 +104,17 @@ public class KSMOD_SealedWand extends CustomRelic
         return isCardFromWand;
     }
 
-    public void setTriggerNumber(int value)
+    public int GetTriggerNumber()
     {
-        triggerNumber = value;
+        int sakuraCardAmount = 0;
+        for (AbstractCard card : AbstractDungeon.player.masterDeck.group)
+        {
+            if (card.cardID.contains("SakuraCardThe"))
+            {
+                sakuraCardAmount += 1;
+            }
+        }
+        return BASE_TRIGGER_NUMBER + UPDATE_TRIGGER_NUMBER * sakuraCardAmount;
     }
 
     private void CheckSakuraCardRepeat(ArrayList<AbstractCard> arrayList)

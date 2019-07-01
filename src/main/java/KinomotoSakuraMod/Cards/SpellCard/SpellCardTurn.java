@@ -2,8 +2,10 @@ package KinomotoSakuraMod.Cards.SpellCard;
 
 import KinomotoSakuraMod.Actions.KSMOD_TurnAction;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractSpellCard;
+import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Relics.KSMOD_SealedWand;
+import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.status.VoidCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -11,6 +13,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import java.util.ArrayList;
 
 public class SpellCardTurn extends KSMOD_AbstractSpellCard
 {
@@ -61,6 +65,20 @@ public class SpellCardTurn extends KSMOD_AbstractSpellCard
     }
 
     @Override
+    public boolean canUse(AbstractPlayer player, AbstractMonster monster)
+    {
+        ArrayList<AbstractCard> cardList = new ArrayList<>();
+        for (AbstractCard card : AbstractDungeon.player.hand.group)
+        {
+            if (card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR && !hasTargetSakuraCardInMasterDeck(card.cardID))
+            {
+                cardList.add(card);
+            }
+        }
+        return cardList.size() > 0;
+    }
+
+    @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new KSMOD_TurnAction());
@@ -77,5 +95,21 @@ public class SpellCardTurn extends KSMOD_AbstractSpellCard
                 break;
             }
         }
+    }
+
+    private boolean hasTargetSakuraCardInMasterDeck(String cardID)
+    {
+        if (AbstractDungeon.player instanceof KinomotoSakura)
+        {
+            for (AbstractCard card : AbstractDungeon.player.masterDeck.group)
+            {
+                cardID = cardID.replaceAll("ClowCardThe", "SakuraCardThe");
+                if (cardID.equals(card.cardID))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
