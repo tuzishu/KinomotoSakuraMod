@@ -4,8 +4,6 @@ import KinomotoSakuraMod.Actions.KSMOD_TurnAction;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractSpellCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Relics.KSMOD_SealedWand;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
-import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.status.VoidCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -53,10 +51,12 @@ public class SpellCardTurn extends KSMOD_AbstractSpellCard
     @Override
     public AbstractCard makeCopy()
     {
-        if (!IsFromWand())
+        KSMOD_SealedWand wand = (KSMOD_SealedWand) AbstractDungeon.player.getRelic(KSMOD_SealedWand.RELIC_ID);
+        if (!wand.IsCardFromWand())
         {
             return new VoidCard();
         }
+        wand.GetTurnCardOver();
         return new SpellCardTurn();
     }
 
@@ -65,19 +65,6 @@ public class SpellCardTurn extends KSMOD_AbstractSpellCard
     {
         AbstractDungeon.actionManager.addToBottom(new KSMOD_TurnAction());
         TryRemoveThisFromMasterDeck();
-    }
-
-    private boolean IsFromWand()
-    {
-        StackTraceElement[] elements = Thread.currentThread().getStackTrace();
-        for (int i = 0; i < elements.length; i++)
-        {
-            if (elements[i].getClassName().contains(KSMOD_SealedWand.class.getName()))
-            {
-                return true;
-            }
-        }
-        return false;
     }
 
     private void TryRemoveThisFromMasterDeck()

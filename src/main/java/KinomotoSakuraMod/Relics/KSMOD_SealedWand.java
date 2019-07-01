@@ -26,6 +26,7 @@ public class KSMOD_SealedWand extends CustomRelic
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
     private static int TRIGGER_NUMBER_INCREASE = 25;
     private static int triggerNumber = 30;
+    private boolean isCardFromWand = false;
 
     public KSMOD_SealedWand()
     {
@@ -53,6 +54,11 @@ public class KSMOD_SealedWand extends CustomRelic
         }
     }
 
+    public void atBattleStart()
+    {
+        GainCharge(0);
+    }
+
     public void onMonsterDeath(AbstractMonster monster)
     {
         if (!monster.hasPower(MinionPower.POWER_ID))
@@ -64,7 +70,7 @@ public class KSMOD_SealedWand extends CustomRelic
     public void GainCharge(int chargeNumber)
     {
         this.counter += chargeNumber;
-        if (this.counter >= triggerNumber)
+        if (this.counter >= triggerNumber && !AbstractDungeon.getCurrRoom().isBattleEnding())
         {
             this.flash();
             ActiveRelic();
@@ -73,7 +79,7 @@ public class KSMOD_SealedWand extends CustomRelic
 
     private int GetGainNumber()
     {
-        return 3;
+        return 30;
     }
 
     private void ActiveRelic()
@@ -84,8 +90,19 @@ public class KSMOD_SealedWand extends CustomRelic
         {
             this.counter = 0;
         }
+        this.isCardFromWand = true;
         AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new SpellCardTurn()));
+    }
+
+    public void GetTurnCardOver()
+    {
+        this.isCardFromWand = false;
+    }
+
+    public boolean IsCardFromWand()
+    {
+        return isCardFromWand;
     }
 
     public void setTriggerNumber(int value)
@@ -119,7 +136,7 @@ public class KSMOD_SealedWand extends CustomRelic
         arrayList.removeAll(cardsToRemove);
         for (int i = 0; i < cardsToAdd.size(); i++)
         {
-            arrayList.add(i ,cardsToAdd.get(i));
+            arrayList.add(i, cardsToAdd.get(i));
         }
     }
 }

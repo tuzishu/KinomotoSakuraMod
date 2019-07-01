@@ -20,9 +20,9 @@ public class KSMOD_Utility
     {
         String log = "";
         StackTraceElement[] element = Thread.currentThread().getStackTrace();
-        for (int i = 0; i < element.length - 2; i++)
+        for (int i = 2; i < element.length; i++)
         {
-            log = log + "\n    " + i + " : " + element[i - 2];
+            log = log + "\n    " + (i - 2) + " : " + element[i];
         }
         Logger.info(log);
     }
@@ -177,8 +177,10 @@ public class KSMOD_Utility
 
     /**
      * String类型的ArrayList列表中，是否包含目标字串
+     *
      * @param stringList 目标数组
-     * @param targetStr 目标字符串
+     * @param targetStr  目标字符串
+     *
      * @return 是否存在
      */
     public static boolean IsStringListContains(ArrayList<String> stringList, String targetStr)
