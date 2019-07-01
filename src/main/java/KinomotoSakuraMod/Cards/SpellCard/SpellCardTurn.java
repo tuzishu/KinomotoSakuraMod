@@ -20,11 +20,11 @@ public class SpellCardTurn extends KSMOD_AbstractSpellCard
     private static final String NAME;
     private static final String DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/default_card.png";
-    private static final int COST = 0;
+    private static final int COST = -2;
     private static final CardType CARD_TYPE = CardType.POWER;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SPELL_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
-    private static final CardTarget CARD_TARGET = CardTarget.SELF;
+    private static final CardTarget CARD_TARGET = CardTarget.NONE;
 
     static
     {
@@ -37,7 +37,6 @@ public class SpellCardTurn extends KSMOD_AbstractSpellCard
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.retain = true;
-        this.exhaust = true;
     }
 
     public boolean canUpgrade()
