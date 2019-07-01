@@ -78,6 +78,7 @@ public class KSMOD_ArrowAction extends AbstractGameAction
             {
                 count += 1;
                 this.player.hand.moveToDiscardPile(card);
+                card.triggerOnManualDiscard();
             }
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
             AbstractDungeon.handCardSelectScreen.selectedCards.group.clear();

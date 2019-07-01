@@ -1,6 +1,7 @@
 package KinomotoSakuraMod;
 
 import KinomotoSakuraMod.Cards.ClowCard.*;
+import KinomotoSakuraMod.Cards.SakuraCard.SakuraCardTheShield;
 import KinomotoSakuraMod.Cards.SakuraCard.SakuraCardTheSword;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardRelease;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardSeal;
@@ -185,6 +186,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         cardList.add(new SpellCardRelease());
 
         cardList.add(new SakuraCardTheSword());
+        cardList.add(new SakuraCardTheShield());
 
         cardList.add(new TestCard());
 
