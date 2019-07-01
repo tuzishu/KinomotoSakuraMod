@@ -25,7 +25,7 @@ public class KSMOD_SealedWand extends CustomRelic
     private static final RelicTier RELIC_TIER = RelicTier.STARTER;
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
     private static int TRIGGER_NUMBER_INCREASE = 25;
-    private int triggerNumber = 30;
+    private static int triggerNumber = 30;
 
     public KSMOD_SealedWand()
     {

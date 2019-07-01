@@ -70,14 +70,7 @@ public class ClowCardTheCreate extends KSMOD_AbstractMagicCard
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_CreatePower(), 1));
-        for (AbstractCard card : AbstractDungeon.player.masterDeck.group)
-        {
-            if (card instanceof ClowCardTheCreate && card.name.equals(this.name) && card.upgraded == this.upgraded)
-            {
-                AbstractDungeon.player.masterDeck.removeCard(card);
-                break;
-            }
-        }
+        TryRemoveThisFromMasterDeck();
         AbstractDungeon.getCurrRoom().addRelicToRewards(GetRandomTier());
     }
 
@@ -95,6 +88,18 @@ public class ClowCardTheCreate extends KSMOD_AbstractMagicCard
         else
         {
             return AbstractRelic.RelicTier.COMMON;
+        }
+    }
+
+    private void TryRemoveThisFromMasterDeck()
+    {
+        for (AbstractCard card : AbstractDungeon.player.masterDeck.group)
+        {
+            if (card.uuid == this.uuid)
+            {
+                AbstractDungeon.player.masterDeck.removeCard(card);
+                break;
+            }
         }
     }
 }

@@ -1,13 +1,16 @@
 package KinomotoSakuraMod.Cards.SpellCard;
 
+import KinomotoSakuraMod.Actions.KSMOD_TurnAction;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractSpellCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Relics.KSMOD_SealedWand;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.status.VoidCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -18,7 +21,7 @@ public class SpellCardTurn extends KSMOD_AbstractSpellCard
     private static final String DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/default_card.png";
     private static final int COST = 0;
-    private static final CardType CARD_TYPE = CardType.SKILL;
+    private static final CardType CARD_TYPE = CardType.POWER;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SPELL_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
@@ -33,6 +36,8 @@ public class SpellCardTurn extends KSMOD_AbstractSpellCard
     public SpellCardTurn()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
+        this.retain = true;
+        this.exhaust = true;
     }
 
     public boolean canUpgrade()
@@ -59,7 +64,8 @@ public class SpellCardTurn extends KSMOD_AbstractSpellCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-
+        AbstractDungeon.actionManager.addToBottom(new KSMOD_TurnAction());
+        TryRemoveThisFromMasterDeck();
     }
 
     private boolean IsFromWand()
@@ -73,5 +79,17 @@ public class SpellCardTurn extends KSMOD_AbstractSpellCard
             }
         }
         return false;
+    }
+
+    private void TryRemoveThisFromMasterDeck()
+    {
+        for (AbstractCard card : AbstractDungeon.player.masterDeck.group)
+        {
+            if (card.uuid == this.uuid)
+            {
+                AbstractDungeon.player.masterDeck.removeCard(card);
+                break;
+            }
+        }
     }
 }
