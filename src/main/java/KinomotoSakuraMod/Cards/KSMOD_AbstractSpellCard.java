@@ -62,6 +62,12 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
 
     public abstract void use(AbstractPlayer player, AbstractMonster monster);
 
+    public void setBaseMagicNumber(int value)
+    {
+        this.baseMagicNumber = value;
+        this.magicNumber = value;
+    }
+
     //////////
     // Method Override
     //////////

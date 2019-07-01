@@ -1,13 +1,18 @@
 package KinomotoSakuraMod.Cards.SpellCard;
 
-import KinomotoSakuraMod.Actions.KSMOD_SealAction;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractSpellCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
+import KinomotoSakuraMod.Relics.KSMOD_SealedWand;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 
 public class SpellCardSeal extends KSMOD_AbstractSpellCard
 {
@@ -20,8 +25,9 @@ public class SpellCardSeal extends KSMOD_AbstractSpellCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SPELL_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.BASIC;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final int BASE_DAMAGE = 9;
-    private static final int UPGRADE_DAMAGE = 3;
+    private static final int BASE_DAMAGE = 10;
+    private static final int UPGRADE_DAMAGE = 4;
+    private static final int BASE_MAGIC_NUMBER = 2;
 
     static
     {
@@ -34,6 +40,7 @@ public class SpellCardSeal extends KSMOD_AbstractSpellCard
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.baseDamage = BASE_DAMAGE;
+        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
     @Override
@@ -47,7 +54,7 @@ public class SpellCardSeal extends KSMOD_AbstractSpellCard
     }
 
     @Override
-    public KSMOD_AbstractSpellCard makeCopy()
+    public AbstractCard makeCopy()
     {
         return new SpellCardSeal();
     }
@@ -55,6 +62,12 @@ public class SpellCardSeal extends KSMOD_AbstractSpellCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new KSMOD_SealAction(monster, this.damage));
+        AbstractDungeon.effectList.add(new FlashAtkImgEffect(monster.hb.cX, monster.hb.cY, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        if (AbstractDungeon.player.hasRelic(KSMOD_SealedWand.RELIC_ID))
+        {
+            KSMOD_SealedWand wand = (KSMOD_SealedWand) AbstractDungeon.player.getRelic(KSMOD_SealedWand.RELIC_ID);
+            wand.GainCharge(this.magicNumber);
+        }
     }
 }

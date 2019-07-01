@@ -6,13 +6,6 @@
       " 后可发动卡牌的额外效果。"
     ]
   },
-  "KSMOD_SealPower": {
-    "NAME": "封印",
-    "DESCRIPTIONS": [
-      "战斗结束后，额外获得 #b",
-      " 次卡牌奖励"
-    ]
-  },
   "KSMOD_CloudPower": {
     "NAME": "云层",
     "DESCRIPTIONS": [

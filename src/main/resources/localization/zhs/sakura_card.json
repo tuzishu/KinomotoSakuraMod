@@ -408,7 +408,7 @@
   },
   "SpellCardSeal": {
     "NAME": "封",
-    "DESCRIPTION": "造成 !D! 点伤害。如果击杀了1名不是 爪牙 的敌人，则为 封印之杖 额外充能。",
+    "DESCRIPTION": "造成 !D! 点伤害。如果击杀了1名不是 爪牙 的敌人，则 封印之杖 额外获得 !M! 点充能。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
