@@ -1,6 +1,7 @@
 package KinomotoSakuraMod.Utility;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 
 public class KSMOD_ImageConst
@@ -117,8 +118,10 @@ public class KSMOD_ImageConst
     public static final Texture MASK;
     // 卡牌轮廓
     public static final Texture SILHOUETTE;
+    public static final TextureAtlas.AtlasRegion SILHOUETTE_ATLAS;
     // 卡牌闪光效果
     public static final Texture FLASH;
+    public static final TextureAtlas.AtlasRegion FLASH_ATLAS;
 
     static
     {
@@ -172,7 +175,9 @@ public class KSMOD_ImageConst
         MASK = ImageMaster.loadImage(MASK_PATH);
         // 卡牌轮廓
         SILHOUETTE = ImageMaster.loadImage(SILHOUETTE_PATH);
+        SILHOUETTE_ATLAS = new TextureAtlas.AtlasRegion(SILHOUETTE, 0, 0, SILHOUETTE.getWidth(), SILHOUETTE.getHeight());
         // 卡牌闪光效果
         FLASH = ImageMaster.loadImage(FLASH_PATH);
+        FLASH_ATLAS = new TextureAtlas.AtlasRegion(FLASH, 0, 0, FLASH.getWidth(), FLASH.getHeight());
     }
 }

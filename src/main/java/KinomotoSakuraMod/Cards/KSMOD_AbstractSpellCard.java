@@ -19,6 +19,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.GameDictionary;
 import com.megacrit.cardcrawl.helpers.MathHelper;
+import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
@@ -75,45 +76,17 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
     //////////
 
     @Override
-    public void updateHoverLogic()
+    public boolean isHoveredInHand(float scale)
     {
-        try
+        if (this.hoverTimer > 0.0F)
         {
-            Field hoverDuration = KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "hoverDuration");
-            Field renderTip = KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderTip");
-            boolean justHovered = this.hb.hovered;
-            boolean justUnhovered = false;
-            this.hb.update();
-            if (this.hb.hovered)
-            {
-                this.hover();
-                hoverDuration.setFloat(this, hoverDuration.getFloat(this) + Gdx.graphics.getDeltaTime());
-                if (hoverDuration.getFloat(this) > 0.2F && !Settings.hideCards)
-                {
-                    renderTip.setBoolean(this, true);
-                }
-            }
-            else
-            {
-                this.unhover();
-                if (justHovered)
-                {
-                    justUnhovered = true;
-                }
-            }
-
-            if (this.hb.justHovered)
-            {
-                this.initializeDescription();
-            }
-            if (justUnhovered && AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this) && !this.hb.hovered && !this.isHandSelectScreenOpened)
-            {
-                this.description.clear();
-            }
+            return false;
         }
-        catch (Exception e)
+        else
         {
-            e.printStackTrace();
+            int x = InputHelper.mX;
+            int y = InputHelper.mY;
+            return (float) x > this.current_x - IMG_WIDTH * scale / 2.0F && (float) x < this.current_x + IMG_WIDTH * scale / 2.0F && (float) y > this.current_y - IMG_HEIGHT * scale / 2.0F && (float) y < this.current_y + IMG_HEIGHT * scale / 2.0F;
         }
     }
 
@@ -245,7 +218,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
     @SpireOverride
     public void renderDescriptionCN(SpriteBatch sb) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException
     {
-        if (AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this) && !this.hb.hovered && !this.isHandSelectScreenOpened)
+        if (AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this) && !this.isHandSelectScreenOpened && (AbstractDungeon.player.hoveredCard == null || AbstractDungeon.player.hoveredCard != this))
         {
             return;
         }
@@ -751,7 +724,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
     @Override
     public TextureAtlas.AtlasRegion getCardBgAtlas()
     {
-        return new TextureAtlas.AtlasRegion(KSMOD_ImageConst.SILHOUETTE, 0, 0, KSMOD_ImageConst.SILHOUETTE.getWidth(), KSMOD_ImageConst.SILHOUETTE.getHeight());
+        return KSMOD_ImageConst.SILHOUETTE_ATLAS;
     }
 
     @SpireOverride
@@ -760,7 +733,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
         if (this.isGlowing)
         {
             sb.setBlendFunction(770, 1);
-            TextureAtlas.AtlasRegion img = new TextureAtlas.AtlasRegion(KSMOD_ImageConst.SILHOUETTE, 0, 0, KSMOD_ImageConst.SILHOUETTE.getWidth(), KSMOD_ImageConst.SILHOUETTE.getHeight());
+            TextureAtlas.AtlasRegion img = KSMOD_ImageConst.SILHOUETTE_ATLAS;
             if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT)
             {
                 Color BLUE_BORDER_GLOW_COLOR = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "BLUE_BORDER_GLOW_COLOR").get(this);
@@ -773,23 +746,6 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
             }
 
             sb.draw(img, this.current_x + img.offsetX - (float) img.originalWidth / 2.0F, this.current_y + img.offsetY - (float) img.originalWidth / 2.0F, (float) img.originalWidth / 2.0F - img.offsetX, (float) img.originalWidth / 2.0F - img.offsetY, (float) img.packedWidth, (float) img.packedHeight, this.drawScale * Settings.scale * 1.04F, this.drawScale * Settings.scale * 1.03F, this.angle);
-        }
-    }
-
-    @Override
-    public void renderHoverShadow(SpriteBatch sb)
-    {
-        if (!Settings.hideCards)
-        {
-            try
-            {
-                Method renderHelper = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, Texture.class, float.class, float.class, float.class);
-                renderHelper.invoke(this, sb, Settings.TWO_THIRDS_TRANSPARENT_BLACK_COLOR, KSMOD_ImageConst.SILHOUETTE, this.current_x, this.current_y, 1.15F);
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
         }
     }
 }

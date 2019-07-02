@@ -64,7 +64,7 @@ public class SpellCardSeal extends KSMOD_AbstractSpellCard
     {
         AbstractDungeon.effectList.add(new FlashAtkImgEffect(monster.hb.cX, monster.hb.cY, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
         AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-        if (AbstractDungeon.player.hasRelic(KSMOD_SealedWand.RELIC_ID))
+        if (AbstractDungeon.player.hasRelic(KSMOD_SealedWand.RELIC_ID) && (monster.isDead || monster.isDying))
         {
             KSMOD_SealedWand wand = (KSMOD_SealedWand) AbstractDungeon.player.getRelic(KSMOD_SealedWand.RELIC_ID);
             wand.GainCharge(this.magicNumber);

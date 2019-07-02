@@ -24,7 +24,7 @@ public class KSMOD_CardGlowBorderPatch
         {
             thisCard.set(border, card);
             Field img = KSMOD_Utility.GetFieldByReflect(CardGlowBorder.class, "img");
-            img.set(border, new TextureAtlas.AtlasRegion(KSMOD_ImageConst.SILHOUETTE, 0, 0, KSMOD_ImageConst.SILHOUETTE.getWidth(), KSMOD_ImageConst.SILHOUETTE.getHeight()));
+            img.set(border, KSMOD_ImageConst.SILHOUETTE_ATLAS);
             border.duration = 1.2F;
             Field color = KSMOD_Utility.GetFieldByReflect(AbstractGameEffect.class, "color");
             if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT)

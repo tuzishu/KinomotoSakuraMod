@@ -36,7 +36,7 @@ public class KSMOD_CardFlashVfxPatch
                 thisCard.set(vfx, card);
                 thisIsSuper.setBoolean(vfx, isSuper);
                 duration.setFloat(vfx, 0.5F);
-                img.set(vfx, new TextureAtlas.AtlasRegion(KSMOD_ImageConst.FLASH, 0, 0, KSMOD_ImageConst.FLASH.getWidth(), KSMOD_ImageConst.FLASH.getHeight()));
+                img.set(vfx, KSMOD_ImageConst.FLASH_ATLAS);
                 return SpireReturn.Return(null);
             }
             else
