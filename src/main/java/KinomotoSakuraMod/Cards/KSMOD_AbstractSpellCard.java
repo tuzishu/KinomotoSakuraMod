@@ -2,7 +2,9 @@ package KinomotoSakuraMod.Cards;
 
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
+import basemod.abstracts.DynamicVariable;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -27,6 +29,8 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public abstract class KSMOD_AbstractSpellCard extends CustomCard
 {
@@ -251,6 +255,30 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
                 {
                     String tmp = var7[var9];
                     String updateTmp = null;
+
+                    ////// Patch From RenderCustomDynamicVariableCN
+                    if (tmp.startsWith("$")) {
+                        String key = tmp;
+                        Pattern pattern = Pattern.compile("\\$(.+)\\$\\$");
+                        Matcher matcher = pattern.matcher(key);
+                        if (matcher.find()) {
+                            key = matcher.group(1);
+                        }
+
+                        DynamicVariable dv = (DynamicVariable) BaseMod.cardDynamicVariableMap.get(key);
+                        if (dv != null) {
+                            if (dv.isModified(this)) {
+                                if (dv.value(this) >= dv.baseValue(this)) {
+                                    tmp = "[#" + dv.getIncreasedValueColor().toString() + "]" + Integer.toString(dv.value(this)) + "[]";
+                                } else {
+                                    tmp = "[#" + dv.getDecreasedValueColor().toString() + "]" + Integer.toString(dv.value(this)) + "[]";
+                                }
+                            } else {
+                                tmp = Integer.toString(dv.baseValue(this));
+                            }
+                        }
+                    }
+                    ////// Patch End
 
                     int j;
                     for (j = 0; j < tmp.length(); ++j)
