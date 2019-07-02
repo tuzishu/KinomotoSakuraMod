@@ -17,14 +17,11 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.Hitbox;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.screens.SingleCardViewPopup;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Scanner;
 
 public class KSMOD_SingleCardViewPopupPatch
 {
@@ -252,13 +249,12 @@ public class KSMOD_SingleCardViewPopupPatch
                     for (int i = 0; i < card.description.size(); ++i)
                     {
                         float start_x = DESC_X;
-                        Field scannerField = KSMOD_Utility.GetFieldByReflect(SingleCardViewPopup.class, "scanner");
-                        scannerField.set(view, new Scanner(card.description.get(i).text));
-                        Scanner scanner = (Scanner) scannerField.get(view);
                         Method getDynamicValue = KSMOD_Utility.GetMethodByReflect(SingleCardViewPopup.class, "getDynamicValue", char.class);
-                        while (scanner.hasNext())
+                        String[] var8 = card.description.get(i).getCachedTokenizedTextCN();
+                        int var9 = var8.length;
+                        for (int var10 = 0; var10 < var9; ++var10)
                         {
-                            String tmp = scanner.next();
+                            String tmp = var8[var10];
                             tmp = tmp.replace("!", "");
                             String updateTmp = null;
                             int j;
@@ -313,19 +309,19 @@ public class KSMOD_SingleCardViewPopupPatch
                             else if (tmp.equals("[R]"))
                             {
                                 gl.width = card_energy_w * card.drawScale;
-                                renderSmallEnergy.invoke(view, sb, ImageMaster.RED_ORB, (start_x - card.current_x) / Settings.scale / card.drawScale, -87.0F - ((card.description.size() - 4.0F) * 0.5F - i + 1.0F) * spacing);
+                                renderSmallEnergy.invoke(view, sb, AbstractCard.orb_red, (start_x - card.current_x) / Settings.scale / card.drawScale, -87.0F - ((card.description.size() - 4.0F) * 0.5F - i + 1.0F) * spacing);
                                 start_x += gl.width;
                             }
                             else if (tmp.equals("[G]"))
                             {
                                 gl.width = card_energy_w * card.drawScale;
-                                renderSmallEnergy.invoke(view, sb, ImageMaster.GREEN_ORB, (start_x - card.current_x) / Settings.scale / card.drawScale, -87.0F - ((card.description.size() - 4.0F) * 0.5F - i + 1.0F) * spacing);
+                                renderSmallEnergy.invoke(view, sb, AbstractCard.orb_green, (start_x - card.current_x) / Settings.scale / card.drawScale, -87.0F - ((card.description.size() - 4.0F) * 0.5F - i + 1.0F) * spacing);
                                 start_x += gl.width;
                             }
                             else if (tmp.equals("[B]"))
                             {
                                 gl.width = card_energy_w * card.drawScale;
-                                renderSmallEnergy.invoke(view, sb, ImageMaster.BLUE_ORB, (start_x - card.current_x) / Settings.scale / card.drawScale, -87.0F - ((card.description.size() - 4.0F) * 0.5F - i + 1.0F) * spacing);
+                                renderSmallEnergy.invoke(view, sb, AbstractCard.orb_blue, (start_x - card.current_x) / Settings.scale / card.drawScale, -87.0F - ((card.description.size() - 4.0F) * 0.5F - i + 1.0F) * spacing);
                                 start_x += gl.width;
                             }
                             else

@@ -1,5 +1,6 @@
 package KinomotoSakuraMod.Cards;
 
+import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import basemod.abstracts.CustomCard;
@@ -9,6 +10,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DescriptionLine;
@@ -18,12 +20,12 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.GameDictionary;
 import com.megacrit.cardcrawl.helpers.MathHelper;
+import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 
 public abstract class KSMOD_AbstractSpellCard extends CustomCard
 {
@@ -142,12 +144,10 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
         boolean darken = KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "darken").getBoolean(this);
         if (this.cost > -2 && !darken && !this.isLocked && this.isSeen)
         {
-            float drawX = this.current_x - 256.0F;
-            float drawY = this.current_y - 256.0F;
-
             Method renderHelper = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, Texture.class, float.class, float.class);
             Color renderColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
-            renderHelper.invoke(this, sb, renderColor, GetEnergyImage(), drawX, drawY);
+            renderHelper.invoke(this, sb, renderColor, GetEnergyImage(), this.current_x - 512F, this.current_y - 512F);
+
             Color costColor = Color.WHITE.cpy();
             if (AbstractDungeon.player != null && AbstractDungeon.player.hand.contains(this) && !this.hasEnoughEnergy())
             {
@@ -178,41 +178,42 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
         Texture texture;
         switch (this.rarity)
         {
-            case RARE:
-                texture = KSMOD_ImageConst.FRAME_CLOWCARD_RARE;
+            case COMMON:
+                texture = KSMOD_ImageConst.FRAME_CLOWCARD_COMMON;
                 break;
             case UNCOMMON:
                 texture = KSMOD_ImageConst.FRAME_CLOWCARD_UNCOMMON;
                 break;
             default:
-                texture = KSMOD_ImageConst.FRAME_CLOWCARD_COMMON;
+                texture = KSMOD_ImageConst.FRAME_CLOWCARD_RARE;
                 break;
         }
         return texture;
     }
 
-    @SpireOverride
-    public void renderAttackPortrait(SpriteBatch sb, float x, float y) throws NoSuchFieldException, IllegalAccessException
+    private void renderFramePortrait(SpriteBatch sb, float x, float y) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException
     {
-        Field renderColor = KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor");
-        sb.setColor((Color) renderColor.get(this));
-        sb.draw(GetFrameImage(), x, y, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
+        Color renderColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
+        Method renderHelper = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, Texture.class, float.class, float.class);
+        renderHelper.invoke(this, sb, renderColor, GetFrameImage(), x - 512F, y - 512F);
     }
 
     @SpireOverride
-    public void renderSkillPortrait(SpriteBatch sb, float x, float y) throws NoSuchFieldException, IllegalAccessException
+    public void renderAttackPortrait(SpriteBatch sb, float x, float y) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException, NoSuchFieldException
     {
-        Field renderColor = KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor");
-        sb.setColor((Color) renderColor.get(this));
-        sb.draw(GetFrameImage(), x, y, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
+        renderFramePortrait(sb, x, y);
     }
 
     @SpireOverride
-    public void renderPowerPortrait(SpriteBatch sb, float x, float y) throws NoSuchFieldException, IllegalAccessException
+    public void renderSkillPortrait(SpriteBatch sb, float x, float y) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException
     {
-        Field renderColor = KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor");
-        sb.setColor((Color) renderColor.get(this));
-        sb.draw(GetFrameImage(), x, y, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
+        renderFramePortrait(sb, x, y);
+    }
+
+    @SpireOverride
+    public void renderPowerPortrait(SpriteBatch sb, float x, float y) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException
+    {
+        renderFramePortrait(sb, x, y);
     }
 
     private Texture GetBannerImage()
@@ -220,25 +221,25 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
         Texture texture;
         switch (this.rarity)
         {
-            case RARE:
-                texture = KSMOD_ImageConst.BANNER_CLOWCARD_RARE;
+            case COMMON:
+                texture = KSMOD_ImageConst.BANNER_CLOWCARD_COMMON;
                 break;
             case UNCOMMON:
                 texture = KSMOD_ImageConst.BANNER_CLOWCARD_UNCOMMON;
                 break;
             default:
-                texture = KSMOD_ImageConst.BANNER_CLOWCARD_COMMON;
+                texture = KSMOD_ImageConst.BANNER_CLOWCARD_RARE;
                 break;
         }
         return texture;
     }
 
     @SpireOverride
-    public void renderBannerImage(SpriteBatch sb, float drawX, float drawY) throws NoSuchFieldException, IllegalAccessException
+    public void renderBannerImage(SpriteBatch sb, float drawX, float drawY) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException
     {
-        Field renderColor = KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor");
-        sb.setColor((Color) renderColor.get(this));
-        sb.draw(GetBannerImage(), drawX, drawY, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
+        Color renderColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
+        Method renderHelper = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, Texture.class, float.class, float.class);
+        renderHelper.invoke(this, sb, renderColor, GetBannerImage(), drawX - 512F, drawY - 512F);
     }
 
     @SpireOverride
@@ -270,8 +271,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
                     start_x = this.current_x - this.description.get(i).width * this.drawScale / 2.0F - 14.0F * Settings.scale;
                 }
 
-                String desc = this.description.get(i).text;
-                String[] var9 = desc.split(" ");
+                String[] var9 = this.description.get(i).getCachedTokenizedTextCN();
                 int var10 = var9.length;
 
                 for (int var11 = 0; var11 < var10; ++var11)
@@ -548,13 +548,9 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
                 this.description.add(new DescriptionLine(lastLine, currentWidth));
             }
 
-            if (lastLine.equals("。"))
+            if (lastLine.equals(LocalizedStrings.PERIOD))
             {
-                ArrayList var10000 = this.description;
-                int var10001 = this.description.size() - 2;
-                StringBuilder var10004 = new StringBuilder();
-                DescriptionLine var10006 = (DescriptionLine) this.description.get(this.description.size() - 2);
-                var10000.set(var10001, new DescriptionLine(var10006.text = var10004.append(var10006.text).append("。").toString(), ((DescriptionLine) this.description.get(this.description.size() - 2)).width));
+                this.description.set(this.description.size() - 2, new DescriptionLine(this.description.get(this.description.size() - 2).getText() + LocalizedStrings.PERIOD, this.description.get(this.description.size() - 2).width));
                 this.description.remove(this.description.size() - 1);
             }
         }
@@ -643,28 +639,14 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
             Color renderColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
             if (this.isLocked)
             {
-                if (this.angle == 0.0F && this.drawScale == 1.0F)
-                {
-                    font = FontHelper.cardTitleFont_N;
-                }
-                else
-                {
-                    font = FontHelper.cardTitleFont_L;
-                }
+                font = FontHelper.cardTitleFont;
                 font.getData().setScale(this.drawScale);
                 FontHelper.renderRotatedText(sb, font, LOCKED_STRING, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
                 FontHelper.renderRotatedText(sb, font, LOCKED_STRING, this.current_x, this.current_y, 0.0F, TITLE_BOTTOM_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
             }
             else if (!this.isSeen)
             {
-                if (this.angle == 0.0F && this.drawScale == 1.0F)
-                {
-                    font = FontHelper.cardTitleFont_N;
-                }
-                else
-                {
-                    font = FontHelper.cardTitleFont_L;
-                }
+                font = FontHelper.cardTitleFont;
                 font.getData().setScale(this.drawScale);
                 FontHelper.renderRotatedText(sb, font, UNKNOWN_STRING, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
                 FontHelper.renderRotatedText(sb, font, UNKNOWN_STRING, this.current_x, this.current_y, 0.0F, TITLE_BOTTOM_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
@@ -674,22 +656,11 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
                 boolean useSmallTitleFont = KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "useSmallTitleFont").getBoolean(this);
                 if (!useSmallTitleFont)
                 {
-                    if (this.angle == 0.0F && this.drawScale == 1.0F)
-                    {
-                        font = FontHelper.cardTitleFont_N;
-                    }
-                    else
-                    {
-                        font = FontHelper.cardTitleFont_L;
-                    }
-                }
-                else if (this.angle == 0.0F && this.drawScale == 1.0F)
-                {
-                    font = FontHelper.cardTitleFont_small_N;
+                    font = FontHelper.cardTitleFont;
                 }
                 else
                 {
-                    font = FontHelper.cardTitleFont_small_L;
+                    font = FontHelper.cardTitleFont_small;
                 }
 
                 font.getData().setScale(this.drawScale);
