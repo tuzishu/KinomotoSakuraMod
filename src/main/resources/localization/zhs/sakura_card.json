@@ -426,6 +426,12 @@
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
+  "SakuraCardTheBig": {
+    "NAME": "大",
+    "DESCRIPTION": "「 小樱牌 」「 火元素牌 」造成的伤害增加50%。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
   "SakuraCardTheSword": {
     "NAME": "剑",
     "DESCRIPTION": "「 小樱牌 」「 火元素牌 」造成 !D! 点伤害，并额外造成目标当前生命值25%的伤害。",

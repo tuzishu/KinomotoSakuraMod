@@ -147,5 +147,12 @@
       "使用攻击牌时获得 #b",
       " 点格挡。"
     ]
+  },
+  "KSMOD_BigPower_SakuraCard": {
+    "NAME": "巨大",
+    "DESCRIPTIONS": [
+      "造成的伤害增加 #b",
+      "% 。"
+    ]
   }
 }
