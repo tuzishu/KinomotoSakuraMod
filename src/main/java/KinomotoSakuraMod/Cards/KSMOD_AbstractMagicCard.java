@@ -397,6 +397,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
         {
             switch (this.rarity)
             {
+                case BASIC:
                 case COMMON:
                     texture = KSMOD_ImageConst.FRAME_CLOWCARD_COMMON;
                     break;
@@ -412,6 +413,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
         {
             switch (this.rarity)
             {
+                case BASIC:
                 case COMMON:
                     texture = KSMOD_ImageConst.FRAME_SAKURACARD_COMMON;
                     break;
@@ -458,6 +460,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
         {
             switch (this.rarity)
             {
+                case BASIC:
                 case COMMON:
                     texture = KSMOD_ImageConst.BANNER_CLOWCARD_COMMON;
                     break;
@@ -473,6 +476,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
         {
             switch (this.rarity)
             {
+                case BASIC:
                 case COMMON:
                     texture = KSMOD_ImageConst.BANNER_SAKURACARD_COMMON;
                     break;
@@ -510,7 +514,6 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
             float draw_y = this.current_y - IMG_HEIGHT * this.drawScale / 2.0F + IMG_HEIGHT * DESC_OFFSET_TO_BOTTOM_Y * this.drawScale;
             draw_y += (float) this.description.size() * font.getCapHeight() * 0.775F - font.getCapHeight() * 0.375F;
             float spacing = 1.45F * -font.getCapHeight() / Settings.scale / this.drawScale;
-            GlyphLayout gl = new GlyphLayout();
 
             for (int i = 0; i < this.description.size(); ++i)
             {
@@ -524,13 +527,13 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
                     start_x = this.current_x - this.description.get(i).width * this.drawScale / 2.0F - 14.0F * Settings.scale;
                 }
 
-                String[] var9 = this.description.get(i).getCachedTokenizedTextCN();
-                int var10 = var9.length;
-
-                for (int var11 = 0; var11 < var10; ++var11)
+                String[] var7 = this.description.get(i).getCachedTokenizedTextCN();
+                int var8 = var7.length;
+                Method getDynamicValue = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "getDynamicValue", char.class);
+                GlyphLayout gl = (GlyphLayout) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "gl").get(this);
+                for (int var9 = 0; var9 < var8; ++var9)
                 {
-                    String tmp = var9[var11];
-                    tmp = tmp.replace("!", "");
+                    String tmp = var7[var9];
                     String updateTmp = null;
 
                     int j;
@@ -539,7 +542,6 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
                         if (tmp.charAt(j) == 'D' || tmp.charAt(j) == 'B' && !tmp.contains("[B]") || tmp.charAt(j) == 'M')
                         {
                             updateTmp = tmp.substring(0, j);
-                            Method getDynamicValue = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "getDynamicValue", char.class);
                             updateTmp = updateTmp + getDynamicValue.invoke(this, tmp.charAt(j));
                             updateTmp = updateTmp + tmp.substring(j + 1);
                             break;
@@ -556,7 +558,6 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
                         if (tmp.charAt(j) == 'D' || tmp.charAt(j) == 'B' && !tmp.contains("[B]") || tmp.charAt(j) == 'M')
                         {
                             updateTmp = tmp.substring(0, j);
-                            Method getDynamicValue = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "getDynamicValue", char.class);
                             updateTmp = updateTmp + getDynamicValue.invoke(this, tmp.charAt(j));
                             updateTmp = updateTmp + tmp.substring(j + 1);
                             break;
@@ -635,7 +636,8 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
         {
             this.description.clear();
             int numLines = 1;
-            StringBuilder currentLine = new StringBuilder("");
+            StringBuilder sbuilder = (StringBuilder) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "sbuilder").get(this);
+            sbuilder.setLength(0);
             float currentWidth = 0.0F;
             String desc;
             if (this.hasExtraEffect && hasCharged() && !hasLockPower())
@@ -650,19 +652,19 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
             {
                 desc = this.rawDescription;
             }
-            String[] var4 = desc.split(" ");
-            int var5 = var4.length;
+            String[] var3 = desc.split(" ");
+            int var4 = var3.length;
 
-            for (int var6 = 0; var6 < var5; ++var6)
+            for (int var5 = 0; var5 < var4; ++var5)
             {
-                String word = var4[var6];
+                String word = var3[var5];
                 word = word.trim();
-                if (!word.contains("NL"))
+                if (Settings.manualLineBreak || !word.contains("NL"))
                 {
-                    String keywordTmp = word.toLowerCase();
                     Method dedupeKeyword = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "dedupeKeyword", String.class);
+                    GlyphLayout gl = (GlyphLayout) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "gl").get(this);
+                    String keywordTmp = word.toLowerCase();
                     keywordTmp = (String) dedupeKeyword.invoke(this, keywordTmp);
-                    GlyphLayout gl;
                     if (GameDictionary.keywords.containsKey(keywordTmp))
                     {
                         if (!this.keywords.contains(keywordTmp))
@@ -670,18 +672,18 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
                             this.keywords.add(keywordTmp);
                         }
 
-                        gl = new GlyphLayout(FontHelper.cardDescFont_N, word);
+                        gl.setText(FontHelper.cardDescFont_N, word);
                         if (currentWidth + gl.width > DESC_LINE_WIDTH)
                         {
                             ++numLines;
-                            this.description.add(new DescriptionLine(currentLine.toString(), currentWidth));
-                            currentLine = new StringBuilder("");
+                            this.description.add(new DescriptionLine(sbuilder.toString(), currentWidth));
+                            sbuilder.setLength(0);
                             currentWidth = gl.width;
-                            currentLine.append(" *").append(word).append(" ");
+                            sbuilder.append(" *").append(word).append(" ");
                         }
                         else
                         {
-                            currentLine.append(" *").append(word).append(" ");
+                            sbuilder.append(" *").append(word).append(" ");
                             currentWidth += gl.width;
                         }
                     }
@@ -689,76 +691,88 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
                     {
                         if (word.equals("!D!"))
                         {
-                            gl = new GlyphLayout(FontHelper.cardDescFont_N, word);
+                            gl.setText(FontHelper.cardDescFont_N, word);
                             if (currentWidth + gl.width > DESC_LINE_WIDTH)
                             {
                                 ++numLines;
-                                this.description.add(new DescriptionLine(currentLine.toString(), currentWidth));
-                                currentLine = new StringBuilder("");
+                                this.description.add(new DescriptionLine(sbuilder.toString(), currentWidth));
+                                sbuilder.setLength(0);
                                 currentWidth = gl.width;
-                                currentLine.append(" D ");
+                                sbuilder.append(" D ");
                             }
                             else
                             {
-                                currentLine.append(" D ");
+                                sbuilder.append(" D ");
                                 currentWidth += gl.width;
                             }
                         }
                         else if (word.equals("!B!"))
                         {
-                            gl = new GlyphLayout(FontHelper.cardDescFont_N, word);
+                            gl.setText(FontHelper.cardDescFont_N, word);
                             if (currentWidth + gl.width > DESC_LINE_WIDTH)
                             {
                                 ++numLines;
-                                this.description.add(new DescriptionLine(currentLine.toString(), currentWidth));
-                                currentLine = new StringBuilder("");
+                                this.description.add(new DescriptionLine(sbuilder.toString(), currentWidth));
+                                sbuilder.setLength(0);
                                 currentWidth = gl.width;
-                                currentLine.append(" ").append(word).append("! ");
+                                sbuilder.append(" ").append(word).append("! ");
                             }
                             else
                             {
-                                currentLine.append(" ").append(word).append("! ");
+                                sbuilder.append(" ").append(word).append("! ");
                                 currentWidth += gl.width;
                             }
                         }
                         else if (word.equals("!M!"))
                         {
-                            gl = new GlyphLayout(FontHelper.cardDescFont_N, word);
+                            gl.setText(FontHelper.cardDescFont_N, word);
                             if (currentWidth + gl.width > DESC_LINE_WIDTH)
                             {
                                 ++numLines;
-                                this.description.add(new DescriptionLine(currentLine.toString(), currentWidth));
-                                currentLine = new StringBuilder("");
+                                this.description.add(new DescriptionLine(sbuilder.toString(), currentWidth));
+                                sbuilder.setLength(0);
                                 currentWidth = gl.width;
-                                currentLine.append(" ").append(word).append("! ");
+                                sbuilder.append(" ").append(word).append("! ");
                             }
                             else
                             {
-                                currentLine.append(" ").append(word).append("! ");
+                                sbuilder.append(" ").append(word).append("! ");
                                 currentWidth += gl.width;
                             }
+                        }
+                        else if (Settings.manualLineBreak && word.equals("NL"))
+                        {
+                            gl.width = 0.0F;
+                            word = "";
+                            this.description.add(new DescriptionLine(sbuilder.toString().trim(), currentWidth));
+                            currentWidth = 0.0F;
+                            ++numLines;
+                            sbuilder.setLength(0);
                         }
                         else
                         {
                             word = word.trim();
-                            char[] var10 = word.toCharArray();
-                            int var11 = var10.length;
+                            char[] var8 = word.toCharArray();
+                            int var9 = var8.length;
 
-                            for (int var12 = 0; var12 < var11; ++var12)
+                            for (int var10 = 0; var10 < var9; ++var10)
                             {
-                                char c = var10[var12];
-                                gl = new GlyphLayout(FontHelper.cardDescFont_N, Character.toString(c));
-                                currentLine.append(c);
-                                if (currentWidth + gl.width > DESC_LINE_WIDTH)
+                                char c = var8[var10];
+                                gl.setText(FontHelper.cardDescFont_N, String.valueOf(c));
+                                sbuilder.append(c);
+                                if (!Settings.manualLineBreak)
                                 {
-                                    ++numLines;
-                                    this.description.add(new DescriptionLine(currentLine.toString(), currentWidth));
-                                    currentLine = new StringBuilder("");
-                                    currentWidth = gl.width;
-                                }
-                                else
-                                {
-                                    currentWidth += gl.width;
+                                    if (currentWidth + gl.width > DESC_LINE_WIDTH)
+                                    {
+                                        ++numLines;
+                                        this.description.add(new DescriptionLine(sbuilder.toString(), currentWidth));
+                                        sbuilder.setLength(0);
+                                        currentWidth = gl.width;
+                                    }
+                                    else
+                                    {
+                                        currentWidth += gl.width;
+                                    }
                                 }
                             }
                         }
@@ -786,34 +800,32 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
                                 }
                                 break;
                             default:
-                                KSMOD_Utility.Logger.error("ERROR: Tried to display an invalid energy type");
-                                break;
+                                KSMOD_Utility.Logger.info("ERROR: Tried to display an invalid energy type");
                         }
 
                         if (currentWidth + CARD_ENERGY_IMG_WIDTH > DESC_LINE_WIDTH)
                         {
                             ++numLines;
-                            this.description.add(new DescriptionLine(currentLine.toString(), currentWidth));
-                            currentLine = new StringBuilder("");
+                            this.description.add(new DescriptionLine(sbuilder.toString(), currentWidth));
+                            sbuilder.setLength(0);
                             currentWidth = CARD_ENERGY_IMG_WIDTH;
-                            currentLine.append(" ").append(word).append(" ");
+                            sbuilder.append(" ").append(word).append(" ");
                         }
                         else
                         {
-                            currentLine.append(" ").append(word).append(" ");
+                            sbuilder.append(" ").append(word).append(" ");
                             currentWidth += CARD_ENERGY_IMG_WIDTH;
                         }
                     }
                 }
             }
 
-            String lastLine = currentLine.toString();
-            if (!lastLine.isEmpty())
+            if (sbuilder.length() != 0)
             {
-                this.description.add(new DescriptionLine(lastLine, currentWidth));
+                this.description.add(new DescriptionLine(sbuilder.toString(), currentWidth));
             }
 
-            if (lastLine.equals(LocalizedStrings.PERIOD))
+            if (sbuilder.toString().equals(LocalizedStrings.PERIOD))
             {
                 this.description.set(this.description.size() - 2, new DescriptionLine(this.description.get(this.description.size() - 2).getText() + LocalizedStrings.PERIOD, this.description.get(this.description.size() - 2).width));
                 this.description.remove(this.description.size() - 1);
@@ -823,7 +835,6 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
         {
             e.printStackTrace();
         }
-
     }
 
     @Override
