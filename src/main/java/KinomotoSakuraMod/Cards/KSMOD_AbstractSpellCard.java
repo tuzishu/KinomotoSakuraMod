@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DescriptionLine;
@@ -20,6 +21,7 @@ import com.megacrit.cardcrawl.helpers.GameDictionary;
 import com.megacrit.cardcrawl.helpers.MathHelper;
 import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -743,6 +745,51 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
                 return KSMOD_ImageConst.SILHOUETTE;
             default:
                 return null;
+        }
+    }
+
+    @Override
+    public TextureAtlas.AtlasRegion getCardBgAtlas()
+    {
+        return new TextureAtlas.AtlasRegion(KSMOD_ImageConst.SILHOUETTE, 0, 0, KSMOD_ImageConst.SILHOUETTE.getWidth(), KSMOD_ImageConst.SILHOUETTE.getHeight());
+    }
+
+    @SpireOverride
+    public void renderMainBorder(SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException
+    {
+        if (this.isGlowing)
+        {
+            sb.setBlendFunction(770, 1);
+            TextureAtlas.AtlasRegion img = new TextureAtlas.AtlasRegion(KSMOD_ImageConst.SILHOUETTE, 0, 0, KSMOD_ImageConst.SILHOUETTE.getWidth(), KSMOD_ImageConst.SILHOUETTE.getHeight());
+            if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT)
+            {
+                Color BLUE_BORDER_GLOW_COLOR = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "BLUE_BORDER_GLOW_COLOR").get(this);
+                sb.setColor(BLUE_BORDER_GLOW_COLOR);
+            }
+            else
+            {
+                Color GREEN_BORDER_GLOW_COLOR = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "GREEN_BORDER_GLOW_COLOR").get(this);
+                sb.setColor(GREEN_BORDER_GLOW_COLOR);
+            }
+
+            sb.draw(img, this.current_x + img.offsetX - (float) img.originalWidth / 2.0F, this.current_y + img.offsetY - (float) img.originalWidth / 2.0F, (float) img.originalWidth / 2.0F - img.offsetX, (float) img.originalWidth / 2.0F - img.offsetY, (float) img.packedWidth, (float) img.packedHeight, this.drawScale * Settings.scale * 1.04F, this.drawScale * Settings.scale * 1.03F, this.angle);
+        }
+    }
+
+    @Override
+    public void renderHoverShadow(SpriteBatch sb)
+    {
+        if (!Settings.hideCards)
+        {
+            try
+            {
+                Method renderHelper = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, Texture.class, float.class, float.class, float.class);
+                renderHelper.invoke(this, sb, Settings.TWO_THIRDS_TRANSPARENT_BLACK_COLOR, KSMOD_ImageConst.SILHOUETTE, this.current_x, this.current_y, 1.15F);
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
         }
     }
 }

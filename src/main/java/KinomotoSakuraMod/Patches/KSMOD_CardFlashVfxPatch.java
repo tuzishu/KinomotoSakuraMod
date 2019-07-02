@@ -3,6 +3,7 @@ package KinomotoSakuraMod.Patches;
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -35,7 +36,7 @@ public class KSMOD_CardFlashVfxPatch
                 thisCard.set(vfx, card);
                 thisIsSuper.setBoolean(vfx, isSuper);
                 duration.setFloat(vfx, 0.5F);
-                img.set(vfx, KSMOD_ImageConst.FLASH);
+                img.set(vfx, new TextureAtlas.AtlasRegion(KSMOD_ImageConst.FLASH, 0, 0, KSMOD_ImageConst.FLASH.getWidth(), KSMOD_ImageConst.FLASH.getHeight()));
                 return SpireReturn.Return(null);
             }
             else
@@ -47,8 +48,7 @@ public class KSMOD_CardFlashVfxPatch
 
     @SpirePatch(clz = CardFlashVfx.class, method = SpirePatch.CONSTRUCTOR, paramtypez = {
             AbstractCard.class,
-            Color.class,
-            boolean.class
+            Color.class
     })
     public static class CardFlashVfx_2
     {
