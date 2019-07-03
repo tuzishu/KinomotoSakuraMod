@@ -6,17 +6,15 @@ import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.GameActionManager;
+import com.megacrit.cardcrawl.actions.common.AttackDamageRandomEnemyAction;
 import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.ThrowDaggerEffect;
 
 public class SakuraCardTheArrow extends KSMOD_AbstractMagicCard
 {
@@ -71,24 +69,26 @@ public class SakuraCardTheArrow extends KSMOD_AbstractMagicCard
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         int count = player.drawPile.size();
-        for (AbstractCard card: player.drawPile.group)
+        if (!player.drawPile.isEmpty())
         {
-            AbstractDungeon.actionManager.addToBottom(new DiscardSpecificCardAction(card, player.drawPile));
+            AbstractDungeon.actionManager.addToBottom(new DiscardSpecificCardAction(player.drawPile.getTopCard()));
+        }
+        while (!player.drawPile.isEmpty())
+        {
+            AbstractCard card = player.drawPile.getTopCard();
+            player.drawPile.moveToDiscardPile(card);
+            GameActionManager.incrementDiscard(false);
+            card.triggerOnManualDiscard();
+            player.drawPile.removeCard(card);
         }
         AttackRandomMonsterForTimes(count);
     }
 
     private void AttackRandomMonsterForTimes(int count)
     {
-        AbstractPlayer player = AbstractDungeon.player;
-        if (count > 0)
+        for (int i = 0; i < count; ++i)
         {
-            for (int i = 0; i < count; i++)
-            {
-                AbstractMonster monster = AbstractDungeon.getRandomMonster();
-                AbstractDungeon.actionManager.addToBottom(new VFXAction(player, new ThrowDaggerEffect(monster.hb.cX, monster.hb.cY), DURATION_ATTACK));
-                AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-            }
+            AbstractDungeon.actionManager.addToBottom(new AttackDamageRandomEnemyAction(this, AbstractGameAction.AttackEffect.SLASH_VERTICAL));
         }
     }
 }

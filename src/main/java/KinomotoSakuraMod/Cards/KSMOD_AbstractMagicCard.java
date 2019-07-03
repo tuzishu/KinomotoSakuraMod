@@ -538,7 +538,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
                         }
                     }
                     ////// Patch End
-                    
+
                     int j;
                     for (j = 0; j < tmp.length(); ++j)
                     {
