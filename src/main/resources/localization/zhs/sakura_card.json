@@ -134,10 +134,10 @@
   },
   "ClowCardTheIllusion": {
     "NAME": "幻",
-    "DESCRIPTION": "「 火元素牌 」造成 !D! 点伤害。消耗区每有3张牌，额外造成 !M! 次伤害。",
+    "DESCRIPTION": "「 火元素牌 」造成 !D! 点伤害。消耗区每有3张牌，额外造成 !M! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "「 火元素牌 」造成 !D! 点伤害。消耗区每有2张牌，额外造成 !M! 次伤害。"
+      "「 火元素牌 」造成 !D! 点伤害。消耗区每有2张牌，额外造成 !M! 点伤害。"
     ]
   },
   "ClowCardTheJump": {
@@ -440,13 +440,19 @@
   },
   "SakuraCardTheChange": {
     "NAME": "替",
-    "DESCRIPTION": "「 小樱牌 」「 火元素牌 」 消耗 。丢弃所有手牌，并抽 !M! 张牌。",
+    "DESCRIPTION": "「 小樱牌 」「 地元素牌 」 消耗 。丢弃所有手牌，并抽 !M! 张牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheCloud": {
     "NAME": "云",
-    "DESCRIPTION": "「 小樱牌 」「 火元素牌 」 消耗 。下1张 水元素牌 将被额外打出1次。",
+    "DESCRIPTION": "「 小樱牌 」「 水元素牌 」 消耗 。下1张 水元素牌 将被额外打出1次。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheCreate": {
+    "NAME": "创",
+    "DESCRIPTION": "「 小樱牌 」「 火元素牌 」战斗结束后获得1件随机遗物和1件角色专属遗物，并将此卡从卡组中移除。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

@@ -92,7 +92,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         KSMOD_Utility.Logger.info("结束编辑遗物");
     }
 
-    private ArrayList<AbstractRelic> GetRelicList()
+    public static ArrayList<AbstractRelic> GetRelicList()
     {
         ArrayList<AbstractRelic> relicList = new ArrayList<AbstractRelic>();
 
@@ -189,6 +189,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         cardList.add(new SakuraCardTheBubbles());
         cardList.add(new SakuraCardTheChange());
         cardList.add(new SakuraCardTheCloud());
+        cardList.add(new SakuraCardTheCreate());
 
         cardList.add(new SakuraCardTheSword());
         cardList.add(new SakuraCardTheShield());
