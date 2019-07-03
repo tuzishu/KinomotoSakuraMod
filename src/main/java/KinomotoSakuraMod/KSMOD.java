@@ -107,14 +107,19 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
     {
         KSMOD_Utility.Logger.info("开始编辑卡牌");
 
-        for (AbstractCard card : GetUnlockedCardList())
+        ArrayList<AbstractCard> unlockedCardList = new ArrayList<>();
+        unlockedCardList.addAll(GetClowCardList());
+        unlockedCardList.addAll(GetSpellCardList());
+        for (AbstractCard card : unlockedCardList)
         {
             BaseMod.addCard(card);
             UnlockTracker.unlockCard(card.cardID);
             KSMOD_Utility.Logger.info("Loading Unlocked Card : " + card.name);
         }
 
-        for (AbstractCard card : GetLockedCardList())
+        ArrayList<AbstractCard> lockedCardList = new ArrayList<>();
+        unlockedCardList.addAll(GetSakuraCardList());
+        for (AbstractCard card : lockedCardList)
         {
             BaseMod.addCard(card);
             KSMOD_Utility.Logger.info("Loading Locked Card : " + card.name);
@@ -123,7 +128,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         KSMOD_Utility.Logger.info("结束编辑卡牌");
     }
 
-    private ArrayList<AbstractCard> GetUnlockedCardList()
+    public static ArrayList<AbstractCard> GetClowCardList()
     {
         ArrayList<AbstractCard> cardList = new ArrayList<AbstractCard>();
 
@@ -180,9 +185,25 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         cardList.add(new ClowCardTheWindy());
         cardList.add(new ClowCardTheWood());
 
-        cardList.add(new SpellCardTurn());
-        cardList.add(new SpellCardSeal());
+        return cardList;
+    }
+
+    public static ArrayList<AbstractCard> GetSpellCardList()
+    {
+        ArrayList<AbstractCard> cardList = new ArrayList<AbstractCard>();
+
         cardList.add(new SpellCardRelease());
+        cardList.add(new SpellCardSeal());
+        cardList.add(new SpellCardTurn());
+
+        cardList.add(new TestCard());
+
+        return cardList;
+    }
+
+    public static ArrayList<AbstractCard> GetSakuraCardList()
+    {
+        ArrayList<AbstractCard> cardList = new ArrayList<AbstractCard>();
 
         cardList.add(new SakuraCardTheArrow());
         cardList.add(new SakuraCardTheBig());
@@ -190,20 +211,11 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         cardList.add(new SakuraCardTheChange());
         cardList.add(new SakuraCardTheCloud());
         cardList.add(new SakuraCardTheCreate());
+        cardList.add(new SakuraCardTheDark());
 
-        cardList.add(new SakuraCardTheSword());
         cardList.add(new SakuraCardTheShield());
+        cardList.add(new SakuraCardTheSword());
 
-        cardList.add(new TestCard());
-
-        return cardList;
-    }
-
-    private ArrayList<AbstractCard> GetLockedCardList()
-    {
-        ArrayList<AbstractCard> cardList = new ArrayList<AbstractCard>();
-
-        cardList.add(new TestCard());
         return cardList;
     }
 

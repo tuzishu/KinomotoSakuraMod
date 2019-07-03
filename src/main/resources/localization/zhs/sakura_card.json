@@ -452,7 +452,13 @@
   },
   "SakuraCardTheCreate": {
     "NAME": "创",
-    "DESCRIPTION": "「 小樱牌 」「 火元素牌 」战斗结束后获得1件随机遗物和1件角色专属遗物，并将此卡从卡组中移除。",
+    "DESCRIPTION": "「 小樱牌 」「 地元素牌 」「 风元素牌 」战斗结束后获得1件随机遗物和1件角色专属遗物，并将此卡从卡组中移除。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheDark": {
+    "NAME": "暗",
+    "DESCRIPTION": "「 小樱牌 」「 风元素牌 」「 水元素牌 」回合结束时， 消耗 所有手牌，并添加相同数量的随机 库洛牌 到弃牌堆。每 消耗 1张牌，下回合额外获得1点能量。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

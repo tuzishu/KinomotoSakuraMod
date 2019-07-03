@@ -36,6 +36,12 @@
       " 点能量。"
     ]
   },
+  "KSMOD_DarkPower_SakuraCard": {
+    "NAME": "黑暗·樱",
+    "DESCRIPTIONS": [
+      "回合结束时，消耗所有手牌，并添加相同数量的随机库洛牌到弃牌堆。每消耗1张牌，下回合额外获得1点能量。"
+    ]
+  },
   "KSMOD_DarkGainEnergyPower": {
     "NAME": "能量获得",
     "DESCRIPTIONS": [

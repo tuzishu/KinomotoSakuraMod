@@ -159,9 +159,9 @@ public class SakuraCardTheCreate extends KSMOD_AbstractMagicCard
 
     private <T> T GetRandomListElement(ArrayList<T> arrayList)
     {
-        if (arrayList.size()>0)
+        if (arrayList.size() > 0)
         {
-            return arrayList.get(new Random().random(0, arrayList.size()-1));
+            return arrayList.get(new Random().random(0, arrayList.size() - 1));
         }
         return null;
     }
