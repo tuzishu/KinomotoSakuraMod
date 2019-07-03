@@ -468,6 +468,18 @@
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
+  "SakuraCardTheEarthy": {
+    "NAME": "地",
+    "DESCRIPTION": "「 小樱牌 」「 地元素牌 」打出 地元素牌 时，额外获得1层 魔力充能 ，并获得 !B! 点格挡。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheFirey": {
+    "NAME": "火",
+    "DESCRIPTION": "「 小樱牌 」「 火元素牌 」打出 火元素牌 时，额外获得1层 魔力充能 ，并对全体敌人造成 !D! 点伤害。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
   "SakuraCardTheSword": {
     "NAME": "剑",
     "DESCRIPTION": "「 小樱牌 」「 火元素牌 」造成 !D! 点伤害，并额外造成目标当前生命值25%的伤害。",
@@ -477,6 +489,18 @@
   "SakuraCardTheShield": {
     "NAME": "盾",
     "DESCRIPTION": "「 小樱牌 」「 火元素牌 」获得 !B! 点 格挡 ，并额外获得当前已损失生命值100%的 格挡 。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheWatery": {
+    "NAME": "水",
+    "DESCRIPTION": "「 小樱牌 」「 水元素牌 」打出 水元素牌 时，额外获得1层 魔力充能 ，并获得 !M! 点能量。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheWindy": {
+    "NAME": "风",
+    "DESCRIPTION": "「 小樱牌 」「 风元素牌 」打出 风元素牌 时，额外获得1层 魔力充能 ，并抽 !M! 张牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   }

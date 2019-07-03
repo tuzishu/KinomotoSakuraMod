@@ -56,10 +56,24 @@
       " 点格挡。"
     ]
   },
+  "KSMOD_EarthyPower_SakuraCard": {
+    "NAME": "地元素·樱",
+    "DESCRIPTIONS": [
+      "打出 #y地元素牌 时，额外获得1层 #y魔力充能 ，并获得 #b",
+      " 点格挡。"
+    ]
+  },
   "KSMOD_WateryPower": {
     "NAME": "水元素",
     "DESCRIPTIONS": [
       "本回合打出 #y地元素牌 时，额外获得1层 #y魔力充能 ，并获得 #b",
+      " 点能量。"
+    ]
+  },
+  "KSMOD_WateryPower_SakuraCard": {
+    "NAME": "水元素·樱",
+    "DESCRIPTIONS": [
+      "打出 #y水元素牌 时，额外获得1层 #y魔力充能 ，并获得 #b",
       " 点能量。"
     ]
   },
@@ -70,10 +84,24 @@
       " 点伤害。"
     ]
   },
+  "KSMOD_FireyPower_SakuraCard": {
+    "NAME": "火元素·樱",
+    "DESCRIPTIONS": [
+      "打出 #y火元素牌 时，额外获得1层 #y魔力充能 ，并对全体敌人造成 #b",
+      " 点伤害。"
+    ]
+  },
   "KSMOD_WindyPower": {
     "NAME": "风元素",
     "DESCRIPTIONS": [
       "本回合打出 #y地元素牌 时，额外获得1层 #y魔力充能 ，并抽 #b",
+      " 张牌。"
+    ]
+  },
+  "KSMOD_WindyPower_SakuraCard": {
+    "NAME": "风元素·樱",
+    "DESCRIPTIONS": [
+      "打出 #y风元素牌 时，额外获得1层 #y魔力充能 ，并抽 #b",
       " 张牌。"
     ]
   },
