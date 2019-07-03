@@ -28,6 +28,8 @@ public class ClowCardTheCreate extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.RARE;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
+    private static final float RARE_RELIC_RATE = 0.125F;
+    private static final float UNCOMMON_RELIC_RATE = 0.375F;
 
     static
     {
@@ -77,11 +79,11 @@ public class ClowCardTheCreate extends KSMOD_AbstractMagicCard
     private AbstractRelic.RelicTier GetRandomTier()
     {
         float randNum = new Random().random(0F, 1F);
-        if (randNum <= 0.125F)
+        if (randNum <= RARE_RELIC_RATE)
         {
             return AbstractRelic.RelicTier.RARE;
         }
-        else if (randNum <= 0.4F)
+        else if (randNum <= RARE_RELIC_RATE + UNCOMMON_RELIC_RATE)
         {
             return AbstractRelic.RelicTier.UNCOMMON;
         }

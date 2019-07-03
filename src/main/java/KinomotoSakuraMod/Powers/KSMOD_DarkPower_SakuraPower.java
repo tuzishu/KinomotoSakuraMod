@@ -21,6 +21,8 @@ public class KSMOD_DarkPower_SakuraPower extends KSMOD_CustomPower
     private static final String[] POWER_DESCRIPTIONS;
     private static final String POWER_IMG_PATH = "img/powers/default_power.png";
     private static final AbstractPower.PowerType POWER_TYPE = AbstractPower.PowerType.BUFF;
+    private static final float RARE_CARD_RATE = 0.1F;
+    private static final float UNCOMMON_CARD_RATE = 0.3F;
 
     static
     {
@@ -87,11 +89,11 @@ public class KSMOD_DarkPower_SakuraPower extends KSMOD_CustomPower
         }
 
         float randNum = new Random().random(0F, 1F);
-        if (randNum <= 0.125F)
+        if (randNum <= RARE_CARD_RATE)
         {
             return GetRandomListElement(rareList);
         }
-        else if (randNum <= 0.4F)
+        else if (randNum <= RARE_CARD_RATE + UNCOMMON_CARD_RATE)
         {
             return GetRandomListElement(uncommonList);
         }
