@@ -67,7 +67,7 @@ public class KSMOD_HandSelectScreenHook
         public static void Insert(HandCardSelectScreen screen)
         {
             KSMOD_AbstractMagicCard.isHandSelectScreenOpened = false;
-            KSMOD_AbstractSpellCard.isHandSelectScreenOpened = true;
+            KSMOD_AbstractSpellCard.isHandSelectScreenOpened = false;
         }
     }
 

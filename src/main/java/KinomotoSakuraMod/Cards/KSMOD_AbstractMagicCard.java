@@ -40,7 +40,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.regex.Matcher;
@@ -480,15 +479,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
     @SpireOverride
     public void renderDescriptionCN(SpriteBatch sb) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException
     {
-        if (AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this) && !this.isHandSelectScreenOpened)
-        {
-            return;
-        }
-        if (AbstractDungeon.player.hoveredCard == null)
-        {
-            return;
-        }
-        if (AbstractDungeon.player.hoveredCard != this)
+        if (AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this) && !this.isHandSelectScreenOpened && AbstractDungeon.player.hoveredCard != this)
         {
             return;
         }
@@ -523,23 +514,32 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
                     String updateTmp = null;
 
                     ////// Patch From RenderCustomDynamicVariableCN
-                    if (tmp.startsWith("$")) {
+                    if (tmp.startsWith("$"))
+                    {
                         String key = tmp;
                         Pattern pattern = Pattern.compile("\\$(.+)\\$\\$");
                         Matcher matcher = pattern.matcher(key);
-                        if (matcher.find()) {
+                        if (matcher.find())
+                        {
                             key = matcher.group(1);
                         }
 
                         DynamicVariable dv = (DynamicVariable) BaseMod.cardDynamicVariableMap.get(key);
-                        if (dv != null) {
-                            if (dv.isModified(this)) {
-                                if (dv.value(this) >= dv.baseValue(this)) {
+                        if (dv != null)
+                        {
+                            if (dv.isModified(this))
+                            {
+                                if (dv.value(this) >= dv.baseValue(this))
+                                {
                                     tmp = "[#" + dv.getIncreasedValueColor().toString() + "]" + Integer.toString(dv.value(this)) + "[]";
-                                } else {
+                                }
+                                else
+                                {
                                     tmp = "[#" + dv.getDecreasedValueColor().toString() + "]" + Integer.toString(dv.value(this)) + "[]";
                                 }
-                            } else {
+                            }
+                            else
+                            {
                                 tmp = Integer.toString(dv.baseValue(this));
                             }
                         }

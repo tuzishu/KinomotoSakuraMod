@@ -221,15 +221,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
     @SpireOverride
     public void renderDescriptionCN(SpriteBatch sb) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException
     {
-        if (AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this) && !this.isHandSelectScreenOpened)
-        {
-            return;
-        }
-        if (AbstractDungeon.player.hoveredCard == null)
-        {
-            return;
-        }
-        if (AbstractDungeon.player.hoveredCard != this)
+        if (AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this) && !this.isHandSelectScreenOpened && AbstractDungeon.player.hoveredCard != this)
         {
             return;
         }
