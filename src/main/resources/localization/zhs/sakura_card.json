@@ -449,5 +449,11 @@
     "DESCRIPTION": "「 小樱牌 」「 火元素牌 」获得 !B! 点 格挡 ，并额外获得当前已损失生命值100%的 格挡 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheChange": {
+    "NAME": "替",
+    "DESCRIPTION": "「 小樱牌 」「 火元素牌 」丢弃所有手牌，并抽 !M! 张牌。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
   }
 }
