@@ -112,6 +112,13 @@
       " 层 #y敏捷 。"
     ]
   },
+  "KSMOD_FloatPower_SakuraCard": {
+    "NAME": "漂浮·樱",
+    "DESCRIPTIONS": [
+      "回合开始时，获得 #b",
+      "  层 #y敏捷 。"
+    ]
+  },
   "KSMOD_FlyPower": {
     "NAME": "飞行",
     "DESCRIPTIONS": [

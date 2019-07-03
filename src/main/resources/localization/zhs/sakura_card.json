@@ -492,6 +492,12 @@
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
+  "SakuraCardTheFloat": {
+    "NAME": "浮",
+    "DESCRIPTION": "「 小樱牌 」「 风元素牌 」回合开始时，获得 !M! 层 敏捷 。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
   "SakuraCardTheSword": {
     "NAME": "剑",
     "DESCRIPTION": "「 小樱牌 」「 火元素牌 」造成 !D! 点伤害，并额外造成目标当前生命值25%的伤害。",
