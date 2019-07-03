@@ -60,7 +60,6 @@ public class KSMOD_DarkPower_SakuraPower extends KSMOD_CustomPower
             {
                 AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(GetRandomClowCard(), 1));
             }
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new KSMOD_DarkGainEnergyPower(this.owner, count), count));
         }
     }
 
