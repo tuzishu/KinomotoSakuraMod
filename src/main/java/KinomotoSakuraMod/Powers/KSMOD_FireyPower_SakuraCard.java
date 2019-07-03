@@ -15,7 +15,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class KSMOD_FireyPower_SakuraCard extends KSMOD_CustomPower
 {
-    public static final String POWER_ID = "KSMOD_EarthyPower_SakuraCard";
+    public static final String POWER_ID = "KSMOD_FireyPower_SakuraCard";
     private static final String POWER_NAME;
     private static final String[] POWER_DESCRIPTIONS;
     private static final String POWER_IMG_PATH = "img/powers/default_power.png";

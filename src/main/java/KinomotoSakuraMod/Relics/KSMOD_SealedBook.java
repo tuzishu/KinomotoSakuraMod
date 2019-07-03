@@ -1,10 +1,7 @@
 package KinomotoSakuraMod.Relics;
 
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
-import KinomotoSakuraMod.Powers.KSMOD_EarthyPower;
-import KinomotoSakuraMod.Powers.KSMOD_FireyPower;
-import KinomotoSakuraMod.Powers.KSMOD_WateryPower;
-import KinomotoSakuraMod.Powers.KSMOD_WindyPower;
+import KinomotoSakuraMod.Powers.*;
 import basemod.abstracts.CustomRelic;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -67,6 +64,22 @@ public class KSMOD_SealedBook extends CustomRelic
             amount += 1;
         }
         if (AbstractDungeon.player.hasPower(KSMOD_WindyPower.POWER_ID) && card.hasTag(KSMOD_CustomTag.KSMOD_WINDY_CARD))
+        {
+            amount += 1;
+        }
+        if (AbstractDungeon.player.hasPower(KSMOD_EarthyPower_SakuraCard.POWER_ID) && card.hasTag(KSMOD_CustomTag.KSMOD_EARTHY_CARD))
+        {
+            amount += 1;
+        }
+        if (AbstractDungeon.player.hasPower(KSMOD_WateryPower_SakuraCard.POWER_ID) && card.hasTag(KSMOD_CustomTag.KSMOD_WATERY_CARD))
+        {
+            amount += 1;
+        }
+        if (AbstractDungeon.player.hasPower(KSMOD_FireyPower_SakuraCard.POWER_ID) && card.hasTag(KSMOD_CustomTag.KSMOD_FIREY_CARD))
+        {
+            amount += 1;
+        }
+        if (AbstractDungeon.player.hasPower(KSMOD_WindyPower_SakuraCard.POWER_ID) && card.hasTag(KSMOD_CustomTag.KSMOD_WINDY_CARD))
         {
             amount += 1;
         }
