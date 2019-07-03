@@ -438,6 +438,18 @@
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
+  "SakuraCardTheChange": {
+    "NAME": "替",
+    "DESCRIPTION": "「 小樱牌 」「 火元素牌 」 消耗 。丢弃所有手牌，并抽 !M! 张牌。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheCloud": {
+    "NAME": "云",
+    "DESCRIPTION": "「 小樱牌 」「 火元素牌 」 消耗 。下1张 水元素牌 将被额外打出1次。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
   "SakuraCardTheSword": {
     "NAME": "剑",
     "DESCRIPTION": "「 小樱牌 」「 火元素牌 」造成 !D! 点伤害，并额外造成目标当前生命值25%的伤害。",
@@ -447,12 +459,6 @@
   "SakuraCardTheShield": {
     "NAME": "盾",
     "DESCRIPTION": "「 小樱牌 」「 火元素牌 」获得 !B! 点 格挡 ，并额外获得当前已损失生命值100%的 格挡 。",
-    "UPGRADE_DESCRIPTION": "Null",
-    "EXTENDED_DESCRIPTION": []
-  },
-  "SakuraCardTheChange": {
-    "NAME": "替",
-    "DESCRIPTION": "「 小樱牌 」「 火元素牌 」丢弃所有手牌，并抽 !M! 张牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   }

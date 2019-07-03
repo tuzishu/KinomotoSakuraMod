@@ -314,7 +314,6 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
         }
         else
         {
-
             switch (this.type)
             {
                 case ATTACK:
@@ -481,7 +480,15 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
     @SpireOverride
     public void renderDescriptionCN(SpriteBatch sb) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException
     {
-        if (AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this) && !this.isHandSelectScreenOpened && (AbstractDungeon.player.hoveredCard == null || AbstractDungeon.player.hoveredCard != this))
+        if (AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this) && !this.isHandSelectScreenOpened)
+        {
+            return;
+        }
+        if (AbstractDungeon.player.hoveredCard == null)
+        {
+            return;
+        }
+        if (AbstractDungeon.player.hoveredCard != this)
         {
             return;
         }

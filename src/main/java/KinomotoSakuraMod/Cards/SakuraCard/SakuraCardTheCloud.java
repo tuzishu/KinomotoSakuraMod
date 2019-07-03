@@ -1,30 +1,30 @@
 package KinomotoSakuraMod.Cards.SakuraCard;
 
-import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheChange;
+import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheCloud;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
+import KinomotoSakuraMod.Powers.KSMOD_CloudPower_SakuraCard;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
-import com.megacrit.cardcrawl.actions.common.DiscardAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class SakuraCardTheChange extends KSMOD_AbstractMagicCard
+public class SakuraCardTheCloud extends KSMOD_AbstractMagicCard
 {
-    public static final String ID = "SakuraCardTheChange";
+    public static final String ID = "SakuraCardTheCloud";
     private static final String NAME;
     private static final String DESCRIPTION;
-    private static final String IMAGE_PATH = "img/cards/sakuracard/the_change.png";
-    private static final int COST = 0;
+    private static final String IMAGE_PATH = "img/cards/sakuracard/the_cloud.png";
+    private static final int COST = 1;
     private static final CardType CARD_TYPE = CardType.SKILL;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SAKURACARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
-    private static final CardTarget CARD_TARGET = CardTarget.NONE;
-    private static final int BASE_MAGIC_NUMBER = 6;
+    private static final CardTarget CARD_TARGET = CardTarget.SELF;
+    private static final int BASE_MAGIC_NUMBER = 1;
 
     static
     {
@@ -33,12 +33,18 @@ public class SakuraCardTheChange extends KSMOD_AbstractMagicCard
         DESCRIPTION = cardStrings.DESCRIPTION;
     }
 
-    public SakuraCardTheChange()
+    public SakuraCardTheCloud()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
-        this.tags.add(KSMOD_CustomTag.KSMOD_EARTHY_CARD);
+        this.tags.add(KSMOD_CustomTag.KSMOD_WATERY_CARD);
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
         this.exhaust = true;
+    }
+
+    @Override
+    public void upgrade()
+    {
+
     }
 
     @Override
@@ -48,23 +54,17 @@ public class SakuraCardTheChange extends KSMOD_AbstractMagicCard
         {
             return getSameNameClowCard();
         }
-        return new SakuraCardTheChange();
+        return new SakuraCardTheCloud();
     }
 
     public KSMOD_AbstractMagicCard getSameNameClowCard()
     {
-        return new ClowCardTheChange();
-    }
-
-    public void upgrade()
-    {
-
+        return new ClowCardTheCloud();
     }
 
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new DiscardAction(player, player, player.hand.size(), true));
-        AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, this.magicNumber));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_CloudPower_SakuraCard(player, this.magicNumber), this.magicNumber));
     }
 }
