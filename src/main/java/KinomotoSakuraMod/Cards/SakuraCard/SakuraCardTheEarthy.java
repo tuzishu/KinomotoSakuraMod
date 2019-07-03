@@ -18,7 +18,7 @@ public class SakuraCardTheEarthy extends KSMOD_AbstractMagicCard
     public static final String ID = "SakuraCardTheEarthy";
     private static final String NAME;
     private static final String DESCRIPTION;
-    private static final String IMAGE_PATH = "img/cards/sakuraCard/the_earthy.png";
+    private static final String IMAGE_PATH = "img/cards/sakuracard/the_earthy.png";
     private static final int COST = 1;
     private static final CardType CARD_TYPE = CardType.POWER;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SAKURACARD_COLOR;
