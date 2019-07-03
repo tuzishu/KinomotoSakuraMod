@@ -474,6 +474,12 @@
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
+  "SakuraCardTheErase": {
+    "NAME": "消",
+    "DESCRIPTION": "「 小樱牌 」「 地元素牌 」 消耗 。直接击杀非boss和精英的目标，否则返还能量。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
   "SakuraCardTheFirey": {
     "NAME": "火",
     "DESCRIPTION": "「 小樱牌 」「 火元素牌 」打出 火元素牌 时，额外获得1层 魔力充能 ，并对全体敌人造成 !D! 点伤害。",
