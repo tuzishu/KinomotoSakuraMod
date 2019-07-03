@@ -111,7 +111,7 @@ public class SakuraCardTheCreate extends KSMOD_AbstractMagicCard
             }
             for (RewardItem reward : AbstractDungeon.getCurrRoom().rewards)
             {
-                if (r.relicId == reward.relic.relicId)
+                if (r.relicId.equals(reward.relic.relicId))
                 {
                     continue;
                 }
@@ -159,14 +159,18 @@ public class SakuraCardTheCreate extends KSMOD_AbstractMagicCard
 
     private <T> T GetRandomListElement(ArrayList<T> arrayList)
     {
-        return arrayList.get(new Random().random(0, arrayList.size() - 1));
+        if (arrayList.size()>0)
+        {
+            return arrayList.get(new Random().random(0, arrayList.size()-1));
+        }
+        return null;
     }
 
     private void TryRemoveThisFromMasterDeck()
     {
         for (AbstractCard card : AbstractDungeon.player.masterDeck.group)
         {
-            if (card.uuid == this.uuid)
+            if (card.cardID == this.cardID)
             {
                 AbstractDungeon.player.masterDeck.removeCard(card);
                 break;
