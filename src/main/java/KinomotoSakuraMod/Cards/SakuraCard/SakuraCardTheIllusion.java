@@ -13,9 +13,9 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
-public class SakuraCardTheIllision extends KSMOD_AbstractMagicCard
+public class SakuraCardTheIllusion extends KSMOD_AbstractMagicCard
 {
-    public static final String ID = "SakuraCardTheIllision";
+    public static final String ID = "SakuraCardTheIllusion";
     private static final String NAME;
     private static final String DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/sakuracard/the_illusion.png";
@@ -33,7 +33,7 @@ public class SakuraCardTheIllision extends KSMOD_AbstractMagicCard
         DESCRIPTION = cardStrings.DESCRIPTION;
     }
 
-    public SakuraCardTheIllision()
+    public SakuraCardTheIllusion()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(KSMOD_CustomTag.KSMOD_FIREY_CARD);
@@ -54,7 +54,7 @@ public class SakuraCardTheIllision extends KSMOD_AbstractMagicCard
         {
             return getSameNameClowCard();
         }
-        return new SakuraCardTheIllision();
+        return new SakuraCardTheIllusion();
     }
 
     public KSMOD_AbstractMagicCard getSameNameClowCard()
