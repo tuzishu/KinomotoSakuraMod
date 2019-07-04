@@ -428,7 +428,7 @@
   },
   "SakuraCardTheBig": {
     "NAME": "大",
-    "DESCRIPTION": "「 小樱牌 」「 火 」造成的伤害增加50%。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」造成的伤害增加50%。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -543,6 +543,12 @@
   "SakuraCardTheLight": {
     "NAME": "光",
     "DESCRIPTION": "「 小樱牌 」「 地 」「 火 」 消耗 。 消耗 手牌、抽牌堆、弃牌堆中的所有状态牌和诅咒牌。每 消耗 1张，恢复1生命。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheLittle": {
+    "NAME": "小",
+    "DESCRIPTION": "「 小樱牌 」「 地 」受到的伤害减少50%。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

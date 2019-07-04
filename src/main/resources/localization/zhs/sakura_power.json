@@ -211,9 +211,16 @@
     ]
   },
   "KSMOD_BigPower_SakuraCard": {
-    "NAME": "巨大",
+    "NAME": "放大",
     "DESCRIPTIONS": [
       "造成的伤害增加 #b",
+      "% 。"
+    ]
+  },
+  "KSMOD_LittlePower_SakuraCard": {
+    "NAME": "缩小",
+    "DESCRIPTIONS": [
+      "受到的伤害减少 #b",
       "% 。"
     ]
   }
