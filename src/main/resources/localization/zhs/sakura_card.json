@@ -414,7 +414,7 @@
   },
   "SpellCardTurn": {
     "NAME": "转",
-    "DESCRIPTION": " 保留 。选择1张手牌 消耗 。如果 消耗 的是 库洛牌 ，且卡组中没有对应的 小樱牌 时，则将其转化为对应的 小樱牌 。",
+    "DESCRIPTION": " 保留 。选择1张手牌中的 库洛牌  转化 为 小樱牌 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -537,6 +537,12 @@
   "SakuraCardTheLibra": {
     "NAME": "秤",
     "DESCRIPTION": "「 小樱牌 」「 地元素牌 」获得 !B! 点 格挡 。当抽排堆数量大于弃牌堆数量时，抽2张牌，否则洗牌，并抽1张牌。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheLight": {
+    "NAME": "光",
+    "DESCRIPTION": "「 小樱牌 」「 地元素牌 」「 火元素牌 」 消耗 。 消耗 手牌、抽牌堆、弃牌堆中的所有状态牌和诅咒牌。每 消耗 1张，恢复1生命。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
