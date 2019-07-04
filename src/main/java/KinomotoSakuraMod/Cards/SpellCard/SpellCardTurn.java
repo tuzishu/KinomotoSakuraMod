@@ -55,12 +55,15 @@ public class SpellCardTurn extends KSMOD_AbstractSpellCard
     @Override
     public AbstractCard makeCopy()
     {
-        KSMOD_SealedWand wand = (KSMOD_SealedWand) AbstractDungeon.player.getRelic(KSMOD_SealedWand.RELIC_ID);
-        if (!wand.IsCardFromWand())
+        if (AbstractDungeon.player != null && AbstractDungeon.player instanceof KinomotoSakura)
         {
-            return new VoidCard();
+            KSMOD_SealedWand wand = (KSMOD_SealedWand) AbstractDungeon.player.getRelic(KSMOD_SealedWand.RELIC_ID);
+            if (!wand.IsCardFromWand())
+            {
+                return new VoidCard();
+            }
+            wand.GetTurnCardOver();
         }
-        wand.GetTurnCardOver();
         return new SpellCardTurn();
     }
 
