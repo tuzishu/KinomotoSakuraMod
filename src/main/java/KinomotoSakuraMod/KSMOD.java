@@ -220,6 +220,8 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         cardList.add(new SakuraCardTheFirey());
         cardList.add(new SakuraCardTheFloat());
         cardList.add(new SakuraCardTheFlower());
+        // cardList.add(new SakuraCardTheFly());
+        cardList.add(new SakuraCardTheFreeze());
 
         cardList.add(new SakuraCardTheShield());
         cardList.add(new SakuraCardTheSword());
