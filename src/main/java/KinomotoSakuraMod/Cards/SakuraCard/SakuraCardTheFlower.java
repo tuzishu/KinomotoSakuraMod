@@ -63,7 +63,7 @@ public class SakuraCardTheFlower extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        int count = EnergyPanel.totalCount - EnergyPanel.getCurrentEnergy();
+        int count = AbstractDungeon.player.energy.energy - EnergyPanel.getCurrentEnergy();
         if (count > 0)
         {
             AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(count));
