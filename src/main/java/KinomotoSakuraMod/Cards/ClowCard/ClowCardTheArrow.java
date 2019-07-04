@@ -71,7 +71,7 @@ public class ClowCardTheArrow extends KSMOD_AbstractMagicCard
     @Override
     public void onCharged()
     {
-        this.target = CardTarget.ALL_ENEMY;
+        this.target = CardTarget.ENEMY;
     }
 
     @Override

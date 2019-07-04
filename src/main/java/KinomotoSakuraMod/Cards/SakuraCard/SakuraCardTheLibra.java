@@ -86,7 +86,8 @@ public class SakuraCardTheLibra extends KSMOD_AbstractMagicCard
     private void ReturnCardFromDiscardToDeck()
     {
         AbstractPlayer player = AbstractDungeon.player;
-        for (int i = 0; i < player.discardPile.size(); i++)
+        int count =player.discardPile.size();
+        for (int i = 0; i < count; i++)
         {
             player.discardPile.moveToDeck(player.discardPile.getTopCard(), true);
         }
