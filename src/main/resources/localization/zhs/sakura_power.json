@@ -132,6 +132,13 @@
       "回合开始时，如果目标不是boss或精英怪，这回合无法行动。"
     ]
   },
+  "KSMOD_GlowPower_SakuraCard": {
+    "NAME": "荧光·樱",
+    "DESCRIPTIONS": [
+      "回合开始时，获得 #b",
+      " 层魔力充能。"
+    ]
+  },
   "KSMOD_LightPower": {
     "NAME": "光明",
     "DESCRIPTIONS": [
