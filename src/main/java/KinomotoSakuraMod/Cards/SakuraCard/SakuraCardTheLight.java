@@ -5,6 +5,7 @@ import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -13,6 +14,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import java.util.ArrayList;
 
 public class SakuraCardTheLight extends KSMOD_AbstractMagicCard
 {
@@ -82,7 +85,7 @@ public class SakuraCardTheLight extends KSMOD_AbstractMagicCard
         {
             if (card.type == CardType.STATUS || card.type == CardType.CURSE)
             {
-                group.moveToExhaustPile(card);
+                AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(card, group));
                 count += 1;
             }
         }
