@@ -45,7 +45,7 @@ import java.lang.reflect.Method;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class KSMOD_AbstractMagicCard extends CustomCard implements PostPowerApplySubscriber
+public abstract class KSMOD_AbstractMagicCard extends CustomCard
 {
     //////////
     // Override Method Usage
@@ -109,7 +109,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements Post
         this.hasReleased = false;
     }
 
-    public void receivePostPowerApplySubscriber(AbstractPower power, AbstractCreature target, AbstractCreature source)
+    public void receivePostPowerApplySubscriber(AbstractPower power)
     {
         if (power instanceof KSMOD_MagickChargePower)
         {

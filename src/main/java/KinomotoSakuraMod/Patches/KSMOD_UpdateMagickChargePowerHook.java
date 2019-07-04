@@ -2,35 +2,115 @@ package KinomotoSakuraMod.Patches;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import javassist.CtBehavior;
 
 public class KSMOD_UpdateMagickChargePowerHook
 {
-    @SpirePatch(clz = ReducePowerAction.class, method = "update", paramtypez = {})
+    public static class ApplyPowerActionHook
+    {
+        @SpirePatch(clz = ApplyPowerAction.class, method = "update", paramtypez = {})
+        public static class update
+        {
+            @SpireInsertPatch(locator = Locator.class)
+            public static void Insert(ApplyPowerAction action) throws NoSuchFieldException, IllegalAccessException
+            {
+                float duration = KSMOD_Utility.GetFieldByReflect(AbstractGameAction.class, "duration").getFloat(action);
+                float startingDuration = KSMOD_Utility.GetFieldByReflect(ApplyPowerAction.class, "startingDuration").getFloat(action);
+                if (duration == startingDuration)
+                {
+                    for (AbstractCard card : AbstractDungeon.player.hand.group)
+                    {
+                        PostMessage(action, card);
+                    }
+                    for (AbstractCard card : AbstractDungeon.player.drawPile.group)
+                    {
+                        PostMessage(action, card);
+                    }
+                    for (AbstractCard card : AbstractDungeon.player.discardPile.group)
+                    {
+                        PostMessage(action, card);
+                    }
+                    for (AbstractCard card : AbstractDungeon.player.exhaustPile.group)
+                    {
+                        PostMessage(action, card);
+                    }
+                }
+            }
+        }
+
+        private static class Locator extends SpireInsertLocator
+        {
+            public int[] Locate(CtBehavior ctMethodToPatch) throws Exception
+            {
+                Matcher finalMatcher = new Matcher.MethodCallMatcher(ApplyPowerAction.class, "tickDuration");
+                int[] loc = LineFinder.findAllInOrder(ctMethodToPatch, finalMatcher);
+                return new int[] {loc[loc.length - 1]};
+            }
+        }
+
+        public static void PostMessage(ApplyPowerAction action, AbstractCard card) throws NoSuchFieldException, IllegalAccessException
+        {
+            if (card instanceof KSMOD_AbstractMagicCard)
+            {
+                AbstractPower applyMe = null;
+                AbstractPower powerToApply = (AbstractPower) KSMOD_Utility.GetFieldByReflect(ApplyPowerAction.class, "powerToApply").get(action);
+                if (powerToApply != null)
+                {
+                    applyMe = powerToApply;
+                }
+                ((KSMOD_AbstractMagicCard) card).receivePostPowerApplySubscriber(applyMe);
+            }
+        }
+    }
+
     public static class ReducePowerActionHook
     {
-        public static void Postfix(ReducePowerAction action) throws NoSuchFieldException, IllegalAccessException
+        @SpirePatch(clz = ReducePowerAction.class, method = "update", paramtypez = {})
+        public static class update
         {
-            for (AbstractCard card : AbstractDungeon.player.hand.group)
+            @SpireInsertPatch(locator = Locator.class)
+            public static void Insert(ReducePowerAction action) throws NoSuchFieldException, IllegalAccessException
             {
-                PostMessage(action, card);
+                float duration = KSMOD_Utility.GetFieldByReflect(AbstractGameAction.class, "duration").getFloat(action);
+                if (duration == Settings.ACTION_DUR_FAST)
+                {
+                    for (AbstractCard card : AbstractDungeon.player.hand.group)
+                    {
+                        PostMessage(action, card);
+                    }
+                    for (AbstractCard card : AbstractDungeon.player.drawPile.group)
+                    {
+                        PostMessage(action, card);
+                    }
+                    for (AbstractCard card : AbstractDungeon.player.discardPile.group)
+                    {
+                        PostMessage(action, card);
+                    }
+                    for (AbstractCard card : AbstractDungeon.player.exhaustPile.group)
+                    {
+                        PostMessage(action, card);
+                    }
+                }
             }
-            for (AbstractCard card : AbstractDungeon.player.drawPile.group)
+        }
+
+        private static class Locator extends SpireInsertLocator
+        {
+            public int[] Locate(CtBehavior ctMethodToPatch) throws Exception
             {
-                PostMessage(action, card);
-            }
-            for (AbstractCard card : AbstractDungeon.player.discardPile.group)
-            {
-                PostMessage(action, card);
-            }
-            for (AbstractCard card : AbstractDungeon.player.exhaustPile.group)
-            {
-                PostMessage(action, card);
+                Matcher finalMatcher = new Matcher.MethodCallMatcher(ReducePowerAction.class, "tickDuration");
+                int[] loc = LineFinder.findAllInOrder(ctMethodToPatch, finalMatcher);
+                return new int[] {loc[loc.length - 1]};
             }
         }
 
@@ -54,26 +134,44 @@ public class KSMOD_UpdateMagickChargePowerHook
         }
     }
 
-    @SpirePatch(clz = RemoveSpecificPowerAction.class, method = "update", paramtypez = {})
     public static class RemoveSpecificPowerActionHook
     {
-        public static void Postfix(RemoveSpecificPowerAction action) throws NoSuchFieldException, IllegalAccessException
+        @SpirePatch(clz = RemoveSpecificPowerAction.class, method = "update", paramtypez = {})
+        public static class update
         {
-            for (AbstractCard card : AbstractDungeon.player.hand.group)
+            @SpireInsertPatch(locator = Locator.class)
+            public static void Insert(RemoveSpecificPowerAction action) throws NoSuchFieldException, IllegalAccessException
             {
-                PostMessage(action, card);
+                float duration = KSMOD_Utility.GetFieldByReflect(AbstractGameAction.class, "duration").getFloat(action);
+                if (duration == 0.1F)
+                {
+                    for (AbstractCard card : AbstractDungeon.player.hand.group)
+                    {
+                        PostMessage(action, card);
+                    }
+                    for (AbstractCard card : AbstractDungeon.player.drawPile.group)
+                    {
+                        PostMessage(action, card);
+                    }
+                    for (AbstractCard card : AbstractDungeon.player.discardPile.group)
+                    {
+                        PostMessage(action, card);
+                    }
+                    for (AbstractCard card : AbstractDungeon.player.exhaustPile.group)
+                    {
+                        PostMessage(action, card);
+                    }
+                }
             }
-            for (AbstractCard card : AbstractDungeon.player.drawPile.group)
+        }
+
+        private static class Locator extends SpireInsertLocator
+        {
+            public int[] Locate(CtBehavior ctMethodToPatch) throws Exception
             {
-                PostMessage(action, card);
-            }
-            for (AbstractCard card : AbstractDungeon.player.discardPile.group)
-            {
-                PostMessage(action, card);
-            }
-            for (AbstractCard card : AbstractDungeon.player.exhaustPile.group)
-            {
-                PostMessage(action, card);
+                Matcher finalMatcher = new Matcher.MethodCallMatcher(RemoveSpecificPowerAction.class, "tickDuration");
+                int[] loc = LineFinder.findAllInOrder(ctMethodToPatch, finalMatcher);
+                return new int[] {loc[loc.length - 1]};
             }
         }
 
@@ -81,18 +179,18 @@ public class KSMOD_UpdateMagickChargePowerHook
         {
             if (card instanceof KSMOD_AbstractMagicCard)
             {
-                AbstractPower reduceMe = null;
-                String powerToRemove = (String) KSMOD_Utility.GetFieldByReflect(RemoveSpecificPowerAction.class, "powerToRemove").get(action);
+                AbstractPower removeMe = null;
+                String powerID = (String) KSMOD_Utility.GetFieldByReflect(RemoveSpecificPowerAction.class, "powerToRemove").get(action);
                 AbstractPower powerInstance = (AbstractPower) KSMOD_Utility.GetFieldByReflect(RemoveSpecificPowerAction.class, "powerInstance").get(action);
-                if (powerToRemove != null)
+                if (powerID != null)
                 {
-                    reduceMe = action.target.getPower(powerToRemove);
+                    removeMe = action.target.getPower(powerID);
                 }
                 else if (powerInstance != null)
                 {
-                    reduceMe = powerInstance;
+                    removeMe = powerInstance;
                 }
-                ((KSMOD_AbstractMagicCard) card).receivePostPowerRemoveSubscriber(reduceMe);
+                ((KSMOD_AbstractMagicCard) card).receivePostPowerRemoveSubscriber(removeMe);
             }
         }
     }
