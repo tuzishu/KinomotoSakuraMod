@@ -168,6 +168,13 @@
       " 回合不触发魔力充能的效果。"
     ]
   },
+  "KSMOD_LockPower_SakuraCard": {
+    "NAME": "锁定·樱",
+    "DESCRIPTIONS": [
+      " #b",
+      " 回合触发魔力充能时不消耗充能层数。"
+    ]
+  },
   "KSMOD_ReturnPower": {
     "NAME": "回溯",
     "DESCRIPTIONS": [

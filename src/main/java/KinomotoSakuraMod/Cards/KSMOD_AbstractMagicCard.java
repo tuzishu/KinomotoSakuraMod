@@ -4,6 +4,7 @@ import KinomotoSakuraMod.Actions.KSMOD_ReleaseAction;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Powers.KSMOD_LockPower;
+import KinomotoSakuraMod.Powers.KSMOD_LockPower_SakuraCard;
 import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
@@ -119,13 +120,16 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
         {
             AbstractPower power = player.getPower(KSMOD_MagickChargePower.POWER_ID);
             power.flash();
-            if (power.amount == KSMOD_SealedBook.ACTIVE_NUMBER)
+            if (hasLockPowerSakuraCard())
             {
-                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(player, player, power));
-            }
-            else
-            {
-                AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(player, player, power, KSMOD_SealedBook.ACTIVE_NUMBER));
+                if (power.amount == KSMOD_SealedBook.ACTIVE_NUMBER)
+                {
+                    AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(player, player, power));
+                }
+                else
+                {
+                    AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(player, player, power, KSMOD_SealedBook.ACTIVE_NUMBER));
+                }
             }
             this.applyExtraEffect(player, monster);
         }
@@ -216,6 +220,11 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
     private boolean hasLockPower()
     {
         return AbstractDungeon.player != null && AbstractDungeon.player.hasPower(KSMOD_LockPower.POWER_ID);
+    }
+
+    private boolean hasLockPowerSakuraCard()
+    {
+        return AbstractDungeon.player != null && AbstractDungeon.player.hasPower(KSMOD_LockPower_SakuraCard.POWER_ID);
     }
 
     public void onCharged()
