@@ -41,8 +41,12 @@ public class KSMOD_JumpPower_SakuraCard extends KSMOD_CustomPower
         ArrayList<AbstractPower> debuffList = GetDebuffList();
         if (debuffList.size() > 0)
         {
-            int index = new Random().random(debuffList.size() - 1);
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, debuffList.get(index)));
+            this.flash();
+            for (int i = 0; i < this.amount && i < debuffList.size(); i++)
+            {
+                int index = new Random().random(debuffList.size() - 1);
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, debuffList.get(index)));
+            }
         }
     }
 

@@ -11,7 +11,6 @@ import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
 import basemod.abstracts.DynamicVariable;
-import basemod.interfaces.PostPowerApplySubscriber;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -28,7 +27,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DescriptionLine;
 import com.megacrit.cardcrawl.cards.status.VoidCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
@@ -78,6 +76,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
     private float releaseRate = 0F;
     private int[] valueBuffer = new int[3];
     private boolean hasExtraEffect = false;
+    private boolean isCharging = false;
 
     public KSMOD_AbstractMagicCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target)
     {
@@ -109,30 +108,6 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
         this.hasReleased = false;
     }
 
-    public void receivePostPowerApplySubscriber(AbstractPower power)
-    {
-        if (power instanceof KSMOD_MagickChargePower)
-        {
-            this.initializeDescription();
-        }
-    }
-
-    public void receivePostPowerReduceSubscriber(AbstractPower power)
-    {
-        if (power instanceof KSMOD_MagickChargePower)
-        {
-            this.initializeDescription();
-        }
-    }
-
-    public void receivePostPowerRemoveSubscriber(AbstractPower power)
-    {
-        if (power instanceof KSMOD_MagickChargePower)
-        {
-            this.initializeDescription();
-        }
-    }
-
     public boolean canUpgrade()
     {
         return this.color != KSMOD_CustomCardColor.SAKURACARD_COLOR;
@@ -140,7 +115,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
 
     public final void use(AbstractPlayer player, AbstractMonster monster)
     {
-        if (this.hasExtraEffect && hasCharged() && !hasLockPower())
+        if (this.hasExtraEffect && isThisCardCharged() && !hasLockPower())
         {
             AbstractPower power = player.getPower(KSMOD_MagickChargePower.POWER_ID);
             power.flash();
@@ -188,18 +163,69 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
         }
     }
 
-    private boolean hasCharged()
+    public void receivePostPowerApplySubscriber(AbstractPower power)
+    {
+        if (power instanceof KSMOD_MagickChargePower && this.hasExtraEffect && !isCharging)
+        {
+            if (isThisCardCharged() && !hasLockPower())
+            {
+                this.onCharged();
+                this.initializeDescription();
+            }
+        }
+    }
+
+    public void receivePostPowerReduceSubscriber(AbstractPower power)
+    {
+        if (power instanceof KSMOD_MagickChargePower && this.hasExtraEffect && isCharging)
+        {
+            if (!isThisCardCharged() || hasLockPower())
+            {
+                this.onDischarged();
+                this.initializeDescription();
+            }
+        }
+    }
+
+    public void receivePostPowerRemoveSubscriber(AbstractPower power)
+    {
+        if (power instanceof KSMOD_MagickChargePower && this.hasExtraEffect && isCharging)
+        {
+            if (!isThisCardCharged() || hasLockPower())
+            {
+                this.onDischarged();
+                this.initializeDescription();
+            }
+        }
+    }
+
+    private boolean isThisCardCharged()
     {
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasPower(KSMOD_MagickChargePower.POWER_ID))
         {
-            return AbstractDungeon.player.getPower(KSMOD_MagickChargePower.POWER_ID).amount >= KSMOD_SealedBook.ACTIVE_NUMBER;
+            if (AbstractDungeon.player.getPower(KSMOD_MagickChargePower.POWER_ID).amount >= KSMOD_SealedBook.ACTIVE_NUMBER)
+            {
+                this.isCharging = true;
+                return true;
+            }
         }
+        this.isCharging = false;
         return false;
     }
 
     private boolean hasLockPower()
     {
         return AbstractDungeon.player != null && AbstractDungeon.player.hasPower(KSMOD_LockPower.POWER_ID);
+    }
+
+    public void onCharged()
+    {
+
+    }
+
+    public void onDischarged()
+    {
+
     }
 
     public abstract void applyNormalEffect(AbstractPlayer player, AbstractMonster monster);
@@ -639,6 +665,24 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
         }
     }
 
+    private String GetCurrentDescription()
+    {
+        String desc;
+        if (this.hasExtraEffect && isThisCardCharged() && !hasLockPower())
+        {
+            desc = this.getExtraDescription();
+            if (this.hasReleased)
+            {
+                desc = KSMOD_ReleaseAction.reloadReleasedCardDescription(desc, !this.isEthereal, !this.exhaust);
+            }
+        }
+        else
+        {
+            desc = this.rawDescription;
+        }
+        return desc;
+    }
+
     @Override
     public void initializeDescriptionCN()
     {
@@ -649,20 +693,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
             StringBuilder sbuilder = (StringBuilder) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "sbuilder").get(this);
             sbuilder.setLength(0);
             float currentWidth = 0.0F;
-            String desc;
-            if (this.hasExtraEffect && hasCharged() && !hasLockPower())
-            {
-                desc = this.getExtraDescription();
-                if (this.hasReleased)
-                {
-                    desc = KSMOD_ReleaseAction.reloadReleasedCardDescription(desc, !this.isEthereal, !this.exhaust);
-                }
-            }
-            else
-            {
-                desc = this.rawDescription;
-            }
-            String[] var3 = desc.split(" ");
+            String[] var3 = GetCurrentDescription().split(" ");
             int var4 = var3.length;
 
             for (int var5 = 0; var5 < var4; ++var5)

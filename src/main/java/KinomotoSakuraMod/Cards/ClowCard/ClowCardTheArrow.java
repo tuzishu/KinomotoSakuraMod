@@ -22,7 +22,6 @@ public class ClowCardTheArrow extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.NONE;
-    private static final CardTarget UPGRADE_CARD_TARGET = CardTarget.ENEMY;
     private static final int BASE_DAMAGE = 5;
     private static final int UPGRADE_DAMAGE = 2;
 
@@ -48,7 +47,6 @@ public class ClowCardTheArrow extends KSMOD_AbstractMagicCard
         {
             upgradeName();
             this.upgradeDamage(UPGRADE_DAMAGE);
-            this.target = UPGRADE_CARD_TARGET;
         }
     }
 
@@ -59,9 +57,21 @@ public class ClowCardTheArrow extends KSMOD_AbstractMagicCard
     }
 
     @Override
+    public void onDischarged()
+    {
+        this.target = CardTarget.NONE;
+    }
+
+    @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new KSMOD_ArrowAction(this.damage));
+    }
+
+    @Override
+    public void onCharged()
+    {
+        this.target = CardTarget.ALL_ENEMY;
     }
 
     @Override

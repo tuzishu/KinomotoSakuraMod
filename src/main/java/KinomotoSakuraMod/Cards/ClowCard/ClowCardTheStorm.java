@@ -70,9 +70,14 @@ public class ClowCardTheStorm extends KSMOD_AbstractMagicCard
     }
 
     @Override
-    public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
+    public void onDischarged()
     {
         this.target = CardTarget.ENEMY;
+    }
+
+    @Override
+    public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
+    {
         AbstractDungeon.actionManager.addToBottom(new SFXAction(SFX_EFFECT_ID));
         AbstractDungeon.actionManager.addToBottom(new VFXAction(new WhirlwindEffect(), 0.0F));
         for (int i = 0; i < 4; ++i)
@@ -85,9 +90,14 @@ public class ClowCardTheStorm extends KSMOD_AbstractMagicCard
     }
 
     @Override
-    public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
+    public void onCharged()
     {
         this.target = CardTarget.ALL_ENEMY;
+    }
+
+    @Override
+    public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
+    {
         AbstractDungeon.actionManager.addToBottom(new SFXAction(SFX_EFFECT_ID));
         AbstractDungeon.actionManager.addToBottom(new VFXAction(new WhirlwindEffect(), 0.0F));
         for (int i = 0; i < 4; ++i)
