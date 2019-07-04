@@ -120,7 +120,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
         {
             AbstractPower power = player.getPower(KSMOD_MagickChargePower.POWER_ID);
             power.flash();
-            if (hasLockPowerSakuraCard())
+            if (!hasLockPowerSakuraCard())
             {
                 if (power.amount == KSMOD_SealedBook.ACTIVE_NUMBER)
                 {
