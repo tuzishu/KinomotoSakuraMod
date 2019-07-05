@@ -678,6 +678,12 @@
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
+  "SakuraCardTheTime": {
+    "NAME": "时",
+    "DESCRIPTION": "「 小樱牌 」「 水 」 消耗 。对全体敌人造成 !D! 点伤害。并打断敌人的行动 !M! 回合。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
   "SakuraCardTheVoice": {
     "NAME": "声",
     "DESCRIPTION": "「 小樱牌 」「 风 」无法被打出。抽到这张牌时，额外抽1张牌。被消耗时获得 !B! 点 格挡，回复1点能量 。被 歌牌 消耗时，额外触发 !M! 次歌牌的效果。",
