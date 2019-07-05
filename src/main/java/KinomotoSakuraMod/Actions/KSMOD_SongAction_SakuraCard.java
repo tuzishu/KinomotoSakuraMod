@@ -18,16 +18,15 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
 
-public class KSMOD_SongAction extends AbstractGameAction
+public class KSMOD_SongAction_SakuraCard extends AbstractGameAction
 {
-    public static final String ACTION_ID = "KSMOD_SongAction";
+    public static final String ACTION_ID = "KSMOD_SongAction_SakuraCard";
     private static final String[] TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
     private static final float WAVE_EFFECT_DURATION = 0.6F;
     private AbstractPlayer player;
     private int damage;
     private int block;
-    private int extraCount;
 
     static
     {
@@ -35,19 +34,13 @@ public class KSMOD_SongAction extends AbstractGameAction
         TEXT = uiStrings.TEXT;
     }
 
-    public KSMOD_SongAction(int damage, int block)
-    {
-        this(damage, block, 0);
-    }
-
-    public KSMOD_SongAction(int damage, int block, int extraCount)
+    public KSMOD_SongAction_SakuraCard(int damage, int block)
     {
         this.actionType = ActionType.DAMAGE;
         this.player = AbstractDungeon.player;
         this.duration = DURATION;
         this.damage = damage;
         this.block = block;
-        this.extraCount = extraCount;
     }
 
     public void update()
@@ -64,22 +57,22 @@ public class KSMOD_SongAction extends AbstractGameAction
                 this.isDone = true;
                 return;
             }
-            AbstractDungeon.handCardSelectScreen.open(TEXT[0], EnergyPanel.getCurrentEnergy() + 1, true, true);
+            AbstractDungeon.handCardSelectScreen.open(TEXT[0], 99, true, true);
             tickDuration();
             return;
         }
 
         if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved)
         {
-            int count = extraCount;
+            int count = 0;
             for (AbstractCard card : AbstractDungeon.handCardSelectScreen.selectedCards.group)
             {
                 count += (card instanceof ClowCardTheVoice || card instanceof SakuraCardTheVoice) ? 1 + card.magicNumber : 1;
                 this.player.hand.moveToExhaustPile(card);
+                card.triggerOnManualDiscard();
             }
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
             AbstractDungeon.handCardSelectScreen.selectedCards.group.clear();
-            this.player.energy.use(EnergyPanel.totalCount);
             AttackTargetForTimes(count);
         }
         tickDuration();
@@ -87,7 +80,7 @@ public class KSMOD_SongAction extends AbstractGameAction
 
     private void AttackTargetForTimes(int count)
     {
-        if (count > 0)
+        if (count <= 0)
         {
             return;
         }

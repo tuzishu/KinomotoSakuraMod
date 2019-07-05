@@ -42,6 +42,11 @@
       "歌唱"
     ]
   },
+  "KSMOD_SongAction_SakuraCard": {
+    "TEXT": [
+      "歌唱"
+    ]
+  },
   "KSMOD_ReturnAction": {
     "TEXT": [
       "轮回：请选择最多",
