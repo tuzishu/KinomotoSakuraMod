@@ -1,5 +1,6 @@
 package KinomotoSakuraMod.Powers;
 
+import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -82,7 +83,7 @@ public class KSMOD_CloudPower_SakuraCard extends KSMOD_CustomPower
 
     private boolean Check(AbstractCard card)
     {
-        if (card.hasTag(KSMOD_CustomTag.KSMOD_WATERY_CARD))
+        if (card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR && card.hasTag(KSMOD_CustomTag.KSMOD_WATERY_CARD))
         {
             return true;
         }

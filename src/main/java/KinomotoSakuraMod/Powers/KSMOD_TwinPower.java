@@ -69,7 +69,7 @@ public class KSMOD_TwinPower extends KSMOD_CustomPower
         {
             return;
         }
-        if (card.color != KSMOD_CustomCardColor.CLOWCARD_COLOR && card.color != KSMOD_CustomCardColor.SAKURACARD_COLOR)
+        if (card.color != KSMOD_CustomCardColor.CLOWCARD_COLOR)
         {
             return;
         }

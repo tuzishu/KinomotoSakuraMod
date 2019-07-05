@@ -361,8 +361,8 @@
   },
   "ClowCardTheTwin": {
     "NAME": "双",
-    "DESCRIPTION": "「 水 」「 火 」每回合打出的第1张 库洛牌 或 小樱牌 会打额外打出1次。",
-    "UPGRADE_DESCRIPTION": "「 水 」「 火 」 保留 。每回合打出的第1张 库洛牌 或 小樱牌 会额外打出1次。",
+    "DESCRIPTION": "「 水 」「 火 」每回合打出的第1张 库洛牌 会打额外打出1次。",
+    "UPGRADE_DESCRIPTION": "「 水 」「 火 」 保留 。每回合打出的第1张 库洛牌 会额外打出1次。",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheVoice": {
@@ -446,7 +446,7 @@
   },
   "SakuraCardTheCloud": {
     "NAME": "云",
-    "DESCRIPTION": "「 小樱牌 」「 水 」 消耗 。下1张 水元素牌 将被额外打出1次。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」 消耗 。下1张 库洛牌 的 水元素牌 将被额外打出1次。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
