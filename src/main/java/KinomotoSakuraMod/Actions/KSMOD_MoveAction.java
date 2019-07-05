@@ -64,15 +64,7 @@ public class KSMOD_MoveAction extends AbstractGameAction
                 if (this.source.size() == this.amount)
                 {
                     AbstractCard card = this.source.getTopCard();
-                    this.source.removeCard(card);
-                    if (isCardToHand)
-                    {
-                        this.source.moveToHand(card, this.source);
-                    }
-                    else
-                    {
-                        this.source.moveToDeck(card, true);
-                    }
+                    MoveCard(card, this.isCardToHand, this.source);
                 }
 
                 if (this.source.group.size() > this.amount)
@@ -87,15 +79,7 @@ public class KSMOD_MoveAction extends AbstractGameAction
             {
                 for (AbstractCard card : AbstractDungeon.gridSelectScreen.selectedCards)
                 {
-                    this.source.removeCard(card);
-                    if (isCardToHand)
-                    {
-                        this.source.moveToHand(card, this.source);
-                    }
-                    else
-                    {
-                        this.source.moveToDeck(card, true);
-                    }
+                    MoveCard(card, this.isCardToHand, this.source);
                 }
                 AbstractDungeon.gridSelectScreen.selectedCards.clear();
                 AbstractDungeon.player.hand.refreshHandLayout();
@@ -103,5 +87,21 @@ public class KSMOD_MoveAction extends AbstractGameAction
 
             this.tickDuration();
         }
+    }
+
+    private void MoveCard(AbstractCard card, boolean isCardToHand, CardGroup group)
+    {
+        group.removeCard(card);
+        if (isCardToHand)
+        {
+            group.moveToHand(card, group);
+        }
+        else
+        {
+            group.moveToDeck(card, true);
+        }
+        card.unhover();
+        card.fadingOut = false;
+        card.unfadeOut();
     }
 }

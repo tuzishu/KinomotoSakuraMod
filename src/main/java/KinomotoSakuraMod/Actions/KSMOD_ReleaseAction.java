@@ -115,6 +115,8 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
     private void ReleaseCard(AbstractCard card)
     {
         ((KSMOD_AbstractMagicCard)card).unreleasedDesc = card.rawDescription;
+        ((KSMOD_AbstractMagicCard)card).originExhaust = card.exhaust;
+        ((KSMOD_AbstractMagicCard)card).originEthereal = card.isEthereal;
         if (card.costForTurn > 0)
         {
             card.setCostForTurn(0);

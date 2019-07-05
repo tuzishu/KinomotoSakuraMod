@@ -74,6 +74,8 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
     // Custom Value
     //////////
     public String unreleasedDesc = "";
+    public boolean originExhaust = false;
+    public boolean originEthereal = false;
     private boolean hasReleased = false;
     private float releaseRate = 0F;
     private int[] valueBuffer = new int[3];
@@ -109,6 +111,8 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
         this.valueBuffer = new int[3];
         this.hasReleased = false;
         this.rawDescription = unreleasedDesc;
+        this.exhaust = originExhaust;
+        this.isEthereal = originEthereal;
         this.initializeDescription();
     }
 
