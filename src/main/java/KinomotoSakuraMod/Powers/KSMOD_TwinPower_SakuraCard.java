@@ -1,7 +1,6 @@
 package KinomotoSakuraMod.Powers;
 
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
-import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -45,13 +44,16 @@ public class KSMOD_TwinPower_SakuraCard extends KSMOD_CustomPower
         ModifyAllClowCardsCostThisCombat(AbstractDungeon.player.drawPile, this.amount);
         ModifyAllClowCardsCostThisCombat(AbstractDungeon.player.discardPile, this.amount);
         ModifyAllClowCardsCostThisCombat(AbstractDungeon.player.exhaustPile, this.amount);
+        AbstractDungeon.player.hand.refreshHandLayout();
     }
 
     public void onMakeTempCard(AbstractCard card)
     {
         if (card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR && card.cost >= 0)
         {
-            card.modifyCostForCombat(this.amount);
+            card.cost += this.amount;
+            card.costForTurn = card.cost;
+            card.isCostModified = true;
         }
     }
 
@@ -102,7 +104,9 @@ public class KSMOD_TwinPower_SakuraCard extends KSMOD_CustomPower
         {
             if (card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR && card.cost >= 0)
             {
-                card.modifyCostForCombat(card.cost + costAddition);
+                card.cost += this.amount;
+                card.costForTurn = card.cost;
+                card.isCostModified = true;
             }
         }
     }

@@ -39,7 +39,7 @@ public class KSMOD_MakeTempCardPatch
     @SpirePatch(clz = MakeTempCardInHandAction.class, method = "makeNewCard", paramtypez = {})
     public static class MakeTempCardInHandAction_makeNewCard
     {
-        public static SpireReturn<Object> Perfix(MakeTempCardInHandAction action) throws NoSuchFieldException, IllegalAccessException
+        public static SpireReturn<AbstractCard> Perfix(MakeTempCardInHandAction action) throws NoSuchFieldException, IllegalAccessException
         {
             AbstractCard c = (AbstractCard) KSMOD_Utility.GetFieldByReflect(MakeTempCardInHandAction.class, "c").get(action);
             if (HasTwinPower() && CheckCard(c))
@@ -59,7 +59,7 @@ public class KSMOD_MakeTempCardPatch
     @SpirePatch(clz = MakeTempCardInDiscardAction.class, method = "makeNewCard", paramtypez = {})
     public static class MakeTempCardInDiscardAction_makeNewCard
     {
-        public static SpireReturn<Object> Perfix(MakeTempCardInDiscardAction action) throws NoSuchFieldException, IllegalAccessException
+        public static SpireReturn<AbstractCard> Perfix(MakeTempCardInDiscardAction action) throws NoSuchFieldException, IllegalAccessException
         {
             AbstractCard cardToMake = (AbstractCard) KSMOD_Utility.GetFieldByReflect(MakeTempCardInDiscardAction.class, "cardToMake").get(action);
             if (HasTwinPower() && CheckCard(cardToMake))

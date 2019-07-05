@@ -87,7 +87,7 @@ public class KSMOD_SongAction extends AbstractGameAction
 
     private void AttackTargetForTimes(int count)
     {
-        if (count > 0)
+        if (count <= 0)
         {
             return;
         }
