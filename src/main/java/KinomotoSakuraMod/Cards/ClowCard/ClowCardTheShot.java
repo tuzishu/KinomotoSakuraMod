@@ -70,7 +70,7 @@ public class ClowCardTheShot extends KSMOD_AbstractMagicCard
         for (int i = 0; i < count; i++)
         {
             AbstractDungeon.actionManager.addToBottom(new VFXAction(new ThrowDaggerEffect(monster.hb.cX, monster.hb.cY)));
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+            AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }
     }
 
@@ -81,7 +81,7 @@ public class ClowCardTheShot extends KSMOD_AbstractMagicCard
         for (int i = 0; i < count; i++)
         {
             AbstractDungeon.actionManager.addToBottom(new VFXAction(new ThrowDaggerEffect(monster.hb.cX, monster.hb.cY)));
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+            AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new VulnerablePower(monster, KSMOD_SealedBook.VULNERABLE_NUMBER, false), KSMOD_SealedBook.VULNERABLE_NUMBER));
     }
