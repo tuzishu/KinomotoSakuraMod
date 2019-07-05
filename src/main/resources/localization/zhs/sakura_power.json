@@ -217,6 +217,12 @@
       " 张 #y库洛牌 或 #y小樱牌 将被打出 #b2 次。"
     ]
   },
+  "KSMOD_TwinPower_SakuraCard": {
+    "NAME": "双生·樱",
+    "DESCRIPTIONS": [
+      "你的所有 库洛牌 都将被额外打出 #b1 次，但其耗能+ #b1 。"
+    ]
+  },
   "KSMOD_WavePower": {
     "NAME": "波动",
     "DESCRIPTIONS": [

@@ -684,6 +684,12 @@
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
+  "SakuraCardTheTwin": {
+    "NAME": "双",
+    "DESCRIPTION": "「 小樱牌 」「 火 」「 水 」你的所有 库洛牌 都将被额外打出1次，但其耗能+1。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
   "SakuraCardTheVoice": {
     "NAME": "声",
     "DESCRIPTION": "「 小樱牌 」「 风 」无法被打出。抽到这张牌时，额外抽1张牌。被消耗时获得 !B! 点 格挡，回复1点能量 。被 歌牌 消耗时，额外触发 !M! 次歌牌的效果。",
