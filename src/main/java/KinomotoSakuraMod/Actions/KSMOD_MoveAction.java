@@ -16,6 +16,7 @@ public class KSMOD_MoveAction extends AbstractGameAction
     private static final float DURATION = Settings.ACTION_DUR_FASTER;
     private boolean isCardToHand;
     private CardGroup source;
+    private boolean isCardFromDrawPile;
 
     static
     {
@@ -34,6 +35,7 @@ public class KSMOD_MoveAction extends AbstractGameAction
         this.duration = DURATION;
         this.amount = amount;
         this.isCardToHand = isCardToHand;
+        this.isCardFromDrawPile = isCardFromDrawPile;
         if (isCardFromDrawPile)
         {
             this.source = AbstractDungeon.player.drawPile;
@@ -100,8 +102,11 @@ public class KSMOD_MoveAction extends AbstractGameAction
         {
             group.moveToDeck(card, true);
         }
-        card.unhover();
-        card.fadingOut = false;
-        card.unfadeOut();
+        if (!this.isCardFromDrawPile)
+        {
+            card.unhover();
+            card.fadingOut = false;
+            card.unfadeOut();
+        }
     }
 }
