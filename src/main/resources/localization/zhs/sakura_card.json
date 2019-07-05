@@ -632,7 +632,13 @@
   },
   "SakuraCardTheSleep": {
     "NAME": "睡",
-    "DESCRIPTION": "「 小樱牌 」「 风 」 消耗 。 使目标 沉睡  !M! 回合。。",
+    "DESCRIPTION": "「 小樱牌 」「 风 」 消耗 。 使目标 沉睡  !M! 回合。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheSnow": {
+    "NAME": "雪",
+    "DESCRIPTION": "「 小樱牌 」「 水 」对全体敌人造成 !D! 点伤害。每打出1次，这张牌在本场战斗中伤害提高 !M! 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
