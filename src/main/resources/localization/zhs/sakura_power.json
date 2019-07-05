@@ -237,5 +237,12 @@
       "受到的伤害减少 #b",
       "% 。"
     ]
+  },
+  "KSMOD_SweerPower_SakuraCard": {
+    "NAME": "甜味",
+    "DESCRIPTIONS": [
+      "回合开始时，恢复已损失生命的 #b",
+      "% 。"
+    ]
   }
 }
