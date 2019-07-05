@@ -63,7 +63,8 @@ public class SakuraCardTheMirror extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        int count = (player.hasPower(KSMOD_LightPower.POWER_ID) ? 12 : 10) - player.hand.size();
+        int count = (player.hasPower(KSMOD_LightPower.POWER_ID) ? 12 : 10) - player.hand.size() + 1;
+        KSMOD_Utility.Logger.info(count);
         AbstractDungeon.actionManager.addToBottom(new KSMOD_MirrorAction(count));
     }
 }

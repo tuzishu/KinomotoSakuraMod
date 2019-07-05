@@ -10,7 +10,9 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.EmptyDeckShuffleAction;
 import com.megacrit.cardcrawl.actions.common.FastDrawCardAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.utility.DrawPileToHandAction;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.SoulGroup;
@@ -286,6 +288,46 @@ public class KSMOD_ModifyMaxHandCardNumberPatch
                 }
                 Method tickDuration = KSMOD_Utility.GetMethodByReflect(AbstractGameAction.class, "tickDuration");
                 tickDuration.invoke(action);
+                return SpireReturn.Return(null);
+            }
+            else
+            {
+                return SpireReturn.Continue();
+            }
+        }
+    }
+
+    @SpirePatch(clz = MakeTempCardInHandAction.class, method = "update", paramtypez = {})
+    public static class MakeTempCardInHandAction_update
+    {
+        public static SpireReturn<Object> Prefix(MakeTempCardInHandAction action) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException
+        {
+            if (AbstractDungeon.player instanceof KinomotoSakura)
+            {
+                if (action.amount == 0)
+                {
+                    action.isDone = true;
+                }
+                else
+                {
+                    int discardAmount = 0;
+                    int handAmount = action.amount;
+                    if (action.amount + AbstractDungeon.player.hand.size() > GetCurrentMaxHandSize())
+                    {
+                        AbstractDungeon.player.createHandIsFullDialog();
+                        discardAmount = action.amount + AbstractDungeon.player.hand.size() - GetCurrentMaxHandSize();
+                        handAmount -= discardAmount;
+                    }
+                    Method addToHand = KSMOD_Utility.GetMethodByReflect(MakeTempCardInHandAction.class, "addToHand", int.class);
+                    Method addToDiscard = KSMOD_Utility.GetMethodByReflect(MakeTempCardInHandAction.class, "addToDiscard", int.class);
+                    addToHand.invoke(action, handAmount);
+                    addToDiscard.invoke(action, discardAmount);
+                    if (action.amount > 0)
+                    {
+                        AbstractDungeon.actionManager.addToTop(new WaitAction(0.8F));
+                    }
+                    action.isDone = true;
+                }
                 return SpireReturn.Return(null);
             }
             else
