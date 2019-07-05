@@ -668,7 +668,13 @@
   },
   "SakuraCardTheThrough": {
     "NAME": "拔",
-    "DESCRIPTION": "「 小樱牌 」「 火 」对全体敌人造成 !D! 与 !D! %最大生命值中较大数值的伤害。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」对全体敌人造成 !D! 与 !D! %最大生命值中较大数值的伤害。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheThunder": {
+    "NAME": "雷",
+    "DESCRIPTION": "「 小樱牌 」「 火 」获得X层 魔力充能 ，并消耗所有 魔力充能 ，每消耗1层对随机敌人造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
