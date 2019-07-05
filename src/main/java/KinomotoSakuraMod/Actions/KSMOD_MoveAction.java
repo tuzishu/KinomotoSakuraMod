@@ -2,6 +2,7 @@ package KinomotoSakuraMod.Actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -13,8 +14,8 @@ public class KSMOD_MoveAction extends AbstractGameAction
     public static final String ACTION_ID = "KSMOD_MoveAction";
     private static final String[] TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FASTER;
-    private AbstractPlayer player;
     private boolean isCardToHand;
+    private CardGroup source;
 
     static
     {
@@ -24,11 +25,24 @@ public class KSMOD_MoveAction extends AbstractGameAction
 
     public KSMOD_MoveAction(int amount, boolean isCardToHand)
     {
-        this.player = AbstractDungeon.player;
+        this(amount, isCardToHand, false);
+    }
+
+    public KSMOD_MoveAction(int amount, boolean isCardToHand, boolean isCardFromDrawPile)
+    {
         this.actionType = ActionType.CARD_MANIPULATION;
         this.duration = DURATION;
         this.amount = amount;
         this.isCardToHand = isCardToHand;
+        if (isCardFromDrawPile)
+        {
+            this.source = AbstractDungeon.player.drawPile;
+            this.isCardToHand = false;
+        }
+        else
+        {
+            this.source = AbstractDungeon.player.exhaustPile;
+        }
     }
 
     public void update()
@@ -41,22 +55,22 @@ public class KSMOD_MoveAction extends AbstractGameAction
         {
             if (this.duration == DURATION)
             {
-                if (this.player.exhaustPile.isEmpty())
+                if (this.source.isEmpty())
                 {
                     this.isDone = true;
                     return;
                 }
 
-                if (this.player.exhaustPile.size() == this.amount)
+                if (this.source.size() == this.amount)
                 {
-                    AbstractCard tmp = this.player.exhaustPile.getTopCard();
-                    this.player.exhaustPile.removeCard(tmp);
-                    this.player.exhaustPile.moveToDeck(tmp, false);
+                    AbstractCard tmp = this.source.getTopCard();
+                    this.source.removeCard(tmp);
+                    this.source.moveToDeck(tmp, false);
                 }
 
-                if (this.player.exhaustPile.group.size() > this.amount)
+                if (this.source.group.size() > this.amount)
                 {
-                    AbstractDungeon.gridSelectScreen.open(this.player.exhaustPile, this.amount, TEXT[0], false, false, false, false);
+                    AbstractDungeon.gridSelectScreen.open(this.source, this.amount, TEXT[0], false, false, false, false);
                     this.tickDuration();
                     return;
                 }
@@ -66,14 +80,14 @@ public class KSMOD_MoveAction extends AbstractGameAction
             {
                 for (AbstractCard c : AbstractDungeon.gridSelectScreen.selectedCards)
                 {
-                    this.player.exhaustPile.removeCard(c);
+                    this.source.removeCard(c);
                     if (isCardToHand)
                     {
-                        this.player.exhaustPile.moveToHand(c, this.player.exhaustPile);
+                        this.source.moveToHand(c, this.source);
                     }
                     else
                     {
-                        this.player.exhaustPile.moveToDeck(c, true);
+                        this.source.moveToDeck(c, true);
                     }
                 }
                 AbstractDungeon.gridSelectScreen.selectedCards.clear();

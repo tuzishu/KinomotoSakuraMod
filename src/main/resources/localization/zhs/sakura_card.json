@@ -576,6 +576,12 @@
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
+  "SakuraCardTheMove": {
+    "NAME": "移",
+    "DESCRIPTION": "「 小樱牌 」「 火 」 消耗 。选择 !M! 张消耗区的牌返回手牌。选择 !M! 张抽排堆的牌加入手牌。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
   "SakuraCardTheSword": {
     "NAME": "剑",
     "DESCRIPTION": "「 小樱牌 」「 火 」造成 !D! 点伤害，并额外造成目标当前生命值25%的伤害。",
