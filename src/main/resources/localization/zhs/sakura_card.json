@@ -648,6 +648,12 @@
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
+  "SakuraCardTheStorm": {
+    "NAME": "岚",
+    "DESCRIPTION": "「 小樱牌 」「 风 」造成 !D! ~ !B! 点随机伤害 !M! 次。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
   "SakuraCardTheSword": {
     "NAME": "剑",
     "DESCRIPTION": "「 小樱牌 」「 火 」造成 !D! 点伤害，并额外造成目标当前生命值25%的伤害。",
