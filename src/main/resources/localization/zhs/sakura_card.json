@@ -606,6 +606,12 @@
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
+  "SakuraCardTheShadow": {
+    "NAME": "影",
+    "DESCRIPTION": "「 小樱牌 」「 地 」获得 !B! 点 格挡 ，下回合开始时格挡值不消失。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
   "SakuraCardTheSword": {
     "NAME": "剑",
     "DESCRIPTION": "「 小樱牌 」「 火 」造成 !D! 点伤害，并额外造成目标当前生命值25%的伤害。",
