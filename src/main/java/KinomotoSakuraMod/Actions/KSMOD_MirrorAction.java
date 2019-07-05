@@ -2,6 +2,9 @@ package KinomotoSakuraMod.Actions;
 
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheCreate;
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheMirror;
+import KinomotoSakuraMod.Cards.SakuraCard.SakuraCardTheCreate;
+import KinomotoSakuraMod.Cards.SakuraCard.SakuraCardTheMirror;
+import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
@@ -19,6 +22,7 @@ public class KSMOD_MirrorAction extends AbstractGameAction
     public static final String ACTION_ID = "KSMOD_MirrorAction";
     private static final String[] TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
+    private static ArrayList<String> cardidBlackList = new ArrayList<>();
     private AbstractPlayer player;
     private ArrayList<AbstractCard> cannotDuplicateList = new ArrayList<AbstractCard>();
 
@@ -26,6 +30,10 @@ public class KSMOD_MirrorAction extends AbstractGameAction
     {
         UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ACTION_ID);
         TEXT = uiStrings.TEXT;
+        cardidBlackList.add(ClowCardTheMirror.ID);
+        cardidBlackList.add(SakuraCardTheMirror.ID);
+        cardidBlackList.add(ClowCardTheCreate.ID);
+        cardidBlackList.add(SakuraCardTheCreate.ID);
     }
 
     public KSMOD_MirrorAction(int amount)
@@ -108,14 +116,17 @@ public class KSMOD_MirrorAction extends AbstractGameAction
 
     private boolean IsCorrectCardType(AbstractCard card)
     {
-        if (card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR)
+        if (card.color != KSMOD_CustomCardColor.CLOWCARD_COLOR && card.color != KSMOD_CustomCardColor.SAKURACARD_COLOR)
         {
-            return !(card instanceof ClowCardTheMirror) && !(card instanceof ClowCardTheCreate);
+            return false;
         }
-        if (card.color == KSMOD_CustomCardColor.SAKURACARD_COLOR)
+        for (String cardid : cardidBlackList)
         {
-            return true;
+            if (card.cardID.equals(cardid))
+            {
+                return false;
+            }
         }
-        return false;
+        return true;
     }
 }
