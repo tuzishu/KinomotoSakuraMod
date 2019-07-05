@@ -588,6 +588,12 @@
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
+  "SakuraCardTheRain": {
+    "NAME": "雨",
+    "DESCRIPTION": "「 小樱牌 」「 水 」 消耗 。所有手牌的耗能变为0。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
   "SakuraCardTheSword": {
     "NAME": "剑",
     "DESCRIPTION": "「 小樱牌 」「 火 」造成 !D! 点伤害，并额外造成目标当前生命值25%的伤害。",
