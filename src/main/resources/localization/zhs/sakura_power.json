@@ -161,6 +161,13 @@
       " 张牌。"
     ]
   },
+  "KSMOD_LoopPower_SakuraCard": {
+    "NAME": "圈环·樱",
+    "DESCRIPTIONS": [
+      "每主动丢弃1张没有丢弃效果的手牌，抽 #b",
+      " 张牌。"
+    ]
+  },
   "KSMOD_LockPower": {
     "NAME": "锁定",
     "DESCRIPTIONS": [
