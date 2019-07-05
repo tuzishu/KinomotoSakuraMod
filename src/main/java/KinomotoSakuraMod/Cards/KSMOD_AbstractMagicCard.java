@@ -73,6 +73,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
     //////////
     // Custom Value
     //////////
+    public String unreleasedDesc = "";
     private boolean hasReleased = false;
     private float releaseRate = 0F;
     private int[] valueBuffer = new int[3];
@@ -107,6 +108,8 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
         this.upgradeMagicNumber(-this.valueBuffer[2]);
         this.valueBuffer = new int[3];
         this.hasReleased = false;
+        this.rawDescription = unreleasedDesc;
+        this.initializeDescription();
     }
 
     public boolean canUpgrade()

@@ -80,5 +80,6 @@ public class ClowCardTheVoice extends KSMOD_AbstractMagicCard
     {
         applyPowers();
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, this.block));
+        super.triggerOnExhaust();
     }
 }

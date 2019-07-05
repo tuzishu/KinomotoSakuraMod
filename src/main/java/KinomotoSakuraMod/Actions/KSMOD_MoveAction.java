@@ -37,7 +37,7 @@ public class KSMOD_MoveAction extends AbstractGameAction
         if (isCardFromDrawPile)
         {
             this.source = AbstractDungeon.player.drawPile;
-            this.isCardToHand = false;
+            this.isCardToHand = true;
         }
         else
         {
@@ -63,9 +63,16 @@ public class KSMOD_MoveAction extends AbstractGameAction
 
                 if (this.source.size() == this.amount)
                 {
-                    AbstractCard tmp = this.source.getTopCard();
-                    this.source.removeCard(tmp);
-                    this.source.moveToDeck(tmp, false);
+                    AbstractCard card = this.source.getTopCard();
+                    this.source.removeCard(card);
+                    if (isCardToHand)
+                    {
+                        this.source.moveToHand(card, this.source);
+                    }
+                    else
+                    {
+                        this.source.moveToDeck(card, true);
+                    }
                 }
 
                 if (this.source.group.size() > this.amount)
@@ -78,16 +85,16 @@ public class KSMOD_MoveAction extends AbstractGameAction
 
             if (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty())
             {
-                for (AbstractCard c : AbstractDungeon.gridSelectScreen.selectedCards)
+                for (AbstractCard card : AbstractDungeon.gridSelectScreen.selectedCards)
                 {
-                    this.source.removeCard(c);
+                    this.source.removeCard(card);
                     if (isCardToHand)
                     {
-                        this.source.moveToHand(c, this.source);
+                        this.source.moveToHand(card, this.source);
                     }
                     else
                     {
-                        this.source.moveToDeck(c, true);
+                        this.source.moveToDeck(card, true);
                     }
                 }
                 AbstractDungeon.gridSelectScreen.selectedCards.clear();

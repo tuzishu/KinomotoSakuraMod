@@ -114,6 +114,7 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
 
     private void ReleaseCard(AbstractCard card)
     {
+        ((KSMOD_AbstractMagicCard)card).unreleasedDesc = card.rawDescription;
         if (card.costForTurn > 0)
         {
             card.setCostForTurn(0);
@@ -138,37 +139,26 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
 
     public static String reloadReleasedCardDescription(String desc, boolean isAddEthereal, boolean isAddExhaust)
     {
-        if (!desc.contains(TEXT[5] + TEXT[6] + TEXT[7]))
+        if (!desc.contains(TEXT[6] + TEXT[7] + TEXT[8]))
         {
             String cardHeadStr = "";
-            if (desc.contains(TEXT[1]))
+            for (int i = 1; i <= 5; i++)
             {
-                cardHeadStr = TEXT[1];
-                desc = desc.replace(cardHeadStr, "");
+                if (desc.contains(TEXT[i]))
+                {
+                    cardHeadStr = cardHeadStr + TEXT[i];
+                    desc = desc.replace(cardHeadStr, "");
+                }
             }
-            else if (desc.contains(TEXT[2]))
-            {
-                cardHeadStr = TEXT[2];
-                desc = desc.replace(cardHeadStr, "");
-            }
-            else if (desc.contains(TEXT[3]))
-            {
-                cardHeadStr = TEXT[3];
-                desc = desc.replace(cardHeadStr, "");
-            }
-            else if (desc.contains(TEXT[4]))
-            {
-                cardHeadStr = TEXT[4];
-                desc = desc.replace(cardHeadStr, "");
-            }
-            cardHeadStr = cardHeadStr + TEXT[5];
+
+            cardHeadStr = cardHeadStr + TEXT[6];
             if (isAddEthereal)
             {
-                cardHeadStr = cardHeadStr + TEXT[6];
+                cardHeadStr = cardHeadStr + TEXT[7];
             }
             if (isAddExhaust)
             {
-                cardHeadStr = cardHeadStr + TEXT[7];
+                cardHeadStr = cardHeadStr + TEXT[8];
             }
             desc = cardHeadStr + desc;
         }
