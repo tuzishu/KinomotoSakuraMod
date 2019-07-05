@@ -702,6 +702,12 @@
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
+  "SakuraCardTheWave": {
+    "NAME": "波",
+    "DESCRIPTION": "「 小樱牌 」「 水 」本回合内，使用卡牌时获得相应的属性标记，若与下一张打出的牌的属性不同，则触发该属性的效果。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
   "SakuraCardTheWindy": {
     "NAME": "风",
     "DESCRIPTION": "「 小樱牌 」「 风 」打出 风元素牌 时，额外获得1层 魔力充能 ，并抽 !M! 张牌。",
