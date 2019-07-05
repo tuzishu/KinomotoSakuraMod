@@ -122,7 +122,6 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         for (AbstractCard card : lockedCardList)
         {
             BaseMod.addCard(card);
-            UnlockTracker.unlockCard(card.cardID);
             KSMOD_Utility.Logger.info("Loading Locked Card : " + card.name);
         }
 
@@ -256,7 +255,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         cardList.add(new SakuraCardTheWatery());
         cardList.add(new SakuraCardTheWave());
         cardList.add(new SakuraCardTheWindy());
-
+        cardList.add(new SakuraCardTheWood());
 
         return cardList;
     }

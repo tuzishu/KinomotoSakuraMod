@@ -65,13 +65,14 @@ public class ClowCardTheWood extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
+        AbstractDungeon.actionManager.addToBottom(new SFXAction(SOUND_KEY, 0.05F));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new StrengthPower(monster, -this.magicNumber), -this.magicNumber));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new GainStrengthPower(monster, this.magicNumber), this.magicNumber));
-        AbstractDungeon.actionManager.addToBottom(new SFXAction(SOUND_KEY, 0.05F));
     }
 
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
+        AbstractDungeon.actionManager.addToBottom(new SFXAction(SOUND_KEY, 0.05F));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new StrengthPower(monster, -this.magicNumber), -this.magicNumber));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new GainStrengthPower(monster, this.magicNumber), this.magicNumber));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new WeakPower(monster, KSMOD_SealedBook.WEAKENED_NUMBER, false), KSMOD_SealedBook.WEAKENED_NUMBER));

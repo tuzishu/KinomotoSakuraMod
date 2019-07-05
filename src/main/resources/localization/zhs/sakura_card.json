@@ -713,5 +713,11 @@
     "DESCRIPTION": "「 小樱牌 」「 风 」打出 风元素牌 时，额外获得1层 魔力充能 ，并抽 !M! 张牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheWood": {
+    "NAME": "树",
+    "DESCRIPTION": "「 小樱牌 」「 地 」使目标失去 !M! 层 力量 。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
   }
 }
