@@ -65,22 +65,14 @@ public class ClowCardTheThunder extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        for (int i = 0; i < ATTACK_COUNT; i++)
-        {
-            AbstractMonster mon = AbstractDungeon.getRandomMonster();
-            AbstractDungeon.actionManager.addToBottom(new ThunderStrikeAction(mon, new DamageInfo(player, this.damage, DamageInfo.DamageType.HP_LOSS), 1));
-        }
+        AbstractDungeon.actionManager.addToBottom(new ThunderStrikeAction(AbstractDungeon.getRandomMonster(), new DamageInfo(player, this.damage, DamageInfo.DamageType.HP_LOSS), ATTACK_COUNT));
         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new VoidCard(), 1));
 
     }
 
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        for (int i = 0; i < ATTACK_COUNT + KSMOD_SealedBook.THUNDER_NUMBER; i++)
-        {
-            AbstractMonster mon = AbstractDungeon.getRandomMonster();
-            AbstractDungeon.actionManager.addToBottom(new ThunderStrikeAction(mon, new DamageInfo(player, this.damage, DamageInfo.DamageType.HP_LOSS), 1));
-        }
+        AbstractDungeon.actionManager.addToBottom(new ThunderStrikeAction(AbstractDungeon.getRandomMonster(), new DamageInfo(player, this.damage, DamageInfo.DamageType.HP_LOSS), ATTACK_COUNT + KSMOD_SealedBook.THUNDER_NUMBER));
         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new VoidCard(), 1));
     }
 
