@@ -118,7 +118,11 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
 
     public boolean canUpgrade()
     {
-        return this.color != KSMOD_CustomCardColor.SAKURACARD_COLOR;
+        if (this.color == KSMOD_CustomCardColor.SAKURACARD_COLOR)
+        {
+            return false;
+        }
+        return super.canUpgrade();
     }
 
     public final void use(AbstractPlayer player, AbstractMonster monster)

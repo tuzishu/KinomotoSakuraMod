@@ -3,6 +3,8 @@ package KinomotoSakuraMod.Patches;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import basemod.BaseMod;
+import basemod.abstracts.DynamicVariable;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -22,6 +24,8 @@ import com.megacrit.cardcrawl.screens.SingleCardViewPopup;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class KSMOD_SingleCardViewPopupPatch
 {
@@ -257,6 +261,40 @@ public class KSMOD_SingleCardViewPopupPatch
                             String tmp = var8[var10];
                             tmp = tmp.replace("!", "");
                             String updateTmp = null;
+
+                            ////// Patch From RenderCustomDynamicVariableCN
+                            if (tmp.startsWith("$"))
+                            {
+                                String key = tmp;
+                                Pattern pattern = Pattern.compile("\\$(.+)\\$\\$");
+                                Matcher matcher = pattern.matcher(key);
+                                if (matcher.find())
+                                {
+                                    key = matcher.group(1);
+                                }
+
+                                DynamicVariable dv = (DynamicVariable) BaseMod.cardDynamicVariableMap.get(key);
+                                if (dv != null)
+                                {
+                                    if (dv.isModified(card))
+                                    {
+                                        if (dv.value(card) >= dv.baseValue(card))
+                                        {
+                                            tmp = "[#" + dv.getIncreasedValueColor().toString() + "]" + Integer.toString(dv.value(card)) + "[]";
+                                        }
+                                        else
+                                        {
+                                            tmp = "[#" + dv.getDecreasedValueColor().toString() + "]" + Integer.toString(dv.value(card)) + "[]";
+                                        }
+                                    }
+                                    else
+                                    {
+                                        tmp = Integer.toString(dv.baseValue(card));
+                                    }
+                                }
+                            }
+                            ////// Patch End
+
                             int j;
                             for (j = 0; j < tmp.length(); ++j)
                             {
