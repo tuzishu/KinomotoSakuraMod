@@ -25,7 +25,7 @@ public class ClowCardTheIllusion extends KSMOD_AbstractMagicCard
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
     private static final int BASE_DAMAGE = 7;
-    private static final int UPGRADE_DAMAGE = 2;
+    private static final int UPGRADE_DAMAGE = 3;
     private static final int BASE_MAGIC_NUMBER = 4;
     private static final int UPGRADE_MAGIC_NUMBER = 1;
     private static final int INCREASE_NUMBER = 3;

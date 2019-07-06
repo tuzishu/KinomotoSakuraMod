@@ -530,7 +530,7 @@
   },
   "SakuraCardTheIllusion": {
     "NAME": "幻",
-    "DESCRIPTION": "「 小樱牌 」「 火 」 消耗 。给与 !M! 层 虚弱 。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」 消耗 。给与 !M! 层 虚弱 和 !M! 层 易伤 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

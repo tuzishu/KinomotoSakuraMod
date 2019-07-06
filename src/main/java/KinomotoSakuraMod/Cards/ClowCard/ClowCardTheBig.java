@@ -23,8 +23,8 @@ public class ClowCardTheBig extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
-    private static final int BASE_MAGIC_NUMBER = 2;
-    private static final int UPGRADE_MAGIC_NUMBER = 1;
+    private static final int STRENGTH_NUMBER = 3;
+    private static final int DEXTERITY_NUMBER = -2;
 
     static
     {
@@ -37,7 +37,6 @@ public class ClowCardTheBig extends KSMOD_AbstractMagicCard
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(KSMOD_CustomTag.KSMOD_EARTHY_CARD);
-        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
     public KSMOD_AbstractMagicCard makeCopy()
@@ -50,14 +49,16 @@ public class ClowCardTheBig extends KSMOD_AbstractMagicCard
         if (!this.upgraded)
         {
             this.upgradeName();
-            this.upgradeMagicNumber(UPGRADE_MAGIC_NUMBER);
         }
     }
 
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new StrengthPower(player, this.magicNumber), this.magicNumber));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new DexterityPower(player, -1), -1));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new StrengthPower(player, STRENGTH_NUMBER), STRENGTH_NUMBER));
+        if (upgraded)
+        {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new DexterityPower(player, DEXTERITY_NUMBER), DEXTERITY_NUMBER));
+        }
     }
 }

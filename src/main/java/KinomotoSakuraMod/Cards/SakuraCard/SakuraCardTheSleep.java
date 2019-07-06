@@ -21,7 +21,7 @@ public class SakuraCardTheSleep extends KSMOD_AbstractMagicCard
     private static final String IMAGE_PATH = "img/cards/sakuracard/the_sleep.png";
     private static final int COST = 1;
     private static final CardType CARD_TYPE = CardType.SKILL;
-    private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
+    private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SAKURACARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
     private static final int BASE_MAGIC_NUMBER = 5;
