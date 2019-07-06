@@ -150,7 +150,7 @@
   },
   "ClowCardTheLibra": {
     "NAME": "秤",
-    "DESCRIPTION": "「 地 」获得 !B! 点 格挡 。当抽排堆和弃牌堆的数量差小于最大能量值时，获得1点能量。",
+    "DESCRIPTION": "「 地 」获得 !B! 点 格挡 。当抽排堆和弃牌堆的数量差小于最大能量值时，额外获得 !B! 点 格挡 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外获得",
@@ -192,7 +192,7 @@
   },
   "ClowCardTheMirror": {
     "NAME": "镜",
-    "DESCRIPTION": "「 水 」 消耗 。选择复制1张手牌中的 库洛牌 或 小樱牌 对应的 库洛牌 。",
+    "DESCRIPTION": "「 水 」 消耗 。选择复制1张手牌中的 库洛牌 或 小樱牌 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外添加1张复制牌到手中。"

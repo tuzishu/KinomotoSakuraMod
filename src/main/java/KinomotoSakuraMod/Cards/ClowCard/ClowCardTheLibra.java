@@ -26,7 +26,7 @@ public class ClowCardTheLibra extends KSMOD_AbstractMagicCard
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.NONE;
     private static final int BASE_BLOCK = 4;
-    private static final int UPGRADE_BLOCK = 4;
+    private static final int UPGRADE_BLOCK = 3;
 
     static
     {
@@ -65,7 +65,7 @@ public class ClowCardTheLibra extends KSMOD_AbstractMagicCard
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
         if (CheckBalance())
         {
-            AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
+            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
         }
     }
 
@@ -75,20 +75,20 @@ public class ClowCardTheLibra extends KSMOD_AbstractMagicCard
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
         if (CheckBalance())
         {
-            AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
+            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
         }
-        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(KSMOD_SealedBook.ENERGY_NUMBER));
+        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(KSMOD_SealedBook.BASE_BLOCK));
     }
 
     @Override
     public String getExtraDescription()
     {
-        return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.ENERGY_NUMBER + EXTENDED_DESCRIPTION[1];
+        return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.BASE_BLOCK + EXTENDED_DESCRIPTION[1];
     }
 
     private boolean CheckBalance()
     {
         int cardDiff = AbstractDungeon.player.drawPile.size() - AbstractDungeon.player.discardPile.size();
-        return Math.abs(cardDiff) <= EnergyPanel.totalCount;
+        return Math.abs(cardDiff) <= AbstractDungeon.player.energy.energy;
     }
 }
