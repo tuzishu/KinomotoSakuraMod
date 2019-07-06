@@ -23,7 +23,7 @@ public class SakuraCardTheSong extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SAKURACARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
-    private static final int BASE_DAMAGE = 5;
+    private static final int BASE_DAMAGE = 7;
     private static final int BASE_BLOCK = 3;
 
     static
