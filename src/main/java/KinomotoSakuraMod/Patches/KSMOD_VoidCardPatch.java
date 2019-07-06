@@ -41,7 +41,7 @@ public class KSMOD_VoidCardPatch
     {
         public static SpireReturn<Boolean> Prefix(AbstractCard card, AbstractPlayer player, AbstractMonster monster)
         {
-            if (card instanceof VoidCard && AbstractDungeon.player.hasPower(KSMOD_LightPower.POWER_ID))
+            if (card instanceof VoidCard && AbstractDungeon.player.hasPower(KSMOD_LightPower.POWER_ID) && ((KSMOD_LightPower) AbstractDungeon.player.getPower(KSMOD_LightPower.POWER_ID)).upgraded)
             {
                 card.exhaust = true;
                 return SpireReturn.Return(true);

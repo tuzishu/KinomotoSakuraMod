@@ -233,8 +233,8 @@
   },
   "ClowCardTheReturn": {
     "NAME": "回",
-    "DESCRIPTION": "「 水 」记录当前的生命值和增益状态，3回合后回到当前状态。",
-    "UPGRADE_DESCRIPTION": "「 水 」 保留 。记录当前的生命值和增益状态，3回合后回到当前状态。",
+    "DESCRIPTION": "「 水 」记录当前的生命值和增益状态，3回合后回到当前状态。并将2张 虚空 放入弃牌堆。",
+    "UPGRADE_DESCRIPTION": "「 水 」 保留 。记录当前的生命值和增益状态，3回合后回到当前状态。并将2张 虚空 放入弃牌堆。",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheSand": {

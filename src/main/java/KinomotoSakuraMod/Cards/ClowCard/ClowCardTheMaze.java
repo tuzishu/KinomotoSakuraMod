@@ -23,8 +23,8 @@ public class ClowCardTheMaze extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
-    private static final int BASE_BLOCK = 14;
-    private static final int UPGRADE_BLOCK = 8;
+    private static final int BASE_BLOCK = 15;
+    private static final int UPGRADE_BLOCK = 10;
 
     static
     {
