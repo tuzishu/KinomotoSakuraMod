@@ -468,6 +468,12 @@
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
+  "SakuraCardTheDream": {
+    "NAME": "梦",
+    "DESCRIPTION": "「 小樱牌 」「 风 」 消耗 。本场战斗中。将手牌、抽牌堆、弃牌堆、消耗堆中的 库洛牌 ，尽可能多地转化为 小樱牌 。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
   "SakuraCardTheEarthy": {
     "NAME": "地",
     "DESCRIPTION": "「 小樱牌 」「 地 」打出 地元素牌 时，额外获得1层 魔力充能 ，并获得 !B! 点格挡。",
