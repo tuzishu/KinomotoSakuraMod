@@ -54,7 +54,7 @@ public class KSMOD_MoveAction_SakuraCard extends AbstractGameAction
 
             if (this.player.drawPile.size() == 1)
             {
-                AbstractCard card = this.player.drawPile.getTopCard();
+                AbstractCard card = this.player.drawPile.group.get(0);
                 card.unfadeOut();
                 card.unhover();
                 card.fadingOut = false;

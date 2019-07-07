@@ -59,19 +59,19 @@ public class KSMOD_MoveAction extends AbstractGameAction
 
             if (this.player.exhaustPile.size() == 1)
             {
-                AbstractCard card = this.player.exhaustPile.getTopCard();
-                card.unfadeOut();
-                card.unhover();
-                card.fadingOut = false;
+                AbstractCard card = this.player.exhaustPile.group.get(0);
                 if (isCardToHand)
                 {
-                    this.targetGroup.addToHand(card);
+                    this.targetGroup.moveToHand(card, this.targetGroup);
                 }
                 else
                 {
-                    this.targetGroup.addToRandomSpot(card);
+                    this.targetGroup.moveToDeck(card, true);
                 }
-                this.player.exhaustPile.removeCard(card);
+                card.unfadeOut();
+                card.unhover();
+                card.fadingOut = false;
+                this.targetGroup.refreshHandLayout();
                 this.isDone = true;
             }
             else

@@ -105,15 +105,18 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
 
     public void triggerOnExhaust()
     {
-        this.upgradeDamage(-this.valueBuffer[0]);
-        this.upgradeBlock(-this.valueBuffer[1]);
-        this.upgradeMagicNumber(-this.valueBuffer[2]);
-        this.valueBuffer = new int[3];
-        this.hasReleased = false;
-        this.rawDescription = unreleasedDesc;
-        this.exhaust = originExhaust;
-        this.isEthereal = originEthereal;
-        this.initializeDescription();
+        if (hasReleased)
+        {
+            this.hasReleased = false;
+            this.upgradeDamage(-this.valueBuffer[0]);
+            this.upgradeBlock(-this.valueBuffer[1]);
+            this.upgradeMagicNumber(-this.valueBuffer[2]);
+            this.valueBuffer = new int[3];
+            this.exhaust = originExhaust;
+            this.isEthereal = originEthereal;
+            this.rawDescription = unreleasedDesc;
+            this.initializeDescription();
+        }
     }
 
     public boolean canUpgrade()
