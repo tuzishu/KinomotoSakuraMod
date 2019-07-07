@@ -1,8 +1,8 @@
 package KinomotoSakuraMod.Actions;
 
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
+import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.vfx.ThoughtBubble;
 
 import java.util.ArrayList;
 
@@ -136,8 +137,8 @@ public class KSMOD_TurnAction extends AbstractGameAction
         }
         catch (Exception e)
         {
-            KSMOD_Utility.Logger.info(clowCard.name + "，转换小樱牌失败。");
             e.printStackTrace();
+            AbstractDungeon.effectList.add(new ThoughtBubble(player.dialogX, player.dialogY, 3.0F, KinomotoSakura.GetMessage(0), true));
             sakuraCard = clowCard;
             AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(new SpellCardTurn()));
         }

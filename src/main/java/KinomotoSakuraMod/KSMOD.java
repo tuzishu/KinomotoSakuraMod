@@ -36,6 +36,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
     public static final Color colorClowCard = CardHelper.getColor(255f, 152f, 74f);
     public static final Color colorSakuraCard = CardHelper.getColor(255f, 192f, 203f);
     public static final Color colorSpellCard = CardHelper.getColor(253f, 220f, 106f);
+    private static String localizationPath = null;
 
     public KSMOD()
     {
@@ -260,41 +261,48 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         return cardList;
     }
 
+    public static String GetLocalizationPath()
+    {
+        if (localizationPath == null)
+        {
+            localizationPath = "localization/";
+            //        switch (Settings.language)
+            //        {
+            //            case ZHS:
+            //                KSMOD_Utility.Logger.info("language == zhs");
+            localizationPath = localizationPath + "zhs/";
+            //                break;
+            //            default:
+            //                KSMOD_Utility.Logger.info("language == eng");
+            //                localizationPath = localizationPath + "eng/";
+            //                break;
+            //        }
+        }
+        return localizationPath;
+    }
+
     @Override
     public void receiveEditStrings()
     {
         KSMOD_Utility.Logger.info("开始编辑本地化文本");
 
-        String path = "localization/";
-        //        switch (Settings.language)
-        //        {
-        //            case ZHS:
-        //                KSMOD_Utility.Logger.info("language == zhs");
-        path += "zhs/";
-        //                break;
-        //            default:
-        //                KSMOD_Utility.Logger.info("language == eng");
-        //                path += "eng/";
-        //                break;
-        //        }
-
-        String card = path + "sakura_card.json";
+        String card = GetLocalizationPath() + "sakura_card.json";
         String cardStrings = Gdx.files.internal(card).readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
 
-        String character = path + "sakura_character.json";
+        String character = GetLocalizationPath() + "sakura_character.json";
         String charStrings = Gdx.files.internal(character).readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(CharacterStrings.class, charStrings);
 
-        String power = path + "sakura_power.json";
+        String power = GetLocalizationPath() + "sakura_power.json";
         String powerStrings = Gdx.files.internal(power).readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
 
-        String relic = path + "sakura_relic.json";
+        String relic = GetLocalizationPath() + "sakura_relic.json";
         String relicStrings = Gdx.files.internal(relic).readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
 
-        String ui = path + "sakura_ui.json";
+        String ui = GetLocalizationPath() + "sakura_ui.json";
         String uiStrings = Gdx.files.internal(ui).readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(UIStrings.class, uiStrings);
 

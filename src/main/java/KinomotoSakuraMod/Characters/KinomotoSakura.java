@@ -2,7 +2,6 @@ package KinomotoSakuraMod.Characters;
 
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheShield;
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheSword;
-import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheWood;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardRelease;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardSeal;
 import KinomotoSakuraMod.KSMOD;
@@ -10,7 +9,9 @@ import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCharacter;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import KinomotoSakuraMod.Relics.KSMOD_SealedWand;
+import basemod.BaseMod;
 import basemod.abstracts.CustomPlayer;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
@@ -25,18 +26,20 @@ import com.megacrit.cardcrawl.events.beyond.SpireHeart;
 import com.megacrit.cardcrawl.events.city.Vampires;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
+import com.megacrit.cardcrawl.localization.CharacterStrings;
+import com.megacrit.cardcrawl.localization.TutorialStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class KinomotoSakura extends CustomPlayer
 {
     // 角色数据
     public static final String ID = "KinomotoSakura";
-    private static String NAME;
-    private static String TITLE;
-    private static String DESCRIPTION;
+    private static CharacterStrings characterStrings = null;
+    private static String[] MESSAGES = null;
     private static final int START_HP = 75;
     private static final int START_GOLD = 99;
     private static final int MAX_ORBS = 0;
@@ -81,12 +84,6 @@ public class KinomotoSakura extends CustomPlayer
     {
         // 参数列表：角色名，角色类枚举，能量面板贴图路径列表，能量面板特效贴图路径，能量面板贴图旋转速度列表，能量面板，模型资源路径，动画资源路径
         super(ID, KSMOD_CustomCharacter.KINOMOTOSAKURA, ORB_TEXTURES, ORB_VFX, LAYER_SPEED, null, null);
-
-        // 本地化字段
-        KinomotoSakuraLocalizationData charData = CharacterLocalization.KINOMOTO_SAKURA_MAP.get(Settings.language);
-        NAME = charData.NAME;
-        TITLE = charData.TITLE;
-        DESCRIPTION = charData.DESCRIPTION;
 
         // 对话框位置，默认就好
         this.dialogX = (this.drawX + 0.0F * Settings.scale);
@@ -149,12 +146,41 @@ public class KinomotoSakura extends CustomPlayer
 
     public CharSelectInfo getLoadout()
     {
-        return new CharSelectInfo(NAME, DESCRIPTION, START_HP, START_HP, MAX_ORBS, START_GOLD, CARD_DRAW, this, getStartingRelics(), getStartingDeck(), false);
+        return new CharSelectInfo(GetCharactorLocalization().NAMES[0], GetCharactorLocalization().TEXT[0], START_HP, START_HP, MAX_ORBS, START_GOLD, CARD_DRAW, this, getStartingRelics(), getStartingDeck(), false);
+    }
+
+    public static CharacterStrings GetCharactorLocalization()
+    {
+        if (characterStrings == null)
+        {
+            String path = KSMOD.GetLocalizationPath() + "sakura_character.json";
+            String str = Gdx.files.internal(path).readString(String.valueOf(StandardCharsets.UTF_8));
+            BaseMod.loadCustomStrings(TutorialStrings.class, str);
+            characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
+        }
+        return characterStrings;
     }
 
     public String getTitle(PlayerClass playerClass)
     {
-        return TITLE;
+        return GetCharactorLocalization().NAMES[1];
+    }
+
+    public static String GetMessage(int msgNumber)
+    {
+        if (MESSAGES == null)
+        {
+            String path = KSMOD.GetLocalizationPath() + "sakura_tutorial.json";
+            String tutorialStrings = Gdx.files.internal(path).readString(String.valueOf(StandardCharsets.UTF_8));
+            BaseMod.loadCustomStrings(TutorialStrings.class, tutorialStrings);
+            TutorialStrings tut = CardCrawlGame.languagePack.getTutorialString("Message");
+            MESSAGES = tut.TEXT;
+        }
+        if (msgNumber >= MESSAGES.length)
+        {
+            return "Error Message Number Over Length.";
+        }
+        return MESSAGES[msgNumber];
     }
 
     public AbstractCard.CardColor getCardColor()
@@ -200,7 +226,7 @@ public class KinomotoSakura extends CustomPlayer
 
     public String getLocalizedCharacterName()
     {
-        return NAME;
+        return GetCharactorLocalization().NAMES[0];
     }
 
     public AbstractPlayer newInstance()
