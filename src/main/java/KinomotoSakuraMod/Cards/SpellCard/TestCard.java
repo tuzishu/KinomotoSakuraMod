@@ -15,7 +15,7 @@ public class TestCard extends KSMOD_AbstractSpellCard
     private static final String NAME = "测试卡";
     private static final String DESCRIPTION = "对所有敌人造成 !D! 点伤害。";
     private static final String IMAGE_PATH = "img/cards/default_card.png";
-    private static final int COST = 0;
+    private static final int COST = -2;
     private static final CardType CARD_TYPE = CardType.ATTACK;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SPELL_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
@@ -32,6 +32,12 @@ public class TestCard extends KSMOD_AbstractSpellCard
     public void upgrade()
     {
 
+    }
+
+    @Override
+    public boolean canUpgrade()
+    {
+        return false;
     }
 
     @Override
