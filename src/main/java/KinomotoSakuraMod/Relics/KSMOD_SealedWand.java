@@ -37,7 +37,7 @@ public class KSMOD_SealedWand extends CustomRelic
 
     public String getUpdatedDescription()
     {
-        return this.DESCRIPTIONS[0] + GetGainNumber() + this.DESCRIPTIONS[1] + BASE_TRIGGER_NUMBER + this.DESCRIPTIONS[2] + BASE_TRIGGER_NUMBER + this.DESCRIPTIONS[3] + UPDATE_TRIGGER_NUMBER + this.DESCRIPTIONS[4];
+        return DESCRIPTIONS[0] + GetGainNumber() + DESCRIPTIONS[1] + BASE_TRIGGER_NUMBER + DESCRIPTIONS[2] + BASE_TRIGGER_NUMBER + DESCRIPTIONS[3] + UPDATE_TRIGGER_NUMBER + DESCRIPTIONS[4] + GetTriggerNumber() + DESCRIPTIONS[5];
     }
 
     public AbstractRelic makeCopy()
@@ -55,9 +55,13 @@ public class KSMOD_SealedWand extends CustomRelic
         }
     }
 
-    public void atBattleStart()
+    public void atTurnStart()
     {
-        GainCharge(0);
+        if (this.counter >= GetTriggerNumber() && !AbstractDungeon.getCurrRoom().isBattleEnding() && !AbstractDungeon.getMonsters().areMonstersBasicallyDead())
+        {
+            this.flash();
+            ActiveRelic();
+        }
     }
 
     public void onMonsterDeath(AbstractMonster monster)
@@ -71,11 +75,6 @@ public class KSMOD_SealedWand extends CustomRelic
     public void GainCharge(int chargeNumber)
     {
         this.counter += chargeNumber;
-        if (this.counter >= GetTriggerNumber() && !AbstractDungeon.getCurrRoom().isBattleEnding() && !AbstractDungeon.getMonsters().areMonstersBasicallyDead())
-        {
-            this.flash();
-            ActiveRelic();
-        }
     }
 
     private int GetGainNumber()
@@ -93,6 +92,7 @@ public class KSMOD_SealedWand extends CustomRelic
         this.isCardFromWand = true;
         AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new SpellCardTurn()));
+        this.getUpdatedDescription();
     }
 
     public void GetTurnCardOver()
