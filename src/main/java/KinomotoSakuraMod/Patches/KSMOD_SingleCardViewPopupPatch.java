@@ -372,10 +372,10 @@ public class KSMOD_SingleCardViewPopupPatch
                     }
                     font.getData().setScale(1.0F);
                 }
-                else
-                {
-                    FontHelper.renderFontCentered(sb, FontHelper.largeCardFont, "? ? ?", Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F - 195.0F * Settings.scale, Settings.CREAM_COLOR.cpy());
-                }
+                // else
+                // {
+                //     FontHelper.renderFontCentered(sb, FontHelper.largeCardFont, "? ? ?", Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F - 195.0F * Settings.scale, Settings.CREAM_COLOR.cpy());
+                // }
                 return SpireReturn.Return(null);
             }
             else

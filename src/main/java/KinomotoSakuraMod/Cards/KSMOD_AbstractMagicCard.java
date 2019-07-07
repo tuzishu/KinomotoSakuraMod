@@ -529,9 +529,9 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
         {
             return;
         }
-        sb.draw(KSMOD_ImageConst.MASK, this.current_x - 256.0F, this.current_y - 256.0F, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
         if (this.isSeen && !this.isLocked)
         {
+            sb.draw(KSMOD_ImageConst.MASK, this.current_x - 256.0F, this.current_y - 256.0F, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
             Method getDescFont = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "getDescFont");
             BitmapFont font = (BitmapFont) getDescFont.invoke(this);
             float draw_y = this.current_y - IMG_HEIGHT * this.drawScale / 2.0F + IMG_HEIGHT * DESC_OFFSET_TO_BOTTOM_Y * this.drawScale;
@@ -676,13 +676,13 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
 
             font.getData().setScale(1.0F);
         }
-        else
-        {
-            FontHelper.menuBannerFont.getData().setScale(this.drawScale * 1.25F);
-            Color textColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
-            FontHelper.renderRotatedText(sb, FontHelper.menuBannerFont, "? ? ?", this.current_x, this.current_y, 0.0F, -200.0F * Settings.scale * this.drawScale / 2.0F, this.angle, true, textColor);
-            FontHelper.menuBannerFont.getData().setScale(1.0F);
-        }
+        // else
+        // {
+        //     FontHelper.menuBannerFont.getData().setScale(this.drawScale * 1.25F);
+        //     Color textColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
+        //     FontHelper.renderRotatedText(sb, FontHelper.menuBannerFont, "? ? ?", this.current_x, this.current_y, 0.0F, -200.0F * Settings.scale * this.drawScale / 2.0F, this.angle, true, textColor);
+        //     FontHelper.menuBannerFont.getData().setScale(1.0F);
+        // }
     }
 
     private String GetCurrentDescription()
