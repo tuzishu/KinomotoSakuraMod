@@ -9,8 +9,8 @@
   },
   "ClowCardTheBig": {
     "NAME": "大",
-    "DESCRIPTION": "「 地 」获得 !M! 点 力量 ，失去1点 敏捷 。",
-    "UPGRADE_DESCRIPTION": "Null",
+    "DESCRIPTION": "「 地 」获得3点 力量 ，失去2点 敏捷 。",
+    "UPGRADE_DESCRIPTION": "「 地 」获得3点 力量。",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheBubbles": {
@@ -154,7 +154,7 @@
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外获得",
-      "点能量。"
+      "点 格挡 。"
     ]
   },
   "ClowCardTheLight": {
@@ -165,8 +165,8 @@
   },
   "ClowCardTheLittle": {
     "NAME": "小",
-    "DESCRIPTION": "「 地 」获得 !M! 点 敏捷 ，失去1点 力量 。",
-    "UPGRADE_DESCRIPTION": "Null",
+    "DESCRIPTION": "「 地 」获得3点 敏捷 ，失去2点 力量 。",
+    "UPGRADE_DESCRIPTION": "「 地 」获得3点 敏捷。",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheLock": {

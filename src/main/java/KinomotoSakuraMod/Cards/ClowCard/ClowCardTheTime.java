@@ -27,6 +27,7 @@ public class ClowCardTheTime extends KSMOD_AbstractMagicCard
     public static final String ID = "ClowCardTheTime";
     private static final String NAME;
     private static final String DESCRIPTION;
+    private static final String UPGRADE_DESCRIPTION;
     private static final String[] EXTENDED_DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_time.png";
     private static final int COST = 2;
@@ -42,6 +43,7 @@ public class ClowCardTheTime extends KSMOD_AbstractMagicCard
         NAME = cardStrings.NAME;
         DESCRIPTION = cardStrings.DESCRIPTION;
         EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
+        UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     }
 
     public ClowCardTheTime()
@@ -57,7 +59,9 @@ public class ClowCardTheTime extends KSMOD_AbstractMagicCard
     {
         if (!this.upgraded)
         {
-            upgradeName();
+            this.upgradeName();
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            this.initializeDescription();
         }
     }
 

@@ -77,7 +77,7 @@ public class ClowCardTheLibra extends KSMOD_AbstractMagicCard
         {
             AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
         }
-        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(KSMOD_SealedBook.BASE_BLOCK));
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, KSMOD_SealedBook.BASE_BLOCK));
     }
 
     @Override

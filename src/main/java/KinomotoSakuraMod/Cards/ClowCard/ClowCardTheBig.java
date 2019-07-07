@@ -17,6 +17,7 @@ public class ClowCardTheBig extends KSMOD_AbstractMagicCard
     public static final String ID = "ClowCardTheBig";
     private static final String NAME;
     private static final String DESCRIPTION;
+    private static final String UPGRADE_DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_big.png";
     private static final int COST = 1;
     private static final CardType CARD_TYPE = CardType.POWER;
@@ -24,13 +25,14 @@ public class ClowCardTheBig extends KSMOD_AbstractMagicCard
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
     private static final int STRENGTH_NUMBER = 3;
-    private static final int DEXTERITY_NUMBER = -2;
+    private static final int DEXTERITY_NUMBER = 2;
 
     static
     {
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
         NAME = cardStrings.NAME;
         DESCRIPTION = cardStrings.DESCRIPTION;
+        UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     }
 
     public ClowCardTheBig()
@@ -49,6 +51,8 @@ public class ClowCardTheBig extends KSMOD_AbstractMagicCard
         if (!this.upgraded)
         {
             this.upgradeName();
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            this.initializeDescription();
         }
     }
 
@@ -56,9 +60,9 @@ public class ClowCardTheBig extends KSMOD_AbstractMagicCard
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new StrengthPower(player, STRENGTH_NUMBER), STRENGTH_NUMBER));
-        if (upgraded)
+        if (!upgraded)
         {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new DexterityPower(player, DEXTERITY_NUMBER), DEXTERITY_NUMBER));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new DexterityPower(player, -DEXTERITY_NUMBER), -DEXTERITY_NUMBER));
         }
     }
 }

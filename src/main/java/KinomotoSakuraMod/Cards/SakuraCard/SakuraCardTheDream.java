@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.monsters.ending.CorruptHeart;
 import com.megacrit.cardcrawl.vfx.combat.HeartBuffEffect;
 
 import java.util.ArrayList;
@@ -42,6 +41,7 @@ public class SakuraCardTheDream extends KSMOD_AbstractMagicCard
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(KSMOD_CustomTag.KSMOD_WINDY_CARD);
+        this.exhaust = true;
     }
 
     @Override
@@ -86,7 +86,7 @@ public class SakuraCardTheDream extends KSMOD_AbstractMagicCard
         {
             if (card.color == KSMOD_CustomCardColor.SAKURACARD_COLOR && !hasSameIDInList(card.cardID))
             {
-                sakuraCardIDList.add(cardID);
+                sakuraCardIDList.add(card.cardID);
             }
         }
     }
@@ -129,7 +129,9 @@ public class SakuraCardTheDream extends KSMOD_AbstractMagicCard
         }
         catch (Exception e)
         {
+            KSMOD_Utility.Logger.info(clowCard.name + "，转换小樱牌失败。");
             e.printStackTrace();
+            sakuraCard = clowCard;
         }
         return sakuraCard;
     }

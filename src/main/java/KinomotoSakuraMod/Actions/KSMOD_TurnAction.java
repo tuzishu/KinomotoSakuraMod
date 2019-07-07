@@ -1,6 +1,8 @@
 package KinomotoSakuraMod.Actions;
 
+import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
+import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -126,18 +128,22 @@ public class KSMOD_TurnAction extends AbstractGameAction
 
     private void TurnClowCardToSakuraCard(AbstractCard clowCard)
     {
+        AbstractCard sakuraCard = null;
         try
         {
             Class obj = Class.forName(clowCard.getClass().getName().replaceAll("Clow", "Sakura"));
-            AbstractCard sakuraCard = (AbstractCard) obj.newInstance();
-            RemoveTargetClowCardFromMasterDeck(clowCard);
-            AbstractDungeon.player.masterDeck.addToBottom(sakuraCard);
-            AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(sakuraCard));
+            sakuraCard = (AbstractCard) obj.newInstance();
         }
         catch (Exception e)
         {
+            KSMOD_Utility.Logger.info(clowCard.name + "，转换小樱牌失败。");
             e.printStackTrace();
+            sakuraCard = clowCard;
+            AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(new SpellCardTurn()));
         }
+        RemoveTargetClowCardFromMasterDeck(clowCard);
+        AbstractDungeon.player.masterDeck.addToBottom(sakuraCard);
+        AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(sakuraCard));
     }
 
     private void RemoveTargetClowCardFromMasterDeck(AbstractCard clowCard)
