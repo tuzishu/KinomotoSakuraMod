@@ -108,11 +108,14 @@ public class KSMOD_SealedWand extends CustomRelic
     public int GetTriggerNumber()
     {
         int sakuraCardAmount = 0;
-        for (AbstractCard card : AbstractDungeon.player.masterDeck.group)
+        if (AbstractDungeon.player != null && AbstractDungeon.player instanceof KinomotoSakura)
         {
-            if (card.cardID.contains("SakuraCardThe"))
+            for (AbstractCard card : AbstractDungeon.player.masterDeck.group)
             {
-                sakuraCardAmount += 1;
+                if (card.cardID.contains("SakuraCardThe"))
+                {
+                    sakuraCardAmount += 1;
+                }
             }
         }
         return BASE_TRIGGER_NUMBER + UPDATE_TRIGGER_NUMBER * sakuraCardAmount;

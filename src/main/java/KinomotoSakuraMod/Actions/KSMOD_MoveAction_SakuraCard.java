@@ -10,13 +10,11 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 
-public class KSMOD_MoveAction extends AbstractGameAction
+public class KSMOD_MoveAction_SakuraCard extends AbstractGameAction
 {
-    public static final String ACTION_ID = "KSMOD_MoveAction";
+    public static final String ACTION_ID = "KSMOD_MoveAction_SakuraCard";
     private static final String[] TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FASTER;
-    private boolean isCardToHand;
-    private CardGroup targetGroup;
     private AbstractPlayer player;
 
     static
@@ -25,58 +23,49 @@ public class KSMOD_MoveAction extends AbstractGameAction
         TEXT = uiStrings.TEXT;
     }
 
-    public KSMOD_MoveAction(int amount, boolean isCardToHand)
+    public KSMOD_MoveAction_SakuraCard(int amount)
     {
         this.player = AbstractDungeon.player;
-        this.actionType = ActionType.CARD_MANIPULATION;
+        this.actionType = AbstractGameAction.ActionType.CARD_MANIPULATION;
         this.duration = DURATION;
         this.amount = amount;
-        this.isCardToHand = isCardToHand;
-        this.targetGroup = this.isCardToHand ? player.hand : player.exhaustPile;
     }
 
     public void update()
     {
         if (this.duration == Settings.ACTION_DUR_FAST)
         {
-            if (this.player.exhaustPile.isEmpty())
+            if (this.player.drawPile.isEmpty())
             {
                 this.isDone = true;
                 return;
             }
-            if (isCardToHand && this.player.hand.size() == GetCurrentMaxHandSize())
+            if (this.player.hand.size() == GetCurrentMaxHandSize())
             {
                 this.player.createHandIsFullDialog();
                 this.isDone = true;
                 return;
             }
 
-            if (this.player.exhaustPile.size() == 1)
+            if (this.player.drawPile.size() == 1)
             {
-                AbstractCard card = this.player.exhaustPile.getTopCard();
+                AbstractCard card = this.player.drawPile.getTopCard();
                 card.unfadeOut();
                 card.unhover();
                 card.fadingOut = false;
-                if (isCardToHand)
-                {
-                    this.targetGroup.addToHand(card);
-                }
-                else
-                {
-                    this.targetGroup.addToRandomSpot(card);
-                }
-                this.player.exhaustPile.removeCard(card);
+                this.player.hand.addToHand(card);
+                this.player.drawPile.removeCard(card);
                 this.isDone = true;
             }
             else
             {
-                for (AbstractCard card : this.player.exhaustPile.group)
+                for (AbstractCard card : this.player.drawPile.group)
                 {
                     card.stopGlowing();
                     card.unhover();
                     card.unfadeOut();
                 }
-                AbstractDungeon.gridSelectScreen.open(this.player.exhaustPile, this.amount, false, TEXT[0]);
+                AbstractDungeon.gridSelectScreen.open(this.player.drawPile, this.amount, false, TEXT[0]);
                 this.tickDuration();
             }
         }
@@ -86,20 +75,13 @@ public class KSMOD_MoveAction extends AbstractGameAction
             {
                 for (AbstractCard card : AbstractDungeon.gridSelectScreen.selectedCards)
                 {
-                    if (isCardToHand)
-                    {
-                        this.targetGroup.addToHand(card);
-                    }
-                    else
-                    {
-                        this.targetGroup.addToRandomSpot(card);
-                    }
-                    this.player.exhaustPile.removeCard(card);
+                    this.player.hand.addToHand(card);
+                    this.player.drawPile.removeCard(card);
                     card.unhover();
                 }
                 AbstractDungeon.gridSelectScreen.selectedCards.clear();
-                this.targetGroup.refreshHandLayout();
-                for (AbstractCard card : this.player.exhaustPile.group)
+                this.player.hand.refreshHandLayout();
+                for (AbstractCard card : this.player.drawPile.group)
                 {
                     card.unhover();
                     card.target_x = (float) CardGroup.DISCARD_PILE_X;

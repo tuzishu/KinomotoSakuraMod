@@ -65,6 +65,5 @@ public class SakuraCardTheMove extends KSMOD_AbstractMagicCard
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new KSMOD_MoveAction(this.magicNumber, true));
-        AbstractDungeon.actionManager.addToBottom(new KSMOD_MoveAction(this.magicNumber, true, true));
     }
 }

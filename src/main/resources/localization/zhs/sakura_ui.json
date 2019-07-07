@@ -34,7 +34,12 @@
   },
   "KSMOD_MoveAction": {
     "TEXT": [
-      "返回抽排堆"
+      "移动"
+    ]
+  },
+  "KSMOD_MoveAction_SakuraCard": {
+    "TEXT": [
+      "移动"
     ]
   },
   "KSMOD_SongAction": {
