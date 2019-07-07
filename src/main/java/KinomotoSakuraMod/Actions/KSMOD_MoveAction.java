@@ -1,6 +1,7 @@
 package KinomotoSakuraMod.Actions;
 
 import KinomotoSakuraMod.Powers.KSMOD_LightPower;
+import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -37,7 +38,12 @@ public class KSMOD_MoveAction extends AbstractGameAction
 
     public void update()
     {
-        if (this.duration == Settings.ACTION_DUR_FAST)
+        if (AbstractDungeon.getCurrRoom().isBattleEnding())
+        {
+            this.isDone = true;
+            return;
+        }
+        if (this.duration == DURATION)
         {
             if (this.player.exhaustPile.isEmpty())
             {
@@ -105,6 +111,7 @@ public class KSMOD_MoveAction extends AbstractGameAction
                     card.target_x = (float) CardGroup.DISCARD_PILE_X;
                     card.target_y = 0.0F;
                 }
+                this.isDone = true;
             }
             this.tickDuration();
         }

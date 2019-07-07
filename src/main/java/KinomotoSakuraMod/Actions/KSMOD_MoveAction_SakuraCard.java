@@ -33,7 +33,12 @@ public class KSMOD_MoveAction_SakuraCard extends AbstractGameAction
 
     public void update()
     {
-        if (this.duration == Settings.ACTION_DUR_FAST)
+        if (AbstractDungeon.getCurrRoom().isBattleEnding())
+        {
+            this.isDone = true;
+            return;
+        }
+        if (this.duration == DURATION)
         {
             if (this.player.drawPile.isEmpty())
             {
@@ -87,6 +92,7 @@ public class KSMOD_MoveAction_SakuraCard extends AbstractGameAction
                     card.target_x = (float) CardGroup.DISCARD_PILE_X;
                     card.target_y = 0.0F;
                 }
+                this.isDone = true;
             }
             this.tickDuration();
         }

@@ -1,6 +1,7 @@
 package KinomotoSakuraMod.Cards.SakuraCard;
 
 import KinomotoSakuraMod.Actions.KSMOD_MoveAction;
+import KinomotoSakuraMod.Actions.KSMOD_MoveAction_SakuraCard;
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheMove;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
@@ -65,5 +66,6 @@ public class SakuraCardTheMove extends KSMOD_AbstractMagicCard
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new KSMOD_MoveAction(this.magicNumber, true));
+        AbstractDungeon.actionManager.addToBottom(new KSMOD_MoveAction_SakuraCard(this.magicNumber));
     }
 }
