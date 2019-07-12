@@ -2,17 +2,17 @@ package KinomotoSakuraMod.Actions;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
 
 import java.util.ArrayList;
 
@@ -23,7 +23,6 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
     private AbstractPlayer player;
     private static final float DURATION = Settings.ACTION_DUR_XFAST;
     private float releaseRate;
-    private int damage;
     private ArrayList<AbstractCard> cannotReleaseList = new ArrayList<AbstractCard>();
 
     static
@@ -32,11 +31,10 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
         TEXT = uiStrings.TEXT;
     }
 
-    public KSMOD_ReleaseAction(int damage, float rate)
+    public KSMOD_ReleaseAction(float rate)
     {
         this.actionType = AbstractGameAction.ActionType.CARD_MANIPULATION;
         this.player = AbstractDungeon.player;
-        this.damage = damage;
         this.releaseRate = rate;
         this.duration = DURATION;
     }
@@ -69,7 +67,10 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
                 ReleaseCard(this.player.hand.getTopCard());
                 this.returnCards();
                 this.isDone = true;
-                AbstractDungeon.actionManager.addToTop(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage), DamageInfo.DamageType.HP_LOSS, AttackEffect.FIRE));
+                for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters)
+                {
+                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(monster, this.player, new VulnerablePower(monster, 1, false)));
+                }
                 return;
             }
 
@@ -89,7 +90,10 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
                 {
                     ReleaseCard(card);
                     returnCards();
-                    AbstractDungeon.actionManager.addToTop(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage), DamageInfo.DamageType.HP_LOSS, AttackEffect.FIRE));
+                    for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters)
+                    {
+                        AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(monster, this.player, new VulnerablePower(monster, 1, false)));
+                    }
                 }
             }
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
@@ -114,9 +118,9 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
 
     private void ReleaseCard(AbstractCard card)
     {
-        ((KSMOD_AbstractMagicCard)card).unreleasedDesc = card.rawDescription;
-        ((KSMOD_AbstractMagicCard)card).originExhaust = card.exhaust;
-        ((KSMOD_AbstractMagicCard)card).originEthereal = card.isEthereal;
+        ((KSMOD_AbstractMagicCard) card).unreleasedDesc = card.rawDescription;
+        ((KSMOD_AbstractMagicCard) card).originExhaust = card.exhaust;
+        ((KSMOD_AbstractMagicCard) card).originEthereal = card.isEthereal;
         if (card.costForTurn > 0)
         {
             card.setCostForTurn(0);

@@ -188,6 +188,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
             if (isThisCardCharged() && !hasLockPower())
             {
                 this.onCharged();
+                KSMOD_Utility.Logger.info("card charged name: "+this.name);
                 this.initializeDescription();
             }
         }
@@ -200,6 +201,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
             if (!isThisCardCharged() || hasLockPower())
             {
                 this.onDischarged();
+                KSMOD_Utility.Logger.info("card discharged name: "+this.name);
                 this.initializeDescription();
             }
         }
@@ -212,6 +214,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
             if (!isThisCardCharged() || hasLockPower())
             {
                 this.onDischarged();
+                KSMOD_Utility.Logger.info("card discharged name: "+this.name);
                 this.initializeDescription();
             }
         }

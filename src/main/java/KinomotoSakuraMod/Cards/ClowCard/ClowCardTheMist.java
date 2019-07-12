@@ -25,8 +25,8 @@ public class ClowCardTheMist extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
-    private static final int BASE_MAGIC_NUMBER = 4;
-    private static final int UPGRADE_MAGIC_NUMBER = 2;
+    private static final int BASE_MAGIC_NUMBER = 3;
+    private static final int UPGRADE_MAGIC_NUMBER = 1;
 
     static
     {
@@ -41,7 +41,6 @@ public class ClowCardTheMist extends KSMOD_AbstractMagicCard
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
         this.tags.add(KSMOD_CustomTag.KSMOD_WATERY_CARD);
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
-        this.exhaust = true;
     }
 
     @Override

@@ -37,6 +37,7 @@ public class ClowCardTheStorm extends KSMOD_AbstractMagicCard
     private static final int UPGRADE_DAMAGE = 2;
     private static final String SFX_EFFECT_ID = "ATTACK_WHIRLWIND";
     private static final String SFX_ATTACK_ID = "ATTACK_HEAVY";
+    private static final int ATTACK_COUNT = 5;
 
     static
     {
@@ -80,7 +81,7 @@ public class ClowCardTheStorm extends KSMOD_AbstractMagicCard
     {
         AbstractDungeon.actionManager.addToBottom(new SFXAction(SFX_EFFECT_ID));
         AbstractDungeon.actionManager.addToBottom(new VFXAction(new WhirlwindEffect(), 0.0F));
-        for (int i = 0; i < 4; ++i)
+        for (int i = 0; i < ATTACK_COUNT; ++i)
         {
             AbstractDungeon.actionManager.addToBottom(new SFXAction(SFX_ATTACK_ID));
             AbstractDungeon.actionManager.addToBottom(new VFXAction(player, new CleaveEffect(), 0.0F));
@@ -100,7 +101,7 @@ public class ClowCardTheStorm extends KSMOD_AbstractMagicCard
     {
         AbstractDungeon.actionManager.addToBottom(new SFXAction(SFX_EFFECT_ID));
         AbstractDungeon.actionManager.addToBottom(new VFXAction(new WhirlwindEffect(), 0.0F));
-        for (int i = 0; i < 4; ++i)
+        for (int i = 0; i < ATTACK_COUNT; ++i)
         {
             AbstractDungeon.actionManager.addToBottom(new SFXAction(SFX_ATTACK_ID));
             AbstractDungeon.actionManager.addToBottom(new VFXAction(player, new CleaveEffect(), 0.0F));

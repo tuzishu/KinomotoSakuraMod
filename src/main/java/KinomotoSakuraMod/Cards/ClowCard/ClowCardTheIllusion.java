@@ -5,6 +5,7 @@ import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -24,8 +25,8 @@ public class ClowCardTheIllusion extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final int BASE_DAMAGE = 7;
-    private static final int UPGRADE_DAMAGE = 3;
+    private static final int BASE_BLOCK = 7;
+    private static final int UPGRADE_BLOCK = 4;
     private static final int BASE_MAGIC_NUMBER = 4;
     private static final int UPGRADE_MAGIC_NUMBER = 1;
     private static final int INCREASE_NUMBER = 3;
@@ -43,7 +44,7 @@ public class ClowCardTheIllusion extends KSMOD_AbstractMagicCard
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
         this.tags.add(KSMOD_CustomTag.KSMOD_FIREY_CARD);
-        this.baseDamage = BASE_DAMAGE;
+        this.baseBlock = BASE_BLOCK;
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
@@ -53,7 +54,7 @@ public class ClowCardTheIllusion extends KSMOD_AbstractMagicCard
         if (!this.upgraded)
         {
             upgradeName();
-            this.upgradeDamage(UPGRADE_DAMAGE);
+            this.upgradeDamage(UPGRADE_BLOCK);
             this.upgradeMagicNumber(UPGRADE_MAGIC_NUMBER);
         }
     }
@@ -67,7 +68,7 @@ public class ClowCardTheIllusion extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
         int count = player.exhaustPile.size() / INCREASE_NUMBER;
         if (count > 0)
         {
@@ -77,11 +78,11 @@ public class ClowCardTheIllusion extends KSMOD_AbstractMagicCard
 
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE));
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
         int count = player.exhaustPile.size() / CHARGED_INCREASE_NUMBER;
         if (count > 0)
         {
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.magicNumber * count, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
+            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.magicNumber * count));
         }
     }
 

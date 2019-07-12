@@ -5,6 +5,7 @@ import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Powers.KSMOD_LockPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -23,6 +24,7 @@ public class ClowCardTheLock extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
+    private static final int BASE_BLOCK = 6;
 
     static
     {
@@ -35,6 +37,7 @@ public class ClowCardTheLock extends KSMOD_AbstractMagicCard
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(KSMOD_CustomTag.KSMOD_WINDY_CARD);
+        this.baseBlock = BASE_BLOCK;
     }
 
     public KSMOD_AbstractMagicCard makeCopy()
@@ -54,6 +57,7 @@ public class ClowCardTheLock extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_LockPower(player, 1), 1));
     }
 }
