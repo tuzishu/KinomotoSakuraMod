@@ -582,6 +582,12 @@
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
+  "SakuraCardTheMist": {
+    "NAME": "雾",
+    "DESCRIPTION": "「 小樱牌 」「 水 」给与全体敌人 中毒 !M! 次。移除其所有格挡值。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
   "SakuraCardTheMove": {
     "NAME": "移",
     "DESCRIPTION": "「 小樱牌 」「 火 」 消耗 。选择 !M! 张消耗区的牌返回手牌。选择 !M! 张抽排堆的牌加入手牌。",
