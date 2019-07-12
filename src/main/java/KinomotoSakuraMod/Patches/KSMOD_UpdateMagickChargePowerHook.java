@@ -28,6 +28,7 @@ public class KSMOD_UpdateMagickChargePowerHook
                 float startingDuration = KSMOD_Utility.GetFieldByReflect(ApplyPowerAction.class, "startingDuration").getFloat(action);
                 if (duration == startingDuration)
                 {
+                    PostMessage(action, AbstractDungeon.player.cardInUse);
                     for (AbstractCard card : AbstractDungeon.player.hand.group)
                     {
                         PostMessage(action, card);
@@ -84,6 +85,7 @@ public class KSMOD_UpdateMagickChargePowerHook
                 float duration = KSMOD_Utility.GetFieldByReflect(AbstractGameAction.class, "duration").getFloat(action);
                 if (duration == Settings.ACTION_DUR_FAST)
                 {
+                    PostMessage(action, AbstractDungeon.player.cardInUse);
                     for (AbstractCard card : AbstractDungeon.player.hand.group)
                     {
                         PostMessage(action, card);
@@ -145,6 +147,7 @@ public class KSMOD_UpdateMagickChargePowerHook
                 float duration = KSMOD_Utility.GetFieldByReflect(AbstractGameAction.class, "duration").getFloat(action);
                 if (duration == 0.1F)
                 {
+                    PostMessage(action, AbstractDungeon.player.cardInUse);
                     for (AbstractCard card : AbstractDungeon.player.hand.group)
                     {
                         PostMessage(action, card);

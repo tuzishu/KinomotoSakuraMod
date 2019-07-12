@@ -171,7 +171,7 @@
   },
   "ClowCardTheLock": {
     "NAME": "锁",
-    "DESCRIPTION": "「 风 」1回合不触发 魔力充能 的效果。",
+    "DESCRIPTION": "「 风 」1回合不触发 魔力充能 的效果。获得 !B! 点 格挡 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -309,10 +309,10 @@
   },
   "ClowCardTheStorm": {
     "NAME": "岚",
-    "DESCRIPTION": "「 风 」造成 !D! 点伤害4次。将1张 虚空 放入弃牌堆。",
+    "DESCRIPTION": "「 风 」造成 !D! 点伤害5次。将1张 虚空 放入弃牌堆。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "「 风 」对全体敌人造成 !D! 点伤害4次。将1张 虚空 放入弃牌堆。"
+      "「 风 」对全体敌人造成 !D! 点伤害5次。将1张 虚空 放入弃牌堆。"
     ]
   },
   "ClowCardTheSweet": {
