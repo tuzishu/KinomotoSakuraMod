@@ -134,7 +134,7 @@
   },
   "ClowCardTheIllusion": {
     "NAME": "幻",
-    "DESCRIPTION": "「 火 」获得 !D! 点 格挡 。消耗区每有3张牌，额外获得 !M! 点 格挡 。",
+    "DESCRIPTION": "「 火 」获得 !B! 点 格挡 。消耗区每有3张牌，额外获得 !M! 点 格挡 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "「 火 」获得 !D! 点 格挡 。消耗区每有2张牌，额外获得 !M! 点 格挡 。"

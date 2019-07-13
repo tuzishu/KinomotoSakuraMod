@@ -43,10 +43,10 @@ public class KSMOD_GridCardSelectScreenPatch
         return false;
     }
 
-    public static float GetPadHeight(int index, boolean includeLastLine)
+    public static float GetPadHeight(CardGroup group, int index, boolean includeLastLine)
     {
         float pad = 0F;
-        ArrayList<AbstractCard> cards = AbstractDungeon.player.masterDeck.group;
+        ArrayList<AbstractCard> cards = group.group;
         int lineNum = index / CARDS_PER_LINE;
         for (int i = 0; i < lineNum; i++)
         {
@@ -148,7 +148,7 @@ public class KSMOD_GridCardSelectScreenPatch
                         AbstractCard card = cards.get(i);
                         int mod = i % CARDS_PER_LINE;
                         card.target_x = DRAW_START_X + (float) mod * PAD_X;
-                        card.target_y = DRAW_START_Y + currentDiffY - GetPadHeight(i, false);
+                        card.target_y = DRAW_START_Y + currentDiffY - GetPadHeight(cardGroup, i, false);
                         card.fadingOut = false;
                         card.update();
                         card.updateHoverLogic();
@@ -184,7 +184,7 @@ public class KSMOD_GridCardSelectScreenPatch
                 float padY = 0;
                 if (cards.size() > 10)
                 {
-                    padY = Settings.DEFAULT_SCROLL_LIMIT + GetPadHeight(cards.size() - 1, true);
+                    padY = Settings.DEFAULT_SCROLL_LIMIT + GetPadHeight(targetGroup, cards.size() - 1, true);
                 }
                 else
                 {
@@ -219,7 +219,7 @@ public class KSMOD_GridCardSelectScreenPatch
                     card.lighten(true);
                     card.current_x = DRAW_START_X + (float) mod * PAD_X;
                     float currentDiffY = KSMOD_Utility.GetFieldByReflect(GridCardSelectScreen.class, "currentDiffY").getFloat(grid);
-                    card.current_y = DRAW_START_Y + currentDiffY - GetPadHeight(i, false) - MathUtils.random(100.0F * Settings.scale, 200.0F * Settings.scale);
+                    card.current_y = DRAW_START_Y + currentDiffY - GetPadHeight(targetGroup, i, false) - MathUtils.random(100.0F * Settings.scale, 200.0F * Settings.scale);
                     card.targetDrawScale = 0.75F;
                     card.drawScale = 0.75F;
                 }
@@ -265,7 +265,7 @@ public class KSMOD_GridCardSelectScreenPatch
                     int mod = i % 5;
                     float currentDiffY = KSMOD_Utility.GetFieldByReflect(GridCardSelectScreen.class, "currentDiffY").getFloat(grid);
                     card.current_x = DRAW_START_X + (float) mod * PAD_X;
-                    card.current_y = DRAW_START_Y + currentDiffY - GetPadHeight(i, false);
+                    card.current_y = DRAW_START_Y + currentDiffY - GetPadHeight(targetGroup, i, false);
                 }
                 Field tipMsg = KSMOD_Utility.GetFieldByReflect(GridCardSelectScreen.class, "tipMsg");
                 String lastTip = (String) KSMOD_Utility.GetFieldByReflect(GridCardSelectScreen.class, "lastTip").get(grid);

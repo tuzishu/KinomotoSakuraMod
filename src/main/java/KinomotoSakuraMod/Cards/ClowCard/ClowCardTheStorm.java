@@ -1,5 +1,6 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
+import KinomotoSakuraMod.Actions.KSMOD_StormAction;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
@@ -35,8 +36,6 @@ public class ClowCardTheStorm extends KSMOD_AbstractMagicCard
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
     private static final int BASE_DAMAGE = 4;
     private static final int UPGRADE_DAMAGE = 2;
-    private static final String SFX_EFFECT_ID = "ATTACK_WHIRLWIND";
-    private static final String SFX_ATTACK_ID = "ATTACK_HEAVY";
     private static final int ATTACK_COUNT = 5;
 
     static
@@ -79,15 +78,7 @@ public class ClowCardTheStorm extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new SFXAction(SFX_EFFECT_ID));
-        AbstractDungeon.actionManager.addToBottom(new VFXAction(new WhirlwindEffect(), 0.0F));
-        for (int i = 0; i < ATTACK_COUNT; ++i)
-        {
-            AbstractDungeon.actionManager.addToBottom(new SFXAction(SFX_ATTACK_ID));
-            AbstractDungeon.actionManager.addToBottom(new VFXAction(player, new CleaveEffect(), 0.0F));
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
-        }
-        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new VoidCard(), 1));
+        AbstractDungeon.actionManager.addToBottom(new KSMOD_StormAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), ATTACK_COUNT));
     }
 
     @Override
@@ -99,15 +90,7 @@ public class ClowCardTheStorm extends KSMOD_AbstractMagicCard
     @Override
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new SFXAction(SFX_EFFECT_ID));
-        AbstractDungeon.actionManager.addToBottom(new VFXAction(new WhirlwindEffect(), 0.0F));
-        for (int i = 0; i < ATTACK_COUNT; ++i)
-        {
-            AbstractDungeon.actionManager.addToBottom(new SFXAction(SFX_ATTACK_ID));
-            AbstractDungeon.actionManager.addToBottom(new VFXAction(player, new CleaveEffect(), 0.0F));
-            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
-        }
-        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new VoidCard(), 1));
+        AbstractDungeon.actionManager.addToBottom(new KSMOD_StormAction(new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), ATTACK_COUNT));
     }
 
     @Override
