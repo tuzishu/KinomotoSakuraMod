@@ -1,5 +1,6 @@
 package KinomotoSakuraMod.Powers;
 
+import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -29,7 +30,10 @@ public class KSMOD_GlowPower_SakuraCard extends KSMOD_CustomPower
 
     public void atStartOfTurn()
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new KSMOD_MagickChargePower(this.owner, this.amount), this.amount));
+        if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(KSMOD_SealedBook.RELIC_ID))
+        {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new KSMOD_MagickChargePower(this.owner, this.amount), this.amount));
+        }
     }
 
     public void updateDescription()

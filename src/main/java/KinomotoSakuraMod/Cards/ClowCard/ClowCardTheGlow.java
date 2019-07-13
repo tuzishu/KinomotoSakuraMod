@@ -4,6 +4,7 @@ import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
+import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -58,6 +59,9 @@ public class ClowCardTheGlow extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_MagickChargePower(player, this.magicNumber), this.magicNumber));
+        if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(KSMOD_SealedBook.RELIC_ID))
+        {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_MagickChargePower(player, this.magicNumber), this.magicNumber));
+        }
     }
 }

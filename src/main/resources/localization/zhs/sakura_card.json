@@ -137,7 +137,7 @@
     "DESCRIPTION": "「 火 」获得 !B! 点 格挡 。消耗区每有3张牌，额外获得 !M! 点 格挡 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "「 火 」获得 !D! 点 格挡 。消耗区每有2张牌，额外获得 !M! 点 格挡 。"
+      "「 火 」获得 !B! 点 格挡 。消耗区每有2张牌，额外获得 !M! 点 格挡 。"
     ]
   },
   "ClowCardTheJump": {
@@ -343,7 +343,7 @@
   },
   "ClowCardTheThunder": {
     "NAME": "雷",
-    "DESCRIPTION": "「 火 」对随机3名敌人造成 !D! 点伤害。将1张 虚空 加入弃牌堆。",
+    "DESCRIPTION": "「 火 」对随机敌人造成 !D! 点伤害3次。将1张 虚空 加入弃牌堆。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外造成",

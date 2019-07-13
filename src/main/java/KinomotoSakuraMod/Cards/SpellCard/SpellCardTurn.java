@@ -57,6 +57,10 @@ public class SpellCardTurn extends KSMOD_AbstractSpellCard
     {
         if (AbstractDungeon.player != null && AbstractDungeon.player instanceof KinomotoSakura)
         {
+            if (!AbstractDungeon.player.hasRelic(KSMOD_SealedWand.RELIC_ID))
+            {
+                return new VoidCard();
+            }
             KSMOD_SealedWand wand = (KSMOD_SealedWand) AbstractDungeon.player.getRelic(KSMOD_SealedWand.RELIC_ID);
             if (!wand.IsCardFromWand())
             {

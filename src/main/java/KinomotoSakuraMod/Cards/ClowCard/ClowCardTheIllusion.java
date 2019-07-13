@@ -21,13 +21,13 @@ public class ClowCardTheIllusion extends KSMOD_AbstractMagicCard
     private static final String[] EXTENDED_DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_illusion.png";
     private static final int COST = 1;
-    private static final CardType CARD_TYPE = CardType.ATTACK;
+    private static final CardType CARD_TYPE = CardType.SKILL;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
-    private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final int BASE_BLOCK = 7;
+    private static final CardTarget CARD_TARGET = CardTarget.SELF;
+    private static final int BASE_BLOCK = 6;
     private static final int UPGRADE_BLOCK = 4;
-    private static final int BASE_MAGIC_NUMBER = 4;
+    private static final int BASE_MAGIC_NUMBER = 2;
     private static final int UPGRADE_MAGIC_NUMBER = 1;
     private static final int INCREASE_NUMBER = 3;
     private static final int CHARGED_INCREASE_NUMBER = 2;
@@ -72,7 +72,7 @@ public class ClowCardTheIllusion extends KSMOD_AbstractMagicCard
         int count = player.exhaustPile.size() / INCREASE_NUMBER;
         if (count > 0)
         {
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.magicNumber * count, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
+            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.magicNumber * count));
         }
     }
 

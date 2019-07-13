@@ -29,7 +29,7 @@ public class KSMOD_SealAction extends AbstractGameAction
         {
             AbstractDungeon.effectList.add(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, this.attackEffect));
             this.target.damage(this.info);
-            if ((this.target.isDying || this.target.currentHealth <= 0) && !this.target.halfDead)
+            if ((this.target.isDying || this.target.currentHealth <= 0) && !this.target.halfDead && AbstractDungeon.player.hasRelic(KSMOD_SealedWand.RELIC_ID))
             {
                 KSMOD_SealedWand wand = (KSMOD_SealedWand) AbstractDungeon.player.getRelic(KSMOD_SealedWand.RELIC_ID);
                 wand.GainCharge(chargeAmount);
