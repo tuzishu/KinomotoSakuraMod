@@ -2,4 +2,5 @@
 *.iml
 .idea/
 target/
+version/
 Excel/~$PlanningCase.xlsx
