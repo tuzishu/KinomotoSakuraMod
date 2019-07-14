@@ -517,7 +517,7 @@
   },
   "SakuraCardTheFly": {
     "NAME": "飞",
-    "DESCRIPTION": "「 小樱牌 」「 风 」？？？",
+    "DESCRIPTION": "「 小樱牌 」「 风 」回合开始时，抽 !M! 张牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
