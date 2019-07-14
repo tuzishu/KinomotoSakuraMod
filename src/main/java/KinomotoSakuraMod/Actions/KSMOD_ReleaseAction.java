@@ -22,6 +22,7 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
     private static final String[] TEXT;
     private AbstractPlayer player;
     private static final float DURATION = Settings.ACTION_DUR_XFAST;
+    private int vulnAmount;
     private float releaseRate;
     private ArrayList<AbstractCard> cannotReleaseList = new ArrayList<AbstractCard>();
 
@@ -31,12 +32,13 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
         TEXT = uiStrings.TEXT;
     }
 
-    public KSMOD_ReleaseAction(float rate)
+    public KSMOD_ReleaseAction(int vulnAmount, float rate)
     {
         this.actionType = AbstractGameAction.ActionType.CARD_MANIPULATION;
         this.player = AbstractDungeon.player;
-        this.releaseRate = rate;
         this.duration = DURATION;
+        this.vulnAmount = vulnAmount;
+        this.releaseRate = rate;
     }
 
     public void update()
@@ -69,7 +71,7 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
                 this.isDone = true;
                 for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters)
                 {
-                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(monster, this.player, new VulnerablePower(monster, 1, false)));
+                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(monster, this.player, new VulnerablePower(monster, this.vulnAmount, false)));
                 }
                 return;
             }
@@ -92,7 +94,7 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
                     returnCards();
                     for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters)
                     {
-                        AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(monster, this.player, new VulnerablePower(monster, 1, false)));
+                        AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(monster, this.player, new VulnerablePower(monster, this.vulnAmount, false)));
                     }
                 }
             }

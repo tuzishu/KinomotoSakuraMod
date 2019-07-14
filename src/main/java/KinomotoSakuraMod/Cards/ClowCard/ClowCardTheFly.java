@@ -3,8 +3,9 @@ package KinomotoSakuraMod.Cards.ClowCard;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
-import KinomotoSakuraMod.Powers.KSMOD_FlyPower;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -16,13 +17,15 @@ public class ClowCardTheFly extends KSMOD_AbstractMagicCard
     public static final String ID = "ClowCardTheFly";
     private static final String NAME;
     private static final String DESCRIPTION;
+    private static final String[] EXTENDED_DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_fly.png";
-    private static final int COST = 2;
-    private static final CardType CARD_TYPE = CardType.POWER;
+    private static final int COST = 1;
+    private static final CardType CARD_TYPE = CardType.SKILL;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
-    private static final int BASE_MAGIC_NUMBER = 1;
+    private static final int BASE_BLOCK = 8;
+    private static final int BASE_MAGIC_NUMBER = 2;
     private static final int UPGRADE_MAGIC_NUMBER = 1;
 
     static
@@ -30,12 +33,14 @@ public class ClowCardTheFly extends KSMOD_AbstractMagicCard
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
         NAME = cardStrings.NAME;
         DESCRIPTION = cardStrings.DESCRIPTION;
+        EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     }
 
     public ClowCardTheFly()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
         this.tags.add(KSMOD_CustomTag.KSMOD_WINDY_CARD);
+        this.baseBlock = BASE_BLOCK;
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
@@ -56,6 +61,21 @@ public class ClowCardTheFly extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_FlyPower(this.magicNumber), this.magicNumber));
+        // AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_FlyPower_SakuraCard(this.magicNumber), this.magicNumber));
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.baseBlock));
+        AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, this.magicNumber));
+    }
+
+    @Override
+    public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
+    {
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.baseBlock));
+        AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, this.magicNumber + KSMOD_SealedBook.DRAW_NUMBER));
+    }
+
+    @Override
+    public String getExtraDescription()
+    {
+        return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.DRAW_NUMBER +EXTENDED_DESCRIPTION[1];
     }
 }

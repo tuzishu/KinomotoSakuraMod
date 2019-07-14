@@ -114,9 +114,12 @@
   },
   "ClowCardTheFly": {
     "NAME": "飞",
-    "DESCRIPTION": "「 风 」回合开始时额外抽 !M! 张牌。",
+    "DESCRIPTION": "「 风 」获得 !B! 点格挡， 抽 !M! 张牌。",
     "UPGRADE_DESCRIPTION": "Null",
-    "EXTENDED_DESCRIPTION": []
+    "EXTENDED_DESCRIPTION": [
+      "额外抽",
+      "张牌。"
+    ]
   },
   "ClowCardTheFreeze": {
     "NAME": "冻",
@@ -404,7 +407,7 @@
 
   "SpellCardRelease": {
     "NAME": "解",
-    "DESCRIPTION": " 封印解除 手牌中的1张 库洛牌 。并给与全体敌人1层 易伤 。",
+    "DESCRIPTION": " 封印解除 手牌中的1张 库洛牌 。并给与全体敌人 !M! 层 易伤 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

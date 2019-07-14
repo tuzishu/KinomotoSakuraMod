@@ -6,9 +6,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 
-public class KSMOD_FlyPower extends KSMOD_CustomPower
+public class KSMOD_FlyPower_SakuraCard extends KSMOD_CustomPower
 {
-    public static final String POWER_ID = "KSMOD_FlyPower";
+    public static final String POWER_ID = "KSMOD_FlyPower_SakuraCard";
     private static final String POWER_NAME;
     private static final String[] POWER_DESCRIPTIONS;
     private static final String POWER_IMG_PATH = "img/powers/default_power.png";
@@ -21,12 +21,12 @@ public class KSMOD_FlyPower extends KSMOD_CustomPower
         POWER_DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     }
 
-    public KSMOD_FlyPower(int amount)
+    public KSMOD_FlyPower_SakuraCard(int amount)
     {
         this(AbstractDungeon.player, amount);
     }
 
-    public KSMOD_FlyPower(AbstractCreature target, int amount)
+    public KSMOD_FlyPower_SakuraCard(AbstractCreature target, int amount)
     {
         super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, amount);
         this.updateDescription();

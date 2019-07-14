@@ -119,8 +119,8 @@
       "  层 #y敏捷 。"
     ]
   },
-  "KSMOD_FlyPower": {
-    "NAME": "飞行",
+  "KSMOD_FlyPower_SakuraCard": {
+    "NAME": "飞行·樱",
     "DESCRIPTIONS": [
       "回合开始时额外抽 #b",
       " 张牌。"
