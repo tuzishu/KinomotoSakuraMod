@@ -64,6 +64,28 @@ public class KSMOD_ImageConst
     // 角色图片素材路径
     public static final String SELECT_BUTTON_PATH = "img/charSelect/MarisaButton.png";
     public static final String PORTRAIT_PATH = "img/charSelect/marisaPortrait.jpg";
+    // 能量栏
+    public static final String[] ORB_TEXTURES = {
+            "img/UI/EPanel/layer5.png",
+            "img/UI/EPanel/layer4.png",
+            "img/UI/EPanel/layer3.png",
+            "img/UI/EPanel/layer2.png",
+            "img/UI/EPanel/layer1.png",
+            "img/UI/EPanel/layer0.png",
+            "img/UI/EPanel/layer5d.png",
+            "img/UI/EPanel/layer4d.png",
+            "img/UI/EPanel/layer3d.png",
+            "img/UI/EPanel/layer2d.png",
+            "img/UI/EPanel/layer1d.png"
+    };
+    public static final String ORB_VFX = "img/UI/energyBlueVFX.png";
+    // 角色资源
+    public static final String IDLE_IMAGE_PATH = "img/char/Sakura/sakura_combat_temp.png";
+    public static final String CORPSE_IMAGE_PATH = "img/char/Marisa/fallen.png";
+    public static final String SHOULDER_1_IMAGE_PATH = "img/char/Marisa/shoulder1.png";
+    public static final String SHOULDER_2_IMAGE_PATH = "img/char/Marisa/shoulder2.png";
+    public static final String ANIMA_ATLAS_PATH = "img/char/Marisa/MarisaModelv3.atlas";
+    public static final String ANIMA_SKELETON_PATH = "img/char/Marisa/MarisaModelv3.json";
 
     //////////
     // 资源贴图

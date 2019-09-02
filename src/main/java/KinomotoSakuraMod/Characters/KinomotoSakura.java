@@ -9,6 +9,7 @@ import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCharacter;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import KinomotoSakuraMod.Relics.KSMOD_SealedWand;
+import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import basemod.BaseMod;
 import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.Gdx;
@@ -45,21 +46,6 @@ public class KinomotoSakura extends CustomPlayer
     private static final int MAX_ORBS = 0;
     private static final int CARD_DRAW = 5;
     private static final int START_ENERGY = 3;
-    // 能量栏
-    private static final String[] ORB_TEXTURES = {
-            "img/UI/EPanel/layer5.png",
-            "img/UI/EPanel/layer4.png",
-            "img/UI/EPanel/layer3.png",
-            "img/UI/EPanel/layer2.png",
-            "img/UI/EPanel/layer1.png",
-            "img/UI/EPanel/layer0.png",
-            "img/UI/EPanel/layer5d.png",
-            "img/UI/EPanel/layer4d.png",
-            "img/UI/EPanel/layer3d.png",
-            "img/UI/EPanel/layer2d.png",
-            "img/UI/EPanel/layer1d.png"
-    };
-    private static final String ORB_VFX = "img/UI/energyBlueVFX.png";
     private static final float[] LAYER_SPEED = {
             -40.0F,
             -32.0F,
@@ -73,31 +59,26 @@ public class KinomotoSakura extends CustomPlayer
             0.0F
     };
     // 角色资源
-    private static final String SHOULDER_1_IMAGE_PATH = "img/char/Marisa/shoulder1.png";
-    private static final String SHOULDER_2_IMAGE_PATH = "img/char/Marisa/shoulder2.png";
-    private static final String CORPSE_IMAGE_PATH = "img/char/Marisa/fallen.png";
-    private static final String ATLAS_PATH = "img/char/Marisa/MarisaModelv3.atlas";
-    private static final String SKELETON_PATH = "img/char/Marisa/MarisaModelv3.json";
-    private static final float CHARACTER_SCALE_RATE = 2.0f;
+    public static final float CHARACTER_SCALE_RATE = 2.0f;
 
     public KinomotoSakura()
     {
         // 参数列表：角色名，角色类枚举，能量面板贴图路径列表，能量面板特效贴图路径，能量面板贴图旋转速度列表，能量面板，模型资源路径，动画资源路径
-        super(ID, KSMOD_CustomCharacter.KINOMOTOSAKURA, ORB_TEXTURES, ORB_VFX, LAYER_SPEED, null, null);
+        super(ID, KSMOD_CustomCharacter.KINOMOTOSAKURA, KSMOD_ImageConst.ORB_TEXTURES, KSMOD_ImageConst.ORB_VFX, LAYER_SPEED, null, null);
 
         // 对话框位置，默认就好
         this.dialogX = (this.drawX + 0.0F * Settings.scale);
         this.dialogY = (this.drawY + 220.0F * Settings.scale);
 
         // 参数列表：静态贴图路径，越肩视角2贴图路径，越肩视角贴图路径，失败时贴图路径，角色选择界面信息，碰撞箱XY宽高，初始能量数
-        initializeClass(null, SHOULDER_2_IMAGE_PATH, SHOULDER_1_IMAGE_PATH, CORPSE_IMAGE_PATH, getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(START_ENERGY));
+        initializeClass(KSMOD_ImageConst.IDLE_IMAGE_PATH, KSMOD_ImageConst.SHOULDER_2_IMAGE_PATH,  KSMOD_ImageConst.SHOULDER_1_IMAGE_PATH, KSMOD_ImageConst.CORPSE_IMAGE_PATH, getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(START_ENERGY));
 
-        loadAnimation(ATLAS_PATH, SKELETON_PATH, CHARACTER_SCALE_RATE);
-
-        AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
-        e.setTime(e.getEndTime() * MathUtils.random());
-        this.stateData.setMix("Hit", "Idle", 0.1F);
-        e.setTimeScale(1.0F);
+        // loadAnimation(KSMOD_ImageConst.ANIMA_ATLAS_PATH, KSMOD_ImageConst.ANIMA_SKELETON_PATH, CHARACTER_SCALE_RATE);
+        //
+        // AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
+        // e.setTime(e.getEndTime() * MathUtils.random());
+        // this.stateData.setMix("Hit", "Idle", 0.1F);
+        // e.setTimeScale(1.0F);
     }
 
     public ArrayList<String> getStartingDeck()

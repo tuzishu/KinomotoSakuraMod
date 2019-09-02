@@ -20,7 +20,7 @@ public class SpellCardRelease extends KSMOD_AbstractSpellCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SPELL_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.BASIC;
     private static final CardTarget CARD_TARGET = CardTarget.NONE;
-    private static final int BASE_MAGIC_NUMBER = 2;
+    private static final int BASE_MAGIC_NUMBER = 1;
     private static final float BASE_RELEASE_UPGRADE_RATE = 0.25F;
     // private static final float UPGRADE_RELEASE_UPGRADE_RATE = 0.5F;
 
