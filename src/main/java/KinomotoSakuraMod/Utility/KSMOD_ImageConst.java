@@ -80,7 +80,7 @@ public class KSMOD_ImageConst
     };
     public static final String ORB_VFX = "img/UI/energyBlueVFX.png";
     // 角色资源
-    public static final String IDLE_IMAGE_PATH = "img/char/Sakura/sakura_combat_temp.png";
+    public static final String IDLE_IMAGE_PATH = "img/char/Sakura/sakura_idle_static.png";
     public static final String CORPSE_IMAGE_PATH = "img/char/Marisa/fallen.png";
     public static final String SHOULDER_1_IMAGE_PATH = "img/char/Marisa/shoulder1.png";
     public static final String SHOULDER_2_IMAGE_PATH = "img/char/Marisa/shoulder2.png";
