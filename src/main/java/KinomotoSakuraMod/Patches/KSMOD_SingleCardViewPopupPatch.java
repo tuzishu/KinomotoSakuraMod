@@ -37,7 +37,9 @@ public class KSMOD_SingleCardViewPopupPatch
     private static final float HB_W = IMG_WIDTH;
     private static final float HB_H = IMG_HEIGHT;
     private static final float TITLE_HEIGHT_TO_CENTER = 444.0F;
+    private static final float TITLE_HEIGHT_SAKURA_TO_CENTER = 436.0F;//调整中
     private static final float TITLE_BOTTOM_HEIGHT_TO_CENTER = -410.0F;
+    private static final float TITLE_BOTTOM_HEIGHT_SAKURA_TO_CENTER = -394.0F;//调整中
     private static final float PORTRAIT_WIDTH = 303F;
     private static final float PORTRAIT_HEIGHT = 786F;
     private static final float PORTRAIT_ORIGIN_X = 151F;
@@ -136,18 +138,7 @@ public class KSMOD_SingleCardViewPopupPatch
             }
             else
             {
-                switch (card.rarity)
-                {
-                    case RARE:
-                        texture = KSMOD_ImageConst.FRAME_SAKURACARD_RARE_LARGE;
-                        break;
-                    case UNCOMMON:
-                        texture = KSMOD_ImageConst.FRAME_SAKURACARD_UNCOMMON_LARGE;
-                        break;
-                    default:
-                        texture = KSMOD_ImageConst.FRAME_SAKURACARD_COMMON_LARGE;
-                        break;
-                }
+                texture = KSMOD_ImageConst.FRAME_SAKURACARD_LARGE;
             }
             return texture;
         }
@@ -189,17 +180,7 @@ public class KSMOD_SingleCardViewPopupPatch
             }
             else
             {
-                switch (card.rarity)
-                {
-                    case RARE:
-                        texture = KSMOD_ImageConst.BANNER_SAKURACARD_RARE_LARGE;
-                        break;
-                    case UNCOMMON:
-                        texture = KSMOD_ImageConst.BANNER_SAKURACARD_UNCOMMON_LARGE;
-                        break;
-                    default:
-                        texture = KSMOD_ImageConst.BANNER_SAKURACARD_COMMON_LARGE;
-                }
+                texture = KSMOD_ImageConst.BANNER_SAKURACARD_LARGE;
             }
             return texture;
         }
@@ -396,46 +377,49 @@ public class KSMOD_SingleCardViewPopupPatch
             if (IsKSCard(card) && hasInit)
             {
                 Method allowUpgradePreview = KSMOD_Utility.GetMethodByReflect(SingleCardViewPopup.class, "allowUpgradePreview");
+                float offsetToTop = card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR ? TITLE_HEIGHT_TO_CENTER : TITLE_HEIGHT_SAKURA_TO_CENTER;
                 if (card.isLocked)
                 {
-                    FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, TEXT[4], Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + TITLE_HEIGHT_TO_CENTER * Settings.scale, Settings.CREAM_COLOR.cpy());
+                    FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, TEXT[4], Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + offsetToTop * Settings.scale, Settings.CREAM_COLOR.cpy());
                 }
                 else if (card.isSeen)
                 {
                     if (SingleCardViewPopup.isViewingUpgrade && !((Boolean) allowUpgradePreview.invoke(view)))
                     {
-                        FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, card.name, Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + TITLE_HEIGHT_TO_CENTER * Settings.scale, Settings.GREEN_TEXT_COLOR.cpy());
+                        FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, card.name, Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + offsetToTop * Settings.scale, Settings.GREEN_TEXT_COLOR.cpy());
                     }
                     else
                     {
-                        FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, card.name, Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + TITLE_HEIGHT_TO_CENTER * Settings.scale, Settings.CREAM_COLOR.cpy());
+                        FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, card.name, Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + offsetToTop * Settings.scale, Settings.CREAM_COLOR.cpy());
                     }
                 }
                 else
                 {
-                    FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, TEXT[5], Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + TITLE_HEIGHT_TO_CENTER * Settings.scale, Settings.CREAM_COLOR.cpy());
+                    FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, TEXT[5], Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + offsetToTop * Settings.scale, Settings.CREAM_COLOR.cpy());
                 }
+
                 if (card.color != KSMOD_CustomCardColor.SPELL_COLOR)
                 {
+                    float offsetToBottom = card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR ? TITLE_BOTTOM_HEIGHT_TO_CENTER : TITLE_BOTTOM_HEIGHT_SAKURA_TO_CENTER;
                     if (card.isLocked)
                     {
-                        FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, TEXT[4], Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + TITLE_BOTTOM_HEIGHT_TO_CENTER * Settings.scale, Settings.CREAM_COLOR.cpy());
+                        FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, TEXT[4], Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + offsetToBottom * Settings.scale, Settings.CREAM_COLOR.cpy());
                     }
                     else if (card.isSeen)
                     {
                         String BOTTOM_TITLE = (String) KSMOD_Utility.GetFieldByReflect(KSMOD_AbstractMagicCard.class, "BOTTOM_TITLE").get(card);
                         if (SingleCardViewPopup.isViewingUpgrade && !((Boolean) allowUpgradePreview.invoke(view)))
                         {
-                            FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, BOTTOM_TITLE, Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + TITLE_BOTTOM_HEIGHT_TO_CENTER * Settings.scale, Settings.GREEN_TEXT_COLOR.cpy());
+                            FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, BOTTOM_TITLE, Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + offsetToBottom * Settings.scale, Settings.GREEN_TEXT_COLOR.cpy());
                         }
                         else
                         {
-                            FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, BOTTOM_TITLE, Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + TITLE_BOTTOM_HEIGHT_TO_CENTER * Settings.scale, Settings.CREAM_COLOR.cpy());
+                            FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, BOTTOM_TITLE, Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + offsetToBottom * Settings.scale, Settings.CREAM_COLOR.cpy());
                         }
                     }
                     else
                     {
-                        FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, TEXT[5], Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + TITLE_BOTTOM_HEIGHT_TO_CENTER * Settings.scale, Settings.CREAM_COLOR.cpy());
+                        FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, TEXT[5], Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + offsetToBottom * Settings.scale, Settings.CREAM_COLOR.cpy());
                     }
                 }
                 return SpireReturn.Return(null);

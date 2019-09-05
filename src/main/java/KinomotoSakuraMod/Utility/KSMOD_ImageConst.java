@@ -36,12 +36,8 @@ public class KSMOD_ImageConst
     public static final String BANNER_CLOWCARD_UNCOMMON_LARGE_PATH = "img/cardui/clowcard/banner/uncommon_p.png";
     public static final String BANNER_CLOWCARD_RARE_PATH = "img/cardui/clowcard/banner/rare.png";
     public static final String BANNER_CLOWCARD_RARE_LARGE_PATH = "img/cardui/clowcard/banner/rare_p.png";
-    public static final String BANNER_SAKURACARD_COMMON_PATH = "img/cardui/sakuracard/banner/common.png";
-    public static final String BANNER_SAKURACARD_COMMON_LARGE_PATH = "img/cardui/sakuracard/banner/common_p.png";
-    public static final String BANNER_SAKURACARD_UNCOMMON_PATH = "img/cardui/sakuracard/banner/uncommon.png";
-    public static final String BANNER_SAKURACARD_UNCOMMON_LARGE_PATH = "img/cardui/sakuracard/banner/uncommon_p.png";
-    public static final String BANNER_SAKURACARD_RARE_PATH = "img/cardui/sakuracard/banner/rare.png";
-    public static final String BANNER_SAKURACARD_RARE_LARGE_PATH = "img/cardui/sakuracard/banner/rare_p.png";
+    public static final String BANNER_SAKURACARD_PATH = "img/cardui/sakuracard/banner/banner.png";
+    public static final String BANNER_SAKURACARD_LARGE_PATH = "img/cardui/sakuracard/banner/banner_p.png";
     // 卡牌稀有框
     public static final String FRAME_CLOWCARD_COMMON_PATH = "img/cardui/clowcard/frame/common.png";
     public static final String FRAME_CLOWCARD_COMMON_LARGE_PATH = "img/cardui/clowcard/frame/common_p.png";
@@ -49,12 +45,8 @@ public class KSMOD_ImageConst
     public static final String FRAME_CLOWCARD_UNCOMMON_LARGE_PATH = "img/cardui/clowcard/frame/uncommon_p.png";
     public static final String FRAME_CLOWCARD_RARE_PATH = "img/cardui/clowcard/frame/rare.png";
     public static final String FRAME_CLOWCARD_RARE_LARGE_PATH = "img/cardui/clowcard/frame/rare_p.png";
-    public static final String FRAME_SAKURACARD_COMMON_PATH = "img/cardui/sakuracard/frame/common.png";
-    public static final String FRAME_SAKURACARD_COMMON_LARGE_PATH = "img/cardui/sakuracard/frame/common_p.png";
-    public static final String FRAME_SAKURACARD_UNCOMMON_PATH = "img/cardui/sakuracard/frame/uncommon.png";
-    public static final String FRAME_SAKURACARD_UNCOMMON_LARGE_PATH = "img/cardui/sakuracard/frame/uncommon_p.png";
-    public static final String FRAME_SAKURACARD_RARE_PATH = "img/cardui/sakuracard/frame/rare.png";
-    public static final String FRAME_SAKURACARD_RARE_LARGE_PATH = "img/cardui/sakuracard/frame/rare_p.png";
+    public static final String FRAME_SAKURACARD_PATH = "img/cardui/sakuracard/frame/frame.png";
+    public static final String FRAME_SAKURACARD_LARGE_PATH = "img/cardui/sakuracard/frame/frame_p.png";
     // 卡牌描述遮罩
     public static final String MASK_PATH = "img/cardui/general/mask/mask.png";
     // 卡牌轮廓
@@ -117,12 +109,8 @@ public class KSMOD_ImageConst
     public static final Texture BANNER_CLOWCARD_UNCOMMON_LARGE;
     public static final Texture BANNER_CLOWCARD_RARE;
     public static final Texture BANNER_CLOWCARD_RARE_LARGE;
-    public static final Texture BANNER_SAKURACARD_COMMON;
-    public static final Texture BANNER_SAKURACARD_COMMON_LARGE;
-    public static final Texture BANNER_SAKURACARD_UNCOMMON;
-    public static final Texture BANNER_SAKURACARD_UNCOMMON_LARGE;
-    public static final Texture BANNER_SAKURACARD_RARE;
-    public static final Texture BANNER_SAKURACARD_RARE_LARGE;
+    public static final Texture BANNER_SAKURACARD;
+    public static final Texture BANNER_SAKURACARD_LARGE;
     // 卡牌稀有框
     public static final Texture FRAME_CLOWCARD_COMMON;
     public static final Texture FRAME_CLOWCARD_COMMON_LARGE;
@@ -130,12 +118,8 @@ public class KSMOD_ImageConst
     public static final Texture FRAME_CLOWCARD_UNCOMMON_LARGE;
     public static final Texture FRAME_CLOWCARD_RARE;
     public static final Texture FRAME_CLOWCARD_RARE_LARGE;
-    public static final Texture FRAME_SAKURACARD_COMMON;
-    public static final Texture FRAME_SAKURACARD_COMMON_LARGE;
-    public static final Texture FRAME_SAKURACARD_UNCOMMON;
-    public static final Texture FRAME_SAKURACARD_UNCOMMON_LARGE;
-    public static final Texture FRAME_SAKURACARD_RARE;
-    public static final Texture FRAME_SAKURACARD_RARE_LARGE;
+    public static final Texture FRAME_SAKURACARD;
+    public static final Texture FRAME_SAKURACARD_LARGE;
     // 卡牌描述遮罩
     public static final Texture MASK;
     // 卡牌轮廓
@@ -174,12 +158,8 @@ public class KSMOD_ImageConst
         BANNER_CLOWCARD_UNCOMMON_LARGE = ImageMaster.loadImage(BANNER_CLOWCARD_UNCOMMON_LARGE_PATH);
         BANNER_CLOWCARD_RARE = ImageMaster.loadImage(BANNER_CLOWCARD_RARE_PATH);
         BANNER_CLOWCARD_RARE_LARGE = ImageMaster.loadImage(BANNER_CLOWCARD_RARE_LARGE_PATH);
-        BANNER_SAKURACARD_COMMON = ImageMaster.loadImage(BANNER_SAKURACARD_COMMON_PATH);
-        BANNER_SAKURACARD_COMMON_LARGE = ImageMaster.loadImage(BANNER_SAKURACARD_COMMON_LARGE_PATH);
-        BANNER_SAKURACARD_UNCOMMON = ImageMaster.loadImage(BANNER_SAKURACARD_UNCOMMON_PATH);
-        BANNER_SAKURACARD_UNCOMMON_LARGE = ImageMaster.loadImage(BANNER_SAKURACARD_UNCOMMON_LARGE_PATH);
-        BANNER_SAKURACARD_RARE = ImageMaster.loadImage(BANNER_SAKURACARD_RARE_PATH);
-        BANNER_SAKURACARD_RARE_LARGE = ImageMaster.loadImage(BANNER_SAKURACARD_RARE_LARGE_PATH);
+        BANNER_SAKURACARD = ImageMaster.loadImage(BANNER_SAKURACARD_PATH);
+        BANNER_SAKURACARD_LARGE = ImageMaster.loadImage(BANNER_SAKURACARD_LARGE_PATH);
         // 卡牌稀有框
         FRAME_CLOWCARD_COMMON = ImageMaster.loadImage(FRAME_CLOWCARD_COMMON_PATH);
         FRAME_CLOWCARD_COMMON_LARGE = ImageMaster.loadImage(FRAME_CLOWCARD_COMMON_LARGE_PATH);
@@ -187,12 +167,8 @@ public class KSMOD_ImageConst
         FRAME_CLOWCARD_UNCOMMON_LARGE = ImageMaster.loadImage(FRAME_CLOWCARD_UNCOMMON_LARGE_PATH);
         FRAME_CLOWCARD_RARE = ImageMaster.loadImage(FRAME_CLOWCARD_RARE_PATH);
         FRAME_CLOWCARD_RARE_LARGE = ImageMaster.loadImage(FRAME_CLOWCARD_RARE_LARGE_PATH);
-        FRAME_SAKURACARD_COMMON = ImageMaster.loadImage(FRAME_SAKURACARD_COMMON_PATH);
-        FRAME_SAKURACARD_COMMON_LARGE = ImageMaster.loadImage(FRAME_SAKURACARD_COMMON_LARGE_PATH);
-        FRAME_SAKURACARD_UNCOMMON = ImageMaster.loadImage(FRAME_SAKURACARD_UNCOMMON_PATH);
-        FRAME_SAKURACARD_UNCOMMON_LARGE = ImageMaster.loadImage(FRAME_SAKURACARD_UNCOMMON_LARGE_PATH);
-        FRAME_SAKURACARD_RARE = ImageMaster.loadImage(FRAME_SAKURACARD_RARE_PATH);
-        FRAME_SAKURACARD_RARE_LARGE = ImageMaster.loadImage(FRAME_SAKURACARD_RARE_LARGE_PATH);
+        FRAME_SAKURACARD = ImageMaster.loadImage(FRAME_SAKURACARD_PATH);
+        FRAME_SAKURACARD_LARGE = ImageMaster.loadImage(FRAME_SAKURACARD_LARGE_PATH);
         // 卡牌描述遮罩
         MASK = ImageMaster.loadImage(MASK_PATH);
         // 卡牌轮廓

@@ -62,7 +62,9 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
     private static final float HB_W = IMG_WIDTH;
     private static final float HB_H = IMG_HEIGHT;
     private static final float TITLE_HEIGHT_TO_CENTER = 222.0F;
+    private static final float TITLE_HEIGHT_SAKURA_TO_CENTER = 218.0F;//调整中
     private static final float TITLE_BOTTOM_HEIGHT_TO_CENTER = -205.0F;
+    private static final float TITLE_BOTTOM_HEIGHT_SAKURA_TO_CENTER = -197.0F;//调整中
     private static final float PORTRAIT_WIDTH = 151F;
     private static final float PORTRAIT_HEIGHT = 393F;
     private static final float PORTRAIT_ORIGIN_X = 75F;
@@ -437,19 +439,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
         }
         else
         {
-            switch (this.rarity)
-            {
-                case BASIC:
-                case COMMON:
-                    texture = KSMOD_ImageConst.FRAME_SAKURACARD_COMMON;
-                    break;
-                case UNCOMMON:
-                    texture = KSMOD_ImageConst.FRAME_SAKURACARD_UNCOMMON;
-                    break;
-                default:
-                    texture = KSMOD_ImageConst.FRAME_SAKURACARD_RARE;
-                    break;
-            }
+            texture = KSMOD_ImageConst.FRAME_SAKURACARD;
         }
         return texture;
     }
@@ -500,19 +490,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
         }
         else
         {
-            switch (this.rarity)
-            {
-                case BASIC:
-                case COMMON:
-                    texture = KSMOD_ImageConst.BANNER_SAKURACARD_COMMON;
-                    break;
-                case UNCOMMON:
-                    texture = KSMOD_ImageConst.BANNER_SAKURACARD_UNCOMMON;
-                    break;
-                default:
-                    texture = KSMOD_ImageConst.BANNER_SAKURACARD_RARE;
-                    break;
-            }
+            texture = KSMOD_ImageConst.BANNER_SAKURACARD;
         }
         return texture;
     }
@@ -977,19 +955,21 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
         {
             BitmapFont font;
             Color renderColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
+            float offsetToTop = this.color == KSMOD_CustomCardColor.CLOWCARD_COLOR ? TITLE_HEIGHT_TO_CENTER : TITLE_HEIGHT_SAKURA_TO_CENTER;
+            float offsetToBottom = this.color == KSMOD_CustomCardColor.CLOWCARD_COLOR ? TITLE_BOTTOM_HEIGHT_TO_CENTER : TITLE_BOTTOM_HEIGHT_SAKURA_TO_CENTER;
             if (this.isLocked)
             {
                 font = FontHelper.cardTitleFont;
                 font.getData().setScale(this.drawScale);
-                FontHelper.renderRotatedText(sb, font, LOCKED_STRING, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
-                FontHelper.renderRotatedText(sb, font, LOCKED_STRING, this.current_x, this.current_y, 0.0F, TITLE_BOTTOM_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
+                FontHelper.renderRotatedText(sb, font, LOCKED_STRING, this.current_x, this.current_y, 0.0F, offsetToTop * this.drawScale * Settings.scale, this.angle, false, renderColor);
+                FontHelper.renderRotatedText(sb, font, LOCKED_STRING, this.current_x, this.current_y, 0.0F, offsetToBottom * this.drawScale * Settings.scale, this.angle, false, renderColor);
             }
             else if (!this.isSeen)
             {
                 font = FontHelper.cardTitleFont;
                 font.getData().setScale(this.drawScale);
-                FontHelper.renderRotatedText(sb, font, UNKNOWN_STRING, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
-                FontHelper.renderRotatedText(sb, font, UNKNOWN_STRING, this.current_x, this.current_y, 0.0F, TITLE_BOTTOM_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
+                FontHelper.renderRotatedText(sb, font, UNKNOWN_STRING, this.current_x, this.current_y, 0.0F, offsetToTop * this.drawScale * Settings.scale, this.angle, false, renderColor);
+                FontHelper.renderRotatedText(sb, font, UNKNOWN_STRING, this.current_x, this.current_y, 0.0F, offsetToBottom * this.drawScale * Settings.scale, this.angle, false, renderColor);
             }
             else
             {
@@ -1008,13 +988,13 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
                 {
                     Color color = Settings.GREEN_TEXT_COLOR.cpy();
                     color.a = renderColor.a;
-                    FontHelper.renderRotatedText(sb, font, this.name, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, color);
-                    FontHelper.renderRotatedText(sb, font, BOTTOM_TITLE, this.current_x, this.current_y, 0.0F, TITLE_BOTTOM_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, color);
+                    FontHelper.renderRotatedText(sb, font, this.name, this.current_x, this.current_y, 0.0F, offsetToTop * this.drawScale * Settings.scale, this.angle, false, color);
+                    FontHelper.renderRotatedText(sb, font, BOTTOM_TITLE, this.current_x, this.current_y, 0.0F, offsetToBottom * this.drawScale * Settings.scale, this.angle, false, color);
                 }
                 else
                 {
-                    FontHelper.renderRotatedText(sb, font, this.name, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
-                    FontHelper.renderRotatedText(sb, font, BOTTOM_TITLE, this.current_x, this.current_y, 0.0F, TITLE_BOTTOM_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
+                    FontHelper.renderRotatedText(sb, font, this.name, this.current_x, this.current_y, 0.0F, offsetToTop * this.drawScale * Settings.scale, this.angle, false, renderColor);
+                    FontHelper.renderRotatedText(sb, font, BOTTOM_TITLE, this.current_x, this.current_y, 0.0F, offsetToBottom * this.drawScale * Settings.scale, this.angle, false, renderColor);
                 }
             }
         }
