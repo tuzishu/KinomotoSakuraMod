@@ -3,6 +3,7 @@ package KinomotoSakuraMod.Cards.SpellCard;
 import KinomotoSakuraMod.Actions.KSMOD_ReleaseAction;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractSpellCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
+import KinomotoSakuraMod.Relics.KSMOD_SwordJade;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -21,8 +22,8 @@ public class SpellCardRelease extends KSMOD_AbstractSpellCard
     private static final CardRarity CARD_RARITY = CardRarity.BASIC;
     private static final CardTarget CARD_TARGET = CardTarget.NONE;
     private static final int BASE_MAGIC_NUMBER = 1;
-    private static final float BASE_RELEASE_UPGRADE_RATE = 0.25F;
-    // private static final float UPGRADE_RELEASE_UPGRADE_RATE = 0.5F;
+    public static final float BASE_RELEASE_UPGRADE_RATE = 0.25F;
+    public static final float UPGRADE_RELEASE_UPGRADE_RATE = 0.5F;
 
     static
     {
@@ -57,7 +58,14 @@ public class SpellCardRelease extends KSMOD_AbstractSpellCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        // 剑玉未添加
-        AbstractDungeon.actionManager.addToBottom(new KSMOD_ReleaseAction(this.magicNumber, BASE_RELEASE_UPGRADE_RATE));
+        if (player.hasRelic(KSMOD_SwordJade.RELIC_ID))
+        {
+            AbstractDungeon.actionManager.addToBottom(new KSMOD_ReleaseAction(this.magicNumber, UPGRADE_RELEASE_UPGRADE_RATE));
+            player.getRelic(KSMOD_SwordJade.RELIC_ID).flash();
+        }
+        else
+        {
+            AbstractDungeon.actionManager.addToBottom(new KSMOD_ReleaseAction(this.magicNumber, BASE_RELEASE_UPGRADE_RATE));
+        }
     }
 }

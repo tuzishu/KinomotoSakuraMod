@@ -11,8 +11,8 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 public class KSMOD_SealedBook extends CustomRelic
 {
     public static final String RELIC_ID = "KSMOD_SealedBook";
-    private static final String RELIC_IMG_PATH = "img/relics/icon/SealedBook.png";
-    private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/SealedBook.png";
+    private static final String RELIC_IMG_PATH = "img/relics/icon/sealed_book.png";
+    private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/sealed_book.png";
     private static final RelicTier RELIC_TIER = RelicTier.STARTER;
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
     public static final int ACTIVE_NUMBER = 10;

@@ -20,13 +20,13 @@ import java.util.ArrayList;
 public class KSMOD_SealedWand extends CustomRelic
 {
     public static final String RELIC_ID = "KSMOD_SealedWand";
-    private static final String RELIC_IMG_PATH = "img/relics/icon/SealedWand.png";
-    private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/SealedWand.png";
+    private static final String RELIC_IMG_PATH = "img/relics/icon/sealed_wand.png";
+    private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/sealed_wand.png";
     private static final RelicTier RELIC_TIER = RelicTier.STARTER;
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
     private static final int START_COUNT = 0;
-    private static final int UPDATE_TRIGGER_NUMBER = 25;
-    private static final int BASE_TRIGGER_NUMBER = 50;
+    private static final int UPDATE_TRIGGER_NUMBER = 30;
+    private static final int BASE_TRIGGER_NUMBER = 40;
     private boolean isCardFromWand = false;
 
     public KSMOD_SealedWand()
