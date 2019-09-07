@@ -57,6 +57,7 @@ public class KSMOD_Cerberus extends CustomRelic
 
     public void atTurnStart()
     {
+        this.flash();
         AbstractMonster monster = AbstractDungeon.getRandomMonster();
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, AbstractDungeon.player, new KSMOD_CerberusMarkPower(monster, DAMAGE_PROMOTION)));
     }
