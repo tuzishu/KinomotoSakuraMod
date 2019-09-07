@@ -33,7 +33,7 @@ public class KSMOD_MoveAction extends AbstractGameAction
         this.duration = DURATION;
         this.amount = amount;
         this.isCardToHand = isCardToHand;
-        this.targetGroup = this.isCardToHand ? player.hand : player.exhaustPile;
+        this.targetGroup = this.isCardToHand ? player.hand : player.drawPile;
     }
 
     public void update()
