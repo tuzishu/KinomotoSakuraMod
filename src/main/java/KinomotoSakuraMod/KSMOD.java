@@ -10,9 +10,7 @@ import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCharacter;
 import KinomotoSakuraMod.Patches.KSMOD_CustomKeywords;
-import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
-import KinomotoSakuraMod.Relics.KSMOD_SealedWand;
-import KinomotoSakuraMod.Relics.KSMOD_SwordJade;
+import KinomotoSakuraMod.Relics.*;
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import basemod.BaseMod;
@@ -101,6 +99,8 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         relicList.add(new KSMOD_SealedWand());
         relicList.add(new KSMOD_SealedBook());
         relicList.add(new KSMOD_SwordJade());
+        relicList.add(new KSMOD_Cerberus());
+        relicList.add(new KSMOD_Yue());
 
         return relicList;
     }
