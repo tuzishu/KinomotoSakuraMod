@@ -94,12 +94,13 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         ArrayList<AbstractRelic> relicList = new ArrayList<AbstractRelic>();
 
         relicList.add(new KSMOD_SealedWand());
-        relicList.add(new KSMOD_StarWand());
         relicList.add(new KSMOD_SealedBook());
-        relicList.add(new KSMOD_TaoistSuit());
-        relicList.add(new KSMOD_SwordJade());
+        relicList.add(new KSMOD_StarWand());
         relicList.add(new KSMOD_Cerberus());
         relicList.add(new KSMOD_Yue());
+        relicList.add(new KSMOD_TaoistSuit());
+        relicList.add(new KSMOD_SwordJade());
+        relicList.add(new KSMOD_TeddyBear());
 
         return relicList;
     }
