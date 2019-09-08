@@ -27,7 +27,7 @@ public class ClowCardTheThunder extends KSMOD_AbstractMagicCard
     private static final AbstractCard.CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.RARE;
     private static final CardTarget CARD_TARGET = CardTarget.NONE;
-    private static final int BASE_DAMAGE = 13;
+    private static final int BASE_DAMAGE = 12;
     private static final int UPGRADE_DAMAGE = 4;
     private static final int ATTACK_COUNT = 3;
 
@@ -72,7 +72,7 @@ public class ClowCardTheThunder extends KSMOD_AbstractMagicCard
 
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ThunderStrikeAction(AbstractDungeon.getRandomMonster(), new DamageInfo(player, this.damage, DamageInfo.DamageType.HP_LOSS), ATTACK_COUNT + KSMOD_SealedBook.THUNDER_NUMBER));
+        AbstractDungeon.actionManager.addToBottom(new ThunderStrikeAction(AbstractDungeon.getRandomMonster(), new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), ATTACK_COUNT + KSMOD_SealedBook.THUNDER_NUMBER));
         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new VoidCard(), 1));
     }
 

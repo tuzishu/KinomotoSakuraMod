@@ -1,6 +1,7 @@
 package KinomotoSakuraMod.Actions;
 
 import KinomotoSakuraMod.Relics.KSMOD_SealedWand;
+import KinomotoSakuraMod.Relics.KSMOD_StarWand;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -29,10 +30,18 @@ public class KSMOD_SealAction extends AbstractGameAction
         {
             AbstractDungeon.effectList.add(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, this.attackEffect));
             this.target.damage(this.info);
-            if ((this.target.isDying || this.target.currentHealth <= 0) && !this.target.halfDead && AbstractDungeon.player.hasRelic(KSMOD_SealedWand.RELIC_ID))
+            if ((this.target.isDying || this.target.currentHealth <= 0) && !this.target.halfDead)
             {
-                KSMOD_SealedWand wand = (KSMOD_SealedWand) AbstractDungeon.player.getRelic(KSMOD_SealedWand.RELIC_ID);
-                wand.GainCharge(chargeAmount);
+                if (AbstractDungeon.player.hasRelic(KSMOD_SealedWand.RELIC_ID))
+                {
+                    KSMOD_SealedWand wand = (KSMOD_SealedWand) AbstractDungeon.player.getRelic(KSMOD_SealedWand.RELIC_ID);
+                    wand.GainCharge(chargeAmount);
+                }
+                else if (AbstractDungeon.player.hasRelic(KSMOD_StarWand.RELIC_ID))
+                {
+                    KSMOD_StarWand wand = (KSMOD_StarWand) AbstractDungeon.player.getRelic(KSMOD_StarWand.RELIC_ID);
+                    wand.GainCharge(chargeAmount);
+                }
             }
             if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead())
             {

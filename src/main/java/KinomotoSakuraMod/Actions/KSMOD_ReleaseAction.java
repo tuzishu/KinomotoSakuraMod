@@ -66,13 +66,16 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
             this.player.hand.group.removeAll(this.cannotReleaseList);
             if (this.player.hand.group.size() == 1)
             {
-                ReleaseCard(this.player.hand.getTopCard());
+                AbstractCard card = AbstractDungeon.player.hand.getTopCard();
+                AbstractDungeon.player.hand.removeCard(card);
+                ReleaseCard(card);
                 this.returnCards();
                 this.isDone = true;
                 for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters)
                 {
                     AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(monster, this.player, new VulnerablePower(monster, this.vulnAmount, false)));
                 }
+                this.tickDuration();
                 return;
             }
 

@@ -2,10 +2,7 @@ package KinomotoSakuraMod;
 
 import KinomotoSakuraMod.Cards.ClowCard.*;
 import KinomotoSakuraMod.Cards.SakuraCard.*;
-import KinomotoSakuraMod.Cards.SpellCard.SpellCardRelease;
-import KinomotoSakuraMod.Cards.SpellCard.SpellCardSeal;
-import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
-import KinomotoSakuraMod.Cards.SpellCard.TestCard;
+import KinomotoSakuraMod.Cards.SpellCard.*;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCharacter;
@@ -97,7 +94,9 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         ArrayList<AbstractRelic> relicList = new ArrayList<AbstractRelic>();
 
         relicList.add(new KSMOD_SealedWand());
+        relicList.add(new KSMOD_StarWand());
         relicList.add(new KSMOD_SealedBook());
+        relicList.add(new KSMOD_TaoistSuit());
         relicList.add(new KSMOD_SwordJade());
         relicList.add(new KSMOD_Cerberus());
         relicList.add(new KSMOD_Yue());
@@ -198,6 +197,11 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         cardList.add(new SpellCardRelease());
         cardList.add(new SpellCardSeal());
         cardList.add(new SpellCardTurn());
+        cardList.add(new SpellCardEmptySpell());
+        cardList.add(new SpellCardHuoShen());
+        cardList.add(new SpellCardLeiDi());
+        cardList.add(new SpellCardFengHua());
+        cardList.add(new SpellCardShuiLong());
 
         cardList.add(new TestCard());
 

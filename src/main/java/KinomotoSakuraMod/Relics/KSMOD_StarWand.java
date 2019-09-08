@@ -17,19 +17,19 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import java.util.ArrayList;
 
-public class KSMOD_SealedWand extends CustomRelic
+public class KSMOD_StarWand extends CustomRelic
 {
-    public static final String RELIC_ID = "KSMOD_SealedWand";
-    private static final String RELIC_IMG_PATH = "img/relics/icon/sealed_wand.png";
-    private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/sealed_wand.png";
-    private static final RelicTier RELIC_TIER = RelicTier.STARTER;
+    public static final String RELIC_ID = "KSMOD_StarWand";
+    private static final String RELIC_IMG_PATH = "img/relics/icon/default.png";
+    private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/default.png";
+    private static final RelicTier RELIC_TIER = RelicTier.BOSS;
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
     private static final int START_COUNT = 0;
     private static final int UPDATE_TRIGGER_NUMBER = 30;
     private static final int BASE_TRIGGER_NUMBER = 40;
     private static final int GAIN_NUMBER = 3;
 
-    public KSMOD_SealedWand()
+    public KSMOD_StarWand()
     {
         super(RELIC_ID, ImageMaster.loadImage(RELIC_IMG_PATH), ImageMaster.loadImage(RELIC_IMG_OTL_PATH), RELIC_TIER, RELIC_SOUND);
         this.counter = START_COUNT;
@@ -40,9 +40,29 @@ public class KSMOD_SealedWand extends CustomRelic
         return DESCRIPTIONS[0] + GAIN_NUMBER + DESCRIPTIONS[1] + BASE_TRIGGER_NUMBER + DESCRIPTIONS[2] + BASE_TRIGGER_NUMBER + DESCRIPTIONS[3] + UPDATE_TRIGGER_NUMBER + DESCRIPTIONS[4];
     }
 
+    public boolean canSpawn()
+    {
+        return AbstractDungeon.player instanceof KinomotoSakura && AbstractDungeon.player.hasRelic(KSMOD_SealedWand.RELIC_ID);
+    }
+
     public AbstractRelic makeCopy()
     {
-        return new KSMOD_SealedWand();
+        return new KSMOD_StarWand();
+    }
+
+    public void obtain()
+    {
+        AbstractRelic oldWand = AbstractDungeon.player.getRelic(KSMOD_SealedWand.RELIC_ID);
+        this.counter = oldWand.counter;
+        int targetIndex = AbstractDungeon.player.relics.indexOf(oldWand);
+        if (AbstractDungeon.player.hasRelic(KSMOD_SealedWand.RELIC_ID))
+        {
+            this.instantObtain(AbstractDungeon.player, targetIndex, false);
+        }
+        else
+        {
+            super.obtain();
+        }
     }
 
     public void atPreBattle()
@@ -84,7 +104,9 @@ public class KSMOD_SealedWand extends CustomRelic
             this.counter = 0;
         }
         AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new SpellCardTurn()));
+        AbstractCard card = new SpellCardTurn();
+        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(card));
+        AbstractDungeon.player.masterDeck.addToBottom(card);
     }
 
     public int GetTriggerNumber()

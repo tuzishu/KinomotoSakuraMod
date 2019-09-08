@@ -4,10 +4,7 @@ import KinomotoSakuraMod.Actions.KSMOD_TurnAction;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractSpellCard;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
-import KinomotoSakuraMod.Relics.KSMOD_SealedWand;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.status.VoidCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -55,19 +52,6 @@ public class SpellCardTurn extends KSMOD_AbstractSpellCard
     @Override
     public AbstractCard makeCopy()
     {
-        if (AbstractDungeon.player != null && AbstractDungeon.player instanceof KinomotoSakura)
-        {
-            if (!AbstractDungeon.player.hasRelic(KSMOD_SealedWand.RELIC_ID))
-            {
-                return new VoidCard();
-            }
-            KSMOD_SealedWand wand = (KSMOD_SealedWand) AbstractDungeon.player.getRelic(KSMOD_SealedWand.RELIC_ID);
-            if (!wand.IsCardFromWand())
-            {
-                return new VoidCard();
-            }
-            wand.GetTurnCardOver();
-        }
         return new SpellCardTurn();
     }
 
@@ -96,7 +80,7 @@ public class SpellCardTurn extends KSMOD_AbstractSpellCard
     {
         for (AbstractCard card : AbstractDungeon.player.masterDeck.group)
         {
-            if (card.uuid == this.uuid)
+            if (card.cardID == this.cardID)
             {
                 AbstractDungeon.player.masterDeck.removeCard(card);
                 break;

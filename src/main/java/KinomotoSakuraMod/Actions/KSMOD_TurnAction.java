@@ -70,7 +70,9 @@ public class KSMOD_TurnAction extends AbstractGameAction
             {
                 for (int i = 0; i < this.amount; ++i)
                 {
-                    TurnClowCardToSakuraCard(this.player.hand.getTopCard());
+                    AbstractCard card = AbstractDungeon.player.hand.getTopCard();
+                    AbstractDungeon.player.hand.removeCard(card);
+                    TurnClowCardToSakuraCard(card);
                 }
                 this.returnCards();
                 this.isDone = true;

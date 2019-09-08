@@ -16,7 +16,7 @@ import com.megacrit.cardcrawl.powers.PoisonPower;
 
 public class SakuraCardTheMist extends KSMOD_AbstractMagicCard
 {
-    public static final String ID = "r";
+    public static final String ID = "SakuraCardTheMist";
     private static final String NAME;
     private static final String DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/sakuracard/the_mist.png";

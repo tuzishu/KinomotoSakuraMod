@@ -228,7 +228,7 @@
   },
   "ClowCardTheRain": {
     "NAME": "雨",
-    "DESCRIPTION": "「 水 」 消耗 。所有手牌的耗能下降1。",
+    "DESCRIPTION": "「 水 」 消耗 。本回合所有手牌的耗能下降1。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "「 水 」所有手牌的耗能下降1。"
@@ -423,6 +423,36 @@
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
+  "SpellCardEmptySpell": {
+    "NAME": "空道符",
+    "DESCRIPTION": " 消耗 。从 火神 、 雷帝 、 风华 、 水龙 四张 符咒 中选择1张加入手牌。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SpellCardHuoShen": {
+    "NAME": "火神",
+    "DESCRIPTION": "「 火 」 虚无 ， 消耗 。造成 !D! 点伤害。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SpellCardLeiDi": {
+    "NAME": "雷帝",
+    "DESCRIPTION": "「 地 」 虚无 ， 消耗 。对随机目标造成 !D! 点伤害。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SpellCardFengHua": {
+    "NAME": "风华",
+    "DESCRIPTION": "「 风 」 虚无 ， 消耗 。造成 !M! 次 !D! 点伤害。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SpellCardShuiLong": {
+    "NAME": "水龙",
+    "DESCRIPTION": "「 水 」 虚无 ， 消耗 。对全体敌人造成 !D! 点伤害。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
 
 
   "SakuraCardTheArrow": {
@@ -607,7 +637,7 @@
   },
   "SakuraCardTheRain": {
     "NAME": "雨",
-    "DESCRIPTION": "「 小樱牌 」「 水 」 消耗 。所有手牌的耗能变为0。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」 消耗 。本回合所有手牌的耗能变为0。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
