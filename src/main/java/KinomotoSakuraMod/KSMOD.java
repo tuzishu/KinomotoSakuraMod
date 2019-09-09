@@ -101,6 +101,9 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         relicList.add(new KSMOD_TaoistSuit());
         relicList.add(new KSMOD_SwordJade());
         relicList.add(new KSMOD_TeddyBear());
+        relicList.add(new KSMOD_MoonBell());
+        relicList.add(new KSMOD_YukitosBentoBox());
+        relicList.add(new KSMOD_RollerSkates());
 
         return relicList;
     }
