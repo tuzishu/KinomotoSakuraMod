@@ -66,7 +66,7 @@ public class ClowCardTheBubbles extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.baseDamage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.POISON));
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.POISON));
         ArrayList<AbstractPower> buffs = new ArrayList<>();
         for (AbstractPower power : monster.powers)
         {
@@ -85,7 +85,7 @@ public class ClowCardTheBubbles extends KSMOD_AbstractMagicCard
     @Override
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.baseDamage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.POISON));
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.POISON));
         ArrayList<AbstractPower> buffs = new ArrayList<>();
         for (AbstractPower power : monster.powers)
         {

@@ -193,6 +193,14 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
                 this.initializeDescription();
             }
         }
+        if (power instanceof KSMOD_LockPower && this.hasExtraEffect && isCharging)
+        {
+            if (isThisCardCharged())
+            {
+                this.onDischarged();
+                this.initializeDescription();
+            }
+        }
     }
 
     public void receivePostPowerReduceSubscriber(AbstractPower power)
@@ -214,6 +222,14 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
             if (!isThisCardCharged() || hasLockPower())
             {
                 this.onDischarged();
+                this.initializeDescription();
+            }
+        }
+        if (power instanceof KSMOD_LockPower && this.hasExtraEffect && !isCharging)
+        {
+            if (isThisCardCharged())
+            {
+                this.onCharged();
                 this.initializeDescription();
             }
         }

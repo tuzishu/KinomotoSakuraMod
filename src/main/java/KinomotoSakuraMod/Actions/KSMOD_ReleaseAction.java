@@ -133,6 +133,7 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
         }
         if (card.type == AbstractCard.CardType.POWER)
         {
+            ((KSMOD_AbstractMagicCard) card).release(releaseRate);
             card.rawDescription = reloadReleasedCardDescription(card.rawDescription, !card.isEthereal, !card.exhaust);
             card.initializeDescription();
             card.isEthereal = true;

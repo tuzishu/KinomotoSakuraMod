@@ -4,6 +4,7 @@ import basemod.abstracts.CustomRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
@@ -33,6 +34,12 @@ public class KSMOD_RollerSkates extends CustomRelic
 
     public void atTurnStart()
     {
+        if (AbstractDungeon.player.hasPower(DexterityPower.POWER_ID))
+        {
+            AbstractPower power = AbstractDungeon.player.getPower(DexterityPower.POWER_ID);
+            if (power.amount >= 5)
+            return;
+        }
         this.flash();
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DexterityPower(AbstractDungeon.player, DEXTERITY_NUMBER), DEXTERITY_NUMBER));
     }

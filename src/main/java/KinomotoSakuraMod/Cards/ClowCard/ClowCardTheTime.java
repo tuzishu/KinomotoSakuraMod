@@ -125,6 +125,6 @@ public class ClowCardTheTime extends KSMOD_AbstractMagicCard
     @Override
     public String getExtraDescription()
     {
-        return upgraded ? EXTENDED_DESCRIPTION[0] : EXTENDED_DESCRIPTION[1];
+        return (this.upgraded ? EXTENDED_DESCRIPTION[0] : EXTENDED_DESCRIPTION[1]);
     }
 }
