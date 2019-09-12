@@ -39,7 +39,7 @@ public class SakuraCardTheThunder extends KSMOD_AbstractMagicCard
 
     public SakuraCardTheThunder()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(KSMOD_CustomTag.KSMOD_FIREY_CARD);
         this.baseDamage = BASE_DAMAGE;
     }
@@ -76,5 +76,6 @@ public class SakuraCardTheThunder extends KSMOD_AbstractMagicCard
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(player, player, KSMOD_MagickChargePower.POWER_ID));
         }
         AbstractDungeon.actionManager.addToBottom(new ThunderStrikeAction(AbstractDungeon.getRandomMonster(), new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), count));
+        KSMOD_Utility.Logger.info("SakuraCardThe damage:"+ this.damage+", times: "+ count);
     }
 }

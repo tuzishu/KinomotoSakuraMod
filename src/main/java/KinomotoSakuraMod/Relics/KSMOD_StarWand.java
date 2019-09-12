@@ -27,7 +27,7 @@ public class KSMOD_StarWand extends CustomRelic
     private static final int START_COUNT = 0;
     private static final int UPDATE_TRIGGER_NUMBER = 30;
     private static final int BASE_TRIGGER_NUMBER = 40;
-    private static final int GAIN_NUMBER = 3;
+    private static final int GAIN_NUMBER = 4;
 
     public KSMOD_StarWand()
     {

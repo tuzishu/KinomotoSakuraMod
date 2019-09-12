@@ -40,6 +40,10 @@ public class KSMOD_Cerberus extends CustomRelic
         return new KSMOD_Cerberus();
     }
 
+    public void atBattleStart()
+    {
+        this.setCounter(0);
+    }
 
     public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction)
     {

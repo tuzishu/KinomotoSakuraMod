@@ -40,6 +40,10 @@ public class KSMOD_Yue extends CustomRelic
         return new KSMOD_Yue();
     }
 
+    public void atBattleStart()
+    {
+        this.setCounter(0);
+    }
 
     public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction)
     {

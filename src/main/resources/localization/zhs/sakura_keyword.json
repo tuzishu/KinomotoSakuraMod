@@ -209,25 +209,25 @@
       "NAMES": [
         "火神"
       ],
-      "DESCRIPTION": " #y火 属性的消耗性攻击卡。"
+      "DESCRIPTION": "对单体目标造成伤害的 #y火 属性的消耗型攻击卡。"
     },
     {
       "NAMES": [
         "雷帝"
       ],
-      "DESCRIPTION": " #y地 属性的消耗性攻击卡。"
+      "DESCRIPTION": "对随机单体目标造成伤害的 #y地 属性的消耗型攻击卡。"
     },
     {
       "NAMES": [
         "风华"
       ],
-      "DESCRIPTION": " #y风 属性的消耗性攻击卡。"
+      "DESCRIPTION": "对单体目标造成多次伤害的 #y风 属性的消耗型攻击卡。"
     },
     {
       "NAMES": [
         "水龙"
       ],
-      "DESCRIPTION": " #y水 属性的消耗性攻击卡。"
+      "DESCRIPTION": "对全体敌人造成伤害的 #y水 属性的消耗型攻击卡。"
     },
     {
       "NAMES": [

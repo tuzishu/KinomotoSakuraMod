@@ -36,6 +36,11 @@ public class KSMOD_TaoistSuit extends CustomRelic
         return new KSMOD_TaoistSuit();
     }
 
+    public void atBattleStart()
+    {
+        this.setCounter(0);
+    }
+
     public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction)
     {
         if (targetCard.color == KSMOD_CustomCardColor.CLOWCARD_COLOR || targetCard.color == KSMOD_CustomCardColor.SAKURACARD_COLOR)
