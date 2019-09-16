@@ -104,6 +104,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         relicList.add(new KSMOD_MoonBell());
         relicList.add(new KSMOD_YukitosBentoBox());
         relicList.add(new KSMOD_RollerSkates());
+        relicList.add(new KSMOD_Compass());
 
         return relicList;
     }
@@ -341,7 +342,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         path += "sakura_keyword.json";
         Gson gson = new Gson();
         String json = Gdx.files.internal(path).readString(String.valueOf(StandardCharsets.UTF_8));
-        KSMOD_CustomKeywords keywords = (KSMOD_CustomKeywords) gson.fromJson(json, KSMOD_CustomKeywords.class);
+        KSMOD_CustomKeywords keywords = gson.fromJson(json, KSMOD_CustomKeywords.class);
         Keyword[] keywordList = keywords.keywords;
 
         for (int i = 0; i < keywordList.length; ++i)

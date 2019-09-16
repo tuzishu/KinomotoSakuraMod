@@ -16,6 +16,7 @@ public class KSMOD_RollerSkates extends CustomRelic
     private static final RelicTier RELIC_TIER = RelicTier.RARE;
     private static final LandingSound RELIC_SOUND = LandingSound.CLINK;
     private static final int DEXTERITY_NUMBER = 1;
+    private static final int MAX_DEX_NUMBER = 3;
 
     public KSMOD_RollerSkates()
     {
@@ -24,7 +25,7 @@ public class KSMOD_RollerSkates extends CustomRelic
 
     public String getUpdatedDescription()
     {
-        return this.DESCRIPTIONS[0] + DEXTERITY_NUMBER + this.DESCRIPTIONS[1];
+        return this.DESCRIPTIONS[0] + MAX_DEX_NUMBER + this.DESCRIPTIONS[1] + DEXTERITY_NUMBER + this.DESCRIPTIONS[2];
     }
 
     public AbstractRelic makeCopy()
@@ -37,7 +38,7 @@ public class KSMOD_RollerSkates extends CustomRelic
         if (AbstractDungeon.player.hasPower(DexterityPower.POWER_ID))
         {
             AbstractPower power = AbstractDungeon.player.getPower(DexterityPower.POWER_ID);
-            if (power.amount >= 5)
+            if (power.amount >= MAX_DEX_NUMBER)
             return;
         }
         this.flash();

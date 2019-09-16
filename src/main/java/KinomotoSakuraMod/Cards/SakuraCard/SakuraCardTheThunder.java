@@ -6,6 +6,8 @@ import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.defect.ThunderStrikeAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -76,6 +78,5 @@ public class SakuraCardTheThunder extends KSMOD_AbstractMagicCard
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(player, player, KSMOD_MagickChargePower.POWER_ID));
         }
         AbstractDungeon.actionManager.addToBottom(new ThunderStrikeAction(AbstractDungeon.getRandomMonster(), new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), count));
-        KSMOD_Utility.Logger.info("SakuraCardThe damage:"+ this.damage+", times: "+ count);
     }
 }

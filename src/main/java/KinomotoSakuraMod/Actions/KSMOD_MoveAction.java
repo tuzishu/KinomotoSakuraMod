@@ -10,6 +10,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToDrawPileEffect;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
 
 public class KSMOD_MoveAction extends AbstractGameAction
 {
@@ -62,10 +64,12 @@ public class KSMOD_MoveAction extends AbstractGameAction
                 AbstractCard card = this.player.exhaustPile.group.get(0);
                 if (isCardToHand)
                 {
+                    AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(card, (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                     this.targetGroup.moveToHand(card, this.targetGroup);
                 }
                 else
                 {
+                    AbstractDungeon.effectList.add(new ShowCardAndAddToDrawPileEffect(card, (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F, true));
                     this.targetGroup.moveToDeck(card, true);
                 }
                 card.unfadeOut();
@@ -94,10 +98,12 @@ public class KSMOD_MoveAction extends AbstractGameAction
                 {
                     if (isCardToHand)
                     {
+                        AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(card, (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                         this.targetGroup.addToHand(card);
                     }
                     else
                     {
+                        AbstractDungeon.effectList.add(new ShowCardAndAddToDrawPileEffect(card, (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F, true));
                         this.targetGroup.addToRandomSpot(card);
                     }
                     this.player.exhaustPile.removeCard(card);
