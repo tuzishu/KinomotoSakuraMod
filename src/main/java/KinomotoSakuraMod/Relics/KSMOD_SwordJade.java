@@ -10,7 +10,7 @@ public class KSMOD_SwordJade extends CustomRelic
     public static final String RELIC_ID = "KSMOD_SwordJade";
     private static final String RELIC_IMG_PATH = "img/relics/icon/sword_jade.png";
     private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/sword_jade.png";
-    private static final RelicTier RELIC_TIER = RelicTier.UNCOMMON;
+    private static final RelicTier RELIC_TIER = RelicTier.COMMON;
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
 
     public KSMOD_SwordJade()
