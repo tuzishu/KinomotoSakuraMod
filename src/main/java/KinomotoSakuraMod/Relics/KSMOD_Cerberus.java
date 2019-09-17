@@ -49,11 +49,11 @@ public class KSMOD_Cerberus extends CustomRelic
     {
         if (targetCard.hasTag(KSMOD_CustomTag.KSMOD_FIREY_CARD) || targetCard.hasTag(KSMOD_CustomTag.KSMOD_EARTHY_CARD))
         {
-            this.flash();
             this.counter += 1;
         }
         if (this.counter >= TRIGGER_NUMBER)
         {
+            this.flash();
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new KSMOD_MagickChargePower(AbstractDungeon.player, CHARGE_NUMBER), CHARGE_NUMBER));
             this.counter -= TRIGGER_NUMBER;
         }

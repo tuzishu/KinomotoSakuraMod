@@ -96,6 +96,8 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         relicList.add(new KSMOD_SealedWand());
         relicList.add(new KSMOD_SealedBook());
         relicList.add(new KSMOD_StarWand());
+        relicList.add(new KSMOD_UltimateWand());
+        relicList.add(new KSMOD_DarknessWand());
         relicList.add(new KSMOD_Cerberus());
         relicList.add(new KSMOD_Yue());
         relicList.add(new KSMOD_TaoistSuit());

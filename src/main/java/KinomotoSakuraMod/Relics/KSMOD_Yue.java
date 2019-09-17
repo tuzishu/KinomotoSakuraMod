@@ -49,11 +49,11 @@ public class KSMOD_Yue extends CustomRelic
     {
         if (targetCard.hasTag(KSMOD_CustomTag.KSMOD_WATERY_CARD) || targetCard.hasTag(KSMOD_CustomTag.KSMOD_WINDY_CARD))
         {
-            this.flash();
             this.counter += 1;
         }
         if (this.counter >= TRIGGER_NUMBER)
         {
+            this.flash();
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new KSMOD_MagickChargePower(AbstractDungeon.player, CHARGE_NUMBER), CHARGE_NUMBER));
             this.counter -= TRIGGER_NUMBER;
         }
