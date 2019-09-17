@@ -105,6 +105,8 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         relicList.add(new KSMOD_YukitosBentoBox());
         relicList.add(new KSMOD_RollerSkates());
         relicList.add(new KSMOD_Compass());
+        relicList.add(new KSMOD_GemBrooch());
+        relicList.add(new KSMOD_TouyasBicycle());
 
         return relicList;
     }

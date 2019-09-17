@@ -4,6 +4,7 @@ import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheSword;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
+import KinomotoSakuraMod.Relics.KSMOD_GemBrooch;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -27,6 +28,7 @@ public class SakuraCardTheSword extends KSMOD_AbstractMagicCard
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
     private static final int BASE_DAMAGE = 9;
     private static final float PERCENT_DAMAGE_RATE = 0.25F;
+    private int gemDamage = 0;
 
     static
     {
@@ -68,5 +70,20 @@ public class SakuraCardTheSword extends KSMOD_AbstractMagicCard
     {
         AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, (int) (monster.currentHealth * PERCENT_DAMAGE_RATE), DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));
+    }
+
+    @Override
+    public void atTurnStart()
+    {
+        if (!AbstractDungeon.player.hasRelic(KSMOD_GemBrooch.RELIC_ID))
+        {
+            return;
+        }
+        KSMOD_GemBrooch relic = (KSMOD_GemBrooch) AbstractDungeon.player.getRelic(KSMOD_GemBrooch.RELIC_ID);
+        int damage = relic.getDamagePromote();
+        if (damage != gemDamage)
+        {
+            upgradeDamage(damage - gemDamage);
+        }
     }
 }

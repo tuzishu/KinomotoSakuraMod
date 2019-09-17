@@ -3,6 +3,7 @@ package KinomotoSakuraMod.Cards.ClowCard;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
+import KinomotoSakuraMod.Relics.KSMOD_GemBrooch;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -28,6 +29,7 @@ public class ClowCardTheSword extends KSMOD_AbstractMagicCard
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
     private static final int BASE_DAMAGE = 6;
     private static final int UPGRADE_DAMAGE = 3;
+    private int gemDamage = 0;
 
     static
     {
@@ -78,5 +80,20 @@ public class ClowCardTheSword extends KSMOD_AbstractMagicCard
     public String getExtraDescription()
     {
         return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.REAL_DAMAGE + EXTENDED_DESCRIPTION[1];
+    }
+
+    @Override
+    public void atTurnStart()
+    {
+        if (!AbstractDungeon.player.hasRelic(KSMOD_GemBrooch.RELIC_ID))
+        {
+            return;
+        }
+        KSMOD_GemBrooch relic = (KSMOD_GemBrooch) AbstractDungeon.player.getRelic(KSMOD_GemBrooch.RELIC_ID);
+        int damage = relic.getDamagePromote();
+        if (damage != gemDamage)
+        {
+            upgradeDamage(damage - gemDamage);
+        }
     }
 }
