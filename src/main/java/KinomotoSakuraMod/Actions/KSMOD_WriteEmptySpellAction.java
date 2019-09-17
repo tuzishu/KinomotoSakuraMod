@@ -17,14 +17,7 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 public class KSMOD_WriteEmptySpellAction extends AbstractGameAction
 {
     public static final String ACTION_ID = "KSMOD_WriteEmptySpellAction";
-    private static final String[] TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
-
-    static
-    {
-        UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ACTION_ID);
-        TEXT = uiStrings.TEXT;
-    }
 
     public KSMOD_WriteEmptySpellAction()
     {

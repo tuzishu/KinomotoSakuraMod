@@ -13,7 +13,7 @@ public class KSMOD_RollerSkates extends CustomRelic
     public static final String RELIC_ID = "KSMOD_RollerSkates";
     private static final String RELIC_IMG_PATH = "img/relics/icon/default.png";
     private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/default.png";
-    private static final RelicTier RELIC_TIER = RelicTier.RARE;
+    private static final RelicTier RELIC_TIER = RelicTier.COMMON;
     private static final LandingSound RELIC_SOUND = LandingSound.CLINK;
     private static final int DEXTERITY_NUMBER = 1;
     private static final int MAX_DEX_NUMBER = 3;

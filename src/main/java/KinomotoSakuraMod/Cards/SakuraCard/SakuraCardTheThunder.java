@@ -1,5 +1,6 @@
 package KinomotoSakuraMod.Cards.SakuraCard;
 
+import KinomotoSakuraMod.Actions.KSMOD_ThunderAction;
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheThunder;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
@@ -77,6 +78,6 @@ public class SakuraCardTheThunder extends KSMOD_AbstractMagicCard
             count += player.getPower(KSMOD_MagickChargePower.POWER_ID).amount;
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(player, player, KSMOD_MagickChargePower.POWER_ID));
         }
-        AbstractDungeon.actionManager.addToBottom(new ThunderStrikeAction(AbstractDungeon.getRandomMonster(), new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), count));
+        AbstractDungeon.actionManager.addToBottom(new KSMOD_ThunderAction(new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), count));
     }
 }
