@@ -23,7 +23,7 @@ public class KSMOD_CompassAction extends AbstractGameAction
     {
         this.actionType = ActionType.CARD_MANIPULATION;
         this.duration = DURATION;
-        voidAmount = voidAmount;
+        this.voidAmount = voidAmount;
     }
 
     public void update()
@@ -51,7 +51,11 @@ public class KSMOD_CompassAction extends AbstractGameAction
                     }
 
                     card.setCostForTurn(0);
-                    AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new VoidCard(), voidAmount));
+                    if (voidAmount > 0)
+                    {
+                        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new VoidCard(), voidAmount));
+                        AbstractDungeon.player.masterDeck.addToBottom(card.makeCopy());
+                    }
                     AbstractDungeon.cardRewardScreen.discoveryCard = null;
                 }
 

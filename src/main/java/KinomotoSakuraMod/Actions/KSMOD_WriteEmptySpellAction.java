@@ -19,7 +19,6 @@ public class KSMOD_WriteEmptySpellAction extends AbstractGameAction
     public static final String ACTION_ID = "KSMOD_WriteEmptySpellAction";
     private static final String[] TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
-    private AbstractPlayer player;
 
     static
     {
@@ -32,7 +31,6 @@ public class KSMOD_WriteEmptySpellAction extends AbstractGameAction
         this.setValues(AbstractDungeon.player, AbstractDungeon.player);
         this.actionType = ActionType.CARD_MANIPULATION;
         this.duration = DURATION;
-        this.player = AbstractDungeon.player;
     }
 
     public void update()
@@ -44,21 +42,13 @@ public class KSMOD_WriteEmptySpellAction extends AbstractGameAction
         }
         if (this.duration == DURATION)
         {
-            CardGroup group = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-            group.addToBottom(new SpellCardHuoShen());
-            group.addToBottom(new SpellCardLeiDi());
-            group.addToBottom(new SpellCardFengHua());
-            group.addToBottom(new SpellCardShuiLong());
-            AbstractDungeon.gridSelectScreen.open(group, 1, false, TEXT[0]);
+            AbstractDungeon.cardRewardScreen.discoveryOpen();
             this.tickDuration();
             return;
         }
-        if (AbstractDungeon.gridSelectScreen.selectedCards.size() > 0)
+        if (AbstractDungeon.cardRewardScreen.discoveryCard != null)
         {
-            for (AbstractCard card:AbstractDungeon.gridSelectScreen.selectedCards)
-            {
-                AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(card.makeStatEquivalentCopy()));
-            }
+            AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(AbstractDungeon.cardRewardScreen.discoveryCard.makeStatEquivalentCopy()));
             this.isDone = true;
         }
         this.tickDuration();
