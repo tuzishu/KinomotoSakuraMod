@@ -20,8 +20,8 @@ import java.util.ArrayList;
 public class KSMOD_StarWand extends CustomRelic
 {
     public static final String RELIC_ID = "KSMOD_StarWand";
-    private static final String RELIC_IMG_PATH = "img/relics/icon/default.png";
-    private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/default.png";
+    private static final String RELIC_IMG_PATH = "img/relics/icon/star_wand.png";
+    private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/star_wand.png";
     private static final RelicTier RELIC_TIER = RelicTier.BOSS;
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
     private static final int START_COUNT = 0;
