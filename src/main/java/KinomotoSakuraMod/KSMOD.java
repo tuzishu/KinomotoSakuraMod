@@ -213,7 +213,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         cardList.add(new SpellCardFengHua());
         cardList.add(new SpellCardShuiLong());
 
-        cardList.add(new TestCard());
+        // cardList.add(new TestCard());
 
         return cardList;
     }
