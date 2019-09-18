@@ -40,6 +40,7 @@ public class SakuraCardTheIllusion extends KSMOD_AbstractMagicCard
         this.tags.add(KSMOD_CustomTag.KSMOD_FIREY_CARD);
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
         this.exhaust = true;
+        this.isInnate = true;
     }
 
     @Override

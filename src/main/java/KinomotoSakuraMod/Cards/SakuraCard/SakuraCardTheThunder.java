@@ -7,10 +7,7 @@ import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.actions.defect.ThunderStrikeAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -32,6 +29,7 @@ public class SakuraCardTheThunder extends KSMOD_AbstractMagicCard
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.NONE;
     private static final int BASE_DAMAGE = 12;
+    private static final int BASE_MAGIC_NUMBER = 2;
 
     static
     {
@@ -43,8 +41,9 @@ public class SakuraCardTheThunder extends KSMOD_AbstractMagicCard
     public SakuraCardTheThunder()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
-        this.tags.add(KSMOD_CustomTag.KSMOD_FIREY_CARD);
+        this.tags.add(KSMOD_CustomTag.KSMOD_EARTHY_CARD);
         this.baseDamage = BASE_DAMAGE;
+        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
     @Override
@@ -78,6 +77,7 @@ public class SakuraCardTheThunder extends KSMOD_AbstractMagicCard
             count += player.getPower(KSMOD_MagickChargePower.POWER_ID).amount;
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(player, player, KSMOD_MagickChargePower.POWER_ID));
         }
+        count /= BASE_MAGIC_NUMBER;
         AbstractDungeon.actionManager.addToBottom(new KSMOD_ThunderAction(new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), count));
     }
 }

@@ -1,18 +1,19 @@
 package KinomotoSakuraMod.Powers;
 
-import com.megacrit.cardcrawl.cards.DamageInfo;
+import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheVoice;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 
-public class KSMOD_LittlePower_SakuraCard extends KSMOD_CustomPower
+public class KSMOD_VoicePower_SakuraCard extends KSMOD_CustomPower
 {
-    public static final String POWER_ID = "KSMOD_LittlePower_SakuraCard";
+    public static final String POWER_ID = "KSMOD_VoicePower_SakuraCard";
     private static final String POWER_NAME;
     private static final String[] POWER_DESCRIPTIONS;
     private static final String POWER_IMG_PATH = "img/powers/default_power.png";
     private static final PowerType POWER_TYPE = PowerType.BUFF;
-    private static final float REDUCE_RATE = 0.25F;
 
     static
     {
@@ -21,7 +22,7 @@ public class KSMOD_LittlePower_SakuraCard extends KSMOD_CustomPower
         POWER_DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     }
 
-    public KSMOD_LittlePower_SakuraCard(AbstractCreature target, int amount)
+    public KSMOD_VoicePower_SakuraCard(AbstractCreature target, int amount)
     {
         super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, amount);
         this.updateDescription();
@@ -29,11 +30,14 @@ public class KSMOD_LittlePower_SakuraCard extends KSMOD_CustomPower
 
     public void updateDescription()
     {
-        this.description = POWER_DESCRIPTIONS[0] + (int) (REDUCE_RATE * 100) + POWER_DESCRIPTIONS[1];
+        this.description = POWER_DESCRIPTIONS[0] + this.amount + POWER_DESCRIPTIONS[1];
     }
 
-    public float atDamageReceive(float damage, DamageInfo.DamageType damageType)
+    public void atEndOfTurn(boolean isPlayer)
     {
-        return damage * (1F - REDUCE_RATE);
+        if (isPlayer)
+        {
+            AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new ClowCardTheVoice(), this.amount));
+        }
     }
 }

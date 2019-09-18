@@ -9,8 +9,8 @@
   },
   "ClowCardTheBig": {
     "NAME": "大",
-    "DESCRIPTION": "「 地 」获得3点 力量 ，失去2点 敏捷 。",
-    "UPGRADE_DESCRIPTION": "「 地 」获得3点 力量。",
+    "DESCRIPTION": "「 火 」获得3点 力量 ，失去2点 敏捷 。",
+    "UPGRADE_DESCRIPTION": "「 火 」获得3点 力量。",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheBubbles": {
@@ -346,7 +346,7 @@
   },
   "ClowCardTheThunder": {
     "NAME": "雷",
-    "DESCRIPTION": "「 火 」对随机敌人造成 !D! 点伤害3次。将1张 虚空 加入弃牌堆。",
+    "DESCRIPTION": "「 地 」对随机敌人造成 !D! 点伤害3次。将1张 虚空 加入弃牌堆。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外造成",
@@ -397,7 +397,7 @@
   "ClowCardTheWood": {
     "NAME": "树",
     "DESCRIPTION": "「 地 」使目标失去 !M!  力量 1回合。",
-    "UPGRADE_DESCRIPTION": "「 地 」使目标失去 !M!  力量 1回合，并给于5层 缠绕 。",
+    "UPGRADE_DESCRIPTION": "「 地 」使目标失去 !M!  力量 1回合，并将场上所有的 中毒 移动至目标处。",
     "EXTENDED_DESCRIPTION": [
       "额外给与",
       "层 虚弱 。"
@@ -425,7 +425,7 @@
   },
   "SpellCardEmptySpell": {
     "NAME": "空道符",
-    "DESCRIPTION": " 消耗 。从 火神 、 雷帝 、 风华 、 水龙 四张 符咒 中选择1张加入手牌。",
+    "DESCRIPTION": " 虚无 。 消耗 。从 火神 、 雷帝 、 风华 、 水龙 四张 符咒 中选择1张加入手牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -463,19 +463,19 @@
   },
   "SakuraCardTheBig": {
     "NAME": "大",
-    "DESCRIPTION": "「 小樱牌 」「 地 」造成的伤害增加50%。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」造成的伤害增加25%。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheBubbles": {
     "NAME": "泡",
-    "DESCRIPTION": "「 小樱牌 」「 水 」 消耗 。对全体敌人造成 !D! 点伤害，并清除所有增益。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」 保留 。 消耗 。对全体敌人造成 !D! 点伤害，并清除所有增益。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheChange": {
     "NAME": "替",
-    "DESCRIPTION": "「 小樱牌 」「 地 」 消耗 。丢弃所有手牌，并抽 !M! 张牌。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」丢弃所有手牌，并抽 !M! 张牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -565,7 +565,7 @@
   },
   "SakuraCardTheIllusion": {
     "NAME": "幻",
-    "DESCRIPTION": "「 小樱牌 」「 火 」 消耗 。给与 !M! 层 虚弱 和 !M! 层 易伤 。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」 固有 。 消耗 。给与 !M! 层 虚弱 和 !M! 层 易伤 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -583,13 +583,13 @@
   },
   "SakuraCardTheLight": {
     "NAME": "光",
-    "DESCRIPTION": "「 小樱牌 」「 地 」「 火 」 消耗 。 消耗 手牌、抽牌堆、弃牌堆中的所有状态牌和诅咒牌。每 消耗 1张，恢复1生命。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」「 火 」 消耗 手牌、抽牌堆、弃牌堆中的所有状态牌和诅咒牌。每 消耗 1张，恢复1生命。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheLittle": {
     "NAME": "小",
-    "DESCRIPTION": "「 小樱牌 」「 地 」受到的伤害减少50%。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」受到的伤害减少25%。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -607,7 +607,7 @@
   },
   "SakuraCardTheMaze": {
     "NAME": "迷",
-    "DESCRIPTION": "「 小樱牌 」「 地 」获得 !B! 点 格挡 。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」获得 !B! 点 格挡  !M! 次。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -679,7 +679,7 @@
   },
   "SakuraCardTheSleep": {
     "NAME": "睡",
-    "DESCRIPTION": "「 小樱牌 」「 风 」 消耗 。 使目标 沉睡  !M! 回合。",
+    "DESCRIPTION": "「 小樱牌 」「 风 」 消耗 。使非boss目标沉睡 !M! 回合，受到伤害时会醒来。自然醒来时将恢复所有生命值，并获得2层 虚弱 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -721,13 +721,13 @@
   },
   "SakuraCardTheThunder": {
     "NAME": "雷",
-    "DESCRIPTION": "「 小樱牌 」「 火 」获得X层 魔力充能 ，并消耗所有 魔力充能 ，每消耗1层对随机敌人造成 !D! 点伤害。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」获得X层 魔力充能 ，并消耗所有 魔力充能 ，每消耗 !M! 层对随机敌人造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheTime": {
     "NAME": "时",
-    "DESCRIPTION": "「 小樱牌 」「 水 」 消耗 。对全体敌人造成 !D! 点伤害。并打断敌人的行动 !M! 回合。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」 消耗 。对全体敌人造成 !D! 点伤害。并打断敌人的行动 !M! 回合。将1张 虚空 放入弃牌堆。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -739,7 +739,7 @@
   },
   "SakuraCardTheVoice": {
     "NAME": "声",
-    "DESCRIPTION": "「 小樱牌 」「 风 」无法被打出。抽到这张牌时，额外抽1张牌。被消耗时获得 !B! 点 格挡，回复1点能量 。被 歌牌 消耗时，额外触发 !M! 次歌牌的效果。",
+    "DESCRIPTION": "「 小樱牌 」「 风 」回合结束时，添加 !M! 张 声牌 到弃牌堆。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

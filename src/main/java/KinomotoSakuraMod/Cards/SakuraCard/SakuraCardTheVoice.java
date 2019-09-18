@@ -4,10 +4,9 @@ import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheVoice;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
+import KinomotoSakuraMod.Powers.KSMOD_VoicePower_SakuraCard;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -20,13 +19,12 @@ public class SakuraCardTheVoice extends KSMOD_AbstractMagicCard
     private static final String NAME;
     private static final String DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/sakuracard/the_voice.png";
-    private static final int COST = -2;
-    private static final CardType CARD_TYPE = CardType.SKILL;
+    private static final int COST = 1;
+    private static final CardType CARD_TYPE = CardType.POWER;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SAKURACARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
-    private static final CardTarget CARD_TARGET = CardTarget.NONE;
-    private static final int BASE_BLOCK = 6;
-    private static final int BASE_MAGIC_NUMBER = 4;
+    private static final CardTarget CARD_TARGET = CardTarget.SELF;
+    private static final int BASE_MAGIC_NUMBER = 2;
 
     static
     {
@@ -41,7 +39,6 @@ public class SakuraCardTheVoice extends KSMOD_AbstractMagicCard
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(KSMOD_CustomTag.KSMOD_WINDY_CARD);
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
-        this.baseBlock = BASE_BLOCK;
     }
 
     @Override
@@ -68,24 +65,6 @@ public class SakuraCardTheVoice extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-    }
-
-    public boolean canUse(AbstractPlayer player, AbstractMonster monster)
-    {
-        return false;
-    }
-
-    public void triggerWhenDrawn()
-    {
-        applyPowers();
-        AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player, 1));
-    }
-
-    public void triggerOnExhaust()
-    {
-        applyPowers();
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, this.block));
-        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
-        super.triggerOnExhaust();
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_VoicePower_SakuraCard(player, this.magicNumber)));
     }
 }

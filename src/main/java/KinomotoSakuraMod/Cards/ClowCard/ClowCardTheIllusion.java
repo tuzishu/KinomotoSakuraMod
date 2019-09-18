@@ -26,9 +26,9 @@ public class ClowCardTheIllusion extends KSMOD_AbstractMagicCard
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
     private static final int BASE_BLOCK = 6;
-    private static final int UPGRADE_BLOCK = 4;
+    private static final int UPGRADE_BLOCK = 2;
     private static final int BASE_MAGIC_NUMBER = 2;
-    private static final int UPGRADE_MAGIC_NUMBER = 1;
+    private static final int UPGRADE_MAGIC_NUMBER = 2;
     private static final int INCREASE_NUMBER = 3;
     private static final int CHARGED_INCREASE_NUMBER = 2;
 
@@ -54,7 +54,7 @@ public class ClowCardTheIllusion extends KSMOD_AbstractMagicCard
         if (!this.upgraded)
         {
             upgradeName();
-            this.upgradeDamage(UPGRADE_BLOCK);
+            this.upgradeBlock(UPGRADE_BLOCK);
             this.upgradeMagicNumber(UPGRADE_MAGIC_NUMBER);
         }
     }

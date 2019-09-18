@@ -23,7 +23,8 @@ public class SakuraCardTheMaze extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SAKURACARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
-    private static final int BASE_BLOCK = 25;
+    private static final int BASE_BLOCK = 10;
+    private static final int BASE_MAGIC_NUMBER = 3;
 
     static
     {
@@ -37,6 +38,7 @@ public class SakuraCardTheMaze extends KSMOD_AbstractMagicCard
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(KSMOD_CustomTag.KSMOD_EARTHY_CARD);
         this.baseBlock = BASE_BLOCK;
+        this.setBaseMagicNumber(3);
     }
 
     @Override
@@ -63,6 +65,9 @@ public class SakuraCardTheMaze extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
+        for (int i = 0; i < this.magicNumber; i++)
+        {
+            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
+        }
     }
 }

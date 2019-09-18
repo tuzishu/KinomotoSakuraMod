@@ -5,15 +5,14 @@ import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.GainStrengthPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
-import com.megacrit.cardcrawl.powers.WeakPower;
+import com.megacrit.cardcrawl.powers.*;
 
 public class ClowCardTheWood extends KSMOD_AbstractMagicCard
 {
@@ -68,18 +67,41 @@ public class ClowCardTheWood extends KSMOD_AbstractMagicCard
         AbstractDungeon.actionManager.addToBottom(new SFXAction(SOUND_KEY, 0.05F));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new StrengthPower(monster, -this.magicNumber), -this.magicNumber));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new GainStrengthPower(monster, this.magicNumber), this.magicNumber));
+        if (upgraded)
+        {
+            GatherPosion(player, monster);
+        }
     }
 
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new SFXAction(SOUND_KEY, 0.05F));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new StrengthPower(monster, -this.magicNumber), -this.magicNumber));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new GainStrengthPower(monster, this.magicNumber), this.magicNumber));
+        applyNormalEffect(player, monster);
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new WeakPower(monster, KSMOD_SealedBook.WEAKENED_NUMBER, false), KSMOD_SealedBook.WEAKENED_NUMBER));
     }
 
     public String getExtraDescription()
     {
         return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.WEAKENED_NUMBER + EXTENDED_DESCRIPTION[1];
+    }
+
+    private void GatherPosion(AbstractPlayer player, AbstractMonster monster)
+    {
+        int count = 0;
+        for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters)
+        {
+            if (mon.hasPower(PoisonPower.POWER_ID))
+            {
+                AbstractPower power = mon.getPower(PoisonPower.POWER_ID);
+                count += power.amount;
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(mon, player, power));
+            }
+        }
+        if (player.hasPower(PoisonPower.POWER_ID))
+        {
+            AbstractPower power = player.getPower(PoisonPower.POWER_ID);
+            count += power.amount;
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(player, player, power));
+        }
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new PoisonPower(monster, player, count)));
     }
 }

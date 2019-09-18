@@ -24,6 +24,7 @@ public class ClowCardTheCreate extends KSMOD_AbstractMagicCard
     private static final String UPGRADE_DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_create.png";
     private static final int COST = 4;
+    private static final int UPGRADED_COST = 0;
     private static final CardType CARD_TYPE = CardType.POWER;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.RARE;
@@ -52,7 +53,7 @@ public class ClowCardTheCreate extends KSMOD_AbstractMagicCard
         if (!this.upgraded)
         {
             upgradeName();
-            this.retain = true;
+            this.upgradeBaseCost(UPGRADED_COST);
             this.rawDescription = UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }

@@ -36,6 +36,7 @@ public class ClowCardTheTime extends KSMOD_AbstractMagicCard
     private static final CardRarity CARD_RARITY = CardRarity.RARE;
     private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
     private static final int BASE_DAMAGE = 12;
+    private static final int VOID_NUMBER = 2;
 
     static
     {
@@ -74,27 +75,8 @@ public class ClowCardTheTime extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        ArrayList<AbstractMonster> monsters = AbstractDungeon.getMonsters().monsters;
-        for (int i = 0; i < monsters.size(); i++)
-        {
-            AbstractMonster mon = monsters.get(i);
-            if (mon.hasPower(ArtifactPower.POWER_ID))
-            {
-                int artiAmount = mon.getPower(ArtifactPower.POWER_ID).amount;
-                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(mon, player, ArtifactPower.POWER_ID));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new KSMOD_TimePower(mon, 1), 1));
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new ArtifactPower(mon, artiAmount), artiAmount));
-            }
-            else
-            {
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new KSMOD_TimePower(mon, 1), 1));
-            }
-        }
-        if (upgraded)
-        {
-            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage), DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.POISON));
-        }
-        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new VoidCard(), 2));
+        applyExtraEffect(player, monster);
+        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new VoidCard(), VOID_NUMBER));
     }
 
     @Override

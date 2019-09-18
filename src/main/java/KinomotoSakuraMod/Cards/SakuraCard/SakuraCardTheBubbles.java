@@ -41,6 +41,7 @@ public class SakuraCardTheBubbles extends KSMOD_AbstractMagicCard
         this.tags.add(KSMOD_CustomTag.KSMOD_WATERY_CARD);
         this.baseDamage = BASE_DAMAGE;
         this.exhaust = true;
+        this.retain = true;
     }
 
     @Override

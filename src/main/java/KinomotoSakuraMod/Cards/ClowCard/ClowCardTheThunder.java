@@ -6,7 +6,6 @@ import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
-import com.megacrit.cardcrawl.actions.defect.ThunderStrikeAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.status.VoidCard;
@@ -28,7 +27,7 @@ public class ClowCardTheThunder extends KSMOD_AbstractMagicCard
     private static final AbstractCard.CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.RARE;
     private static final CardTarget CARD_TARGET = CardTarget.NONE;
-    private static final int BASE_DAMAGE = 12;
+    private static final int BASE_DAMAGE = 10;
     private static final int UPGRADE_DAMAGE = 4;
     private static final int ATTACK_COUNT = 3;
 
@@ -43,7 +42,7 @@ public class ClowCardTheThunder extends KSMOD_AbstractMagicCard
     public ClowCardTheThunder()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
-        this.tags.add(KSMOD_CustomTag.KSMOD_FIREY_CARD);
+        this.tags.add(KSMOD_CustomTag.KSMOD_EARTHY_CARD);
         this.baseDamage = BASE_DAMAGE;
     }
 

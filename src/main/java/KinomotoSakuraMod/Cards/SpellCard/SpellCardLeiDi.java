@@ -1,5 +1,6 @@
 package KinomotoSakuraMod.Cards.SpellCard;
 
+import KinomotoSakuraMod.Actions.KSMOD_ThunderAction;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractSpellCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
@@ -62,6 +63,6 @@ public class SpellCardLeiDi extends KSMOD_AbstractSpellCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ThunderStrikeAction(AbstractDungeon.getRandomMonster(), new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), 1));
+        AbstractDungeon.actionManager.addToBottom(new KSMOD_ThunderAction(new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL)));
     }
 }
