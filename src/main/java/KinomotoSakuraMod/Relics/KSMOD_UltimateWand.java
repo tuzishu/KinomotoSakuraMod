@@ -26,8 +26,8 @@ import java.util.ArrayList;
 public class KSMOD_UltimateWand extends CustomRelic
 {
     public static final String RELIC_ID = "KSMOD_UltimateWand";
-    private static final String RELIC_IMG_PATH = "img/relics/icon/default.png";
-    private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/default.png";
+    private static final String RELIC_IMG_PATH = "img/relics/icon/ultimate_wand.png";
+    private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/ultimate_wand.png";
     private static final RelicTier RELIC_TIER = RelicTier.SPECIAL;
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
     private static final int START_COUNT = 0;
