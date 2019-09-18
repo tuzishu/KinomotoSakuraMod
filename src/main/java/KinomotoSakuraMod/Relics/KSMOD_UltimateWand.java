@@ -63,20 +63,20 @@ public class KSMOD_UltimateWand extends CustomRelic
         return new KSMOD_UltimateWand();
     }
 
-    public void obtain()
-    {
-        AbstractRelic oldWand = AbstractDungeon.player.getRelic(KSMOD_StarWand.RELIC_ID);
-        this.counter = oldWand.counter;
-        int targetIndex = AbstractDungeon.player.relics.indexOf(oldWand);
-        if (AbstractDungeon.player.hasRelic(KSMOD_StarWand.RELIC_ID))
-        {
-            this.instantObtain(AbstractDungeon.player, targetIndex, false);
-        }
-        else
-        {
-            super.obtain();
-        }
-    }
+    // public void obtain()
+    // {
+    //     AbstractRelic oldWand = AbstractDungeon.player.getRelic(KSMOD_StarWand.RELIC_ID);
+    //     this.counter = oldWand.counter;
+    //     int targetIndex = AbstractDungeon.player.relics.indexOf(oldWand);
+    //     if (AbstractDungeon.player.hasRelic(KSMOD_StarWand.RELIC_ID))
+    //     {
+    //         this.instantObtain(AbstractDungeon.player, targetIndex, false);
+    //     }
+    //     else
+    //     {
+    //         super.obtain();
+    //     }
+    // }
 
     public void atPreBattle()
     {

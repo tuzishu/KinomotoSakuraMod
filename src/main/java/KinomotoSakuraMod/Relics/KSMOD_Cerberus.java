@@ -40,6 +40,24 @@ public class KSMOD_Cerberus extends CustomRelic
         return new KSMOD_Cerberus();
     }
 
+    public void obtain()
+    {
+        if (AbstractDungeon.player.hasRelic(KSMOD_StarWand.RELIC_ID) && AbstractDungeon.player.hasRelic(KSMOD_Yue.RELIC_ID))
+        {
+            AbstractRelic oldWand = AbstractDungeon.player.getRelic(KSMOD_StarWand.RELIC_ID);
+            int targetIndex = AbstractDungeon.player.relics.indexOf(oldWand);
+            KSMOD_UltimateWand wand = new KSMOD_UltimateWand();
+            wand.counter = oldWand.counter;
+            wand.instantObtain(AbstractDungeon.player, targetIndex, true);
+            AbstractDungeon.player.loseRelic(KSMOD_StarWand.RELIC_ID);
+            AbstractDungeon.player.loseRelic(KSMOD_Yue.RELIC_ID);
+        }
+        else
+        {
+            super.obtain();
+        }
+    }
+
     public void atBattleStart()
     {
         this.setCounter(0);

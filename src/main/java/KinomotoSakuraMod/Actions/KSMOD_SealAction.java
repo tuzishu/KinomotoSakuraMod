@@ -2,6 +2,7 @@ package KinomotoSakuraMod.Actions;
 
 import KinomotoSakuraMod.Relics.KSMOD_SealedWand;
 import KinomotoSakuraMod.Relics.KSMOD_StarWand;
+import KinomotoSakuraMod.Relics.KSMOD_UltimateWand;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -40,6 +41,11 @@ public class KSMOD_SealAction extends AbstractGameAction
                 else if (AbstractDungeon.player.hasRelic(KSMOD_StarWand.RELIC_ID))
                 {
                     KSMOD_StarWand wand = (KSMOD_StarWand) AbstractDungeon.player.getRelic(KSMOD_StarWand.RELIC_ID);
+                    wand.GainCharge(chargeAmount);
+                }
+                else if (AbstractDungeon.player.hasRelic(KSMOD_UltimateWand.RELIC_ID))
+                {
+                    KSMOD_UltimateWand wand = (KSMOD_UltimateWand) AbstractDungeon.player.getRelic(KSMOD_UltimateWand.RELIC_ID);
                     wand.GainCharge(chargeAmount);
                 }
             }

@@ -53,11 +53,22 @@ public class KSMOD_StarWand extends CustomRelic
     public void obtain()
     {
         AbstractRelic oldWand = AbstractDungeon.player.getRelic(KSMOD_SealedWand.RELIC_ID);
-        this.counter = oldWand.counter;
         int targetIndex = AbstractDungeon.player.relics.indexOf(oldWand);
         if (AbstractDungeon.player.hasRelic(KSMOD_SealedWand.RELIC_ID))
         {
-            this.instantObtain(AbstractDungeon.player, targetIndex, false);
+            if (AbstractDungeon.player.hasRelic(KSMOD_Cerberus.RELIC_ID) && AbstractDungeon.player.hasRelic(KSMOD_Yue.RELIC_ID))
+            {
+                KSMOD_UltimateWand wand = new KSMOD_UltimateWand();
+                wand.counter = oldWand.counter;
+                wand.instantObtain(AbstractDungeon.player, targetIndex, true);
+                AbstractDungeon.player.loseRelic(KSMOD_Cerberus.RELIC_ID);
+                AbstractDungeon.player.loseRelic(KSMOD_Yue.RELIC_ID);
+            }
+            else
+            {
+                this.counter = oldWand.counter;
+                this.instantObtain(AbstractDungeon.player, targetIndex, false);
+            }
         }
         else
         {

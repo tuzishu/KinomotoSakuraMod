@@ -18,7 +18,7 @@ public class KSMOD_DarknessWand extends CustomRelic
     private static final RelicTier RELIC_TIER = RelicTier.BOSS;
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
     private static final int CHARGE_NUMBER = 2;
-    private static final int STRENGTH_NUMBER = 2;
+    private static final int STRENGTH_NUMBER = 3;
 
     public KSMOD_DarknessWand()
     {
@@ -27,7 +27,7 @@ public class KSMOD_DarknessWand extends CustomRelic
 
     public String getUpdatedDescription()
     {
-        return this.DESCRIPTIONS[0] + (int) (SpellCardRelease.BASE_RELEASE_UPGRADE_RATE * 100) + this.DESCRIPTIONS[1] + (int) (SpellCardRelease.UPGRADE_RELEASE_UPGRADE_RATE * 100) + this.DESCRIPTIONS[2];
+        return this.DESCRIPTIONS[0] + CHARGE_NUMBER + this.DESCRIPTIONS[1] + STRENGTH_NUMBER + this.DESCRIPTIONS[2];
     }
 
     public AbstractRelic makeCopy()
