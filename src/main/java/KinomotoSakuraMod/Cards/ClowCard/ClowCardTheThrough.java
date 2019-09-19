@@ -90,7 +90,7 @@ public class ClowCardTheThrough extends KSMOD_AbstractMagicCard
         {
             if (mon.hasPower(PoisonPower.POWER_ID))
             {
-                AbstractPower power = player.getPower(PoisonPower.POWER_ID);
+                AbstractPower power = mon.getPower(PoisonPower.POWER_ID);
                 int poisonAmount = power.amount + this.magicNumber;
                 int totalDamage = poisonAmount * (poisonAmount + 1) / 2;
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(mon, new DamageInfo(player, totalDamage, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.POISON, true));
@@ -110,7 +110,7 @@ public class ClowCardTheThrough extends KSMOD_AbstractMagicCard
         {
             if (mon.hasPower(PoisonPower.POWER_ID))
             {
-                AbstractPower power = player.getPower(PoisonPower.POWER_ID);
+                AbstractPower power = mon.getPower(PoisonPower.POWER_ID);
                 int poisonAmount = power.amount + this.magicNumber;
                 int totalDamage = poisonAmount * (poisonAmount + 1) / 2;
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(mon, new DamageInfo(player, totalDamage, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.POISON, true));

@@ -40,8 +40,8 @@
   },
   "ClowCardTheCreate": {
     "NAME": "创",
-    "DESCRIPTION": "「 地 」「 风 」战斗结束后获得1个随机遗物。不可被 镜牌 复制。",
-    "UPGRADE_DESCRIPTION": "「 地 」「 风 」 保留 。战斗结束后获得1个随机遗物。不可被 镜牌 复制。",
+    "DESCRIPTION": "「 地 」「 风 」战斗结束后获得1个随机遗物，并将此卡从卡组中移除。不可被 镜牌 复制。",
+    "UPGRADE_DESCRIPTION": "「 地 」「 风 」 保留 。战斗结束后获得1个随机遗物，并将此卡从卡组中移除。不可被 镜牌 复制。",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheDark": {
@@ -338,7 +338,7 @@
   "ClowCardTheThrough": {
     "NAME": "拔",
     "DESCRIPTION": "「 地 」对全体敌人造成 !D! 点伤害，并直接结算 中毒 效果。将1张 虚空 放入弃牌堆。",
-    "UPGRADE_DESCRIPTION": "Null",
+    "UPGRADE_DESCRIPTION": "「 地 」对全体敌人造成 !D! 点伤害，加深 中毒  !M! 层，并直接结算 中毒 效果。将1张 虚空 放入弃牌堆。",
     "EXTENDED_DESCRIPTION": [
       "额外造成最大生命",
       "%的伤害。"
@@ -601,7 +601,7 @@
   },
   "SakuraCardTheLoop": {
     "NAME": "轮",
-    "DESCRIPTION": "「 小樱牌 」「 火 」每主动丢弃1张没有丢弃效果的手牌，抽 !M! 张牌。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」每主动丢弃1张卡，抽 !M! 张牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
