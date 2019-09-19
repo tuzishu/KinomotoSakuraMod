@@ -54,8 +54,8 @@ public class KSMOD_ImageConst
     // 卡牌闪光效果
     public static final String FLASH_PATH = "img/cardui/general/flash/flash.png";
     // 角色图片素材路径
-    public static final String SELECT_BUTTON_PATH = "img/charSelect/MarisaButton.png";
-    public static final String PORTRAIT_PATH = "img/charSelect/marisaPortrait.jpg";
+    public static final String SELECT_BUTTON_PATH = "img/charSelect/button.png";
+    public static final String PORTRAIT_PATH = "img/charSelect/portrait.png";
     // 能量栏
     public static final String[] ORB_TEXTURES = {
             "img/UI/EPanel/layer5.png",
