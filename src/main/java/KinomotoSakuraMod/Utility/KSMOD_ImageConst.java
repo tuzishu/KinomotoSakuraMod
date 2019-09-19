@@ -70,7 +70,7 @@ public class KSMOD_ImageConst
             "img/UI/EPanel/layer2d.png",
             "img/UI/EPanel/layer1d.png"
     };
-    public static final String ORB_VFX = "img/UI/energyBlueVFX.png";
+    public static final String ORB_VFX = "img/UI/EPanel/energyBlueVFX.png";
     // 角色资源
     public static final String IDLE_IMAGE_PATH = "img/char/Sakura/sakura_idle_static.png";
     public static final String CORPSE_IMAGE_PATH = "img/char/Marisa/fallen.png";

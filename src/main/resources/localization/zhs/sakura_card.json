@@ -242,11 +242,11 @@
   },
   "ClowCardTheSand": {
     "NAME": "沙",
-    "DESCRIPTION": "「 地 」造成 !D! 点伤害。",
+    "DESCRIPTION": "「 地 」造成 !D! 点伤害，给与 !M! 层 中毒 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "额外获得",
-      "点 格挡 。"
+      "额外给与",
+      "层 中毒 。"
     ]
   },
   "ClowCardTheShadow": {
@@ -337,7 +337,7 @@
   },
   "ClowCardTheThrough": {
     "NAME": "拔",
-    "DESCRIPTION": "「 地 」对全体敌人造成 !D! + 魔力充能 数量 !M! 倍的伤害。将1张 虚空 放入弃牌堆。",
+    "DESCRIPTION": "「 地 」对全体敌人造成 !D! 点伤害，并直接结算 中毒 效果。将1张 虚空 放入弃牌堆。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外造成最大生命",
@@ -649,7 +649,7 @@
   },
   "SakuraCardTheSand": {
     "NAME": "沙",
-    "DESCRIPTION": "「 小樱牌 」「 地 」造成 !D! 点伤害，获得 !B! 点 格挡 ，给与 !M! 层 易伤 。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」造成 !D! 点伤害，给与 !M! 层 中毒 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

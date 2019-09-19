@@ -19,6 +19,7 @@ public class ClowCardTheWood extends KSMOD_AbstractMagicCard
     public static final String ID = "ClowCardTheWood";
     private static final String NAME;
     private static final String DESCRIPTION;
+    private static final String UPGRADE_DESCRIPTION;
     private static final String[] EXTENDED_DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_wood.png";
     private static final int COST = 1;
@@ -35,6 +36,7 @@ public class ClowCardTheWood extends KSMOD_AbstractMagicCard
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
         NAME = cardStrings.NAME;
         DESCRIPTION = cardStrings.DESCRIPTION;
+        UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
         EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     }
 
@@ -50,8 +52,10 @@ public class ClowCardTheWood extends KSMOD_AbstractMagicCard
     {
         if (!this.upgraded)
         {
-            upgradeName();
+            this.upgradeName();
             this.upgradeMagicNumber(UPGRADE_MAGIC_NUMBER);
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            this.initializeDescription();
         }
     }
 

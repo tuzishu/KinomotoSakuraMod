@@ -98,22 +98,6 @@ public class KinomotoSakura extends CustomPlayer
         startCards.add(SpellCardRelease.ID);
 
         return startCards;
-
-        // 元素、物理各一半
-        // ArrayList<String> startCards_2 = new ArrayList<String>();
-        //
-        // startCards_2.add(ClowCardTheSword.ID);
-        // startCards_2.add(ClowCardTheSword.ID);
-        // startCards_2.add(ClowCardTheSword.ID);
-        // startCards_2.add(ClowCardTheSword.ID);
-        // startCards_2.add(ClowCardTheShield.ID);
-        // startCards_2.add(ClowCardTheShield.ID);
-        // startCards_2.add(ClowCardTheShield.ID);
-        // startCards_2.add(ClowCardTheShield.ID);
-        // startCards_2.add(ClowCardTheWood.ID);
-        // startCards_2.add(SpellCardRelease.ID);
-        //
-        // return startCards_2;
     }
 
     public ArrayList<String> getStartingRelics()
