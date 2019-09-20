@@ -6,20 +6,6 @@
       " 后可发动卡牌的额外效果。"
     ]
   },
-  "KSMOD_CloudPower": {
-    "NAME": "云层",
-    "DESCRIPTIONS": [
-      "下 #b",
-      " 张 雨牌 、 雪牌 、 岚牌 、 雷牌 、 雾牌 将被额外打出1次。"
-    ]
-  },
-  "KSMOD_CloudPower_SakuraCard": {
-    "NAME": "云层·樱",
-    "DESCRIPTIONS": [
-      "下 #b",
-      " 张 水元素牌 将被额外打出1次。"
-    ]
-  },
   "KSMOD_CreatePower": {
     "NAME": "创造",
     "DESCRIPTIONS": [

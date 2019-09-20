@@ -3,8 +3,10 @@ package KinomotoSakuraMod.Cards.ClowCard;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
-import KinomotoSakuraMod.Powers.KSMOD_CloudPower;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import KinomotoSakuraMod.Powers.KSMOD_WateryPower;
+import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -23,8 +25,8 @@ public class ClowCardTheCloud extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
-    private static final int BASE_MAGIC_NUMBER = 1;
-    private static final int UPGRADE_MAGIC_NUMBER = 1;
+    private static final int BASE_BLOCK = 4;
+    private static final int UPGRADE_BLOCK = 2;
 
     static
     {
@@ -38,8 +40,7 @@ public class ClowCardTheCloud extends KSMOD_AbstractMagicCard
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
         this.tags.add(KSMOD_CustomTag.KSMOD_WATERY_CARD);
-        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
-        this.exhaust = true;
+        this.baseBlock = BASE_BLOCK;
     }
 
     @Override
@@ -48,7 +49,7 @@ public class ClowCardTheCloud extends KSMOD_AbstractMagicCard
         if (!this.upgraded)
         {
             this.upgradeName();
-            this.upgradeMagicNumber(UPGRADE_MAGIC_NUMBER);
+            this.upgradeBlock(UPGRADE_BLOCK);
         }
     }
 
@@ -61,20 +62,30 @@ public class ClowCardTheCloud extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        this.exhaust = true;
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_CloudPower(player, this.magicNumber), this.magicNumber));
+        int count = 1;
+        for (AbstractCard card: AbstractDungeon.player.hand.group)
+        {
+            if (card.hasTag(KSMOD_CustomTag.KSMOD_WATERY_CARD))
+            {
+                count += 1;
+            }
+        }
+        for (int i = 0; i < count; i++)
+        {
+            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
+        }
     }
 
     @Override
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        this.exhaust = false;
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_CloudPower(player, this.magicNumber), this.magicNumber));
+        this.applyNormalEffect(player, monster);
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, KSMOD_SealedBook.BASE_BLOCK));
     }
 
     @Override
     public String getExtraDescription()
     {
-        return EXTENDED_DESCRIPTION[0];
+        return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.BASE_BLOCK +EXTENDED_DESCRIPTION[1];
     }
 }

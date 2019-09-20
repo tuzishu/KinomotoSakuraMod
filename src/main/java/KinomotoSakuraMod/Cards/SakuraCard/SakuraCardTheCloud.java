@@ -4,9 +4,9 @@ import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheCloud;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
-import KinomotoSakuraMod.Powers.KSMOD_CloudPower_SakuraCard;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -24,7 +24,7 @@ public class SakuraCardTheCloud extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SAKURACARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
-    private static final int BASE_MAGIC_NUMBER = 1;
+    private static final int BASE_BLOCK = 6;
 
     static
     {
@@ -37,8 +37,7 @@ public class SakuraCardTheCloud extends KSMOD_AbstractMagicCard
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(KSMOD_CustomTag.KSMOD_WATERY_CARD);
-        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
-        this.exhaust = true;
+        this.baseBlock = BASE_BLOCK;
     }
 
     @Override
@@ -65,6 +64,17 @@ public class SakuraCardTheCloud extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_CloudPower_SakuraCard(player, this.magicNumber), this.magicNumber));
+        int count = 1;
+        for (AbstractCard card : AbstractDungeon.player.masterDeck.group)
+        {
+            if (card.hasTag(KSMOD_CustomTag.KSMOD_WATERY_CARD))
+            {
+                count += 1;
+            }
+        }
+        for (int i = 0; i < count; i++)
+        {
+            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
+        }
     }
 }

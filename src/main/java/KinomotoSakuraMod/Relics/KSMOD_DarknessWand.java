@@ -18,7 +18,7 @@ public class KSMOD_DarknessWand extends CustomRelic
     private static final RelicTier RELIC_TIER = RelicTier.BOSS;
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
     private static final int CHARGE_NUMBER = 2;
-    private static final int STRENGTH_NUMBER = 3;
+    private static final int STRENGTH_NUMBER = 2;
 
     public KSMOD_DarknessWand()
     {
