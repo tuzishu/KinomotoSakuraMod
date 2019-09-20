@@ -16,9 +16,10 @@
   "ClowCardTheBubbles": {
     "NAME": "泡",
     "DESCRIPTION": "「 水 」造成 !D! 点伤害，随机清除1个增益。",
-    "UPGRADE_DESCRIPTION": "Null",
+    "UPGRADE_DESCRIPTION": "「 水 」造成 !D! 点伤害，随机清除1个增益。成功时额外获得 !M! 层 魔力充能 。",
     "EXTENDED_DESCRIPTION": [
-      "「 水 」造成 !D! 点伤害，清除目标的所有增益。"
+      "「 水 」造成 !D! 点伤害，清除目标的所有增益。",
+      "「 水 」造成 !D! 点伤害，清除目标的所有增益。成功时额外获得 !M! 层 魔力充能 。"
     ]
   },
   "ClowCardTheChange": {

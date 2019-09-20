@@ -3,7 +3,10 @@ package KinomotoSakuraMod.Cards.ClowCard;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
+import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
+import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -22,21 +25,23 @@ public class ClowCardTheBubbles extends KSMOD_AbstractMagicCard
     public static final String ID = "ClowCardTheBubbles";
     private static final String NAME;
     private static final String DESCRIPTION;
+    private static final String UPGRADE_DESCRIPTION;
     private static final String[] EXTENDED_DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_bubbles.png";
     private static final int COST = 1;
-    private static final int UPGRADED_COST = 0;
     private static final CardType CARD_TYPE = CardType.ATTACK;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
     private static final int BASE_DAMAGE = 3;
+    private static final int BASE_MAGIC_NUMBER = 2;
 
     static
     {
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
         NAME = cardStrings.NAME;
         DESCRIPTION = cardStrings.DESCRIPTION;
+        UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
         EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     }
 
@@ -45,6 +50,7 @@ public class ClowCardTheBubbles extends KSMOD_AbstractMagicCard
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
         this.tags.add(KSMOD_CustomTag.KSMOD_WATERY_CARD);
         this.baseDamage = BASE_DAMAGE;
+        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
     @Override
@@ -53,7 +59,8 @@ public class ClowCardTheBubbles extends KSMOD_AbstractMagicCard
         if (!this.upgraded)
         {
             this.upgradeName();
-            this.upgradeBaseCost(UPGRADED_COST);
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            this.initializeDescription();
         }
     }
 
@@ -79,6 +86,10 @@ public class ClowCardTheBubbles extends KSMOD_AbstractMagicCard
         {
             int randIndex = new Random().random(buffs.size() - 1);
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(monster, player, buffs.get(randIndex)));
+            if (player.hasRelic(KSMOD_SealedBook.RELIC_ID))
+            {
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_MagickChargePower(player, this.magicNumber), this.magicNumber));
+            }
         }
     }
 
@@ -94,15 +105,22 @@ public class ClowCardTheBubbles extends KSMOD_AbstractMagicCard
                 buffs.add(power);
             }
         }
-        for (AbstractPower buff : buffs)
+        if (buffs.size() > 0)
         {
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(monster, player, buff));
+            for (AbstractPower buff : buffs)
+            {
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(monster, player, buff));
+            }
+            if (player.hasRelic(KSMOD_SealedBook.RELIC_ID))
+            {
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_MagickChargePower(player, this.magicNumber), this.magicNumber));
+            }
         }
     }
 
     @Override
     public String getExtraDescription()
     {
-        return EXTENDED_DESCRIPTION[0];
+        return upgraded ? EXTENDED_DESCRIPTION[0] : EXTENDED_DESCRIPTION[1];
     }
 }
