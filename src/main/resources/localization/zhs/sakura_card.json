@@ -294,10 +294,10 @@
   },
   "ClowCardTheSnow": {
     "NAME": "雪",
-    "DESCRIPTION": "「 水 」对全体敌人造成 !D! 点伤害。每有1层 魔力充能 ，这张牌在本场战斗中的伤害提高1。",
+    "DESCRIPTION": "「 水 」本回合每打出过1张技能牌，对全体敌人造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "额外提高",
+      "额外造成",
       "点伤害。"
     ]
   },

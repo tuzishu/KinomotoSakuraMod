@@ -20,6 +20,7 @@ public class KSMOD_SealedBook extends CustomRelic
     public static final int REAL_DAMAGE = 15;
     public static final int EXTRA_BLOCK = 14;
     public static final int BASE_BLOCK = 12;
+    public static final int ENTIRETY_DAMAGE = 9;
     public static final int EXTRA_POISON = 7;
     public static final int DAMAGE_INCREASE = 5;
     public static final int METALLICIZE_NUMBER = 4;

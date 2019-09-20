@@ -25,13 +25,13 @@ public class ClowCardTheSnow extends KSMOD_AbstractMagicCard
     private static final String DESCRIPTION;
     private static final String[] EXTENDED_DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_snow.png";
-    private static final int COST = 2;
+    private static final int COST = 1;
     private static final AbstractCard.CardType CARD_TYPE = AbstractCard.CardType.ATTACK;
     private static final AbstractCard.CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
-    private static final int BASE_DAMAGE = 8;
-    private static final int UPGRADE_DAMAGE = 3;
+    private static final int BASE_DAMAGE = 3;
+    private static final int UPGRADE_DAMAGE = 2;
 
     static
     {
@@ -67,24 +67,26 @@ public class ClowCardTheSnow extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new VFXAction(new BlizzardEffect(this.damage, AbstractDungeon.getMonsters().shouldFlipVfx()), 1.0F));
-        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        if (player.hasPower(KSMOD_MagickChargePower.POWER_ID))
+        int count = 0;
+        for (AbstractCard card: AbstractDungeon.actionManager.cardsPlayedThisTurn)
         {
-            this.upgradeDamage(player.getPower(KSMOD_MagickChargePower.POWER_ID).amount);
+            if (card.type == CardType.SKILL)
+            {
+                count += 1;
+            }
+        }
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(new BlizzardEffect(count, AbstractDungeon.getMonsters().shouldFlipVfx()), 1.0F));
+        for (int i = 0; i < count; i++)
+        {
+            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_HEAVY, true));
         }
     }
 
     @Override
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new VFXAction(new BlizzardEffect(this.damage, AbstractDungeon.getMonsters().shouldFlipVfx()), 1.0F));
-        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        if (player.hasPower(KSMOD_MagickChargePower.POWER_ID))
-        {
-            this.upgradeDamage(player.getPower(KSMOD_MagickChargePower.POWER_ID).amount);
-        }
-        this.upgradeDamage(KSMOD_SealedBook.DAMAGE_INCREASE);
+        applyNormalEffect(player, monster);
+        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(KSMOD_SealedBook.ENTIRETY_DAMAGE), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
     }
 
     @Override
