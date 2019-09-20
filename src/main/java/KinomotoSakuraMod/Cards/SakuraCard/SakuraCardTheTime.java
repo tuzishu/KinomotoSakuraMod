@@ -29,14 +29,14 @@ public class SakuraCardTheTime extends KSMOD_AbstractMagicCard
     private static final String NAME;
     private static final String DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/sakuracard/the_time.png";
-    private static final int COST = 2;
+    private static final int COST = 1;
     private static final AbstractCard.CardType CARD_TYPE = CardType.ATTACK;
     private static final AbstractCard.CardColor CARD_COLOR = KSMOD_CustomCardColor.SAKURACARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
     private static final int BASE_DAMAGE = 18;
-    private static final int BASE_MAGIC_NUMBER = 2;
-    private static final int VOID_NUMBER = 1;
+    private static final int BASE_MAGIC_NUMBER = 1;
+    private static final int VOID_NUMBER = 2;
 
     static
     {
@@ -51,6 +51,7 @@ public class SakuraCardTheTime extends KSMOD_AbstractMagicCard
         this.tags.add(KSMOD_CustomTag.KSMOD_WATERY_CARD);
         this.baseDamage = BASE_DAMAGE;
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
+        this.isInnate = true;
         this.exhaust = true;
     }
 

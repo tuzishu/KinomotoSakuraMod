@@ -727,7 +727,7 @@
   },
   "SakuraCardTheTime": {
     "NAME": "时",
-    "DESCRIPTION": "「 小樱牌 」「 水 」 消耗 。对全体敌人造成 !D! 点伤害。并打断敌人的行动 !M! 回合。将1张 虚空 放入弃牌堆。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」 固有 。 消耗 。对全体敌人造成 !D! 点伤害。并打断敌人的行动 !M! 回合。将2张 虚空 放入弃牌堆。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
