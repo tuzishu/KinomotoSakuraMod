@@ -25,7 +25,7 @@ public class ClowCardTheBig extends KSMOD_AbstractMagicCard
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
     private static final int STRENGTH_NUMBER = 3;
-    private static final int DEXTERITY_NUMBER = 2;
+    private static final int DEXTERITY_NUMBER = 1;
 
     static
     {

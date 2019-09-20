@@ -195,8 +195,8 @@
   },
   "ClowCardTheMirror": {
     "NAME": "镜",
-    "DESCRIPTION": "「 水 」 消耗 。选择复制1张手牌中的 库洛牌 或 小樱牌 。",
-    "UPGRADE_DESCRIPTION": "Null",
+    "DESCRIPTION": "「 水 」 虚无 。 消耗 。选择复制1张手牌中的 库洛牌 或 小樱牌 。",
+    "UPGRADE_DESCRIPTION": "「 水 」 消耗 。选择复制1张手牌中的 库洛牌 或 小樱牌 。",
     "EXTENDED_DESCRIPTION": [
       "额外添加1张复制牌到手中。"
     ]

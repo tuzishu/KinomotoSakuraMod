@@ -16,10 +16,10 @@ public class ClowCardTheMirror extends KSMOD_AbstractMagicCard
     public static final String ID = "ClowCardTheMirror";
     private static final String NAME;
     private static final String DESCRIPTION;
+    private static final String UPGRADE_DESCRIPTION;
     private static final String[] EXTENDED_DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_mirror.png";
-    private static final int COST = 1;
-    private static final int UPGRADED_COST = 0;
+    private static final int COST = 0;
     private static final CardType CARD_TYPE = CardType.SKILL;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
@@ -31,6 +31,7 @@ public class ClowCardTheMirror extends KSMOD_AbstractMagicCard
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
         NAME = cardStrings.NAME;
         DESCRIPTION = cardStrings.DESCRIPTION;
+        UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
         EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     }
 
@@ -38,6 +39,7 @@ public class ClowCardTheMirror extends KSMOD_AbstractMagicCard
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
         this.tags.add(KSMOD_CustomTag.KSMOD_WATERY_CARD);
+        this.isEthereal = true;
         this.exhaust = true;
     }
 
@@ -47,7 +49,9 @@ public class ClowCardTheMirror extends KSMOD_AbstractMagicCard
         if (!this.upgraded)
         {
             upgradeName();
-            upgradeBaseCost(UPGRADED_COST);
+            this.isEthereal = false;
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            this.initializeDescription();
         }
     }
 
