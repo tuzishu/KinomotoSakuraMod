@@ -105,8 +105,8 @@
   },
   "ClowCardTheFlower": {
     "NAME": "花",
-    "DESCRIPTION": " 「 地 」消耗 。获得 1 点能量。",
-    "UPGRADE_DESCRIPTION": "「 地 」获得 1 点能量。",
+    "DESCRIPTION": " 「 地 」消耗 。获得 !M! 点能量。",
+    "UPGRADE_DESCRIPTION": "「 地 」获得 !M! 点能量。",
     "EXTENDED_DESCRIPTION": [
       "额外获得",
       "点能量。"
@@ -131,7 +131,7 @@
   },
   "ClowCardTheGlow": {
     "NAME": "灯",
-    "DESCRIPTION": "「 火 」获得 !M! 层 魔力充能 。",
+    "DESCRIPTION": "「 火 」给与 !M! 层 中毒 。获得 !M! 层 魔力充能 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -541,7 +541,7 @@
   },
   "SakuraCardTheFlower": {
     "NAME": "花",
-    "DESCRIPTION": "「 小樱牌 」「 风 」 消耗 。回复能量至最大。",
+    "DESCRIPTION": "「 小樱牌 」「 风 」 消耗 。回复能量至上限。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -559,7 +559,7 @@
   },
   "SakuraCardTheGlow": {
     "NAME": "灯",
-    "DESCRIPTION": "「 小樱牌 」「 风 」回合开始时，获得 !M! 层魔力充能。",
+    "DESCRIPTION": "「 小樱牌 」「 风 」回合开始时，给与全体敌人 !M! 层 中毒 。获得 !M! 层 魔力充能 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
