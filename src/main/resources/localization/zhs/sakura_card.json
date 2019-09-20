@@ -155,7 +155,7 @@
   },
   "ClowCardTheLibra": {
     "NAME": "秤",
-    "DESCRIPTION": "「 地 」获得 !B! 点 格挡 。当抽牌堆和弃牌堆的数量差小于最大能量值时，额外获得 !B! 点 格挡 。",
+    "DESCRIPTION": "「 地 」获得 !B! 点 格挡 ，没有 格挡 时消耗 !M! 层 魔力充能 获得双倍效果。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外获得",
@@ -221,11 +221,11 @@
   },
   "ClowCardThePower": {
     "NAME": "力",
-    "DESCRIPTION": "「 火 」造成 !D! 点伤害，可多次升级。",
+    "DESCRIPTION": "「 火 」造成 !D! 点伤害。本场战斗中每触发1次 魔力充能 ，伤害提升 !M! 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      " 力量 额外产生",
-      "（升级次数）倍效果。"
+      "额外造成",
+      "点 真实伤害 。"
     ]
   },
   "ClowCardTheRain": {
@@ -579,7 +579,7 @@
   },
   "SakuraCardTheLibra": {
     "NAME": "秤",
-    "DESCRIPTION": "「 小樱牌 」「 地 」获得 !B! 点 格挡 。当抽牌堆数量大于弃牌堆数量时，抽2张牌，否则洗牌，并抽1张牌。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」消耗所有 魔力充能 ，每消耗 !M! 层获得 !B! 点 格挡 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

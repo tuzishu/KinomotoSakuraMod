@@ -12,6 +12,7 @@ import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
 import basemod.abstracts.DynamicVariable;
+import basemod.interfaces.OnStartBattleSubscriber;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -25,6 +26,7 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.DescriptionLine;
 import com.megacrit.cardcrawl.cards.status.VoidCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -44,7 +46,7 @@ import java.lang.reflect.Method;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class KSMOD_AbstractMagicCard extends CustomCard
+public abstract class KSMOD_AbstractMagicCard extends CustomCard implements OnStartBattleSubscriber
 {
     //////////
     // Override Method Usage
@@ -71,6 +73,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
     private static final float PORTRAIT_ORIGIN_Y = 178F;
     public static boolean isHandSelectScreenOpened = false;
     private String BOTTOM_TITLE = "";
+    private static int useChargeTimes = 0;
 
     //////////
     // Custom Value
@@ -148,6 +151,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
                 }
             }
             this.applyExtraEffect(player, monster);
+            setUseChargeTimes(useChargeTimes + 1);
         }
         else
         {
@@ -162,6 +166,35 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard
             KSMOD_SealedBook book = (KSMOD_SealedBook) player.getRelic(KSMOD_SealedBook.RELIC_ID);
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_MagickChargePower(player, book.applyPowerNumberOnce(this)), book.applyPowerNumberOnce(this)));
         }
+    }
+
+    public void receiveOnBattleStart(AbstractRoom room)
+    {
+        useChargeTimes = 0;
+    }
+
+    private void setUseChargeTimes(int useTimes)
+    {
+        useChargeTimes = useTimes;
+        broadcast(useTimes, AbstractDungeon.player.hand);
+        broadcast(useTimes, AbstractDungeon.player.drawPile);
+        broadcast(useTimes, AbstractDungeon.player.discardPile);
+        broadcast(useTimes, AbstractDungeon.player.exhaustPile);
+    }
+
+    private void broadcast(int useTimes, CardGroup group)
+    {
+        for (AbstractCard card: group.group)
+        {
+            if (card instanceof KSMOD_AbstractMagicCard)
+            {
+                ((KSMOD_AbstractMagicCard)card).onUseMaigckCharge(useTimes);
+            }
+        }
+    }
+
+    public void onUseMaigckCharge(int useTimes)
+    {
     }
 
     private void InitMagicCard()

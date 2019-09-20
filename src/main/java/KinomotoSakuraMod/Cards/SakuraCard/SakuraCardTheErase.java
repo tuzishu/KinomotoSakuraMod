@@ -2,19 +2,23 @@ package KinomotoSakuraMod.Cards.SakuraCard;
 
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheErase;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
+import KinomotoSakuraMod.KSMOD;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.unique.RemoveAllPowersAction;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.WeightyImpactEffect;
 
 public class SakuraCardTheErase extends KSMOD_AbstractMagicCard
 {
@@ -67,6 +71,8 @@ public class SakuraCardTheErase extends KSMOD_AbstractMagicCard
     {
         if (monster.type != AbstractMonster.EnemyType.BOSS && monster.type != AbstractMonster.EnemyType.ELITE)
         {
+            AbstractDungeon.actionManager.addToBottom(new VFXAction(new WeightyImpactEffect(monster.hb.cX, monster.hb.cY, KSMOD.colorSakuraCard)));
+            AbstractDungeon.actionManager.addToBottom(new WaitAction(0.8F));
             AbstractDungeon.actionManager.addToBottom(new RemoveAllPowersAction(monster, false));
             AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, monster.currentHealth - 1, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
         }

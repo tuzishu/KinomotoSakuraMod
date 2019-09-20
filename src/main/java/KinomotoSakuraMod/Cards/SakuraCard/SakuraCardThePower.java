@@ -52,7 +52,7 @@ public class SakuraCardThePower extends KSMOD_AbstractMagicCard
 
     public KSMOD_AbstractMagicCard getSameNameClowCard()
     {
-        return new ClowCardThePower(this.magicNumber);
+        return new ClowCardThePower();
     }
 
     public void upgrade()

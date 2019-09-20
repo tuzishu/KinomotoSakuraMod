@@ -92,6 +92,6 @@ public class ClowCardTheSnow extends KSMOD_AbstractMagicCard
     @Override
     public String getExtraDescription()
     {
-        return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.DAMAGE_INCREASE + EXTENDED_DESCRIPTION[1];
+        return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.ENTIRETY_DAMAGE + EXTENDED_DESCRIPTION[1];
     }
 }

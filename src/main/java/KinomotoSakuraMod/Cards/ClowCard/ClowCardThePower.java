@@ -3,6 +3,9 @@ package KinomotoSakuraMod.Cards.ClowCard;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
+import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
+import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import basemod.interfaces.OnStartBattleSubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -13,6 +16,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.combat.VerticalImpactEffect;
 
 public class ClowCardThePower extends KSMOD_AbstractMagicCard
@@ -27,8 +31,10 @@ public class ClowCardThePower extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final int BASE_DAMAGE = 14;
+    private static final int BASE_DAMAGE = 15;
     private static final int UPGRADE_DAMAGE = 3;
+    private static final int BASE_MAGIC_NUMBER = 4;
+    private static final int UPGRADE_MAGIC_NUMBER = 2;
 
     static
     {
@@ -40,56 +46,46 @@ public class ClowCardThePower extends KSMOD_AbstractMagicCard
 
     public ClowCardThePower()
     {
-        this(0);
-    }
-
-    public ClowCardThePower(int upgrades)
-    {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
         this.tags.add(KSMOD_CustomTag.KSMOD_FIREY_CARD);
         this.baseDamage = BASE_DAMAGE;
-        this.timesUpgraded = upgrades;
+        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
     public KSMOD_AbstractMagicCard makeCopy()
     {
-        return new ClowCardThePower(this.timesUpgraded);
+        return new ClowCardThePower();
     }
 
     public void upgrade()
     {
-        this.upgradeDamage(UPGRADE_DAMAGE + this.timesUpgraded);
-        this.timesUpgraded += 1;
-        this.upgraded = true;
-        this.name = NAME + "+" + this.timesUpgraded;
-        this.initializeTitle();
-    }
-
-    public boolean canUpgrade()
-    {
-        return true;
+        if (!upgraded)
+        {
+            this.upgradeDamage(UPGRADE_DAMAGE);
+            this.upgradeMagicNumber(UPGRADE_MAGIC_NUMBER);
+        }
     }
 
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new VFXAction(new VerticalImpactEffect(monster.hb.cX + monster.hb.width / 4.0F, monster.hb.cY - monster.hb.height / 4.0F)));
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
     }
 
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        int extraDamage = 0;
-        if (player.hasPower(StrengthPower.POWER_ID) && this.timesUpgraded > 0)
-        {
-            StrengthPower power = (StrengthPower) player.getPower(StrengthPower.POWER_ID);
-            extraDamage = this.timesUpgraded * power.amount;
-        }
+        applyNormalEffect(player, monster);
         AbstractDungeon.actionManager.addToBottom(new VFXAction(new VerticalImpactEffect(monster.hb.cX + monster.hb.width / 4.0F, monster.hb.cY - monster.hb.height / 4.0F)));
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage + extraDamage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, KSMOD_SealedBook.REAL_DAMAGE, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+    }
+
+    public void onUseMaigckCharge(int useTimes)
+    {
+        this.upgradeDamage(this.magicNumber);
     }
 
     public String getExtraDescription()
     {
-        return this.rawDescription + EXTENDED_DESCRIPTION[0] + this.timesUpgraded + EXTENDED_DESCRIPTION[1];
+        return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.REAL_DAMAGE + EXTENDED_DESCRIPTION[1];
     }
 }

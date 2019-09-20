@@ -5,18 +5,17 @@ import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheSword;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
+import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
-import com.megacrit.cardcrawl.actions.common.ShuffleAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.unique.DiscardPileToTopOfDeckAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 public class SakuraCardTheLibra extends KSMOD_AbstractMagicCard
@@ -30,7 +29,8 @@ public class SakuraCardTheLibra extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SAKURACARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
-    private static final int BASE_BLOCK = 8;
+    private static final int BASE_BLOCK = 6;
+    private static final int BASE_MAGIC_NUMBER = 3;
 
     static
     {
@@ -44,6 +44,7 @@ public class SakuraCardTheLibra extends KSMOD_AbstractMagicCard
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(KSMOD_CustomTag.KSMOD_EARTHY_CARD);
         this.baseBlock = BASE_BLOCK;
+        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
     @Override
@@ -70,26 +71,16 @@ public class SakuraCardTheLibra extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
-        if (player.drawPile.size() > player.discardPile.size())
+        int count = 0;
+        if (player.hasPower(KSMOD_MagickChargePower.POWER_ID))
         {
-            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, 2));
+            AbstractPower power = player.getPower(KSMOD_MagickChargePower.POWER_ID);
+            count = power.amount / this.magicNumber;
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(player, player, power));
         }
-        else
-        {
-            ReturnCardFromDiscardToDeck();
-            AbstractDungeon.actionManager.addToBottom(new ShuffleAction(player.drawPile));
-            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, 1));
-        }
-    }
-
-    private void ReturnCardFromDiscardToDeck()
-    {
-        AbstractPlayer player = AbstractDungeon.player;
-        int count =player.discardPile.size();
         for (int i = 0; i < count; i++)
         {
-            player.discardPile.moveToDeck(player.discardPile.getTopCard(), true);
+            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
         }
     }
 }
