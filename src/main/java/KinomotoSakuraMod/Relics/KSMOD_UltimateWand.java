@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.monsters.beyond.Darkling;
 import com.megacrit.cardcrawl.powers.MinionPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
@@ -39,6 +40,7 @@ public class KSMOD_UltimateWand extends CustomRelic
     private static final int MARKING_NUMBER = 1;
     private static final float DAMAGE_PROMOTION = 0.5F;
     private static final int UPGRADE_NUMBER = 2;
+    private ArrayList<AbstractMonster> sealedMonsters = new ArrayList<>();
     private int elementCounter;
 
     public KSMOD_UltimateWand()
@@ -63,21 +65,6 @@ public class KSMOD_UltimateWand extends CustomRelic
         return new KSMOD_UltimateWand();
     }
 
-    // public void obtain()
-    // {
-    //     AbstractRelic oldWand = AbstractDungeon.player.getRelic(KSMOD_StarWand.RELIC_ID);
-    //     this.counter = oldWand.counter;
-    //     int targetIndex = AbstractDungeon.player.relics.indexOf(oldWand);
-    //     if (AbstractDungeon.player.hasRelic(KSMOD_StarWand.RELIC_ID))
-    //     {
-    //         this.instantObtain(AbstractDungeon.player, targetIndex, false);
-    //     }
-    //     else
-    //     {
-    //         super.obtain();
-    //     }
-    // }
-
     public void atPreBattle()
     {
         if (AbstractDungeon.player instanceof KinomotoSakura)
@@ -90,6 +77,7 @@ public class KSMOD_UltimateWand extends CustomRelic
     public void atBattleStart()
     {
         this.elementCounter = 0;
+        sealedMonsters.clear();
     }
 
     public void atTurnStartPostDraw()
@@ -116,9 +104,13 @@ public class KSMOD_UltimateWand extends CustomRelic
 
     public void onMonsterDeath(AbstractMonster monster)
     {
-        if (!monster.hasPower(MinionPower.POWER_ID))
+        if (!monster.hasPower(MinionPower.POWER_ID) && !sealedMonsters.contains(monster))
         {
             GainCharge(GAIN_NUMBER);
+        }
+        if (monster.id == Darkling.ID)
+        {
+            sealedMonsters.add(monster);
         }
     }
 

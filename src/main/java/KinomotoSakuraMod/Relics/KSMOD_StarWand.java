@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.monsters.beyond.Darkling;
 import com.megacrit.cardcrawl.powers.MinionPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
@@ -28,6 +29,7 @@ public class KSMOD_StarWand extends CustomRelic
     private static final int UPDATE_TRIGGER_NUMBER = 30;
     private static final int BASE_TRIGGER_NUMBER = 40;
     private static final int GAIN_NUMBER = 4;
+    private ArrayList<AbstractMonster> sealedMonsters = new ArrayList<>();
 
     public KSMOD_StarWand()
     {
@@ -85,6 +87,11 @@ public class KSMOD_StarWand extends CustomRelic
         }
     }
 
+    public void atBattleStart()
+    {
+        sealedMonsters.clear();
+    }
+
     public void atTurnStart()
     {
         if (this.counter >= GetTriggerNumber() && !AbstractDungeon.getCurrRoom().isBattleEnding() && !AbstractDungeon.getMonsters().areMonstersBasicallyDead())
@@ -96,9 +103,13 @@ public class KSMOD_StarWand extends CustomRelic
 
     public void onMonsterDeath(AbstractMonster monster)
     {
-        if (!monster.hasPower(MinionPower.POWER_ID))
+        if (!monster.hasPower(MinionPower.POWER_ID) && !sealedMonsters.contains(monster))
         {
             GainCharge(GAIN_NUMBER);
+        }
+        if (monster.id == Darkling.ID)
+        {
+            sealedMonsters.add(monster);
         }
     }
 

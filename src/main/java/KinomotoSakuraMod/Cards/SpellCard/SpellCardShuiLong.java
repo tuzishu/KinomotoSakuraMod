@@ -25,7 +25,7 @@ public class SpellCardShuiLong extends KSMOD_AbstractSpellCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SPELL_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
-    private static final int BASE_DAMAGE = 2;
+    private static final int BASE_DAMAGE = 4;
 
     static
     {

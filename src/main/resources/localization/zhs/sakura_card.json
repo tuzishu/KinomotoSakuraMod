@@ -61,7 +61,7 @@
   },
   "ClowCardTheDream": {
     "NAME": "梦",
-    "DESCRIPTION": " 「 风 」消耗 。添加 !M! 张随机 库洛牌 到手中。",
+    "DESCRIPTION": " 「 风 」 消耗 。添加 !M! 张随机 库洛牌 到手中。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外获得",
@@ -70,7 +70,7 @@
   },
   "ClowCardTheEarthy": {
     "NAME": "地",
-    "DESCRIPTION": "「 地 」本回合打出 地元素牌 时，额外获得1层 魔力充能 ，并获得 !B! 点格挡。添加1张 雷帝 到手中。",
+    "DESCRIPTION": "「 地 」添加1张 雷帝 到手中。本回合打出 地元素牌 时，额外获得1层 魔力充能 ，并获得 !B! 点 格挡 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -153,7 +153,7 @@
   },
   "ClowCardTheLibra": {
     "NAME": "秤",
-    "DESCRIPTION": "「 地 」获得 !B! 点 格挡 。当抽排堆和弃牌堆的数量差小于最大能量值时，额外获得 !B! 点 格挡 。",
+    "DESCRIPTION": "「 地 」获得 !B! 点 格挡 。当抽牌堆和弃牌堆的数量差小于最大能量值时，额外获得 !B! 点 格挡 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外获得",
@@ -211,7 +211,7 @@
   },
   "ClowCardTheMove": {
     "NAME": "移",
-    "DESCRIPTION": "「 火 」 消耗 。选择1张消耗堆中的牌返回抽排堆。",
+    "DESCRIPTION": "「 火 」 消耗 。选择1张消耗堆中的牌返回抽牌堆。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "「 火 」 消耗 。选择1张消耗堆中的牌返回手牌。"
@@ -370,10 +370,10 @@
   },
   "ClowCardTheVoice": {
     "NAME": "声",
-    "DESCRIPTION": "「 风 」添加1张此卡的复制品到弃牌堆中。抽到这张牌时，额外抽1张牌。被 消耗 时，获得 !B! 点 格挡 。被 歌牌  消耗 时，额外触发 !M! 次 歌牌 的效果。",
+    "DESCRIPTION": "「 风 」 虚无 。 添加1张此卡的复制品到弃牌堆。抽到这张牌时，额外抽1张牌。被 消耗 时，获得 !B! 点 格挡 。被 歌牌  消耗 时，额外触发 !M! 次 歌牌 的效果。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "「 风 」添加3张此卡的复制品到弃牌堆中。抽到这张牌时，额外抽1张牌。被 消耗 时，获得 !B! 点 格挡 。被 歌牌  消耗 时，额外触发 !M! 次 歌牌 的效果。"
+      "「 风 」 虚无 。添加3张此卡的复制品到弃牌堆。抽到这张牌时，额外抽1张牌。被 消耗 时，获得 !B! 点 格挡 。被 歌牌  消耗 时，额外触发 !M! 次 歌牌 的效果。"
     ]
   },
   "ClowCardTheWatery": {
@@ -457,7 +457,7 @@
 
   "SakuraCardTheArrow": {
     "NAME": "矢",
-    "DESCRIPTION": "「 小樱牌 」「 火 」丢弃抽排堆所有牌，每丢弃1张，对随机目标造成 !D! 点伤害。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」丢弃抽牌堆所有牌，每丢弃1张，对随机目标造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -577,7 +577,7 @@
   },
   "SakuraCardTheLibra": {
     "NAME": "秤",
-    "DESCRIPTION": "「 小樱牌 」「 地 」获得 !B! 点 格挡 。当抽排堆数量大于弃牌堆数量时，抽2张牌，否则洗牌，并抽1张牌。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」获得 !B! 点 格挡 。当抽牌堆数量大于弃牌堆数量时，抽2张牌，否则洗牌，并抽1张牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -625,7 +625,7 @@
   },
   "SakuraCardTheMove": {
     "NAME": "移",
-    "DESCRIPTION": "「 小樱牌 」「 火 」 消耗 。选择 !M! 张消耗区的牌返回手牌。选择 !M! 张抽排堆的牌加入手牌。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」 消耗 。选择 !M! 张消耗区的牌返回手牌。选择 !M! 张抽牌堆的牌加入手牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -661,7 +661,7 @@
   },
   "SakuraCardTheShield": {
     "NAME": "盾",
-    "DESCRIPTION": "「 小樱牌 」「 火 」获得 !B! 点 格挡 ，并额外获得当前已损失生命值100%的 格挡 。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」获得 !B! 点 格挡 ，并额外获得当前已损失生命值 !M! %的 格挡 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -739,7 +739,7 @@
   },
   "SakuraCardTheVoice": {
     "NAME": "声",
-    "DESCRIPTION": "「 小樱牌 」「 风 」回合结束时，添加 !M! 张 声牌 到弃牌堆。",
+    "DESCRIPTION": "「 小樱牌 」「 风 」回合开始时，添加 !M! 张 声牌 到手牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

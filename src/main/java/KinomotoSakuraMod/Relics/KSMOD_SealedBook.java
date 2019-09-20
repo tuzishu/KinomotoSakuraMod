@@ -17,20 +17,21 @@ public class KSMOD_SealedBook extends CustomRelic
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
     public static final int ACTIVE_NUMBER = 10;
 
-    public static final int REAL_DAMAGE = 12;
-    public static final int BASE_BLOCK = 10;
+    public static final int REAL_DAMAGE = 15;
     public static final int EXTRA_BLOCK = 14;
+    public static final int BASE_BLOCK = 12;
     public static final int EXTRA_POISON = 7;
     public static final int DAMAGE_INCREASE = 5;
     public static final int METALLICIZE_NUMBER = 4;
+    public static final int WEAKENED_NUMBER = 3;
+    public static final int VULNERABLE_NUMBER = 3;
+    public static final int SONG_NUMBER = 3;
     public static final int THUNDER_NUMBER = 2;
     public static final int DRAW_NUMBER = 2;
-    public static final int WEAKENED_NUMBER = 2;
     public static final int STRENGTH_NUMBER = 2;
     public static final int ENERGY_NUMBER = 2;
-    public static final int VULNERABLE_NUMBER = 2;
-    public static final int SONG_NUMBER = 2;
     public static final int TEMPCARD_NUMBER = 2;
+    public static final int EXTRA_COPY_NUMBER = 2;
     public static final int SLEEP_NUMBER = 1;
     public static final float PERCENTAGE_RATE = 0.2F;
 

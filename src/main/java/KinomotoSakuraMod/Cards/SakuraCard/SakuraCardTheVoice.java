@@ -24,7 +24,7 @@ public class SakuraCardTheVoice extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SAKURACARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
-    private static final int BASE_MAGIC_NUMBER = 2;
+    private static final int BASE_MAGIC_NUMBER = 1;
 
     static
     {

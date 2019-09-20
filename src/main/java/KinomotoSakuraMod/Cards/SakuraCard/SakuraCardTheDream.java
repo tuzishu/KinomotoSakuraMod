@@ -25,7 +25,7 @@ public class SakuraCardTheDream extends KSMOD_AbstractMagicCard
     private static final String NAME;
     private static final String DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/sakuracard/the_dream.png";
-    private static final int COST = 1;
+    private static final int COST = 2;
     private static final CardType CARD_TYPE = CardType.SKILL;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SAKURACARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;

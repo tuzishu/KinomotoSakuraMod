@@ -35,7 +35,7 @@ public class ClowCardTheTime extends KSMOD_AbstractMagicCard
     private static final AbstractCard.CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.RARE;
     private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
-    private static final int BASE_DAMAGE = 12;
+    private static final int BASE_DAMAGE = 9;
     private static final int VOID_NUMBER = 2;
 
     static

@@ -24,6 +24,7 @@ public class SakuraCardTheShield extends KSMOD_AbstractMagicCard
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
     private static final int BASE_BLOCK = 8;
+    private static final int BASE_MAGIC_NUMBER = 50;
 
     static
     {
@@ -37,6 +38,7 @@ public class SakuraCardTheShield extends KSMOD_AbstractMagicCard
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(KSMOD_CustomTag.KSMOD_FIREY_CARD);
         this.baseBlock = BASE_BLOCK;
+        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
     @Override
@@ -64,6 +66,6 @@ public class SakuraCardTheShield extends KSMOD_AbstractMagicCard
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, player.maxHealth - player.currentHealth));
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, (player.maxHealth - player.currentHealth) * this.magicNumber / 100));
     }
 }

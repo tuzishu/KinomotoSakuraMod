@@ -33,11 +33,8 @@ public class KSMOD_VoicePower_SakuraCard extends KSMOD_CustomPower
         this.description = POWER_DESCRIPTIONS[0] + this.amount + POWER_DESCRIPTIONS[1];
     }
 
-    public void atEndOfTurn(boolean isPlayer)
+    public void atStartOfTurn()
     {
-        if (isPlayer)
-        {
-            AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new ClowCardTheVoice(), this.amount));
-        }
+        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new ClowCardTheVoice(), this.amount));
     }
 }

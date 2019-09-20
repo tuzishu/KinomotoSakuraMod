@@ -4,6 +4,7 @@ import KinomotoSakuraMod.Actions.KSMOD_MirrorAction;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
+import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -24,7 +25,6 @@ public class ClowCardTheMirror extends KSMOD_AbstractMagicCard
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.NONE;
     private static final int COPY_NUMBER = 1;
-    private static final int EXTRA_COPY_NUMBER = 2;
 
     static
     {
@@ -66,7 +66,7 @@ public class ClowCardTheMirror extends KSMOD_AbstractMagicCard
     @Override
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new KSMOD_MirrorAction(EXTRA_COPY_NUMBER));
+        AbstractDungeon.actionManager.addToBottom(new KSMOD_MirrorAction(KSMOD_SealedBook.EXTRA_COPY_NUMBER));
     }
 
     @Override

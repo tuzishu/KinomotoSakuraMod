@@ -27,7 +27,7 @@ public class SakuraCardTheShot extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SAKURACARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final int BASE_DAMAGE = 2;
+    private static final int BASE_DAMAGE = 1;
     private static final int BASE_MAGIC_NUMBER = 12;
 
     static

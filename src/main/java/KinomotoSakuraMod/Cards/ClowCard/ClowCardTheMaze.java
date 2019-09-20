@@ -24,7 +24,7 @@ public class ClowCardTheMaze extends KSMOD_AbstractMagicCard
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
     private static final int BASE_BLOCK = 16;
-    private static final int UPGRADE_BLOCK = 10;
+    private static final int UPGRADE_BLOCK = 6;
 
     static
     {

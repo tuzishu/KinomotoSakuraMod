@@ -24,7 +24,7 @@ public class SpellCardLeiDi extends KSMOD_AbstractSpellCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SPELL_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.NONE;
-    private static final int BASE_DAMAGE = 7;
+    private static final int BASE_DAMAGE = 6;
 
     static
     {
