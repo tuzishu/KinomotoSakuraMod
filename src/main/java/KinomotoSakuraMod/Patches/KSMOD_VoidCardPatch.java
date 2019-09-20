@@ -2,6 +2,7 @@ package KinomotoSakuraMod.Patches;
 
 import KinomotoSakuraMod.Powers.KSMOD_LightPower;
 import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
+import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import KinomotoSakuraMod.Relics.KSMOD_TouyasBicycle;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
@@ -89,8 +90,12 @@ public class KSMOD_VoidCardPatch
         {
             if (card instanceof VoidCard && AbstractDungeon.player.hasRelic(KSMOD_TouyasBicycle.RELIC_ID))
             {
-                AbstractDungeon.player.getRelic(KSMOD_TouyasBicycle.RELIC_ID).flash();
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new KSMOD_MagickChargePower(AbstractDungeon.player, KSMOD_TouyasBicycle.CHARGE_NUMBER), KSMOD_TouyasBicycle.CHARGE_NUMBER));
+
+                if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(KSMOD_SealedBook.RELIC_ID))
+                {
+                    AbstractDungeon.player.getRelic(KSMOD_TouyasBicycle.RELIC_ID).flash();
+                    AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new KSMOD_MagickChargePower(AbstractDungeon.player, KSMOD_TouyasBicycle.CHARGE_NUMBER), KSMOD_TouyasBicycle.CHARGE_NUMBER));
+                }
                 return SpireReturn.Return(null);
             }
             else

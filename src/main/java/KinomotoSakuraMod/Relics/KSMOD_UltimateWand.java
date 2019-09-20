@@ -187,7 +187,10 @@ public class KSMOD_UltimateWand extends CustomRelic
         if (this.elementCounter >= MAGICK_CHARGE_TRIGGER_NUMBER)
         {
             this.flash();
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new KSMOD_MagickChargePower(AbstractDungeon.player, MAGICK_CHARGE_NUMBER), MAGICK_CHARGE_NUMBER));
+            if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(KSMOD_SealedBook.RELIC_ID))
+            {
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new KSMOD_MagickChargePower(AbstractDungeon.player, MAGICK_CHARGE_NUMBER), MAGICK_CHARGE_NUMBER));
+            }
             this.elementCounter -= MAGICK_CHARGE_TRIGGER_NUMBER;
         }
     }
