@@ -23,13 +23,13 @@ public class SakuraCardTheFreeze extends KSMOD_AbstractMagicCard
     private static final String NAME;
     private static final String DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/sakuracard/the_freeze.png";
-    private static final int COST = 1;
+    private static final int COST = 2;
     private static final CardType CARD_TYPE = CardType.ATTACK;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SAKURACARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final int BASE_DAMATE = 9;
-    private static final int BASE_BLOCK = 8;
+    private static final int BASE_DAMATE = 20;
+    private static final int BASE_BLOCK = 10;
 
     static
     {

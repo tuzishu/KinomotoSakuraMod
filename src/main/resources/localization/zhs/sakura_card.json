@@ -77,10 +77,10 @@
   },
   "ClowCardTheErase": {
     "NAME": "消",
-    "DESCRIPTION": "「 风 」直接击杀生命值不足25%的非boss、非精英目标。造成 !D! 点伤害。",
+    "DESCRIPTION": "「 风 」直接击杀生命值不足25%的非boss、非精英目标。否则造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "「 风 」直接击杀生命值不足50%的非boss、非精英目标。造成 !D! 点伤害。"
+      "「 风 」直接击杀生命值不足50%的非boss、非精英目标。否则造成 !D! 点伤害。"
     ]
   },
   "ClowCardTheFight": {
