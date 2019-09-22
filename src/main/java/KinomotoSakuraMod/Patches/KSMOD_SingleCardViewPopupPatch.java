@@ -411,7 +411,7 @@ public class KSMOD_SingleCardViewPopupPatch
             if (IsKSCard(card) && hasInit)
             {
                 Method allowUpgradePreview = KSMOD_Utility.GetMethodByReflect(SingleCardViewPopup.class, "allowUpgradePreview");
-                float offsetToTop = card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR ? TITLE_HEIGHT_TO_CENTER : TITLE_HEIGHT_SAKURA_TO_CENTER;
+                float offsetToTop = card.color == KSMOD_CustomCardColor.SAKURACARD_COLOR ? TITLE_HEIGHT_SAKURA_TO_CENTER : TITLE_HEIGHT_TO_CENTER;
                 if (card.isLocked)
                 {
                     FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, TEXT[4], Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + offsetToTop * Settings.scale, Settings.CREAM_COLOR.cpy());
@@ -434,7 +434,7 @@ public class KSMOD_SingleCardViewPopupPatch
 
                 if (card.color != KSMOD_CustomCardColor.SPELL_COLOR)
                 {
-                    float offsetToBottom = card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR ? TITLE_BOTTOM_HEIGHT_TO_CENTER : TITLE_BOTTOM_HEIGHT_SAKURA_TO_CENTER;
+                    float offsetToBottom = card.color == KSMOD_CustomCardColor.SAKURACARD_COLOR ? TITLE_BOTTOM_HEIGHT_SAKURA_TO_CENTER : TITLE_BOTTOM_HEIGHT_TO_CENTER;
                     if (card.isLocked)
                     {
                         FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, TEXT[4], Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + offsetToBottom * Settings.scale, Settings.CREAM_COLOR.cpy());

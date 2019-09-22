@@ -1,5 +1,6 @@
 package KinomotoSakuraMod.Cards;
 
+import KinomotoSakuraMod.KSMOD;
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import basemod.BaseMod;
@@ -50,10 +51,14 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
     private static final float HB_H = IMG_HEIGHT;
     private static final float TITLE_HEIGHT_TO_CENTER = 222.0F;
     private static final float TITLE_BOTTOM_HEIGHT_TO_CENTER = -205.0F;
-    private static final float PORTRAIT_WIDTH = 220F;
-    private static final float PORTRAIT_HEIGHT = 500F;
-    private static final float PORTRAIT_ORIGIN_X = 110F;
-    private static final float PORTRAIT_ORIGIN_Y = 250F;
+    private static final float PORTRAIT_WIDTH = 151F;
+    private static final float PORTRAIT_HEIGHT = 393F;
+    private static final float PORTRAIT_ORIGIN_X = 75F;
+    private static final float PORTRAIT_ORIGIN_Y = 178F;
+    private static final float PORTRAIT_SINGLE_WIDTH = 220F;
+    private static final float PORTRAIT_SINGLE_HEIGHT = 500F;
+    private static final float PORTRAIT_SINGLE_ORIGIN_X = 110F;
+    private static final float PORTRAIT_SINGLE_ORIGIN_Y = 250F;
     public static boolean isHandSelectScreenOpened = false;
     private String BOTTOM_TITLE = "";
     private boolean isSimplePortraitCard = false;
@@ -703,6 +708,26 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
         }
     }
 
+    private float getPortraitWidth()
+    {
+        return isSimplePortraitCard ? PORTRAIT_SINGLE_WIDTH : PORTRAIT_WIDTH;
+    }
+
+    private float getPortraitHeight()
+    {
+        return isSimplePortraitCard ? PORTRAIT_SINGLE_HEIGHT : PORTRAIT_HEIGHT;
+    }
+
+    private float getPortraitOriginX()
+    {
+        return isSimplePortraitCard ? PORTRAIT_SINGLE_ORIGIN_X : PORTRAIT_ORIGIN_X;
+    }
+
+    private float getPortraitOriginY()
+    {
+        return isSimplePortraitCard ? PORTRAIT_SINGLE_ORIGIN_Y : PORTRAIT_ORIGIN_Y;
+    }
+
     @SpireOverride
     public void renderPortrait(SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException
     {
@@ -719,20 +744,20 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
             Color renderColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
             if (this.portrait != null)
             {
-                drawX = this.current_x - PORTRAIT_ORIGIN_X;
-                drawY = this.current_y - PORTRAIT_ORIGIN_Y;
+                drawX = this.current_x - getPortraitOriginX();
+                drawY = this.current_y - getPortraitOriginY();
                 sb.setColor(renderColor);
-                sb.draw(this.portrait, drawX, drawY, PORTRAIT_ORIGIN_X, PORTRAIT_ORIGIN_Y, PORTRAIT_WIDTH, PORTRAIT_HEIGHT, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle);
+                sb.draw(this.portrait, drawX, drawY, getPortraitOriginX(), getPortraitOriginY(), getPortraitWidth(), getPortraitHeight(), this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle);
             }
             else if (img != null)
             {
                 sb.setColor(renderColor);
-                sb.draw(img, drawX, drawY, PORTRAIT_ORIGIN_X, PORTRAIT_ORIGIN_Y, PORTRAIT_WIDTH, PORTRAIT_HEIGHT, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, (int) PORTRAIT_WIDTH, (int) PORTRAIT_HEIGHT, false, false);
+                sb.draw(img, drawX, drawY, getPortraitOriginX(), getPortraitOriginY(), getPortraitWidth(), getPortraitHeight(), this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, (int) getPortraitWidth(), (int) getPortraitHeight(), false, false);
             }
         }
         else
         {
-            sb.draw(this.portraitImg, drawX, drawY, PORTRAIT_ORIGIN_X, PORTRAIT_ORIGIN_Y, PORTRAIT_WIDTH, PORTRAIT_HEIGHT, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, (int) PORTRAIT_WIDTH, (int) PORTRAIT_HEIGHT, false, false);
+            sb.draw(this.portraitImg, drawX, drawY, getPortraitOriginX(), getPortraitOriginY(), getPortraitWidth(), getPortraitHeight(), this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, (int) getPortraitWidth(), (int) getPortraitHeight(), false, false);
         }
 
     }
