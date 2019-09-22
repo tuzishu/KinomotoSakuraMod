@@ -74,7 +74,7 @@ public class SakuraCardTheCloud extends KSMOD_AbstractMagicCard
         }
         for (int i = 0; i < count; i++)
         {
-            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
+            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block, true));
         }
     }
 }

@@ -409,49 +409,49 @@
 
   "SpellCardRelease": {
     "NAME": "解",
-    "DESCRIPTION": " 封印解除 手牌中的1张 库洛牌 。并给与全体敌人 !M! 层 易伤 。",
+    "DESCRIPTION": "「 符咒 」 封印解除 手牌中的1张 库洛牌 。并给与全体敌人 !M! 层 易伤 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SpellCardSeal": {
     "NAME": "封",
-    "DESCRIPTION": "造成 !D! 点伤害。如果击杀了1名不是 爪牙 的敌人，则 封印之杖 额外获得 !M! 点充能。",
+    "DESCRIPTION": "「 符咒 」造成 !D! 点伤害。如果击杀了1名不是 爪牙 的敌人，则 封印之杖 额外获得 !M! 点充能。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SpellCardTurn": {
     "NAME": "转",
-    "DESCRIPTION": " 保留 。选择1张手牌中的 库洛牌  转化 为 小樱牌 。",
+    "DESCRIPTION": "「 符咒 」 保留 。选择1张手牌中的 库洛牌  转化 为 小樱牌 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SpellCardEmptySpell": {
     "NAME": "空道符",
-    "DESCRIPTION": " 虚无 。 消耗 。从 火神 、 雷帝 、 风华 、 水龙 四张 符咒 中选择1张加入手牌。",
+    "DESCRIPTION": "「 符咒 」 虚无 。 消耗 。从 火神 、 雷帝 、 风华 、 水龙 四张 符咒 中选择1张加入手牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SpellCardHuoShen": {
     "NAME": "火神",
-    "DESCRIPTION": "「 火 」 虚无 ， 消耗 。造成 !D! 点伤害。",
+    "DESCRIPTION": "「 符咒 」「 火 」 虚无 ， 消耗 。造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SpellCardLeiDi": {
     "NAME": "雷帝",
-    "DESCRIPTION": "「 地 」 虚无 ， 消耗 。对随机目标造成 !D! 点伤害。",
+    "DESCRIPTION": "「 符咒 」「 地 」 虚无 ， 消耗 。对随机目标造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SpellCardFengHua": {
     "NAME": "风华",
-    "DESCRIPTION": "「 风 」 虚无 ， 消耗 。造成 !M! 次 !D! 点伤害。",
+    "DESCRIPTION": "「 符咒 」「 风 」 虚无 ， 消耗 。造成 !M! 次 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SpellCardShuiLong": {
     "NAME": "水龙",
-    "DESCRIPTION": "「 水 」 虚无 ， 消耗 。对全体敌人造成 !D! 点伤害。",
+    "DESCRIPTION": "「 符咒 」「 水 」 虚无 ， 消耗 。对全体敌人造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

@@ -4,7 +4,6 @@ import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -30,7 +29,7 @@ public class ClowCardThePower extends KSMOD_AbstractMagicCard
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
     private static final int BASE_DAMAGE = 15;
     private static final int UPGRADE_DAMAGE = 3;
-    private static final int BASE_MAGIC_NUMBER = 4;
+    private static final int BASE_MAGIC_NUMBER = 6;
     private static final int UPGRADE_MAGIC_NUMBER = 2;
 
     static
@@ -47,15 +46,6 @@ public class ClowCardThePower extends KSMOD_AbstractMagicCard
         this.tags.add(KSMOD_CustomTag.KSMOD_FIREY_CARD);
         this.baseDamage = BASE_DAMAGE;
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
-        KSMOD_Utility.Logger.info(cost);
-        KSMOD_Utility.Logger.info(target);
-        KSMOD_Utility.Logger.info(type);
-        KSMOD_Utility.Logger.info(color);
-        KSMOD_Utility.Logger.info(rarity);
-        KSMOD_Utility.Logger.info(damage);
-        KSMOD_Utility.Logger.info(block);
-        KSMOD_Utility.Logger.info(magicNumber);
-        KSMOD_Utility.Logger.info(rawDescription);
     }
 
     public KSMOD_AbstractMagicCard makeCopy()
@@ -67,6 +57,7 @@ public class ClowCardThePower extends KSMOD_AbstractMagicCard
     {
         if (!upgraded)
         {
+            this.upgradeName();
             this.upgradeDamage(UPGRADE_DAMAGE);
             this.upgradeMagicNumber(UPGRADE_MAGIC_NUMBER);
         }
@@ -74,15 +65,6 @@ public class ClowCardThePower extends KSMOD_AbstractMagicCard
 
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        KSMOD_Utility.Logger.info(cost);
-        KSMOD_Utility.Logger.info(target);
-        KSMOD_Utility.Logger.info(type);
-        KSMOD_Utility.Logger.info(color);
-        KSMOD_Utility.Logger.info(rarity);
-        KSMOD_Utility.Logger.info(damage);
-        KSMOD_Utility.Logger.info(block);
-        KSMOD_Utility.Logger.info(magicNumber);
-        KSMOD_Utility.Logger.info(rawDescription);
         AbstractDungeon.actionManager.addToBottom(new VFXAction(new VerticalImpactEffect(monster.hb.cX + monster.hb.width / 4.0F, monster.hb.cY - monster.hb.height / 4.0F)));
         AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
     }

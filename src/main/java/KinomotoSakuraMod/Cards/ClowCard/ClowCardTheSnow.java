@@ -78,7 +78,7 @@ public class ClowCardTheSnow extends KSMOD_AbstractMagicCard
         AbstractDungeon.actionManager.addToBottom(new VFXAction(new BlizzardEffect(count, AbstractDungeon.getMonsters().shouldFlipVfx()), 1.0F));
         for (int i = 0; i < count; i++)
         {
-            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_HEAVY, true));
+            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_DIAGONAL, true));
         }
     }
 
@@ -86,7 +86,7 @@ public class ClowCardTheSnow extends KSMOD_AbstractMagicCard
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
         applyNormalEffect(player, monster);
-        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(KSMOD_SealedBook.ENTIRETY_DAMAGE), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(KSMOD_SealedBook.ENTIRETY_DAMAGE), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
     }
 
     @Override
