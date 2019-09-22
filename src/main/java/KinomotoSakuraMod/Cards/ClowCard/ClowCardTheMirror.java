@@ -19,7 +19,7 @@ public class ClowCardTheMirror extends KSMOD_AbstractMagicCard
     private static final String UPGRADE_DESCRIPTION;
     private static final String[] EXTENDED_DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_mirror.png";
-    private static final int COST = 0;
+    private static final int COST = 1;
     private static final CardType CARD_TYPE = CardType.SKILL;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
@@ -70,7 +70,7 @@ public class ClowCardTheMirror extends KSMOD_AbstractMagicCard
     @Override
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new KSMOD_MirrorAction(KSMOD_SealedBook.EXTRA_COPY_NUMBER));
+        AbstractDungeon.actionManager.addToBottom(new KSMOD_MirrorAction(COPY_NUMBER + KSMOD_SealedBook.EXTRA_COPY_NUMBER));
     }
 
     @Override

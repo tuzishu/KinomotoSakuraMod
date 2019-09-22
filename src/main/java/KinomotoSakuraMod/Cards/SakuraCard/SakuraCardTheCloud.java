@@ -64,7 +64,7 @@ public class SakuraCardTheCloud extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        int count = 1;
+        int count = 0;
         for (AbstractCard card : AbstractDungeon.player.masterDeck.group)
         {
             if (card.hasTag(KSMOD_CustomTag.KSMOD_WATERY_CARD))

@@ -133,6 +133,18 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements OnSt
         return super.canUpgrade();
     }
 
+    public AbstractCard makeStatEquivalentCopy()
+    {
+        if (this.color == KSMOD_CustomCardColor.SAKURACARD_COLOR)
+        {
+            return this.makeCopy();
+        }
+        else
+        {
+            return super.makeStatEquivalentCopy();
+        }
+    }
+
     public final void use(AbstractPlayer player, AbstractMonster monster)
     {
         if (this.hasExtraEffect && isThisCardCharged() && !hasLockPower())
@@ -184,11 +196,11 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements OnSt
 
     private void broadcast(int useTimes, CardGroup group)
     {
-        for (AbstractCard card: group.group)
+        for (AbstractCard card : group.group)
         {
             if (card instanceof KSMOD_AbstractMagicCard)
             {
-                ((KSMOD_AbstractMagicCard)card).onUseMaigckCharge(useTimes);
+                ((KSMOD_AbstractMagicCard) card).onUseMaigckCharge(useTimes);
             }
         }
     }

@@ -54,6 +54,7 @@ public class ClowCardTheCreate extends KSMOD_AbstractMagicCard
         {
             upgradeName();
             this.upgradeBaseCost(UPGRADED_COST);
+            this.retain = true;
             this.rawDescription = UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }
@@ -104,5 +105,10 @@ public class ClowCardTheCreate extends KSMOD_AbstractMagicCard
                 break;
             }
         }
+    }
+
+    public void atTurnStart()
+    {
+        this.retain = this.upgraded;
     }
 }

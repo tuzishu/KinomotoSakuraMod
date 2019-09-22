@@ -103,4 +103,9 @@ public class SpellCardTurn extends KSMOD_AbstractSpellCard
         }
         return false;
     }
+
+    public void atTurnStart()
+    {
+        this.retain = true;
+    }
 }

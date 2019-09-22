@@ -129,6 +129,18 @@ public class KSMOD_TurnAction extends AbstractGameAction
         return false;
     }
 
+    private boolean hasTargetSakuraCardInMasterDeck(String cardID)
+    {
+        for (AbstractCard card : AbstractDungeon.player.masterDeck.group)
+        {
+            if (card.cardID.equals(cardID))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void TurnClowCardToSakuraCard(AbstractCard clowCard)
     {
         AbstractCard sakuraCard = null;
@@ -159,17 +171,5 @@ public class KSMOD_TurnAction extends AbstractGameAction
                 break;
             }
         }
-    }
-
-    private boolean hasTargetSakuraCardInMasterDeck(String cardID)
-    {
-        for (AbstractCard card : AbstractDungeon.player.masterDeck.group)
-        {
-            if (card.cardID.equals(cardID))
-            {
-                return true;
-            }
-        }
-        return false;
     }
 }

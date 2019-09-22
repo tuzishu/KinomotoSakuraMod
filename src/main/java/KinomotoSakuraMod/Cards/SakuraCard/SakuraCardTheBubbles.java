@@ -84,4 +84,9 @@ public class SakuraCardTheBubbles extends KSMOD_AbstractMagicCard
             }
         }
     }
+
+    public void atTurnStart()
+    {
+        this.retain = true;
+    }
 }

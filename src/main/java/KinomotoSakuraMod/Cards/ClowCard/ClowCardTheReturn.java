@@ -64,4 +64,9 @@ public class ClowCardTheReturn extends KSMOD_AbstractMagicCard
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_ReturnPower(player, this.magicNumber)));
         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new VoidCard(), 2));
     }
+
+    public void atTurnStart()
+    {
+        this.retain = this.upgraded;
+    }
 }

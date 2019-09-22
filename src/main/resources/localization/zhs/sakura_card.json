@@ -9,7 +9,7 @@
   },
   "ClowCardTheBig": {
     "NAME": "大",
-    "DESCRIPTION": "「 火 」获得3点 力量 ，失去2点 敏捷 。",
+    "DESCRIPTION": "「 火 」获得3点 力量 ，失去1点 敏捷 。",
     "UPGRADE_DESCRIPTION": "「 火 」获得3点 力量。",
     "EXTENDED_DESCRIPTION": []
   },
@@ -170,7 +170,7 @@
   },
   "ClowCardTheLittle": {
     "NAME": "小",
-    "DESCRIPTION": "「 地 」获得3点 敏捷 ，失去2点 力量 。",
+    "DESCRIPTION": "「 地 」获得3点 敏捷 ，失去1点 力量 。",
     "UPGRADE_DESCRIPTION": "「 地 」获得3点 敏捷。",
     "EXTENDED_DESCRIPTION": []
   },
@@ -197,8 +197,8 @@
   },
   "ClowCardTheMirror": {
     "NAME": "镜",
-    "DESCRIPTION": "「 水 」 虚无 。 消耗 。选择复制1张手牌中的 库洛牌 或 小樱牌 。",
-    "UPGRADE_DESCRIPTION": "「 水 」 消耗 。选择复制1张手牌中的 库洛牌 或 小樱牌 。",
+    "DESCRIPTION": "「 水 」 虚无 。 消耗 。选择复制1张手牌中的 库洛牌 或 小樱牌 。 小樱牌 复制时会获得对应的 库洛牌 。",
+    "UPGRADE_DESCRIPTION": "「 水 」 消耗 。选择复制1张手牌中的 库洛牌 或 小樱牌 。 小樱牌 复制时会获得对应的 库洛牌 。",
     "EXTENDED_DESCRIPTION": [
       "额外添加1张复制牌到手中。"
     ]

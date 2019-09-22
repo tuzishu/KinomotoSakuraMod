@@ -249,6 +249,13 @@
       "% 。"
     ]
   },
+  "KSMOD_VoicePower_SakuraCard": {
+    "NAME": "声源",
+    "DESCRIPTIONS": [
+      "回合开始时，添加 #b",
+      " 张 #y声牌 到手中。"
+    ]
+  },
   "KSMOD_CerberusMarkPower": {
     "NAME": "可鲁贝洛斯·标记",
     "DESCRIPTIONS": [

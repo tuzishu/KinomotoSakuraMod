@@ -63,4 +63,9 @@ public class ClowCardTheTwin extends KSMOD_AbstractMagicCard
     {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_TwinPower(player, 1), 1));
     }
+
+    public void atTurnStart()
+    {
+        this.retain = this.upgraded;
+    }
 }
