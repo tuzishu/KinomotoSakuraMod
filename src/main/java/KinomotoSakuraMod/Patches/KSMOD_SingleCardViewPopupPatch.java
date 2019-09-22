@@ -45,6 +45,10 @@ public class KSMOD_SingleCardViewPopupPatch
     private static final float PORTRAIT_HEIGHT = 786F;
     private static final float PORTRAIT_ORIGIN_X = 151F;
     private static final float PORTRAIT_ORIGIN_Y = 356F;
+    private static final float PORTRAIT_SINGLE_WIDTH = 440F;
+    private static final float PORTRAIT_SINGLE_HEIGHT = 1000F;
+    private static final float PORTRAIT_SINGLE_ORIGIN_X = 220F;
+    private static final float PORTRAIT_SINGLE_ORIGIN_Y = 500F;
     private static final String[] TEXT;
     private static final float DESC_X = Settings.WIDTH * 0.05F;
     private static final float DESC_Y = Settings.HEIGHT * 0.9F;
@@ -106,7 +110,14 @@ public class KSMOD_SingleCardViewPopupPatch
             if (IsKSCard(card))
             {
                 Texture portraitImg = (Texture) KSMOD_Utility.GetFieldByReflect(SingleCardViewPopup.class, "portraitImg").get(view);
-                sb.draw(portraitImg, Settings.WIDTH * 0.5F - PORTRAIT_ORIGIN_X, Settings.HEIGHT * 0.5F - PORTRAIT_ORIGIN_Y, PORTRAIT_ORIGIN_X, PORTRAIT_ORIGIN_Y, PORTRAIT_WIDTH, PORTRAIT_HEIGHT, Settings.scale, Settings.scale, 0.0F, 0, 0, (int) PORTRAIT_WIDTH, (int) PORTRAIT_HEIGHT, false, false);
+                if (card.color == KSMOD_CustomCardColor.SPELL_COLOR && ((KSMOD_AbstractSpellCard) card).isSimplePortraitCard())
+                {
+                    sb.draw(portraitImg, Settings.WIDTH * 0.5F - PORTRAIT_SINGLE_ORIGIN_X, Settings.HEIGHT * 0.5F - PORTRAIT_SINGLE_ORIGIN_Y, PORTRAIT_SINGLE_ORIGIN_X, PORTRAIT_SINGLE_ORIGIN_Y, PORTRAIT_SINGLE_WIDTH, PORTRAIT_SINGLE_HEIGHT, Settings.scale, Settings.scale, 0.0F, 0, 0, (int) PORTRAIT_SINGLE_WIDTH, (int) PORTRAIT_SINGLE_HEIGHT, false, false);
+                }
+                else
+                {
+                    sb.draw(portraitImg, Settings.WIDTH * 0.5F - PORTRAIT_ORIGIN_X, Settings.HEIGHT * 0.5F - PORTRAIT_ORIGIN_Y, PORTRAIT_ORIGIN_X, PORTRAIT_ORIGIN_Y, PORTRAIT_WIDTH, PORTRAIT_HEIGHT, Settings.scale, Settings.scale, 0.0F, 0, 0, (int) PORTRAIT_WIDTH, (int) PORTRAIT_HEIGHT, false, false);
+                }
                 return SpireReturn.Return(null);
             }
             else
@@ -139,7 +150,7 @@ public class KSMOD_SingleCardViewPopupPatch
             }
             else if (card.color == KSMOD_CustomCardColor.SPELL_COLOR)
             {
-                if (((KSMOD_AbstractSpellCard)card).isSimplePortraitCard())
+                if (((KSMOD_AbstractSpellCard) card).isSimplePortraitCard())
                 {
                     texture = KSMOD_ImageConst.FRAME_EMPTY_LARGE;
                 }
@@ -192,7 +203,7 @@ public class KSMOD_SingleCardViewPopupPatch
             }
             else if (card.color == KSMOD_CustomCardColor.SPELL_COLOR)
             {
-                if (((KSMOD_AbstractSpellCard)card).isSimplePortraitCard())
+                if (((KSMOD_AbstractSpellCard) card).isSimplePortraitCard())
                 {
                     texture = KSMOD_ImageConst.BANNER_EMPTY_LARGE;
                 }

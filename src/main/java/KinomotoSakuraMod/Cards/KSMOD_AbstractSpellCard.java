@@ -1,6 +1,5 @@
 package KinomotoSakuraMod.Cards;
 
-import KinomotoSakuraMod.KSMOD;
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import basemod.BaseMod;
@@ -51,10 +50,10 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
     private static final float HB_H = IMG_HEIGHT;
     private static final float TITLE_HEIGHT_TO_CENTER = 222.0F;
     private static final float TITLE_BOTTOM_HEIGHT_TO_CENTER = -205.0F;
-    private static final float PORTRAIT_WIDTH = 151F;
-    private static final float PORTRAIT_HEIGHT = 393F;
-    private static final float PORTRAIT_ORIGIN_X = 75F;
-    private static final float PORTRAIT_ORIGIN_Y = 178F;
+    private static final float PORTRAIT_WIDTH = 220F;
+    private static final float PORTRAIT_HEIGHT = 500F;
+    private static final float PORTRAIT_ORIGIN_X = 110F;
+    private static final float PORTRAIT_ORIGIN_Y = 250F;
     public static boolean isHandSelectScreenOpened = false;
     private String BOTTOM_TITLE = "";
     private boolean isSimplePortraitCard = false;
