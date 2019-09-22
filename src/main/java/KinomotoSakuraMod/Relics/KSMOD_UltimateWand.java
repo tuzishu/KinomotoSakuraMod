@@ -33,7 +33,7 @@ public class KSMOD_UltimateWand extends CustomRelic
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
     private static final int START_COUNT = 0;
     private static final int UPDATE_TRIGGER_NUMBER = 30;
-    private static final int BASE_TRIGGER_NUMBER = 40;
+    private static final int BASE_TRIGGER_NUMBER = 30;
     private static final int GAIN_NUMBER = 5;
     private static final int MAGICK_CHARGE_TRIGGER_NUMBER = 2;
     private static final int MAGICK_CHARGE_NUMBER = 1;

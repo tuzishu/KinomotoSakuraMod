@@ -1,6 +1,7 @@
 package KinomotoSakuraMod.Patches;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
+import KinomotoSakuraMod.Cards.KSMOD_AbstractSpellCard;
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import basemod.BaseMod;
@@ -37,9 +38,9 @@ public class KSMOD_SingleCardViewPopupPatch
     private static final float HB_W = IMG_WIDTH;
     private static final float HB_H = IMG_HEIGHT;
     private static final float TITLE_HEIGHT_TO_CENTER = 444.0F;
-    private static final float TITLE_HEIGHT_SAKURA_TO_CENTER = 436.0F;//调整中
+    private static final float TITLE_HEIGHT_SAKURA_TO_CENTER = 436.0F;
     private static final float TITLE_BOTTOM_HEIGHT_TO_CENTER = -410.0F;
-    private static final float TITLE_BOTTOM_HEIGHT_SAKURA_TO_CENTER = -394.0F;//调整中
+    private static final float TITLE_BOTTOM_HEIGHT_SAKURA_TO_CENTER = -394.0F;
     private static final float PORTRAIT_WIDTH = 303F;
     private static final float PORTRAIT_HEIGHT = 786F;
     private static final float PORTRAIT_ORIGIN_X = 151F;
@@ -136,6 +137,17 @@ public class KSMOD_SingleCardViewPopupPatch
                         break;
                 }
             }
+            else if (card.color == KSMOD_CustomCardColor.SPELL_COLOR)
+            {
+                if (((KSMOD_AbstractSpellCard)card).isSimplePortraitCard())
+                {
+                    texture = KSMOD_ImageConst.FRAME_EMPTY_LARGE;
+                }
+                else
+                {
+                    texture = KSMOD_ImageConst.FRAME_SPELLCARD_LARGE;
+                }
+            }
             else
             {
                 texture = KSMOD_ImageConst.FRAME_SAKURACARD_LARGE;
@@ -176,6 +188,17 @@ public class KSMOD_SingleCardViewPopupPatch
                         break;
                     default:
                         texture = KSMOD_ImageConst.BANNER_CLOWCARD_COMMON_LARGE;
+                }
+            }
+            else if (card.color == KSMOD_CustomCardColor.SPELL_COLOR)
+            {
+                if (((KSMOD_AbstractSpellCard)card).isSimplePortraitCard())
+                {
+                    texture = KSMOD_ImageConst.BANNER_EMPTY_LARGE;
+                }
+                else
+                {
+                    texture = KSMOD_ImageConst.BANNER_SPELLCARD_LARGE;
                 }
             }
             else
@@ -453,6 +476,24 @@ public class KSMOD_SingleCardViewPopupPatch
                         break;
                     default:
                         texture = KSMOD_ImageConst.ORB_CLOWCARD_SKILL_LARGE;
+                        break;
+                }
+            }
+            else if (card.color == KSMOD_CustomCardColor.SPELL_COLOR)
+            {
+                switch (card.type)
+                {
+                    case ATTACK:
+                        texture = KSMOD_ImageConst.ORB_SPELLCARD_ATTACK_LARGE;
+                        break;
+                    case SKILL:
+                        texture = KSMOD_ImageConst.ORB_SPELLCARD_SKILL_LARGE;
+                        break;
+                    case POWER:
+                        texture = KSMOD_ImageConst.ORB_SPELLCARD_POWER_LARGE;
+                        break;
+                    default:
+                        texture = KSMOD_ImageConst.ORB_SPELLCARD_SKILL_LARGE;
                         break;
                 }
             }

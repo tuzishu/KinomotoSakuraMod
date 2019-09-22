@@ -1,5 +1,6 @@
 package KinomotoSakuraMod.Cards;
 
+import KinomotoSakuraMod.KSMOD;
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import basemod.BaseMod;
@@ -56,6 +57,13 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
     private static final float PORTRAIT_ORIGIN_Y = 178F;
     public static boolean isHandSelectScreenOpened = false;
     private String BOTTOM_TITLE = "";
+    private boolean isSimplePortraitCard = false;
+
+    public KSMOD_AbstractSpellCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target, boolean isSimplePortraitCard)
+    {
+        super(id, name, img, cost, rawDescription, type, color, rarity, target);
+        this.isSimplePortraitCard = isSimplePortraitCard;
+    }
 
     public KSMOD_AbstractSpellCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target)
     {
@@ -72,6 +80,11 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
     {
         this.baseMagicNumber = value;
         this.magicNumber = value;
+    }
+
+    public boolean isSimplePortraitCard()
+    {
+        return this.isSimplePortraitCard;
     }
 
     //////////
@@ -99,16 +112,16 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
         switch (this.type)
         {
             case ATTACK:
-                texture = KSMOD_ImageConst.ORB_CLOWCARD_ATTACK;
+                texture = KSMOD_ImageConst.ORB_SPELLCARD_ATTACK;
                 break;
             case SKILL:
-                texture = KSMOD_ImageConst.ORB_CLOWCARD_SKILL;
+                texture = KSMOD_ImageConst.ORB_SPELLCARD_SKILL;
                 break;
             case POWER:
-                texture = KSMOD_ImageConst.ORB_CLOWCARD_POWER;
+                texture = KSMOD_ImageConst.ORB_SPELLCARD_POWER;
                 break;
             default:
-                texture = KSMOD_ImageConst.ORB_CLOWCARD_SKILL;
+                texture = KSMOD_ImageConst.ORB_SPELLCARD_SKILL;
                 break;
         }
         return texture;
@@ -152,17 +165,13 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
     private Texture GetFrameImage()
     {
         Texture texture;
-        switch (this.rarity)
+        if (this.isSimplePortraitCard)
         {
-            case COMMON:
-                texture = KSMOD_ImageConst.FRAME_CLOWCARD_COMMON;
-                break;
-            case UNCOMMON:
-                texture = KSMOD_ImageConst.FRAME_CLOWCARD_UNCOMMON;
-                break;
-            default:
-                texture = KSMOD_ImageConst.FRAME_CLOWCARD_RARE;
-                break;
+            texture = KSMOD_ImageConst.FRAME_EMPTY;
+        }
+        else
+        {
+            texture = KSMOD_ImageConst.FRAME_SPELLCARD;
         }
         return texture;
     }
@@ -195,17 +204,13 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
     private Texture GetBannerImage()
     {
         Texture texture;
-        switch (this.rarity)
+        if (this.isSimplePortraitCard)
         {
-            case COMMON:
-                texture = KSMOD_ImageConst.BANNER_CLOWCARD_COMMON;
-                break;
-            case UNCOMMON:
-                texture = KSMOD_ImageConst.BANNER_CLOWCARD_UNCOMMON;
-                break;
-            default:
-                texture = KSMOD_ImageConst.BANNER_CLOWCARD_RARE;
-                break;
+            texture = KSMOD_ImageConst.BANNER_EMPTY;
+        }
+        else
+        {
+            texture = KSMOD_ImageConst.BANNER_SPELLCARD;
         }
         return texture;
     }

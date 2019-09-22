@@ -5,6 +5,7 @@ import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -63,7 +64,7 @@ public class ClowCardTheDream extends KSMOD_AbstractMagicCard
     {
         for (int i = 0; i < this.magicNumber; i++)
         {
-            AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(AbstractDungeon.returnTrulyRandomCard()));
+            AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(GetRandomCardWithoutCreate()));
         }
     }
 
@@ -72,7 +73,7 @@ public class ClowCardTheDream extends KSMOD_AbstractMagicCard
     {
         for (int i = 0; i < this.magicNumber + KSMOD_SealedBook.TEMPCARD_NUMBER; i++)
         {
-            AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(AbstractDungeon.returnTrulyRandomCard()));
+            AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(GetRandomCardWithoutCreate()));
         }
     }
 
@@ -80,5 +81,15 @@ public class ClowCardTheDream extends KSMOD_AbstractMagicCard
     public String getExtraDescription()
     {
         return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.TEMPCARD_NUMBER + EXTENDED_DESCRIPTION[1];
+    }
+
+    private AbstractCard GetRandomCardWithoutCreate()
+    {
+        AbstractCard card;
+        do
+        {
+            card = AbstractDungeon.returnTrulyRandomCard();
+        } while (card instanceof ClowCardTheCreate);
+        return card;
     }
 }

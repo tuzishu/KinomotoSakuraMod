@@ -18,7 +18,7 @@ public class SpellCardLeiDi extends KSMOD_AbstractSpellCard
     public static final String ID = "SpellCardLeiDi";
     private static final String NAME;
     private static final String DESCRIPTION;
-    private static final String IMAGE_PATH = "img/cards/default_card.png";
+    private static final String IMAGE_PATH = "img/cards/spellcard/leidi.png";
     private static final int COST = -2;
     private static final CardType CARD_TYPE = CardType.ATTACK;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SPELL_COLOR;
@@ -35,7 +35,7 @@ public class SpellCardLeiDi extends KSMOD_AbstractSpellCard
 
     public SpellCardLeiDi()
     {
-        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
+        super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
         this.tags.add(KSMOD_CustomTag.KSMOD_EARTHY_CARD);
         this.exhaust = true;
         this.isEthereal = true;

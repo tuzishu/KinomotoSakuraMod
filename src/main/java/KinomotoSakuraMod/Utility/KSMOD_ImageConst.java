@@ -14,8 +14,8 @@ public class KSMOD_ImageConst
     public static final String CLOWCARD_BG_LARGE_PATH = "img/cardui/clowcard/bg/bg_p.png";
     public static final String SAKURACARD_BG_PATH = "img/cardui/sakuracard/bg/bg.png";
     public static final String SAKURACARD_BG_LARGE_PATH = "img/cardui/sakuracard/bg/bg_p.png";
-    public static final String SPELLCARD_BG_PATH = "img/cardui/spellcard/bg/attack.png";
-    public static final String SPELLCARD_BG_LARGE_PATH = "img/cardui/spellcard/bg/attack_p.png";
+    public static final String SPELLCARD_BG_PATH = "img/cardui/spellcard/bg/bg.png";
+    public static final String SPELLCARD_BG_LARGE_PATH = "img/cardui/spellcard/bg/bg_p.png";
     // 卡牌能量标识
     public static final String ORB_CLOWCARD_ATTACK_PATH = "img/cardui/clowcard/orb/attack.png";
     public static final String ORB_CLOWCARD_ATTACK_LARGE_PATH = "img/cardui/clowcard/orb/attack_p.png";
@@ -29,6 +29,12 @@ public class KSMOD_ImageConst
     public static final String ORB_SAKURACARD_SKILL_LARGE_PATH = "img/cardui/sakuracard/orb/skill_p.png";
     public static final String ORB_SAKURACARD_POWER_PATH = "img/cardui/sakuracard/orb/power.png";
     public static final String ORB_SAKURACARD_POWER_LARGE_PATH = "img/cardui/sakuracard/orb/power_p.png";
+    public static final String ORB_SPELLCARD_ATTACK_PATH = "img/cardui/spellcard/orb/attack.png";
+    public static final String ORB_SPELLCARD_ATTACK_LARGE_PATH = "img/cardui/spellcard/orb/attack_p.png";
+    public static final String ORB_SPELLCARD_SKILL_PATH = "img/cardui/spellcard/orb/skill.png";
+    public static final String ORB_SPELLCARD_SKILL_LARGE_PATH = "img/cardui/spellcard/orb/skill_p.png";
+    public static final String ORB_SPELLCARD_POWER_PATH = "img/cardui/spellcard/orb/power.png";
+    public static final String ORB_SPELLCARD_POWER_LARGE_PATH = "img/cardui/spellcard/orb/power_p.png";
     // 卡牌稀有旗
     public static final String BANNER_CLOWCARD_COMMON_PATH = "img/cardui/clowcard/banner/common.png";
     public static final String BANNER_CLOWCARD_COMMON_LARGE_PATH = "img/cardui/clowcard/banner/common_p.png";
@@ -38,6 +44,10 @@ public class KSMOD_ImageConst
     public static final String BANNER_CLOWCARD_RARE_LARGE_PATH = "img/cardui/clowcard/banner/rare_p.png";
     public static final String BANNER_SAKURACARD_PATH = "img/cardui/sakuracard/banner/banner.png";
     public static final String BANNER_SAKURACARD_LARGE_PATH = "img/cardui/sakuracard/banner/banner_p.png";
+    public static final String BANNER_SPELLCARD_PATH = "img/cardui/spellcard/banner/banner.png";
+    public static final String BANNER_SPELLCARD_LARGE_PATH = "img/cardui/spellcard/banner/banner_p.png";
+    public static final String BANNER_EMPTY_PATH = "img/cardui/general/empty/empty.png";
+    public static final String BANNER_EMPTY_LARGE_PATH = "img/cardui/general/empty/empty_p.png";
     // 卡牌稀有框
     public static final String FRAME_CLOWCARD_COMMON_PATH = "img/cardui/clowcard/frame/common.png";
     public static final String FRAME_CLOWCARD_COMMON_LARGE_PATH = "img/cardui/clowcard/frame/common_p.png";
@@ -47,6 +57,10 @@ public class KSMOD_ImageConst
     public static final String FRAME_CLOWCARD_RARE_LARGE_PATH = "img/cardui/clowcard/frame/rare_p.png";
     public static final String FRAME_SAKURACARD_PATH = "img/cardui/sakuracard/frame/frame.png";
     public static final String FRAME_SAKURACARD_LARGE_PATH = "img/cardui/sakuracard/frame/frame_p.png";
+    public static final String FRAME_SPELLCARD_PATH = "img/cardui/spellcard/frame/frame.png";
+    public static final String FRAME_SPELLCARD_LARGE_PATH = "img/cardui/spellcard/frame/frame_p.png";
+    public static final String FRAME_EMPTY_PATH = "img/cardui/general/empty/empty.png";
+    public static final String FRAME_EMPTY_LARGE_PATH = "img/cardui/general/empty/empty_p.png";
     // 卡牌描述遮罩
     public static final String MASK_PATH = "img/cardui/general/mask/mask.png";
     // 卡牌轮廓
@@ -102,6 +116,12 @@ public class KSMOD_ImageConst
     public static final Texture ORB_SAKURACARD_SKILL_LARGE;
     public static final Texture ORB_SAKURACARD_POWER;
     public static final Texture ORB_SAKURACARD_POWER_LARGE;
+    public static final Texture ORB_SPELLCARD_ATTACK;
+    public static final Texture ORB_SPELLCARD_ATTACK_LARGE;
+    public static final Texture ORB_SPELLCARD_SKILL;
+    public static final Texture ORB_SPELLCARD_SKILL_LARGE;
+    public static final Texture ORB_SPELLCARD_POWER;
+    public static final Texture ORB_SPELLCARD_POWER_LARGE;
     // 卡牌稀有旗
     public static final Texture BANNER_CLOWCARD_COMMON;
     public static final Texture BANNER_CLOWCARD_COMMON_LARGE;
@@ -111,6 +131,10 @@ public class KSMOD_ImageConst
     public static final Texture BANNER_CLOWCARD_RARE_LARGE;
     public static final Texture BANNER_SAKURACARD;
     public static final Texture BANNER_SAKURACARD_LARGE;
+    public static final Texture BANNER_SPELLCARD;
+    public static final Texture BANNER_SPELLCARD_LARGE;
+    public static final Texture BANNER_EMPTY;
+    public static final Texture BANNER_EMPTY_LARGE;
     // 卡牌稀有框
     public static final Texture FRAME_CLOWCARD_COMMON;
     public static final Texture FRAME_CLOWCARD_COMMON_LARGE;
@@ -120,6 +144,10 @@ public class KSMOD_ImageConst
     public static final Texture FRAME_CLOWCARD_RARE_LARGE;
     public static final Texture FRAME_SAKURACARD;
     public static final Texture FRAME_SAKURACARD_LARGE;
+    public static final Texture FRAME_SPELLCARD;
+    public static final Texture FRAME_SPELLCARD_LARGE;
+    public static final Texture FRAME_EMPTY;
+    public static final Texture FRAME_EMPTY_LARGE;
     // 卡牌描述遮罩
     public static final Texture MASK;
     // 卡牌轮廓
@@ -151,6 +179,12 @@ public class KSMOD_ImageConst
         ORB_SAKURACARD_SKILL_LARGE = ImageMaster.loadImage(ORB_SAKURACARD_SKILL_LARGE_PATH);
         ORB_SAKURACARD_POWER = ImageMaster.loadImage(ORB_SAKURACARD_POWER_PATH);
         ORB_SAKURACARD_POWER_LARGE = ImageMaster.loadImage(ORB_SAKURACARD_POWER_LARGE_PATH);
+        ORB_SPELLCARD_ATTACK = ImageMaster.loadImage(ORB_SPELLCARD_ATTACK_PATH);
+        ORB_SPELLCARD_ATTACK_LARGE = ImageMaster.loadImage(ORB_SPELLCARD_ATTACK_LARGE_PATH);
+        ORB_SPELLCARD_SKILL = ImageMaster.loadImage(ORB_SPELLCARD_SKILL_PATH);
+        ORB_SPELLCARD_SKILL_LARGE = ImageMaster.loadImage(ORB_SPELLCARD_SKILL_LARGE_PATH);
+        ORB_SPELLCARD_POWER = ImageMaster.loadImage(ORB_SPELLCARD_POWER_PATH);
+        ORB_SPELLCARD_POWER_LARGE = ImageMaster.loadImage(ORB_SPELLCARD_POWER_LARGE_PATH);
         // 卡牌稀有旗
         BANNER_CLOWCARD_COMMON = ImageMaster.loadImage(BANNER_CLOWCARD_COMMON_PATH);
         BANNER_CLOWCARD_COMMON_LARGE = ImageMaster.loadImage(BANNER_CLOWCARD_COMMON_LARGE_PATH);
@@ -160,6 +194,10 @@ public class KSMOD_ImageConst
         BANNER_CLOWCARD_RARE_LARGE = ImageMaster.loadImage(BANNER_CLOWCARD_RARE_LARGE_PATH);
         BANNER_SAKURACARD = ImageMaster.loadImage(BANNER_SAKURACARD_PATH);
         BANNER_SAKURACARD_LARGE = ImageMaster.loadImage(BANNER_SAKURACARD_LARGE_PATH);
+        BANNER_SPELLCARD = ImageMaster.loadImage(BANNER_SPELLCARD_PATH);
+        BANNER_SPELLCARD_LARGE = ImageMaster.loadImage(BANNER_SPELLCARD_LARGE_PATH);
+        BANNER_EMPTY = ImageMaster.loadImage(BANNER_EMPTY_PATH);
+        BANNER_EMPTY_LARGE = ImageMaster.loadImage(BANNER_EMPTY_LARGE_PATH);
         // 卡牌稀有框
         FRAME_CLOWCARD_COMMON = ImageMaster.loadImage(FRAME_CLOWCARD_COMMON_PATH);
         FRAME_CLOWCARD_COMMON_LARGE = ImageMaster.loadImage(FRAME_CLOWCARD_COMMON_LARGE_PATH);
@@ -169,6 +207,10 @@ public class KSMOD_ImageConst
         FRAME_CLOWCARD_RARE_LARGE = ImageMaster.loadImage(FRAME_CLOWCARD_RARE_LARGE_PATH);
         FRAME_SAKURACARD = ImageMaster.loadImage(FRAME_SAKURACARD_PATH);
         FRAME_SAKURACARD_LARGE = ImageMaster.loadImage(FRAME_SAKURACARD_LARGE_PATH);
+        FRAME_SPELLCARD = ImageMaster.loadImage(FRAME_SPELLCARD_PATH);
+        FRAME_SPELLCARD_LARGE = ImageMaster.loadImage(FRAME_SPELLCARD_LARGE_PATH);
+        FRAME_EMPTY = ImageMaster.loadImage(FRAME_EMPTY_PATH);
+        FRAME_EMPTY_LARGE = ImageMaster.loadImage(FRAME_EMPTY_LARGE_PATH);
         // 卡牌描述遮罩
         MASK = ImageMaster.loadImage(MASK_PATH);
         // 卡牌轮廓
