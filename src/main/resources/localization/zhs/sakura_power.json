@@ -39,14 +39,14 @@
     "NAME": "地元素",
     "DESCRIPTIONS": [
       "本回合打出 #y地元素牌 时，额外获得1层 #y魔力充能 ，并获得 #b",
-      " 点格挡。"
+      " 点 #b格挡 。"
     ]
   },
   "KSMOD_EarthyPower_SakuraCard": {
     "NAME": "地元素·樱",
     "DESCRIPTIONS": [
       "打出 #y地元素牌 时，额外获得1层 #y魔力充能 ，并获得 #b",
-      " 点格挡。"
+      " 点 #b格挡 。"
     ]
   },
   "KSMOD_WateryPower": {
@@ -94,8 +94,8 @@
   "KSMOD_FloatPower": {
     "NAME": "漂浮",
     "DESCRIPTIONS": [
-      "每受到1次 #y未被格挡 的伤害，获得 #b",
-      " 层 #y敏捷 。"
+      "每抽1张牌获得 #b",
+      " 点 #b格挡 。"
     ]
   },
   "KSMOD_FloatPower_SakuraCard": {
@@ -213,7 +213,7 @@
     "NAME": "波动",
     "DESCRIPTIONS": [
       "使用攻击牌时获得 #b",
-      " 点格挡。"
+      " 点 #b格挡 。"
     ]
   },
   "KSMOD_WavePower_SakuraCard": {

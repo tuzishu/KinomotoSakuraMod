@@ -37,7 +37,7 @@ public class SakuraCardTheMist extends KSMOD_AbstractMagicCard
     public SakuraCardTheMist()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
-        this.tags.add(KSMOD_CustomTag.KSMOD_WATERY_CARD);
+        this.tags.add(KSMOD_CustomTag.KSMOD_EARTHY_CARD);
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 

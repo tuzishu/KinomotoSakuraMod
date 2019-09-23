@@ -43,7 +43,7 @@ public class ClowCardTheIllusion extends KSMOD_AbstractMagicCard
     public ClowCardTheIllusion()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
-        this.tags.add(KSMOD_CustomTag.KSMOD_FIREY_CARD);
+        this.tags.add(KSMOD_CustomTag.KSMOD_WINDY_CARD);
         this.baseBlock = BASE_BLOCK;
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }

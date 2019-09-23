@@ -63,7 +63,7 @@
   },
   "ClowCardTheDream": {
     "NAME": "梦",
-    "DESCRIPTION": " 「 风 」 消耗 。添加 !M! 张随机 库洛牌 到手中。",
+    "DESCRIPTION": " 「 风 」 消耗 。添加 !M! 张随机 库洛牌 到手中，在本回合耗能变为0。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外获得",
@@ -101,7 +101,7 @@
   },
   "ClowCardTheFloat": {
     "NAME": "浮",
-    "DESCRIPTION": "「 风 」每受到1次未被格挡的伤害，获得1层 敏捷 。",
+    "DESCRIPTION": "「 风 」每抽1张牌获得 !B! 点 格挡 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -139,10 +139,10 @@
   },
   "ClowCardTheIllusion": {
     "NAME": "幻",
-    "DESCRIPTION": "「 火 」获得 !B! 点 格挡 。消耗区每有3张牌，额外获得 !M! 点 格挡 。",
+    "DESCRIPTION": "「 风 」获得 !B! 点 格挡 。消耗区每有3张牌，额外获得 !M! 点 格挡 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "「 火 」获得 !B! 点 格挡 。消耗区每有2张牌，额外获得 !M! 点 格挡 。"
+      "「 风 」获得 !B! 点 格挡 。消耗区每有2张牌，额外获得 !M! 点 格挡 。"
     ]
   },
   "ClowCardTheJump": {
@@ -155,7 +155,7 @@
   },
   "ClowCardTheLibra": {
     "NAME": "秤",
-    "DESCRIPTION": "「 地 」获得 !B! 点 格挡 ，没有 格挡 时消耗 !M! 层 魔力充能 获得双倍效果。",
+    "DESCRIPTION": "「 火 」获得 !B! 点 格挡 ，没有 格挡 时消耗 !M! 层 魔力充能 获得双倍效果。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外获得",
@@ -170,8 +170,8 @@
   },
   "ClowCardTheLittle": {
     "NAME": "小",
-    "DESCRIPTION": "「 地 」获得3点 敏捷 ，失去1点 力量 。",
-    "UPGRADE_DESCRIPTION": "「 地 」获得3点 敏捷。",
+    "DESCRIPTION": "「 水 」获得3点 敏捷 ，失去1点 力量 。",
+    "UPGRADE_DESCRIPTION": "「 水 」获得3点 敏捷。",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheLock": {
@@ -182,7 +182,7 @@
   },
   "ClowCardTheLoop": {
     "NAME": "轮",
-    "DESCRIPTION": "「 火 」回合开始时，额外抽 !M! 张牌，丢弃 !M! 张牌。",
+    "DESCRIPTION": "「 地 」回合开始时，额外抽 !M! 张牌，丢弃 !M! 张牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -205,7 +205,7 @@
   },
   "ClowCardTheMist": {
     "NAME": "雾",
-    "DESCRIPTION": "「 水 」给与全体敌人 !M! 层 中毒 。",
+    "DESCRIPTION": "「 地 」给与全体敌人 !M! 层 中毒 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "去除所有敌人的所有格挡值、 金属化 、 多层护甲 、 人工制品 、 荆棘 、 缓冲 、 无实体 、 柔韧 。"
@@ -296,7 +296,7 @@
   },
   "ClowCardTheSnow": {
     "NAME": "雪",
-    "DESCRIPTION": "「 水 」本回合每打出过1张技能牌，对全体敌人造成 !D! 点伤害。",
+    "DESCRIPTION": "「 水 」本回合每打出过1张 水元素牌 ，对全体敌人造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外造成",
@@ -567,7 +567,7 @@
   },
   "SakuraCardTheIllusion": {
     "NAME": "幻",
-    "DESCRIPTION": "「 小樱牌 」「 火 」 固有 。 消耗 。给与 !M! 层 虚弱 和 !M! 层 易伤 。",
+    "DESCRIPTION": "「 小樱牌 」「 风 」 固有 。 消耗 。给与 !M! 层 虚弱 和 !M! 层 易伤 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -579,7 +579,7 @@
   },
   "SakuraCardTheLibra": {
     "NAME": "秤",
-    "DESCRIPTION": "「 小樱牌 」「 地 」消耗所有 魔力充能 ，每消耗 !M! 层获得 !B! 点 格挡 。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」消耗所有 魔力充能 ，每消耗 !M! 层获得 !B! 点 格挡 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -591,19 +591,19 @@
   },
   "SakuraCardTheLittle": {
     "NAME": "小",
-    "DESCRIPTION": "「 小樱牌 」「 地 」受到的伤害减少25%。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」受到的伤害减少25%。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheLock": {
     "NAME": "锁",
-    "DESCRIPTION": "「 小樱牌 」「 风 」本回合触发魔力充能效果时，不消耗充能层数。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」本回合触发魔力充能效果时，不消耗充能层数。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheLoop": {
     "NAME": "轮",
-    "DESCRIPTION": "「 小樱牌 」「 火 」每主动丢弃1张卡，抽 !M! 张牌。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」每主动丢弃1张卡，抽 !M! 张牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -621,7 +621,7 @@
   },
   "SakuraCardTheMist": {
     "NAME": "雾",
-    "DESCRIPTION": "「 小樱牌 」「 水 」给与全体敌人 中毒 !M! 次。移除其所有格挡值。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」给与全体敌人 中毒 !M! 次。移除其所有格挡值。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

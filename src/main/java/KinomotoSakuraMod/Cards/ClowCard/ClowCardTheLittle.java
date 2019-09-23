@@ -38,7 +38,7 @@ public class ClowCardTheLittle extends KSMOD_AbstractMagicCard
     public ClowCardTheLittle()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
-        this.tags.add(KSMOD_CustomTag.KSMOD_EARTHY_CARD);
+        this.tags.add(KSMOD_CustomTag.KSMOD_WATERY_CARD);
     }
 
     public KSMOD_AbstractMagicCard makeCopy()

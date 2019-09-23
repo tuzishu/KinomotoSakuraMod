@@ -1,12 +1,11 @@
 package KinomotoSakuraMod.Powers;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.DexterityPower;
 
 public class KSMOD_FloatPower extends KSMOD_CustomPower
 {
@@ -23,9 +22,9 @@ public class KSMOD_FloatPower extends KSMOD_CustomPower
         POWER_DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     }
 
-    public KSMOD_FloatPower()
+    public KSMOD_FloatPower(int amount)
     {
-        this(AbstractDungeon.player, 1);
+        this(AbstractDungeon.player, amount);
     }
 
     public KSMOD_FloatPower(AbstractCreature target, int amount)
@@ -34,16 +33,22 @@ public class KSMOD_FloatPower extends KSMOD_CustomPower
         this.updateDescription();
     }
 
-    public void CustomOnAttacked(DamageInfo info)
-    {
-        if (info.output > 0 && info.output > this.owner.currentBlock)
-        {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new DexterityPower(this.owner, this.amount), this.amount));
-        }
-    }
+    // public void CustomOnAttacked(DamageInfo info)
+    // {
+    //     if (info.output > 0 && info.output > this.owner.currentBlock)
+    //     {
+    //         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new DexterityPower(this.owner, this.amount), this.amount));
+    //     }
+    // }
 
     public void updateDescription()
     {
         this.description = POWER_DESCRIPTIONS[0] + this.amount + POWER_DESCRIPTIONS[1];
+    }
+
+
+    public void onCardDraw(AbstractCard card)
+    {
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this.owner, this.owner, this.amount, true));
     }
 }

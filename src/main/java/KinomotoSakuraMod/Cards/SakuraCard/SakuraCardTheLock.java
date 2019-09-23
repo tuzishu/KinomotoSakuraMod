@@ -35,7 +35,7 @@ public class SakuraCardTheLock extends KSMOD_AbstractMagicCard
     public SakuraCardTheLock()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
-        this.tags.add(KSMOD_CustomTag.KSMOD_WINDY_CARD);
+        this.tags.add(KSMOD_CustomTag.KSMOD_FIREY_CARD);
     }
 
     public void upgrade()

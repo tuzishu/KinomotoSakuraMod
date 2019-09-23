@@ -17,7 +17,7 @@ public class ClowCardTheLoop extends KSMOD_AbstractMagicCard
     private static final String NAME;
     private static final String DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_loop.png";
-    private static final int COST = 1;
+    private static final int COST = 0;
     private static final CardType CARD_TYPE = CardType.POWER;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
@@ -35,7 +35,7 @@ public class ClowCardTheLoop extends KSMOD_AbstractMagicCard
     public ClowCardTheLoop()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
-        this.tags.add(KSMOD_CustomTag.KSMOD_FIREY_CARD);
+        this.tags.add(KSMOD_CustomTag.KSMOD_EARTHY_CARD);
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 

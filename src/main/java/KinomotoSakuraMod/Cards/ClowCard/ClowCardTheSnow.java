@@ -70,7 +70,7 @@ public class ClowCardTheSnow extends KSMOD_AbstractMagicCard
         int count = 0;
         for (AbstractCard card: AbstractDungeon.actionManager.cardsPlayedThisTurn)
         {
-            if (card.type == CardType.SKILL)
+            if (card.hasTag(KSMOD_CustomTag.KSMOD_WATERY_CARD))
             {
                 count += 1;
             }

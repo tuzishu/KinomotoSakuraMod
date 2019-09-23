@@ -14,10 +14,10 @@ public class KSMOD_PlayerAttackedHook
         @SpireInsertPatch(locator = Locator.class)
         public static void Insert(AbstractPlayer player, DamageInfo info)
         {
-            if (player.hasPower(KSMOD_FloatPower.POWER_ID))
-            {
-                ((KSMOD_FloatPower) player.getPower(KSMOD_FloatPower.POWER_ID)).CustomOnAttacked(info);
-            }
+            // if (player.hasPower(KSMOD_FloatPower.POWER_ID))
+            // {
+            //     ((KSMOD_FloatPower) player.getPower(KSMOD_FloatPower.POWER_ID)).CustomOnAttacked(info);
+            // }
         }
     }
 

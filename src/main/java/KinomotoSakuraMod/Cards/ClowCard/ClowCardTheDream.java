@@ -19,7 +19,7 @@ public class ClowCardTheDream extends KSMOD_AbstractMagicCard
     private static final String DESCRIPTION;
     private static final String[] EXTENDED_DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_dream.png";
-    private static final int COST = 1;
+    private static final int COST = 0;
     private static final CardType CARD_TYPE = CardType.SKILL;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
@@ -90,6 +90,7 @@ public class ClowCardTheDream extends KSMOD_AbstractMagicCard
         {
             card = AbstractDungeon.returnTrulyRandomCard();
         } while (card instanceof ClowCardTheCreate);
+        card.setCostForTurn(0);
         return card;
     }
 }
