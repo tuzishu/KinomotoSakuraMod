@@ -645,7 +645,7 @@
   },
   "SakuraCardTheReturn": {
     "NAME": "回",
-    "DESCRIPTION": "「 小樱牌 」「 水 」回复所有生命值。从卡组中移除。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」 保留 。回复所有生命值，使用后从卡组中移除，并返还 !M! %的充能。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

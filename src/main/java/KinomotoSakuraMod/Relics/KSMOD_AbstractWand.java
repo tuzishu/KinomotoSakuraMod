@@ -6,76 +6,31 @@ import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import basemod.abstracts.CustomRelic;
+import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.beyond.Darkling;
 import com.megacrit.cardcrawl.powers.MinionPower;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import java.util.ArrayList;
 
-public class KSMOD_StarWand extends CustomRelic
+public abstract class KSMOD_AbstractWand extends CustomRelic
 {
-    public static final String RELIC_ID = "KSMOD_StarWand";
-    private static final String RELIC_IMG_PATH = "img/relics/icon/star_wand.png";
-    private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/star_wand.png";
-    private static final RelicTier RELIC_TIER = RelicTier.BOSS;
-    private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
-    private static final int START_COUNT = 0;
-    public static final int UPDATE_TRIGGER_NUMBER = 30;
-    private static final int BASE_TRIGGER_NUMBER = 30;
-    private static final int GAIN_NUMBER = 4;
+    private int baseTriggerNumber;
+    private int updateTriggerNumber;
+    private int gainNumber;
     private ArrayList<AbstractMonster> sealedMonsters = new ArrayList<>();
 
-    public KSMOD_StarWand()
+    public KSMOD_AbstractWand(String id, Texture texture, Texture outline, RelicTier tier, LandingSound sfx, int startCount, int baseTriggerNumber, int updateTriggerNumber, int gainNumber)
     {
-        super(RELIC_ID, ImageMaster.loadImage(RELIC_IMG_PATH), ImageMaster.loadImage(RELIC_IMG_OTL_PATH), RELIC_TIER, RELIC_SOUND);
-        this.counter = START_COUNT;
-    }
-
-    public String getUpdatedDescription()
-    {
-        return DESCRIPTIONS[0] + GAIN_NUMBER + DESCRIPTIONS[1] + BASE_TRIGGER_NUMBER + DESCRIPTIONS[2] + BASE_TRIGGER_NUMBER + DESCRIPTIONS[3] + UPDATE_TRIGGER_NUMBER + DESCRIPTIONS[4];
-    }
-
-    public boolean canSpawn()
-    {
-        return AbstractDungeon.player instanceof KinomotoSakura && AbstractDungeon.player.hasRelic(KSMOD_SealedWand.RELIC_ID);
-    }
-
-    public AbstractRelic makeCopy()
-    {
-        return new KSMOD_StarWand();
-    }
-
-    public void obtain()
-    {
-        AbstractRelic oldWand = AbstractDungeon.player.getRelic(KSMOD_SealedWand.RELIC_ID);
-        int targetIndex = AbstractDungeon.player.relics.indexOf(oldWand);
-        if (AbstractDungeon.player.hasRelic(KSMOD_SealedWand.RELIC_ID))
-        {
-            if (AbstractDungeon.player.hasRelic(KSMOD_Cerberus.RELIC_ID) && AbstractDungeon.player.hasRelic(KSMOD_Yue.RELIC_ID))
-            {
-                KSMOD_UltimateWand wand = new KSMOD_UltimateWand();
-                wand.counter = oldWand.counter;
-                wand.instantObtain(AbstractDungeon.player, targetIndex, true);
-                AbstractDungeon.player.loseRelic(KSMOD_Cerberus.RELIC_ID);
-                AbstractDungeon.player.loseRelic(KSMOD_Yue.RELIC_ID);
-            }
-            else
-            {
-                this.counter = oldWand.counter;
-                this.instantObtain(AbstractDungeon.player, targetIndex, false);
-            }
-        }
-        else
-        {
-            super.obtain();
-        }
+        super(id, texture, outline, tier, sfx);
+        this.counter = startCount;
+        this.baseTriggerNumber = baseTriggerNumber;
+        this.updateTriggerNumber = updateTriggerNumber;
+        this.gainNumber = gainNumber;
     }
 
     public void atPreBattle()
@@ -105,12 +60,17 @@ public class KSMOD_StarWand extends CustomRelic
     {
         if (!monster.hasPower(MinionPower.POWER_ID) && !sealedMonsters.contains(monster))
         {
-            GainCharge(GAIN_NUMBER);
+            GainCharge(gainNumber);
         }
         if (monster.id == Darkling.ID)
         {
             sealedMonsters.add(monster);
         }
+    }
+
+    public int getUpdateTriggerNumber()
+    {
+        return updateTriggerNumber;
     }
 
     public void GainCharge(int chargeNumber)
@@ -126,9 +86,7 @@ public class KSMOD_StarWand extends CustomRelic
             this.counter = 0;
         }
         AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-        AbstractCard card = new SpellCardTurn();
-        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(card));
-        AbstractDungeon.player.masterDeck.addToBottom(card);
+        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new SpellCardTurn()));
     }
 
     public int GetTriggerNumber()
@@ -144,7 +102,7 @@ public class KSMOD_StarWand extends CustomRelic
                 }
             }
         }
-        return BASE_TRIGGER_NUMBER + UPDATE_TRIGGER_NUMBER * sakuraCardAmount;
+        return baseTriggerNumber + updateTriggerNumber * sakuraCardAmount;
     }
 
     private void CheckSakuraCardRepeat(ArrayList<AbstractCard> arrayList)
