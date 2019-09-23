@@ -60,11 +60,7 @@ public class KSMOD_ChangeAction extends AbstractGameAction
             }
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
             AbstractDungeon.handCardSelectScreen.selectedCards.group.clear();
-            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, 1));
-            if (count > 0)
-            {
-                AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, count));
-            }
+            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, count + 2));
         }
 
         tickDuration();

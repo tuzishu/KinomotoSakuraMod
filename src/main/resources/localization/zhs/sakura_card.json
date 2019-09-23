@@ -24,7 +24,7 @@
   },
   "ClowCardTheChange": {
     "NAME": "替",
-    "DESCRIPTION": "「 地 」丢弃最多 !M! 张手牌，抽丢弃数量+1张牌。",
+    "DESCRIPTION": "「 地 」丢弃最多 !M! 张手牌，抽丢弃数量+2张牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外抽",
@@ -398,8 +398,8 @@
   },
   "ClowCardTheWood": {
     "NAME": "树",
-    "DESCRIPTION": "「 地 」使目标失去 !M!  力量 1回合。",
-    "UPGRADE_DESCRIPTION": "「 地 」使目标失去 !M!  力量 1回合，并将场上所有的 中毒 移动至目标处。",
+    "DESCRIPTION": "「 地 」使目标失去 !M!  力量 1回合，并加深 中毒 2层。",
+    "UPGRADE_DESCRIPTION": "「 地 」使目标失去 !M!  力量 1回合，并将场上所有的 中毒 移动至目标处，并加深 中毒 3层。",
     "EXTENDED_DESCRIPTION": [
       "额外给与",
       "层 虚弱 。"

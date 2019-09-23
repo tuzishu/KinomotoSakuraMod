@@ -27,8 +27,8 @@ public class ClowCardTheErase extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final int BASE_DAMAGE = 7;
-    private static final int UPGRADE_DAMAGE = 3;
+    private static final int BASE_DAMAGE = 8;
+    private static final int UPGRADE_DAMAGE = 4;
     private static final float KILL_LINE = 0.25F;
 
     static

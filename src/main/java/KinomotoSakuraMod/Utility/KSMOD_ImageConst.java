@@ -72,19 +72,19 @@ public class KSMOD_ImageConst
     public static final String PORTRAIT_PATH = "img/charSelect/portrait.png";
     // 能量栏
     public static final String[] ORB_TEXTURES = {
-            "img/UI/EPanel/layer5.png",
-            "img/UI/EPanel/layer4.png",
-            "img/UI/EPanel/layer3.png",
-            "img/UI/EPanel/layer2.png",
-            "img/UI/EPanel/layer1.png",
-            "img/UI/EPanel/layer0.png",
-            "img/UI/EPanel/layer5d.png",
-            "img/UI/EPanel/layer4d.png",
-            "img/UI/EPanel/layer3d.png",
-            "img/UI/EPanel/layer2d.png",
-            "img/UI/EPanel/layer1d.png"
+            "img/UI/energypanel/layer_5.png",
+            "img/UI/energypanel/layer_4.png",
+            "img/UI/energypanel/layer_3.png",
+            "img/UI/energypanel/layer_2.png",
+            "img/UI/energypanel/layer_1.png",
+            "img/UI/energypanel/layer_0.png",
+            "img/UI/energypanel/layer_5_d.png",
+            "img/UI/energypanel/layer_4_d.png",
+            "img/UI/energypanel/layer_3_d.png",
+            "img/UI/energypanel/layer_2_d.png",
+            "img/UI/energypanel/layer_1_d.png"
     };
-    public static final String ORB_VFX = "img/UI/EPanel/energyBlueVFX.png";
+    public static final String ORB_VFX = "img/UI/energypanel/orb_vfx.png";
     // 角色资源
     public static final String IDLE_IMAGE_PATH = "img/char/Sakura/sakura_idle.png";
     public static final String CORPSE_IMAGE_PATH = "img/char/Sakura/sakura_fallen.png";

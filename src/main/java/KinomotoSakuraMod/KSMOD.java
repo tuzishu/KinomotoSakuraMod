@@ -122,6 +122,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         ArrayList<AbstractCard> unlockedCardList = new ArrayList<>();
         unlockedCardList.addAll(GetClowCardList());
         unlockedCardList.addAll(GetSpellCardList());
+        unlockedCardList.addAll(GetSakuraCardList());
         for (AbstractCard card : unlockedCardList)
         {
             BaseMod.addCard(card);
@@ -130,7 +131,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         }
 
         ArrayList<AbstractCard> lockedCardList = new ArrayList<>();
-        lockedCardList.addAll(GetSakuraCardList());
+        // lockedCardList.addAll(GetSakuraCardList());
         for (AbstractCard card : lockedCardList)
         {
             BaseMod.addCard(card);
