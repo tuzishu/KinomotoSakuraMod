@@ -49,6 +49,7 @@ public class KSMOD_FloatPower extends KSMOD_CustomPower
 
     public void onCardDraw(AbstractCard card)
     {
+        this.flash();
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this.owner, this.owner, this.amount, true));
     }
 }

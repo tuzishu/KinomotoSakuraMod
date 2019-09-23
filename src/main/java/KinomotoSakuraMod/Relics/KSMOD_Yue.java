@@ -17,7 +17,7 @@ public class KSMOD_Yue extends CustomRelic
     public static final String RELIC_ID = "KSMOD_Yue";
     private static final String RELIC_IMG_PATH = "img/relics/icon/yue.png";
     private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/yue.png";
-    private static final RelicTier RELIC_TIER = RelicTier.UNCOMMON;
+    private static final RelicTier RELIC_TIER = RelicTier.RARE;
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
     private static final int START_COUNT = 0;
     private static final int TRIGGER_NUMBER = 3;
@@ -58,14 +58,14 @@ public class KSMOD_Yue extends CustomRelic
         }
     }
 
-    public void atBattleStart()
+    public void atTurnStart()
     {
         this.setCounter(0);
     }
 
     public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction)
     {
-        if (targetCard.hasTag(KSMOD_CustomTag.KSMOD_WATERY_CARD) || targetCard.hasTag(KSMOD_CustomTag.KSMOD_WINDY_CARD))
+        if (targetCard.hasTag(KSMOD_CustomTag.KSMOD_EARTHY_CARD) || targetCard.hasTag(KSMOD_CustomTag.KSMOD_WATERY_CARD) || targetCard.hasTag(KSMOD_CustomTag.KSMOD_FIREY_CARD) || targetCard.hasTag(KSMOD_CustomTag.KSMOD_WINDY_CARD))
         {
             this.counter += 1;
         }

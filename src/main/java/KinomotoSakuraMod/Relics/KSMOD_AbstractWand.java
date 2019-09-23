@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.beyond.Darkling;
 import com.megacrit.cardcrawl.powers.MinionPower;
@@ -19,10 +20,10 @@ import java.util.ArrayList;
 
 public abstract class KSMOD_AbstractWand extends CustomRelic
 {
-    private int baseTriggerNumber;
-    private int updateTriggerNumber;
-    private int gainNumber;
-    private ArrayList<AbstractMonster> sealedMonsters = new ArrayList<>();
+    public int baseTriggerNumber;
+    public int updateTriggerNumber;
+    public int gainNumber;
+    public ArrayList<AbstractMonster> sealedMonsters = new ArrayList<>();
 
     public KSMOD_AbstractWand(String id, Texture texture, Texture outline, RelicTier tier, LandingSound sfx, int startCount, int baseTriggerNumber, int updateTriggerNumber, int gainNumber)
     {
@@ -31,6 +32,10 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
         this.baseTriggerNumber = baseTriggerNumber;
         this.updateTriggerNumber = updateTriggerNumber;
         this.gainNumber = gainNumber;
+        this.description = this.getUpdatedDescription();
+        this.tips.clear();
+        this.tips.add(new PowerTip(this.name, this.description));
+        this.initializeTips();
     }
 
     public void atPreBattle()

@@ -4,6 +4,7 @@ import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheReturn;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
+import KinomotoSakuraMod.Relics.KSMOD_AbstractWand;
 import KinomotoSakuraMod.Relics.KSMOD_SealedWand;
 import KinomotoSakuraMod.Relics.KSMOD_StarWand;
 import KinomotoSakuraMod.Relics.KSMOD_UltimateWand;
@@ -15,6 +16,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 public class SakuraCardTheReturn extends KSMOD_AbstractMagicCard
 {
@@ -82,20 +84,13 @@ public class SakuraCardTheReturn extends KSMOD_AbstractMagicCard
         {
             if (card.cardID == this.cardID)
             {
-                if (AbstractDungeon.player.hasRelic(KSMOD_SealedWand.RELIC_ID))
+                for (AbstractRelic r : AbstractDungeon.player.relics)
                 {
-                    KSMOD_SealedWand relic = (KSMOD_SealedWand) AbstractDungeon.player.getRelic(KSMOD_SealedWand.RELIC_ID);
-                    relic.setCounter(relic.counter + (relic.GetTriggerNumber() - KSMOD_SealedWand.UPDATE_TRIGGER_NUMBER) * this.magicNumber / 100);
-                }
-                else if (AbstractDungeon.player.hasRelic(KSMOD_StarWand.RELIC_ID))
-                {
-                    KSMOD_StarWand relic = (KSMOD_StarWand) AbstractDungeon.player.getRelic(KSMOD_StarWand.RELIC_ID);
-                    relic.setCounter(relic.counter + (relic.GetTriggerNumber() - KSMOD_StarWand.UPDATE_TRIGGER_NUMBER) * this.magicNumber / 100);
-                }
-                else if (AbstractDungeon.player.hasRelic(KSMOD_UltimateWand.RELIC_ID))
-                {
-                    KSMOD_UltimateWand relic = (KSMOD_UltimateWand) AbstractDungeon.player.getRelic(KSMOD_UltimateWand.RELIC_ID);
-                    relic.setCounter(relic.counter + (relic.GetTriggerNumber() - KSMOD_UltimateWand.UPDATE_TRIGGER_NUMBER) * this.magicNumber / 100);
+                    if (r instanceof KSMOD_AbstractWand)
+                    {
+                        r.setCounter(r.counter + (((KSMOD_AbstractWand)r).GetTriggerNumber() - ((KSMOD_AbstractWand)r).getUpdateTriggerNumber()) * this.magicNumber / 100);
+                        break;
+                    }
                 }
                 AbstractDungeon.player.masterDeck.removeCard(card);
                 break;

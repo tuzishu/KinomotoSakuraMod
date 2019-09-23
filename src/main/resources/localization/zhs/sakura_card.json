@@ -101,7 +101,7 @@
   },
   "ClowCardTheFloat": {
     "NAME": "浮",
-    "DESCRIPTION": "「 风 」每抽1张牌获得 !B! 点 格挡 。",
+    "DESCRIPTION": "「 风 」每抽1张牌获得 !M! 点 格挡 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -645,7 +645,7 @@
   },
   "SakuraCardTheReturn": {
     "NAME": "回",
-    "DESCRIPTION": "「 小樱牌 」「 水 」 保留 。回复所有生命值，使用后从卡组中移除，并返还 !M! %的充能。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」 保留 。回复所有生命值，使用后从卡组中移除，并返还上次转变消耗 !M! %的充能。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
