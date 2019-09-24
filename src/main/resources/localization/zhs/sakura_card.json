@@ -33,7 +33,7 @@
   },
   "ClowCardTheCloud": {
     "NAME": "云",
-    "DESCRIPTION": "「 水 」获得 !B! 点 格挡 。手牌中每有1张 水元素牌 ，额外获得1次 格挡 。",
+    "DESCRIPTION": "「 水 」手牌中每有1张 水元素牌 ，获得 !B! 点 格挡 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外获得",
@@ -208,7 +208,7 @@
     "DESCRIPTION": "「 地 」给与全体敌人 !M! 层 中毒 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "去除所有敌人的所有格挡值、 金属化 、 多层护甲 、 人工制品 、 荆棘 、 缓冲 、 无实体 、 柔韧 。"
+      "去除所有敌人的所有格挡值、 金属化 、 多层护甲 、 人工制品 、 荆棘 、 缓冲 、 无实体 、 柔韧 、 壁垒 。"
     ]
   },
   "ClowCardTheMove": {
@@ -339,8 +339,8 @@
   },
   "ClowCardTheThrough": {
     "NAME": "拔",
-    "DESCRIPTION": "「 地 」对全体敌人造成 !D! 点伤害，并直接结算 中毒 效果。将1张 虚空 放入弃牌堆。",
-    "UPGRADE_DESCRIPTION": "「 地 」对全体敌人造成 !D! 点伤害，加深 中毒  !M! 层，并直接结算 中毒 效果。将1张 虚空 放入弃牌堆。",
+    "DESCRIPTION": "「 地 」对全体敌人造成 !D! 点伤害，并 直接结算  中毒 效果。将1张 虚空 放入弃牌堆。",
+    "UPGRADE_DESCRIPTION": "「 地 」对全体敌人造成 !D! 点伤害，加深 中毒  !M! 层，并 直接结算  中毒 效果。将1张 虚空 放入弃牌堆。",
     "EXTENDED_DESCRIPTION": [
       "额外造成最大生命",
       "%的伤害。"
@@ -483,7 +483,7 @@
   },
   "SakuraCardTheCloud": {
     "NAME": "云",
-    "DESCRIPTION": "「 小樱牌 」「 水 」获得 !B! 点 格挡 。卡组中每有1张 水元素牌 ，额外获得1次 格挡 。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」获得 !B! 点 格挡 。卡组中每有3张 水元素牌 ，额外获得1次 格挡 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -501,7 +501,7 @@
   },
   "SakuraCardTheDash": {
     "NAME": "驱",
-    "DESCRIPTION": "「 小樱牌 」「 风 」抽牌至手牌上限。",
+    "DESCRIPTION": "「 小樱牌 」「 风 」 消耗 。抽牌至手牌上限。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -621,7 +621,7 @@
   },
   "SakuraCardTheMist": {
     "NAME": "雾",
-    "DESCRIPTION": "「 小樱牌 」「 地 」给与全体敌人 中毒 !M! 次。移除其所有格挡值。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」给与全体敌人 !M! 层 中毒 。移除其所有格挡值。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -639,7 +639,7 @@
   },
   "SakuraCardTheRain": {
     "NAME": "雨",
-    "DESCRIPTION": "「 小樱牌 」「 水 」 消耗 。本回合所有手牌的耗能变为0。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」 消耗 。所有手牌的本场战斗内耗能变为0。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -683,7 +683,9 @@
     "NAME": "睡",
     "DESCRIPTION": "「 小樱牌 」「 风 」 消耗 。使非boss目标沉睡 !M! 回合，受到伤害时会醒来。自然醒来时将恢复所有生命值，并获得2层 虚弱 。",
     "UPGRADE_DESCRIPTION": "Null",
-    "EXTENDED_DESCRIPTION": []
+    "EXTENDED_DESCRIPTION": [
+      "「 小樱牌 」「 风 」 消耗 。使全体非boss敌人沉睡 !M! 回合，受到伤害时会醒来。自然醒来时将恢复所有生命值，并获得2层 虚弱 。"
+    ]
   },
   "SakuraCardTheSnow": {
     "NAME": "雪",

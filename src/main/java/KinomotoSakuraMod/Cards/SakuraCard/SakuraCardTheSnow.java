@@ -23,12 +23,12 @@ public class SakuraCardTheSnow extends KSMOD_AbstractMagicCard
     private static final String NAME;
     private static final String DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/sakuracard/the_snow.png";
-    private static final int COST = 1;
+    private static final int COST = 2;
     private static final AbstractCard.CardType CARD_TYPE = AbstractCard.CardType.ATTACK;
     private static final AbstractCard.CardColor CARD_COLOR = KSMOD_CustomCardColor.SAKURACARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
-    private static final int BASE_DAMAGE = 7;
+    private static final int BASE_DAMAGE = 8;
 
     static
     {

@@ -37,8 +37,8 @@ public class ClowCardTheThrough extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.RARE;
     private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
-    private static final int BASE_DAMAGE = 9;
-    private static final int UPGRADE_DAMAGE = 4;
+    private static final int BASE_DAMAGE = 12;
+    private static final int UPGRADE_DAMAGE = 3;
     private static final int BASE_MAGIC_NUMBER = 0;
     private static final int UPGRADE_MAGIC_NUMBER = 3;
     private static final float CLEAVE_DURATION = 0.1F;

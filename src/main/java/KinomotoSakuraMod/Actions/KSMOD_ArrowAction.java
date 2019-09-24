@@ -32,7 +32,7 @@ public class KSMOD_ArrowAction extends AbstractGameAction
 
     public KSMOD_ArrowAction(int damage)
     {
-        this(AbstractDungeon.getRandomMonster(), damage);
+        this(null, damage);
     }
 
     public KSMOD_ArrowAction(AbstractMonster monster, int damage)
@@ -62,7 +62,7 @@ public class KSMOD_ArrowAction extends AbstractGameAction
             {
                 int count = EnergyPanel.getCurrentEnergy();
                 this.player.energy.use(EnergyPanel.totalCount);
-                AttackTargetForTimes(count);
+                AbstractDungeon.actionManager.addToBottom(new KSMOD_ArrowAttackAction(this.monster, this.damage, count));
                 this.isDone = true;
                 return;
             }
@@ -84,20 +84,8 @@ public class KSMOD_ArrowAction extends AbstractGameAction
             AbstractDungeon.handCardSelectScreen.selectedCards.group.clear();
             count += EnergyPanel.getCurrentEnergy();
             this.player.energy.use(EnergyPanel.totalCount);
-            AttackTargetForTimes(count);
+            AbstractDungeon.actionManager.addToBottom(new KSMOD_ArrowAttackAction(this.monster, this.damage, count));
         }
         tickDuration();
-    }
-
-    private void AttackTargetForTimes(int count)
-    {
-        if (count > 0)
-        {
-            for (int i = 0; i < count; i++)
-            {
-                AbstractDungeon.actionManager.addToBottom(new VFXAction(this.player, new ThrowDaggerEffect(this.monster.hb.cX, this.monster.hb.cY), DURATION_ATTACK));
-                AbstractDungeon.actionManager.addToBottom(new DamageAction(this.monster, new DamageInfo(player, this.damage), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-            }
-        }
     }
 }

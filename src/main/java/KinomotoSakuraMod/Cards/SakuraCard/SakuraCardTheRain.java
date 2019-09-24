@@ -63,7 +63,10 @@ public class SakuraCardTheRain extends KSMOD_AbstractMagicCard
     {
         for (AbstractCard card : player.hand.group)
         {
-            card.setCostForTurn(-9);
+            if (card.cost > 0)
+            {
+                card.updateCost(0);
+            }
         }
     }
 }

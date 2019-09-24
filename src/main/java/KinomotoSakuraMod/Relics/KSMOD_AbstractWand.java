@@ -20,9 +20,9 @@ import java.util.ArrayList;
 
 public abstract class KSMOD_AbstractWand extends CustomRelic
 {
-    public int baseTriggerNumber;
-    public int updateTriggerNumber;
-    public int gainNumber;
+    private int baseTriggerNumber;
+    private int updateTriggerNumber;
+    private int gainNumber;
     public ArrayList<AbstractMonster> sealedMonsters = new ArrayList<>();
 
     public KSMOD_AbstractWand(String id, Texture texture, Texture outline, RelicTier tier, LandingSound sfx, int startCount, int baseTriggerNumber, int updateTriggerNumber, int gainNumber)
@@ -32,10 +32,7 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
         this.baseTriggerNumber = baseTriggerNumber;
         this.updateTriggerNumber = updateTriggerNumber;
         this.gainNumber = gainNumber;
-        this.description = this.getUpdatedDescription();
-        this.tips.clear();
-        this.tips.add(new PowerTip(this.name, this.description));
-        this.initializeTips();
+        updateTips();
     }
 
     public void atPreBattle()
@@ -66,6 +63,7 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
         if (!monster.hasPower(MinionPower.POWER_ID) && !sealedMonsters.contains(monster))
         {
             GainCharge(gainNumber);
+            updateTips();
         }
         if (monster.id == Darkling.ID)
         {
@@ -73,7 +71,20 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
         }
     }
 
-    public int getUpdateTriggerNumber()
+    public void updateTips()
+    {
+        this.description = this.getUpdatedDescription();
+        this.tips.clear();
+        this.tips.add(new PowerTip(this.name, this.description));
+        this.initializeTips();
+    }
+
+    public int GetGainNumber()
+    {
+        return gainNumber;
+    }
+
+    public int GetUpdateTriggerNumber()
     {
         return updateTriggerNumber;
     }

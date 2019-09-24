@@ -5,9 +5,6 @@ import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Relics.KSMOD_AbstractWand;
-import KinomotoSakuraMod.Relics.KSMOD_SealedWand;
-import KinomotoSakuraMod.Relics.KSMOD_StarWand;
-import KinomotoSakuraMod.Relics.KSMOD_UltimateWand;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -88,7 +85,7 @@ public class SakuraCardTheReturn extends KSMOD_AbstractMagicCard
                 {
                     if (r instanceof KSMOD_AbstractWand)
                     {
-                        r.setCounter(r.counter + (((KSMOD_AbstractWand)r).GetTriggerNumber() - ((KSMOD_AbstractWand)r).getUpdateTriggerNumber()) * this.magicNumber / 100);
+                        r.setCounter(r.counter + (((KSMOD_AbstractWand)r).GetTriggerNumber() - ((KSMOD_AbstractWand)r).GetUpdateTriggerNumber()) * this.magicNumber / 100);
                         break;
                     }
                 }

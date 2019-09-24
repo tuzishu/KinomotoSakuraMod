@@ -1,7 +1,7 @@
 package KinomotoSakuraMod.Relics;
 
 import basemod.abstracts.CustomRelic;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -14,7 +14,7 @@ public class KSMOD_TomoyosHeart extends CustomRelic
     private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/default.png";
     private static final RelicTier RELIC_TIER = RelicTier.UNCOMMON;
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
-    private static final int BLOCK_NUMBER = 3;
+    private static final int DRAW_NUMBER = 1;
 
     public KSMOD_TomoyosHeart()
     {
@@ -23,7 +23,7 @@ public class KSMOD_TomoyosHeart extends CustomRelic
 
     public String getUpdatedDescription()
     {
-        return this.DESCRIPTIONS[0] + BLOCK_NUMBER + this.DESCRIPTIONS[1];
+        return this.DESCRIPTIONS[0] + DRAW_NUMBER + this.DESCRIPTIONS[1];
     }
 
     public AbstractRelic makeCopy()
@@ -34,6 +34,6 @@ public class KSMOD_TomoyosHeart extends CustomRelic
     public void onExhaust(AbstractCard card)
     {
         this.flash();
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, BLOCK_NUMBER));
+        AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player, DRAW_NUMBER));
     }
 }

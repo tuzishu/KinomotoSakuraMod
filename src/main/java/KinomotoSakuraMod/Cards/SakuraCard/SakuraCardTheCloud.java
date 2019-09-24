@@ -24,7 +24,8 @@ public class SakuraCardTheCloud extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SAKURACARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
-    private static final int BASE_BLOCK = 6;
+    private static final int BASE_BLOCK = 7;
+    private static final int TRIGGER_NUMBER = 3;
 
     static
     {
@@ -64,7 +65,7 @@ public class SakuraCardTheCloud extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        int count = 0;
+        int count = TRIGGER_NUMBER - 1;
         for (AbstractCard card : AbstractDungeon.player.masterDeck.group)
         {
             if (card.hasTag(KSMOD_CustomTag.KSMOD_WATERY_CARD))
@@ -72,7 +73,7 @@ public class SakuraCardTheCloud extends KSMOD_AbstractMagicCard
                 count += 1;
             }
         }
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < count / TRIGGER_NUMBER; i++)
         {
             AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block, true));
         }

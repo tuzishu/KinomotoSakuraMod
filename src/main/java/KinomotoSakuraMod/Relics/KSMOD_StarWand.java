@@ -1,22 +1,9 @@
 package KinomotoSakuraMod.Relics;
 
-import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
-import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
-import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
-import basemod.abstracts.CustomRelic;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
-import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.monsters.beyond.Darkling;
-import com.megacrit.cardcrawl.powers.MinionPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-
-import java.util.ArrayList;
 
 public class KSMOD_StarWand extends KSMOD_AbstractWand
 {
@@ -32,12 +19,12 @@ public class KSMOD_StarWand extends KSMOD_AbstractWand
 
     public KSMOD_StarWand()
     {
-        super(RELIC_ID, ImageMaster.loadImage(RELIC_IMG_PATH), ImageMaster.loadImage(RELIC_IMG_OTL_PATH), RELIC_TIER, RELIC_SOUND, START_COUNT, UPDATE_TRIGGER_NUMBER, BASE_TRIGGER_NUMBER ,GAIN_NUMBER);
+        super(RELIC_ID, ImageMaster.loadImage(RELIC_IMG_PATH), ImageMaster.loadImage(RELIC_IMG_OTL_PATH), RELIC_TIER, RELIC_SOUND, START_COUNT, UPDATE_TRIGGER_NUMBER, BASE_TRIGGER_NUMBER, GAIN_NUMBER);
     }
 
     public String getUpdatedDescription()
     {
-        return DESCRIPTIONS[0] + this.gainNumber + DESCRIPTIONS[1] + this.baseTriggerNumber + DESCRIPTIONS[2] + this.baseTriggerNumber + DESCRIPTIONS[3] + this.updateTriggerNumber + DESCRIPTIONS[4];
+        return DESCRIPTIONS[0] + this.GetGainNumber() + DESCRIPTIONS[1] + GetTriggerNumber() + DESCRIPTIONS[2] + GetTriggerNumber() + DESCRIPTIONS[3] + this.GetUpdateTriggerNumber() + DESCRIPTIONS[4] + (this.GetTriggerNumber() - this.counter) + DESCRIPTIONS[5];
     }
 
     public boolean canSpawn()

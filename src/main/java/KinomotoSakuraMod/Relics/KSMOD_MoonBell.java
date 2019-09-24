@@ -2,7 +2,7 @@ package KinomotoSakuraMod.Relics;
 
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
 import basemod.abstracts.CustomRelic;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -20,7 +20,7 @@ public class KSMOD_MoonBell extends CustomRelic
     private static final RelicTier RELIC_TIER = RelicTier.RARE;
     private static final LandingSound RELIC_SOUND = LandingSound.SOLID;
     private static final int TRIGGER_COST = 2;
-    private static final int BLOCK_NUMBER = 4;
+    private static final int HEAL_NUMBER = 1;
     private static final float HEAL_RATE = 0.3F;
     private boolean used;
 
@@ -32,7 +32,7 @@ public class KSMOD_MoonBell extends CustomRelic
 
     public String getUpdatedDescription()
     {
-        return this.DESCRIPTIONS[0] + TRIGGER_COST + this.DESCRIPTIONS[1] + BLOCK_NUMBER + this.DESCRIPTIONS[2] + (int) (HEAL_RATE * 100) + this.DESCRIPTIONS[3];
+        return this.DESCRIPTIONS[0] + TRIGGER_COST + this.DESCRIPTIONS[1] + HEAL_NUMBER + this.DESCRIPTIONS[2] + (int) (HEAL_RATE * 100) + this.DESCRIPTIONS[3];
     }
 
     public AbstractRelic makeCopy()
@@ -45,7 +45,7 @@ public class KSMOD_MoonBell extends CustomRelic
         if (targetCard.cost >= TRIGGER_COST && !used)
         {
             this.flash();
-            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, BLOCK_NUMBER));
+            AbstractDungeon.actionManager.addToBottom(new HealAction(AbstractDungeon.player, AbstractDungeon.player, HEAL_NUMBER));
         }
     }
 

@@ -29,7 +29,7 @@ public class ClowCardTheFight extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.RARE;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final int BASE_DAMAGE = 12;
+    private static final int BASE_DAMAGE = 18;
     private static final int UPGRADE_DAMAGE = 6;
     private static final int GAIN_STRENGTH_NUMBER = 1;
 

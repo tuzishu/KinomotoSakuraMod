@@ -35,24 +35,21 @@ public class KSMOD_ThunderAction extends AbstractGameAction
             this.isDone = true;
             return;
         }
-        else
+        this.target = AbstractDungeon.getRandomMonster();
+        if (this.target.currentHealth > 0)
         {
-            this.target = AbstractDungeon.getRandomMonster();
-            if (this.target.currentHealth > 0)
+            this.target.damageFlash = true;
+            this.target.damageFlashFrames = 4;
+            AbstractDungeon.effectList.add(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, this.attackEffect));
+            AbstractDungeon.effectList.add(new LightningEffect(this.target.drawX, this.target.drawY));
+            CardCrawlGame.sound.play(SOUND_KEY, 0.1F);
+            this.target.damage(this.info);
+            if (this.numTimes > 1 && !AbstractDungeon.getMonsters().areMonstersBasicallyDead())
             {
-                this.target.damageFlash = true;
-                this.target.damageFlashFrames = 4;
-                AbstractDungeon.effectList.add(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, this.attackEffect));
-                AbstractDungeon.effectList.add(new LightningEffect(this.target.drawX, this.target.drawY));
-                CardCrawlGame.sound.play(SOUND_KEY, 0.1F);
-                this.target.damage(this.info);
-                if (this.numTimes > 1 && !AbstractDungeon.getMonsters().areMonstersBasicallyDead())
-                {
-                    AbstractDungeon.actionManager.addToTop(new KSMOD_ThunderAction(this.info, this.numTimes - 1));
-                }
-                AbstractDungeon.actionManager.addToTop(new WaitAction(0.2F));
+                AbstractDungeon.actionManager.addToTop(new KSMOD_ThunderAction(this.info, this.numTimes - 1));
             }
-            this.isDone = true;
+            AbstractDungeon.actionManager.addToTop(new WaitAction(0.2F));
         }
+        this.isDone = true;
     }
 }

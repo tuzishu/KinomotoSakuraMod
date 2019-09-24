@@ -40,7 +40,7 @@ public class KSMOD_UltimateWand extends KSMOD_AbstractWand
 
     public String getUpdatedDescription()
     {
-        return DESCRIPTIONS[0] + START_CHARGE_NUMBER + DESCRIPTIONS[1] + UPGRADE_NUMBER + DESCRIPTIONS[2] + MARKING_NUMBER + DESCRIPTIONS[3] + (int) (DAMAGE_PROMOTION * 100) + DESCRIPTIONS[4] + MAGICK_CHARGE_TRIGGER_NUMBER + DESCRIPTIONS[5] + MAGICK_CHARGE_NUMBER + DESCRIPTIONS[6] + this.gainNumber + DESCRIPTIONS[7] + this.GetTriggerNumber() + DESCRIPTIONS[8] + this.GetTriggerNumber() + DESCRIPTIONS[9] + this.getUpdateTriggerNumber() + DESCRIPTIONS[10];
+        return DESCRIPTIONS[0] + START_CHARGE_NUMBER + DESCRIPTIONS[1] + UPGRADE_NUMBER + DESCRIPTIONS[2] + MARKING_NUMBER + DESCRIPTIONS[3] + (int) (DAMAGE_PROMOTION * 100) + DESCRIPTIONS[4] + MAGICK_CHARGE_TRIGGER_NUMBER + DESCRIPTIONS[5] + MAGICK_CHARGE_NUMBER + DESCRIPTIONS[6] + this.GetGainNumber() + DESCRIPTIONS[7] + this.GetTriggerNumber() + DESCRIPTIONS[8] + this.GetTriggerNumber() + DESCRIPTIONS[9] + this.GetUpdateTriggerNumber() + DESCRIPTIONS[10] + (GetTriggerNumber() - this.counter) + DESCRIPTIONS[11];
     }
 
     public boolean canSpawn()

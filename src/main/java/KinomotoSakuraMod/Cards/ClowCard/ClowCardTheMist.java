@@ -26,7 +26,7 @@ public class ClowCardTheMist extends KSMOD_AbstractMagicCard
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
     private static final int BASE_MAGIC_NUMBER = 4;
-    private static final int UPGRADE_MAGIC_NUMBER = 2;
+    private static final int UPGRADE_MAGIC_NUMBER = 1;
 
     static
     {
@@ -80,8 +80,9 @@ public class ClowCardTheMist extends KSMOD_AbstractMagicCard
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(mon, player, BufferPower.POWER_ID));
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(mon, player, IntangiblePower.POWER_ID));
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(mon, player, MalleablePower.POWER_ID));
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new PoisonPower(mon, player, this.magicNumber), this.magicNumber));
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(mon, player, BarricadePower.POWER_ID));
         }
+        applyNormalEffect(player, monster);
     }
 
     public String getExtraDescription()

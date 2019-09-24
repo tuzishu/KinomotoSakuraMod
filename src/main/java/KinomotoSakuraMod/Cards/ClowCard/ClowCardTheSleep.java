@@ -60,20 +60,35 @@ public class ClowCardTheSleep extends KSMOD_AbstractMagicCard
     }
 
     @Override
+    public void onDischarged()
+    {
+        this.target = CardTarget.ENEMY;
+    }
+
+    @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new KSMOD_SleepPower(monster, this.magicNumber), this.magicNumber));
     }
 
     @Override
+    public void onCharged()
+    {
+        this.target = CardTarget.ALL_ENEMY;
+    }
+
+    @Override
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new KSMOD_SleepPower(monster, this.magicNumber + KSMOD_SealedBook.SLEEP_NUMBER), this.magicNumber + KSMOD_SealedBook.SLEEP_NUMBER));
+        for (AbstractMonster mon: AbstractDungeon.getMonsters().monsters)
+        {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new KSMOD_SleepPower(monster, this.magicNumber), this.magicNumber));
+        }
     }
 
     @Override
     public String getExtraDescription()
     {
-        return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.SLEEP_NUMBER + EXTENDED_DESCRIPTION[1];
+        return EXTENDED_DESCRIPTION[0];
     }
 }
