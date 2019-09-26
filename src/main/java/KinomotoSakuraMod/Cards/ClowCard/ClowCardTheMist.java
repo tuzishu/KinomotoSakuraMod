@@ -26,7 +26,7 @@ public class ClowCardTheMist extends KSMOD_AbstractMagicCard
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
     private static final int BASE_MAGIC_NUMBER = 4;
-    private static final int UPGRADE_MAGIC_NUMBER = 1;
+    private static final int UPGRADE_MAGIC_NUMBER = 2;
 
     static
     {

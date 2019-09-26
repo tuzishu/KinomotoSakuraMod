@@ -4,6 +4,7 @@ import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
@@ -73,14 +74,18 @@ public class ClowCardTheWood extends KSMOD_AbstractMagicCard
         AbstractDungeon.actionManager.addToBottom(new SFXAction(SOUND_KEY, 0.05F));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new StrengthPower(monster, -this.magicNumber), -this.magicNumber));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new GainStrengthPower(monster, this.magicNumber), this.magicNumber));
+        int amount = 0;
         if (upgraded)
         {
-            GatherPosion(player, monster);
+            amount = GatherPosion(player, monster);
         }
-        if (monster.hasPower(PoisonPower.POWER_ID))
+        if (amount == 0 && monster.hasPower(PoisonPower.POWER_ID))
         {
-            AbstractPower p = monster.getPower(PoisonPower.POWER_ID);
-            int amount = (int) (p.amount * (1 + (upgraded ? UPGRADE_POISON_DEEPEN : BASE_POISON_DEEPEN)));
+            amount = monster.getPower(PoisonPower.POWER_ID).amount;
+        }
+        amount = MathUtils.ceil(amount * (upgraded ? UPGRADE_POISON_DEEPEN : BASE_POISON_DEEPEN));
+        if (amount > 0)
+        {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new PoisonPower(monster, player, amount), amount));
         }
     }
@@ -96,7 +101,7 @@ public class ClowCardTheWood extends KSMOD_AbstractMagicCard
         return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.WEAKENED_NUMBER + EXTENDED_DESCRIPTION[1];
     }
 
-    private void GatherPosion(AbstractPlayer player, AbstractMonster monster)
+    private int GatherPosion(AbstractPlayer player, AbstractMonster monster)
     {
         int count = 0;
         for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters)
@@ -115,5 +120,6 @@ public class ClowCardTheWood extends KSMOD_AbstractMagicCard
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(player, player, power));
         }
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new PoisonPower(monster, player, count)));
+        return count;
     }
 }

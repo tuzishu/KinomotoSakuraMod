@@ -3,16 +3,15 @@ package KinomotoSakuraMod.Cards.ClowCard;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
-import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.status.VoidCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -20,7 +19,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.PoisonPower;
 import com.megacrit.cardcrawl.vfx.combat.CleaveEffect;
 
@@ -40,7 +38,7 @@ public class ClowCardTheThrough extends KSMOD_AbstractMagicCard
     private static final int BASE_DAMAGE = 12;
     private static final int UPGRADE_DAMAGE = 3;
     private static final int BASE_MAGIC_NUMBER = 0;
-    private static final int UPGRADE_MAGIC_NUMBER = 3;
+    private static final int UPGRADE_MAGIC_NUMBER = 2;
     private static final float CLEAVE_DURATION = 0.1F;
     private static final String SOUND_KEY = "ATTACK_DAGGER_";
 
@@ -86,15 +84,12 @@ public class ClowCardTheThrough extends KSMOD_AbstractMagicCard
         CardCrawlGame.sound.play(SOUND_KEY + MathUtils.random(1, 6));
         AbstractDungeon.actionManager.addToBottom(new VFXAction(player, new CleaveEffect(), CLEAVE_DURATION));
         AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        for (AbstractMonster mon: AbstractDungeon.getMonsters().monsters)
+        for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters)
         {
             if (mon.hasPower(PoisonPower.POWER_ID))
             {
-                AbstractPower power = mon.getPower(PoisonPower.POWER_ID);
-                int poisonAmount = power.amount + this.magicNumber;
-                int totalDamage = poisonAmount * (poisonAmount + 1) / 2;
-                AbstractDungeon.actionManager.addToBottom(new DamageAction(mon, new DamageInfo(player, totalDamage, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.POISON, true));
-                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(mon, player, power));
+                int amount = mon.getPower(PoisonPower.POWER_ID).amount;
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(mon, new DamageInfo(player, amount, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.POISON, true));
             }
         }
         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new VoidCard(), 1));
@@ -106,15 +101,13 @@ public class ClowCardTheThrough extends KSMOD_AbstractMagicCard
         CardCrawlGame.sound.play(SOUND_KEY + MathUtils.random(1, 6));
         AbstractDungeon.actionManager.addToBottom(new VFXAction(player, new CleaveEffect(), CLEAVE_DURATION));
         AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        for (AbstractMonster mon: AbstractDungeon.getMonsters().monsters)
+        for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters)
         {
             if (mon.hasPower(PoisonPower.POWER_ID))
             {
-                AbstractPower power = mon.getPower(PoisonPower.POWER_ID);
-                int poisonAmount = power.amount + this.magicNumber;
-                int totalDamage = poisonAmount * (poisonAmount + 1) / 2;
-                AbstractDungeon.actionManager.addToBottom(new DamageAction(mon, new DamageInfo(player, totalDamage, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.POISON, true));
-                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(mon, player, power));
+                int amount = mon.getPower(PoisonPower.POWER_ID).amount + this.magicNumber;
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new PoisonPower(mon, player, this.magicNumber), this.magicNumber));
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(mon, new DamageInfo(player, amount, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.POISON, true));
             }
         }
         CardCrawlGame.sound.play(SOUND_KEY + MathUtils.random(1, 6));
