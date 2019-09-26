@@ -89,6 +89,7 @@ public class ClowCardTheThrough extends KSMOD_AbstractMagicCard
             if (mon.hasPower(PoisonPower.POWER_ID))
             {
                 int amount = mon.getPower(PoisonPower.POWER_ID).amount;
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new PoisonPower(mon, player, this.magicNumber), this.magicNumber));
                 AbstractDungeon.actionManager.addToBottom(new DamageAction(mon, new DamageInfo(player, amount, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.POISON, true));
             }
         }
