@@ -15,8 +15,8 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 public class KSMOD_TeddyBear extends CustomRelic
 {
     public static final String RELIC_ID = "KSMOD_TeddyBear";
-    private static final String RELIC_IMG_PATH = "img/relics/icon/default.png";
-    private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/default.png";
+    private static final String RELIC_IMG_PATH = "img/relics/icon/teddy_bear.png";
+    private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/teddy_bear.png";
     private static final AbstractRelic.RelicTier RELIC_TIER = RelicTier.COMMON;
     private static final AbstractRelic.LandingSound RELIC_SOUND = LandingSound.FLAT;
     private static final int BLOCK_NUMBER = 3;
