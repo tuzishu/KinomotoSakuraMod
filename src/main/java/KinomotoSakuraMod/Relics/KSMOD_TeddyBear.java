@@ -19,7 +19,7 @@ public class KSMOD_TeddyBear extends CustomRelic
     private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/default.png";
     private static final AbstractRelic.RelicTier RELIC_TIER = RelicTier.COMMON;
     private static final AbstractRelic.LandingSound RELIC_SOUND = LandingSound.FLAT;
-    private static final int BLOCK_NUMBER = 4;
+    private static final int BLOCK_NUMBER = 3;
 
     public KSMOD_TeddyBear()
     {

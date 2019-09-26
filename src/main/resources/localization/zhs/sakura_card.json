@@ -213,10 +213,11 @@
   },
   "ClowCardTheMove": {
     "NAME": "移",
-    "DESCRIPTION": "「 火 」 消耗 。选择1张消耗堆中的牌返回抽牌堆。",
+    "DESCRIPTION": "「 火 」 添加 !M! 张 空道符 到手牌中。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "「 火 」 消耗 。选择1张消耗堆中的牌返回手牌。"
+      "额外获得",
+      "张 空道符 。"
     ]
   },
   "ClowCardThePower": {
@@ -398,8 +399,8 @@
   },
   "ClowCardTheWood": {
     "NAME": "树",
-    "DESCRIPTION": "「 地 」使目标失去 !M!  力量 1回合，并加深 中毒 2层。",
-    "UPGRADE_DESCRIPTION": "「 地 」使目标失去 !M!  力量 1回合，并将场上所有的 中毒 移动至目标处，并加深 中毒 3层。",
+    "DESCRIPTION": "「 地 」使目标失去 !M!  力量 1回合，并加深 中毒 25%。",
+    "UPGRADE_DESCRIPTION": "「 地 」使目标失去 !M!  力量 1回合，并将场上所有的 中毒 移动至目标处，并加深 中毒 50%。",
     "EXTENDED_DESCRIPTION": [
       "额外给与",
       "层 虚弱 。"
@@ -627,7 +628,7 @@
   },
   "SakuraCardTheMove": {
     "NAME": "移",
-    "DESCRIPTION": "「 小樱牌 」「 火 」 消耗 。选择 !M! 张消耗区的牌返回手牌。选择 !M! 张抽牌堆的牌加入手牌。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」回合开始时，添加 !M! 张 空道符 到手牌中。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

@@ -14,8 +14,8 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 public class KSMOD_GemBrooch extends CustomRelic
 {
     public static final String RELIC_ID = "KSMOD_GemBrooch";
-    private static final String RELIC_IMG_PATH = "img/relics/icon/default.png";
-    private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/default.png";
+    private static final String RELIC_IMG_PATH = "img/relics/icon/gem_brooch.png";
+    private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/gem_brooch.png";
     private static final RelicTier RELIC_TIER = RelicTier.SHOP;
     private static final LandingSound RELIC_SOUND = LandingSound.CLINK;
     private static final int TRIGGER_NUMBER = 4;

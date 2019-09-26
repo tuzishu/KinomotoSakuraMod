@@ -1,12 +1,12 @@
 package KinomotoSakuraMod.Cards.SakuraCard;
 
-import KinomotoSakuraMod.Actions.KSMOD_MoveAction;
-import KinomotoSakuraMod.Actions.KSMOD_MoveAction_SakuraCard;
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheMove;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
+import KinomotoSakuraMod.Powers.KSMOD_MovePower_SakuraCard;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -24,7 +24,7 @@ public class SakuraCardTheMove extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SAKURACARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.NONE;
-    private static final int BASE_MAGIC_NUMBER = 1;
+    private static final int BASE_MAGIC_NUMBER = 2;
 
     static
     {
@@ -65,7 +65,6 @@ public class SakuraCardTheMove extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new KSMOD_MoveAction(this.magicNumber, true));
-        AbstractDungeon.actionManager.addToBottom(new KSMOD_MoveAction_SakuraCard(this.magicNumber));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_MovePower_SakuraCard(player, this.magicNumber), this.magicNumber));
     }
 }

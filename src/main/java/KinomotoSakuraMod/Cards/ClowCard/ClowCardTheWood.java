@@ -29,8 +29,8 @@ public class ClowCardTheWood extends KSMOD_AbstractMagicCard
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
     private static final int BASE_MAGIC_NUMBER = 4;
     private static final int UPGRADE_MAGIC_NUMBER = 2;
-    private static final int BASE_POISON_DEEPEN = 2;
-    private static final int UPGRADE_POISON_DEEPEN = 3;// 未赋值变量，修改时记得改描述。
+    private static final float BASE_POISON_DEEPEN = 0.25F;
+    private static final float UPGRADE_POISON_DEEPEN = 0.5F;// 未赋值变量，修改时记得改描述。
     private static final String SOUND_KEY = "POWER_CONSTRICTED";
 
     static
@@ -79,7 +79,9 @@ public class ClowCardTheWood extends KSMOD_AbstractMagicCard
         }
         if (monster.hasPower(PoisonPower.POWER_ID))
         {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new PoisonPower(monster, player, upgraded ? UPGRADE_POISON_DEEPEN : BASE_POISON_DEEPEN)));
+            AbstractPower p = monster.getPower(PoisonPower.POWER_ID);
+            int amount = (int) (p.amount * (1 + (upgraded ? UPGRADE_POISON_DEEPEN : BASE_POISON_DEEPEN)));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new PoisonPower(monster, player, amount), amount));
         }
     }
 

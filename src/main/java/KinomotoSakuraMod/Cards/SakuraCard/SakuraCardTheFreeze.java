@@ -28,7 +28,7 @@ public class SakuraCardTheFreeze extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SAKURACARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final int BASE_DAMATE = 20;
+    private static final int BASE_DAMATE = 22;
     private static final int BASE_BLOCK = 10;
 
     static

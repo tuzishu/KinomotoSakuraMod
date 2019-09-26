@@ -262,5 +262,12 @@
       "受到的伤害提高 #b",
       "% ，回合开始时消失。"
     ]
+  },
+  "KSMOD_MovePower_SakuraCard": {
+    "NAME": "移动·樱",
+    "DESCRIPTIONS": [
+      "回合开始时，添加 #b",
+      " 张 #y空道符 到手牌中。"
+    ]
   }
 }

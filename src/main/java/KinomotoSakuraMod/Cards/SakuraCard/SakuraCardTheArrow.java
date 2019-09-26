@@ -1,5 +1,6 @@
 package KinomotoSakuraMod.Cards.SakuraCard;
 
+import KinomotoSakuraMod.Actions.KSMOD_ArrowAttackAction;
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheArrow;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
@@ -27,7 +28,7 @@ public class SakuraCardTheArrow extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SAKURACARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.NONE;
-    private static final int BASE_DAMAGE = 8;
+    private static final int BASE_DAMAGE = 10;
     private static final float DURATION_ATTACK = 0.02F;
 
     static
@@ -81,14 +82,6 @@ public class SakuraCardTheArrow extends KSMOD_AbstractMagicCard
             card.triggerOnManualDiscard();
             player.drawPile.removeCard(card);
         }
-        AttackRandomMonsterForTimes(count);
-    }
-
-    private void AttackRandomMonsterForTimes(int count)
-    {
-        for (int i = 0; i < count; ++i)
-        {
-            AbstractDungeon.actionManager.addToBottom(new AttackDamageRandomEnemyAction(this, AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        }
+        AbstractDungeon.actionManager.addToBottom(new KSMOD_ArrowAttackAction(null, this.damage, count));
     }
 }

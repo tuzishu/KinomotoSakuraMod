@@ -10,8 +10,8 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 public class KSMOD_Compass extends CustomRelic
 {
     public static final String RELIC_ID = "KSMOD_Compass";
-    private static final String RELIC_IMG_PATH = "img/relics/icon/default.png";
-    private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/default.png";
+    private static final String RELIC_IMG_PATH = "img/relics/icon/compass.png";
+    private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/compass.png";
     private static final RelicTier RELIC_TIER = RelicTier.UNCOMMON;
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
     private static final int VOID_NUMBER = 3;
