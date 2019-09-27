@@ -23,12 +23,14 @@ public class SakuraCardTheSnow extends KSMOD_AbstractMagicCard
     private static final String NAME;
     private static final String DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/sakuracard/the_snow.png";
-    private static final int COST = 2;
+    private static final int COST = 1;
     private static final AbstractCard.CardType CARD_TYPE = AbstractCard.CardType.ATTACK;
     private static final AbstractCard.CardColor CARD_COLOR = KSMOD_CustomCardColor.SAKURACARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
-    private static final int BASE_DAMAGE = 8;
+    private static final int BASE_DAMAGE = 6;
+    private static final int BASE_MAGIC_NUMBER = 0;
+    private static final float DURATION = 0.5F;
 
     static
     {
@@ -42,6 +44,7 @@ public class SakuraCardTheSnow extends KSMOD_AbstractMagicCard
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(KSMOD_CustomTag.KSMOD_WATERY_CARD);
         this.baseDamage = BASE_DAMAGE;
+        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
     @Override
@@ -68,11 +71,30 @@ public class SakuraCardTheSnow extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        int count = AbstractDungeon.actionManager.cardsPlayedThisTurn.size();
-        AbstractDungeon.actionManager.addToBottom(new VFXAction(new BlizzardEffect(count, AbstractDungeon.getMonsters().shouldFlipVfx()), 1.0F));
-        for (int i = 0; i < count; i++)
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(new BlizzardEffect(this.magicNumber, AbstractDungeon.getMonsters().shouldFlipVfx()), DURATION));
+        for (int i = 0; i < this.magicNumber; i++)
         {
             AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_HEAVY, true));
+        }
+    }
+
+    @Override
+    public void applyPowers()
+    {
+        super.applyPowers();
+        int count = 0;
+        for (AbstractCard card: AbstractDungeon.actionManager.cardsPlayedThisCombat)
+        {
+            if (card.hasTag(KSMOD_CustomTag.KSMOD_WATERY_CARD))
+            {
+                count += 1;
+            }
+        }
+        this.setBaseMagicNumber(count);
+        if (this.magicNumber > 0)
+        {
+            this.rawDescription = DESCRIPTION;
+            this.initializeDescription();
         }
     }
 }

@@ -222,7 +222,7 @@
   },
   "ClowCardThePower": {
     "NAME": "力",
-    "DESCRIPTION": "「 火 」造成 !D! 点伤害。本场战斗中每触发1次 魔力充能 ，伤害提升 !M! 。",
+    "DESCRIPTION": "「 火 」造成 !D! 点伤害。失去 !M! 层 力量 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外造成",
@@ -297,11 +297,12 @@
   },
   "ClowCardTheSnow": {
     "NAME": "雪",
-    "DESCRIPTION": "「 水 」本回合每打出过1张 水元素牌 ，对全体敌人造成 !D! 点伤害。",
+    "DESCRIPTION": "「 水 」本场战斗每打出过1张 水元素牌 ，对随机敌人造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "额外造成",
-      "点伤害。"
+      "对全体敌人额外造成",
+      "点伤害。",
+      "共 !M! 次。"
     ]
   },
   "ClowCardTheSong": {
@@ -690,7 +691,7 @@
   },
   "SakuraCardTheSnow": {
     "NAME": "雪",
-    "DESCRIPTION": "「 小樱牌 」「 水 」本回合每打出过1张牌，对全体敌人造成 !D! 点伤害。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」本回合每打出过1张牌，对全体敌人造成 !D! 点伤害。共 !M! 次。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
