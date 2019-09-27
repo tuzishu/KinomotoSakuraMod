@@ -19,7 +19,7 @@ public class KSMOD_GemBrooch extends CustomRelic
     private static final RelicTier RELIC_TIER = RelicTier.SHOP;
     private static final LandingSound RELIC_SOUND = LandingSound.CLINK;
     private static final int TRIGGER_NUMBER = 4;
-    private static final int DAMAGE_PROMOTE = 1;
+    private static final int DAMAGE_PROMOTE = 2;
     private static final int STRENGTH_NUMBER = 2;
 
     public KSMOD_GemBrooch()
