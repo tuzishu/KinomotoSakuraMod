@@ -62,7 +62,23 @@ public class KSMOD_MoonBell extends CustomRelic
         AbstractCard card = new SpellCardTurn();
         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(card));
         AbstractDungeon.player.masterDeck.addToBottom(card);
+        usedUp();
+    }
+
+    public void setCounter(int counter)
+    {
+        if (counter == -2)
+        {
+            this.img = ImageMaster.loadImage(RELIC_IMG_INVALID_PATH);
+            this.usedUp();
+            this.counter = -2;
+        }
+    }
+
+    public void usedUp()
+    {
         this.usedUp = true;
+        this.counter = -2;
         this.description = DESCRIPTIONS[4];
         this.tips.clear();
         this.tips.add(new PowerTip(this.name, this.description));
