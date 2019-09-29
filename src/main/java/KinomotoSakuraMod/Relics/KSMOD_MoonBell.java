@@ -16,18 +16,17 @@ public class KSMOD_MoonBell extends CustomRelic
 {
     public static final String RELIC_ID = "KSMOD_MoonBell";
     private static final String RELIC_IMG_PATH = "img/relics/icon/moon_bell.png";
+    private static final String RELIC_IMG_INVALID_PATH = "img/relics/icon/moon_bell_invalid.png";
     private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/moon_bell.png";
     private static final RelicTier RELIC_TIER = RelicTier.RARE;
     private static final LandingSound RELIC_SOUND = LandingSound.SOLID;
     private static final int TRIGGER_COST = 2;
     private static final int HEAL_NUMBER = 1;
     private static final float HEAL_RATE = 0.3F;
-    private boolean used;
 
     public KSMOD_MoonBell()
     {
         super(RELIC_ID, ImageMaster.loadImage(RELIC_IMG_PATH), ImageMaster.loadImage(RELIC_IMG_OTL_PATH), RELIC_TIER, RELIC_SOUND);
-        used = false;
     }
 
     public String getUpdatedDescription()
@@ -42,7 +41,7 @@ public class KSMOD_MoonBell extends CustomRelic
 
     public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction)
     {
-        if (targetCard.cost >= TRIGGER_COST && !used)
+        if (targetCard.cost >= TRIGGER_COST && !usedUp)
         {
             this.flash();
             AbstractDungeon.actionManager.addToBottom(new HealAction(AbstractDungeon.player, AbstractDungeon.player, HEAL_NUMBER));
@@ -63,17 +62,16 @@ public class KSMOD_MoonBell extends CustomRelic
         AbstractCard card = new SpellCardTurn();
         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(card));
         AbstractDungeon.player.masterDeck.addToBottom(card);
-        String desc = this.tips.get(0).body.replaceAll(getUpdatedDescription(), DESCRIPTIONS[4]);
-        this.tips.clear();
-        this.tips.add(new PowerTip(this.name, desc));
+        this.usedUp = true;
         this.description = DESCRIPTIONS[4];
-        // 添加替换资源
-
-        this.used = true;
+        this.tips.clear();
+        this.tips.add(new PowerTip(this.name, this.description));
+        this.initializeTips();
+        this.img = ImageMaster.loadImage(RELIC_IMG_INVALID_PATH);
     }
 
     public boolean hasUsed()
     {
-        return used;
+        return usedUp;
     }
 }
