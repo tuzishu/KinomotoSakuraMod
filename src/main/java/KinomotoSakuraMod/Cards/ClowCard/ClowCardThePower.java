@@ -29,7 +29,7 @@ public class ClowCardThePower extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final int BASE_DAMAGE = 20;
+    private static final int BASE_DAMAGE = 18;
     private static final int UPGRADE_DAMAGE = 8;
     private static final int BASE_MAGIC_NUMBER = 2;
 

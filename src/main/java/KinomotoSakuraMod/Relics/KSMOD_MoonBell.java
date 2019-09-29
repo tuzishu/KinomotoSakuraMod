@@ -15,8 +15,8 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 public class KSMOD_MoonBell extends CustomRelic
 {
     public static final String RELIC_ID = "KSMOD_MoonBell";
-    private static final String RELIC_IMG_PATH = "img/relics/icon/default.png";
-    private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/default.png";
+    private static final String RELIC_IMG_PATH = "img/relics/icon/moon_bell.png";
+    private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/moon_bell.png";
     private static final RelicTier RELIC_TIER = RelicTier.RARE;
     private static final LandingSound RELIC_SOUND = LandingSound.SOLID;
     private static final int TRIGGER_COST = 2;

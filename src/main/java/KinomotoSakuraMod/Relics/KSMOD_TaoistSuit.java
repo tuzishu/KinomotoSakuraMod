@@ -14,8 +14,8 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 public class KSMOD_TaoistSuit extends CustomRelic
 {
     public static final String RELIC_ID = "KSMOD_TaoistSuit";
-    private static final String RELIC_IMG_PATH = "img/relics/icon/default.png";
-    private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/default.png";
+    private static final String RELIC_IMG_PATH = "img/relics/icon/taoist_suit.png";
+    private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/taoist_suit.png";
     private static final AbstractRelic.RelicTier RELIC_TIER = AbstractRelic.RelicTier.UNCOMMON;
     private static final AbstractRelic.LandingSound RELIC_SOUND = AbstractRelic.LandingSound.FLAT;
     private static final int TRIGGER_NUMBER = 4;
