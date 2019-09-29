@@ -7,8 +7,8 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 public class KSMOD_TouyasBicycle extends CustomRelic
 {
     public static final String RELIC_ID = "KSMOD_TouyasBicycle";
-    private static final String RELIC_IMG_PATH = "img/relics/icon/default.png";
-    private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/default.png";
+    private static final String RELIC_IMG_PATH = "img/relics/icon/touyas_bicycle.png";
+    private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/touyas_bicycle.png";
     private static final RelicTier RELIC_TIER = RelicTier.COMMON;
     private static final LandingSound RELIC_SOUND = LandingSound.SOLID;
     public static final int CHARGE_NUMBER = 1;
