@@ -40,5 +40,9 @@ public class KSMOD_TomoyosHeart extends CustomRelic
             AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player, 1));
             this.setCounter(this.counter - TRIGGER_NUMBER);
         }
+        else
+        {
+            this.setCounter(this.counter + 1);
+        }
     }
 }

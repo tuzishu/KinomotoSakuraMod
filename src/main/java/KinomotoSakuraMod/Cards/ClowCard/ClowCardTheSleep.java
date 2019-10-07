@@ -89,6 +89,6 @@ public class ClowCardTheSleep extends KSMOD_AbstractMagicCard
     @Override
     public String getExtraDescription()
     {
-        return EXTENDED_DESCRIPTION[0];
+        return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.REAL_DAMAGE + EXTENDED_DESCRIPTION[1];
     }
 }
