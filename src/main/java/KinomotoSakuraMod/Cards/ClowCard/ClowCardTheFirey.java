@@ -25,8 +25,7 @@ public class ClowCardTheFirey extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
-    private static final int BASE_DAMAGE = 2;
-    private static final int UPGRADE_DAMAGE = 1;
+    private static final int BASE_MAIGC_NUMBER = 2;
 
     static
     {
@@ -39,7 +38,7 @@ public class ClowCardTheFirey extends KSMOD_AbstractMagicCard
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(KSMOD_CustomTag.KSMOD_FIREY_CARD);
-        this.baseDamage = BASE_DAMAGE;
+        this.setBaseMagicNumber(BASE_MAIGC_NUMBER);
     }
 
     public KSMOD_AbstractMagicCard makeCopy()
@@ -53,14 +52,13 @@ public class ClowCardTheFirey extends KSMOD_AbstractMagicCard
         {
             this.upgradeName();
             this.upgradeBaseCost(UPGRADED_COST);
-            this.upgradeDamage(UPGRADE_DAMAGE);
         }
     }
 
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_FireyPower(player, this.damage), this.damage));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_FireyPower(player, this.magicNumber), this.magicNumber));
         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new SpellCardHuoShen()));
     }
 }

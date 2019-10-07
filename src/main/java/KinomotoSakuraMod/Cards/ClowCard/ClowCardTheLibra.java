@@ -29,7 +29,7 @@ public class ClowCardTheLibra extends KSMOD_AbstractMagicCard
     private static final CardTarget CARD_TARGET = CardTarget.NONE;
     private static final int BASE_BLOCK = 4;
     private static final int UPGRADE_BLOCK = 2;
-    private static final int BASE_MAGIC_NUMBER = 4;
+    private static final int BASE_MAGIC_NUMBER = 3;
     private static final int UPGRADE_MAGIC_NUMBER = -1;
 
     static

@@ -32,7 +32,7 @@ public class SakuraCardTheStorm extends KSMOD_AbstractMagicCard
     private static final CardTarget CARD_TARGET = CardTarget.NONE;
     private static final int BASE_DAMAGE = 1;
     private static final int MAX_DAMAGE_OFFSET = 8;
-    private static final int BASE_MAGIC_NUMBER = 8;
+    private static final int BASE_MAGIC_NUMBER = 7;
     private static final String SFX_EFFECT_ID = "ATTACK_WHIRLWIND";
     private static final String SFX_ATTACK_ID = "ATTACK_HEAVY";
 

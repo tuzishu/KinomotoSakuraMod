@@ -62,14 +62,14 @@ public class ClowCardTheFly extends KSMOD_AbstractMagicCard
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         // AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_FlyPower_SakuraCard(this.magicNumber), this.magicNumber));
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.baseBlock));
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
         AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, this.magicNumber));
     }
 
     @Override
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.baseBlock));
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
         AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, this.magicNumber + KSMOD_SealedBook.DRAW_NUMBER));
     }
 

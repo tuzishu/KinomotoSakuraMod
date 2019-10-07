@@ -45,7 +45,7 @@ public class KSMOD_ChangeAction extends AbstractGameAction
                 this.isDone = true;
                 return;
             }
-            AbstractDungeon.handCardSelectScreen.open(TEXT[0], this.amount, true, true);
+            AbstractDungeon.handCardSelectScreen.open(TEXT[0], 1, true, true);
             tickDuration();
             return;
         }
@@ -60,7 +60,7 @@ public class KSMOD_ChangeAction extends AbstractGameAction
             }
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
             AbstractDungeon.handCardSelectScreen.selectedCards.group.clear();
-            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, count + 2));
+            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, count + this.amount));
         }
 
         tickDuration();

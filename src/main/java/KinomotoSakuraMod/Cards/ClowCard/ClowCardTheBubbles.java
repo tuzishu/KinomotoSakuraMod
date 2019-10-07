@@ -33,7 +33,7 @@ public class ClowCardTheBubbles extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final int BASE_DAMAGE = 3;
+    private static final int BASE_DAMAGE = 5;
     private static final int BASE_MAGIC_NUMBER = 2;
 
     static

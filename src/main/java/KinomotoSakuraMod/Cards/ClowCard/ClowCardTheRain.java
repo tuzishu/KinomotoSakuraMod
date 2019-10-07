@@ -59,7 +59,10 @@ public class ClowCardTheRain extends KSMOD_AbstractMagicCard
         this.exhaust = true;
         for (AbstractCard card : player.hand.group)
         {
-            card.setCostForTurn(card.cost - 1);
+            if (!card.isCostModified || card.cost > 0)
+            {
+                card.setCostForTurn(card.cost - 1);
+            }
         }
     }
 
@@ -68,7 +71,10 @@ public class ClowCardTheRain extends KSMOD_AbstractMagicCard
         this.exhaust = false;
         for (AbstractCard card : player.hand.group)
         {
-            card.setCostForTurn(card.cost - 1);
+            if (!card.isCostModified || card.cost > 0)
+            {
+                card.setCostForTurn(card.cost - 1);
+            }
         }
     }
 

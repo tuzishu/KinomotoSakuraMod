@@ -23,11 +23,6 @@ public class KSMOD_FloatPower_SakuraCard extends KSMOD_CustomPower
         POWER_DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     }
 
-    public KSMOD_FloatPower_SakuraCard()
-    {
-        this(AbstractDungeon.player, 1);
-    }
-
     public KSMOD_FloatPower_SakuraCard(AbstractCreature target, int amount)
     {
         super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, amount);

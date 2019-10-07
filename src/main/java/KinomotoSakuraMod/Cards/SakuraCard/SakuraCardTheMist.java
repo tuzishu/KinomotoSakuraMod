@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.NoxiousFumesPower;
 import com.megacrit.cardcrawl.powers.PoisonPower;
 
 public class SakuraCardTheMist extends KSMOD_AbstractMagicCard
@@ -21,11 +22,11 @@ public class SakuraCardTheMist extends KSMOD_AbstractMagicCard
     private static final String DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/sakuracard/the_mist.png";
     private static final int COST = 1;
-    private static final CardType CARD_TYPE = CardType.SKILL;
+    private static final CardType CARD_TYPE = CardType.POWER;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SAKURACARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
-    private static final int BASE_MAGIC_NUMBER = 7;
+    private static final int BASE_MAGIC_NUMBER = 6;
 
     static
     {
@@ -68,7 +69,7 @@ public class SakuraCardTheMist extends KSMOD_AbstractMagicCard
         for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters)
         {
             AbstractDungeon.actionManager.addToBottom(new RemoveAllBlockAction(mon, player));
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new PoisonPower(mon, player, this.magicNumber), this.magicNumber));
         }
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new NoxiousFumesPower(player, this.magicNumber), this.magicNumber));
     }
 }

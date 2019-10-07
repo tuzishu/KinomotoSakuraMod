@@ -16,6 +16,7 @@ public class ClowCardTheFloat extends KSMOD_AbstractMagicCard
     public static final String ID = "ClowCardTheFloat";
     private static final String NAME;
     private static final String DESCRIPTION;
+    private static final String UPGRADE_DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_float.png";
     private static final int COST = 1;
     private static final CardType CARD_TYPE = CardType.POWER;
@@ -23,13 +24,13 @@ public class ClowCardTheFloat extends KSMOD_AbstractMagicCard
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
     private static final int BASE_MAGIC_NUMBER = 1;
-    private static final int UPGRADE_MAGIC_NUMBER = 1;
 
     static
     {
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
         NAME = cardStrings.NAME;
         DESCRIPTION = cardStrings.DESCRIPTION;
+        UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     }
 
     public ClowCardTheFloat()
@@ -49,7 +50,9 @@ public class ClowCardTheFloat extends KSMOD_AbstractMagicCard
         if (!this.upgraded)
         {
             this.upgradeName();
-            this.upgradeMagicNumber(UPGRADE_MAGIC_NUMBER);
+            this.isInnate = true;
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            this.initializeDescription();
         }
     }
 

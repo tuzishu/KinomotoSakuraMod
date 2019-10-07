@@ -26,7 +26,7 @@ public class SakuraCardTheSword extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SAKURACARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final int BASE_DAMAGE = 9;
+    private static final int BASE_DAMAGE = 14;
     private static final float PERCENT_DAMAGE_RATE = 0.25F;
     private int gemDamage = 0;
 

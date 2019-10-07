@@ -25,11 +25,11 @@ public class ClowCardTheIllusion extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
-    private static final int BASE_BLOCK = 6;
+    private static final int BASE_BLOCK = 7;
     private static final int UPGRADE_BLOCK = 3;
     private static final int BASE_MAGIC_NUMBER = 2;
     private static final int UPGRADE_MAGIC_NUMBER = 1;
-    private static final int INCREASE_NUMBER = 3;
+    private static final int INCREASE_NUMBER =   3;
     private static final int CHARGED_INCREASE_NUMBER = 1;
 
     static

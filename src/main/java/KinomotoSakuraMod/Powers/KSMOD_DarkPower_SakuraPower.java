@@ -88,18 +88,21 @@ public class KSMOD_DarkPower_SakuraPower extends KSMOD_CustomPower
         }
 
         float randNum = new Random().random(0F, 1F);
+        AbstractCard card;
         if (randNum <= RARE_CARD_RATE)
         {
-            return GetRandomListElement(rareList);
+            card = GetRandomListElement(rareList);
         }
         else if (randNum <= RARE_CARD_RATE + UNCOMMON_CARD_RATE)
         {
-            return GetRandomListElement(uncommonList);
+            card = GetRandomListElement(uncommonList);
         }
         else
         {
-            return GetRandomListElement(commonList);
+            card = GetRandomListElement(commonList);
         }
+        card.upgrade();
+        return card;
     }
 
     private <T> T GetRandomListElement(ArrayList<T> arrayList)

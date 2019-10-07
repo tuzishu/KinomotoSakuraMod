@@ -32,10 +32,6 @@ public class KSMOD_GlowPower_SakuraCard extends KSMOD_CustomPower
 
     public void atStartOfTurn()
     {
-        for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters)
-        {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, AbstractDungeon.player, new PoisonPower(mon, AbstractDungeon.player, this.amount), this.amount));
-        }
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(KSMOD_SealedBook.RELIC_ID))
         {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new KSMOD_MagickChargePower(this.owner, this.amount), this.amount));

@@ -29,7 +29,7 @@ public class SakuraCardTheThrough extends KSMOD_AbstractMagicCard
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
     private static final int BASE_DAMAGE = 18;
-    private static final float CLEAVE_DURATION = 0.2F;
+    private static final float CLEAVE_DURATION = 0.1F;
     private static final String SOUND_KEY = "ATTACK_DAGGER_";
 
     static

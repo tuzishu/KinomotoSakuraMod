@@ -5,6 +5,7 @@ import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -14,8 +15,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import java.util.ArrayList;
 
 public class SakuraCardTheLight extends KSMOD_AbstractMagicCard
 {
@@ -68,16 +67,17 @@ public class SakuraCardTheLight extends KSMOD_AbstractMagicCard
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         int count = 0;
-        count += ExhaustStatusAndCurseAndReturnCount(player.hand);
-        count += ExhaustStatusAndCurseAndReturnCount(player.drawPile);
-        count += ExhaustStatusAndCurseAndReturnCount(player.discardPile);
+        count += GetStatusAndCurseCount(player.hand);
+        count += GetStatusAndCurseCount(player.drawPile);
+        count += GetStatusAndCurseCount(player.discardPile);
         if (count > 0)
         {
             AbstractDungeon.actionManager.addToBottom(new HealAction(player, player, count));
+            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, count));
         }
     }
 
-    private int ExhaustStatusAndCurseAndReturnCount(CardGroup group)
+    private int GetStatusAndCurseCount(CardGroup group)
     {
         int count = 0;
         for (AbstractCard card : group.group)
