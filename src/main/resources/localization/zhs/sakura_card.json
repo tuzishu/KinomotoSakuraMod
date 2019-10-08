@@ -86,10 +86,10 @@
   },
   "ClowCardTheFight": {
     "NAME": "斗",
-    "DESCRIPTION": "「 地 」造成 !D! 点伤害。获得1点 力量 。",
+    "DESCRIPTION": "「 地 」 消耗 。 造成 !D! 点伤害，获得1层 魔力充能 ，获得 !M! 层 活动肌肉 。添加1张复制品到手中。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "额外获得",
+      "获得",
       "点 力量 。"
     ]
   },
