@@ -42,8 +42,8 @@
   },
   "ClowCardTheCreate": {
     "NAME": "创",
-    "DESCRIPTION": "「 地 」「 风 」战斗结束后获得1个随机遗物，并将此卡从卡组中移除。不可被 镜牌 复制。",
-    "UPGRADE_DESCRIPTION": "「 地 」「 风 」 保留 。战斗结束后获得1个随机遗物，并将此卡从卡组中移除。不可被 镜牌 复制。",
+    "DESCRIPTION": "「 地 」「 风 」战斗结束后获得1件随机遗物，将此牌从卡组中移除。若未被使用，每场战斗开始后降低1点使用费用。不可被复制。",
+    "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheDark": {

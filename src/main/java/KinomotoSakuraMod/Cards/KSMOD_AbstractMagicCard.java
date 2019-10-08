@@ -12,6 +12,7 @@ import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
 import basemod.abstracts.DynamicVariable;
+import basemod.interfaces.ISubscriber;
 import basemod.interfaces.OnStartBattleSubscriber;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -46,7 +47,7 @@ import java.lang.reflect.Method;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class KSMOD_AbstractMagicCard extends CustomCard implements OnStartBattleSubscriber
+public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISubscriber, OnStartBattleSubscriber
 {
     //////////
     // Override Method Usage
@@ -90,6 +91,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements OnSt
     public KSMOD_AbstractMagicCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target)
     {
         super(id, name, img, cost, rawDescription, type, color, rarity, target);
+        BaseMod.subscribe(this);
         InitMagicCard();
     }
 
