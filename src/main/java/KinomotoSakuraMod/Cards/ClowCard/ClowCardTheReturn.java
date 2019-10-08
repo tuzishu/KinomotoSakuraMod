@@ -20,12 +20,12 @@ public class ClowCardTheReturn extends KSMOD_AbstractMagicCard
     private static final String DESCRIPTION;
     private static final String UPGRADE_DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_return.png";
-    private static final int COST = 2;
+    private static final int COST = 1;
     private static final CardType CARD_TYPE = CardType.POWER;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.RARE;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
-    private static final int BASE_MAGIC_NUMBER = 3;
+    private static final int BASE_MAGIC_NUMBER = 2;
 
     static
     {
@@ -62,7 +62,10 @@ public class ClowCardTheReturn extends KSMOD_AbstractMagicCard
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_ReturnPower(player, this.magicNumber)));
-        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new VoidCard(), 2));
+        if (!upgraded)
+        {
+            AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new VoidCard(), 2));
+        }
     }
 
     public void atTurnStart()
