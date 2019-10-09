@@ -72,7 +72,7 @@
   },
   "ClowCardTheEarthy": {
     "NAME": "地",
-    "DESCRIPTION": "「 地 」添加1张 雷帝 到手中。本回合打出 地元素牌 时，额外获得1层 魔力充能 ，并获得 !M! 点 格挡 。",
+    "DESCRIPTION": "「 地 」添加1张 雷帝 到手中。进入 地元素状态 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -95,7 +95,7 @@
   },
   "ClowCardTheFirey": {
     "NAME": "火",
-    "DESCRIPTION": "「 火 」本回合打出 火元素牌 时，额外获得1层 魔力充能 ，对全体敌人造成 !M! 点伤害。添加1张 火神 到手中。",
+    "DESCRIPTION": "「 火 」添加1张 火神 到手中。进入 火元素状态 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -382,7 +382,7 @@
   },
   "ClowCardTheWatery": {
     "NAME": "水",
-    "DESCRIPTION": "「 水 」本回合打出 水元素牌 时，额外获得1层 魔力充能 ，并获得 !M! 点能量。添加1张 水龙 到手中。",
+    "DESCRIPTION": "「 水 」添加1张 水龙 到手中。进入 水元素状态 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -394,7 +394,7 @@
   },
   "ClowCardTheWindy": {
     "NAME": "风",
-    "DESCRIPTION": "「 风 」本回合打出 风元素牌 时，额外获得1层 魔力充能 ，并抽 !M! 张牌。添加1张 风华 到手中。",
+    "DESCRIPTION": "「 风 」添加1张 风华 到手中。进入 风元素状态 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -511,7 +511,7 @@
   },
   "SakuraCardTheEarthy": {
     "NAME": "地",
-    "DESCRIPTION": "「 小樱牌 」「 地 」打出 地元素牌 时，额外获得1层 魔力充能 ，并获得 !B! 点格挡。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」永久进入 地元素状态 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -529,7 +529,7 @@
   },
   "SakuraCardTheFirey": {
     "NAME": "火",
-    "DESCRIPTION": "「 小樱牌 」「 火 」打出 火元素牌 时，额外获得1层 魔力充能 ，并对全体敌人造成 !D! 点伤害。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」永久进入 火元素状态 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -747,7 +747,7 @@
   },
   "SakuraCardTheWatery": {
     "NAME": "水",
-    "DESCRIPTION": "「 小樱牌 」「 水 」打出 水元素牌 时，额外获得1层 魔力充能 ，并获得 !M! 点能量。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」永久进入 水元素状态 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -759,7 +759,7 @@
   },
   "SakuraCardTheWindy": {
     "NAME": "风",
-    "DESCRIPTION": "「 小樱牌 」「 风 」打出 风元素牌 时，额外获得1层 魔力充能 ，并抽 !M! 张牌。",
+    "DESCRIPTION": "「 小樱牌 」「 风 」永久进入 风元素状态 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

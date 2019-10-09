@@ -3,9 +3,8 @@ package KinomotoSakuraMod.Cards;
 import KinomotoSakuraMod.Actions.KSMOD_ReleaseAction;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
-import KinomotoSakuraMod.Powers.KSMOD_LockPower;
-import KinomotoSakuraMod.Powers.KSMOD_LockPower_SakuraCard;
-import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
+import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
+import KinomotoSakuraMod.Powers.*;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
@@ -165,6 +164,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                 }
             }
             this.applyExtraEffect(player, monster);
+            applyElementPowers(player);
             setUseChargeTimes(useChargeTimes + 1);
         }
         else
@@ -179,6 +179,26 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
         {
             KSMOD_SealedBook book = (KSMOD_SealedBook) player.getRelic(KSMOD_SealedBook.RELIC_ID);
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_MagickChargePower(player, book.applyPowerNumberOnce(this)), book.applyPowerNumberOnce(this)));
+        }
+    }
+
+    private void applyElementPowers(AbstractPlayer player)
+    {
+        if (this.hasTag(KSMOD_CustomTag.KSMOD_EARTHY_CARD) && !player.hasPower(KSMOD_EarthyPower.POWER_ID))
+        {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_EarthyPower(player, 1), 1));
+        }
+        if (this.hasTag(KSMOD_CustomTag.KSMOD_FIREY_CARD) && !player.hasPower(KSMOD_FireyPower.POWER_ID))
+        {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_FireyPower(player, 1), 1));
+        }
+        if (this.hasTag(KSMOD_CustomTag.KSMOD_WATERY_CARD) && !player.hasPower(KSMOD_WateryPower.POWER_ID))
+        {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_WateryPower(player, 1), 1));
+        }
+        if (this.hasTag(KSMOD_CustomTag.KSMOD_WINDY_CARD) && !player.hasPower(KSMOD_WindyPower.POWER_ID))
+        {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_WindyPower(player, 1), 1));
         }
     }
 

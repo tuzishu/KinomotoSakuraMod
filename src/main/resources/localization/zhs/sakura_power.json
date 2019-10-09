@@ -38,57 +38,55 @@
   "KSMOD_EarthyPower": {
     "NAME": "地元素",
     "DESCRIPTIONS": [
-      "本回合打出 #y地元素牌 时，额外获得1层 #y魔力充能 ，并获得 #b",
+      "打出 #y地元素牌 时，获得 #b",
       " 点 #b格挡 。"
     ]
   },
   "KSMOD_EarthyPower_SakuraCard": {
     "NAME": "地元素·樱",
     "DESCRIPTIONS": [
-      "打出 #y地元素牌 时，额外获得1层 #y魔力充能 ，并获得 #b",
-      " 点 #b格挡 。"
+      "回合结束时， #y地元素状态 不会消失。"
     ]
   },
   "KSMOD_WateryPower": {
     "NAME": "水元素",
     "DESCRIPTIONS": [
-      "本回合打出 #y水元素牌 时，额外获得1层 #y魔力充能 ，并获得 #b",
-      " 点能量。"
+      "每打出 #b",
+      " 张 #y水元素牌 ，获得 #b1 点能量。",
+      " NL 下一张牌可以获得能量。"
     ]
   },
   "KSMOD_WateryPower_SakuraCard": {
     "NAME": "水元素·樱",
     "DESCRIPTIONS": [
-      "打出 #y水元素牌 时，额外获得1层 #y魔力充能 ，并获得 #b",
-      " 点能量。"
+      "回合结束时， #y水元素状态 不会消失。"
     ]
   },
   "KSMOD_FireyPower": {
     "NAME": "火元素",
     "DESCRIPTIONS": [
-      "本回合打出 #y火元素牌 时，额外获得1层 #y魔力充能 ，并对全体敌人造成 #b",
+      "打出 #y火元素牌 时，对全体敌人造成 #b",
       " 点伤害。"
     ]
   },
   "KSMOD_FireyPower_SakuraCard": {
     "NAME": "火元素·樱",
     "DESCRIPTIONS": [
-      "打出 #y火元素牌 时，额外获得1层 #y魔力充能 ，并对全体敌人造成 #b",
-      " 点伤害。"
+      "回合结束时， #y火元素状态 不会消失。"
     ]
   },
   "KSMOD_WindyPower": {
     "NAME": "风元素",
     "DESCRIPTIONS": [
-      "本回合打出 #y风元素牌 时，额外获得1层 #y魔力充能 ，并抽 #b",
-      " 张牌。"
+      "每打出 #b",
+      " 张 #y风元素牌 ，抽 #b1 张牌。",
+      " NL 下一张牌可以抽排。"
     ]
   },
   "KSMOD_WindyPower_SakuraCard": {
     "NAME": "风元素·樱",
     "DESCRIPTIONS": [
-      "打出 #y风元素牌 时，额外获得1层 #y魔力充能 ，并抽 #b",
-      " 张牌。"
+      "回合结束时， #y风元素状态 不会消失。"
     ]
   },
   "KSMOD_FloatPower": {

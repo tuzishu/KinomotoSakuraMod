@@ -1,7 +1,9 @@
 package KinomotoSakuraMod.Powers;
 
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
+import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -18,6 +20,7 @@ public class KSMOD_WindyPower extends KSMOD_CustomPower
     private static final String[] POWER_DESCRIPTIONS;
     private static final String POWER_IMG_PATH = "img/powers/default_power.png";
     private static final AbstractPower.PowerType POWER_TYPE = AbstractPower.PowerType.BUFF;
+    private int counter = 0;
 
     static
     {
@@ -34,19 +37,36 @@ public class KSMOD_WindyPower extends KSMOD_CustomPower
 
     public void updateDescription()
     {
-        this.description = POWER_DESCRIPTIONS[0] + this.amount + POWER_DESCRIPTIONS[1];
+        this.description = POWER_DESCRIPTIONS[0] + KSMOD_SealedBook.WINDY_DRAW_TRIGGER + POWER_DESCRIPTIONS[1] + ((this.counter == KSMOD_SealedBook.WATERY_ENERGY_TRIGGER - 1) ? POWER_DESCRIPTIONS[2] : "");
     }
 
     public void onUseCard(AbstractCard card, UseCardAction action)
     {
         if (card.hasTag(KSMOD_CustomTag.KSMOD_WINDY_CARD))
         {
-            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(this.owner, this.amount));
+            counter += 1;
+            if (counter >= KSMOD_SealedBook.WINDY_DRAW_TRIGGER)
+            {
+                counter -= KSMOD_SealedBook.WINDY_DRAW_TRIGGER;
+                AbstractDungeon.actionManager.addToBottom(new DrawCardAction(this.owner, 1));
+            }
         }
+        this.updateDescription();
     }
 
     public void atEndOfTurn(boolean isPlayer)
     {
-        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+        if (this.owner.hasPower(KSMOD_WindyPower_SakuraCard.POWER_ID))
+        {
+            return;
+        }
+        if (this.amount > 1)
+        {
+            AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(this.owner, this.owner, this, 1));
+        }
+        else
+        {
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+        }
     }
 }

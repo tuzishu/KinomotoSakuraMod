@@ -1,12 +1,6 @@
 package KinomotoSakuraMod.Powers;
 
-import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -36,14 +30,14 @@ public class KSMOD_FireyPower_SakuraCard extends KSMOD_CustomPower
 
     public void updateDescription()
     {
-        this.description = POWER_DESCRIPTIONS[0] + this.amount + POWER_DESCRIPTIONS[1];
+        this.description = POWER_DESCRIPTIONS[0];
     }
 
-    public void onUseCard(AbstractCard card, UseCardAction action)
+    public void onInitialApplication()
     {
-        if (card.hasTag(KSMOD_CustomTag.KSMOD_FIREY_CARD))
+        if (!this.owner.hasPower(KSMOD_FireyPower.POWER_ID))
         {
-            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(this.owner, KSMOD_Utility.GetDamageList(this.amount), DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.FIRE));
+            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this.owner, this.owner, new KSMOD_FireyPower(this.owner, 1), 1));
         }
     }
 }
