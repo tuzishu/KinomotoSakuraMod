@@ -637,7 +637,7 @@
   },
   "SakuraCardTheRain": {
     "NAME": "雨",
-    "DESCRIPTION": "「 小樱牌 」「 水 」 消耗 。所有手牌的本场战斗内耗能变为0。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」 消耗 。随机 !M! 张手牌的耗能在本场战斗中变为0。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
