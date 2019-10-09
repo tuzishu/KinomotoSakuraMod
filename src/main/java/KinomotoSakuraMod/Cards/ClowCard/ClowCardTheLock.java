@@ -1,16 +1,20 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
+import KinomotoSakuraMod.Actions.KSMOD_LockAction;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
-import KinomotoSakuraMod.Powers.KSMOD_LockPower;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.unique.AddCardToDeckAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 
 public class ClowCardTheLock extends KSMOD_AbstractMagicCard
 {
@@ -22,9 +26,9 @@ public class ClowCardTheLock extends KSMOD_AbstractMagicCard
     private static final int UPGRADED_COST = 0;
     private static final CardType CARD_TYPE = CardType.SKILL;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
-    private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
-    private static final int BASE_BLOCK = 6;
+    private static final int BASE_MAGIC_NUMBER = 2;
 
     static
     {
@@ -37,7 +41,7 @@ public class ClowCardTheLock extends KSMOD_AbstractMagicCard
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(KSMOD_CustomTag.KSMOD_FIREY_CARD);
-        this.baseBlock = BASE_BLOCK;
+        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
     public KSMOD_AbstractMagicCard makeCopy()
@@ -57,7 +61,13 @@ public class ClowCardTheLock extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_LockPower(player, 1), 1));
+        AbstractDungeon.actionManager.addToBottom(new KSMOD_LockAction(this.magicNumber, this));
+    }
+
+    @Override
+    public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
+    {
+        applyNormalEffect(player, monster);
+        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(KSMOD_SealedBook.ENERGY_NUMBER));
     }
 }

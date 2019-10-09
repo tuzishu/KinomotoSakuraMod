@@ -5,8 +5,6 @@ import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
-import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -70,7 +68,7 @@ public class ClowCardTheThunder extends KSMOD_AbstractMagicCard
     @Override
     public boolean canUse(AbstractPlayer player, AbstractMonster monster)
     {
-        return canUse;
+        return super.canUse(player, monster) && canUse;
     }
 
     @Override
@@ -90,7 +88,6 @@ public class ClowCardTheThunder extends KSMOD_AbstractMagicCard
     public void onCharged()
     {
         canUse = true;
-        this.cantUseMessage = KinomotoSakura.GetMessage(1);
     }
 
     @Override

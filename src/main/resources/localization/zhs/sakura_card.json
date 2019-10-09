@@ -176,7 +176,7 @@
   },
   "ClowCardTheLock": {
     "NAME": "锁",
-    "DESCRIPTION": "「 风 」1回合不触发 魔力充能 的效果。获得 !B! 点 格挡 。",
+    "DESCRIPTION": "「 风 」消耗最多 !M! 张手牌。每消耗1张获得1层 魔力充能 。未消耗手牌时消耗自身。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

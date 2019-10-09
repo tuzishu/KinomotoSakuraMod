@@ -27,6 +27,11 @@
       "消耗"
     ]
   },
+  "KSMOD_LockAction": {
+    "TEXT": [
+      "消耗"
+    ]
+  },
   "KSMOD_MirrorAction": {
     "TEXT": [
       "复制"
