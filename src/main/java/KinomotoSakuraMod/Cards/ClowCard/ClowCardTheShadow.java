@@ -3,6 +3,7 @@ package KinomotoSakuraMod.Cards.ClowCard;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
+import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -10,7 +11,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.PlatedArmorPower;
+import com.megacrit.cardcrawl.powers.BlurPower;
 
 public class ClowCardTheShadow extends KSMOD_AbstractMagicCard
 {
@@ -24,10 +25,9 @@ public class ClowCardTheShadow extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.COMMON;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
-    private static final int BASE_BLOCK = 9;
-    private static final int UPGRADE_BLOCK = 4;
-    private static final int BASE_MAGIC_NUMBER = 6;
-    private static final int UPGRADE_MAGIC_NUMBER = 2;
+    private static final int BASE_BLOCK = 5;
+    private static final int UPGRADE_BLOCK = 3;
+    private static final int BASE_MAGIC_NUMBER = 1;
 
     static
     {
@@ -52,7 +52,6 @@ public class ClowCardTheShadow extends KSMOD_AbstractMagicCard
         {
             this.upgradeName();
             this.upgradeBlock(UPGRADE_BLOCK);
-            this.upgradeMagicNumber(UPGRADE_MAGIC_NUMBER);
         }
     }
 
@@ -66,17 +65,19 @@ public class ClowCardTheShadow extends KSMOD_AbstractMagicCard
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new BlurPower(player, this.magicNumber), this.magicNumber));
     }
 
     @Override
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new PlatedArmorPower(player, this.magicNumber), this.magicNumber));
+        applyNormalEffect(player, monster);
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new BlurPower(player, KSMOD_SealedBook.BLUR_NUMBER), KSMOD_SealedBook.BLUR_NUMBER));
     }
 
     @Override
     public String getExtraDescription()
     {
-        return EXTENDED_DESCRIPTION[0];
+        return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.BLUR_NUMBER + EXTENDED_DESCRIPTION[1];
     }
 }

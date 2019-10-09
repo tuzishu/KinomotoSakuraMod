@@ -30,6 +30,7 @@ public class KSMOD_SealedBook extends CustomRelic
     public static final int STRENGTH_NUMBER = 2;
     public static final int ENERGY_NUMBER = 2;
     public static final int EMPTYSPELL_NUMBER = 2;
+    public static final int BLUR_NUMBER = 2;
     public static final int TEMPCARD_NUMBER = 1;
     public static final int EXTRA_COPY_NUMBER = 1;
     public static final float EXTRA_KILL_LINE = 0.5F;
