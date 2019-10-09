@@ -234,7 +234,7 @@
     "DESCRIPTION": "「 水 」 消耗 。本回合所有手牌的耗能下降1。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "「 水 」所有手牌的耗能下降1。"
+      "「 水 」本回合所有手牌的耗能下降1。"
     ]
   },
   "ClowCardTheReturn": {
@@ -350,11 +350,10 @@
   },
   "ClowCardTheThunder": {
     "NAME": "雷",
-    "DESCRIPTION": "「 地 」对随机敌人造成 !D! 点伤害3次。将1张 虚空 加入弃牌堆。",
+    "DESCRIPTION": "「 地 」 充能状态 下才能打出。对随机敌人造成 !D! 点伤害 !M! 次。将1张 虚空 放入弃牌堆。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "额外造成",
-      "次伤害。"
+      "魔力充能不足"
     ]
   },
   "ClowCardTheTime": {
@@ -727,7 +726,7 @@
   },
   "SakuraCardTheThunder": {
     "NAME": "雷",
-    "DESCRIPTION": "「 小樱牌 」「 地 」获得X层 魔力充能 ，并消耗所有 魔力充能 ，每消耗 !M! 层对随机敌人造成 !D! 点伤害。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」获得2X层 魔力充能 ，并消耗所有 魔力充能 ，每消耗 !M! 层对随机敌人造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

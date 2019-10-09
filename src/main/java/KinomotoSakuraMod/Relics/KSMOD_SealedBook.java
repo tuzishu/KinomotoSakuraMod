@@ -26,7 +26,6 @@ public class KSMOD_SealedBook extends CustomRelic
     public static final int WEAKENED_NUMBER = 3;
     public static final int VULNERABLE_NUMBER = 3;
     public static final int SONG_NUMBER = 3;
-    public static final int THUNDER_NUMBER = 2;
     public static final int DRAW_NUMBER = 2;
     public static final int STRENGTH_NUMBER = 2;
     public static final int ENERGY_NUMBER = 2;

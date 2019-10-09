@@ -143,7 +143,7 @@ public class KinomotoSakura extends CustomPlayer
         }
         if (msgNumber >= MESSAGES.length)
         {
-            return "Error Message Number Over Length.";
+            return "Error! Message Number Over Length.";
         }
         return MESSAGES[msgNumber];
     }

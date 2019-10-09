@@ -2,9 +2,11 @@ package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Actions.KSMOD_ThunderAction;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
+import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
-import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
+import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
+import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -20,23 +22,22 @@ public class ClowCardTheThunder extends KSMOD_AbstractMagicCard
     public static final String ID = "ClowCardTheThunder";
     private static final String NAME;
     private static final String DESCRIPTION;
-    private static final String[] EXTENDED_DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_thunder.png";
     private static final int COST = 3;
     private static final AbstractCard.CardType CARD_TYPE = AbstractCard.CardType.ATTACK;
     private static final AbstractCard.CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.RARE;
     private static final CardTarget CARD_TARGET = CardTarget.NONE;
-    private static final int BASE_DAMAGE = 12;
+    private static final int BASE_DAMAGE = 15;
     private static final int UPGRADE_DAMAGE = 3;
-    private static final int ATTACK_COUNT = 3;
+    private static final int BASE_MAGIC_NUMBER = 5;
+    private boolean canUse = false;
 
     static
     {
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
         NAME = cardStrings.NAME;
         DESCRIPTION = cardStrings.DESCRIPTION;
-        EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     }
 
     public ClowCardTheThunder()
@@ -44,6 +45,8 @@ public class ClowCardTheThunder extends KSMOD_AbstractMagicCard
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
         this.tags.add(KSMOD_CustomTag.KSMOD_EARTHY_CARD);
         this.baseDamage = BASE_DAMAGE;
+        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
+        this.cantUseMessage = KinomotoSakura.GetMessage(1);
     }
 
     @Override
@@ -63,21 +66,40 @@ public class ClowCardTheThunder extends KSMOD_AbstractMagicCard
     }
 
     @Override
+    public boolean canUse(AbstractPlayer player, AbstractMonster monster)
+    {
+        return canUse;
+    }
+
+    @Override
+    public void onDischarged()
+    {
+        canUse = false;
+        this.cantUseMessage = KinomotoSakura.GetMessage(1);
+    }
+
+    @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new KSMOD_ThunderAction(new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), ATTACK_COUNT));
-        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new VoidCard(), 1));
 
     }
 
+    @Override
+    public void onCharged()
+    {
+        canUse = true;
+        this.cantUseMessage = KinomotoSakura.GetMessage(1);
+    }
+
+    @Override
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new KSMOD_ThunderAction(new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), ATTACK_COUNT + KSMOD_SealedBook.THUNDER_NUMBER));
+        AbstractDungeon.actionManager.addToBottom(new KSMOD_ThunderAction(new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), this.magicNumber));
         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new VoidCard(), 1));
     }
 
     public String getExtraDescription()
     {
-        return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.THUNDER_NUMBER + EXTENDED_DESCRIPTION[1];
+        return this.rawDescription;
     }
 }

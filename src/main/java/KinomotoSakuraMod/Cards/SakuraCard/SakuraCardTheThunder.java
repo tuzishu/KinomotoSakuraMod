@@ -29,7 +29,7 @@ public class SakuraCardTheThunder extends KSMOD_AbstractMagicCard
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.NONE;
     private static final int BASE_DAMAGE = 15;
-    private static final int BASE_MAGIC_NUMBER = 1;
+    private static final int BASE_MAGIC_NUMBER = 2;
 
     static
     {
@@ -70,14 +70,14 @@ public class SakuraCardTheThunder extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        int count = EnergyPanel.getCurrentEnergy();
+        int count = EnergyPanel.getCurrentEnergy() * 2;
         EnergyPanel.useEnergy(count);
         if (player.hasPower(KSMOD_MagickChargePower.POWER_ID))
         {
             count += player.getPower(KSMOD_MagickChargePower.POWER_ID).amount;
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(player, player, KSMOD_MagickChargePower.POWER_ID));
         }
-        count /= BASE_MAGIC_NUMBER;
+        count /= this.magicNumber;
         AbstractDungeon.actionManager.addToBottom(new KSMOD_ThunderAction(new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), count));
     }
 }
