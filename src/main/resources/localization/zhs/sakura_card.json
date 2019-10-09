@@ -350,7 +350,7 @@
   },
   "ClowCardTheThunder": {
     "NAME": "雷",
-    "DESCRIPTION": "「 地 」 充能状态 下才能打出。对随机敌人造成 !D! 点伤害 !M! 次。将1张 虚空 放入弃牌堆。",
+    "DESCRIPTION": "「 地 」 保留 。 充能状态 下才能打出。对随机敌人造成 !D! 点伤害 !M! 次。将1张 虚空 放入弃牌堆。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "魔力充能不足"
