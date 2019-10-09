@@ -3,6 +3,7 @@ package KinomotoSakuraMod.Actions;
 import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -55,17 +56,19 @@ public class KSMOD_LockAction extends AbstractGameAction
         if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved)
         {
             int count = 0;
-            if (AbstractDungeon.handCardSelectScreen.selectedCards.size() == 0)
+            for (AbstractCard card : AbstractDungeon.handCardSelectScreen.selectedCards.group)
             {
-                AbstractDungeon.player.hand.moveToExhaustPile(lockCard);
+                this.player.discardPile.moveToExhaustPile(card);
+                count += 1;
             }
-            else
+            if (count > 0)
             {
-                for (AbstractCard card : AbstractDungeon.handCardSelectScreen.selectedCards.group)
+                AbstractCard card = lockCard.makeCopy();
+                if (lockCard.upgraded)
                 {
-                    this.player.hand.moveToExhaustPile(card);
-                    count += 1;
+                    card.upgrade();
                 }
+                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(card, 1));
             }
             if (count > 0)
             {

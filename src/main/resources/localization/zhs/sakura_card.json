@@ -176,7 +176,7 @@
   },
   "ClowCardTheLock": {
     "NAME": "锁",
-    "DESCRIPTION": "「 风 」消耗最多 !M! 张手牌。每消耗1张获得1层 魔力充能 。未消耗手牌时消耗自身。",
+    "DESCRIPTION": "「 风 」 消耗 。 消耗最多 !M! 张手牌。每消耗1张获得1层 魔力充能 。消耗手牌不为0时添加1张复制品到弃牌堆。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

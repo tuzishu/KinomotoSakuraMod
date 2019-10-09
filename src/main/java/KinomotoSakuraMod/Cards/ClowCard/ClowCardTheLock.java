@@ -5,16 +5,12 @@ import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
-import com.megacrit.cardcrawl.actions.unique.AddCardToDeckAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 
 public class ClowCardTheLock extends KSMOD_AbstractMagicCard
 {
@@ -42,6 +38,7 @@ public class ClowCardTheLock extends KSMOD_AbstractMagicCard
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(KSMOD_CustomTag.KSMOD_FIREY_CARD);
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
+        this.exhaust = true;
     }
 
     public KSMOD_AbstractMagicCard makeCopy()
