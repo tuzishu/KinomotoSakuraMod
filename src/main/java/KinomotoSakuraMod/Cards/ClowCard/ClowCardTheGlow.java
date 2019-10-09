@@ -6,12 +6,12 @@ import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.PoisonPower;
 
 public class ClowCardTheGlow extends KSMOD_AbstractMagicCard
 {
@@ -23,8 +23,8 @@ public class ClowCardTheGlow extends KSMOD_AbstractMagicCard
     private static final CardType CARD_TYPE = CardType.SKILL;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
-    private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final int BASE_MAGIC_NUMBER = 2;
+    private static final CardTarget CARD_TARGET = CardTarget.SELF;
+    private static final int BASE_MAGIC_NUMBER = 1;
     private static final int UPGRADE_MAGIC_NUMBER = 1;
 
     static
@@ -60,7 +60,7 @@ public class ClowCardTheGlow extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new PoisonPower(monster, player, this.magicNumber), this.magicNumber));
+        AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, this.magicNumber));
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(KSMOD_SealedBook.RELIC_ID))
         {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_MagickChargePower(player, this.magicNumber), this.magicNumber));
