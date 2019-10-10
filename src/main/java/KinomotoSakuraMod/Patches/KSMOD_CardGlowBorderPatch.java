@@ -1,5 +1,6 @@
 package KinomotoSakuraMod.Patches;
 
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.badlogic.gdx.graphics.Color;
@@ -29,7 +30,14 @@ public class KSMOD_CardGlowBorderPatch
             Field color = KSMOD_Utility.GetFieldByReflect(AbstractGameEffect.class, "color");
             if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT)
             {
-                color.set(border, Color.valueOf("30c8dcff"));
+                if (card instanceof KSMOD_AbstractMagicCard && ((KSMOD_AbstractMagicCard)card).hasExtraEffect() && ((KSMOD_AbstractMagicCard)card).isThisCardCharged())
+                {
+                    color.set(border, Color.valueOf("ffdc0033"));
+                }
+                else
+                {
+                    color.set(border, Color.valueOf("30c8dcff"));
+                }
             }
             else
             {

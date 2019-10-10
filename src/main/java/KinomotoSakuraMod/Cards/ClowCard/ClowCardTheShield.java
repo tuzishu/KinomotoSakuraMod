@@ -13,9 +13,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.MetallicizePower;
-import com.megacrit.cardcrawl.powers.PlatedArmorPower;
-
-import javax.xml.ws.soap.Addressing;
 
 public class ClowCardTheShield extends KSMOD_AbstractMagicCard
 {
@@ -73,7 +70,7 @@ public class ClowCardTheShield extends KSMOD_AbstractMagicCard
     @Override
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
+        applyNormalEffect(player, monster);
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new MetallicizePower(player, KSMOD_SealedBook.METALLICIZE_NUMBER), KSMOD_SealedBook.METALLICIZE_NUMBER));
     }
 

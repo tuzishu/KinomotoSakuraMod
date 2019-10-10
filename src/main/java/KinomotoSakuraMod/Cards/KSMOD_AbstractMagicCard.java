@@ -2,6 +2,7 @@ package KinomotoSakuraMod.Cards;
 
 import KinomotoSakuraMod.Actions.KSMOD_ReleaseAction;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
+import KinomotoSakuraMod.Effects.KSMOD_MagickChargedEffect;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Powers.*;
@@ -74,6 +75,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
     public static boolean isHandSelectScreenOpened = false;
     private String BOTTOM_TITLE = "";
     private static int useChargeTimes = 0;
+    private static KSMOD_MagickChargedEffect magickChargeEffect = null;
 
     //////////
     // Custom Value
@@ -98,6 +100,11 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
     {
         this(id, name, img, cost, rawDescription, type, color, rarity, target);
         this.hasExtraEffect = hasExtraEffect;
+    }
+
+    public boolean hasExtraEffect()
+    {
+        return hasExtraEffect;
     }
 
     public abstract void upgrade();
@@ -256,6 +263,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
         {
             if (isThisCardCharged() && !hasLockPower())
             {
+                applyChargeEffect();
                 this.onCharged();
                 this.initializeDescription();
             }
@@ -264,6 +272,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
         {
             if (isThisCardCharged())
             {
+                removeChargeEffect();
                 this.onDischarged();
                 this.initializeDescription();
             }
@@ -276,6 +285,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
         {
             if (!isThisCardCharged() || hasLockPower())
             {
+                removeChargeEffect();
                 this.onDischarged();
                 this.initializeDescription();
             }
@@ -288,6 +298,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
         {
             if (!isThisCardCharged() || hasLockPower())
             {
+                removeChargeEffect();
                 this.onDischarged();
                 this.initializeDescription();
             }
@@ -296,13 +307,14 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
         {
             if (isThisCardCharged())
             {
+                applyChargeEffect();
                 this.onCharged();
                 this.initializeDescription();
             }
         }
     }
 
-    private boolean isThisCardCharged()
+    public boolean isThisCardCharged()
     {
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasPower(KSMOD_MagickChargePower.POWER_ID))
         {
@@ -326,9 +338,27 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
         return AbstractDungeon.player != null && AbstractDungeon.player.hasPower(KSMOD_LockPower_SakuraCard.POWER_ID);
     }
 
+    private void applyChargeEffect()
+    {
+        if (magickChargeEffect == null)
+        {
+            magickChargeEffect = new KSMOD_MagickChargedEffect();
+            AbstractDungeon.effectList.add(magickChargeEffect);
+        }
+    }
+
     public void onCharged()
     {
 
+    }
+
+    private void removeChargeEffect()
+    {
+        if (magickChargeEffect != null)
+        {
+            magickChargeEffect.duration = magickChargeEffect.fadeDuration;
+            magickChargeEffect = null;
+        }
     }
 
     public void onDischarged()
@@ -1161,7 +1191,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
             if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT)
             {
                 Color BLUE_BORDER_GLOW_COLOR = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "BLUE_BORDER_GLOW_COLOR").get(this);
-                sb.setColor(BLUE_BORDER_GLOW_COLOR);
+                sb.setColor(hasExtraEffect && isThisCardCharged() ? Color.GOLD : BLUE_BORDER_GLOW_COLOR);
             }
             else
             {
