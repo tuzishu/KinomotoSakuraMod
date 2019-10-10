@@ -22,7 +22,7 @@ public class KSMOD_SealedWand extends KSMOD_AbstractWand
 
     public String getUpdatedDescription()
     {
-        return DESCRIPTIONS[0] + this.GetGainNumber() + DESCRIPTIONS[1] + this.GetTriggerNumber() + DESCRIPTIONS[2] + this.GetTriggerNumber() + DESCRIPTIONS[3] + this.GetUpdateTriggerNumber() + DESCRIPTIONS[4] + (this.GetTriggerNumber() - this.counter) + DESCRIPTIONS[5];
+        return DESCRIPTIONS[0] + this.GetGainNumber() + DESCRIPTIONS[1] + this.GetTriggerNumber() + DESCRIPTIONS[2] + this.GetTriggerNumber() + DESCRIPTIONS[3] + this.GetUpdateTriggerNumber() + DESCRIPTIONS[4] + this.GetRestCounterNumber() + DESCRIPTIONS[5];
     }
 
     public AbstractRelic makeCopy()

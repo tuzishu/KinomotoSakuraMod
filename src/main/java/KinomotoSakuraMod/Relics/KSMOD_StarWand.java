@@ -24,7 +24,7 @@ public class KSMOD_StarWand extends KSMOD_AbstractWand
 
     public String getUpdatedDescription()
     {
-        return DESCRIPTIONS[0] + this.GetGainNumber() + DESCRIPTIONS[1] + GetTriggerNumber() + DESCRIPTIONS[2] + GetTriggerNumber() + DESCRIPTIONS[3] + this.GetUpdateTriggerNumber() + DESCRIPTIONS[4] + (this.GetTriggerNumber() - this.counter) + DESCRIPTIONS[5];
+        return DESCRIPTIONS[0] + this.GetGainNumber() + DESCRIPTIONS[1] + GetTriggerNumber() + DESCRIPTIONS[2] + GetTriggerNumber() + DESCRIPTIONS[3] + this.GetUpdateTriggerNumber() + DESCRIPTIONS[4] + this.GetRestCounterNumber() + DESCRIPTIONS[5];
     }
 
     public boolean canSpawn()

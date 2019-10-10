@@ -63,7 +63,6 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
         if (!monster.hasPower(MinionPower.POWER_ID) && !sealedMonsters.contains(monster))
         {
             GainCharge(gainNumber);
-            updateTips();
         }
         if (monster.id == Darkling.ID)
         {
@@ -89,9 +88,20 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
         return updateTriggerNumber;
     }
 
+    public int GetRestCounterNumber()
+    {
+        return this.GetTriggerNumber() > this.counter ? this.GetTriggerNumber() - this.counter : 0;
+    }
+
     public void GainCharge(int chargeNumber)
     {
-        this.counter += chargeNumber;
+        this.setCounter(this.counter + chargeNumber);
+    }
+
+    public void setCounter(int counter)
+    {
+        super.setCounter(counter);
+        this.updateTips();
     }
 
     private void ActiveRelic()
