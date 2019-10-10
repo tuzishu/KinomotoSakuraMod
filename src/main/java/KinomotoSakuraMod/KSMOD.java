@@ -7,6 +7,7 @@ import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCharacter;
 import KinomotoSakuraMod.Patches.KSMOD_CustomKeywords;
+import KinomotoSakuraMod.Potions.KSMOD_MagickBottle;
 import KinomotoSakuraMod.Relics.*;
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
@@ -20,7 +21,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import java.nio.charset.StandardCharsets;
@@ -56,6 +56,9 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
     @Override
     public void receivePostInitialize()
     {
+        receiveEditPotions();
+        receiveEditEvents();
+        receiveEditMonsters();
         // Texture badgeTexture = new Texture("mod图标路径");
         // ModPanel settingsPanel = new ModPanel();
         // settingsPanel.addLabel("config里的mod描叙", 400.0f, 700.0f, (me) -> {});
@@ -280,6 +283,29 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         return cardList;
     }
 
+    public void receiveEditPotions()
+    {
+        KSMOD_Utility.Logger.info("开始编辑药水");
+
+        BaseMod.addPotion(KSMOD_MagickBottle.class, Color.NAVY.cpy(), Color.BLUE.cpy(), Color.SKY.cpy(), KSMOD_MagickBottle.POTION_ID, KSMOD_CustomCharacter.KINOMOTOSAKURA);
+
+        KSMOD_Utility.Logger.info("结束编辑药水");
+    }
+
+    public void receiveEditEvents()
+    {
+        KSMOD_Utility.Logger.info("开始编辑事件");
+
+        KSMOD_Utility.Logger.info("结束编辑事件");
+    }
+
+    public void receiveEditMonsters()
+    {
+        KSMOD_Utility.Logger.info("开始编辑怪物");
+
+        KSMOD_Utility.Logger.info("结束编辑怪物");
+    }
+
     public static String GetLocalizationPath()
     {
         if (localizationPath == null)
@@ -324,6 +350,10 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         String ui = GetLocalizationPath() + "sakura_ui.json";
         String uiStrings = Gdx.files.internal(ui).readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(UIStrings.class, uiStrings);
+
+        String potion = GetLocalizationPath() + "sakura_potion.json";
+        String potionStrings = Gdx.files.internal(potion).readString(String.valueOf(StandardCharsets.UTF_8));
+        BaseMod.loadCustomStrings(PotionStrings.class, potionStrings);
 
         KSMOD_Utility.Logger.info("结束编辑本地化文本");
     }
