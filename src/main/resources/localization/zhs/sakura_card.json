@@ -655,7 +655,7 @@
   },
   "SakuraCardTheShadow": {
     "NAME": "影",
-    "DESCRIPTION": "「 小樱牌 」「 地 」 消耗 。获得 !M! 层 多层护甲 。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」获得 !B! 点 格挡 ， !M! 层 无实体 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -753,7 +753,7 @@
   },
   "SakuraCardTheWave": {
     "NAME": "波",
-    "DESCRIPTION": "「 小樱牌 」「 水 」本回合内，使用卡牌时获得相应的属性标记，若与下一张打出的牌的属性不同，则触发该属性的效果。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」 消耗 。同时进入四种元素状态。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

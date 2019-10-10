@@ -214,18 +214,6 @@
       " 点 #b格挡 。"
     ]
   },
-  "KSMOD_WavePower_SakuraCard": {
-    "NAME": "波动·樱",
-    "DESCRIPTIONS": [
-      "使用卡牌时获得相应的属性标记，若与下一张打出的牌的属性不同，则触发该属性的效果。上一张牌的属性：",
-      "。",
-      " #y地 ",
-      " #y水 ",
-      " #y火 ",
-      " #y风 ",
-      "空"
-    ]
-  },
   "KSMOD_BigPower_SakuraCard": {
     "NAME": "放大",
     "DESCRIPTIONS": [
