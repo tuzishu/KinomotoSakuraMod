@@ -13,7 +13,7 @@ public class KSMOD_CerberusMarkPower extends KSMOD_CustomPower
     public static final String POWER_ID = "KSMOD_CerberusMarkPower";
     public static final String POWER_NAME;
     public static final String[] POWER_DESCRIPTIONS;
-    private static final String POWER_IMG_PATH = "img/powers/default_power.png";
+    private static final String POWER_IMG_PATH = "lockon";
     private static final PowerType POWER_TYPE = PowerType.DEBUFF;
     private float promotion;
 
@@ -26,7 +26,7 @@ public class KSMOD_CerberusMarkPower extends KSMOD_CustomPower
 
     public KSMOD_CerberusMarkPower(AbstractMonster target, float promotion)
     {
-        super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, 1);
+        super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, 1, false);
         this.isTurnBased = true;
         this.promotion = promotion;
         this.updateDescription();

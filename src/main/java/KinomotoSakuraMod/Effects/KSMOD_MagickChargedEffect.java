@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -58,7 +59,7 @@ public class KSMOD_MagickChargedEffect extends AbstractGameEffect
             this.color.a = maxAlpha;
         }
 
-        this.scale = 3.5F * Settings.scale;
+        this.scale = (3.5F + 0.1F * MathUtils.sin(this.duration * MathUtils.PI)) * Settings.scale;
         if (this.duration < 0.0F)
         {
             this.isDone = true;
