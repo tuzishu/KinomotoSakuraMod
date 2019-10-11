@@ -1,7 +1,7 @@
 ﻿*.xml
 *.iml
 .idea/
-.photoshop/
+photoshop/
 target/
 version/
 Excel/~$PlanningCase.xlsx
