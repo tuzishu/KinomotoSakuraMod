@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 
 public class KSMOD_MagickChargedEffect extends AbstractGameEffect
 {
+    private static final float maxAlpha = 0.8F;
     private float x;
     private float y;
     private TextureAtlas.AtlasRegion img;
@@ -46,15 +47,15 @@ public class KSMOD_MagickChargedEffect extends AbstractGameEffect
         this.duration -= Gdx.graphics.getDeltaTime();
         if (this.duration > this.startingDuration - this.fadeDuration)
         {
-            this.color.a = Interpolation.fade.apply(0.01F, 1.0F, (this.startingDuration - this.duration) / this.fadeDuration) * Settings.scale;
+            this.color.a = Interpolation.fade.apply(0.01F, maxAlpha, (this.startingDuration - this.duration) / this.fadeDuration) * Settings.scale;
         }
         else if (this.duration < this.fadeDuration)
         {
-            this.color.a = Interpolation.fade.apply(0.01F, 1.0F, this.duration / this.fadeDuration) * Settings.scale;
+            this.color.a = Interpolation.fade.apply(0.01F, maxAlpha, this.duration / this.fadeDuration) * Settings.scale;
         }
         else
         {
-            this.color.a = 1F;
+            this.color.a = maxAlpha;
         }
 
         this.scale = 3.5F * Settings.scale;
