@@ -44,7 +44,6 @@ public class KSMOD_MagickChargedEffect extends AbstractGameEffect
         {
             CardCrawlGame.sound.playA("HEAL_3", 0.5F);
         }
-
         this.duration -= Gdx.graphics.getDeltaTime();
         if (this.duration > this.startingDuration - this.fadeDuration)
         {
@@ -58,13 +57,13 @@ public class KSMOD_MagickChargedEffect extends AbstractGameEffect
         {
             this.color.a = maxAlpha;
         }
-
         this.scale = (3.5F + 0.1F * MathUtils.sin(this.duration * MathUtils.PI)) * Settings.scale;
+        this.x = AbstractDungeon.player.hb.cX - (float) this.img.packedWidth * 0.5F;
+        this.y = AbstractDungeon.player.hb.cY - (float) this.img.packedHeight * 0.5F + (float) this.img.packedHeight * 0.09F;
         if (this.duration < 0.0F)
         {
             this.isDone = true;
         }
-
     }
 
     public void render(SpriteBatch sb)

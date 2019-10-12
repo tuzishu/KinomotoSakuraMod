@@ -56,7 +56,7 @@ public class ClowCardTheWatery extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_WateryPower(player, 1), 1));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_WateryPower(player, 1)));
         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new SpellCardShuiLong()));
     }
 }

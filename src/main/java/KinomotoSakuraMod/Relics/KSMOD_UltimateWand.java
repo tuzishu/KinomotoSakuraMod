@@ -20,9 +20,6 @@ public class KSMOD_UltimateWand extends KSMOD_AbstractWand
     private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/ultimate_wand.png";
     private static final RelicTier RELIC_TIER = RelicTier.SPECIAL;
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
-    private static final int START_COUNT = 0;
-    private static final int UPDATE_TRIGGER_NUMBER = 30;
-    private static final int BASE_TRIGGER_NUMBER = 30;
     private static final int GAIN_NUMBER = 5;
     private static final int START_CHARGE_NUMBER = 6;
     private static final int MAGICK_CHARGE_TRIGGER_NUMBER = 2;
@@ -34,7 +31,7 @@ public class KSMOD_UltimateWand extends KSMOD_AbstractWand
 
     public KSMOD_UltimateWand()
     {
-        super(RELIC_ID, ImageMaster.loadImage(RELIC_IMG_PATH), ImageMaster.loadImage(RELIC_IMG_OTL_PATH), RELIC_TIER, RELIC_SOUND, START_COUNT, UPDATE_TRIGGER_NUMBER, BASE_TRIGGER_NUMBER, GAIN_NUMBER);
+        super(RELIC_ID, ImageMaster.loadImage(RELIC_IMG_PATH), ImageMaster.loadImage(RELIC_IMG_OTL_PATH), RELIC_TIER, RELIC_SOUND, GAIN_NUMBER);
         this.elementCounter = 0;
     }
 

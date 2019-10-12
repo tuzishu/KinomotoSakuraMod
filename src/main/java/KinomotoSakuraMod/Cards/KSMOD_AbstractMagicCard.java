@@ -193,25 +193,26 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
     {
         if (this.hasTag(KSMOD_CustomTag.KSMOD_EARTHY_CARD) && !player.hasPower(KSMOD_EarthyPower.POWER_ID))
         {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_EarthyPower(player, 1), 1));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_EarthyPower(player, 1)));
         }
         if (this.hasTag(KSMOD_CustomTag.KSMOD_FIREY_CARD) && !player.hasPower(KSMOD_FireyPower.POWER_ID))
         {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_FireyPower(player, 1), 1));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_FireyPower(player, 1)));
         }
         if (this.hasTag(KSMOD_CustomTag.KSMOD_WATERY_CARD) && !player.hasPower(KSMOD_WateryPower.POWER_ID))
         {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_WateryPower(player, 1), 1));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_WateryPower(player, 1)));
         }
         if (this.hasTag(KSMOD_CustomTag.KSMOD_WINDY_CARD) && !player.hasPower(KSMOD_WindyPower.POWER_ID))
         {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_WindyPower(player, 1), 1));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_WindyPower(player, 1)));
         }
     }
 
     public void receiveOnBattleStart(AbstractRoom room)
     {
         useChargeTimes = 0;
+        magickChargeEffect = null;
     }
 
     private void setUseChargeTimes(int useTimes)

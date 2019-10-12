@@ -16,7 +16,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.rewards.RewardItem;
 
 import java.util.ArrayList;
 
@@ -79,6 +78,10 @@ public class SakuraCardTheCreate extends KSMOD_AbstractMagicCard
         {
             AbstractDungeon.getCurrRoom().addRelicToRewards(relic);
         }
+        else
+        {
+            AbstractDungeon.getCurrRoom().addRelicToRewards(GetRandomTier());
+        }
         TryRemoveThisFromMasterDeck();
     }
 
@@ -102,70 +105,39 @@ public class SakuraCardTheCreate extends KSMOD_AbstractMagicCard
     private AbstractRelic GetRandomSakuraRelic()
     {
         AbstractRelic relic;
-        ArrayList<AbstractRelic> commonRelicList = new ArrayList<>();
-        ArrayList<AbstractRelic> uncommonRelicList = new ArrayList<>();
-        ArrayList<AbstractRelic> rareRelicList = new ArrayList<>();
+        ArrayList<AbstractRelic> relicList = new ArrayList<>();
         for (AbstractRelic r : KSMOD.GetRelicList())
         {
-            if (AbstractDungeon.player.hasRelic(r.relicId))
+            if (r.tier == AbstractRelic.RelicTier.COMMON && isRelicPoolContains(r.relicId, AbstractDungeon.commonRelicPool))
             {
-                continue;
+                relicList.add(r);
             }
-            for (RewardItem reward : AbstractDungeon.getCurrRoom().rewards)
+            if (r.tier == AbstractRelic.RelicTier.UNCOMMON && isRelicPoolContains(r.relicId, AbstractDungeon.uncommonRelicPool))
             {
-                if (r.relicId.equals(reward.relic.relicId))
-                {
-                    continue;
-                }
+                relicList.add(r);
             }
-            if (r.tier == AbstractRelic.RelicTier.COMMON)
+            if (r.tier == AbstractRelic.RelicTier.RARE && isRelicPoolContains(r.relicId, AbstractDungeon.rareRelicPool))
             {
-                commonRelicList.add(r);
-            }
-            if (r.tier == AbstractRelic.RelicTier.UNCOMMON)
-            {
-                uncommonRelicList.add(r);
-            }
-            if (r.tier == AbstractRelic.RelicTier.RARE)
-            {
-                rareRelicList.add(r);
+                relicList.add(r);
             }
         }
-        float randNum = new Random().random(0F, 1F);
-        if (randNum <= 0.125F)
+        relic = KSMOD_Utility.GetRandomListElement(relicList);
+        if (relic != null)
         {
-            relic = GetRandomListElement(rareRelicList);
-            if (relic == null)
+            if (relic.tier == AbstractRelic.RelicTier.COMMON)
             {
-                KSMOD_Utility.Logger.error("Sakura's rare relics are insufficient");
+                AbstractDungeon.commonRelicPool.remove(relic.relicId);
             }
-        }
-        else if (randNum <= 0.4F)
-        {
-            relic = GetRandomListElement(uncommonRelicList);
-            if (relic == null)
+            else if (relic.tier == AbstractRelic.RelicTier.UNCOMMON)
             {
-                KSMOD_Utility.Logger.error("Sakura's uncommon relics are insufficient");
+                AbstractDungeon.uncommonRelicPool.remove(relic.relicId);
             }
-        }
-        else
-        {
-            relic = GetRandomListElement(commonRelicList);
-            if (relic == null)
+            else if (relic.tier == AbstractRelic.RelicTier.RARE)
             {
-                KSMOD_Utility.Logger.error("Sakura's common relics are insufficient");
+                AbstractDungeon.rareRelicPool.remove(relic.relicId);
             }
         }
         return relic;
-    }
-
-    private <T> T GetRandomListElement(ArrayList<T> arrayList)
-    {
-        if (arrayList.size() > 0)
-        {
-            return arrayList.get(new Random().random(0, arrayList.size() - 1));
-        }
-        return null;
     }
 
     private void TryRemoveThisFromMasterDeck()
@@ -178,5 +150,17 @@ public class SakuraCardTheCreate extends KSMOD_AbstractMagicCard
                 break;
             }
         }
+    }
+
+    private boolean isRelicPoolContains(String relicID, ArrayList<String> list)
+    {
+        for (String id : list)
+        {
+            if (relicID == id)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

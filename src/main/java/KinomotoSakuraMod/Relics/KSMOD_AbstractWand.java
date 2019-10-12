@@ -20,17 +20,20 @@ import java.util.ArrayList;
 
 public abstract class KSMOD_AbstractWand extends CustomRelic
 {
+    private static final int START_COUNT = 0;
+    private static final int BASE_TRIGGER_NUMBER = 40;
+    private static final int UPDATE_TRIGGER_NUMBER = 20;
     private int baseTriggerNumber;
     private int updateTriggerNumber;
     private int gainNumber;
     public ArrayList<AbstractMonster> sealedMonsters = new ArrayList<>();
 
-    public KSMOD_AbstractWand(String id, Texture texture, Texture outline, RelicTier tier, LandingSound sfx, int startCount, int baseTriggerNumber, int updateTriggerNumber, int gainNumber)
+    public KSMOD_AbstractWand(String id, Texture texture, Texture outline, RelicTier tier, LandingSound sfx, int gainNumber)
     {
         super(id, texture, outline, tier, sfx);
-        this.counter = startCount;
-        this.baseTriggerNumber = baseTriggerNumber;
-        this.updateTriggerNumber = updateTriggerNumber;
+        this.counter = START_COUNT;
+        this.baseTriggerNumber = BASE_TRIGGER_NUMBER;
+        this.updateTriggerNumber = UPDATE_TRIGGER_NUMBER;
         this.gainNumber = gainNumber;
         updateTips();
     }

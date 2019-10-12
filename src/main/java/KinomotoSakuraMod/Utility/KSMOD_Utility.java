@@ -1,6 +1,7 @@
 package KinomotoSakuraMod.Utility;
 
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.random.Random;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -193,5 +194,20 @@ public class KSMOD_Utility
             }
         }
         return false;
+    }
+
+    /**
+     * 返回List中的一个随机元素
+     * @param arrayList 目标数组
+     * @param <T> 元素类型
+     * @return 获取到的随机元素
+     */
+    public static <T> T GetRandomListElement(ArrayList<T> arrayList)
+    {
+        if (arrayList.size() > 0)
+        {
+            return arrayList.get(new Random().random(0, arrayList.size() - 1));
+        }
+        return null;
     }
 }

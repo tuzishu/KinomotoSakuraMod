@@ -3,6 +3,7 @@ package KinomotoSakuraMod.Cards.SakuraCard;
 import KinomotoSakuraMod.Actions.KSMOD_ArrowAttackAction;
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheArrow;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
+import KinomotoSakuraMod.KSMOD;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
