@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.random.Random;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 
 import java.util.ArrayList;
 
@@ -79,7 +80,7 @@ public class SakuraCardTheRain extends KSMOD_AbstractMagicCard
         {
             for (AbstractCard card : cards)
             {
-                card.cost = 0;
+                ModifyCardCost(card);
             }
         }
         else
@@ -87,12 +88,17 @@ public class SakuraCardTheRain extends KSMOD_AbstractMagicCard
             for (int i = 0; i < this.magicNumber; i++)
             {
                 int index = new Random().random(0, cards.size() - 1);
-                cards.get(index).cost = 0;
-                cards.get(index).costForTurn = 0;
-                cards.get(index).isCostModified = true;
-                cards.get(index).superFlash(Color.GOLD.cpy());
+                ModifyCardCost(cards.get(index));
                 cards.remove(index);
             }
         }
+    }
+
+    private void ModifyCardCost(AbstractCard card)
+    {
+        card.cost = 0;
+        card.costForTurn = 0;
+        card.isCostModified = true;
+        card.superFlash(Color.GOLD.cpy());
     }
 }

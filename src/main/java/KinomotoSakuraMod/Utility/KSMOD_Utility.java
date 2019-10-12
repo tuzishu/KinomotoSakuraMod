@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.random.Random;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import sun.rmi.runtime.Log;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -168,12 +169,15 @@ public class KSMOD_Utility
         StackTraceElement[] elements = Thread.currentThread().getStackTrace();
         for (int i = 0; i < elements.length; i++)
         {
-            if (elements[i].getClassName().contains("MakeTempCard"))
+            Logger.info(i+": "+elements[i]);
+            if (elements[i].toString().contains("makeSameInstanceOf") || elements[i].toString().contains("ExhaustPileViewScreen"))
             {
-                return true;
+                // Logger.info(i+": "+true);
+                return false;
             }
         }
-        return false;
+        // Logger.info("IsReallyCopyingCard: "+false);
+        return true;
     }
 
     /**

@@ -68,6 +68,14 @@ public class ClowCardTheSnow extends KSMOD_AbstractMagicCard
     }
 
     @Override
+    public KSMOD_AbstractMagicCard makeStatEquivalentCopy()
+    {
+        KSMOD_AbstractMagicCard c = (KSMOD_AbstractMagicCard)super.makeStatEquivalentCopy();
+        c.setBaseMagicNumber(this.magicNumber);
+        return c;
+    }
+
+    @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new VFXAction(new BlizzardEffect(this.magicNumber, AbstractDungeon.getMonsters().shouldFlipVfx()), DURATION));

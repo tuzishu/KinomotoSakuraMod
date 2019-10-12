@@ -141,18 +141,6 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
         return super.canUpgrade();
     }
 
-    public AbstractCard makeStatEquivalentCopy()
-    {
-        if (this.color == KSMOD_CustomCardColor.SAKURACARD_COLOR)
-        {
-            return this.makeCopy();
-        }
-        else
-        {
-            return super.makeStatEquivalentCopy();
-        }
-    }
-
     public final void use(AbstractPlayer player, AbstractMonster monster)
     {
         if (this.hasExtraEffect && isThisCardCharged() && !hasLockPower())
