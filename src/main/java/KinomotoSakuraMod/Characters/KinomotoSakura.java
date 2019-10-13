@@ -41,7 +41,7 @@ public class KinomotoSakura extends CustomPlayer
     public static final String ID = "KinomotoSakura";
     private static CharacterStrings characterStrings = null;
     private static String[] MESSAGES = null;
-    private static final int START_HP = 65;
+    private static final int START_HP = 70;
     private static final int START_GOLD = 99;
     private static final int MAX_ORBS = 0;
     private static final int CARD_DRAW = 5;

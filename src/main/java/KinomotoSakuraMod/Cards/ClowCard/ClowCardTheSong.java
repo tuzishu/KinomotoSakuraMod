@@ -23,10 +23,8 @@ public class ClowCardTheSong extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
-    private static final int BASE_DAMAGE = 4;
+    private static final int BASE_DAMAGE = 3;
     private static final int UPGRADE_DAMAGE = 2;
-    private static final int BASE_BLOCK = 1;
-    private static final int UPGRADE_BLOCK = 1;
 
     static
     {
@@ -41,7 +39,7 @@ public class ClowCardTheSong extends KSMOD_AbstractMagicCard
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
         this.tags.add(KSMOD_CustomTag.KSMOD_WINDY_CARD);
         this.baseDamage = BASE_DAMAGE;
-        this.baseBlock = BASE_BLOCK;
+        this.baseBlock = 0;
     }
 
     @Override
@@ -51,7 +49,6 @@ public class ClowCardTheSong extends KSMOD_AbstractMagicCard
         {
             this.upgradeName();
             this.upgradeDamage(UPGRADE_DAMAGE);
-            this.upgradeBlock(UPGRADE_BLOCK);
         }
     }
 

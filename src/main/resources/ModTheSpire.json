@@ -1,13 +1,13 @@
 {
   "modid": "KinomotoSakuraMod",
-  "name": "木之本樱",
+  "name": "KinomotoSakuraMod(木之本樱)",
   "description": "Kinomoto Sakura, the protagonist of animation Card Captor Sakura.\nFor the time being, this mod only supports simplified Chinese.\n\n动画《魔卡少女樱》的主角木之本樱。\n模组暂时只支持简体中文。\n欢迎各位玩家提出宝贵的意见和建议。\n联系方式：QQ 477630080(兔子舒)。",
   "author_list": [
     "tuzishu(兔子舒)"
   ],
-  "version": "0.10.1012",
+  "version": "0.10.1013",
   "mts_version": "3.10.1",
-  "sts_version": "01-23-2019",
+  "sts_version": "07-17-2019",
   "credits": "None",
   "update_json": "None"
 }

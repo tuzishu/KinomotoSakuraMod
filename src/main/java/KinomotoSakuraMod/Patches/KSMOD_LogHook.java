@@ -30,7 +30,7 @@ public class KSMOD_LogHook
     //     {
     //         Matcher finalMatcher = new Matcher.FieldAccessMatcher(FlashPowerEffect.class, "region128");
     //         int[] loc = LineFinder.findAllInOrder(ctMethodToPatch, finalMatcher);
-    //         return new int[] {loc[1]};
+    //         return new int[] {loc[0]};
     //     }
     // }
 }

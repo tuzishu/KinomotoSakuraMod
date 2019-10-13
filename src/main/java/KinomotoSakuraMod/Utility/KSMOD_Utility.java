@@ -169,15 +169,32 @@ public class KSMOD_Utility
         StackTraceElement[] elements = Thread.currentThread().getStackTrace();
         for (int i = 0; i < elements.length; i++)
         {
-            Logger.info(i+": "+elements[i]);
+            // Logger.info(i+": "+elements[i]);
             if (elements[i].toString().contains("makeSameInstanceOf") || elements[i].toString().contains("ExhaustPileViewScreen"))
             {
-                // Logger.info(i+": "+true);
                 return false;
             }
         }
-        // Logger.info("IsReallyCopyingCard: "+false);
         return true;
+    }
+
+    /**
+     * 是否由奖励和事件调用makecopy函数
+     *
+     * @return 是否为奖励和事件的卡牌获得
+     */
+    public static boolean IsCopyingCardFromRewardAndEvent()
+    {
+        StackTraceElement[] elements = Thread.currentThread().getStackTrace();
+        for (int i = 0; i < elements.length; i++)
+        {
+            // Logger.info(i+": "+elements[i]);
+            if (elements[i].toString().contains("Reward") || elements[i].toString().contains("event"))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

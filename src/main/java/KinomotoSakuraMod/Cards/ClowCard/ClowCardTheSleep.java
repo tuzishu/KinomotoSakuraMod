@@ -82,13 +82,13 @@ public class ClowCardTheSleep extends KSMOD_AbstractMagicCard
     {
         for (AbstractMonster mon: AbstractDungeon.getMonsters().monsters)
         {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new KSMOD_SleepPower(monster, this.magicNumber), this.magicNumber));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new KSMOD_SleepPower(mon, this.magicNumber), this.magicNumber));
         }
     }
 
     @Override
     public String getExtraDescription()
     {
-        return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.REAL_DAMAGE + EXTENDED_DESCRIPTION[1];
+        return EXTENDED_DESCRIPTION[0];
     }
 }

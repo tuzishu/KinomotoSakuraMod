@@ -7,7 +7,7 @@ import KinomotoSakuraMod.Powers.KSMOD_CreatePower;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.status.VoidCard;
+import com.megacrit.cardcrawl.cards.status.Dazed;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -77,9 +77,9 @@ public class ClowCardTheCreate extends KSMOD_AbstractMagicCard
     @Override
     public AbstractCard makeCopy()
     {
-        if (KSMOD_Utility.IsReallyCopyingCard())
+        if (KSMOD_Utility.IsReallyCopyingCard() && !KSMOD_Utility.IsCopyingCardFromRewardAndEvent())
         {
-            return new VoidCard();
+            return new Dazed();
         }
         return new ClowCardTheCreate(this.timesUpgraded);
     }

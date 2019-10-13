@@ -46,6 +46,11 @@ public class KSMOD_SleepPower extends KSMOD_CustomPower
         DoStunAction();
     }
 
+    public void atStartOfTurn()
+    {
+        DoStunAction();
+    }
+
     public void atEndOfRound()
     {
         if (this.amount > 1)
@@ -86,7 +91,7 @@ public class KSMOD_SleepPower extends KSMOD_CustomPower
             public void update()
             {
                 KSMOD_SleepPower self = KSMOD_SleepPower.this;
-                if (self.owner instanceof AbstractMonster)
+                if (self.owner instanceof AbstractMonster && ((AbstractMonster) self.owner).type != AbstractMonster.EnemyType.BOSS)
                 {
                     ((AbstractMonster) self.owner).setMove((byte) -1, AbstractMonster.Intent.SLEEP);
                     ((AbstractMonster) self.owner).createIntent();

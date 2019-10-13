@@ -289,11 +289,10 @@
   },
   "ClowCardTheSleep": {
     "NAME": "睡",
-    "DESCRIPTION": "「 风 」 消耗 。使非boss目标沉睡 !M! 回合，受到伤害时会醒来。自然醒来时将恢复所有生命值，并获得2层 虚弱 。",
+    "DESCRIPTION": "「 风 」 消耗 。使非boss目标 沉睡  !M! 回合。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "额外睡眠",
-      "回合。"
+      "「 风 」 消耗 。使全体非boss敌人 沉睡  !M! 回合。"
     ]
   },
   "ClowCardTheSnow": {
@@ -308,7 +307,7 @@
   },
   "ClowCardTheSong": {
     "NAME": "歌",
-    "DESCRIPTION": "「 风 」消耗最多X+1张手牌，每消耗1张手牌，对全体敌人造成 !D! 点伤害，获得 !B! 点 格挡 。",
+    "DESCRIPTION": "「 风 」消耗最多X+1张手牌，每消耗1张手牌，对全体敌人造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外发动",
@@ -679,11 +678,9 @@
   },
   "SakuraCardTheSleep": {
     "NAME": "睡",
-    "DESCRIPTION": "「 小樱牌 」「 风 」 消耗 。使非boss目标沉睡 !M! 回合，受到伤害时会醒来。自然醒来时将恢复所有生命值，并获得2层 虚弱 。",
+    "DESCRIPTION": "「 小樱牌 」「 风 」 消耗 。使非boss目标 沉睡  !M! 回合。",
     "UPGRADE_DESCRIPTION": "Null",
-    "EXTENDED_DESCRIPTION": [
-      "「 小樱牌 」「 风 」 消耗 。使全体非boss敌人沉睡 !M! 回合，受到伤害时会醒来。自然醒来时将恢复所有生命值，并获得2层 虚弱 。"
-    ]
+    "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheSnow": {
     "NAME": "雪",
