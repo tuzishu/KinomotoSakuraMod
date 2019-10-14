@@ -12,7 +12,7 @@ public class KSMOD_BigPower_SakuraCard extends KSMOD_CustomPower
     private static final String[] POWER_DESCRIPTIONS;
     private static final String POWER_IMG_PATH = "img/powers/default_power.png";
     private static final PowerType POWER_TYPE = PowerType.BUFF;
-    private static final float INCREASE_RATE = 0.25F;
+    private static final float INCREASE_RATE = 0.33F;
 
     static
     {

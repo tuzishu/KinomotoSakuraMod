@@ -48,8 +48,8 @@
   },
   "ClowCardTheDark": {
     "NAME": "暗",
-    "DESCRIPTION": "「 风 」「 水 」回合结束时，可以消耗最多 !M! 张手牌。",
-    "UPGRADE_DESCRIPTION": "「 风 」「 水 」回合结束时，可以消耗最多 !M! 张手牌。下回合获得相应数量的能量。",
+    "DESCRIPTION": "「 风 」「 水 」回合结束时，可以消耗最多 !M! 张手牌。消耗数量不为0时，下回合获得1点能量。",
+    "UPGRADE_DESCRIPTION": "",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheDash": {
@@ -72,7 +72,7 @@
   },
   "ClowCardTheEarthy": {
     "NAME": "地",
-    "DESCRIPTION": "「 地 」添加1张 雷帝 到手中。进入 地元素状态 。",
+    "DESCRIPTION": "「 地 」添加 !M! 张 雷帝 到手中。进入 地元素状态 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -95,7 +95,7 @@
   },
   "ClowCardTheFirey": {
     "NAME": "火",
-    "DESCRIPTION": "「 火 」添加1张 火神 到手中。进入 火元素状态 。",
+    "DESCRIPTION": "「 火 」添加 !M! 张 火神 到手中。进入 火元素状态 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -381,7 +381,7 @@
   },
   "ClowCardTheWatery": {
     "NAME": "水",
-    "DESCRIPTION": "「 水 」添加1张 水龙 到手中。进入 水元素状态 。",
+    "DESCRIPTION": "「 水 」添加 !M! 张 水龙 到手中。进入 水元素状态 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -393,7 +393,7 @@
   },
   "ClowCardTheWindy": {
     "NAME": "风",
-    "DESCRIPTION": "「 风 」添加1张 风华 到手中。进入 风元素状态 。",
+    "DESCRIPTION": "「 风 」添加 !M! 张 风华 到手中。进入 风元素状态 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -462,7 +462,7 @@
   },
   "SakuraCardTheBig": {
     "NAME": "大",
-    "DESCRIPTION": "「 小樱牌 」「 火 」造成的伤害增加25%。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」造成的伤害增加33%。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -588,7 +588,7 @@
   },
   "SakuraCardTheLittle": {
     "NAME": "小",
-    "DESCRIPTION": "「 小樱牌 」「 水 」受到的伤害减少25%。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」受到的伤害减少33%。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

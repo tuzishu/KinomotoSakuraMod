@@ -1,6 +1,5 @@
 package KinomotoSakuraMod.Actions;
 
-import KinomotoSakuraMod.Powers.KSMOD_DarkGainEnergyPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -9,6 +8,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.powers.EnergizedBluePower;
 
 public class KSMOD_DarkAction extends AbstractGameAction
 {
@@ -16,7 +16,6 @@ public class KSMOD_DarkAction extends AbstractGameAction
     private static final String[] TEXT;
     private static final float DURATION = Settings.ACTION_DUR_XFAST;
     private AbstractPlayer player;
-    private int maxEnergyAmount;
 
     static
     {
@@ -24,12 +23,11 @@ public class KSMOD_DarkAction extends AbstractGameAction
         TEXT = uiStrings.TEXT;
     }
 
-    public KSMOD_DarkAction(int amount, int upgradedNum)
+    public KSMOD_DarkAction(int amount)
     {
         this.actionType = AbstractGameAction.ActionType.CARD_MANIPULATION;
         this.player = AbstractDungeon.player;
         this.amount = amount;
-        this.maxEnergyAmount = upgradedNum;
         this.duration = DURATION;
     }
 
@@ -61,10 +59,9 @@ public class KSMOD_DarkAction extends AbstractGameAction
             }
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
             AbstractDungeon.handCardSelectScreen.selectedCards.group.clear();
-            int energy = Math.min(count, this.maxEnergyAmount);
-            if (energy > 0)
+            if (count > 0)
             {
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_DarkGainEnergyPower(player, energy)));
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new EnergizedBluePower(player, 1)));
             }
         }
 

@@ -21,19 +21,17 @@ import java.util.ArrayList;
 public abstract class KSMOD_AbstractWand extends CustomRelic
 {
     private static final int START_COUNT = 0;
-    private static final int BASE_TRIGGER_NUMBER = 40;
-    private static final int UPDATE_TRIGGER_NUMBER = 20;
     private int baseTriggerNumber;
     private int updateTriggerNumber;
     private int gainNumber;
     public ArrayList<AbstractMonster> sealedMonsters = new ArrayList<>();
 
-    public KSMOD_AbstractWand(String id, Texture texture, Texture outline, RelicTier tier, LandingSound sfx, int gainNumber)
+    public KSMOD_AbstractWand(String id, Texture texture, Texture outline, RelicTier tier, LandingSound sfx, int baseTriggerNumber, int updateTriggerNumber, int gainNumber)
     {
         super(id, texture, outline, tier, sfx);
         this.counter = START_COUNT;
-        this.baseTriggerNumber = BASE_TRIGGER_NUMBER;
-        this.updateTriggerNumber = UPDATE_TRIGGER_NUMBER;
+        this.baseTriggerNumber = baseTriggerNumber;
+        this.updateTriggerNumber = updateTriggerNumber;
         this.gainNumber = gainNumber;
         updateTips();
     }
@@ -109,10 +107,10 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
 
     private void ActiveRelic()
     {
-        this.counter -= GetTriggerNumber();
+        this.setCounter(this.counter -= GetTriggerNumber());
         if (this.counter < 0)
         {
-            this.counter = 0;
+            this.setCounter(0);
         }
         AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new SpellCardTurn()));

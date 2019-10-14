@@ -20,12 +20,12 @@ public class ClowCardTheWindy extends KSMOD_AbstractMagicCard
     private static final String DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_windy.png";
     private static final int COST = 1;
-    private static final int UPGRADED_COST = 0;
     private static final CardType CARD_TYPE = CardType.SKILL;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
     private static final int BASE_MAGIC_NUMBER = 1;
+    private static final int UPGRADE_MAGIC_NUMBER = 1;
 
     static
     {
@@ -51,7 +51,7 @@ public class ClowCardTheWindy extends KSMOD_AbstractMagicCard
         if (!this.upgraded)
         {
             this.upgradeName();
-            this.upgradeBaseCost(UPGRADED_COST);
+            this.upgradeMagicNumber(UPGRADE_MAGIC_NUMBER);
         }
     }
 
@@ -59,6 +59,6 @@ public class ClowCardTheWindy extends KSMOD_AbstractMagicCard
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_WindyPower(player, 1)));
-        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new SpellCardFengHua()));
+        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new SpellCardFengHua(), this.magicNumber));
     }
 }

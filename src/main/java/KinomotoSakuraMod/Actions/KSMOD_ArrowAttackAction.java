@@ -42,7 +42,7 @@ public class KSMOD_ArrowAttackAction extends AbstractGameAction
             return;
         }
         this.target = this.monster == null ? AbstractDungeon.getRandomMonster() : this.monster;
-        if (this.target.currentHealth > 0)
+        if (this.target != null && this.target.currentHealth > 0)
         {
             this.target.damageFlash = true;
             this.target.damageFlashFrames = 4;

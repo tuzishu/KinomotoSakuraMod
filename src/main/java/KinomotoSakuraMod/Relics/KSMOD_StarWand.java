@@ -13,10 +13,12 @@ public class KSMOD_StarWand extends KSMOD_AbstractWand
     private static final RelicTier RELIC_TIER = RelicTier.BOSS;
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
     private static final int GAIN_NUMBER = 4;
+    private static final int BASE_TRIGGER_NUMBER = 30;
+    private static final int UPDATE_TRIGGER_NUMBER = 20;
 
     public KSMOD_StarWand()
     {
-        super(RELIC_ID, ImageMaster.loadImage(RELIC_IMG_PATH), ImageMaster.loadImage(RELIC_IMG_OTL_PATH), RELIC_TIER, RELIC_SOUND, GAIN_NUMBER);
+        super(RELIC_ID, ImageMaster.loadImage(RELIC_IMG_PATH), ImageMaster.loadImage(RELIC_IMG_OTL_PATH), RELIC_TIER, RELIC_SOUND, BASE_TRIGGER_NUMBER, UPDATE_TRIGGER_NUMBER, GAIN_NUMBER);
     }
 
     public String getUpdatedDescription()

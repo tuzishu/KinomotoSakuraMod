@@ -20,11 +20,12 @@ public class ClowCardTheWatery extends KSMOD_AbstractMagicCard
     private static final String DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_watery.png";
     private static final int COST = 1;
-    private static final int UPGRADED_COST = 0;
     private static final CardType CARD_TYPE = CardType.SKILL;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
+    private static final int BASE_MAGIC_NUMBER = 1;
+    private static final int UPGRADE_MAGIC_NUMBER = 1;
 
     static
     {
@@ -37,6 +38,7 @@ public class ClowCardTheWatery extends KSMOD_AbstractMagicCard
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(KSMOD_CustomTag.KSMOD_WATERY_CARD);
+        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
     public KSMOD_AbstractMagicCard makeCopy()
@@ -49,7 +51,7 @@ public class ClowCardTheWatery extends KSMOD_AbstractMagicCard
         if (!this.upgraded)
         {
             this.upgradeName();
-            this.upgradeBaseCost(UPGRADED_COST);
+            this.upgradeMagicNumber(UPGRADE_MAGIC_NUMBER);
         }
     }
 
@@ -57,6 +59,6 @@ public class ClowCardTheWatery extends KSMOD_AbstractMagicCard
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_WateryPower(player, 1)));
-        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new SpellCardShuiLong()));
+        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new SpellCardShuiLong(), this.magicNumber));
     }
 }

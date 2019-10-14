@@ -16,7 +16,6 @@ public class ClowCardTheDark extends KSMOD_AbstractMagicCard
     public static final String ID = "ClowCardTheDark";
     private static final String NAME;
     private static final String DESCRIPTION;
-    private static final String UPGRADE_DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_dark.png";
     private static final int COST = 1;
     private static final CardType CARD_TYPE = CardType.POWER;
@@ -24,13 +23,13 @@ public class ClowCardTheDark extends KSMOD_AbstractMagicCard
     private static final CardRarity CARD_RARITY = CardRarity.RARE;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
     private static final int BASE_MAGIC_NUMBER = 1;
+    private static final int UPGRADE_MAGIC_NUMBER = 2;
 
     static
     {
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
         NAME = cardStrings.NAME;
         DESCRIPTION = cardStrings.DESCRIPTION;
-        UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     }
 
     public ClowCardTheDark()
@@ -47,8 +46,7 @@ public class ClowCardTheDark extends KSMOD_AbstractMagicCard
         if (!this.upgraded)
         {
             this.upgradeName();
-            this.rawDescription = UPGRADE_DESCRIPTION;
-            this.initializeDescription();
+            this.upgradeMagicNumber(UPGRADE_MAGIC_NUMBER);
         }
     }
 
@@ -61,11 +59,6 @@ public class ClowCardTheDark extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_DarkPower(player, this.magicNumber, this.upgraded), this.magicNumber));
-        if (player.hasPower(KSMOD_DarkPower.POWER_ID) && this.upgraded)
-        {
-            KSMOD_DarkPower power = (KSMOD_DarkPower) player.getPower(KSMOD_DarkPower.POWER_ID);
-            power.upgrade();
-        }
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_DarkPower(player, this.magicNumber), this.magicNumber));
     }
 }

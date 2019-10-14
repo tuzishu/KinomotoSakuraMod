@@ -17,22 +17,13 @@
     "NAME": "黑暗",
     "DESCRIPTIONS": [
       "回合结束时，可以选择最多 #b",
-      " 张手牌消耗。",
-      "下一回合额外获得最多 #b",
-      " 点能量。"
+      " 张手牌消耗。消耗数量不为0时，下回合获得1点能量。"
     ]
   },
   "KSMOD_DarkPower_SakuraCard": {
     "NAME": "黑暗·樱",
     "DESCRIPTIONS": [
       "回合结束时，消耗所有手牌，并添加相同数量的随机库洛牌到弃牌堆。"
-    ]
-  },
-  "KSMOD_DarkGainEnergyPower": {
-    "NAME": "能量获得",
-    "DESCRIPTIONS": [
-      "回合开始时，获得 #b",
-      " 点能量。"
     ]
   },
   "KSMOD_EarthyPower": {
@@ -196,9 +187,9 @@
   "KSMOD_TwinPower": {
     "NAME": "双生",
     "DESCRIPTIONS": [
-      "你在每回合打出的第 #b1 张 #y库洛牌 或 #y小樱牌 将被打出 #b2 次。",
+      "你在每回合打出的第 #b1 张 #y库洛牌 将被打出 #b2 次。",
       "你在每回合打出的前 #b",
-      " 张 #y库洛牌 或 #y小樱牌 将被打出 #b2 次。"
+      " 张 #y库洛牌将被打出 #b2 次。"
     ]
   },
   "KSMOD_TwinPower_SakuraCard": {

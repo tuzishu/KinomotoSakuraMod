@@ -36,7 +36,7 @@ public class KSMOD_ThunderAction extends AbstractGameAction
             return;
         }
         this.target = AbstractDungeon.getRandomMonster();
-        if (this.target.currentHealth > 0)
+        if (this.target != null && this.target.currentHealth > 0)
         {
             this.target.damageFlash = true;
             this.target.damageFlashFrames = 4;
