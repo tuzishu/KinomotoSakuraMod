@@ -17,7 +17,7 @@ public class KSMOD_SleepPower extends KSMOD_CustomPower
     public static final String POWER_ID = "KSMOD_SleepPower";
     public static final String POWER_NAME;
     public static final String[] POWER_DESCRIPTIONS;
-    private static final String POWER_IMG_PATH = "img/powers/default_power.png";
+    private static final String POWER_IMG_PATH = "img/powers/sleep_power.png";
     private static final PowerType POWER_TYPE = PowerType.DEBUFF;
     private static final int WEAKENED_NUMBER = 2;
     private int recordHP;
@@ -31,7 +31,7 @@ public class KSMOD_SleepPower extends KSMOD_CustomPower
 
     public KSMOD_SleepPower(AbstractMonster target, int amount)
     {
-        super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, amount);
+        super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, amount, true);
         this.isTurnBased = true;
         this.updateDescription();
     }
