@@ -19,14 +19,14 @@ public class ClowCardTheGlow extends KSMOD_AbstractMagicCard
     private static final String NAME;
     private static final String DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/clowcard/the_glow.png";
-    private static final int COST = 0;
+    private static final int COST = 1;
     private static final CardType CARD_TYPE = CardType.SKILL;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
     private static final int BASE_MAGIC_NUMBER = 1;
     private static final int UPGRADE_MAGIC_NUMBER = 1;
-    private static final int DRAW_NUMBER = 1;
+    private static final int CHARGE_NUMBER = 2;
 
     static
     {
@@ -61,10 +61,10 @@ public class ClowCardTheGlow extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, DRAW_NUMBER));
+        AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, this.magicNumber));
         if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(KSMOD_SealedBook.RELIC_ID))
         {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_MagickChargePower(player, this.magicNumber), this.magicNumber));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_MagickChargePower(player, CHARGE_NUMBER), CHARGE_NUMBER));
         }
     }
 }

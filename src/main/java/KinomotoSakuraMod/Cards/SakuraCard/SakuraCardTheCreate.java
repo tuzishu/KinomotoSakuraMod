@@ -72,6 +72,11 @@ public class SakuraCardTheCreate extends KSMOD_AbstractMagicCard
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_CreatePower(player, 2), 2));
+        GetRelics();
+    }
+
+    private void GetRelics()
+    {
         AbstractDungeon.getCurrRoom().addRelicToRewards(GetRandomTier());
         AbstractRelic relic = GetRandomSakuraRelic();
         if (relic != null)
@@ -156,7 +161,7 @@ public class SakuraCardTheCreate extends KSMOD_AbstractMagicCard
     {
         for (String id : list)
         {
-            if (relicID == id)
+            if (relicID.equals(id))
             {
                 return true;
             }

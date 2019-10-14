@@ -4,7 +4,6 @@ import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheCreate;
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheMirror;
 import KinomotoSakuraMod.Cards.SakuraCard.SakuraCardTheCreate;
 import KinomotoSakuraMod.Cards.SakuraCard.SakuraCardTheMirror;
-import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
@@ -76,6 +75,7 @@ public class KSMOD_MirrorAction extends AbstractGameAction
                 }
                 this.returnCards();
                 this.isDone = true;
+                return;
             }
 
             if (this.player.hand.group.size() > 1)

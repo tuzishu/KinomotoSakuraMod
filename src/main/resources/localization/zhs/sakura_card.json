@@ -133,7 +133,7 @@
   },
   "ClowCardTheGlow": {
     "NAME": "灯",
-    "DESCRIPTION": "「 火 」抽1张牌，获得 !M! 层 魔力充能 。",
+    "DESCRIPTION": "「 火 」抽 !M! 张牌，获得2层 魔力充能 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -272,7 +272,7 @@
   },
   "ClowCardTheShot": {
     "NAME": "击",
-    "DESCRIPTION": "「 火 」造成 !D! 点伤害，给与 !M! 层 中毒 ，各2次。",
+    "DESCRIPTION": "「 火 」造成 !D! 点伤害2次，每次给与 !M! 层 中毒 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外给与",

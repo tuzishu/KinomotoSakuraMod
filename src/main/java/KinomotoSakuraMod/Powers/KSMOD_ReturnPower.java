@@ -62,7 +62,10 @@ public class KSMOD_ReturnPower extends KSMOD_CustomPower
         }
         else
         {
-            AbstractDungeon.actionManager.addToBottom(new RemoveAllPowersAction(this.owner, false));
+            for (AbstractPower p: this.owner.powers)
+            {
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, p));
+            }
         }
     }
 
