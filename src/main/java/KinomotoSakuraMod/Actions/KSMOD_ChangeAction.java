@@ -41,7 +41,7 @@ public class KSMOD_ChangeAction extends AbstractGameAction
         {
             if (this.player.hand.isEmpty())
             {
-                AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, 1));
+                AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, this.amount));
                 this.isDone = true;
                 return;
             }

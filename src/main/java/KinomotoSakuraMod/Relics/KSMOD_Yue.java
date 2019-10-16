@@ -40,7 +40,7 @@ public class KSMOD_Yue extends CustomRelic
         return new KSMOD_Yue();
     }
 
-    public void obtain()
+    public void instantObtain()
     {
         if (AbstractDungeon.player.hasRelic(KSMOD_StarWand.RELIC_ID) && AbstractDungeon.player.hasRelic(KSMOD_Cerberus.RELIC_ID))
         {
@@ -54,7 +54,7 @@ public class KSMOD_Yue extends CustomRelic
         }
         else
         {
-            super.obtain();
+            super.instantObtain();
         }
     }
 

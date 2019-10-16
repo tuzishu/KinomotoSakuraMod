@@ -2,8 +2,10 @@ package KinomotoSakuraMod.Relics;
 
 import KinomotoSakuraMod.Powers.KSMOD_CerberusMarkPower;
 import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
+import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import basemod.abstracts.CustomRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -34,7 +36,7 @@ public class KSMOD_Cerberus extends CustomRelic
         return new KSMOD_Cerberus();
     }
 
-    public void obtain()
+    public void instantObtain()
     {
         if (AbstractDungeon.player.hasRelic(KSMOD_StarWand.RELIC_ID) && AbstractDungeon.player.hasRelic(KSMOD_Yue.RELIC_ID))
         {
@@ -48,7 +50,7 @@ public class KSMOD_Cerberus extends CustomRelic
         }
         else
         {
-            super.obtain();
+            super.instantObtain();
         }
     }
 
