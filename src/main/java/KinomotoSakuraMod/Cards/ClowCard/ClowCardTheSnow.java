@@ -1,6 +1,7 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
+import KinomotoSakuraMod.KSMOD;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
@@ -30,7 +31,7 @@ public class ClowCardTheSnow extends KSMOD_AbstractMagicCard
     private static final AbstractCard.CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
-    private static final int BASE_DAMAGE = 5;
+    private static final int BASE_DAMAGE = 4;
     private static final int UPGRADE_DAMAGE = 2;
     private static final int BASE_MAGIC_NUMBER = 0;
     private static final float DURATION = 0.5F;
@@ -105,7 +106,7 @@ public class ClowCardTheSnow extends KSMOD_AbstractMagicCard
         int count = 0;
         for (AbstractCard card : AbstractDungeon.actionManager.cardsPlayedThisCombat)
         {
-            if (card.hasTag(KSMOD_CustomTag.KSMOD_WATERY_CARD))
+            if (card.hasTag(KSMOD_CustomTag.KSMOD_WATERY_CARD) && card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR)
             {
                 count += 1;
             }

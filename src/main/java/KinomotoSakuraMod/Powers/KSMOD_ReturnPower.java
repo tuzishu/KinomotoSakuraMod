@@ -1,7 +1,9 @@
 package KinomotoSakuraMod.Powers;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.unique.RemoveAllPowersAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -16,7 +18,7 @@ public class KSMOD_ReturnPower extends KSMOD_CustomPower
     public static final String POWER_ID = "KSMOD_ReturnPower";
     private static final String POWER_NAME;
     private static final String[] POWER_DESCRIPTIONS;
-    private static final String POWER_IMG_PATH = "img/powers/default_power.png";
+    private static final String POWER_IMG_PATH = "retain";
     private static final PowerType POWER_TYPE = PowerType.BUFF;
     private HashMap<AbstractPower, Integer> recordPowerGroup = new HashMap<>();
     private int recordHP;
@@ -31,7 +33,7 @@ public class KSMOD_ReturnPower extends KSMOD_CustomPower
 
     public KSMOD_ReturnPower(AbstractCreature target, int amount)
     {
-        super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, amount);
+        super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, amount, false);
         this.updateDescription();
     }
 
@@ -78,8 +80,20 @@ public class KSMOD_ReturnPower extends KSMOD_CustomPower
             power.amount = entry.getValue();
             power.updateDescription();
         }
-        AbstractDungeon.actionManager.addToBottom(new HealAction(this.owner, this.owner, this.recordHP - this.owner.currentHealth));
+
+        if (this.recordHP > this.owner.currentHealth)
+        {
+            AbstractDungeon.actionManager.addToBottom(new HealAction(this.owner, this.owner, this.recordHP - this.owner.currentHealth));
+        }
+        else if (this.recordHP < this.owner.currentHealth)
+        {
+            AbstractDungeon.actionManager.addToBottom(new DamageAction(this.owner, new DamageInfo(this.owner, this.owner.currentHealth - this.recordHP, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        }
+
         AbstractDungeon.actionManager.addToBottom(new RemoveAllBlockAction(this.owner, this.owner));
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this.owner, this.owner, this.recordBlock));
+        if (this.recordBlock > 0)
+        {
+            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this.owner, this.owner, this.recordBlock));
+        }
     }
 }

@@ -13,7 +13,7 @@ public class KSMOD_CerberusMarkPower extends KSMOD_CustomPower
     public static final String POWER_ID = "KSMOD_CerberusMarkPower";
     public static final String POWER_NAME;
     public static final String[] POWER_DESCRIPTIONS;
-    private static final String POWER_IMG_PATH = "lockon";
+    private static final String POWER_IMG_PATH = "accuracy";
     private static final PowerType POWER_TYPE = PowerType.DEBUFF;
     private float promotion;
 

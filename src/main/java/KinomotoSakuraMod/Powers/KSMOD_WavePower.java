@@ -14,7 +14,7 @@ public class KSMOD_WavePower extends KSMOD_CustomPower
     public static final String POWER_ID = "KSMOD_WavePower";
     private static final String POWER_NAME;
     private static final String[] POWER_DESCRIPTIONS;
-    private static final String POWER_IMG_PATH = "img/powers/default_power.png";
+    private static final String POWER_IMG_PATH = "img/powers/wave_power.png";
     private static final PowerType POWER_TYPE = PowerType.BUFF;
 
     static
@@ -31,7 +31,7 @@ public class KSMOD_WavePower extends KSMOD_CustomPower
 
     public KSMOD_WavePower(AbstractCreature target, int amount)
     {
-        super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, amount);
+        super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, amount, true);
         this.updateDescription();
     }
 

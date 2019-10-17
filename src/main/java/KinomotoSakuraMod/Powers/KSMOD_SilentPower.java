@@ -14,7 +14,7 @@ public class KSMOD_SilentPower extends KSMOD_CustomPower
     public static final String POWER_ID = "KSMOD_SilentPower";
     private static final String POWER_NAME;
     private static final String[] POWER_DESCRIPTIONS;
-    private static final String POWER_IMG = "img/powers/default_power.png";
+    private static final String POWER_IMG = "img/powers/silent_power.png";
     private static final PowerType POWER_TYPE = PowerType.DEBUFF;
 
     static
@@ -31,7 +31,7 @@ public class KSMOD_SilentPower extends KSMOD_CustomPower
 
     public KSMOD_SilentPower(AbstractCreature target, int amount)
     {
-        super(POWER_ID, POWER_NAME, POWER_IMG, POWER_TYPE, target, amount);
+        super(POWER_ID, POWER_NAME, POWER_IMG, POWER_TYPE, target, amount, true);
         updateDescription();
     }
 

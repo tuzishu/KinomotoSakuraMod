@@ -1,7 +1,6 @@
 package KinomotoSakuraMod.Powers;
 
 import KinomotoSakuraMod.KSMOD;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -14,12 +13,12 @@ import com.megacrit.cardcrawl.random.Random;
 
 import java.util.ArrayList;
 
-public class KSMOD_DarkPower_SakuraPower extends KSMOD_CustomPower
+public class KSMOD_DarkPower_SakuraCard extends KSMOD_CustomPower
 {
-    public static final String POWER_ID = "KSMOD_DarkPower_SakuraPower";
+    public static final String POWER_ID = "KSMOD_DarkPower_SakuraCard";
     private static final String POWER_NAME;
     private static final String[] POWER_DESCRIPTIONS;
-    private static final String POWER_IMG_PATH = "img/powers/default_power.png";
+    private static final String POWER_IMG_PATH = "img/powers/dark_power_sakuracard.png";
     private static final AbstractPower.PowerType POWER_TYPE = AbstractPower.PowerType.BUFF;
     private static final float RARE_CARD_RATE = 0.1F;
     private static final float UNCOMMON_CARD_RATE = 0.3F;
@@ -31,14 +30,14 @@ public class KSMOD_DarkPower_SakuraPower extends KSMOD_CustomPower
         POWER_DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     }
 
-    public KSMOD_DarkPower_SakuraPower()
+    public KSMOD_DarkPower_SakuraCard()
     {
         this(AbstractDungeon.player, 1);
     }
 
-    public KSMOD_DarkPower_SakuraPower(AbstractCreature target, int amount)
+    public KSMOD_DarkPower_SakuraCard(AbstractCreature target, int amount)
     {
-        super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, amount);
+        super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, amount, true);
         this.updateDescription();
     }
 

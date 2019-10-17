@@ -11,7 +11,7 @@ public class KSMOD_LightPower extends KSMOD_CustomPower
     public static final String POWER_ID = "KSMOD_LightPower";
     private static final String POWER_NAME;
     private static final String[] POWER_DESCRIPTIONS;
-    private static final String POWER_IMG_PATH = "img/powers/default_power.png";
+    private static final String POWER_IMG_PATH = "img/powers/light_power.png";
     private static final AbstractPower.PowerType POWER_TYPE = AbstractPower.PowerType.BUFF;
     public boolean upgraded;
 
@@ -29,7 +29,7 @@ public class KSMOD_LightPower extends KSMOD_CustomPower
 
     public KSMOD_LightPower(AbstractCreature target, boolean upgraded)
     {
-        super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, 1);
+        super(POWER_ID, POWER_NAME, POWER_IMG_PATH, POWER_TYPE, target, 1, true);
         this.updateDescription();
         this.upgraded = upgraded;
     }
