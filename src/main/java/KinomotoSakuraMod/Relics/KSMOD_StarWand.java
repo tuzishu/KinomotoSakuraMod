@@ -36,6 +36,36 @@ public class KSMOD_StarWand extends KSMOD_AbstractWand
         return new KSMOD_StarWand();
     }
 
+    public void instantObtain()
+    {
+        AbstractRelic oldWand = AbstractDungeon.player.getRelic(KSMOD_SealedWand.RELIC_ID);
+        if (oldWand == null)
+        {
+            super.instantObtain();
+        }
+        int targetIndex = AbstractDungeon.player.relics.indexOf(oldWand);
+        if (AbstractDungeon.player.hasRelic(KSMOD_SealedWand.RELIC_ID))
+        {
+            if (AbstractDungeon.player.hasRelic(KSMOD_Cerberus.RELIC_ID) && AbstractDungeon.player.hasRelic(KSMOD_Yue.RELIC_ID))
+            {
+                KSMOD_UltimateWand wand = new KSMOD_UltimateWand();
+                wand.counter = oldWand.counter;
+                wand.instantObtain(AbstractDungeon.player, targetIndex, true);
+                AbstractDungeon.player.loseRelic(KSMOD_Cerberus.RELIC_ID);
+                AbstractDungeon.player.loseRelic(KSMOD_Yue.RELIC_ID);
+            }
+            else
+            {
+                this.counter = oldWand.counter;
+                this.instantObtain(AbstractDungeon.player, targetIndex, false);
+            }
+        }
+        else
+        {
+            super.instantObtain();
+        }
+    }
+
     public void obtain()
     {
         AbstractRelic oldWand = AbstractDungeon.player.getRelic(KSMOD_SealedWand.RELIC_ID);

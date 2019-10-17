@@ -44,18 +44,35 @@ public class KSMOD_Yue extends CustomRelic
     {
         if (AbstractDungeon.player.hasRelic(KSMOD_StarWand.RELIC_ID) && AbstractDungeon.player.hasRelic(KSMOD_Cerberus.RELIC_ID))
         {
-            AbstractRelic oldWand = AbstractDungeon.player.getRelic(KSMOD_StarWand.RELIC_ID);
-            int targetIndex = AbstractDungeon.player.relics.indexOf(oldWand);
-            KSMOD_UltimateWand wand = new KSMOD_UltimateWand();
-            wand.counter = oldWand.counter;
-            wand.instantObtain(AbstractDungeon.player, targetIndex, true);
-            AbstractDungeon.player.loseRelic(KSMOD_StarWand.RELIC_ID);
-            AbstractDungeon.player.loseRelic(KSMOD_Cerberus.RELIC_ID);
+            replaceWand();
         }
         else
         {
             super.instantObtain();
         }
+    }
+
+    public void obtain()
+    {
+        if (AbstractDungeon.player.hasRelic(KSMOD_StarWand.RELIC_ID) && AbstractDungeon.player.hasRelic(KSMOD_Cerberus.RELIC_ID))
+        {
+            replaceWand();
+        }
+        else
+        {
+            super.obtain();
+        }
+    }
+
+    private void replaceWand()
+    {
+        AbstractRelic oldWand = AbstractDungeon.player.getRelic(KSMOD_StarWand.RELIC_ID);
+        int targetIndex = AbstractDungeon.player.relics.indexOf(oldWand);
+        KSMOD_UltimateWand wand = new KSMOD_UltimateWand();
+        wand.counter = oldWand.counter;
+        wand.instantObtain(AbstractDungeon.player, targetIndex, true);
+        AbstractDungeon.player.loseRelic(KSMOD_StarWand.RELIC_ID);
+        AbstractDungeon.player.loseRelic(KSMOD_Cerberus.RELIC_ID);
     }
 
     public void atTurnStart()
