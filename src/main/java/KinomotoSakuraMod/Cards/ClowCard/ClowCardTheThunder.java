@@ -102,4 +102,9 @@ public class ClowCardTheThunder extends KSMOD_AbstractMagicCard
     {
         return this.rawDescription;
     }
+
+    public void atTurnStart()
+    {
+        this.retain = true;
+    }
 }

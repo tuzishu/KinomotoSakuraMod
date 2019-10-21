@@ -2,11 +2,13 @@ package KinomotoSakuraMod.Cards.SakuraCard;
 
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheCreate;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
+import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.KSMOD;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Powers.KSMOD_CreatePower;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -72,7 +74,10 @@ public class SakuraCardTheCreate extends KSMOD_AbstractMagicCard
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_CreatePower(player, 2), 2));
-        GetRelics();
+        if (TryRemoveThisFromMasterDeck())
+        {
+            GetRelics();
+        }
     }
 
     private void GetRelics()
@@ -87,7 +92,6 @@ public class SakuraCardTheCreate extends KSMOD_AbstractMagicCard
         {
             AbstractDungeon.getCurrRoom().addRelicToRewards(GetRandomTier());
         }
-        TryRemoveThisFromMasterDeck();
     }
 
     private AbstractRelic.RelicTier GetRandomTier()
@@ -145,16 +149,18 @@ public class SakuraCardTheCreate extends KSMOD_AbstractMagicCard
         return relic;
     }
 
-    private void TryRemoveThisFromMasterDeck()
+    private boolean TryRemoveThisFromMasterDeck()
     {
         for (AbstractCard card : AbstractDungeon.player.masterDeck.group)
         {
             if (card.cardID == this.cardID)
             {
                 AbstractDungeon.player.masterDeck.removeCard(card);
-                break;
+                return true;
             }
         }
+        AbstractDungeon.actionManager.addToBottom(new TalkAction(true, KinomotoSakura.GetMessage(2), 1.0F, 2.0F));
+        return false;
     }
 
     private boolean isRelicPoolContains(String relicID, ArrayList<String> list)

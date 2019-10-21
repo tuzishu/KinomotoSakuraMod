@@ -18,16 +18,19 @@ import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 @SpireInitializer
-public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharactersSubscriber, EditRelicsSubscriber, EditCardsSubscriber, EditStringsSubscriber, EditKeywordsSubscriber
+public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharactersSubscriber, EditRelicsSubscriber, EditCardsSubscriber, EditStringsSubscriber, EditKeywordsSubscriber, OnStartBattleSubscriber
 {
     // CardColor卡片颜色，卡片总览中的tab按钮颜色
     public static final Color colorClowCard = CardHelper.getColor(255f, 152f, 74f);
@@ -38,9 +41,9 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
     public KSMOD()
     {
         BaseMod.subscribe(this);
-        BaseMod.addColor(KSMOD_CustomCardColor.CLOWCARD_COLOR, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, KSMOD_ImageConst.CLOWCARD_BG_PATH, KSMOD_ImageConst.CLOWCARD_BG_PATH, KSMOD_ImageConst.CLOWCARD_BG_PATH, KSMOD_ImageConst.ORB_CLOWCARD_ATTACK_PATH, KSMOD_ImageConst.CLOWCARD_BG_LARGE_PATH, KSMOD_ImageConst.CLOWCARD_BG_LARGE_PATH, KSMOD_ImageConst.CLOWCARD_BG_LARGE_PATH, KSMOD_ImageConst.ORB_CLOWCARD_ATTACK_LARGE_PATH);
-        BaseMod.addColor(KSMOD_CustomCardColor.SAKURACARD_COLOR, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, KSMOD_ImageConst.SAKURACARD_BG_PATH, KSMOD_ImageConst.SAKURACARD_BG_PATH, KSMOD_ImageConst.SAKURACARD_BG_PATH, KSMOD_ImageConst.ORB_SAKURACARD_ATTACK_PATH, KSMOD_ImageConst.SAKURACARD_BG_LARGE_PATH, KSMOD_ImageConst.SAKURACARD_BG_LARGE_PATH, KSMOD_ImageConst.SAKURACARD_BG_LARGE_PATH, KSMOD_ImageConst.ORB_SAKURACARD_ATTACK_LARGE_PATH);
-        BaseMod.addColor(KSMOD_CustomCardColor.SPELL_COLOR, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, KSMOD_ImageConst.SPELLCARD_BG_PATH, KSMOD_ImageConst.SPELLCARD_BG_PATH, KSMOD_ImageConst.SPELLCARD_BG_PATH, KSMOD_ImageConst.ORB_SPELLCARD_ATTACK_PATH, KSMOD_ImageConst.SPELLCARD_BG_LARGE_PATH, KSMOD_ImageConst.SPELLCARD_BG_LARGE_PATH, KSMOD_ImageConst.SPELLCARD_BG_LARGE_PATH, KSMOD_ImageConst.ORB_SPELLCARD_ATTACK_LARGE_PATH);
+        BaseMod.addColor(KSMOD_CustomCardColor.CLOWCARD_COLOR, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, colorClowCard, KSMOD_ImageConst.CLOWCARD_BG_PATH, KSMOD_ImageConst.CLOWCARD_BG_PATH, KSMOD_ImageConst.CLOWCARD_BG_PATH, KSMOD_ImageConst.ORB_CLOWCARD_PATH, KSMOD_ImageConst.CLOWCARD_BG_LARGE_PATH, KSMOD_ImageConst.CLOWCARD_BG_LARGE_PATH, KSMOD_ImageConst.CLOWCARD_BG_LARGE_PATH, KSMOD_ImageConst.ORB_CLOWCARD_LARGE_PATH);
+        BaseMod.addColor(KSMOD_CustomCardColor.SAKURACARD_COLOR, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, colorSakuraCard, KSMOD_ImageConst.SAKURACARD_BG_PATH, KSMOD_ImageConst.SAKURACARD_BG_PATH, KSMOD_ImageConst.SAKURACARD_BG_PATH, KSMOD_ImageConst.ORB_SAKURACARD_PATH, KSMOD_ImageConst.SAKURACARD_BG_LARGE_PATH, KSMOD_ImageConst.SAKURACARD_BG_LARGE_PATH, KSMOD_ImageConst.SAKURACARD_BG_LARGE_PATH, KSMOD_ImageConst.ORB_SAKURACARD_LARGE_PATH);
+        BaseMod.addColor(KSMOD_CustomCardColor.SPELL_COLOR, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, colorSpellCard, KSMOD_ImageConst.SPELLCARD_BG_PATH, KSMOD_ImageConst.SPELLCARD_BG_PATH, KSMOD_ImageConst.SPELLCARD_BG_PATH, KSMOD_ImageConst.ORB_SPELLCARD_PATH, KSMOD_ImageConst.SPELLCARD_BG_LARGE_PATH, KSMOD_ImageConst.SPELLCARD_BG_LARGE_PATH, KSMOD_ImageConst.SPELLCARD_BG_LARGE_PATH, KSMOD_ImageConst.ORB_SPELLCARD_LARGE_PATH);
     }
 
     public static void initialize()
@@ -311,17 +314,17 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         if (localizationPath == null)
         {
             localizationPath = "localization/";
-            //        switch (Settings.language)
-            //        {
-            //            case ZHS:
-            //                KSMOD_Utility.Logger.info("language == zhs");
-            localizationPath = localizationPath + "zhs/";
-            //                break;
-            //            default:
-            //                KSMOD_Utility.Logger.info("language == eng");
-            //                localizationPath = localizationPath + "eng/";
-            //                break;
-            //        }
+            switch (Settings.language)
+            {
+                case ZHS:
+                    KSMOD_Utility.Logger.info("language == zhs");
+                    localizationPath = localizationPath + "zhs/";
+                    break;
+                default:
+                    KSMOD_Utility.Logger.info("language == eng");
+                    localizationPath = localizationPath + "eng/";
+                    break;
+            }
         }
         return localizationPath;
     }
@@ -390,5 +393,44 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         }
 
         KSMOD_Utility.Logger.info("结束编辑关键字");
+    }
+
+    @Override
+    public void receiveOnBattleStart(AbstractRoom abstractRoom)
+    {
+        KSMOD_Utility.Logger.info("common relic pool");
+        ShowRelicList(AbstractDungeon.commonRelicPool);
+        KSMOD_Utility.Logger.info("uncommon relic pool");
+        ShowRelicList(AbstractDungeon.uncommonRelicPool);
+        KSMOD_Utility.Logger.info("rare relic pool");
+        ShowRelicList(AbstractDungeon.rareRelicPool);
+    }
+
+    public void ShowRelicList(ArrayList<String> relics)
+    {
+        for (int i = 0; i < relics.size(); i++)
+        {
+            KSMOD_Utility.Logger.info(i + ": " + relics.get(i) + (istargetrelic(relics.get(i)) ? "<=========" : ""));
+        }
+    }
+
+    public boolean istargetrelic(String relic)
+    {
+        if (relic.contains(KSMOD_StarWand.RELIC_ID))
+        {
+            return true;
+        }
+        else if (relic.contains(KSMOD_Cerberus.RELIC_ID))
+        {
+            return true;
+        }
+        else if (relic.contains(KSMOD_Yue.RELIC_ID))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

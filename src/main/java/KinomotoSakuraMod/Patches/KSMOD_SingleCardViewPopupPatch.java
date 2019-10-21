@@ -474,57 +474,15 @@ public class KSMOD_SingleCardViewPopupPatch
             Texture texture;
             if (card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR)
             {
-                switch (card.type)
-                {
-                    case ATTACK:
-                        texture = KSMOD_ImageConst.ORB_CLOWCARD_ATTACK_LARGE;
-                        break;
-                    case SKILL:
-                        texture = KSMOD_ImageConst.ORB_CLOWCARD_SKILL_LARGE;
-                        break;
-                    case POWER:
-                        texture = KSMOD_ImageConst.ORB_CLOWCARD_POWER_LARGE;
-                        break;
-                    default:
-                        texture = KSMOD_ImageConst.ORB_CLOWCARD_SKILL_LARGE;
-                        break;
-                }
+                texture = KSMOD_ImageConst.ORB_CLOWCARD_LARGE;
             }
             else if (card.color == KSMOD_CustomCardColor.SPELL_COLOR)
             {
-                switch (card.type)
-                {
-                    case ATTACK:
-                        texture = KSMOD_ImageConst.ORB_SPELLCARD_ATTACK_LARGE;
-                        break;
-                    case SKILL:
-                        texture = KSMOD_ImageConst.ORB_SPELLCARD_SKILL_LARGE;
-                        break;
-                    case POWER:
-                        texture = KSMOD_ImageConst.ORB_SPELLCARD_POWER_LARGE;
-                        break;
-                    default:
-                        texture = KSMOD_ImageConst.ORB_SPELLCARD_SKILL_LARGE;
-                        break;
-                }
+                texture = KSMOD_ImageConst.ORB_SPELLCARD_LARGE;
             }
             else
             {
-                switch (card.type)
-                {
-                    case ATTACK:
-                        texture = KSMOD_ImageConst.ORB_SAKURACARD_ATTACK_LARGE;
-                        break;
-                    case SKILL:
-                        texture = KSMOD_ImageConst.ORB_SAKURACARD_SKILL_LARGE;
-                        break;
-                    case POWER:
-                        texture = KSMOD_ImageConst.ORB_SAKURACARD_POWER_LARGE;
-                        break;
-                    default:
-                        texture = KSMOD_ImageConst.ORB_SAKURACARD_SKILL_LARGE;
-                        break;
-                }
+                texture = KSMOD_ImageConst.ORB_SAKURACARD_LARGE;
             }
             return texture;
         }

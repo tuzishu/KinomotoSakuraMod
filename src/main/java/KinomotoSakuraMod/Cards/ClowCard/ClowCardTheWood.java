@@ -78,12 +78,13 @@ public class ClowCardTheWood extends KSMOD_AbstractMagicCard
         if (upgraded)
         {
             amount = GatherPosion(player, monster);
+            amount = MathUtils.ceil(amount * (1.0F + UPGRADE_POISON_DEEPEN));
         }
-        if (amount <= 0 && monster.hasPower(PoisonPower.POWER_ID))
+        else if (monster.hasPower(PoisonPower.POWER_ID))
         {
             amount = monster.getPower(PoisonPower.POWER_ID).amount;
+            amount = MathUtils.ceil(amount * BASE_POISON_DEEPEN);
         }
-        amount = MathUtils.ceil(amount * (1.0F + (upgraded ? UPGRADE_POISON_DEEPEN : BASE_POISON_DEEPEN)));
         if (amount > 0)
         {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new PoisonPower(monster, player, amount), amount));

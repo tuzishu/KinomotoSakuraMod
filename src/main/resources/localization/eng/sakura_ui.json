@@ -1,0 +1,61 @@
+{
+  "KSMOD_ReleaseAction": {
+    "TEXT": [
+      "封印解除",
+      "「 小樱牌 」",
+      "「 地 」",
+      "「 水 」",
+      "「 火 」",
+      "「 风 」",
+      " 封印解除 。",
+      " 虚无 。",
+      " 消耗 。"
+    ]
+  },
+  "KSMOD_ArrowAction": {
+    "TEXT": [
+      "作为箭矢"
+    ]
+  },
+  "KSMOD_ChangeAction": {
+    "TEXT": [
+      "替换"
+    ]
+  },
+  "KSMOD_DarkAction": {
+    "TEXT": [
+      "消耗"
+    ]
+  },
+  "KSMOD_LockAction": {
+    "TEXT": [
+      "消耗"
+    ]
+  },
+  "KSMOD_MirrorAction": {
+    "TEXT": [
+      "复制"
+    ]
+  },
+  "KSMOD_SongAction": {
+    "TEXT": [
+      "歌唱"
+    ]
+  },
+  "KSMOD_SongAction_SakuraCard": {
+    "TEXT": [
+      "歌唱"
+    ]
+  },
+  "KSMOD_ReturnAction": {
+    "TEXT": [
+      "轮回：请选择最多",
+      "张牌返回牌堆"
+    ]
+  },
+  "KSMOD_TurnAction": {
+    "TEXT": [
+      "转变为小樱牌"
+    ]
+  }
+}

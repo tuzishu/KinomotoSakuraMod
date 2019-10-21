@@ -100,8 +100,8 @@ public class KSMOD_Utility
     /**
      * 通过反射的方法获取实例包括基类中的变量
      *
+     * @param targetClass 目标变量所在类，一般为当前类或其父类
      * @param fieldName   变量名
-     * @param targetClass 目标类型
      *
      * @return 目标变量
      *
@@ -130,6 +130,7 @@ public class KSMOD_Utility
     /**
      * 通过反射的方法获取实例包括基类中的方法
      *
+     * @param targetClass 目标函数所在类，一般为当前类或其父类
      * @param methodName 方法名
      * @param paramTypes 方法参数列表
      *

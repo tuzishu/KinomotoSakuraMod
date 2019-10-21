@@ -2,8 +2,10 @@ package KinomotoSakuraMod.Cards.SpellCard;
 
 import KinomotoSakuraMod.Actions.KSMOD_ReleaseAction;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractSpellCard;
+import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Relics.KSMOD_SwordJade;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -67,5 +69,6 @@ public class SpellCardRelease extends KSMOD_AbstractSpellCard
         {
             AbstractDungeon.actionManager.addToBottom(new KSMOD_ReleaseAction(this.magicNumber, BASE_RELEASE_UPGRADE_RATE));
         }
+        AbstractDungeon.actionManager.addToBottom(new TalkAction(true, KinomotoSakura.GetMessage(3), 1.0F, 2.0F));
     }
 }

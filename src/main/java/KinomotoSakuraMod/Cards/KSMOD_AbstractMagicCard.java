@@ -448,39 +448,11 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
         Texture texture;
         if (this.color == KSMOD_CustomCardColor.CLOWCARD_COLOR)
         {
-            switch (this.type)
-            {
-                case ATTACK:
-                    texture = KSMOD_ImageConst.ORB_CLOWCARD_ATTACK;
-                    break;
-                case SKILL:
-                    texture = KSMOD_ImageConst.ORB_CLOWCARD_SKILL;
-                    break;
-                case POWER:
-                    texture = KSMOD_ImageConst.ORB_CLOWCARD_POWER;
-                    break;
-                default:
-                    texture = KSMOD_ImageConst.ORB_CLOWCARD_SKILL;
-                    break;
-            }
+            texture = KSMOD_ImageConst.ORB_CLOWCARD;
         }
         else
         {
-            switch (this.type)
-            {
-                case ATTACK:
-                    texture = KSMOD_ImageConst.ORB_SAKURACARD_ATTACK;
-                    break;
-                case SKILL:
-                    texture = KSMOD_ImageConst.ORB_SAKURACARD_SKILL;
-                    break;
-                case POWER:
-                    texture = KSMOD_ImageConst.ORB_SAKURACARD_POWER;
-                    break;
-                default:
-                    texture = KSMOD_ImageConst.ORB_SAKURACARD_SKILL;
-                    break;
-            }
+            texture = KSMOD_ImageConst.ORB_SAKURACARD;
         }
         return texture;
     }
@@ -605,6 +577,27 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
         renderHelper.invoke(this, sb, renderColor, GetBannerImage(), drawX - 512F, drawY - 512F);
     }
 
+    public void renderMask(SpriteBatch sb)
+    {
+        Texture texture;
+        switch (this.type)
+        {
+            case ATTACK:
+                texture = KSMOD_ImageConst.MASK_ATTACK;
+                break;
+            case SKILL:
+                texture = KSMOD_ImageConst.MASK_SKILL;
+                break;
+            case POWER:
+                texture = KSMOD_ImageConst.MASK_POWER;
+                break;
+            default:
+                texture = KSMOD_ImageConst.MASK_SKILL;
+                break;
+        }
+        sb.draw(texture, this.current_x - 256.0F, this.current_y - 256.0F, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
+    }
+
     @SpireOverride
     public void renderDescriptionCN(SpriteBatch sb) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException
     {
@@ -614,7 +607,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
         }
         if (this.isSeen && !this.isLocked)
         {
-            sb.draw(KSMOD_ImageConst.MASK, this.current_x - 256.0F, this.current_y - 256.0F, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
+            renderMask(sb);
             Method getDescFont = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "getDescFont");
             BitmapFont font = (BitmapFont) getDescFont.invoke(this);
             float draw_y = this.current_y - IMG_HEIGHT * this.drawScale / 2.0F + IMG_HEIGHT * DESC_OFFSET_TO_BOTTOM_Y * this.drawScale;

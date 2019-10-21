@@ -1,10 +1,12 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
+import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Powers.KSMOD_CreatePower;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.status.Dazed;
@@ -88,8 +90,10 @@ public class ClowCardTheCreate extends KSMOD_AbstractMagicCard
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_CreatePower(), 1));
-        TryRemoveThisFromMasterDeck();
-        AbstractDungeon.getCurrRoom().addRelicToRewards(GetRandomTier());
+        if (TryRemoveThisFromMasterDeck())
+        {
+            AbstractDungeon.getCurrRoom().addRelicToRewards(GetRandomTier());
+        }
     }
 
     private AbstractRelic.RelicTier GetRandomTier()
@@ -109,15 +113,17 @@ public class ClowCardTheCreate extends KSMOD_AbstractMagicCard
         }
     }
 
-    private void TryRemoveThisFromMasterDeck()
+    private boolean TryRemoveThisFromMasterDeck()
     {
         for (AbstractCard card : AbstractDungeon.player.masterDeck.group)
         {
             if (card.uuid == this.uuid)
             {
                 AbstractDungeon.player.masterDeck.removeCard(card);
-                break;
+                return true;
             }
         }
+        AbstractDungeon.actionManager.addToBottom(new TalkAction(true, KinomotoSakura.GetMessage(2), 1.0F, 2.0F));
+        return false;
     }
 }

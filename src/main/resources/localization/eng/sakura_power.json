@@ -1,0 +1,250 @@
+{
+  "KSMOD_MagickChargePower": {
+    "NAME": "魔力充能",
+    "DESCRIPTIONS": [
+      "使用 #y库洛牌 或 #y小樱牌 时所产生的充能，充能达到 #b",
+      " 后可发动卡牌的额外效果。"
+    ]
+  },
+  "KSMOD_CreatePower": {
+    "NAME": "创造",
+    "DESCRIPTIONS": [
+      "战斗胜利后，额外获得 #b",
+      " 件随机遗物。"
+    ]
+  },
+  "KSMOD_DarkPower": {
+    "NAME": "黑暗",
+    "DESCRIPTIONS": [
+      "回合结束时，可以选择最多 #b",
+      " 张手牌消耗。消耗数量不为0时，下回合获得1点能量。"
+    ]
+  },
+  "KSMOD_DarkPower_SakuraCard": {
+    "NAME": "黑暗·樱",
+    "DESCRIPTIONS": [
+      "回合结束时，消耗所有手牌，并添加相同数量的随机库洛牌到弃牌堆。"
+    ]
+  },
+  "KSMOD_EarthyPower": {
+    "NAME": "地元素",
+    "DESCRIPTIONS": [
+      "打出 #y地元素牌 时，获得 #b",
+      " 点 #b格挡 。"
+    ]
+  },
+  "KSMOD_EarthyPower_SakuraCard": {
+    "NAME": "地元素·樱",
+    "DESCRIPTIONS": [
+      "回合结束时， #y地元素状态 不会消失。"
+    ]
+  },
+  "KSMOD_WateryPower": {
+    "NAME": "水元素",
+    "DESCRIPTIONS": [
+      "每打出 #b",
+      " 张 #y水元素牌 ，获得 #b1 点能量。",
+      " NL 下一张牌可以获得能量。"
+    ]
+  },
+  "KSMOD_WateryPower_SakuraCard": {
+    "NAME": "水元素·樱",
+    "DESCRIPTIONS": [
+      "回合结束时， #y水元素状态 不会消失。"
+    ]
+  },
+  "KSMOD_FireyPower": {
+    "NAME": "火元素",
+    "DESCRIPTIONS": [
+      "打出 #y火元素牌 时，对全体敌人造成 #b",
+      " 点伤害。"
+    ]
+  },
+  "KSMOD_FireyPower_SakuraCard": {
+    "NAME": "火元素·樱",
+    "DESCRIPTIONS": [
+      "回合结束时， #y火元素状态 不会消失。"
+    ]
+  },
+  "KSMOD_WindyPower": {
+    "NAME": "风元素",
+    "DESCRIPTIONS": [
+      "每打出 #b",
+      " 张 #y风元素牌 ，抽 #b1 张牌。",
+      " NL 下一张牌可以抽排。"
+    ]
+  },
+  "KSMOD_WindyPower_SakuraCard": {
+    "NAME": "风元素·樱",
+    "DESCRIPTIONS": [
+      "回合结束时， #y风元素状态 不会消失。"
+    ]
+  },
+  "KSMOD_FloatPower": {
+    "NAME": "漂浮",
+    "DESCRIPTIONS": [
+      "每抽1张牌获得 #b",
+      " 点 #b格挡 。"
+    ]
+  },
+  "KSMOD_FloatPower_SakuraCard": {
+    "NAME": "漂浮·樱",
+    "DESCRIPTIONS": [
+      "回合开始时，获得 #b",
+      "  层 #y敏捷 。"
+    ]
+  },
+  "KSMOD_FlyPower_SakuraCard": {
+    "NAME": "飞行·樱",
+    "DESCRIPTIONS": [
+      "回合开始时额外抽 #b",
+      " 张牌。"
+    ]
+  },
+  "KSMOD_FreezePower": {
+    "NAME": "冰冻",
+    "DESCRIPTIONS": [
+      "回合开始时，如果目标不是boss或精英怪，这回合无法行动。"
+    ]
+  },
+  "KSMOD_GlowPower_SakuraCard": {
+    "NAME": "荧光·樱",
+    "DESCRIPTIONS": [
+      "回合开始时，获得 #b",
+      " 层魔力充能。"
+    ]
+  },
+  "KSMOD_JumpPower_SakuraCard": {
+    "NAME": "跳跃·樱",
+    "DESCRIPTIONS": [
+      "回合开始时，随机清除 #b",
+      " 个负面状态。"
+    ]
+  },
+  "KSMOD_LightPower": {
+    "NAME": "光明",
+    "DESCRIPTIONS": [
+      "手牌上限+2。抽到 #y虚空 时，不再扣除能量。",
+      "可以打出 虚空 消耗之，并抽1张牌。"
+    ]
+  },
+  "KSMOD_LoopPower": {
+    "NAME": "圈环",
+    "DESCRIPTIONS": [
+      "回合开始时，额外抽 #b",
+      " 张牌，丢弃 #b",
+      " 张牌。"
+    ]
+  },
+  "KSMOD_LoopPower_SakuraCard": {
+    "NAME": "圈环·樱",
+    "DESCRIPTIONS": [
+      "每主动丢弃1张没有丢弃效果的手牌，抽 #b",
+      " 张牌。"
+    ]
+  },
+  "KSMOD_LockPower": {
+    "NAME": "锁定",
+    "DESCRIPTIONS": [
+      " #b",
+      " 回合不触发魔力充能的效果。"
+    ]
+  },
+  "KSMOD_LockPower_SakuraCard": {
+    "NAME": "锁定·樱",
+    "DESCRIPTIONS": [
+      " #b",
+      " 回合触发魔力充能时不消耗充能层数。"
+    ]
+  },
+  "KSMOD_ReturnPower": {
+    "NAME": "回溯",
+    "DESCRIPTIONS": [
+      " #b",
+      " 回合后恢复到回溯之前的状态。"
+    ]
+  },
+  "KSMOD_SilentPower": {
+    "NAME": "寂静",
+    "DESCRIPTIONS": [
+      "下回合将无法打出攻击牌。"
+    ]
+  },
+  "KSMOD_SleepPower": {
+    "NAME": "睡眠",
+    "DESCRIPTIONS": [
+      "沉睡 #b",
+      " 回合。受到伤害时醒来。 #y自然醒来 后恢复所有生命，并获得 #b2 层 虚弱 。"
+    ]
+  },
+  "KSMOD_TimePower": {
+    "NAME": "时停",
+    "DESCRIPTIONS": [
+      " #b",
+      " 回合内无法行动。"
+    ]
+  },
+  "KSMOD_TwinPower": {
+    "NAME": "双生",
+    "DESCRIPTIONS": [
+      "你在每回合打出的第 #b1 张 #y库洛牌 将被打出 #b2 次。",
+      "你在每回合打出的前 #b",
+      " 张 #y库洛牌将被打出 #b2 次。"
+    ]
+  },
+  "KSMOD_TwinPower_SakuraCard": {
+    "NAME": "双生·樱",
+    "DESCRIPTIONS": [
+      "你的所有 库洛牌 都将被额外打出 #b1 次，但其耗能+ #b1 。"
+    ]
+  },
+  "KSMOD_WavePower": {
+    "NAME": "波动",
+    "DESCRIPTIONS": [
+      "使用攻击牌时获得 #b",
+      " 点 #b格挡 。"
+    ]
+  },
+  "KSMOD_BigPower_SakuraCard": {
+    "NAME": "放大",
+    "DESCRIPTIONS": [
+      "造成的伤害增加 #b",
+      "% 。"
+    ]
+  },
+  "KSMOD_LittlePower_SakuraCard": {
+    "NAME": "缩小",
+    "DESCRIPTIONS": [
+      "受到的伤害减少 #b",
+      "% 。"
+    ]
+  },
+  "KSMOD_SweetPower_SakuraCard": {
+    "NAME": "甜味",
+    "DESCRIPTIONS": [
+      "回合开始时，恢复已损失生命的 #b",
+      "% 。"
+    ]
+  },
+  "KSMOD_VoicePower_SakuraCard": {
+    "NAME": "声源",
+    "DESCRIPTIONS": [
+      "回合开始时，添加 #b",
+      " 张 #y声牌 到手中。"
+    ]
+  },
+  "KSMOD_CerberusMarkPower": {
+    "NAME": "可鲁贝洛斯·标记",
+    "DESCRIPTIONS": [
+      "受到的伤害提高 #b",
+      "% ，回合开始时消失。"
+    ]
+  },
+  "KSMOD_MovePower_SakuraCard": {
+    "NAME": "移动·樱",
+    "DESCRIPTIONS": [
+      "回合开始时，添加 #b",
+      " 张 #y空道符 到手牌中。"
+    ]
+  }
+}

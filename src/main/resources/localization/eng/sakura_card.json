@@ -1,6 +1,6 @@
 {
   "ClowCardTheArrow": {
-    "NAME": "矢",
+    "NAME": "The Arrow",
     "DESCRIPTION": "「 火 」选择丢弃任意数量手牌，对1名随机敌人造成丢弃牌数+X次 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
@@ -42,7 +42,7 @@
   },
   "ClowCardTheCreate": {
     "NAME": "创",
-    "DESCRIPTION": "「 地 」「 风 」将此牌从卡组中移除，成功时战斗结束后获得1件随机遗物。若未被使用，每场战斗开始后降低1点使用费用。不可被复制。",
+    "DESCRIPTION": "「 地 」「 风 」战斗结束后获得1件随机遗物，将此牌从卡组中移除。若未被使用，每场战斗开始后降低1点使用费用。不可被复制。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -486,7 +486,7 @@
   },
   "SakuraCardTheCreate": {
     "NAME": "创",
-    "DESCRIPTION": "「 小樱牌 」「 地 」「 风 」并将此卡从卡组中移除，成功时战斗结束后获得1件随机遗物和1件角色专属遗物。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」「 风 」战斗结束后获得1件随机遗物和1件角色专属遗物，并将此卡从卡组中移除。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

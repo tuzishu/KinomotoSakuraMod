@@ -228,7 +228,7 @@ public class KSMOD_ModifyMaxHandCardNumberPatch
             if (AbstractDungeon.player instanceof KinomotoSakura)
             {
                 float duration = KSMOD_Utility.GetFieldByReflect(AbstractGameAction.class, "duration").getFloat(action);
-                AbstractPlayer p = (AbstractPlayer) KSMOD_Utility.GetFieldByReflect(AbstractPlayer.class, "p").get(action);
+                AbstractPlayer p = (AbstractPlayer) KSMOD_Utility.GetFieldByReflect(DrawPileToHandAction.class, "p").get(action);
                 if (duration == Settings.ACTION_DUR_MED)
                 {
                     if (p.drawPile.isEmpty())
@@ -244,7 +244,7 @@ public class KSMOD_ModifyMaxHandCardNumberPatch
                     while (var2.hasNext())
                     {
                         card = (AbstractCard) var2.next();
-                        AbstractCard.CardType typeToCheck = (AbstractCard.CardType) KSMOD_Utility.GetFieldByReflect(AbstractCard.CardType.class, "typeToCheck").get(action);
+                        AbstractCard.CardType typeToCheck = (AbstractCard.CardType) KSMOD_Utility.GetFieldByReflect(DrawPileToHandAction.class, "typeToCheck").get(action);
                         if (card.type == typeToCheck)
                         {
                             tmp.addToRandomSpot(card);
