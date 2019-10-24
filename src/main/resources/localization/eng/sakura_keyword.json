@@ -2,285 +2,277 @@
   "keywords": [
     {
       "NAMES": [
-        "爪牙"
+        "Minion"
       ],
-      "DESCRIPTION": "爪牙会在他们的领导者死亡时放弃战斗。"
+      "DESCRIPTION": "Minions abandon combat without their leader."
     },
     {
       "NAMES": [
-        "缠绕"
+        "Constricted"
       ],
-      "DESCRIPTION": "回合开始时失去生命。"
+      "DESCRIPTION": "At the end of turn, take damage."
     },
     {
       "NAMES": [
-        "缓冲"
+        "Buffer"
       ],
-      "DESCRIPTION": "阻挡1次伤害。"
+      "DESCRIPTION": "Prevent lose HP."
     },
     {
       "NAMES": [
-        "金属化"
+        "Metallicize"
       ],
-      "DESCRIPTION": "回合结束时生成 #y格挡 。"
+      "DESCRIPTION": "At the end of turn, gain #yBlock."
     },
     {
       "NAMES": [
-        "多层护甲"
+        "Plated Armor"
       ],
-      "DESCRIPTION": "回合结束时生成 #y格挡 ，收到未被格挡的伤害时减少层数。"
+      "DESCRIPTION": "At the end of turn, gain Block. Receiving unblocked attack damage reduces #yPlated #yArmor by #b1."
     },
     {
       "NAMES": [
-        "柔韧"
+        "Malleable"
       ],
-      "DESCRIPTION": "受到未被 #y格挡 的伤害时，获得 #y格挡 。"
+      "DESCRIPTION": "Upon receiving attack damage, gains #yBlock."
     },
     {
       "NAMES": [
-        "再生"
+        "Regeneration"
       ],
-      "DESCRIPTION": "回合结束时恢复生命。"
+      "DESCRIPTION": "At the end of turn, heal #yHP, then reduce #yRegeneration by #b1."
     },
     {
       "NAMES": [
-        "临时力量"
+        "Temporary Strength"
       ],
-      "DESCRIPTION": "获得 #r力量 ，回合结束时失去 #r力量 。"
+      "DESCRIPTION": "Gain #rStrength, at the end of turn, lose #rStrength."
     },
     {
       "NAMES": [
-        "残影"
+        "Blur"
       ],
-      "DESCRIPTION": "回合开始时，将不失去 #y格挡 。"
+      "DESCRIPTION": "#yBlock is not removed at the start of your turn."
     },
     {
       "NAMES": [
-        "真实伤害"
+        "Real Damage"
       ],
-      "DESCRIPTION": "无视一切防御手段的伤害。"
+      "DESCRIPTION": "Damage ignore all means of defense."
     },
     {
       "NAMES": [
-        "魔力充能"
+        "Magick Charge"
       ],
-      "DESCRIPTION": "使用 #y库洛牌 或 #y小樱牌 后产生的魔力残留，累积到一定数量后可以触发卡牌的特殊效果。"
+      "DESCRIPTION": "The use of Clow Card or Sakura Card after the production of magic residue, accumulated to a certain number can trigger the special effect of the card card."
     },
     {
       "NAMES": [
-        "充能状态"
+        "Charging State"
       ],
-      "DESCRIPTION": " #y魔力充能 达到一定数量后进入该状态，下一张被打出的非能力、非充能类 #y库洛牌 将附带特殊效果。"
+      "DESCRIPTION": "When the #yMagick #yCharge reaches a certain amount, it will enter this state, and the next non-ability, non-charging Clow card will have a special effect."
     },
     {
       "NAMES": [
-        "库洛牌"
+        "Clow Card"
       ],
-      "DESCRIPTION": "能从各种途径被搜集到的牌。"
+      "DESCRIPTION": "The magic card created by Clow Reader, which can be collected in a variety of ways."
     },
     {
       "NAMES": [
-        "小樱牌"
+        "Sakura Card"
       ],
-      "DESCRIPTION": "通过 #y转牌 ，从 #y库洛牌 转变而来的特殊牌。 NL  #y唯一 ，卡组中只会存在1张同名小樱牌，复制时只会得到同名的 #y库洛牌 。 NL 无法升级，且不触发 #y魔力充能 的效果。 NL 打出时，将添加1张 #y虚空 到抽排堆。"
+      "DESCRIPTION": "A special card converted from the #yClow #yCard through #yThe #yTurn. NL  #yUniqueness, there will be only one #ySakura #yCard of the same name in the master deck, and only the #yClow #yCard of the same name will be obtained when copied. NL Cannot be upgraded and does not trigger #yMagick #yCharge effects. When used, one Void Card will be added to the draw pile."
     },
     {
       "NAMES": [
-        "转牌"
+        "The Turn"
       ],
-      "DESCRIPTION": "将 #y库洛牌 转变为 #y小樱牌 的 #y符咒 。 "
+      "DESCRIPTION": "A #ySpell that convert a #yClow #yCard to a #ySakura #yCard."
     },
     {
       "NAMES": [
-        "符咒"
+        "Spell"
       ],
-      "DESCRIPTION": "不属于 #y库洛牌 的一类特殊卡牌，多为消耗性牌。"
+      "DESCRIPTION": "A special type of card that does not belong to the #yClow #yCard, most of which are consumptive cards."
     },
     {
       "NAMES": [
-        "光元素牌"
+        "Light Element Card"
       ],
-      "DESCRIPTION": "光属性库洛牌，是 #y地属性 和 #y火属性 的上位属性，可以同时触发地、火两属性的效果。"
+      "DESCRIPTION": "Light Element is the upper element of the #yEarthy #yElement and the #yFirey Element, which can trigger the effect of both those at the same time."
     },
     {
       "NAMES": [
-        "暗元素牌"
+        "Dark Element Card"
       ],
-      "DESCRIPTION": "暗属性库洛牌，是 #y水属性 和 #y风属性 的上位属性，可以同时触发水、风两属性的效果。"
+      "DESCRIPTION": "Dark Element is the upper element of the #yWatery #yElement and the #yWindy Element, which can trigger the effect of both those at the same time."
     },
     {
       "NAMES": [
-        "地"
+        "Earthy",
+        "Earthy Element Card."
       ],
-      "DESCRIPTION": "即地元素牌，地属性库洛牌。与 #y地牌 连协成功时可以获得 #y格挡 。"
+      "DESCRIPTION": "Earthy Element Card. NL Gain #bBlocks by using it in the #yEarthy #yElement #yState."
     },
     {
       "NAMES": [
-        "地元素牌"
+        "Earthy Element State"
       ],
-      "DESCRIPTION": "地属性库洛牌。与 #y地牌 连协成功时可以获得 #y格挡 。"
+      "DESCRIPTION": "When using #yEarthy #yElement #yCard, gain 4 #bBlocks."
     },
     {
       "NAMES": [
-        "地元素状态"
+        "Watery",
+        "Watery Element Card"
       ],
-      "DESCRIPTION": "打出 #y地元素牌 时，获得 #b4 点 #b格挡 。"
+      "DESCRIPTION": "Earthy Element Card. NL Gain #bEnergy by using it in the #yWatery #yElement #yState."
     },
     {
       "NAMES": [
-        "水"
+        "Watery Element State"
       ],
-      "DESCRIPTION": "即水元素牌，水属性库洛牌。与 #y水牌 连协成功时可以获得能量。"
+      "DESCRIPTION": "For every #b2 #yWatery #yElement #yCards played, gain #b1 energy."
     },
     {
       "NAMES": [
-        "水元素牌"
+        "Firey",
+        "Firey Element Card"
       ],
-      "DESCRIPTION": "水属性库洛牌。与 #y水牌 连协成功时可以获得能量。"
+      "DESCRIPTION": "Firey Element Card. NL Deal damages to all enemies by using it in the #yWatery #yElement #yState."
     },
     {
       "NAMES": [
-        "水元素状态"
+        "Firey Element State"
       ],
-      "DESCRIPTION": "每打出 #b2 张 #y水元素牌 ，获得 #b1 点能量。"
+      "DESCRIPTION": "When using #yFirey #yElement #yCard, deal 4 damage to all enemies."
     },
     {
       "NAMES": [
-        "火"
+        "Windy",
+        "Windy Element State"
       ],
-      "DESCRIPTION": "即火元素牌，火属性库洛牌。与 #y火牌 连协成功时可以造成伤害。"
+      "DESCRIPTION": "Windy Element Card. NL Draw card by using it in the #yWatery #yElement #yState."
     },
     {
       "NAMES": [
-        "火元素牌"
+        "Windy Element State"
       ],
-      "DESCRIPTION": "火属性库洛牌。与 #y火牌 连协成功时可以造成伤害。"
+      "DESCRIPTION": "For every #b2 #yWatery #yElement #yCards played, draw #b1 card."
     },
     {
       "NAMES": [
-        "火元素状态"
+        "Release"
       ],
-      "DESCRIPTION": "打出 #y火元素牌 时，对全体敌人造成 #b3 点伤害。"
+      "DESCRIPTION": "The released card will become #b0 cost, all effects will be increased by #b25%, and Ethereal and Exhaust will be added to the card."
     },
     {
       "NAMES": [
-        "风"
+        "Turn"
       ],
-      "DESCRIPTION": "即风元素牌，风属性库洛牌。与 #y风牌 连协成功时可以抽牌。"
+      "DESCRIPTION": "Convert the #yClow #yCard to the #ySakura #yCard. NL It can be converted only if the same name #ySakura #yCard does not exist in the master deck. NL After the conversion is successful, the target #yClow #yCard will be removed from the master deck, and the same name #ySakura #yCard will be added."
     },
     {
       "NAMES": [
-        "风元素牌"
+        "The Sword"
       ],
-      "DESCRIPTION": "风属性库洛牌。与 #y风牌 连协成功时可以抽牌。"
+      "DESCRIPTION": "Basical Strike Card."
     },
     {
       "NAMES": [
-        "风元素状态"
+        "The Mirror"
       ],
-      "DESCRIPTION": "每打出 #b2 张 #y风元素牌 ，抽 #b1 张牌。"
+      "DESCRIPTION": "A card that can copy other card from a hand."
     },
     {
       "NAMES": [
-        "封印解除"
+        "The Voice"
       ],
-      "DESCRIPTION": "被 #y封印解除 的卡牌将变为 #b0 费，所有效果都将提高 #b25% ，并添加 #y虚无 和 #y消耗 属性。 NL 提升效果向下取整。"
+      "DESCRIPTION": "A #yClow #yCard that cannot be played. Draw an additional card when the card is drawn, will only trigger the card effect when consumed."
     },
     {
       "NAMES": [
-        "转化"
+        "The Rain"
       ],
-      "DESCRIPTION": "将 #y库洛牌 转化为 #y小樱牌 。只有卡组中不存在 对应 #y小樱牌 时，才能转化。转化成功后，对应 #y库洛牌 从卡组中移除，对应 #y小樱牌 加入卡组。"
+      "DESCRIPTION": "A #yClow #yCard that can reduce the cost of the other cards in the hand."
     },
     {
       "NAMES": [
-        "剑牌"
+        "The Snow"
       ],
-      "DESCRIPTION": "基础打击牌。"
+      "DESCRIPTION": "A #yClow #yCard that can get stronger as the battle goes on."
     },
     {
       "NAMES": [
-        "镜牌"
+        "The Storm"
       ],
-      "DESCRIPTION": "可以复制手牌的牌。"
+      "DESCRIPTION": "A #yClow #yCard that can deal multiple damage to a single target."
     },
     {
       "NAMES": [
-        "声牌"
+        "The Thunder"
       ],
-      "DESCRIPTION": "无法被打出的库洛牌，抽到该牌时额外抽1张牌，被消耗时才会触发卡牌效果。"
+      "DESCRIPTION": "A #yClow #yCard that can deal a lot of damage to random enemies."
     },
     {
       "NAMES": [
-        "雨牌"
+        "The Mist"
       ],
-      "DESCRIPTION": "减少其余手牌耗能的牌。"
+      "DESCRIPTION": "A #yClow #yCard that can disrupt the enemy's defenses."
     },
     {
       "NAMES": [
-        "雪牌"
+        "Sealed Wand"
       ],
-      "DESCRIPTION": "在战斗中逐渐变强的牌。"
+      "DESCRIPTION": "Kill the enemy can get recharge, when the recharge conditions are met, you can convert the #yClow #yCard to the #ySakura #yCard."
     },
     {
       "NAMES": [
-        "岚牌"
+        "Empty Spell"
       ],
-      "DESCRIPTION": "对单体目标造成多次伤害的攻击牌。"
+      "DESCRIPTION": "Consumptive attack card that can change element。"
     },
     {
       "NAMES": [
-        "雷牌"
+        "Huo Shen"
       ],
-      "DESCRIPTION": "可以造成巨量伤害的稀有攻击牌。"
+      "DESCRIPTION": "Consumable attack card of the #yFirey #yElement that deals damage to a single target."
     },
     {
       "NAMES": [
-        "雾牌"
+        "Lei Di"
       ],
-      "DESCRIPTION": "可以瓦解敌人防御手段的牌。"
+      "DESCRIPTION": "Consumable attack card of the #yEarthy #yElement that deals damage to a random target."
     },
     {
       "NAMES": [
-        "封印之杖"
+        "Feng Hua"
       ],
-      "DESCRIPTION": "击杀敌人可以获得充能，当充能满足条件时，可以将 #y库洛牌 转变为 #y小樱牌 。"
+      "DESCRIPTION": "Consumable attack card of the #yWindy #yElement that deals several times damage to a single target."
     },
     {
       "NAMES": [
-        "空道符"
+        "Shui Long"
       ],
-      "DESCRIPTION": "可以改变属性的消耗性攻击卡。"
+      "DESCRIPTION": "Consumable attack card of the #yWatery #yElement that deals damage to all enemies."
     },
     {
       "NAMES": [
-        "火神"
+        "Sleeping"
       ],
-      "DESCRIPTION": "对单体目标造成伤害的 #y火 属性的消耗型攻击卡。"
+      "DESCRIPTION": "The target falls into sleeping and wakes up when hurt. The target will restore all health and gain two layers of weakness when nature wakes up."
     },
     {
       "NAMES": [
-        "雷帝"
+        "Removement"
       ],
-      "DESCRIPTION": "对随机单体目标造成伤害的 #y地 属性的消耗型攻击卡。"
+      "DESCRIPTION": "After use, it will be removed from the master deck."
     },
     {
       "NAMES": [
-        "风华"
+        "Invisible"
       ],
-      "DESCRIPTION": "对单体目标造成多次伤害的 #y风 属性的消耗型攻击卡。"
-    },
-    {
-      "NAMES": [
-        "水龙"
-      ],
-      "DESCRIPTION": "对全体敌人造成伤害的 #y水 属性的消耗型攻击卡。"
-    },
-    {
-      "NAMES": [
-        "沉睡"
-      ],
-      "DESCRIPTION": "目标陷入无法行动状态，受到伤害时醒来。 #y自然醒来 时恢复所有生命，并获得 #b2 层 #y虚弱 。"
+      "DESCRIPTION": "When you draw this card, draw an extra card."
     }
   ]
 }

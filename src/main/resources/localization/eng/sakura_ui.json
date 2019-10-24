@@ -1,61 +1,61 @@
 {
   "KSMOD_ReleaseAction": {
     "TEXT": [
-      "封印解除",
-      "「 小樱牌 」",
-      "「 地 」",
-      "「 水 」",
-      "「 火 」",
-      "「 风 」",
-      " 封印解除 。",
-      " 虚无 。",
-      " 消耗 。"
+      "release",
+      "[ Sakura Card ]",
+      "[ Earthy ]",
+      "[ Watery ]",
+      "[ Firey ]",
+      "[ Windy ]",
+      " Release. ",
+      " ethereal. ",
+      " exhaust. "
     ]
   },
   "KSMOD_ArrowAction": {
     "TEXT": [
-      "作为箭矢"
+      "as arrow"
     ]
   },
   "KSMOD_ChangeAction": {
     "TEXT": [
-      "替换"
+      "replace"
     ]
   },
   "KSMOD_DarkAction": {
     "TEXT": [
-      "消耗"
+      "exhaust"
     ]
   },
   "KSMOD_LockAction": {
     "TEXT": [
-      "消耗"
+      "exhaust"
     ]
   },
   "KSMOD_MirrorAction": {
     "TEXT": [
-      "复制"
+      "copy"
     ]
   },
   "KSMOD_SongAction": {
     "TEXT": [
-      "歌唱"
+      "song"
     ]
   },
   "KSMOD_SongAction_SakuraCard": {
     "TEXT": [
-      "歌唱"
+      "song"
     ]
   },
   "KSMOD_ReturnAction": {
     "TEXT": [
-      "轮回：请选择最多",
-      "张牌返回牌堆"
+      "Return:Please select a maximum of ",
+      " card to return to the draw pile."
     ]
   },
   "KSMOD_TurnAction": {
     "TEXT": [
-      "转变为小樱牌"
+      "convert to Sakura Card"
     ]
   }
 }

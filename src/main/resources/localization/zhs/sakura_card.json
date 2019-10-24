@@ -42,7 +42,7 @@
   },
   "ClowCardTheCreate": {
     "NAME": "创",
-    "DESCRIPTION": "「 地 」「 风 」将此牌从卡组中移除，成功时战斗结束后获得1件随机遗物。若未被使用，每场战斗开始后降低1点使用费用。不可被复制。",
+    "DESCRIPTION": "「 地 」「 风 」 移除 ，战斗结束后获得1件随机遗物。战斗开始后所需费用降低1。战斗中获得的创无法获得遗物。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -373,10 +373,10 @@
   },
   "ClowCardTheVoice": {
     "NAME": "声",
-    "DESCRIPTION": "「 风 」 虚无 。 添加1张此卡的复制品到弃牌堆。抽到这张牌时，额外抽1张牌。被 消耗 时，获得 !B! 点 格挡 。被 歌牌  消耗 时，额外触发 !M! 次 歌牌 的效果。",
+    "DESCRIPTION": "「 风 」 虚无 。 无形 。添加1张此卡的复制品到弃牌堆。被 消耗 时，获得 !B! 点 格挡 。被 歌牌  消耗 时，额外触发 !M! 次 歌牌 的效果。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "「 风 」 虚无 。添加3张此卡的复制品到弃牌堆。抽到这张牌时，额外抽1张牌。被 消耗 时，获得 !B! 点 格挡 。被 歌牌  消耗 时，额外触发 !M! 次 歌牌 的效果。"
+      "「 风 」 虚无 。 无形 。添加3张此卡的复制品到弃牌堆。被 消耗 时，获得 !B! 点 格挡 。被 歌牌  消耗 时，额外触发 !M! 次 歌牌 的效果。"
     ]
   },
   "ClowCardTheWatery": {
@@ -486,7 +486,7 @@
   },
   "SakuraCardTheCreate": {
     "NAME": "创",
-    "DESCRIPTION": "「 小樱牌 」「 地 」「 风 」并将此卡从卡组中移除，成功时战斗结束后获得1件随机遗物和1件角色专属遗物。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」「 风 」 移除 ，战斗结束后获得1件随机遗物和1件角色专属遗物。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -642,7 +642,7 @@
   },
   "SakuraCardTheReturn": {
     "NAME": "回",
-    "DESCRIPTION": "「 小樱牌 」「 水 」 保留 。回复所有生命值，使用后从卡组中移除，并返还上次转变消耗 !M! %的充能。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」 保留 。 移除 。回复所有生命值，并返还上次转变消耗 !M! %的充能。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

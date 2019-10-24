@@ -1,9 +1,9 @@
 {
   "KSMOD_MagickBottle": {
-    "NAME": "魔力瓶",
+    "NAME": "Magick Bottle",
     "DESCRIPTIONS": [
-      "获得 #b",
-      " 层 #y魔力充能 。"
+      "Gain #b",
+      " #yMagick #yCharge."
     ]
   }
 }

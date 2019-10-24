@@ -1,30 +1,30 @@
 {
   "ClowCardTheArrow": {
-    "NAME": "Arrow",
-    "DESCRIPTION": "[ Firey ]选择丢弃任意数量手牌，对1名随机敌人造成丢弃牌数+X次 !D! 点伤害。",
+    "NAME": "矢",
+    "DESCRIPTION": "「 火 」选择丢弃任意数量手牌，对1名随机敌人造成丢弃牌数+X次 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "[ Firey ]选择丢弃任意数量手牌，对1名敌人造成丢弃牌数+X次 !D! 点伤害。"
+      "「 火 」选择丢弃任意数量手牌，对1名敌人造成丢弃牌数+X次 !D! 点伤害。"
     ]
   },
   "ClowCardTheBig": {
-    "NAME": "Big",
-    "DESCRIPTION": "[ Firey ]获得3点 力量 ，失去1点 敏捷 。",
-    "UPGRADE_DESCRIPTION": "[ Firey ]获得3点 力量。",
+    "NAME": "大",
+    "DESCRIPTION": "「 火 」获得3点 力量 ，失去1点 敏捷 。",
+    "UPGRADE_DESCRIPTION": "「 火 」获得3点 力量。",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheBubbles": {
-    "NAME": "Bubbles",
-    "DESCRIPTION": "[ Watery ]造成 !D! 点伤害，随机清除1个增益。",
-    "UPGRADE_DESCRIPTION": "[ Watery ]造成 !D! 点伤害，随机清除1个增益。成功时额外获得 !M! 层 魔力充能 。",
+    "NAME": "泡",
+    "DESCRIPTION": "「 水 」造成 !D! 点伤害，随机清除1个增益。",
+    "UPGRADE_DESCRIPTION": "「 水 」造成 !D! 点伤害，随机清除1个增益。成功时额外获得 !M! 层 魔力充能 。",
     "EXTENDED_DESCRIPTION": [
-      "[ Watery ]造成 !D! 点伤害，清除目标的所有增益。",
-      "[ Watery ]造成 !D! 点伤害，清除目标的所有增益。成功时额外获得 !M! 层 魔力充能 。"
+      "「 水 」造成 !D! 点伤害，清除目标的所有增益。",
+      "「 水 」造成 !D! 点伤害，清除目标的所有增益。成功时额外获得 !M! 层 魔力充能 。"
     ]
   },
   "ClowCardTheChange": {
-    "NAME": "Change",
-    "DESCRIPTION": "[ Earthy ]丢弃最多 1 张手牌，抽丢弃数量+ !M! 张牌。",
+    "NAME": "替",
+    "DESCRIPTION": "「 地 」丢弃最多 1 张手牌，抽丢弃数量+ !M! 张牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外抽",
@@ -32,8 +32,8 @@
     ]
   },
   "ClowCardTheCloud": {
-    "NAME": "Cloud",
-    "DESCRIPTION": "[ Watery ]手牌中每有1张 水元素牌 ，获得 !B! 点 格挡 。",
+    "NAME": "云",
+    "DESCRIPTION": "「 水 」手牌中每有1张 水元素牌 ，获得 !B! 点 格挡 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外获得",
@@ -41,20 +41,20 @@
     ]
   },
   "ClowCardTheCreate": {
-    "NAME": "Create",
-    "DESCRIPTION": "[ Earthy ][ Windy ]战斗结束后获得1件随机遗物，将此牌从卡组中移除。若未被使用，每场战斗开始后降低1点使用费用。不可被复制。",
+    "NAME": "创",
+    "DESCRIPTION": "「 地 」「 风 」 移除 ，战斗结束后获得1件随机遗物。战斗开始后所需费用降低1。战斗中获得的创无法获得遗物。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheDark": {
-    "NAME": "Dark",
-    "DESCRIPTION": "[ Windy ][ Watery ]回合结束时，可以消耗最多 !M! 张手牌。消耗数量不为0时，下回合获得1点能量。",
+    "NAME": "暗",
+    "DESCRIPTION": "「 风 」「 水 」回合结束时，可以消耗最多 !M! 张手牌。消耗数量不为0时，下回合获得1点能量。",
     "UPGRADE_DESCRIPTION": "",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheDash": {
-    "NAME": "Dash",
-    "DESCRIPTION": " [ Windy ]消耗 。抽 !M! 张牌。",
+    "NAME": "驱",
+    "DESCRIPTION": " 「 风 」消耗 。抽 !M! 张牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外抽",
@@ -62,8 +62,8 @@
     ]
   },
   "ClowCardTheDream": {
-    "NAME": "Dream",
-    "DESCRIPTION": " [ Windy ] 消耗 。添加 !M! 张随机 库洛牌 到手中，在本回合耗能变为0。",
+    "NAME": "梦",
+    "DESCRIPTION": " 「 风 」 消耗 。添加 !M! 张随机 库洛牌 到手中，在本回合耗能变为0。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外获得",
@@ -71,22 +71,22 @@
     ]
   },
   "ClowCardTheEarthy": {
-    "NAME": "Earthy",
-    "DESCRIPTION": "[ Earthy ]添加 !M! 张 雷帝 到手中。进入 地元素状态 。",
+    "NAME": "地",
+    "DESCRIPTION": "「 地 」添加 !M! 张 雷帝 到手中。进入 地元素状态 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheErase": {
-    "NAME": "Erase",
-    "DESCRIPTION": "[ Windy ]直接击杀生命值不足25%的非boss、非精英目标。否则造成 !D! 点伤害。",
+    "NAME": "消",
+    "DESCRIPTION": "「 风 」直接击杀生命值不足25%的非boss、非精英目标。否则造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "[ Windy ]直接击杀生命值不足50%的非boss、非精英目标。否则造成 !D! 点伤害。"
+      "「 风 」直接击杀生命值不足50%的非boss、非精英目标。否则造成 !D! 点伤害。"
     ]
   },
   "ClowCardTheFight": {
-    "NAME": "Fight",
-    "DESCRIPTION": "[ Earthy ] 消耗 。 造成 !D! 点伤害，获得1层 魔力充能 ，获得 !M! 层 临时力量 。添加1张复制品到手中。",
+    "NAME": "斗",
+    "DESCRIPTION": "「 地 」 消耗 。 造成 !D! 点伤害，获得1层 魔力充能 ，获得 !M! 层 临时力量 。添加1张复制品到手中。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "获得",
@@ -94,29 +94,29 @@
     ]
   },
   "ClowCardTheFirey": {
-    "NAME": "Firey",
-    "DESCRIPTION": "[ Firey ]添加 !M! 张 火神 到手中。进入 火元素状态 。",
+    "NAME": "火",
+    "DESCRIPTION": "「 火 」添加 !M! 张 火神 到手中。进入 火元素状态 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheFloat": {
-    "NAME": "Float",
-    "DESCRIPTION": "[ Windy ]每抽1张牌获得 !M! 点 格挡 。",
-    "UPGRADE_DESCRIPTION": "[ Windy ] 固有 。每抽1张牌获得 !M! 点 格挡 。",
+    "NAME": "浮",
+    "DESCRIPTION": "「 风 」每抽1张牌获得 !M! 点 格挡 。",
+    "UPGRADE_DESCRIPTION": "「 风 」 固有 。每抽1张牌获得 !M! 点 格挡 。",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheFlower": {
-    "NAME": "Flower",
-    "DESCRIPTION": " [ Earthy ]消耗 。获得 !M! 点能量。",
-    "UPGRADE_DESCRIPTION": "[ Earthy ]获得 !M! 点能量。",
+    "NAME": "花",
+    "DESCRIPTION": " 「 地 」消耗 。获得 !M! 点能量。",
+    "UPGRADE_DESCRIPTION": "「 地 」获得 !M! 点能量。",
     "EXTENDED_DESCRIPTION": [
       "额外获得",
       "点能量。"
     ]
   },
   "ClowCardTheFly": {
-    "NAME": "Fly",
-    "DESCRIPTION": "[ Windy ]获得 !B! 点格挡， 抽 !M! 张牌。",
+    "NAME": "飞",
+    "DESCRIPTION": "「 风 」获得 !B! 点格挡， 抽 !M! 张牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外抽",
@@ -124,38 +124,38 @@
     ]
   },
   "ClowCardTheFreeze": {
-    "NAME": "Freeze",
-    "DESCRIPTION": "[ Watery ]造成 !D! 点伤害，获得 !B! 格挡。",
+    "NAME": "冻",
+    "DESCRIPTION": "「 水 」造成 !D! 点伤害，获得 !B! 格挡。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "目标不是boss或精英时，打断当前动作。"
     ]
   },
   "ClowCardTheGlow": {
-    "NAME": "Glow",
-    "DESCRIPTION": "[ Firey ]抽 !M! 张牌，获得2层 魔力充能 。",
+    "NAME": "灯",
+    "DESCRIPTION": "「 火 」抽 !M! 张牌，获得2层 魔力充能 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheIllusion": {
-    "NAME": "Illusion",
-    "DESCRIPTION": "[ Windy ]获得 !B! 点 格挡 。消耗区每有3张牌，额外获得 !M! 点 格挡 。",
+    "NAME": "幻",
+    "DESCRIPTION": "「 风 」获得 !B! 点 格挡 。消耗区每有3张牌，额外获得 !M! 点 格挡 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "[ Windy ]获得 !B! 点 格挡 。消耗区每有2张牌，额外获得 !M! 点 格挡 。"
+      "「 风 」获得 !B! 点 格挡 。消耗区每有2张牌，额外获得 !M! 点 格挡 。"
     ]
   },
   "ClowCardTheJump": {
-    "NAME": "Jump",
-    "DESCRIPTION": "[ Windy ] 消耗 。获得 !B! 点格挡。随机清除1个负面状态。",
+    "NAME": "跳",
+    "DESCRIPTION": "「 风 」 消耗 。获得 !B! 点格挡。随机清除1个负面状态。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "[ Windy ] 消耗 。获得 !B! 点格挡。清除所有负面状态。"
+      "「 风 」 消耗 。获得 !B! 点格挡。清除所有负面状态。"
     ]
   },
   "ClowCardTheLibra": {
-    "NAME": "Libra",
-    "DESCRIPTION": "[ Firey ]获得 !B! 点 格挡 ，没有 格挡 时消耗 !M! 层 魔力充能 获得双倍效果。",
+    "NAME": "秤",
+    "DESCRIPTION": "「 火 」获得 !B! 点 格挡 ，没有 格挡 时消耗 !M! 层 魔力充能 获得双倍效果。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外获得",
@@ -163,32 +163,32 @@
     ]
   },
   "ClowCardTheLight": {
-    "NAME": "Light",
-    "DESCRIPTION": "[ Earthy ][ Firey ]手牌上限+2。抽到 虚空 时，不再扣除能量。",
-    "UPGRADE_DESCRIPTION": "[ Earthy ][ Firey ]手牌上限+2。抽到 虚空 时，不再扣除能量。可以打出 虚空 消耗之，并抽1张牌。",
+    "NAME": "光",
+    "DESCRIPTION": "「 地 」「 火 」手牌上限+2。抽到 虚空 时，不再扣除能量。",
+    "UPGRADE_DESCRIPTION": "「 地 」「 火 」手牌上限+2。抽到 虚空 时，不再扣除能量。可以打出 虚空 消耗之，并抽1张牌。",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheLittle": {
-    "NAME": "Little",
-    "DESCRIPTION": "[ Watery ]获得3点 敏捷 ，失去1点 力量 。",
-    "UPGRADE_DESCRIPTION": "[ Watery ]获得3点 敏捷。",
+    "NAME": "小",
+    "DESCRIPTION": "「 水 」获得3点 敏捷 ，失去1点 力量 。",
+    "UPGRADE_DESCRIPTION": "「 水 」获得3点 敏捷。",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheLock": {
-    "NAME": "Lock",
-    "DESCRIPTION": "[ Windy ] 消耗 。 消耗最多 !M! 张手牌。每消耗1张获得1层 魔力充能 。消耗手牌不为0时添加1张复制品到弃牌堆。",
+    "NAME": "锁",
+    "DESCRIPTION": "「 风 」 消耗 。 消耗最多 !M! 张手牌。每消耗1张获得1层 魔力充能 。消耗手牌不为0时添加1张复制品到弃牌堆。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheLoop": {
-    "NAME": "Loop",
-    "DESCRIPTION": "[ Earthy ]回合开始时，额外抽 !M! 张牌，丢弃 !M! 张牌。",
+    "NAME": "轮",
+    "DESCRIPTION": "「 地 」回合开始时，额外抽 !M! 张牌，丢弃 !M! 张牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheMaze": {
-    "NAME": "Maze",
-    "DESCRIPTION": "[ Earthy ]获得 !B! 点 格挡 。",
+    "NAME": "迷",
+    "DESCRIPTION": "「 地 」获得 !B! 点 格挡 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外获得",
@@ -196,24 +196,24 @@
     ]
   },
   "ClowCardTheMirror": {
-    "NAME": "Mirror",
-    "DESCRIPTION": "[ Watery ] 虚无 。 消耗 。选择复制1张手牌中的 库洛牌 或 小樱牌 。 小樱牌 复制时会获得对应的 库洛牌 。",
-    "UPGRADE_DESCRIPTION": "[ Watery ] 消耗 。选择复制1张手牌中的 库洛牌 或 小樱牌 。 小樱牌 复制时会获得对应的 库洛牌 。",
+    "NAME": "镜",
+    "DESCRIPTION": "「 水 」 虚无 。 消耗 。选择复制1张手牌中的 库洛牌 或 小樱牌 。 小樱牌 复制时会获得对应的 库洛牌 。",
+    "UPGRADE_DESCRIPTION": "「 水 」 消耗 。选择复制1张手牌中的 库洛牌 或 小樱牌 。 小樱牌 复制时会获得对应的 库洛牌 。",
     "EXTENDED_DESCRIPTION": [
       "额外添加1张复制牌到手中。"
     ]
   },
   "ClowCardTheMist": {
-    "NAME": "Mist",
-    "DESCRIPTION": "[ Earthy ]给与全体敌人 !M! 层 中毒 。",
+    "NAME": "雾",
+    "DESCRIPTION": "「 地 」给与全体敌人 !M! 层 中毒 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "去除所有敌人的所有格挡值、 金属化 、 多层护甲 、 人工制品 、 荆棘 、 缓冲 、 无实体 、 柔韧 、 壁垒 。"
     ]
   },
   "ClowCardTheMove": {
-    "NAME": "Move",
-    "DESCRIPTION": "[ Firey ] 添加 !M! 张 空道符 到手牌中。",
+    "NAME": "移",
+    "DESCRIPTION": "「 火 」 添加 !M! 张 空道符 到手牌中。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外获得",
@@ -221,8 +221,8 @@
     ]
   },
   "ClowCardThePower": {
-    "NAME": "Power",
-    "DESCRIPTION": "[ Firey ]造成 !D! 点伤害。失去 !M! 层 力量 。",
+    "NAME": "力",
+    "DESCRIPTION": "「 火 」造成 !D! 点伤害。失去 !M! 层 力量 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外造成",
@@ -230,22 +230,22 @@
     ]
   },
   "ClowCardTheRain": {
-    "NAME": "Rain",
-    "DESCRIPTION": "[ Watery ] 消耗 。本回合所有手牌的耗能下降1。",
+    "NAME": "雨",
+    "DESCRIPTION": "「 水 」 消耗 。本回合所有手牌的耗能下降1。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "[ Watery ]本回合所有手牌的耗能下降1。"
+      "「 水 」本回合所有手牌的耗能下降1。"
     ]
   },
   "ClowCardTheReturn": {
-    "NAME": "Return",
-    "DESCRIPTION": "[ Watery ]记录当前的状态 !M! 回合后回到当前状态。并将2张 虚空 放入弃牌堆。",
-    "UPGRADE_DESCRIPTION": "[ Watery ] 保留 。记录当前的状态 !M! 回合后回到当前状态。",
+    "NAME": "回",
+    "DESCRIPTION": "「 水 」记录当前的状态 !M! 回合后回到当前状态。并将2张 虚空 放入弃牌堆。",
+    "UPGRADE_DESCRIPTION": "「 水 」 保留 。记录当前的状态 !M! 回合后回到当前状态。",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheSand": {
-    "NAME": "Sand",
-    "DESCRIPTION": "[ Earthy ]造成 !D! 点伤害，给与 !M! 层 中毒 。",
+    "NAME": "沙",
+    "DESCRIPTION": "「 地 」造成 !D! 点伤害，给与 !M! 层 中毒 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外给与",
@@ -253,8 +253,8 @@
     ]
   },
   "ClowCardTheShadow": {
-    "NAME": "Shadow",
-    "DESCRIPTION": "[ Earthy ]获得 !B! 点 格挡 ，获得 !M! 层 残影 。",
+    "NAME": "影",
+    "DESCRIPTION": "「 地 」获得 !B! 点 格挡 ，获得 !M! 层 残影 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外获得",
@@ -262,8 +262,8 @@
     ]
   },
   "ClowCardTheShield": {
-    "NAME": "Shield",
-    "DESCRIPTION": "[ Firey ]Gain !B!  blocks .",
+    "NAME": "盾",
+    "DESCRIPTION": "「 火 」获得 !B! 点 格挡 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外获得",
@@ -271,8 +271,8 @@
     ]
   },
   "ClowCardTheShot": {
-    "NAME": "Shot",
-    "DESCRIPTION": "[ Firey ]造成 !D! 点伤害2次，每次给与 !M! 层 中毒 。",
+    "NAME": "击",
+    "DESCRIPTION": "「 火 」造成 !D! 点伤害2次，每次给与 !M! 层 中毒 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外给与",
@@ -280,24 +280,24 @@
     ]
   },
   "ClowCardTheSilent": {
-    "NAME": "Silent",
-    "DESCRIPTION": "[ Watery ]获得1层 缓冲 ，下回合无法打出攻击牌。",
+    "NAME": "静",
+    "DESCRIPTION": "「 水 」获得1层 缓冲 ，下回合无法打出攻击牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "[ Watery ]获得1层 缓冲 。"
+      "「 水 」获得1层 缓冲 。"
     ]
   },
   "ClowCardTheSleep": {
-    "NAME": "Sleep",
-    "DESCRIPTION": "[ Windy ] 消耗 。使非boss目标 沉睡  !M! 回合。",
+    "NAME": "睡",
+    "DESCRIPTION": "「 风 」 消耗 。使非boss目标 沉睡  !M! 回合。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "[ Windy ] 消耗 。使全体非boss敌人 沉睡  !M! 回合。"
+      "「 风 」 消耗 。使全体非boss敌人 沉睡  !M! 回合。"
     ]
   },
   "ClowCardTheSnow": {
-    "NAME": "Snow",
-    "DESCRIPTION": "[ Watery ]本场战斗每打出过1张 水元素牌 ，对随机敌人造成 !D! 点伤害。",
+    "NAME": "雪",
+    "DESCRIPTION": "「 水 」本场战斗每打出过1张 水元素牌 ，对随机敌人造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "对全体敌人额外造成",
@@ -306,8 +306,8 @@
     ]
   },
   "ClowCardTheSong": {
-    "NAME": "Song",
-    "DESCRIPTION": "[ Windy ]消耗最多X+1张手牌，每消耗1张手牌，对全体敌人造成 !D! 点伤害。",
+    "NAME": "歌",
+    "DESCRIPTION": "「 风 」消耗最多X+1张手牌，每消耗1张手牌，对全体敌人造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外发动",
@@ -315,454 +315,454 @@
     ]
   },
   "ClowCardTheStorm": {
-    "NAME": "Storm",
-    "DESCRIPTION": "[ Windy ]造成 !D! 点伤害5次。将1张 虚空 放入弃牌堆。",
+    "NAME": "岚",
+    "DESCRIPTION": "「 风 」造成 !D! 点伤害5次。将1张 虚空 放入弃牌堆。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "[ Windy ]对全体敌人造成 !D! 点伤害5次。将1张 虚空 放入弃牌堆。"
+      "「 风 」对全体敌人造成 !D! 点伤害5次。将1张 虚空 放入弃牌堆。"
     ]
   },
   "ClowCardTheSweet": {
-    "NAME": "Sweet",
-    "DESCRIPTION": "[ Firey ] 消耗 。回复 !M! 生命。",
+    "NAME": "甘",
+    "DESCRIPTION": "「 火 」 消耗 。回复 !M! 生命。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "[ Firey ] 消耗 。获得 !M! 层 再生 。"
+      "「 火 」 消耗 。获得 !M! 层 再生 。"
     ]
   },
   "ClowCardTheSword": {
-    "NAME": "Sword",
-    "DESCRIPTION": "[ Firey ]Deal !D! damage.",
+    "NAME": "剑",
+    "DESCRIPTION": "「 火 」造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "Deal additional ",
-      " real damage."
+      "额外造成",
+      "点 真实伤害 。"
     ]
   },
   "ClowCardTheThrough": {
-    "NAME": "Through",
-    "DESCRIPTION": "[ Earthy ]对全体敌人造成 !D! 点伤害，并结算一次 中毒 效果。将1张 虚空 放入弃牌堆。",
-    "UPGRADE_DESCRIPTION": "[ Earthy ]对全体敌人造成 !D! 点伤害，加深 中毒  !M! 层，并结算一次 中毒 效果。将1张 虚空 放入弃牌堆。",
+    "NAME": "拔",
+    "DESCRIPTION": "「 地 」对全体敌人造成 !D! 点伤害，并结算一次 中毒 效果。将1张 虚空 放入弃牌堆。",
+    "UPGRADE_DESCRIPTION": "「 地 」对全体敌人造成 !D! 点伤害，加深 中毒  !M! 层，并结算一次 中毒 效果。将1张 虚空 放入弃牌堆。",
     "EXTENDED_DESCRIPTION": [
       "额外造成最大生命",
       "%的伤害。"
     ]
   },
   "ClowCardTheThunder": {
-    "NAME": "Thunder",
-    "DESCRIPTION": "[ Earthy ] 保留 。 充能状态 下才能打出。对随机敌人造成 !D! 点伤害 !M! 次。将1张 虚空 放入弃牌堆。",
+    "NAME": "雷",
+    "DESCRIPTION": "「 地 」 保留 。 充能状态 下才能打出。对随机敌人造成 !D! 点伤害 !M! 次。将1张 虚空 放入弃牌堆。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "魔力充能不足"
     ]
   },
   "ClowCardTheTime": {
-    "NAME": "Time",
-    "DESCRIPTION": "[ Watery ] 消耗 。打断所有敌人当前行动。将2张 虚空 放入弃牌堆。",
-    "UPGRADE_DESCRIPTION": "[ Watery ] 消耗 。打断所有敌人当前行动，并造成 !D! 点伤害。将2张 虚空 放入弃牌堆。",
+    "NAME": "时",
+    "DESCRIPTION": "「 水 」 消耗 。打断所有敌人当前行动。将2张 虚空 放入弃牌堆。",
+    "UPGRADE_DESCRIPTION": "「 水 」 消耗 。打断所有敌人当前行动，并造成 !D! 点伤害。将2张 虚空 放入弃牌堆。",
     "EXTENDED_DESCRIPTION": [
-      "[ Watery ] 消耗 。打断所有敌人当前行动。",
-      "[ Watery ] 消耗 。打断所有敌人当前行动，并造成 !D! 点伤害。。"
+      "「 水 」 消耗 。打断所有敌人当前行动。",
+      "「 水 」 消耗 。打断所有敌人当前行动，并造成 !D! 点伤害。。"
     ]
   },
   "ClowCardTheTwin": {
-    "NAME": "Twin",
-    "DESCRIPTION": "[ Watery ][ Firey ]每回合打出的第1张 库洛牌 会打额外打出1次。",
-    "UPGRADE_DESCRIPTION": "[ Watery ][ Firey ] 保留 。每回合打出的第1张 库洛牌 会额外打出1次。",
+    "NAME": "双",
+    "DESCRIPTION": "「 水 」「 火 」每回合打出的第1张 库洛牌 会打额外打出1次。",
+    "UPGRADE_DESCRIPTION": "「 水 」「 火 」 保留 。每回合打出的第1张 库洛牌 会额外打出1次。",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheVoice": {
-    "NAME": "Voice",
-    "DESCRIPTION": "[ Windy ] 虚无 。 添加1张此卡的复制品到弃牌堆。抽到这张牌时，额外抽1张牌。被 消耗 时，获得 !B! 点 格挡 。被 歌牌  消耗 时，额外触发 !M! 次 歌牌 的效果。",
+    "NAME": "声",
+    "DESCRIPTION": "「 风 」 虚无 。 无形 。添加1张此卡的复制品到弃牌堆。被 消耗 时，获得 !B! 点 格挡 。被 歌牌  消耗 时，额外触发 !M! 次 歌牌 的效果。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "[ Windy ] 虚无 。添加3张此卡的复制品到弃牌堆。抽到这张牌时，额外抽1张牌。被 消耗 时，获得 !B! 点 格挡 。被 歌牌  消耗 时，额外触发 !M! 次 歌牌 的效果。"
+      "「 风 」 虚无 。 无形 。添加3张此卡的复制品到弃牌堆。被 消耗 时，获得 !B! 点 格挡 。被 歌牌  消耗 时，额外触发 !M! 次 歌牌 的效果。"
     ]
   },
   "ClowCardTheWatery": {
-    "NAME": "Watery",
-    "DESCRIPTION": "[ Watery ]添加 !M! 张 水龙 到手中。进入 水元素状态 。",
+    "NAME": "水",
+    "DESCRIPTION": "「 水 」添加 !M! 张 水龙 到手中。进入 水元素状态 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheWave": {
-    "NAME": "Wave",
-    "DESCRIPTION": "[ Watery ]使用攻击牌时获得 !M! 点 格挡 。",
+    "NAME": "波",
+    "DESCRIPTION": "「 水 」使用攻击牌时获得 !M! 点 格挡 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheWindy": {
-    "NAME": "Windy",
-    "DESCRIPTION": "[ Windy ]添加 !M! 张 风华 到手中。进入 风元素状态 。",
+    "NAME": "风",
+    "DESCRIPTION": "「 风 」添加 !M! 张 风华 到手中。进入 风元素状态 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheWood": {
-    "NAME": "Wood",
-    "DESCRIPTION": "[ Earthy ]使目标失去 !M!  力量 1回合，并加深 中毒 25%。",
-    "UPGRADE_DESCRIPTION": "[ Earthy ]使目标失去 !M!  力量 1回合，并将场上所有的 中毒 移动至目标处，并加深 中毒 50%。",
+    "NAME": "树",
+    "DESCRIPTION": "「 地 」使目标失去 !M!  力量 1回合，并加深 中毒 25%。",
+    "UPGRADE_DESCRIPTION": "「 地 」使目标失去 !M!  力量 1回合，并将场上所有的 中毒 移动至目标处，并加深 中毒 50%。",
     "EXTENDED_DESCRIPTION": [
       "额外给与",
       "层 虚弱 。"
     ]
   },
   "SpellCardRelease": {
-    "NAME": "Release",
+    "NAME": "解",
     "DESCRIPTION": "「 符咒 」 封印解除 手牌中的1张 库洛牌 。并给与全体敌人 !M! 层 易伤 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SpellCardSeal": {
-    "NAME": "Seal",
+    "NAME": "封",
     "DESCRIPTION": "「 符咒 」造成 !D! 点伤害。如果击杀了1名不是 爪牙 的敌人，则 封印之杖 额外获得 !M! 点充能。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SpellCardTurn": {
-    "NAME": "Turn",
+    "NAME": "转",
     "DESCRIPTION": "「 符咒 」 保留 。选择1张手牌中的 库洛牌  转化 为 小樱牌 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SpellCardEmptySpell": {
-    "NAME": "Empty Spell",
+    "NAME": "空道符",
     "DESCRIPTION": "「 符咒 」 虚无 。 消耗 。从 火神 、 雷帝 、 风华 、 水龙 四张 符咒 中选择1张加入手牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SpellCardHuoShen": {
-    "NAME": "Huo Shen",
-    "DESCRIPTION": "「 符咒 」[ Firey ] 虚无 ， 消耗 。造成 !D! 点伤害。",
+    "NAME": "火神",
+    "DESCRIPTION": "「 符咒 」「 火 」 虚无 ， 消耗 。造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SpellCardLeiDi": {
-    "NAME": "Lei Di",
-    "DESCRIPTION": "「 符咒 」[ Earthy ] 虚无 ， 消耗 。对随机目标造成 !D! 点伤害。",
+    "NAME": "雷帝",
+    "DESCRIPTION": "「 符咒 」「 地 」 虚无 ， 消耗 。对随机目标造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SpellCardFengHua": {
-    "NAME": "Feng Hua",
-    "DESCRIPTION": "「 符咒 」[ Windy ] 虚无 ， 消耗 。造成 !M! 次 !D! 点伤害。",
+    "NAME": "风华",
+    "DESCRIPTION": "「 符咒 」「 风 」 虚无 ， 消耗 。造成 !M! 次 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SpellCardShuiLong": {
-    "NAME": "Shui Long",
-    "DESCRIPTION": "「 符咒 」[ Watery ] 虚无 ， 消耗 。对全体敌人造成 !D! 点伤害。",
+    "NAME": "水龙",
+    "DESCRIPTION": "「 符咒 」「 水 」 虚无 ， 消耗 。对全体敌人造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheArrow": {
     "NAME": "矢",
-    "DESCRIPTION": "「 小樱牌 」[ Firey ]丢弃抽牌堆所有牌，每丢弃1张不同类型的 库洛牌 或 小樱牌 ，对随机目标造成 !D! 点伤害。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」丢弃抽牌堆所有牌，每丢弃1张不同名的 库洛牌 或 小樱牌 ，对随机目标造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheBig": {
     "NAME": "大",
-    "DESCRIPTION": "「 小樱牌 」[ Firey ]造成的伤害增加33%。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」造成的伤害增加33%。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheBubbles": {
     "NAME": "泡",
-    "DESCRIPTION": "「 小樱牌 」[ Watery ] 保留 。 消耗 。对全体敌人造成 !D! 点伤害，并清除所有增益。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」 保留 。 消耗 。对全体敌人造成 !D! 点伤害，并清除所有增益。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheChange": {
     "NAME": "替",
-    "DESCRIPTION": "「 小樱牌 」[ Earthy ]丢弃所有手牌，并抽 !M! 张牌。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」丢弃所有手牌，并抽 !M! 张牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheCloud": {
     "NAME": "云",
-    "DESCRIPTION": "「 小樱牌 」[ Watery ]获得 !B! 点 格挡 。卡组中每有3张 水元素牌 ，额外获得1次 格挡 。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」获得 !B! 点 格挡 。卡组中每有3张 水元素牌 ，额外获得1次 格挡 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheCreate": {
     "NAME": "创",
-    "DESCRIPTION": "「 小樱牌 」[ Earthy ][ Windy ]战斗结束后获得1件随机遗物和1件角色专属遗物，并将此卡从卡组中移除。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」「 风 」 移除 ，战斗结束后获得1件随机遗物和1件角色专属遗物。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheDark": {
     "NAME": "暗",
-    "DESCRIPTION": "「 小樱牌 」[ Windy ][ Watery ]回合结束时， 消耗 所有手牌，并添加相同数量的升级过的随机 库洛牌 到弃牌堆。",
+    "DESCRIPTION": "「 小樱牌 」「 风 」「 水 」回合结束时， 消耗 所有手牌，并添加相同数量的升级过的随机 库洛牌 到弃牌堆。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheDash": {
     "NAME": "驱",
-    "DESCRIPTION": "「 小樱牌 」[ Windy ] 消耗 。抽牌至手牌上限。",
+    "DESCRIPTION": "「 小樱牌 」「 风 」 消耗 。抽牌至手牌上限。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheDream": {
     "NAME": "梦",
-    "DESCRIPTION": "「 小樱牌 」[ Windy ] 消耗 。将手牌中的 库洛牌 ，在本场战斗中尽可能多地转化为 小樱牌 。",
+    "DESCRIPTION": "「 小樱牌 」「 风 」 消耗 。将手牌中的 库洛牌 ，在本场战斗中尽可能多地转化为 小樱牌 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheEarthy": {
     "NAME": "地",
-    "DESCRIPTION": "「 小樱牌 」[ Earthy ]永久进入 地元素状态 。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」永久进入 地元素状态 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheErase": {
     "NAME": "消",
-    "DESCRIPTION": "「 小樱牌 」[ Earthy ]对非boss、非精英的目标造成伤害，保留1点生命值。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」对非boss、非精英的目标造成伤害，保留1点生命值。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheFight": {
     "NAME": "斗",
-    "DESCRIPTION": "「 小樱牌 」[ Earthy ]造成 !D! 点伤害。获得 !M! 层 力量 。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」造成 !D! 点伤害。获得 !M! 层 力量 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheFirey": {
     "NAME": "火",
-    "DESCRIPTION": "「 小樱牌 」[ Firey ]永久进入 火元素状态 。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」永久进入 火元素状态 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheFloat": {
     "NAME": "浮",
-    "DESCRIPTION": "「 小樱牌 」[ Windy ]回合开始时，获得 !M! 层 敏捷 。",
+    "DESCRIPTION": "「 小樱牌 」「 风 」回合开始时，获得 !M! 层 敏捷 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheFlower": {
     "NAME": "花",
-    "DESCRIPTION": "「 小樱牌 」[ Earthy ] 消耗 。回复能量至上限。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」 消耗 。回复能量至上限。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheFly": {
     "NAME": "飞",
-    "DESCRIPTION": "「 小樱牌 」[ Windy ]回合开始时，抽 !M! 张牌。",
+    "DESCRIPTION": "「 小樱牌 」「 风 」回合开始时，抽 !M! 张牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheFreeze": {
     "NAME": "冻",
-    "DESCRIPTION": "「 小樱牌 」[ Windy ]造成 !D! 点伤害， 获得 !B! 点 格挡 。目标不是boss或精英时，打断其当前的动作。",
+    "DESCRIPTION": "「 小樱牌 」「 风 」造成 !D! 点伤害， 获得 !B! 点 格挡 。目标不是boss或精英时，打断其当前的动作。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheGlow": {
     "NAME": "灯",
-    "DESCRIPTION": "「 小樱牌 」[ Windy ]回合开始时，获得 !M! 层 魔力充能 。",
+    "DESCRIPTION": "「 小樱牌 」「 风 」回合开始时，获得 !M! 层 魔力充能 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheIllusion": {
     "NAME": "幻",
-    "DESCRIPTION": "「 小樱牌 」[ Windy ] 固有 。 消耗 。给与 !M! 层 虚弱 和 !M! 层 易伤 。",
+    "DESCRIPTION": "「 小樱牌 」「 风 」 固有 。 消耗 。给与 !M! 层 虚弱 和 !M! 层 易伤 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheJump": {
     "NAME": "跳",
-    "DESCRIPTION": "「 小樱牌 」[ Windy ]回合开始时，随机清除 !M! 个负面状态。",
+    "DESCRIPTION": "「 小樱牌 」「 风 」回合开始时，随机清除 !M! 个负面状态。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheLibra": {
     "NAME": "秤",
-    "DESCRIPTION": "「 小樱牌 」[ Firey ]消耗所有 魔力充能 ，每消耗 !M! 层获得 !B! 点 格挡 。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」消耗所有 魔力充能 ，每消耗 !M! 层获得 !B! 点 格挡 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheLight": {
     "NAME": "光",
-    "DESCRIPTION": "「 小樱牌 」[ Earthy ][ Firey ] 消耗 手牌、抽牌堆、弃牌堆中的所有状态牌和诅咒牌。每 消耗 1张，恢复1生命，抽1张牌。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」「 火 」 消耗 手牌、抽牌堆、弃牌堆中的所有状态牌和诅咒牌。每 消耗 1张，恢复1生命，抽1张牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheLittle": {
     "NAME": "小",
-    "DESCRIPTION": "「 小樱牌 」[ Watery ]受到的伤害减少33%。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」受到的伤害减少33%。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheLock": {
     "NAME": "锁",
-    "DESCRIPTION": "「 小樱牌 」[ Firey ]本回合触发魔力充能效果时，不消耗充能层数。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」本回合触发魔力充能效果时，不消耗充能层数。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheLoop": {
     "NAME": "轮",
-    "DESCRIPTION": "「 小樱牌 」[ Earthy ]每主动丢弃1张卡，抽 !M! 张牌。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」每主动丢弃1张卡，抽 !M! 张牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheMaze": {
     "NAME": "迷",
-    "DESCRIPTION": "「 小樱牌 」[ Earthy ]获得 !B! 点 格挡  !M! 次。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」获得 !B! 点 格挡  !M! 次。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheMirror": {
     "NAME": "镜",
-    "DESCRIPTION": "「 小樱牌 」[ Earthy ] 消耗 。选择1张手牌中的 库洛牌 或 小樱牌 ，尽可能多地将其复制品加入手中。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」 消耗 。选择1张手牌中的 库洛牌 或 小樱牌 ，尽可能多地将其复制品加入手中。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheMist": {
     "NAME": "雾",
-    "DESCRIPTION": "「 小樱牌 」[ Earthy ]移除其所有格挡值。回合开始时给与全体敌人 !M! 层 中毒 。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」移除其所有格挡值。回合开始时给与全体敌人 !M! 层 中毒 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheMove": {
     "NAME": "移",
-    "DESCRIPTION": "「 小樱牌 」[ Firey ]回合开始时，添加 !M! 张 空道符 到手牌中。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」回合开始时，添加 !M! 张 空道符 到手牌中。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardThePower": {
     "NAME": "力",
-    "DESCRIPTION": "「 小樱牌 」[ Firey ]获得 !M! 层 力量 。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」获得 !M! 层 力量 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheRain": {
     "NAME": "雨",
-    "DESCRIPTION": "「 小樱牌 」[ Watery ] 消耗 。随机 !M! 张手牌的耗能在本场战斗中变为0。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」 消耗 。随机 !M! 张手牌的耗能在本场战斗中变为0。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheReturn": {
     "NAME": "回",
-    "DESCRIPTION": "「 小樱牌 」[ Watery ] 保留 。回复所有生命值，使用后从卡组中移除，并返还上次转变消耗 !M! %的充能。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」 保留 。 移除 。回复所有生命值，并返还上次转变消耗 !M! %的充能。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheSand": {
     "NAME": "沙",
-    "DESCRIPTION": "「 小樱牌 」[ Earthy ]造成 !D! 点伤害，给与 !M! 层 中毒 。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」造成 !D! 点伤害，给与 !M! 层 中毒 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheShadow": {
     "NAME": "影",
-    "DESCRIPTION": "「 小樱牌 」[ Earthy ]获得 !B! 点 格挡 ， !M! 层 无实体 。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」获得 !B! 点 格挡 ， !M! 层 无实体 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheShield": {
     "NAME": "盾",
-    "DESCRIPTION": "「 小樱牌 」[ Firey ]获得 !B! 点 格挡 ，并额外获得当前已损失生命值 !M! %的 格挡 。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」获得 !B! 点 格挡 ，并额外获得当前已损失生命值 !M! %的 格挡 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheShot": {
     "NAME": "击",
-    "DESCRIPTION": "「 小樱牌 」[ Firey ]造成 !D! 点伤害 !M! 次。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」造成 !D! 点伤害 !M! 次。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheSilent": {
     "NAME": "静",
-    "DESCRIPTION": "「 小樱牌 」[ Watery ] 消耗 。 获得 !M! 层 缓冲 。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」 消耗 。 获得 !M! 层 缓冲 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheSleep": {
     "NAME": "睡",
-    "DESCRIPTION": "「 小樱牌 」[ Windy ] 消耗 。使非boss目标 沉睡  !M! 回合。",
+    "DESCRIPTION": "「 小樱牌 」「 风 」 消耗 。使非boss目标 沉睡  !M! 回合。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheSnow": {
     "NAME": "雪",
-    "DESCRIPTION": "「 小樱牌 」[ Watery ]本回合每打出过1张牌，对全体敌人造成 !D! 点伤害。共 !M! 次。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」本回合每打出过1张牌，对全体敌人造成 !D! 点伤害。共 !M! 次。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheSong": {
     "NAME": "歌",
-    "DESCRIPTION": "「 小樱牌 」[ Windy ]选择任意数量的手牌 消耗 ，每消耗1张手牌，对全体敌人造成 !D! 点伤害，并获得 !B! 点格挡。",
+    "DESCRIPTION": "「 小樱牌 」「 风 」选择任意数量的手牌 消耗 ，每消耗1张手牌，对全体敌人造成 !D! 点伤害，并获得 !B! 点格挡。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheStorm": {
     "NAME": "岚",
-    "DESCRIPTION": "「 小樱牌 」[ Windy ]造成 !D! ~ !B! 点随机伤害 !M! 次。",
+    "DESCRIPTION": "「 小樱牌 」「 风 」造成 !D! ~ !B! 点随机伤害 !M! 次。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheSweet": {
     "NAME": "甘",
-    "DESCRIPTION": "「 小樱牌 」[ Firey ]回合开始时，恢复已损失生命的 !M! %。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」回合开始时，恢复已损失生命的 !M! %。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheSword": {
     "NAME": "剑",
-    "DESCRIPTION": "「 小樱牌 」[ Firey ]造成 !D! 点伤害，并额外造成目标当前生命值25%的伤害。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」造成 !D! 点伤害，并额外造成目标当前生命值25%的伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheThrough": {
     "NAME": "拔",
-    "DESCRIPTION": "「 小樱牌 」[ Earthy ]对全体敌人造成 !D! 与10%最大生命值中较大数值的伤害。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」对全体敌人造成 !D! 与10%最大生命值中较大数值的伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheThunder": {
     "NAME": "雷",
-    "DESCRIPTION": "「 小樱牌 」[ Earthy ]获得2X层 魔力充能 ，并消耗所有 魔力充能 ，每消耗 !M! 层对随机敌人造成 !D! 点伤害。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」获得2X层 魔力充能 ，并消耗所有 魔力充能 ，每消耗 !M! 层对随机敌人造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheTime": {
     "NAME": "时",
-    "DESCRIPTION": "「 小樱牌 」[ Watery ] 固有 。 消耗 。对全体敌人造成 !D! 点伤害。并打断敌人的行动 !M! 回合。将2张 虚空 放入弃牌堆。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」 固有 。 消耗 。对全体敌人造成 !D! 点伤害。并打断敌人的行动 !M! 回合。将2张 虚空 放入弃牌堆。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheTwin": {
     "NAME": "双",
-    "DESCRIPTION": "「 小樱牌 」[ Firey ][ Watery ]你的所有 库洛牌 都将被额外打出1次，但其耗能+1。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」「 水 」你的所有 库洛牌 都将被额外打出1次，但其耗能+1。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheVoice": {
     "NAME": "声",
-    "DESCRIPTION": "「 小樱牌 」[ Windy ]回合开始时，添加 !M! 张 声牌 到手牌。",
+    "DESCRIPTION": "「 小樱牌 」「 风 」回合开始时，添加 !M! 张 声牌 到手牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheWatery": {
     "NAME": "水",
-    "DESCRIPTION": "「 小樱牌 」[ Watery ]永久进入 水元素状态 。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」永久进入 水元素状态 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheWave": {
     "NAME": "波",
-    "DESCRIPTION": "「 小樱牌 」[ Watery ] 消耗 。同时进入四种元素状态。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」 消耗 。同时进入四种元素状态。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheWindy": {
     "NAME": "风",
-    "DESCRIPTION": "「 小樱牌 」[ Windy ]永久进入 风元素状态 。",
+    "DESCRIPTION": "「 小樱牌 」「 风 」永久进入 风元素状态 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheWood": {
     "NAME": "树",
-    "DESCRIPTION": "「 小樱牌 」[ Earthy ]使目标失去 !M! 层 力量 。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」使目标失去 !M! 层 力量 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   }

@@ -79,10 +79,6 @@ public class ClowCardTheCreate extends KSMOD_AbstractMagicCard
     @Override
     public AbstractCard makeCopy()
     {
-        if (KSMOD_Utility.IsReallyCopyingCard() && !KSMOD_Utility.IsCopyingCardFromRewardAndEvent())
-        {
-            return new Dazed();
-        }
         return new ClowCardTheCreate(this.timesUpgraded);
     }
 
