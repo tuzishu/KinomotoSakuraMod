@@ -3,13 +3,10 @@ package KinomotoSakuraMod.Cards.SakuraCard;
 import KinomotoSakuraMod.Actions.KSMOD_ArrowAttackAction;
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheArrow;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
-import KinomotoSakuraMod.KSMOD;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
-import com.megacrit.cardcrawl.actions.common.AttackDamageRandomEnemyAction;
 import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -17,6 +14,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import java.util.ArrayList;
 
 public class SakuraCardTheArrow extends KSMOD_AbstractMagicCard
 {
@@ -69,7 +68,22 @@ public class SakuraCardTheArrow extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        int count = player.drawPile.size();
+        ArrayList<String> cardIdList = new ArrayList<>();
+        for (AbstractCard card : player.drawPile.group)
+        {
+            if (!KSMOD_Utility.IsStringListContains(cardIdList, card.cardID))
+            {
+                if (card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR)
+                {
+                    cardIdList.add(cardID.replaceAll("ClowCard", ""));
+                }
+                else if (card.color == KSMOD_CustomCardColor.SAKURACARD_COLOR)
+                {
+                    cardIdList.add(cardID.replaceAll("SakuraCard", ""));
+                }
+            }
+        }
+        int count = cardIdList.size();
         if (!player.drawPile.isEmpty())
         {
             AbstractDungeon.actionManager.addToBottom(new DiscardSpecificCardAction(player.drawPile.getTopCard()));

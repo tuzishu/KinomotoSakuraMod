@@ -1,18 +1,15 @@
 package KinomotoSakuraMod.Actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-import com.megacrit.cardcrawl.vfx.combat.ThrowDaggerEffect;
 
 public class KSMOD_ArrowAction extends AbstractGameAction
 {
@@ -61,6 +58,7 @@ public class KSMOD_ArrowAction extends AbstractGameAction
             else if (this.player.hand.isEmpty())
             {
                 int count = EnergyPanel.getCurrentEnergy();
+                count += AbstractDungeon.player.hasRelic(ChemicalX.ID) ? ChemicalX.BOOST : 0;
                 this.player.energy.use(EnergyPanel.totalCount);
                 AbstractDungeon.actionManager.addToBottom(new KSMOD_ArrowAttackAction(this.monster, this.damage, count));
                 this.isDone = true;
@@ -83,6 +81,7 @@ public class KSMOD_ArrowAction extends AbstractGameAction
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
             AbstractDungeon.handCardSelectScreen.selectedCards.group.clear();
             count += EnergyPanel.getCurrentEnergy();
+            count += AbstractDungeon.player.hasRelic(ChemicalX.ID) ? ChemicalX.BOOST : 0;
             this.player.energy.use(EnergyPanel.totalCount);
             AbstractDungeon.actionManager.addToBottom(new KSMOD_ArrowAttackAction(this.monster, this.damage, count));
         }

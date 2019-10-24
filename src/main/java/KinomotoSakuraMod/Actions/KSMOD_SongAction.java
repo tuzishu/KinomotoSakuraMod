@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
 
@@ -64,7 +65,7 @@ public class KSMOD_SongAction extends AbstractGameAction
                 this.isDone = true;
                 return;
             }
-            AbstractDungeon.handCardSelectScreen.open(TEXT[0], EnergyPanel.getCurrentEnergy() + 1, true, true);
+            AbstractDungeon.handCardSelectScreen.open(TEXT[0], EnergyPanel.getCurrentEnergy() + 1 + (this.player.hasRelic(ChemicalX.ID) ? 2 : 0), true, true);
             tickDuration();
             return;
         }
