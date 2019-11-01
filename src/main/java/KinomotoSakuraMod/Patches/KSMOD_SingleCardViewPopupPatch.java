@@ -20,6 +20,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.Hitbox;
+import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.screens.SingleCardViewPopup;
 
@@ -251,6 +252,133 @@ public class KSMOD_SingleCardViewPopupPatch
         }
     }
 
+
+    @SpirePatch(clz = SingleCardViewPopup.class, method = "renderDescription", paramtypez = {SpriteBatch.class})
+    public static class renderDescription
+    {
+        public static SpireReturn<Object> Prefix(SingleCardViewPopup view, SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException
+        {
+            AbstractCard card = (AbstractCard) KSMOD_Utility.GetFieldByReflect(SingleCardViewPopup.class, "card").get(view);
+            if (IsKSCard(card))
+            {
+                if (!card.isLocked && card.isSeen)
+                {
+                    float current_x = (float) KSMOD_Utility.GetFieldByReflect(SingleCardViewPopup.class, "current_x").get(view);
+                    float current_y = (float) KSMOD_Utility.GetFieldByReflect(SingleCardViewPopup.class, "current_y").get(view);
+                    float card_energy_w = (float) KSMOD_Utility.GetFieldByReflect(SingleCardViewPopup.class, "card_energy_w").get(view);
+                    float drawScale = (float) KSMOD_Utility.GetFieldByReflect(SingleCardViewPopup.class, "drawScale").get(view);
+                    Method renderSmallEnergy = KSMOD_Utility.GetMethodByReflect(SingleCardViewPopup.class, "renderSmallEnergy", SpriteBatch.class, TextureAtlas.AtlasRegion.class, float.class, float.class);
+
+                    BitmapFont font = FontHelper.SCP_cardDescFont;
+                    float draw_y = DESC_Y;
+                    float spacing = 1.53F * -font.getCapHeight() / Settings.scale / drawScale;
+                    GlyphLayout gl = new GlyphLayout();
+                    for (int i = 0; i < card.description.size(); ++i)
+                    {
+                        float start_x = DESC_X;
+                        String[] var8 = card.description.get(i).getCachedTokenizedText();
+                        int var9 = var8.length;
+
+                        for (int var10 = 0; var10 < var9; ++var10)
+                        {
+                            String tmp = var8[var10];
+                            if (tmp.charAt(0) == '*')
+                            {
+                                tmp = tmp.substring(1);
+                                String punctuation = "";
+                                if (tmp.length() > 1 && !Character.isLetter(tmp.charAt(tmp.length() - 2)))
+                                {
+                                    punctuation = punctuation + tmp.charAt(tmp.length() - 2);
+                                    tmp = tmp.substring(0, tmp.length() - 2);
+                                    punctuation = punctuation + ' ';
+                                }
+
+                                gl.setText(font, tmp);
+                                FontHelper.renderRotatedText(sb, font, tmp, current_x, current_y, start_x - current_x + gl.width / 2.0F, (float) i * 1.53F * -font.getCapHeight() + draw_y - current_y + -12.0F, 0.0F, true, Settings.GOLD_COLOR.cpy());
+                                start_x = (float) Math.round(start_x + gl.width);
+                                gl.setText(font, punctuation);
+                                FontHelper.renderRotatedText(sb, font, punctuation, current_x, current_y, start_x - current_x + gl.width / 2.0F, (float) i * 1.53F * -font.getCapHeight() + draw_y - current_y + -12.0F, 0.0F, true, Settings.CREAM_COLOR.cpy());
+                                gl.setText(font, punctuation);
+                                start_x += gl.width;
+                            }
+                            else if (tmp.charAt(0) == '!')
+                            {
+                                Method renderDynamicVariable = KSMOD_Utility.GetMethodByReflect(SingleCardViewPopup.class, "renderDynamicVariable", char.class, float.class, float.class, int.class, BitmapFont.class, SpriteBatch.class, Character.class);
+                                if (tmp.length() == 4)
+                                {
+                                    start_x += (float) renderDynamicVariable.invoke(view, tmp.charAt(1), start_x, draw_y, i, font, sb, (Character) null);
+                                }
+                                else if (tmp.length() == 5)
+                                {
+                                    start_x += (float) renderDynamicVariable.invoke(view, tmp.charAt(1), start_x, draw_y, i, font, sb, tmp.charAt(3));
+                                }
+                            }
+                            else if (tmp.equals("[R] "))
+                            {
+                                gl.width = card_energy_w * drawScale;
+                                renderSmallEnergy.invoke(view, sb, AbstractCard.orb_red, (start_x - current_x) / Settings.scale / drawScale, -87.0F - (((float) card.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
+                                start_x += gl.width;
+                            }
+                            else if (tmp.equals("[R]. "))
+                            {
+                                gl.width = card_energy_w * drawScale / Settings.scale;
+                                renderSmallEnergy.invoke(view, sb, AbstractCard.orb_red, (start_x - current_x) / Settings.scale / drawScale, -87.0F - (((float) card.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
+                                FontHelper.renderRotatedText(sb, font, LocalizedStrings.PERIOD, current_x, current_y, start_x - current_x + card_energy_w * drawScale, (float) i * 1.53F * -font.getCapHeight() + draw_y - current_y + -12.0F, 0.0F, true, Settings.CREAM_COLOR);
+                                start_x += gl.width;
+                                gl.setText(font, LocalizedStrings.PERIOD);
+                                start_x += gl.width;
+                            }
+                            else if (tmp.equals("[G] "))
+                            {
+                                gl.width = card_energy_w * drawScale;
+                                renderSmallEnergy.invoke(view, sb, AbstractCard.orb_green, (start_x - current_x) / Settings.scale / drawScale, -87.0F - (((float) card.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
+                                start_x += gl.width;
+                            }
+                            else if (tmp.equals("[G]. "))
+                            {
+                                gl.width = card_energy_w * drawScale;
+                                renderSmallEnergy.invoke(view, sb, AbstractCard.orb_green, (start_x - current_x) / Settings.scale / drawScale, -87.0F - (((float) card.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
+                                FontHelper.renderRotatedText(sb, font, LocalizedStrings.PERIOD, current_x, current_y, start_x - current_x + card_energy_w * drawScale, (float) i * 1.53F * -font.getCapHeight() + draw_y - current_y + -12.0F, 0.0F, true, Settings.CREAM_COLOR);
+                                start_x += gl.width;
+                            }
+                            else if (tmp.equals("[B] "))
+                            {
+                                gl.width = card_energy_w * drawScale;
+                                renderSmallEnergy.invoke(view, sb, AbstractCard.orb_blue, (start_x - current_x) / Settings.scale / drawScale, -87.0F - (((float) card.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
+                                start_x += gl.width;
+                            }
+                            else if (tmp.equals("[B]. "))
+                            {
+                                gl.width = card_energy_w * drawScale;
+                                renderSmallEnergy.invoke(view, sb, AbstractCard.orb_blue, (start_x - current_x) / Settings.scale / drawScale, -87.0F - (((float) card.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
+                                FontHelper.renderRotatedText(sb, font, LocalizedStrings.PERIOD, current_x, current_y, start_x - current_x + card_energy_w * drawScale, (float) i * 1.53F * -font.getCapHeight() + draw_y - current_y + -12.0F, 0.0F, true, Settings.CREAM_COLOR);
+                                start_x += gl.width;
+                            }
+                            else
+                            {
+                                gl.setText(font, tmp);
+                                FontHelper.renderRotatedText(sb, font, tmp, current_x, current_y, start_x - current_x + gl.width / 2.0F, (float) i * 1.53F * -font.getCapHeight() + draw_y - current_y + -12.0F, 0.0F, true, Settings.CREAM_COLOR);
+                                start_x += gl.width;
+                            }
+                        }
+                    }
+
+                    font.getData().setScale(1.0F);
+                }
+                else
+                {
+                    FontHelper.renderFontCentered(sb, FontHelper.largeCardFont, "? ? ?", (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F - 195.0F * Settings.scale, Settings.CREAM_COLOR);
+                }
+
+                return SpireReturn.Return(null);
+            }
+            else
+            {
+                return SpireReturn.Continue();
+            }
+        }
+    }
+
     @SpirePatch(clz = SingleCardViewPopup.class, method = "renderDescriptionCN", paramtypez = {SpriteBatch.class})
     public static class renderDescriptionCN
     {
@@ -261,9 +389,10 @@ public class KSMOD_SingleCardViewPopupPatch
             {
                 if (!card.isLocked && card.isSeen)
                 {
+                    float drawScale = (float) KSMOD_Utility.GetFieldByReflect(SingleCardViewPopup.class, "drawScale").get(view);
                     BitmapFont font = FontHelper.SCP_cardDescFont;
                     float draw_y = DESC_Y;
-                    float spacing = 1.53F * -font.getCapHeight() / Settings.scale / card.drawScale;
+                    float spacing = 1.53F * -font.getCapHeight() / Settings.scale / drawScale;
                     GlyphLayout gl = new GlyphLayout();
                     for (int i = 0; i < card.description.size(); ++i)
                     {
@@ -361,20 +490,20 @@ public class KSMOD_SingleCardViewPopupPatch
                             }
                             else if (tmp.equals("[R]"))
                             {
-                                gl.width = card_energy_w * card.drawScale;
-                                renderSmallEnergy.invoke(view, sb, AbstractCard.orb_red, (start_x - card.current_x) / Settings.scale / card.drawScale, -87.0F - ((card.description.size() - 4.0F) * 0.5F - i + 1.0F) * spacing);
+                                gl.width = card_energy_w * drawScale;
+                                renderSmallEnergy.invoke(view, sb, AbstractCard.orb_red, (start_x - card.current_x) / Settings.scale / drawScale, -87.0F - ((card.description.size() - 4.0F) * 0.5F - i + 1.0F) * spacing);
                                 start_x += gl.width;
                             }
                             else if (tmp.equals("[G]"))
                             {
-                                gl.width = card_energy_w * card.drawScale;
-                                renderSmallEnergy.invoke(view, sb, AbstractCard.orb_green, (start_x - card.current_x) / Settings.scale / card.drawScale, -87.0F - ((card.description.size() - 4.0F) * 0.5F - i + 1.0F) * spacing);
+                                gl.width = card_energy_w * drawScale;
+                                renderSmallEnergy.invoke(view, sb, AbstractCard.orb_green, (start_x - card.current_x) / Settings.scale / drawScale, -87.0F - ((card.description.size() - 4.0F) * 0.5F - i + 1.0F) * spacing);
                                 start_x += gl.width;
                             }
                             else if (tmp.equals("[B]"))
                             {
-                                gl.width = card_energy_w * card.drawScale;
-                                renderSmallEnergy.invoke(view, sb, AbstractCard.orb_blue, (start_x - card.current_x) / Settings.scale / card.drawScale, -87.0F - ((card.description.size() - 4.0F) * 0.5F - i + 1.0F) * spacing);
+                                gl.width = card_energy_w * drawScale;
+                                renderSmallEnergy.invoke(view, sb, AbstractCard.orb_blue, (start_x - card.current_x) / Settings.scale / drawScale, -87.0F - ((card.description.size() - 4.0F) * 0.5F - i + 1.0F) * spacing);
                                 start_x += gl.width;
                             }
                             else

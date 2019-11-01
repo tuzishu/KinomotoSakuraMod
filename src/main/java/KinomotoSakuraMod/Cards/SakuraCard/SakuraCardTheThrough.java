@@ -29,6 +29,7 @@ public class SakuraCardTheThrough extends KSMOD_AbstractMagicCard
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
     private static final int BASE_DAMAGE = 18;
+    private static final float PERCENTAGE_DAMAGE = 0.1F;
     private static final float CLEAVE_DURATION = 0.1F;
     private static final String SOUND_KEY = "ATTACK_DAGGER_";
 
@@ -81,7 +82,7 @@ public class SakuraCardTheThrough extends KSMOD_AbstractMagicCard
         int[] damageList = new int[size];
         for (int i = 0; i < size; i++)
         {
-            damageList[i] = (int) (AbstractDungeon.getMonsters().monsters.get(i).maxHealth * this.damage * 0.01F);
+            damageList[i] = (int) (AbstractDungeon.getMonsters().monsters.get(i).maxHealth * PERCENTAGE_DAMAGE);
             damageList[i] = damageList[i] < 10 ? 10 : damageList[i];
         }
         return damageList;

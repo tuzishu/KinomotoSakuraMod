@@ -1,6 +1,6 @@
 {
   "KSMOD_SealedBook": {
-    "NAME": "封印之书",
+    "NAME": "Sealed Book",
     "FLAVOR": "封印着具有强大魔力卡片的魔法书，封面和封底分别是封印兽可鲁贝洛斯和审判者月。",
     "DESCRIPTIONS": [
       " #y1. 每使用 #y库洛牌 或 #y小樱牌 时获得1层 #b魔力充能 ，能力牌额外获得1层。 NL  #y2. 当充能大于 #b",

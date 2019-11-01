@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 public class SakuraCardTheFlower extends KSMOD_AbstractMagicCard
 {
@@ -24,6 +23,7 @@ public class SakuraCardTheFlower extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SAKURACARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
+    private static final int BASE_MAGIC_NUMBER = 3;
 
     static
     {
@@ -36,6 +36,7 @@ public class SakuraCardTheFlower extends KSMOD_AbstractMagicCard
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(KSMOD_CustomTag.KSMOD_EARTHY_CARD);
+        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
         this.exhaust = true;
     }
 
@@ -63,10 +64,6 @@ public class SakuraCardTheFlower extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        int count = AbstractDungeon.player.energy.energy - EnergyPanel.getCurrentEnergy();
-        if (count > 0)
-        {
-            AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(count));
-        }
+        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(this.magicNumber));
     }
 }

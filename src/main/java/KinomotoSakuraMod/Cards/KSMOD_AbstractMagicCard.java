@@ -65,9 +65,9 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
     private static final float HB_W = IMG_WIDTH;
     private static final float HB_H = IMG_HEIGHT;
     private static final float TITLE_HEIGHT_TO_CENTER = 222.0F;
-    private static final float TITLE_HEIGHT_SAKURA_TO_CENTER = 218.0F;//调整中
+    private static final float TITLE_HEIGHT_SAKURA_TO_CENTER = 218.0F;
     private static final float TITLE_BOTTOM_HEIGHT_TO_CENTER = -205.0F;
-    private static final float TITLE_BOTTOM_HEIGHT_SAKURA_TO_CENTER = -197.0F;//调整中
+    private static final float TITLE_BOTTOM_HEIGHT_SAKURA_TO_CENTER = -197.0F;
     private static final float PORTRAIT_WIDTH = 151F;
     private static final float PORTRAIT_HEIGHT = 393F;
     private static final float PORTRAIT_ORIGIN_X = 75F;
@@ -390,32 +390,32 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
 
     public boolean hasSameSakuraCard()
     {
-        if (AbstractDungeon.player != null && AbstractDungeon.player instanceof KinomotoSakura)
+        if (AbstractDungeon.player instanceof KinomotoSakura)
         {
             for (AbstractCard card : AbstractDungeon.player.drawPile.group)
             {
-                if (card.cardID == this.cardID)
+                if (card.cardID.equals(this.cardID))
                 {
                     return true;
                 }
             }
             for (AbstractCard card : AbstractDungeon.player.hand.group)
             {
-                if (card.cardID == this.cardID)
+                if (card.cardID.equals(this.cardID))
                 {
                     return true;
                 }
             }
             for (AbstractCard card : AbstractDungeon.player.discardPile.group)
             {
-                if (card.cardID == this.cardID)
+                if (card.cardID.equals(this.cardID))
                 {
                     return true;
                 }
             }
             for (AbstractCard card : AbstractDungeon.player.exhaustPile.group)
             {
-                if (card.cardID == this.cardID)
+                if (card.cardID.equals(this.cardID))
                 {
                     return true;
                 }
@@ -599,6 +599,134 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
     }
 
     @SpireOverride
+    public void renderDescription(SpriteBatch sb) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException
+    {
+        if (AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this) && !this.isHandSelectScreenOpened && AbstractDungeon.player.hoveredCard != this)
+        {
+            return;
+        }
+        if (this.isSeen && !this.isLocked)
+        {
+            renderMask(sb);
+            Method getDescFont = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "getDescFont");
+            BitmapFont font = (BitmapFont) getDescFont.invoke(this);
+            float draw_y = this.current_y - IMG_HEIGHT * this.drawScale / 2.0F + IMG_HEIGHT * DESC_OFFSET_TO_BOTTOM_Y * this.drawScale;
+            draw_y += (float) this.description.size() * font.getCapHeight() * 0.775F - font.getCapHeight() * 0.375F;
+            float spacing = 1.45F * -font.getCapHeight() / Settings.scale / this.drawScale;
+
+            for (int i = 0; i < this.description.size(); ++i)
+            {
+                float start_x;
+                if (Settings.leftAlignCards)
+                {
+                    start_x = this.current_x - IMG_WIDTH * DESC_SCALE_RATE_X * this.drawScale / 2.0F + 2.0F * Settings.scale;
+                }
+                else
+                {
+                    start_x = this.current_x - this.description.get(i).width * this.drawScale / 2.0F - 7.0F * Settings.scale;
+                }
+
+                String[] var7 = ((DescriptionLine) this.description.get(i)).getCachedTokenizedText();
+                int var8 = var7.length;
+                GlyphLayout gl = (GlyphLayout) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "gl").get(this);
+                for (int var9 = 0; var9 < var8; ++var9)
+                {
+                    String tmp = var7[var9];
+                    Color textColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
+                    if (tmp.length() > 0 && tmp.charAt(0) == '*')
+                    {
+                        tmp = tmp.substring(1);
+                        String punctuation = "";
+                        if (tmp.length() > 1 && !Character.isLetter(tmp.charAt(tmp.length() - 2)))
+                        {
+                            punctuation = punctuation + tmp.charAt(tmp.length() - 2);
+                            tmp = tmp.substring(0, tmp.length() - 2);
+                            punctuation = punctuation + ' ';
+                        }
+
+                        gl.setText(font, tmp);
+                        Color goldColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "goldColor").get(this);
+                        FontHelper.renderRotatedText(sb, font, tmp, this.current_x, this.current_y, start_x - this.current_x + gl.width / 2.0F, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, goldColor);
+                        start_x = (float) Math.round(start_x + gl.width);
+                        gl.setText(font, punctuation);
+                        FontHelper.renderRotatedText(sb, font, punctuation, this.current_x, this.current_y, start_x - this.current_x + gl.width / 2.0F, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, textColor);
+                        gl.setText(font, punctuation);
+                        start_x += gl.width;
+                    }
+                    else if (tmp.length() > 0 && tmp.charAt(0) == '!')
+                    {
+                        Method renderDynamicVariable = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "renderDynamicVariable", char.class, float.class, float.class, int.class, BitmapFont.class, SpriteBatch.class, Character.class);
+                        if (tmp.length() == 4)
+                        {
+                            start_x += (float) renderDynamicVariable.invoke(this, tmp.charAt(1), start_x, draw_y, i, font, sb, (Character) null);
+                        }
+                        else if (tmp.length() == 5)
+                        {
+                            start_x += (float) renderDynamicVariable.invoke(this, tmp.charAt(1), start_x, draw_y, i, font, sb, tmp.charAt(3));
+                        }
+                    }
+                    else if (tmp.equals("[R] "))
+                    {
+                        gl.width = CARD_ENERGY_IMG_WIDTH * this.drawScale;
+                        this.renderSmallEnergy(sb, orb_red, (start_x - this.current_x) / Settings.scale / this.drawScale, -100.0F - (((float) this.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
+                        start_x += gl.width;
+                    }
+                    else if (tmp.equals("[R]. "))
+                    {
+                        gl.width = CARD_ENERGY_IMG_WIDTH * this.drawScale / Settings.scale;
+                        this.renderSmallEnergy(sb, orb_red, (start_x - this.current_x) / Settings.scale / this.drawScale, -100.0F - (((float) this.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
+                        FontHelper.renderRotatedText(sb, font, LocalizedStrings.PERIOD, this.current_x, this.current_y, start_x - this.current_x + CARD_ENERGY_IMG_WIDTH * this.drawScale, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, textColor);
+                        start_x += gl.width;
+                        gl.setText(font, LocalizedStrings.PERIOD);
+                        start_x += gl.width;
+                    }
+                    else if (tmp.equals("[G] "))
+                    {
+                        gl.width = CARD_ENERGY_IMG_WIDTH * this.drawScale;
+                        this.renderSmallEnergy(sb, orb_green, (start_x - this.current_x) / Settings.scale / this.drawScale, -100.0F - (((float) this.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
+                        start_x += gl.width;
+                    }
+                    else if (tmp.equals("[G]. "))
+                    {
+                        gl.width = CARD_ENERGY_IMG_WIDTH * this.drawScale;
+                        this.renderSmallEnergy(sb, orb_green, (start_x - this.current_x) / Settings.scale / this.drawScale, -100.0F - (((float) this.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
+                        FontHelper.renderRotatedText(sb, font, LocalizedStrings.PERIOD, this.current_x, this.current_y, start_x - this.current_x + CARD_ENERGY_IMG_WIDTH * this.drawScale, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, textColor);
+                        start_x += gl.width;
+                    }
+                    else if (tmp.equals("[B] "))
+                    {
+                        gl.width = CARD_ENERGY_IMG_WIDTH * this.drawScale;
+                        this.renderSmallEnergy(sb, orb_blue, (start_x - this.current_x) / Settings.scale / this.drawScale, -100.0F - (((float) this.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
+                        start_x += gl.width;
+                    }
+                    else if (tmp.equals("[B]. "))
+                    {
+                        gl.width = CARD_ENERGY_IMG_WIDTH * this.drawScale;
+                        this.renderSmallEnergy(sb, orb_blue, (start_x - this.current_x) / Settings.scale / this.drawScale, -100.0F - (((float) this.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
+                        FontHelper.renderRotatedText(sb, font, LocalizedStrings.PERIOD, this.current_x, this.current_y, start_x - this.current_x + CARD_ENERGY_IMG_WIDTH * this.drawScale, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, textColor);
+                        start_x += gl.width;
+                    }
+                    else
+                    {
+                        gl.setText(font, tmp);
+                        FontHelper.renderRotatedText(sb, font, tmp, this.current_x, this.current_y, start_x - this.current_x + gl.width / 2.0F, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, textColor);
+                        start_x += gl.width;
+                    }
+                }
+            }
+
+            font.getData().setScale(1.0F);
+        }
+        // else
+        // {
+        //     FontHelper.menuBannerFont.getData().setScale(this.drawScale * 1.25F);
+        //     Color textColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
+        //     FontHelper.renderRotatedText(sb, FontHelper.menuBannerFont, "? ? ?", this.current_x, this.current_y, 0.0F, -200.0F * Settings.scale * this.drawScale / 2.0F, this.angle, true, textColor);
+        //     FontHelper.menuBannerFont.getData().setScale(1.0F);
+        // }
+    }
+
+    @SpireOverride
     public void renderDescriptionCN(SpriteBatch sb) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException
     {
         if (AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this) && !this.isHandSelectScreenOpened && AbstractDungeon.player.hoveredCard != this)
@@ -616,7 +744,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
 
             for (int i = 0; i < this.description.size(); ++i)
             {
-                float start_x = 0.0F;
+                float start_x;
                 if (Settings.leftAlignCards)
                 {
                     start_x = this.current_x - IMG_WIDTH * DESC_SCALE_RATE_X * this.drawScale / 2.0F + 2.0F * Settings.scale;
@@ -777,6 +905,156 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
             desc = this.rawDescription;
         }
         return desc;
+    }
+
+    @Override
+    public void initializeDescription()
+    {
+        try
+        {
+            this.keywords.clear();
+            if (Settings.lineBreakViaCharacter)
+            {
+                this.initializeDescriptionCN();
+            }
+            else
+            {
+                this.description.clear();
+                int numLines = 1;
+                StringBuilder sbuilder = (StringBuilder) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "sbuilder").get(this);
+                sbuilder.setLength(0);
+                float currentWidth = 0.0F;
+                String[] var4 = this.rawDescription.split(" ");
+                int var5 = var4.length;
+
+                for (int var6 = 0; var6 < var5; ++var6)
+                {
+                    String word = var4[var6];
+                    boolean isKeyword = false;
+                    StringBuilder sbuilder2 = (StringBuilder) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "sbuilder2").get(this);
+                    sbuilder2.setLength(0);
+                    sbuilder2.append(" ");
+                    if (word.length() > 0 && word.charAt(word.length() - 1) != ']' && !Character.isLetterOrDigit(word.charAt(word.length() - 1)))
+                    {
+                        sbuilder2.insert(0, word.charAt(word.length() - 1));
+                        word = word.substring(0, word.length() - 1);
+                    }
+
+                    GlyphLayout gl = (GlyphLayout) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "gl").get(this);
+                    Method dedupeKeyword = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "dedupeKeyword", String.class);
+                    String keywordTmp = word.toLowerCase();
+                    keywordTmp = (String) dedupeKeyword.invoke(this, keywordTmp);
+                    GlyphLayout var10000;
+                    if (GameDictionary.keywords.containsKey(keywordTmp))
+                    {
+                        if (!this.keywords.contains(keywordTmp))
+                        {
+                            this.keywords.add(keywordTmp);
+                        }
+
+                        gl.reset();
+                        gl.setText(FontHelper.cardDescFont_N, sbuilder2);
+                        float tmp = gl.width;
+                        gl.setText(FontHelper.cardDescFont_N, word);
+                        var10000 = gl;
+                        var10000.width += tmp;
+                        isKeyword = true;
+                    }
+                    else if (!word.equals("[R]") && !word.equals("[G]") && !word.equals("[B]"))
+                    {
+                        if (word.equals("!D"))
+                        {
+                            gl.setText(FontHelper.cardDescFont_N, word);
+                        }
+                        else if (word.equals("!B"))
+                        {
+                            gl.setText(FontHelper.cardDescFont_N, word);
+                        }
+                        else if (word.equals("!M"))
+                        {
+                            gl.setText(FontHelper.cardDescFont_N, word);
+                        }
+                        else if (word.equals("NL"))
+                        {
+                            gl.width = 0.0F;
+                            word = "";
+                            this.description.add(new DescriptionLine(sbuilder.toString().trim(), currentWidth));
+                            currentWidth = 0.0F;
+                            ++numLines;
+                            sbuilder.setLength(0);
+                        }
+                        else
+                        {
+                            gl.setText(FontHelper.cardDescFont_N, word + sbuilder2);
+                        }
+                    }
+                    else
+                    {
+                        gl.reset();
+                        gl.setText(FontHelper.cardDescFont_N, sbuilder2);
+                        var10000 = gl;
+                        var10000.width += CARD_ENERGY_IMG_WIDTH;
+                        switch (this.color)
+                        {
+                            case RED:
+                                if (!this.keywords.contains("[R]"))
+                                {
+                                    this.keywords.add("[R]");
+                                }
+                                break;
+                            case GREEN:
+                                if (!this.keywords.contains("[G]"))
+                                {
+                                    this.keywords.add("[G]");
+                                }
+                                break;
+                            case BLUE:
+                                if (!this.keywords.contains("[B]"))
+                                {
+                                    this.keywords.add("[B]");
+                                }
+                                break;
+                            default:
+                                KSMOD_Utility.Logger.info("ERROR: Tried to display an invalid energy type");
+                        }
+                    }
+
+                    if (currentWidth + gl.width > DESC_LINE_WIDTH * 1.1F)
+                    {
+                        this.description.add(new DescriptionLine(sbuilder.toString().trim(), currentWidth));
+                        ++numLines;
+                        sbuilder.setLength(0);
+                        currentWidth = gl.width;
+                    }
+                    else
+                    {
+                        currentWidth += gl.width;
+                    }
+
+                    if (isKeyword)
+                    {
+                        sbuilder.append('*');
+                    }
+
+                    sbuilder.append(word).append(sbuilder2);
+                }
+
+                if (!sbuilder.toString().trim().isEmpty())
+                {
+                    this.description.add(new DescriptionLine(sbuilder.toString().trim(), currentWidth));
+                }
+
+                if (numLines > 5)
+                {
+                    KSMOD_Utility.Logger.info("WARNING: Card " + this.name + " has lots of text");
+                }
+
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @Override

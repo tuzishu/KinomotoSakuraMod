@@ -367,17 +367,17 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         KSMOD_Utility.Logger.info("开始编辑关键字");
 
         String path = "localization/";
-        //        switch (Settings.language)
-        //        {
-        //            case ZHS:
-        //                KSMOD_Utility.Logger.info("language == zhs");
-        path += "zhs/";
-        //                break;
-        //            default:
-        //                KSMOD_Utility.Logger.info("language == eng");
-        //                path += "eng/";
-        //                break;
-        //        }
+        switch (Settings.language)
+        {
+            case ZHS:
+                KSMOD_Utility.Logger.info("language == zhs");
+                path += "zhs/";
+                break;
+            default:
+                KSMOD_Utility.Logger.info("language == eng");
+                path += "eng/";
+                break;
+        }
 
         path += "sakura_keyword.json";
         Gson gson = new Gson();
@@ -404,6 +404,10 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         ShowRelicList(AbstractDungeon.uncommonRelicPool);
         KSMOD_Utility.Logger.info("rare relic pool");
         ShowRelicList(AbstractDungeon.rareRelicPool);
+        KSMOD_Utility.Logger.info("boss relic pool");
+        ShowRelicList(AbstractDungeon.bossRelicPool);
+        KSMOD_Utility.Logger.info("shop relic pool");
+        ShowRelicList(AbstractDungeon.shopRelicPool);
     }
 
     public void ShowRelicList(ArrayList<String> relics)

@@ -2,277 +2,343 @@
   "keywords": [
     {
       "NAMES": [
+        "minion",
         "Minion"
       ],
       "DESCRIPTION": "Minions abandon combat without their leader."
     },
     {
       "NAMES": [
+        "constricted",
         "Constricted"
       ],
       "DESCRIPTION": "At the end of turn, take damage."
     },
     {
       "NAMES": [
+        "buffer",
         "Buffer"
       ],
       "DESCRIPTION": "Prevent lose HP."
     },
     {
       "NAMES": [
+        "metallicize",
         "Metallicize"
       ],
       "DESCRIPTION": "At the end of turn, gain #yBlock."
     },
     {
       "NAMES": [
+        "plated armor",
         "Plated Armor"
       ],
       "DESCRIPTION": "At the end of turn, gain Block. Receiving unblocked attack damage reduces #yPlated #yArmor by #b1."
     },
     {
       "NAMES": [
+        "malleable",
         "Malleable"
       ],
       "DESCRIPTION": "Upon receiving attack damage, gains #yBlock."
     },
     {
       "NAMES": [
+        "regeneration",
         "Regeneration"
       ],
       "DESCRIPTION": "At the end of turn, heal #yHP, then reduce #yRegeneration by #b1."
     },
     {
       "NAMES": [
-        "Temporary Strength"
+        "temporary-strength",
+        "Temporary-Strength"
       ],
       "DESCRIPTION": "Gain #rStrength, at the end of turn, lose #rStrength."
     },
     {
       "NAMES": [
+        "blur",
         "Blur"
       ],
       "DESCRIPTION": "#yBlock is not removed at the start of your turn."
     },
     {
       "NAMES": [
-        "Real Damage"
+        "real-damage",
+        "Real-Damage"
       ],
       "DESCRIPTION": "Damage ignore all means of defense."
     },
     {
       "NAMES": [
-        "Magick Charge"
+        "magick-charge",
+        "Magick-Charge"
       ],
       "DESCRIPTION": "The use of Clow Card or Sakura Card after the production of magic residue, accumulated to a certain number can trigger the special effect of the card card."
     },
     {
       "NAMES": [
-        "Charging State"
+        "charging-state",
+        "Charging-State"
       ],
       "DESCRIPTION": "When the #yMagick #yCharge reaches a certain amount, it will enter this state, and the next non-ability, non-charging Clow card will have a special effect."
     },
     {
       "NAMES": [
-        "Clow Card"
+        "clow-card",
+        "Clow-Card",
+        "clow-cards",
+        "Clow-Cards"
       ],
       "DESCRIPTION": "The magic card created by Clow Reader, which can be collected in a variety of ways."
     },
     {
       "NAMES": [
-        "Sakura Card"
+        "sakura-card",
+        "Sakura-Card",
+        "sakura-cards",
+        "Sakura-Cards"
       ],
       "DESCRIPTION": "A special card converted from the #yClow #yCard through #yThe #yTurn. NL  #yUniqueness, there will be only one #ySakura #yCard of the same name in the master deck, and only the #yClow #yCard of the same name will be obtained when copied. NL Cannot be upgraded and does not trigger #yMagick #yCharge effects. When used, one Void Card will be added to the draw pile."
     },
     {
       "NAMES": [
-        "The Turn"
+        "the-turn",
+        "The-Turn"
       ],
       "DESCRIPTION": "A #ySpell that convert a #yClow #yCard to a #ySakura #yCard."
     },
     {
       "NAMES": [
+        "spell",
         "Spell"
       ],
       "DESCRIPTION": "A special type of card that does not belong to the #yClow #yCard, most of which are consumptive cards."
     },
     {
       "NAMES": [
-        "Light Element Card"
+        "light-element-card",
+        "Light-Element-Card"
       ],
       "DESCRIPTION": "Light Element is the upper element of the #yEarthy #yElement and the #yFirey Element, which can trigger the effect of both those at the same time."
     },
     {
       "NAMES": [
-        "Dark Element Card"
+        "dark-element-card",
+        "Dark-Element-Card"
       ],
       "DESCRIPTION": "Dark Element is the upper element of the #yWatery #yElement and the #yWindy Element, which can trigger the effect of both those at the same time."
     },
     {
       "NAMES": [
+        "earthy",
         "Earthy",
-        "Earthy Element Card."
+        "earthy-element-card.",
+        "Earthy-Element-Card."
       ],
       "DESCRIPTION": "Earthy Element Card. NL Gain #bBlocks by using it in the #yEarthy #yElement #yState."
     },
     {
       "NAMES": [
-        "Earthy Element State"
+        "earthy-element-state",
+        "Earthy-Element-State"
       ],
       "DESCRIPTION": "When using #yEarthy #yElement #yCard, gain 4 #bBlocks."
     },
     {
       "NAMES": [
+        "watery",
         "Watery",
-        "Watery Element Card"
+        "watery-element-card",
+        "Watery-Element-Card"
       ],
       "DESCRIPTION": "Earthy Element Card. NL Gain #bEnergy by using it in the #yWatery #yElement #yState."
     },
     {
       "NAMES": [
-        "Watery Element State"
+        "watery-element-state",
+        "Watery-Element-State"
       ],
       "DESCRIPTION": "For every #b2 #yWatery #yElement #yCards played, gain #b1 energy."
     },
     {
       "NAMES": [
+        "firey",
         "Firey",
-        "Firey Element Card"
+        "firey-element-card",
+        "Firey-Element-Card"
       ],
       "DESCRIPTION": "Firey Element Card. NL Deal damages to all enemies by using it in the #yWatery #yElement #yState."
     },
     {
       "NAMES": [
-        "Firey Element State"
+        "firey-element-state",
+        "Firey-Element-State"
       ],
       "DESCRIPTION": "When using #yFirey #yElement #yCard, deal 4 damage to all enemies."
     },
     {
       "NAMES": [
+        "windy",
         "Windy",
-        "Windy Element State"
+        "windy-element-state",
+        "Windy-Element-State"
       ],
       "DESCRIPTION": "Windy Element Card. NL Draw card by using it in the #yWatery #yElement #yState."
     },
     {
       "NAMES": [
-        "Windy Element State"
+        "windy-element-state",
+        "Windy-Element-State"
       ],
       "DESCRIPTION": "For every #b2 #yWatery #yElement #yCards played, draw #b1 card."
     },
     {
       "NAMES": [
+        "release",
         "Release"
       ],
       "DESCRIPTION": "The released card will become #b0 cost, all effects will be increased by #b25%, and Ethereal and Exhaust will be added to the card."
     },
     {
       "NAMES": [
+        "turn",
         "Turn"
       ],
       "DESCRIPTION": "Convert the #yClow #yCard to the #ySakura #yCard. NL It can be converted only if the same name #ySakura #yCard does not exist in the master deck. NL After the conversion is successful, the target #yClow #yCard will be removed from the master deck, and the same name #ySakura #yCard will be added."
     },
     {
       "NAMES": [
-        "The Sword"
+        "the-sword",
+        "The-Sword"
       ],
       "DESCRIPTION": "Basical Strike Card."
     },
     {
       "NAMES": [
-        "The Mirror"
+        "the-mirror",
+        "The-Mirror"
       ],
       "DESCRIPTION": "A card that can copy other card from a hand."
     },
     {
       "NAMES": [
-        "The Voice"
+        "the-voice",
+        "The-Voice"
       ],
       "DESCRIPTION": "A #yClow #yCard that cannot be played. Draw an additional card when the card is drawn, will only trigger the card effect when consumed."
     },
     {
       "NAMES": [
-        "The Rain"
+        "the-rain",
+        "The-Rain"
       ],
       "DESCRIPTION": "A #yClow #yCard that can reduce the cost of the other cards in the hand."
     },
     {
       "NAMES": [
-        "The Snow"
+        "the-snow",
+        "The-Snow"
       ],
       "DESCRIPTION": "A #yClow #yCard that can get stronger as the battle goes on."
     },
     {
       "NAMES": [
-        "The Storm"
+        "The-Storm"
       ],
       "DESCRIPTION": "A #yClow #yCard that can deal multiple damage to a single target."
     },
     {
       "NAMES": [
-        "The Thunder"
+        "the-thunder",
+        "The-Thunder"
       ],
       "DESCRIPTION": "A #yClow #yCard that can deal a lot of damage to random enemies."
     },
     {
       "NAMES": [
-        "The Mist"
+        "the-mist",
+        "The-Mist"
       ],
       "DESCRIPTION": "A #yClow #yCard that can disrupt the enemy's defenses."
     },
     {
       "NAMES": [
-        "Sealed Wand"
+        "sealed-wand",
+        "Sealed-Wand"
       ],
       "DESCRIPTION": "Kill the enemy can get recharge, when the recharge conditions are met, you can convert the #yClow #yCard to the #ySakura #yCard."
     },
     {
       "NAMES": [
-        "Empty Spell"
+        "empty-spell",
+        "Empty-Spell"
       ],
       "DESCRIPTION": "Consumptive attack card that can change element。"
     },
     {
       "NAMES": [
-        "Huo Shen"
+        "huo-shen",
+        "Huo-Shen"
       ],
       "DESCRIPTION": "Consumable attack card of the #yFirey #yElement that deals damage to a single target."
     },
     {
       "NAMES": [
-        "Lei Di"
+        "lei-di",
+        "Lei-Di"
       ],
       "DESCRIPTION": "Consumable attack card of the #yEarthy #yElement that deals damage to a random target."
     },
     {
       "NAMES": [
-        "Feng Hua"
+        "feng-hua",
+        "Feng-Hua"
       ],
       "DESCRIPTION": "Consumable attack card of the #yWindy #yElement that deals several times damage to a single target."
     },
     {
       "NAMES": [
-        "Shui Long"
+        "shui-long",
+        "Shui-Long"
       ],
       "DESCRIPTION": "Consumable attack card of the #yWatery #yElement that deals damage to all enemies."
     },
     {
       "NAMES": [
-        "Sleeping"
+        "sleep",
+        "Sleep"
       ],
-      "DESCRIPTION": "The target falls into sleeping and wakes up when hurt. The target will restore all health and gain two layers of weakness when nature wakes up."
+      "DESCRIPTION": "The target falls into sleeping and wakes up when hurt. The target will restore all health and gain 2 #yWeakness when nature wakes up."
     },
     {
       "NAMES": [
-        "Removement"
+        "removable",
+        "Removable"
       ],
-      "DESCRIPTION": "After use, it will be removed from the master deck."
+      "DESCRIPTION": "After use, it will be removed from the master deck. And the temporary card does not work."
     },
     {
       "NAMES": [
+        "invisible",
         "Invisible"
       ],
       "DESCRIPTION": "When you draw this card, draw an extra card."
+    },
+    {
+      "NAMES": [
+        "unreal",
+        "Unreal"
+      ],
+      "DESCRIPTION": "When this card exhausts other card, add a copy of this card into your discard pile."
+    },
+    {
+      "NAMES": [
+        "defence-buffs",
+        "Defence-Buffs"
+      ],
+      "DESCRIPTION": "include Blocks, Metallicize, Plated Armor, Artifact, Thorns, Buffer, Intangible, Malleable, Barricade."
     }
   ]
 }
