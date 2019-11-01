@@ -623,7 +623,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                 }
                 else
                 {
-                    start_x = this.current_x - this.description.get(i).width * this.drawScale / 2.0F - 7.0F * Settings.scale;
+                    start_x = this.current_x - this.description.get(i).width * this.drawScale / 2.0F - 4.0F * Settings.scale;
                 }
 
                 String[] var7 = ((DescriptionLine) this.description.get(i)).getCachedTokenizedText();

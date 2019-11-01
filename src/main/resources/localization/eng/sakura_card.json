@@ -16,10 +16,10 @@
   "ClowCardTheBubbles": {
     "NAME": "Bubbles",
     "DESCRIPTION": "[ Watery ] NL Deal !D! damage. NL Remove a random buff.",
-    "UPGRADE_DESCRIPTION": "[ Watery ] NL Deal !D! damage. NL Remove a random buff. NL Gain !M! Magick Charge when successful.",
+    "UPGRADE_DESCRIPTION": "[ Watery ] NL Deal !D! damage. NL Remove a random buff. NL Gain !M! Magick-Charge when successful.",
     "EXTENDED_DESCRIPTION": [
       "[ Watery ] NL Deal !D! damage. NL remove all buffs.",
-      "[ Watery ] NL Deal !D! damage. NL remove all buffs. NL Gain !M! Magick Charge when successful."
+      "[ Watery ] NL Deal !D! damage. NL remove all buffs. NL Gain !M! Magick-Charge when successful."
     ]
   },
   "ClowCardTheChange": {
@@ -86,7 +86,7 @@
   },
   "ClowCardTheFight": {
     "NAME": "Fight",
-    "DESCRIPTION": "[ Earthy ] Exhaust. NL Deal !D! damage. NL Gain 1 Magick Charge. NL Gain !M! Temporary-Strength. Add a copy into hand.",
+    "DESCRIPTION": "[ Earthy ] Exhaust. NL Deal !D! damage. NL Gain 1 Magick-Charge. NL Gain !M! Temporary-Strength. Add a copy into hand.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       " Gain ",
@@ -133,7 +133,7 @@
   },
   "ClowCardTheGlow": {
     "NAME": "Glow",
-    "DESCRIPTION": "[ Firey ] NL Draw !M! cards. NL Gain 2 Magick Charge.",
+    "DESCRIPTION": "[ Firey ] NL Draw !M! cards. NL Gain 2 Magick-Charge.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -176,7 +176,7 @@
   },
   "ClowCardTheLock": {
     "NAME": "Lock",
-    "DESCRIPTION": "[ Windy ] Exhaust. NL Exhaust up to !M! cards. Gain 1 Magick Charge for each exhausted card. Unreal.",
+    "DESCRIPTION": "[ Windy ] Exhaust. NL Exhaust up to !M! cards. Gain 1 Magick-Charge for each exhausted card. Unreal.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -371,10 +371,10 @@
   },
   "ClowCardTheVoice": {
     "NAME": "Voice",
-    "DESCRIPTION": "[ Windy ] Ethereal. Invisible. NL Add a copy into discard pile. NL When exhausted, Gain !B! Block. When exhausted by The Song, apply the effect of The Song extra !M! times.",
+    "DESCRIPTION": "[ Windy ] Ethereal. Invisible. NL Add a copy into discard pile. NL When exhausted, Gain !B! Block. When exhausted by The-Song, apply the effect of The-Song extra !M! times.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "[ Windy ] Ethereal. Invisible. NL Add a copy into your discard pile. NL When exhausted, Gain !B! Block. When exhausted by The Song, apply the effect of The Song extra !M! times."
+      "[ Windy ] Ethereal. Invisible. NL Add a copy into your discard pile. NL When exhausted, Gain !B! Block. When exhausted by The-Song, apply the effect of The-Song extra !M! times."
     ]
   },
   "ClowCardTheWatery": {
@@ -418,7 +418,7 @@
   },
   "SpellCardTurn": {
     "NAME": "Turn",
-    "DESCRIPTION": "[ Spell ] Retain. NL Turn 1 Clow-Card to Sakura-Card.",
+    "DESCRIPTION": "[ Spell ] Retain. NL Convert 1 Clow-Card to Sakura-Card.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -502,7 +502,7 @@
   },
   "SakuraCardTheDream": {
     "NAME": "Dream",
-    "DESCRIPTION": "[ Sakura-Card ][ Windy ] Exhaust. NL Turn the Clow-Cards in your hand into Sakura-Cards as much as possible in this battle.",
+    "DESCRIPTION": "[ Sakura-Card ][ Windy ] Exhaust. NL Convert the Clow-Cards in your hand into Sakura-Cards as much as possible in this battle.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

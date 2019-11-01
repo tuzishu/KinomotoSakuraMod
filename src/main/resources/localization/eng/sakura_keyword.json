@@ -203,8 +203,8 @@
     },
     {
       "NAMES": [
-        "turn",
-        "Turn"
+        "convert",
+        "Convert"
       ],
       "DESCRIPTION": "Convert the #yClow #yCard to the #ySakura #yCard. NL It can be converted only if the same name #ySakura #yCard does not exist in the master deck. NL After the conversion is successful, the target #yClow #yCard will be removed from the master deck, and the same name #ySakura #yCard will be added."
     },
