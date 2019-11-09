@@ -19,7 +19,7 @@
         "buffer",
         "Buffer"
       ],
-      "DESCRIPTION": "Prevent lose HP."
+      "DESCRIPTION": "Prevent the next time you would lose HP."
     },
     {
       "NAMES": [
@@ -54,35 +54,35 @@
         "temporary-strength",
         "Temporary-Strength"
       ],
-      "DESCRIPTION": "Gain #rStrength, at the end of turn, lose #rStrength."
+      "DESCRIPTION": "Gain #rStrength. At the end of turn, lose #rStrength."
     },
     {
       "NAMES": [
         "blur",
         "Blur"
       ],
-      "DESCRIPTION": "#yBlock is not removed at the start of your turn."
+      "DESCRIPTION": "#yBlock is not removed at the start of turn."
     },
     {
       "NAMES": [
         "real-damage",
         "Real-Damage"
       ],
-      "DESCRIPTION": "Damage ignore all means of defense."
+      "DESCRIPTION": "Damage ignores all means of defense."
     },
     {
       "NAMES": [
         "magick-charge",
         "Magick-Charge"
       ],
-      "DESCRIPTION": "The use of Clow Card or Sakura Card after the production of magic residue, accumulated to a certain number can trigger the special effect of the card card."
+      "DESCRIPTION": "Once enough is accumulated, playing a Clow Card or Sakura Card will trigger an additional special effect of that card."
     },
     {
       "NAMES": [
         "charging-state",
         "Charging-State"
       ],
-      "DESCRIPTION": "When the #yMagick #yCharge reaches a certain amount, it will enter this state, and the next non-ability, non-charging Clow card will have a special effect."
+      "DESCRIPTION": "Enter this state when the #yMagick #yCharge reaches a threshold. The next non-ability, non-charging Clow card will have a special effect."
     },
     {
       "NAMES": [
@@ -91,7 +91,7 @@
         "clow-cards",
         "Clow-Cards"
       ],
-      "DESCRIPTION": "The magic card created by Clow Reader, which can be collected in a variety of ways."
+      "DESCRIPTION": "The magic card created by Clow Reed, which can be collected in a variety of ways."
     },
     {
       "NAMES": [
@@ -100,14 +100,14 @@
         "sakura-cards",
         "Sakura-Cards"
       ],
-      "DESCRIPTION": "A special card converted from the #yClow #yCard through #yThe #yTurn. NL  #yUniqueness, there will be only one #ySakura #yCard of the same name in the master deck, and only the #yClow #yCard of the same name will be obtained when copied. NL Cannot be upgraded and does not trigger #yMagick #yCharge effects. When used, one Void Card will be added to the draw pile."
+      "DESCRIPTION": "A special card obtained by converting a #yClow #yCard of the same name using #yThe #yTurn. NL #yUniqueness, there can only be one #ySakura #yCard of the same name in the master deck. NL Cannot be upgraded and does not trigger #yMagick #yCharge effects. When played, add one Void to the draw pile."
     },
     {
       "NAMES": [
         "the-turn",
         "The-Turn"
       ],
-      "DESCRIPTION": "A #ySpell that convert a #yClow #yCard to a #ySakura #yCard."
+      "DESCRIPTION": "A #ySpell that converts a #yClow #yCard to a #ySakura #yCard."
     },
     {
       "NAMES": [
@@ -169,7 +169,7 @@
         "firey-element-card",
         "Firey-Element-Card"
       ],
-      "DESCRIPTION": "Firey Element Card. NL Deal damages to all enemies by using it in the #yWatery #yElement #yState."
+      "DESCRIPTION": "Firey Element Card. NL Deal damage to all enemies by using it in the #yWatery #yElement #yState."
     },
     {
       "NAMES": [
@@ -213,14 +213,14 @@
         "the-sword",
         "The-Sword"
       ],
-      "DESCRIPTION": "Basical Strike Card."
+      "DESCRIPTION": "Basic Strike Card."
     },
     {
       "NAMES": [
         "the-mirror",
         "The-Mirror"
       ],
-      "DESCRIPTION": "A card that can copy other card from a hand."
+      "DESCRIPTION": "A card that can copy another card from the hand."
     },
     {
       "NAMES": [
@@ -275,7 +275,7 @@
         "empty-spell",
         "Empty-Spell"
       ],
-      "DESCRIPTION": "Consumptive attack card that can change element。"
+      "DESCRIPTION": "Consumptive attack card that can change element."
     },
     {
       "NAMES": [
@@ -296,7 +296,7 @@
         "feng-hua",
         "Feng-Hua"
       ],
-      "DESCRIPTION": "Consumable attack card of the #yWindy #yElement that deals several times damage to a single target."
+      "DESCRIPTION": "Consumable attack card of the #yWindy #yElement that deals damage several times to a single target."
     },
     {
       "NAMES": [
@@ -310,7 +310,7 @@
         "sleep",
         "Sleep"
       ],
-      "DESCRIPTION": "The target falls into sleeping and wakes up when hurt. The target will restore all health and gain 2 #yWeakness when nature wakes up."
+      "DESCRIPTION": "The target falls asleep and wakes up when hurt. The target will restore all health and gain 2 #yWeakness if it naturally wakes up."
     },
     {
       "NAMES": [
@@ -331,14 +331,14 @@
         "unreal",
         "Unreal"
       ],
-      "DESCRIPTION": "When this card exhausts other card, add a copy of this card into your discard pile."
+      "DESCRIPTION": "When this card exhausts another card, add a copy of this card into your discard pile."
     },
     {
       "NAMES": [
         "defence-buffs",
         "Defence-Buffs"
       ],
-      "DESCRIPTION": "include Blocks, Metallicize, Plated Armor, Artifact, Thorns, Buffer, Intangible, Malleable, Barricade."
+      "DESCRIPTION": "Includes Blocks, Metallicize, Plated Armor, Artifact, Thorns, Buffer, Intangible, Malleable, Barricade."
     }
   ]
 }
