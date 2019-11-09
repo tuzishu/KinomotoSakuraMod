@@ -1,166 +1,166 @@
 {
   "KSMOD_SealedBook": {
     "NAME": "Sealed Book",
-    "FLAVOR": "封印着具有强大魔力卡片的魔法书，封面和封底分别是封印兽可鲁贝洛斯和审判者月。",
+    "FLAVOR": "A book sealed with powerful magic cards. The cover and back are the sealed guardian Cerberus and the judge Yue.",
     "DESCRIPTIONS": [
-      " #y1. 每使用 #y库洛牌 或 #y小樱牌 时获得1层 #b魔力充能 ，能力牌额外获得1层。 NL  #y2. 当充能大于 #b",
-      " 时，下一张非能力、非充能类 #y库洛牌 将附带额外效果，并进入该牌元素类型的元素状态。"
+      " #y1. Each time use the #yClow #yCard or #ySakura #yCard, gain 1 #yMagick #yCharge, and the #yPower cards gain 1 extra #yMagick #yCharge. NL #y2. When the recharge reaches #y",
+      " , the next specific #yClow #yCard will have an additional effect and enter the element state of the card element type."
     ]
   },
   "KSMOD_SealedWand": {
-    "NAME": "封印之杖",
-    "FLAVOR": "被封印着黑暗力量的法杖。",
+    "NAME": "Sealed Wand",
+    "FLAVOR": "A wand sealed with the power of darkness magic.",
     "DESCRIPTIONS": [
-      " #y1. 每次击败非 #r爪牙 敌人时，获得 #b",
-      " 层充能。 NL  #y2. 当充能达到 #b",
-      " 后的第一个回合开始阶段，将消耗 #b",
-      " 层充能，添加1张 #y转牌 到手牌中。 NL  #y3. 卡组中每有1张 #y小樱牌 或 #y转牌 ，下1次获得 #y转牌 所需的充能数量增加 #b",
-      " 。 NL  #y4. 下次转变还需 #b",
-      " 层充能。"
+      " #y1. Every non-minion enemy you defeat, gain #b",
+      " #yMagick #yCharge. NL  #y2. At the start of the first turn after the charge reaches #b",
+      " , remove #b",
+      " charges and add 1 #yThe #yTurn to your hand. NL #y3. Each #yThe #yTurn or #ySakura #yCard in your master deck, the trigger next time you gain #yThe #yTurn increase #b",
+      " . NL #y4. Next convert need #b",
+      " charge."
     ]
   },
   "KSMOD_StarWand": {
-    "NAME": "星之杖",
-    "FLAVOR": "小樱用自己的魔法创造的蕴含星之力的法杖。",
+    "NAME": "Star Wand",
+    "FLAVOR": "This wand created by Sakura with her own star magic power.",
     "DESCRIPTIONS": [
-      " #y1. 替换 #y封印之杖 。 NL  #y2. 每次击败非 #r爪牙 敌人时，获得 #b",
-      " 层充能。 NL  #y3. 当充能达到 #b",
-      " 后的第一个回合开始阶段，将消耗 #b",
-      " 层充能，添加1张 #y转牌 到手牌中，并可以保留到之后的战斗。 NL  #y4. 卡组中每有1张 #y小樱牌 或 #y转牌 ，下1次获得 #y转牌 所需的充能数量增加 #b",
-      " 。 NL  #y5. 集齐 #y星之杖 、 #y可鲁贝洛斯 、 #y月 后，将获得 #y日月星杖 。 NL  #y6. 下次转变还需 #b",
-      " 层充能。"
+      " #y1. Replace #ySealed #yWand. NL #y2. Every non-minion enemy you defeat, gain #b",
+      " charge. NL  #y3. At the start of the first turn after the charge reaches #b",
+      " , remove #b",
+      " charges and add 1 #yThe #yTurn to your hand. And this card can be retained to the next battle. NL #y4. Each #yThe #yTurn or #ySakura #yCard in your master deck, the trigger next time you gain #yThe #yTurn increase #b",
+      " . NL #y5. After collecting #yStar #yWand, #yCerberus and #yYue, you can obtain #yUltimate #yWand. NL #y6. Next convert need #b",
+      " charge."
     ]
   },
   "KSMOD_UltimateWand": {
-    "NAME": "日月星杖",
-    "FLAVOR": "融合了小樱的星之力、可鲁贝洛斯的太阳之力和月的月之力的最强法杖。",
+    "NAME": "Ultimate Wand",
+    "FLAVOR": "A powerful staff that combines Sakura's star power, Cerberus' sun power and Yue's moon power.",
     "DESCRIPTIONS": [
-      " #y1. 当拥有 #y封印之杖 、 #y可鲁贝洛斯 、 #y月 时，自动替换。 NL #y2. 战斗开始时，获得 #b",
-      " 层 #y魔力充能 。 NL  #y3. 回合开始时，随机强化你的 #b",
-      " 张手牌。 NL  #y4. 回合开始时，随机标记 #b",
-      " 名敌人，对其造成的伤害提高  #b",
-      "% 。 NL  #y5. 回合内每打出 #b",
-      " 张 #y元素牌 ，额外获得 #b",
-      " 层 #y魔力充能 。 NL  #y6. 击败 #r非爪 牙敌人时获得 #b",
-      " 层充能。 NL  #y7. 当充能达到 #b",
-      " 后的第一个回合开始阶段，将消耗 #b",
-      " 层充能，添加1张 #y转牌 到手牌中，并可以保留到之后的战斗。 NL  #y8. 卡组中每有1张 #y小樱牌 或 #y转牌 ，下1次获得 #y转牌 所需的充能数量增加 #b",
-      " 。 NL  #y9. 下次转变还需 #b",
-      " 层充能。"
+      " #y1. Obtain automatically after collecting #yStar #yWand, #yCerberus and #yYue. NL #y2. At the start of battle, gain #b",
+      " #yMagcik #yCharge. NL #y3. At the start of the turn, upgrade #b",
+      " random card. NL #y4. At the start of the turn, sign #b",
+      " random enemy. Receive more #b",
+      "% damage. NL #y5. For every #b",
+      " #yElement #yCard, gain additional #b",
+      " #yMagick #yCharge. NL #y6. Every non-minion enemy you defeat, gain #b",
+      " charge. NL #y7. At the start of the first turn after the charge reaches #b",
+      " , remove #b",
+      " charges and add 1 #yThe #yTurn to your hand. And this card can be retained to the next battle. NL #y8. Each #yThe #yTurn or #ySakura #yCard in your master deck, the trigger next time you gain #yThe #yTurn increase #b",
+      " . NL  #y9. Next convert need #b",
+      " charge."
     ]
   },
   "KSMOD_DarknessWand": {
-    "NAME": "黑暗之杖",
-    "FLAVOR": "库洛所创造的魔法杖，由其记忆保留者柊泽艾利欧所持有。",
+    "NAME": "Darkness Wand",
+    "FLAVOR": "The wand created by Clow Reader and held by Clow's memory successor Hiiragizawa Eriol.",
     "DESCRIPTIONS": [
-      " #y1. 在每回合开始时获得 [E] 。 NL  #y2. 击败非 #y爪牙 敌人时使你 #y封印之杖 或 #y星之杖 或 #y日月星杖 额外获得 #b",
-      " 层充能。 NL  #y3. 战斗开始时，敌人获得 #b",
-      " 层 #r力量 。"
+      " #y1. At the start of the turn, gain [E] . NL #y2. Every non-minion enemy you defeat, your #ySealed #yWand, #yStar #yWand or #yUltimate #yWand gain extra #b",
+      " charge. NL #y3. ALL enemies start combat with #b",
+      " #yStrength."
     ]
   },
   "KSMOD_Cerberus": {
-    "NAME": "可鲁贝洛斯",
-    "FLAVOR": "库洛牌的封印之兽，象征着太阳，掌管所有阳属性（光、地、火属性）的库洛牌。",
+    "NAME": "Cerberus",
+    "FLAVOR": "The sealed guardian of the Clow Card, symbolizing the sun, is in charge of the Clow Card of all Yang attributes (light, earth, and fire).",
     "DESCRIPTIONS": [
-      " #y1.  战斗开始时，获得 #b",
-      " 层 #b魔力充能 。 NL  #y2. 回合开始时，随机标记1名敌人，本回合内对其造成的伤害提高 #b",
-      "% 。 NL  #y3. 集齐 #y星之杖 、 #y可鲁贝洛斯 、 #y月 后，将获得 #y日月星杖 。"
+      " #y1. At the start of battle, gain #b",
+      " #yMagick #yCharge. NL #y2. At the start of battle, sign a random enemy, deal more #b",
+      "% damage to the target. NL #y3. After collecting #yStar #yWand, #yCerberus and #yYue, you can obtain #yUltimate #yWand."
     ]
   },
   "KSMOD_Yue": {
-    "NAME": "月",
-    "FLAVOR": "库洛牌的审判者，象征着月亮，掌管所有阴属性（暗、水、风属性）的库洛牌。",
+    "NAME": "Yue",
+    "FLAVOR": "The judge of the Culo card, symbolizing the moon, is in charge of the Cullo card of all shade attributes (dark, water, wind).",
     "DESCRIPTIONS": [
-      " #y1. 回合内每打出 #y",
-      " 张 #y元素牌 ，获得 #b1 层 #b魔力充能 。 NL  #y2. 出牌阶段开始时，随机强化 #b",
-      " 张手牌。 NL  #y3. 集齐 #y星之杖 、 #y可鲁贝洛斯 、 #y月 后，将获得 #y日月星杖 。"
+      " #y1. Every time you play #y",
+      " #yElement #yCard in a single turn, gain #b1 #yMagick #yCharge. NL #y2. At the start of the turn, #yUpgrade #b",
+      " random card in your hand. NL #y3. After collecting #yStar #yWand, #yCerberus and #yYue, you can obtain #yUltimate #yWand."
     ]
   },
   "KSMOD_TaoistSuit": {
-    "NAME": "道服",
-    "FLAVOR": "李家祖传法宝，绿色，方便收集库洛牌，万一发生什么事时也方便行动。",
+    "NAME": "Taoist Suit",
+    "FLAVOR": "Li's ancestral magic clothing, It is convenient to collect Clow Cards. in case something happens, it is also convenient to act.",
     "DESCRIPTIONS": [
-      "每打出 #b",
-      " 张 #y库洛牌 或 #y小樱牌 ，将1张 #y空道符 加入手卡。"
+      "For every #b",
+      " #yClow #yCard or #ySakura #yCard, add an #yEmpty #ySpell into your hand."
     ]
   },
   "KSMOD_SwordJade": {
-    "NAME": "剑玉",
-    "FLAVOR": "玉珠中收着李家祖传宝剑，在要使用时便在心内用念力，即可将宝剑呼唤出来。",
+    "NAME": "Sword Jade",
+    "FLAVOR": "There is the Li's ancestral sword Hidden in the jade, which can be called out with mental force in the heart when it is to be used.",
     "DESCRIPTIONS": [
-      " #b封印解除 的加成效果由 #b",
-      "% 提高到 #b",
-      "% 。"
+      "The effect of #bRelease increased from #b",
+      "% to #b",
+      "% ."
     ]
   },
   "KSMOD_MoonBell": {
-    "NAME": "月之铃",
-    "FLAVOR": "库洛里多制作的有强大魔力的铃铛，保管在观月神社。",
+    "NAME": "Moon Bell",
+    "FLAVOR": "A powerful magic bell made by Clow Reader and keep at the Mizuki Shrine.",
     "DESCRIPTIONS": [
-      " #y1. 每打出1张大于等于 #y",
-      " 费的牌，恢复 #b",
-      " 点生命值。 NL  #y2. 受到致命伤害时，免疫死亡，生命值恢复到最大值的 #b",
-      "% ，并将一张 #y转牌 加入手牌和卡组，并失去该遗物的效果。",
-      "法力已经耗尽，现在只是个普通的铃铛了。"
+      " #y1. Each card that cost more than #y",
+      " , heal #b",
+      " hp. NL #y2. When you would die, heal to #b",
+      "% of your Max HP instead (works once). And add a #yThe #yTurn to your hand.",
+      "The magic has run out, and now it's just an ordinary bell."
     ]
   },
   "KSMOD_TeddyBear": {
-    "NAME": "玩具熊",
-    "FLAVOR": "小樱手工制作的小熊，送给小狼的礼物。",
+    "NAME": "Teddy Bear",
+    "FLAVOR": "Sakura handmade bear, a gift to Xiaolang.",
     "DESCRIPTIONS": [
-      "打出 #y符咒 时，获得 #b",
-      " 点 #b格挡 。"
+      "Each #ySpell you played, gain #b",
+      " #bBlock."
     ]
   },
   "KSMOD_YukitosBentoBox": {
-    "NAME": "雪兔的便当盒",
-    "FLAVOR": "巨大的便当盒，雪兔太能吃了。",
+    "NAME": "Yukito's Bento Box",
+    "FLAVOR": "The huge lunchbox, Yukito is too good to eat.",
     "DESCRIPTIONS": [
-      "回合结束时如果能量为0，则下回合额外获得 #b",
-      " 点能量。"
+      "If the energy is 0 at the end of the turn, gain extra #b",
+      " energy in the next turn."
     ]
   },
   "KSMOD_RollerSkates": {
-    "NAME": "旱冰鞋",
-    "FLAVOR": "小樱的滑板鞋，时尚时尚最时尚。",
+    "NAME": "Roller Skates",
+    "FLAVOR": "Sakura's Roller Skates, fashionable fashionable the most fashionable.",
     "DESCRIPTIONS": [
-      "回合开始时，若 #b敏捷 数量少于 #b",
-      " ，则获得 #b",
-      " 层 #b敏捷 。"
+      "At the start of the turn, if the amount of #bDexterity less than #b",
+      " , gain #b",
+      " #bDexterity."
     ]
   },
   "KSMOD_Compass": {
-    "NAME": "罗盘",
-    "FLAVOR": "用来专门寻找库洛牌的法具。",
+    "NAME": "Compass",
+    "FLAVOR": "A magic prop used to find Clow Cards.",
     "DESCRIPTIONS": [
-      " #y1. 战斗开始时，从 #b3 张库洛牌卡中选择最多 #b1 张加入手卡，并在这回合耗能为0，战斗结束后将其加入你的卡组。 NL  #y2. 若选择加入手牌的数量不为0，则添加 #b",
-      " 张 #y虚空 到弃牌堆。"
+      " #y1. At the start of the battle, Choose #b1 of #b3 random #yClow #yCards to add to your hand and your master deck, it costs #b0 this turn. NL #y2. If the amount of card added to hand is not 0, add #b",
+      " #yVoid to your discard pile."
     ]
   },
   "KSMOD_GemBrooch": {
-    "NAME": "宝石胸针",
-    "FLAVOR": "剑牌散落时的样子，会控制佩戴者的心智。",
+    "NAME": "Gem Brooch",
+    "FLAVOR": "This is the form in which the sword is scattered. It can control the wearer's mind.",
     "DESCRIPTIONS": [
-      " #y1. 卡组中的 #y剑牌 不足 #b",
-      " 张时，每少1张 #y剑牌 的基础伤害增加 #b",
-      " 。 NL  #y2. 卡组中不存在 #y剑牌 时，战斗开始时，获得 #b",
-      " 层 #r力量 。"
+      " #y1. When #yThe #ySword in the master deck is less then #b",
+      " , Each #yThe #ySword deficiency increase #b",
+      " damage. NL  #y2. At the start of the turn, gain #b",
+      " #rStrength if there is no #yThe #ySword in your master deck."
     ]
   },
   "KSMOD_TouyasBicycle": {
-    "NAME": "桃矢的自行车",
-    "FLAVOR": "很普通的蓝色自行车，桃矢的最常用的交通工具。",
+    "NAME": "Touya's Bicycle",
+    "FLAVOR": "Very common blue bike, Touya's most commonly used means of transportation.",
     "DESCRIPTIONS": [
-      "当 #y虚空 被 #r消耗 时，获得 #b",
-      " 层 #b魔力充能 。"
+      "Whenever you #yExhaust a #yVoid, gain #b",
+      " #yMagick #yCharge."
     ]
   },
   "KSMOD_TomoyosHeart": {
-    "NAME": "知世的心",
-    "FLAVOR": "“只要我最喜欢的人能得到幸福，对我来说就是最幸福的事。”",
+    "NAME": "Tomoyo's Heart",
+    "FLAVOR": "\"as long as my favorite person can be happy, it is the happiest thing for me.\"",
     "DESCRIPTIONS": [
-      "每 #r消耗  #b",
-      " 张牌，抽1张牌。"
+      "Whenever you #yExhaust a card, draw #b",
+      " card."
     ]
   }
 }

@@ -1,9 +1,14 @@
 package KinomotoSakuraMod.Relics;
 
+import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
 
 public class KSMOD_StarWand extends KSMOD_AbstractWand
 {
@@ -90,5 +95,19 @@ public class KSMOD_StarWand extends KSMOD_AbstractWand
         {
             super.obtain();
         }
+    }
+
+    @Override
+    public void ActiveRelic()
+    {
+        this.setCounter(this.counter -= GetTriggerNumber());
+        if (this.counter < 0)
+        {
+            this.setCounter(0);
+        }
+        AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+        AbstractCard card = new SpellCardTurn();
+        AbstractDungeon.player.masterDeck.addToBottom(card.makeSameInstanceOf());
+        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(card));
     }
 }

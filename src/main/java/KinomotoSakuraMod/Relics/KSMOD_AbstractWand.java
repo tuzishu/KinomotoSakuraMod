@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.beyond.Darkling;
 import com.megacrit.cardcrawl.powers.MinionPower;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
 
 import java.util.ArrayList;
 
@@ -105,7 +106,7 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
         this.updateTips();
     }
 
-    private void ActiveRelic()
+    public void ActiveRelic()
     {
         this.setCounter(this.counter -= GetTriggerNumber());
         if (this.counter < 0)

@@ -398,16 +398,20 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
     @Override
     public void receiveOnBattleStart(AbstractRoom abstractRoom)
     {
-        KSMOD_Utility.Logger.info("common relic pool");
-        ShowRelicList(AbstractDungeon.commonRelicPool);
-        KSMOD_Utility.Logger.info("uncommon relic pool");
-        ShowRelicList(AbstractDungeon.uncommonRelicPool);
-        KSMOD_Utility.Logger.info("rare relic pool");
-        ShowRelicList(AbstractDungeon.rareRelicPool);
-        KSMOD_Utility.Logger.info("boss relic pool");
-        ShowRelicList(AbstractDungeon.bossRelicPool);
-        KSMOD_Utility.Logger.info("shop relic pool");
-        ShowRelicList(AbstractDungeon.shopRelicPool);
+        // KSMOD_Utility.Logger.info("common relic pool");
+        // ShowRelicList(AbstractDungeon.commonRelicPool);
+        //
+        // KSMOD_Utility.Logger.info("uncommon relic pool");
+        // ShowRelicList(AbstractDungeon.uncommonRelicPool);
+        //
+        // KSMOD_Utility.Logger.info("rare relic pool");
+        // ShowRelicList(AbstractDungeon.rareRelicPool);
+        //
+        // KSMOD_Utility.Logger.info("boss relic pool");
+        // ShowRelicList(AbstractDungeon.bossRelicPool);
+        //
+        // KSMOD_Utility.Logger.info("shop relic pool");
+        // ShowRelicList(AbstractDungeon.shopRelicPool);
     }
 
     public void ShowRelicList(ArrayList<String> relics)
