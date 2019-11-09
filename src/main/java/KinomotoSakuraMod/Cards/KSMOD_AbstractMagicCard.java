@@ -924,7 +924,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                 StringBuilder sbuilder = (StringBuilder) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "sbuilder").get(this);
                 sbuilder.setLength(0);
                 float currentWidth = 0.0F;
-                String[] var4 = this.rawDescription.split(" ");
+                String[] var4 = GetCurrentDescription().split(" ");
                 int var5 = var4.length;
 
                 for (int var6 = 0; var6 < var5; ++var6)
