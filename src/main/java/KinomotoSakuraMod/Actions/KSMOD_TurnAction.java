@@ -3,6 +3,7 @@ package KinomotoSakuraMod.Actions;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
+import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
@@ -68,7 +69,7 @@ public class KSMOD_TurnAction extends AbstractGameAction
             }
 
             this.player.hand.group.removeAll(this.cannotDuplicateList);
-            if (this.player.hand.group.size() == 1)
+            if (this.player.hand.size() == 1)
             {
                 for (int i = 0; i < this.amount; ++i)
                 {
@@ -78,9 +79,11 @@ public class KSMOD_TurnAction extends AbstractGameAction
                 }
                 this.returnCards();
                 this.isDone = true;
+                this.tickDuration();
+                return;
             }
 
-            if (this.player.hand.group.size() > 1)
+            if (this.player.hand.size() > 1)
             {
                 AbstractDungeon.handCardSelectScreen.open(TEXT[0], 1, false, false);
                 this.tickDuration();
