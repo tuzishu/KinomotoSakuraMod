@@ -169,7 +169,7 @@
         "firey-element-card",
         "Firey-Element-Card"
       ],
-      "DESCRIPTION": "Firey Element Card. NL Deal damage to all enemies by using it in the #yWatery #yElement #yState."
+      "DESCRIPTION": "Firey Element Card. NL Deal damage to all enemies by using it in the #yFirey #yElement #yState."
     },
     {
       "NAMES": [
@@ -185,14 +185,14 @@
         "windy-element-state",
         "Windy-Element-State"
       ],
-      "DESCRIPTION": "Windy Element Card. NL Draw card by using it in the #yWatery #yElement #yState."
+      "DESCRIPTION": "Windy Element Card. NL Draw card by using it in the #yWindy #yElement #yState."
     },
     {
       "NAMES": [
         "windy-element-state",
         "Windy-Element-State"
       ],
-      "DESCRIPTION": "For every #b2 #yWatery #yElement #yCards played, draw #b1 card."
+      "DESCRIPTION": "For every #b2 #yWindy #yElement #yCards played, draw #b1 card."
     },
     {
       "NAMES": [
