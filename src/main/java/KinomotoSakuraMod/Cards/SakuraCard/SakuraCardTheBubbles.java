@@ -71,12 +71,23 @@ public class SakuraCardTheBubbles extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.POISON));
+        RemoveAllMonsterBuffs(player);
+    }
+
+    public void atTurnStart()
+    {
+        this.retain = true;
+    }
+
+    private void RemoveAllMonsterBuffs(AbstractPlayer player)
+    {
         for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters)
         {
             ArrayList<AbstractPower> buffs = new ArrayList<>();
             for (AbstractPower power : mon.powers)
             {
-                if (power.type == AbstractPower.PowerType.BUFF)
+                if (power.type == AbstractPower.PowerType.BUFF && KSMOD_Utility.IsStringListContains(ClowCardTheBubbles.GetUnremovablePowerList(), power.ID))
                 {
                     buffs.add(power);
                 }
@@ -86,11 +97,5 @@ public class SakuraCardTheBubbles extends KSMOD_AbstractMagicCard
                 AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(mon, player, buff));
             }
         }
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.POISON));
-    }
-
-    public void atTurnStart()
-    {
-        this.retain = true;
     }
 }
