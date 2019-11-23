@@ -159,8 +159,8 @@
     "NAME": "Tomoyo's Heart",
     "FLAVOR": "\"as long as my favorite person can be happy, it is the happiest thing for me.\"",
     "DESCRIPTIONS": [
-      "Whenever you #yExhaust a card, draw #b",
-      " card."
+      "When you exhaust #b",
+      " cards, draw a card."
     ]
   }
 }

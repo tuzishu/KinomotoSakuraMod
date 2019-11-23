@@ -231,10 +231,10 @@
   },
   "ClowCardTheRain": {
     "NAME": "Rain",
-    "DESCRIPTION": "[ Watery ] Exhaust. NL Reduce the cost of all cards in your hand by 1.",
+    "DESCRIPTION": "[ Watery ] Exhaust. NL The cost of cards in hand is reduced by 1 this turn.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "[ Watery ] Reduce the cost of all cards in your hand by 1."
+      "[ Watery ] The cost of cards in hand is reduced by 1 this turn."
     ]
   },
   "ClowCardTheReturn": {
