@@ -73,11 +73,18 @@ public class KSMOD_ReturnPower extends KSMOD_CustomPower
 
     public void onRemove()
     {
-        for (Map.Entry<AbstractPower, Integer> entry : this.recordPowerGroup.entrySet())
+        // for (Map.Entry<AbstractPower, Integer> entry : this.recordPowerGroup.entrySet())
+        // {
+        //     AbstractPower power = entry.getKey();
+        //     AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, power));
+        //     power.amount = entry.getValue();
+        //     power.updateDescription();
+        // }
+
+        for (AbstractPower power: this.recordPowerGroup.keySet())
         {
-            AbstractPower power = entry.getKey();
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, power));
-            power.amount = entry.getValue();
+            power.amount = this.recordPowerGroup.get(power);
             power.updateDescription();
         }
 
