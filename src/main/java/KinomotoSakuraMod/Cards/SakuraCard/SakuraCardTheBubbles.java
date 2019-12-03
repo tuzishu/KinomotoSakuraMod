@@ -87,7 +87,7 @@ public class SakuraCardTheBubbles extends KSMOD_AbstractMagicCard
             ArrayList<AbstractPower> buffs = new ArrayList<>();
             for (AbstractPower power : mon.powers)
             {
-                if (power.type == AbstractPower.PowerType.BUFF && KSMOD_Utility.IsStringListContains(ClowCardTheBubbles.GetUnremovablePowerList(), power.ID))
+                if (power.type == AbstractPower.PowerType.BUFF && !KSMOD_Utility.IsStringListContains(ClowCardTheBubbles.GetUnremovablePowerList(), power.ID))
                 {
                     buffs.add(power);
                 }

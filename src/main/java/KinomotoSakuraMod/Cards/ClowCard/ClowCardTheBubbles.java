@@ -103,7 +103,7 @@ public class ClowCardTheBubbles extends KSMOD_AbstractMagicCard
         ArrayList<AbstractPower> buffs = new ArrayList<>();
         for (AbstractPower power : monster.powers)
         {
-            if (power.type == AbstractPower.PowerType.BUFF && KSMOD_Utility.IsStringListContains(GetUnremovablePowerList(), power.ID))
+            if (power.type == AbstractPower.PowerType.BUFF && !KSMOD_Utility.IsStringListContains(GetUnremovablePowerList(), power.ID))
             {
                 buffs.add(power);
             }
@@ -122,7 +122,7 @@ public class ClowCardTheBubbles extends KSMOD_AbstractMagicCard
         ArrayList<AbstractPower> buffs = new ArrayList<>();
         for (AbstractPower power : monster.powers)
         {
-            if (power.type == AbstractPower.PowerType.BUFF && KSMOD_Utility.IsStringListContains(GetUnremovablePowerList(), power.ID))
+            if (power.type == AbstractPower.PowerType.BUFF && !KSMOD_Utility.IsStringListContains(GetUnremovablePowerList(), power.ID))
             {
                 buffs.add(power);
             }
