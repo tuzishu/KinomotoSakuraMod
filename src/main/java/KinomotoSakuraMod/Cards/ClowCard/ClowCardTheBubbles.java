@@ -132,6 +132,7 @@ public class ClowCardTheBubbles extends KSMOD_AbstractMagicCard
             while (buffs.size() > 0)
             {
                 AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(monster, player, buffs.get(0)));
+                buffs.remove(buffs.get(0));
                 hasbuffremoved = true;
             }
         }

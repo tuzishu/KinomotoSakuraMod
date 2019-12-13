@@ -27,7 +27,7 @@ public class SakuraCardTheSword extends KSMOD_AbstractMagicCard
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
     private static final int BASE_DAMAGE = 14;
-    private static final float PERCENT_DAMAGE_RATE = 0.25F;
+    private static final int BASE_MAGIC_NUMBER = 20;
     private int gemDamage = 0;
 
     static
@@ -42,6 +42,7 @@ public class SakuraCardTheSword extends KSMOD_AbstractMagicCard
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(KSMOD_CustomTag.KSMOD_FIREY_CARD);
         this.baseDamage = BASE_DAMAGE;
+        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
     @Override
@@ -69,7 +70,7 @@ public class SakuraCardTheSword extends KSMOD_AbstractMagicCard
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, (int) (monster.currentHealth * PERCENT_DAMAGE_RATE), DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HEAVY));
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, monster.currentHealth * this.magicNumber / 100, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.SLASH_HEAVY));
     }
 
     @Override

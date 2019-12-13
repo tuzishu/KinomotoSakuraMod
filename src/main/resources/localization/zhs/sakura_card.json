@@ -706,7 +706,7 @@
   },
   "SakuraCardTheSword": {
     "NAME": "剑",
-    "DESCRIPTION": "「 小樱牌 」「 火 」 NL 造成 !D! 点伤害，并额外造成目标当前生命值25%的伤害。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」 NL 造成 !D! 点伤害，并额外造成目标当前生命值 !M! %的伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

@@ -24,7 +24,7 @@ public class KSMOD_TomoyosHeart extends CustomRelic
 
     public String getUpdatedDescription()
     {
-        return this.DESCRIPTIONS[0] + TRIGGER_NUMBER + this.DESCRIPTIONS[1];
+        return this.DESCRIPTIONS[0] + (TRIGGER_NUMBER + 1) + this.DESCRIPTIONS[1];
     }
 
     public AbstractRelic makeCopy()
