@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 
 public class KSMOD_SealAction extends AbstractGameAction
@@ -36,17 +37,17 @@ public class KSMOD_SealAction extends AbstractGameAction
                 if (AbstractDungeon.player.hasRelic(KSMOD_SealedWand.RELIC_ID))
                 {
                     KSMOD_SealedWand wand = (KSMOD_SealedWand) AbstractDungeon.player.getRelic(KSMOD_SealedWand.RELIC_ID);
-                    wand.GainCharge(chargeAmount);
+                    wand.GainCharge(chargeAmount, (AbstractMonster) this.target);
                 }
                 else if (AbstractDungeon.player.hasRelic(KSMOD_StarWand.RELIC_ID))
                 {
                     KSMOD_StarWand wand = (KSMOD_StarWand) AbstractDungeon.player.getRelic(KSMOD_StarWand.RELIC_ID);
-                    wand.GainCharge(chargeAmount);
+                    wand.GainCharge(chargeAmount, (AbstractMonster) this.target);
                 }
                 else if (AbstractDungeon.player.hasRelic(KSMOD_UltimateWand.RELIC_ID))
                 {
                     KSMOD_UltimateWand wand = (KSMOD_UltimateWand) AbstractDungeon.player.getRelic(KSMOD_UltimateWand.RELIC_ID);
-                    wand.GainCharge(chargeAmount);
+                    wand.GainCharge(chargeAmount, (AbstractMonster) this.target);
                 }
             }
             if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead())

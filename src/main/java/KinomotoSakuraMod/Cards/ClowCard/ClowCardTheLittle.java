@@ -24,7 +24,7 @@ public class ClowCardTheLittle extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
-    private static final int DEXTERITY_NUMBER = 3;
+    private static final int DEXTERITY_NUMBER = 2;
     private static final int STRENGTH_NUMBER = 1;
 
     static

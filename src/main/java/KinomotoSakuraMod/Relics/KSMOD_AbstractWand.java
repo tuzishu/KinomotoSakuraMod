@@ -3,19 +3,21 @@ package KinomotoSakuraMod.Relics;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
+import KinomotoSakuraMod.Effects.KSMOD_SealOrbEffect;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.beyond.Darkling;
 import com.megacrit.cardcrawl.powers.MinionPower;
-import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
 
 import java.util.ArrayList;
 
@@ -64,7 +66,7 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
     {
         if (!monster.hasPower(MinionPower.POWER_ID) && !sealedMonsters.contains(monster))
         {
-            GainCharge(gainNumber);
+            GainCharge(gainNumber, monster);
         }
         if (monster.id == Darkling.ID)
         {
@@ -95,8 +97,12 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
         return this.GetTriggerNumber() > this.counter ? this.GetTriggerNumber() - this.counter : 0;
     }
 
-    public void GainCharge(int chargeNumber)
+    public void GainCharge(int chargeNumber, AbstractMonster monster)
     {
+        for (int i = 0; i < gainNumber; i++)
+        {
+            AbstractDungeon.actionManager.addToBottom(new VFXAction(new KSMOD_SealOrbEffect(monster.hb.cX, monster.hb.cY, this.hb.cX, this.hb.cY)));
+        }
         this.setCounter(this.counter + chargeNumber);
     }
 
@@ -115,6 +121,10 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
         }
         AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new SpellCardTurn()));
+        for (int i = 0; i < GetTriggerNumber(); i++)
+        {
+            AbstractDungeon.actionManager.addToBottom(new VFXAction(new KSMOD_SealOrbEffect(this.hb.cX, this.hb.cY, AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY)));
+        }
     }
 
     public int GetTriggerNumber()

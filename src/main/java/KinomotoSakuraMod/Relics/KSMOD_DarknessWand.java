@@ -62,19 +62,19 @@ public class KSMOD_DarknessWand extends CustomRelic
             {
                 this.flash();
                 KSMOD_SealedWand wand = (KSMOD_SealedWand) AbstractDungeon.player.getRelic(KSMOD_SealedWand.RELIC_ID);
-                wand.GainCharge(CHARGE_NUMBER);
+                wand.GainCharge(CHARGE_NUMBER, monster);
             }
             else if (AbstractDungeon.player.hasRelic(KSMOD_StarWand.RELIC_ID))
             {
                 this.flash();
                 KSMOD_StarWand wand = (KSMOD_StarWand) AbstractDungeon.player.getRelic(KSMOD_StarWand.RELIC_ID);
-                wand.GainCharge(CHARGE_NUMBER);
+                wand.GainCharge(CHARGE_NUMBER, monster);
             }
             else if (AbstractDungeon.player.hasRelic(KSMOD_UltimateWand.RELIC_ID))
             {
                 this.flash();
                 KSMOD_UltimateWand wand = (KSMOD_UltimateWand) AbstractDungeon.player.getRelic(KSMOD_UltimateWand.RELIC_ID);
-                wand.GainCharge(CHARGE_NUMBER);
+                wand.GainCharge(CHARGE_NUMBER, monster);
             }
         }
     }

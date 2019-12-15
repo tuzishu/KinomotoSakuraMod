@@ -44,7 +44,7 @@ public class KSMOD_ThunderAction extends AbstractGameAction
             AbstractDungeon.effectList.add(new LightningEffect(this.target.drawX, this.target.drawY));
             CardCrawlGame.sound.play(SOUND_KEY, 0.1F);
             DamageInfo info = new DamageInfo(this.info.owner, this.info.base, this.info.type);
-            info.applyPowers(info.owner, this.target);
+            // info.applyPowers(info.owner, this.target);
             this.target.damage(info);
             if (this.numTimes > 1 && !AbstractDungeon.getMonsters().areMonstersBasicallyDead())
             {

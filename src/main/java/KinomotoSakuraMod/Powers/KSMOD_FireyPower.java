@@ -1,9 +1,11 @@
 package KinomotoSakuraMod.Powers;
 
+import KinomotoSakuraMod.Effects.KSMOD_FireyScreenVFXEffect;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -23,6 +25,8 @@ public class KSMOD_FireyPower extends KSMOD_CustomPower
     private static final String[] POWER_DESCRIPTIONS;
     private static final String POWER_IMG_PATH = "img/powers/firey_power.png";
     private static final AbstractPower.PowerType POWER_TYPE = AbstractPower.PowerType.BUFF;
+    private static final float GAIN_FIRE_VFX_DURATION = 0.5F;
+    private static final float ATTACK_VFX_DURATION = 0.2F;
 
     static
     {
@@ -42,10 +46,16 @@ public class KSMOD_FireyPower extends KSMOD_CustomPower
         this.description = POWER_DESCRIPTIONS[0] + KSMOD_SealedBook.FIREY_DAMAGE_NUMBER + POWER_DESCRIPTIONS[1];
     }
 
+    public void onInitialApplication()
+    {
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(this.owner, new KSMOD_FireyScreenVFXEffect(GAIN_FIRE_VFX_DURATION), GAIN_FIRE_VFX_DURATION));
+    }
+
     public void onUseCard(AbstractCard card, UseCardAction action)
     {
         if (card.hasTag(KSMOD_CustomTag.KSMOD_FIREY_CARD))
         {
+            AbstractDungeon.actionManager.addToBottom(new VFXAction(this.owner, new KSMOD_FireyScreenVFXEffect(ATTACK_VFX_DURATION), ATTACK_VFX_DURATION));
             AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(this.owner, KSMOD_Utility.GetDamageList(KSMOD_SealedBook.FIREY_DAMAGE_NUMBER), DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.FIRE));
         }
     }
