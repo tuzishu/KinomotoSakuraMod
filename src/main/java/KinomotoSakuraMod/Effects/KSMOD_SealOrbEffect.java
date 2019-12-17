@@ -16,7 +16,7 @@ public class KSMOD_SealOrbEffect extends FlyingOrbEffect
         {
             Field target = KSMOD_Utility.GetFieldByReflect(FlyingOrbEffect.class, "target");
             target.set(this, new Vector2(end_x, end_y));
-            this.color = new Color(0.93F, 0.41F, 0.46F, 0.4F);
+            this.color = new Color(0xBA46F666);
         }
         catch (Exception e)
         {

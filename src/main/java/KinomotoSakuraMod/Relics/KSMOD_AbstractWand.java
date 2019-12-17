@@ -1,5 +1,6 @@
 package KinomotoSakuraMod.Relics;
 
+import KinomotoSakuraMod.Actions.KSMOD_FixedWaitAction;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
@@ -11,6 +12,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -58,6 +60,7 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
         if (this.counter >= GetTriggerNumber() && !AbstractDungeon.getCurrRoom().isBattleEnding() && !AbstractDungeon.getMonsters().areMonstersBasicallyDead())
         {
             this.flash();
+            ShowOrbEffect();
             ActiveRelic();
         }
     }
@@ -99,9 +102,9 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
 
     public void GainCharge(int chargeNumber, AbstractMonster monster)
     {
-        for (int i = 0; i < gainNumber; i++)
+        for (int i = 0; i < chargeNumber; i++)
         {
-            AbstractDungeon.actionManager.addToBottom(new VFXAction(new KSMOD_SealOrbEffect(monster.hb.cX, monster.hb.cY, this.hb.cX, this.hb.cY)));
+            AbstractDungeon.effectList.add(new KSMOD_SealOrbEffect(monster.hb.cX, monster.hb.cY, this.hb.cX, this.hb.cY));
         }
         this.setCounter(this.counter + chargeNumber);
     }
@@ -121,9 +124,22 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
         }
         AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new SpellCardTurn()));
+    }
+
+    public void ShowOrbEffect()
+    {
         for (int i = 0; i < GetTriggerNumber(); i++)
         {
-            AbstractDungeon.actionManager.addToBottom(new VFXAction(new KSMOD_SealOrbEffect(this.hb.cX, this.hb.cY, AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY)));
+            KSMOD_Utility.Logger.info(AbstractDungeon.player.hand.size());
+            if (AbstractDungeon.player.hand.size() == 0)
+            {
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(new KSMOD_SealOrbEffect(this.hb.cX, this.hb.cY, Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.13F)));
+            }
+            else
+            {
+                AbstractCard c = AbstractDungeon.player.hand.getTopCard();
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(new KSMOD_SealOrbEffect(this.hb.cX, this.hb.cY, c.hb.cX, c.hb.cY)));
+            }
         }
     }
 

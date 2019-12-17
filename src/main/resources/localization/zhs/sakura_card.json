@@ -356,11 +356,10 @@
   },
   "ClowCardTheTime": {
     "NAME": "时",
-    "DESCRIPTION": "「 水 」 消耗 。 NL 打断所有敌人当前行动。将2张 虚空 放入弃牌堆。",
-    "UPGRADE_DESCRIPTION": "「 水 」 消耗 。 NL 打断所有敌人当前行动，并造成 !D! 点伤害。将2张 虚空 放入弃牌堆。",
+    "DESCRIPTION": "「 水 」 消耗 。 NL 打断所有敌人当前行动。抽 !M! 张牌。将2张 虚空 放入弃牌堆。",
+    "UPGRADE_DESCRIPTION": "null",
     "EXTENDED_DESCRIPTION": [
-      "「 水 」 消耗 。 NL 打断所有敌人当前行动。",
-      "「 水 」 消耗 。 NL 打断所有敌人当前行动，并造成 !D! 点伤害。。"
+      "「 水 」 消耗 。 NL 打断所有敌人当前行动。抽 !M! 张牌。"
     ]
   },
   "ClowCardTheTwin": {
@@ -724,7 +723,7 @@
   },
   "SakuraCardTheTime": {
     "NAME": "时",
-    "DESCRIPTION": "「 小樱牌 」「 水 」 固有 。 消耗 。 NL 对全体敌人造成 !D! 点伤害。并打断敌人的行动 !M! 回合。将2张 虚空 放入弃牌堆。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」 固有 。 消耗 。 NL 打断所有敌人当前行动。抽 !M! 张牌。将1张 虚空 放入弃牌堆。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

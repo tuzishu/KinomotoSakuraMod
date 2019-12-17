@@ -4,14 +4,11 @@ import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Powers.KSMOD_TimePower;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.status.VoidCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -35,7 +32,8 @@ public class ClowCardTheTime extends KSMOD_AbstractMagicCard
     private static final AbstractCard.CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.RARE;
     private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
-    private static final int BASE_DAMAGE = 9;
+    private static final int BASE_MAGIC_NUMBER = 1;
+    private static final int UPGRADE_MAGIC_NUMBER = 1;
     private static final int VOID_NUMBER = 2;
 
     static
@@ -51,7 +49,7 @@ public class ClowCardTheTime extends KSMOD_AbstractMagicCard
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
         this.tags.add(KSMOD_CustomTag.KSMOD_WATERY_CARD);
-        this.baseDamage = BASE_DAMAGE;
+        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
         this.exhaust = true;
     }
 
@@ -61,8 +59,7 @@ public class ClowCardTheTime extends KSMOD_AbstractMagicCard
         if (!this.upgraded)
         {
             this.upgradeName();
-            this.rawDescription = UPGRADE_DESCRIPTION;
-            this.initializeDescription();
+            this.upgradeMagicNumber(UPGRADE_MAGIC_NUMBER);
         }
     }
 
@@ -98,15 +95,12 @@ public class ClowCardTheTime extends KSMOD_AbstractMagicCard
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new KSMOD_TimePower(mon, 1), 1));
             }
         }
-        if (upgraded)
-        {
-            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage), DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.POISON));
-        }
+        AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, this.magicNumber));
     }
 
     @Override
     public String getExtraDescription()
     {
-        return (this.upgraded ? EXTENDED_DESCRIPTION[0] : EXTENDED_DESCRIPTION[1]);
+        return EXTENDED_DESCRIPTION[0];
     }
 }
