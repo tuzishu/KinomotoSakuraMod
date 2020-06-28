@@ -128,7 +128,7 @@
     "DESCRIPTION": "[ Watery ] NL Deal !D! damage. NL Gain !B! Block.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      " Interrupts the current action of target if it is not a boss or elite."
+      " Target-frozen."
     ]
   },
   "ClowCardTheGlow": {

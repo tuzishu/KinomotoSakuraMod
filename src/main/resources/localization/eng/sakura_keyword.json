@@ -374,6 +374,13 @@
         "continuously"
       ],
       "DESCRIPTION": "When playing, add the same card to your hand."
+    },
+    {
+      "NAMES": [
+        "Target-frozen",
+        "target-frozen"
+      ],
+      "DESCRIPTION": "Interrupts the current action of target if it is not a boss or elite."
     }
   ]
 }
