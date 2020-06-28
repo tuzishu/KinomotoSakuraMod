@@ -32,7 +32,6 @@ public class SakuraCardTheTime extends KSMOD_AbstractMagicCard
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.ALL_ENEMY;
     private static final int BASE_MAGIC_NUMBER = 3;
-    private static final int VOID_NUMBER = 1;
 
     static
     {
@@ -94,6 +93,5 @@ public class SakuraCardTheTime extends KSMOD_AbstractMagicCard
         {
             AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, this.magicNumber));
         }
-        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new VoidCard(), VOID_NUMBER));
     }
 }

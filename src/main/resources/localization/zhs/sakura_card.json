@@ -723,7 +723,7 @@
   },
   "SakuraCardTheTime": {
     "NAME": "时",
-    "DESCRIPTION": "「 小樱牌 」「 水 」 固有 。 消耗 。 NL 打断所有敌人当前行动。抽 !M! 张牌。将1张 虚空 放入弃牌堆。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」 固有 。 消耗 。 NL 打断所有敌人当前行动。抽 !M! 张牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

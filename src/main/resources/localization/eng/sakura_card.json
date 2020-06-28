@@ -724,7 +724,7 @@
   },
   "SakuraCardTheTime": {
     "NAME": "Time",
-    "DESCRIPTION": "[ Sakura-Card ][ Watery ] Innate. Exhaust. NL Deal !D! damage to all enemies and interrupt their operations. NL Add 2 Void into the discard pile.",
+    "DESCRIPTION": "[ Sakura-Card ][ Watery ] Innate. Exhaust. NL Deal !D! damage to all enemies and interrupt their operations.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
