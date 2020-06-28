@@ -42,7 +42,7 @@
   },
   "ClowCardTheCreate": {
     "NAME": "创",
-    "DESCRIPTION": "「 地 」「 风 」 移除 。 NL 战斗结束后获得1件随机遗物。战斗开始后所需费用降低1。战斗中获得的创无法获得遗物。",
+    "DESCRIPTION": "「 地 」「 风 」 移除 。 耗能递减 。 实体限定 。 NL 战斗结束后获得1件随机遗物。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

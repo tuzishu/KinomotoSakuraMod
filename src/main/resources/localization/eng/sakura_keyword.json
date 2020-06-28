@@ -353,6 +353,20 @@
         "echo"
       ],
       "DESCRIPTION": "When exhausted by The-Song, extra apply its effect."
+    },
+    {
+      "NAMES": [
+        "Cost-decreasing",
+        "cost-decreasing"
+      ],
+      "DESCRIPTION": "At the start of each battle, the cost is reduced by 1."
+    },
+    {
+      "NAMES": [
+        "Entity-limited",
+        "entity-limited"
+      ],
+      "DESCRIPTION": "This card can only be effective when it comes from the combat bonus. The temporary one gained during the battle will not have an effect."
     }
   ]
 }
