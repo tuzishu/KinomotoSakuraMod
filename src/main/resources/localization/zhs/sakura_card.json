@@ -350,7 +350,7 @@
   },
   "ClowCardTheThunder": {
     "NAME": "雷",
-    "DESCRIPTION": "「 地 」 保留 。  NL 充能状态 下才能打出。对随机敌人造成 !D! 点伤害 !M! 次。将1张 虚空 放入弃牌堆。",
+    "DESCRIPTION": "「 地 」 保留 。 充能限定 。对随机敌人造成 !D! 点伤害 !M! 次。将1张 虚空 放入弃牌堆。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -717,7 +717,7 @@
   },
   "SakuraCardTheThunder": {
     "NAME": "雷",
-    "DESCRIPTION": "「 小樱牌 」「 地 」 NL 获得2X层 魔力充能 ，并消耗所有 魔力充能 ，每消耗 !M! 层对随机敌人造成 !D! 点伤害。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」 NL 获得2X层 魔力充能 并消耗所有，每消耗 !M! 层对随机敌人造成 !D! 伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

@@ -350,7 +350,7 @@
   },
   "ClowCardTheThunder": {
     "NAME": "Thunder",
-    "DESCRIPTION": "[ Earthy ] Retain. NL Can only be played in Charging-State. NL Deal !D! damage to random enemy !M! times. NL Add 1 Void into the discard pile.",
+    "DESCRIPTION": "[ Earthy ] Retain. Charging-Limited. NL Deal !D! damage to random enemy !M! times. NL Add 1 Void into the discard pile.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -718,7 +718,7 @@
   },
   "SakuraCardTheThunder": {
     "NAME": "Thunder",
-    "DESCRIPTION": "[ Sakura-Card ][ Earthy ] NL Gains 2X Magick-Charge. Remove all Magick-Charge, and deal !D! damage to random enemies for each Magick-Charge.",
+    "DESCRIPTION": "[ Sakura-Card ][ Earthy ] NL Gains 2X Magick-Charge and Remove all. Deal !D! damage to random enemy for each !M! Magick-Charge.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

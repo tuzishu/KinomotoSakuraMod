@@ -342,45 +342,52 @@
     },
     {
       "NAMES": [
-        "Protect",
-        "protect"
+        "protect",
+        "Protect"
       ],
       "DESCRIPTION": "Gain Block when exhasuts."
     },
     {
       "NAMES": [
-        "Echo",
-        "echo"
+        "echo",
+        "Echo"
       ],
       "DESCRIPTION": "When exhausted by The-Song, extra apply its effect."
     },
     {
       "NAMES": [
-        "Cost-decreasing",
-        "cost-decreasing"
+        "cost-decreasing",
+        "Cost-Decreasing"
       ],
       "DESCRIPTION": "At the start of each battle, the cost is reduced by 1."
     },
     {
       "NAMES": [
-        "Entity-limited",
-        "entity-limited"
+        "entity-limited",
+        "Entity-Limited"
       ],
       "DESCRIPTION": "This card can only be effective when it comes from the combat bonus. The temporary one gained during the battle will not have an effect."
     },
     {
       "NAMES": [
-        "Continuously",
-        "continuously"
+        "continuously",
+        "Continuously"
       ],
       "DESCRIPTION": "When playing, add the same card to your hand."
     },
     {
       "NAMES": [
-        "Target-frozen",
-        "target-frozen"
+        "target-frozen",
+        "Target-Frozen"
       ],
       "DESCRIPTION": "Interrupts the current action of target if it is not a boss or elite."
+    },
+    {
+      "NAMES": [
+        "charging-limited",
+        "Charging-Limited"
+      ],
+      "DESCRIPTION": "It can only be played in Charging State."
     }
   ]
 }
