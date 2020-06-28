@@ -1,8 +1,10 @@
 package KinomotoSakuraMod.Actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.defect.ThunderStrikeAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.blue.ThunderStrike;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
@@ -38,8 +40,6 @@ public class KSMOD_ThunderAction extends AbstractGameAction
         this.target = AbstractDungeon.getRandomMonster();
         if (this.target != null && this.target.currentHealth > 0)
         {
-            this.target.damageFlash = true;
-            this.target.damageFlashFrames = 4;
             AbstractDungeon.effectList.add(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, this.attackEffect));
             AbstractDungeon.effectList.add(new LightningEffect(this.target.drawX, this.target.drawY));
             CardCrawlGame.sound.play(SOUND_KEY, 0.1F);

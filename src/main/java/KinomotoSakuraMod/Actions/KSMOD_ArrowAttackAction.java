@@ -44,8 +44,6 @@ public class KSMOD_ArrowAttackAction extends AbstractGameAction
         this.target = this.monster == null ? AbstractDungeon.getRandomMonster() : this.monster;
         if (this.target != null && this.target.currentHealth > 0)
         {
-            this.target.damageFlash = true;
-            this.target.damageFlashFrames = 4;
             AbstractDungeon.effectList.add(new ThrowDaggerEffect(this.target.hb.cX + OFFSET_X, this.target.hb.cY + OFFSET_Y, ANGLE));
             AbstractDungeon.effectList.add(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, AttackEffect.SLASH_VERTICAL));
             DamageInfo info = new DamageInfo(this.player, this.damage, DamageInfo.DamageType.NORMAL);
