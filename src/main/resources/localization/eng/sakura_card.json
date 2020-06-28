@@ -272,7 +272,7 @@
   },
   "ClowCardTheShot": {
     "NAME": "Shot",
-    "DESCRIPTION": "[ Firey ] NL Attack 2 times. Each deal !D! damage and apply !M! Poison.",
+    "DESCRIPTION": "[ Firey ] NL Apply 2 times. Each deal !D! damage and apply !M! Poison.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "  Apply extra ",
