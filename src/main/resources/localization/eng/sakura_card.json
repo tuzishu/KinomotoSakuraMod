@@ -272,7 +272,7 @@
   },
   "ClowCardTheShot": {
     "NAME": "Shot",
-    "DESCRIPTION": "[ Firey ] NL Deal !D! damage 2 times. Each time apply !M! Poison.",
+    "DESCRIPTION": "[ Firey ] NL Attack 2 times. Each deal !D! damage and apply !M! Poison.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "  Apply extra ",
@@ -371,10 +371,10 @@
   },
   "ClowCardTheVoice": {
     "NAME": "Voice",
-    "DESCRIPTION": "[ Windy ] Ethereal. Invisible. NL Add a copy to the discard pile. NL When exhausted, Gain !B! Block. When exhausted by The-Song, apply its effect an extra !M! times.",
+    "DESCRIPTION": "[ Windy ] Ethereal. Invisible. NL Add a copy to the discard pile. NL Protect !B!. NL Echo !M!.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "[ Windy ] Ethereal. Invisible. NL Add a copy into your discard pile. NL When exhausted, Gain !B! Block. When exhausted by The-Song, apply its effect an extra !M! times."
+      "[ Windy ] Ethereal. Invisible. NL Add a copy to the discard pile. NL Protect !B!. NL Echo !M!."
     ]
   },
   "ClowCardTheWatery": {

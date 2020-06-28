@@ -272,7 +272,7 @@
   },
   "ClowCardTheShot": {
     "NAME": "击",
-    "DESCRIPTION": "「 火 」 NL 造成 !D! 点伤害2次，每次给与 !M! 层 中毒 。",
+    "DESCRIPTION": "「 火 」 NL 攻击2次，每次造成 !D! 点伤害并给与 !M! 层 中毒 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外给与",
@@ -370,10 +370,10 @@
   },
   "ClowCardTheVoice": {
     "NAME": "声",
-    "DESCRIPTION": "「 风 」 虚无 。 无形 。 NL 复制1张此卡到弃牌堆。被 消耗 时获得 !B! 点 格挡 。被 歌牌  消耗 时额外触发 !M! 次 歌牌 的效果。",
+    "DESCRIPTION": "「 风 」 虚无 。 无形 。 NL 复制1张此卡到弃牌堆。保护 !B! 。回音 !M! 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "「 风 」 虚无 。 无形 。 NL 复制1张此卡到弃牌堆。被 消耗 时获得 !B! 点 格挡 。被 歌牌  消耗 时额外触发 !M! 次 歌牌 的效果。"
+      "「 风 」 虚无 。 无形 。 NL 复制1张此卡到弃牌堆。保护 !B! 。回音 !M! 。"
     ]
   },
   "ClowCardTheWatery": {

@@ -339,6 +339,20 @@
         "Defence-Buffs"
       ],
       "DESCRIPTION": "Includes Blocks, Metallicize, Plated Armor, Artifact, Thorns, Buffer, Intangible, Malleable, Barricade."
+    },
+    {
+      "NAMES": [
+        "Protect",
+        "protect"
+      ],
+      "DESCRIPTION": "Gain Block when exhasuts."
+    },
+    {
+      "NAMES": [
+        "Echo",
+        "echo"
+      ],
+      "DESCRIPTION": "When exhausted by The-Song, extra apply its effect."
     }
   ]
 }
