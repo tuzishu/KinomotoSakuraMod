@@ -5,6 +5,9 @@ import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Relics.KSMOD_AbstractWand;
+import KinomotoSakuraMod.Relics.KSMOD_SealedWand;
+import KinomotoSakuraMod.Relics.KSMOD_StarWand;
+import KinomotoSakuraMod.Relics.KSMOD_UltimateWand;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -41,6 +44,7 @@ public class SakuraCardTheReturn extends KSMOD_AbstractMagicCard
         this.tags.add(KSMOD_CustomTag.KSMOD_WATERY_CARD);
         this.retain = true;
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
+        this.baseBlock = 0;
     }
 
     @Override
@@ -85,12 +89,41 @@ public class SakuraCardTheReturn extends KSMOD_AbstractMagicCard
                 {
                     if (r instanceof KSMOD_AbstractWand)
                     {
-                        r.setCounter(r.counter + (((KSMOD_AbstractWand)r).GetTriggerNumber() - ((KSMOD_AbstractWand)r).GetUpdateTriggerNumber()) * this.magicNumber / 100);
+                        r.setCounter(r.counter + (((KSMOD_AbstractWand) r).GetTriggerNumber() - ((KSMOD_AbstractWand) r).GetUpdateTriggerNumber()) * this.magicNumber / 100);
                         break;
                     }
                 }
                 AbstractDungeon.player.masterDeck.removeCard(card);
                 break;
+            }
+        }
+    }
+
+    @Override
+    public void applyPowers()
+    {
+        super.applyPowers();
+        if (AbstractDungeon.player != null)
+        {
+            if (AbstractDungeon.player.hasRelic(KSMOD_SealedWand.RELIC_ID))
+            {
+                KSMOD_AbstractWand wand = (KSMOD_AbstractWand) AbstractDungeon.player.getRelic((KSMOD_SealedWand.RELIC_ID));
+                this.baseBlock = (wand.GetTriggerNumber() - wand.GetUpdateTriggerNumber()) / 2;
+            }
+            else if (AbstractDungeon.player.hasRelic(KSMOD_StarWand.RELIC_ID))
+            {
+                KSMOD_AbstractWand wand = (KSMOD_AbstractWand) AbstractDungeon.player.getRelic((KSMOD_StarWand.RELIC_ID));
+                this.baseBlock = (wand.GetTriggerNumber() - wand.GetUpdateTriggerNumber()) / 2;
+            }
+            else if (AbstractDungeon.player.hasRelic(KSMOD_UltimateWand.RELIC_ID))
+            {
+                KSMOD_AbstractWand wand = (KSMOD_AbstractWand) AbstractDungeon.player.getRelic((KSMOD_UltimateWand.RELIC_ID));
+                this.baseBlock = (wand.GetTriggerNumber() - wand.GetUpdateTriggerNumber()) / 2;
+            }
+            if (this.baseBlock != 0)
+            {
+                this.rawDescription = DESCRIPTION;
+                this.initializeDescription();
             }
         }
     }

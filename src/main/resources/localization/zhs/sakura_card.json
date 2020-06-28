@@ -639,7 +639,7 @@
   },
   "SakuraCardTheReturn": {
     "NAME": "回",
-    "DESCRIPTION": "「 小樱牌 」「 水 」 保留 。 移除 。 NL 回复所有生命值，并返还上次转变消耗 !M! %的充能。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」 保留 。 移除 。 NL 回复所有生命值。返还上次转变消耗 !M! %的法杖充能( !B! )。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

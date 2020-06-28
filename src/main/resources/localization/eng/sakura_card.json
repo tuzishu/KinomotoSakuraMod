@@ -640,7 +640,7 @@
   },
   "SakuraCardTheReturn": {
     "NAME": "Return",
-    "DESCRIPTION": "[ Sakura-Card ][ Watery ] Retain. Removable. NL Restore all health and return !M! % of the charge consumed by the last convert.",
+    "DESCRIPTION": "[ Sakura-Card ][ Watery ] Retain. Removable. NL Restore all health and return !M! % of the charge consumed by the last convert( !B! ).",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
