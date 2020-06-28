@@ -307,7 +307,7 @@
   },
   "ClowCardTheSong": {
     "NAME": "歌",
-    "DESCRIPTION": "「 风 」 NL 消耗最多X+1张手牌，每消耗1张手牌，对全体敌人造成 !D! 点伤害。",
+    "DESCRIPTION": "「 风 」 NL 消耗最多X+1张手牌，每消耗1张对全体造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外发动",
@@ -687,7 +687,7 @@
   },
   "SakuraCardTheSong": {
     "NAME": "歌",
-    "DESCRIPTION": "「 小樱牌 」「 风 」 NL 选择任意数量的手牌 消耗 ，每消耗1张手牌，对全体敌人造成 !D! 点伤害，并获得 !B! 点格挡。",
+    "DESCRIPTION": "「 小樱牌 」「 风 」 NL 选择任意数量的手牌 消耗 ，每消耗1张对全体造成 !D! 伤害，获得 !B! 格挡。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
