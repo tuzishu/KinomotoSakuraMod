@@ -412,7 +412,7 @@
   },
   "SpellCardSeal": {
     "NAME": "Seal",
-    "DESCRIPTION": "[ Spell ] NL Deal !D! damage. If this kills a non-minion enemy, The Sealed-Wand gains extra !M! charge.",
+    "DESCRIPTION": "[ Spell ] NL Deal !D! damage. If Fatal, The Sealed-Wand gains extra !M! charge.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

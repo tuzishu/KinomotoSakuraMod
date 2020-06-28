@@ -26,7 +26,7 @@ public class ClowCardTheGlow extends KSMOD_AbstractMagicCard
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
     private static final int BASE_MAGIC_NUMBER = 1;
     private static final int UPGRADE_MAGIC_NUMBER = 1;
-    private static final int CHARGE_NUMBER = 2;
+    private static final int CHARGE_NUMBER = 3;
 
     static
     {

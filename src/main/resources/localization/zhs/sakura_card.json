@@ -133,7 +133,7 @@
   },
   "ClowCardTheGlow": {
     "NAME": "灯",
-    "DESCRIPTION": "「 火 」 NL 抽 !M! 张牌，获得2层 魔力充能 。",
+    "DESCRIPTION": "「 火 」 NL 抽 !M! 张牌，获得3层 魔力充能 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -411,7 +411,7 @@
   },
   "SpellCardSeal": {
     "NAME": "封",
-    "DESCRIPTION": "「 符咒 」 NL 造成 !D! 点伤害。如果击杀了1名不是 爪牙 的敌人，则 封印之杖 额外获得 !M! 点充能。",
+    "DESCRIPTION": "「 符咒 」 NL 造成 !D! 点伤害。 斩杀 时 封印之杖 额外获得 !M! 点充能。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

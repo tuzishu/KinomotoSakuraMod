@@ -2,6 +2,7 @@ package KinomotoSakuraMod.Powers;
 
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheVoice;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -35,6 +36,6 @@ public class KSMOD_VoicePower_SakuraCard extends KSMOD_CustomPower
 
     public void atStartOfTurn()
     {
-        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new ClowCardTheVoice(), this.amount));
+        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new ClowCardTheVoice(), this.amount));
     }
 }
