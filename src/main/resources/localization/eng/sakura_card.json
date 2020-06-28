@@ -580,7 +580,7 @@
   },
   "SakuraCardTheLight": {
     "NAME": "Light",
-    "DESCRIPTION": "[ Sakura-Card ][ Earthy ][ Firey ] NL Exhaust all Status and Curses in your hand, draw pile and discard pile.",
+    "DESCRIPTION": "[ Sakura-Card ][ Earthy ][ Firey ] NL Exhaust all Status and Curses. Each heal 1 health and draw 1 card.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

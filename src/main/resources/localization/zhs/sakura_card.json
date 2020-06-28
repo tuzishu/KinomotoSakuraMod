@@ -453,7 +453,7 @@
   },
   "SakuraCardTheArrow": {
     "NAME": "矢",
-    "DESCRIPTION": "「 小樱牌 」「 火 」 NL 丢弃抽牌堆所有牌，每丢弃1张不同名的 库洛牌 或 小樱牌 ，对随机目标造成 !D! 点伤害。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」 NL 丢弃抽牌堆所有牌，每有1张不同名 库洛牌 或 小樱牌 随机造成1次 !D! 伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -579,7 +579,7 @@
   },
   "SakuraCardTheLight": {
     "NAME": "光",
-    "DESCRIPTION": "「 小樱牌 」「 地 」「 火 」 NL  消耗 手牌、抽牌堆、弃牌堆中的所有状态牌和诅咒牌。每 消耗 1张，恢复1生命，抽1张牌。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」「 火 」 NL  消耗战斗中所有状态牌和诅咒牌。每 消耗 1张，恢复1生命，抽1张牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
