@@ -52,7 +52,7 @@ public class KSMOD_SingleCardViewPopupPatch
     private static final float PORTRAIT_SINGLE_ORIGIN_Y = 500F;
     private static final String[] TEXT;
     private static final float DESC_X = Settings.WIDTH * 0.05F;
-    private static final float DESC_Y = Settings.HEIGHT * 0.9F;
+    private static final float DESC_Y = Settings.HEIGHT * 0.45F;
     private static final float TOGGLE_X = Settings.WIDTH * 0.15F;
     private static final float TOGGLE_Y = Settings.HEIGHT * 0.1F;
 
