@@ -86,7 +86,7 @@
   },
   "ClowCardTheFight": {
     "NAME": "Fight",
-    "DESCRIPTION": "[ Earthy ] Exhaust. NL Deal !D! damage. NL Gain 1 Magick-Charge. NL Gain !M! Temporary-Strength. Add a copy to hand.",
+    "DESCRIPTION": "[ Earthy ] Exhaust. Continuously. NL Deal !D! damage. NL Gain 1 Magick-Charge. NL Gain !M! Temporary-Strength.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       " Gain ",

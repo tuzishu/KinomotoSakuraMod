@@ -367,6 +367,13 @@
         "entity-limited"
       ],
       "DESCRIPTION": "This card can only be effective when it comes from the combat bonus. The temporary one gained during the battle will not have an effect."
+    },
+    {
+      "NAMES": [
+        "Continuously",
+        "continuously"
+      ],
+      "DESCRIPTION": "When playing, add the same card to your hand."
     }
   ]
 }
