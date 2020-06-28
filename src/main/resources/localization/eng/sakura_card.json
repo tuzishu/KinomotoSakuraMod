@@ -42,7 +42,7 @@
   },
   "ClowCardTheCreate": {
     "NAME": "Create",
-    "DESCRIPTION": "[ Earthy ][ Windy ] Removable. Cost-decreasing. Entity-limited. NL Add a random relic to the battle reward.",
+    "DESCRIPTION": "[ Earthy ][ Windy ] Removable. Cost-Decreasing. Entity-Limited. NL Add a random relic to the battle reward.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -128,7 +128,7 @@
     "DESCRIPTION": "[ Watery ] NL Deal !D! damage. NL Gain !B! Block.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      " Target-frozen."
+      " Target-Frozen."
     ]
   },
   "ClowCardTheGlow": {
