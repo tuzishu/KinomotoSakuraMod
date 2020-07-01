@@ -1,6 +1,7 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
+import KinomotoSakuraMod.Cards.SakuraCard.SakuraCardTheMist;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -40,6 +41,7 @@ public class ClowCardTheMist extends KSMOD_AbstractMagicCard
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
         this.tags.add(KSMOD_CustomTag.KSMOD_EARTHY_CARD);
+        this.cardsToPreview = new SakuraCardTheMist();
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 

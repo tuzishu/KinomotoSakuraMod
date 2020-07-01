@@ -2,6 +2,7 @@ package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Actions.KSMOD_ChangeAction;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
+import KinomotoSakuraMod.Cards.SakuraCard.SakuraCardTheChange;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
@@ -39,6 +40,7 @@ public class ClowCardTheChange extends KSMOD_AbstractMagicCard
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
         this.tags.add(KSMOD_CustomTag.KSMOD_EARTHY_CARD);
+        this.cardsToPreview = new SakuraCardTheChange();
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
@@ -72,6 +74,6 @@ public class ClowCardTheChange extends KSMOD_AbstractMagicCard
     @Override
     public String getExtraDescription()
     {
-        return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.DRAW_NUMBER +EXTENDED_DESCRIPTION[1];
+        return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.DRAW_NUMBER + EXTENDED_DESCRIPTION[1];
     }
 }

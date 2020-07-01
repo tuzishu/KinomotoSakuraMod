@@ -83,7 +83,8 @@ public class KSMOD_UpdateMagickChargePowerHook
             public static void Insert(ReducePowerAction action) throws NoSuchFieldException, IllegalAccessException
             {
                 float duration = KSMOD_Utility.GetFieldByReflect(AbstractGameAction.class, "duration").getFloat(action);
-                if (duration == Settings.ACTION_DUR_FAST)
+                float startDuration = KSMOD_Utility.GetFieldByReflect(AbstractGameAction.class, "startDuration").getFloat(action);
+                if (duration == startDuration)
                 {
                     PostMessage(action, AbstractDungeon.player.cardInUse);
                     for (AbstractCard card : AbstractDungeon.player.hand.group)

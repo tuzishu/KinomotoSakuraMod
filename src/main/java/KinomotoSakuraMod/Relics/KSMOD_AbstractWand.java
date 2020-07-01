@@ -70,9 +70,6 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
         if (!monster.hasPower(MinionPower.POWER_ID) && !sealedMonsters.contains(monster))
         {
             GainCharge(gainNumber, monster);
-        }
-        if (monster.id == Darkling.ID)
-        {
             sealedMonsters.add(monster);
         }
     }

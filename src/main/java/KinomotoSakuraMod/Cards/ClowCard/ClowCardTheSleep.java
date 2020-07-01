@@ -1,10 +1,10 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
+import KinomotoSakuraMod.Cards.SakuraCard.SakuraCardTheSleep;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Powers.KSMOD_SleepPower;
-import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -39,6 +39,7 @@ public class ClowCardTheSleep extends KSMOD_AbstractMagicCard
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
         this.tags.add(KSMOD_CustomTag.KSMOD_WINDY_CARD);
+        this.cardsToPreview = new SakuraCardTheSleep();
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
         this.exhaust = true;
     }
@@ -80,7 +81,7 @@ public class ClowCardTheSleep extends KSMOD_AbstractMagicCard
     @Override
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        for (AbstractMonster mon: AbstractDungeon.getMonsters().monsters)
+        for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters)
         {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mon, player, new KSMOD_SleepPower(mon, this.magicNumber), this.magicNumber));
         }

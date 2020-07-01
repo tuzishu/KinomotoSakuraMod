@@ -6,18 +6,30 @@ import KinomotoSakuraMod.Cards.SpellCard.SpellCardLeiDi;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardShuiLong;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.actions.unique.DiscoveryAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.cards.colorless.Discovery;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class KSMOD_WriteEmptySpellAction extends AbstractGameAction
 {
     public static final String ACTION_ID = "KSMOD_WriteEmptySpellAction";
+    private static final String[] TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
+
+    static
+    {
+        UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ACTION_ID);
+        TEXT = uiStrings.TEXT;
+    }
 
     public KSMOD_WriteEmptySpellAction()
     {
@@ -35,7 +47,7 @@ public class KSMOD_WriteEmptySpellAction extends AbstractGameAction
         }
         if (this.duration == DURATION)
         {
-            AbstractDungeon.cardRewardScreen.discoveryOpen();
+            AbstractDungeon.cardRewardScreen.customCombatOpen(GetSpellList(), TEXT[0], false);
             this.tickDuration();
             return;
         }
@@ -45,5 +57,15 @@ public class KSMOD_WriteEmptySpellAction extends AbstractGameAction
             this.isDone = true;
         }
         this.tickDuration();
+    }
+
+    private ArrayList<AbstractCard> GetSpellList()
+    {
+        ArrayList<AbstractCard> spellCards = new ArrayList<>();
+        spellCards.add(new SpellCardHuoShen());
+        spellCards.add(new SpellCardLeiDi());
+        spellCards.add(new SpellCardFengHua());
+        spellCards.add(new SpellCardShuiLong());
+        return spellCards;
     }
 }

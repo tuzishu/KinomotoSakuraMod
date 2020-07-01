@@ -1,12 +1,10 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
+import KinomotoSakuraMod.Cards.SakuraCard.SakuraCardTheIllusion;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -29,7 +27,7 @@ public class ClowCardTheIllusion extends KSMOD_AbstractMagicCard
     private static final int UPGRADE_BLOCK = 3;
     private static final int BASE_MAGIC_NUMBER = 2;
     private static final int UPGRADE_MAGIC_NUMBER = 1;
-    private static final int INCREASE_NUMBER =   3;
+    private static final int INCREASE_NUMBER = 3;
     private static final int CHARGED_INCREASE_NUMBER = 1;
 
     static
@@ -44,6 +42,7 @@ public class ClowCardTheIllusion extends KSMOD_AbstractMagicCard
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
         this.tags.add(KSMOD_CustomTag.KSMOD_WINDY_CARD);
+        this.cardsToPreview = new SakuraCardTheIllusion();
         this.baseBlock = BASE_BLOCK;
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }

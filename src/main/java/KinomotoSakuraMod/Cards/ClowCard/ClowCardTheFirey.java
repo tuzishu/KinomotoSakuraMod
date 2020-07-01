@@ -1,6 +1,7 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
+import KinomotoSakuraMod.Cards.SakuraCard.SakuraCardTheFirey;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardHuoShen;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
@@ -38,6 +39,7 @@ public class ClowCardTheFirey extends KSMOD_AbstractMagicCard
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(KSMOD_CustomTag.KSMOD_FIREY_CARD);
+        this.cardsToPreview = new SakuraCardTheFirey();
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 

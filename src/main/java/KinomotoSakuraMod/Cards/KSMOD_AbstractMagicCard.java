@@ -20,7 +20,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
@@ -1436,7 +1436,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
     }
 
     @Override
-    public TextureAtlas.AtlasRegion getCardBgAtlas()
+    public AtlasRegion getCardBgAtlas()
     {
         return KSMOD_ImageConst.SILHOUETTE_ATLAS;
     }
@@ -1447,7 +1447,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
         if (this.isGlowing)
         {
             sb.setBlendFunction(770, 1);
-            TextureAtlas.AtlasRegion img = KSMOD_ImageConst.SILHOUETTE_ATLAS;
+            AtlasRegion img = KSMOD_ImageConst.SILHOUETTE_ATLAS;
             if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT)
             {
                 Color BLUE_BORDER_GLOW_COLOR = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "BLUE_BORDER_GLOW_COLOR").get(this);

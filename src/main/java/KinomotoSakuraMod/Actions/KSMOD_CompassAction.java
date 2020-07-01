@@ -5,12 +5,14 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.status.VoidCard;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.screens.CardRewardScreen;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToDiscardEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class KSMOD_CompassAction extends AbstractGameAction
 {
@@ -30,7 +32,7 @@ public class KSMOD_CompassAction extends AbstractGameAction
     {
         if (this.duration == Settings.ACTION_DUR_FAST)
         {
-            AbstractDungeon.cardRewardScreen.discoveryOpen();
+            AbstractDungeon.cardRewardScreen.customCombatOpen(generateCardChoices(null), CardRewardScreen.TEXT[1], true);
             this.tickDuration();
         }
         else
@@ -64,5 +66,39 @@ public class KSMOD_CompassAction extends AbstractGameAction
 
             this.tickDuration();
         }
+    }
+
+    private ArrayList<AbstractCard> generateCardChoices(AbstractCard.CardType type)
+    {
+        ArrayList derp = new ArrayList<>();
+        while (derp.size() != 3)
+        {
+            boolean dupe = false;
+            AbstractCard tmp = null;
+            if (type == null)
+            {
+                tmp = AbstractDungeon.returnTrulyRandomCardInCombat();
+            }
+            else
+            {
+                tmp = AbstractDungeon.returnTrulyRandomCardInCombat(type);
+            }
+            Iterator var5 = derp.iterator();
+            while (var5.hasNext())
+            {
+                AbstractCard c = (AbstractCard) var5.next();
+                if (c.cardID.equals(tmp.cardID))
+                {
+                    dupe = true;
+                    break;
+                }
+            }
+            if (!dupe)
+            {
+                derp.add(tmp.makeCopy());
+            }
+        }
+
+        return derp;
     }
 }

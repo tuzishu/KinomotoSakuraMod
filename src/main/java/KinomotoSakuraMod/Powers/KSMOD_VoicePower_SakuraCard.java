@@ -1,7 +1,6 @@
 package KinomotoSakuraMod.Powers;
 
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheVoice;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;

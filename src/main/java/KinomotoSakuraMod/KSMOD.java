@@ -33,9 +33,9 @@ import java.util.ArrayList;
 public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharactersSubscriber, EditRelicsSubscriber, EditCardsSubscriber, EditStringsSubscriber, EditKeywordsSubscriber, OnStartBattleSubscriber
 {
     // CardColor卡片颜色，卡片总览中的tab按钮颜色
-    public static final Color colorClowCard = CardHelper.getColor(255f, 152f, 74f);
-    public static final Color colorSakuraCard = CardHelper.getColor(255f, 192f, 203f);
-    public static final Color colorSpellCard = CardHelper.getColor(253f, 220f, 106f);
+    public static final Color colorClowCard = CardHelper.getColor(255, 152, 74);
+    public static final Color colorSakuraCard = CardHelper.getColor(255, 192, 203);
+    public static final Color colorSpellCard = CardHelper.getColor(253, 220, 106);
     private static String localizationPath = null;
 
     public KSMOD()

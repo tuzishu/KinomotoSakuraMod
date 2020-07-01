@@ -2,6 +2,7 @@ package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Actions.KSMOD_ThunderAction;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
+import KinomotoSakuraMod.Cards.SakuraCard.SakuraCardTheThunder;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
@@ -43,6 +44,7 @@ public class ClowCardTheThunder extends KSMOD_AbstractMagicCard
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
         this.tags.add(KSMOD_CustomTag.KSMOD_EARTHY_CARD);
+        this.cardsToPreview = new SakuraCardTheThunder();
         this.baseDamage = BASE_DAMAGE;
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
         this.cantUseMessage = KinomotoSakura.GetMessage(1);
