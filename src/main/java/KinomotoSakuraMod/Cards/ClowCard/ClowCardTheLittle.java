@@ -41,6 +41,7 @@ public class ClowCardTheLittle extends KSMOD_AbstractMagicCard
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(KSMOD_CustomTag.KSMOD_WATERY_CARD);
         this.cardsToPreview = new SakuraCardTheLittle();
+        this.setBaseMagicNumber(DEXTERITY_NUMBER);
     }
 
     public KSMOD_AbstractMagicCard makeCopy()
@@ -61,7 +62,7 @@ public class ClowCardTheLittle extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new DexterityPower(player, DEXTERITY_NUMBER), DEXTERITY_NUMBER));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new DexterityPower(player, this.magicNumber), DEXTERITY_NUMBER));
         if (!upgraded)
         {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new StrengthPower(player, -STRENGTH_NUMBER), -STRENGTH_NUMBER));

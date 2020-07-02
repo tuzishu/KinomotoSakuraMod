@@ -62,7 +62,7 @@ public class ClowCardTheBig extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new StrengthPower(player, this.baseMagicNumber), STRENGTH_NUMBER));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new StrengthPower(player, this.magicNumber), STRENGTH_NUMBER));
         if (!upgraded)
         {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new DexterityPower(player, -DEXTERITY_NUMBER), -DEXTERITY_NUMBER));
