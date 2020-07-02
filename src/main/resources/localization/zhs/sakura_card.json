@@ -10,7 +10,7 @@
   "ClowCardTheBig": {
     "NAME": "大",
     "DESCRIPTION": "「 火 」 NL 获得 !M! 点 力量 ，失去1点 敏捷 。",
-    "UPGRADE_DESCRIPTION": "「 火 」获得2点 力量。",
+    "UPGRADE_DESCRIPTION": "「 火 」获得 !M! 点 力量。",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheBubbles": {
@@ -24,7 +24,7 @@
   },
   "ClowCardTheChange": {
     "NAME": "替",
-    "DESCRIPTION": "「 地 」 NL 丢弃最多 1 张手牌，抽丢弃数量+ !M! 张牌。",
+    "DESCRIPTION": "「 地 」 NL 丢弃最多1张手牌，抽丢弃数量+ !M! 张牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外抽",
@@ -78,10 +78,10 @@
   },
   "ClowCardTheErase": {
     "NAME": "消",
-    "DESCRIPTION": "「 风 」 NL 直接击杀生命值不足25%的非boss、非精英目标。否则造成 !D! 点伤害。",
+    "DESCRIPTION": "「 风 」 NL 直接击杀 爪牙 和生命值不足33%的普通敌人。否则造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "「 风 」 NL 直接击杀生命值不足50%的非boss、非精英目标。否则造成 !D! 点伤害。"
+      "「 风 」 NL 直接击杀 爪牙 和生命值不足66%的普通敌人。否则造成 !D! 点伤害。"
     ]
   },
   "ClowCardTheFight": {

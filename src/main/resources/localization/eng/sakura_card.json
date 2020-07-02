@@ -78,10 +78,10 @@
   },
   "ClowCardTheErase": {
     "NAME": "Erase",
-    "DESCRIPTION": "[ Windy ] NL Kill a non-boss, non-minion target with less than 25% health. Otherwise, deal !D! damage.",
+    "DESCRIPTION": "[ Windy ] NL Kill Minion or non-boss non-minion target with less than 33% health. Otherwise, deal !D! damage.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
-      "[ Windy ] NL Kill a non-boss, non-minion target with less than 50% health. Otherwise, deal !D! damage."
+      "[ Windy ] NL Kill a non-boss, non-minion target with less than 66% health. Otherwise, deal !D! damage."
     ]
   },
   "ClowCardTheFight": {

@@ -7,6 +7,7 @@ import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.InstantKillAction;
 import com.megacrit.cardcrawl.actions.unique.RemoveAllPowersAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -14,6 +15,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.MinionPower;
 
 public class ClowCardTheErase extends KSMOD_AbstractMagicCard
 {
@@ -29,7 +31,7 @@ public class ClowCardTheErase extends KSMOD_AbstractMagicCard
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
     private static final int BASE_DAMAGE = 9;
     private static final int UPGRADE_DAMAGE = 4;
-    private static final float KILL_LINE = 0.25F;
+    private static final float KILL_LINE = 0.33F;
 
     static
     {
@@ -66,34 +68,34 @@ public class ClowCardTheErase extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        if (monster.type != AbstractMonster.EnemyType.BOSS && monster.type != AbstractMonster.EnemyType.ELITE && monster.currentHealth <= monster.maxHealth * KILL_LINE)
-        {
-            AbstractDungeon.actionManager.addToBottom(new RemoveAllPowersAction(monster, false));
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, monster.currentHealth + monster.currentBlock, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
-        }
-        else
-        {
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        }
+        Kill(player, monster, KILL_LINE);
     }
 
     @Override
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        if (monster.type != AbstractMonster.EnemyType.BOSS && monster.type != AbstractMonster.EnemyType.ELITE && monster.currentHealth <= monster.maxHealth * KSMOD_SealedBook.EXTRA_KILL_LINE)
-        {
-            AbstractDungeon.actionManager.addToBottom(new RemoveAllPowersAction(monster, false));
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, monster.currentHealth + monster.currentBlock, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.FIRE));
-        }
-        else
-        {
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        }
+        Kill(player, monster, KSMOD_SealedBook.EXTRA_KILL_LINE);
     }
 
     @Override
     public String getExtraDescription()
     {
         return EXTENDED_DESCRIPTION[0];
+    }
+
+    private void Kill(AbstractPlayer player, AbstractMonster monster, float line)
+    {
+        if (monster.hasPower(MinionPower.POWER_ID))
+        {
+            AbstractDungeon.actionManager.addToBottom(new InstantKillAction(monster));
+        }
+        else if (monster.type != AbstractMonster.EnemyType.BOSS && monster.type != AbstractMonster.EnemyType.ELITE && monster.currentHealth <= monster.maxHealth * line)
+        {
+            AbstractDungeon.actionManager.addToBottom(new InstantKillAction(monster));
+        }
+        else
+        {
+            AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+        }
     }
 }
