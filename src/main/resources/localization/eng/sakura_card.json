@@ -9,8 +9,8 @@
   },
   "ClowCardTheBig": {
     "NAME": "Big",
-    "DESCRIPTION": "[ Firey ] NL Gain 3 Strength. NL Lose 1 Dexterity.",
-    "UPGRADE_DESCRIPTION": "[ Firey ] NL Gain 3 Strength.",
+    "DESCRIPTION": "[ Firey ] NL Gain !M! Strength. NL Lose 1 Dexterity.",
+    "UPGRADE_DESCRIPTION": "[ Firey ] NL Gain 2 Strength.",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheBubbles": {

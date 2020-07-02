@@ -9,8 +9,8 @@
   },
   "ClowCardTheBig": {
     "NAME": "大",
-    "DESCRIPTION": "「 火 」 NL 获得3点 力量 ，失去1点 敏捷 。",
-    "UPGRADE_DESCRIPTION": "「 火 」获得3点 力量。",
+    "DESCRIPTION": "「 火 」 NL 获得 !M! 点 力量 ，失去1点 敏捷 。",
+    "UPGRADE_DESCRIPTION": "「 火 」获得2点 力量。",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheBubbles": {
