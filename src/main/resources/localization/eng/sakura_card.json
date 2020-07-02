@@ -78,7 +78,7 @@
   },
   "ClowCardTheErase": {
     "NAME": "Erase",
-    "DESCRIPTION": "[ Windy ] NL Kill Minion or non-boss non-minion target with less than 33% health. Otherwise, deal !D! damage.",
+    "DESCRIPTION": "[ Windy ] NL Kill Minion or normal monster with less than 33% health. Otherwise, deal !D! damage.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "[ Windy ] NL Kill a non-boss, non-minion target with less than 66% health. Otherwise, deal !D! damage."
@@ -514,7 +514,7 @@
   },
   "SakuraCardTheErase": {
     "NAME": "Erase",
-    "DESCRIPTION": "[ Sakura-Card ][ Earthy ] NL Deal damage to a non-boss, non-elite target so it has 1 health remaining.",
+    "DESCRIPTION": "[ Sakura-Card ][ Earthy ] NL Deal damage to normal monster so it has 1 health remaining.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -640,7 +640,7 @@
   },
   "SakuraCardTheReturn": {
     "NAME": "Return",
-    "DESCRIPTION": "[ Sakura-Card ][ Watery ] Retain. Removable. NL Restore all health and return !M! % of the charge consumed by the last convert( !B! ).",
+    "DESCRIPTION": "[ Sakura-Card ][ Watery ] Retain. Removable. NL Restore all health and return 75% of the charge consumed by the last convert( !M! ).",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

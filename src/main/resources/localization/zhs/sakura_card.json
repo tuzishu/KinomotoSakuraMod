@@ -513,7 +513,7 @@
   },
   "SakuraCardTheErase": {
     "NAME": "消",
-    "DESCRIPTION": "「 小樱牌 」「 地 」 NL 对非boss、非精英的目标造成伤害，保留1点生命值。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」 NL 对普通怪物造成伤害，保留1点生命值。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -639,7 +639,7 @@
   },
   "SakuraCardTheReturn": {
     "NAME": "回",
-    "DESCRIPTION": "「 小樱牌 」「 水 」 保留 。 移除 。 NL 回复所有生命值。返还上次转变消耗 !M! %的法杖充能( !B! )。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」 保留 。 移除 。 NL 回复所有生命值。返还上次转变消耗75%的法杖充能( !M! )。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

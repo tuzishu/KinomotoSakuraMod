@@ -63,7 +63,14 @@ public class ClowCardTheReturn extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_ReturnPower(player, this.magicNumber)));
+        if (player.hasPower(KSMOD_ReturnPower.POWER_ID))
+        {
+            player.getPower(KSMOD_ReturnPower.POWER_ID).amount = this.magicNumber;
+        }
+        else
+        {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_ReturnPower(player, this.magicNumber)));
+        }
         if (!upgraded)
         {
             AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new VoidCard(), 2));

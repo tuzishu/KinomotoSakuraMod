@@ -29,7 +29,7 @@ public class SakuraCardTheReturn extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SAKURACARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
-    private static final int BASE_MAGIC_NUMBER = 50;
+    private static final float RECHARGE_RATE = 0.75F;
 
     static
     {
@@ -43,8 +43,7 @@ public class SakuraCardTheReturn extends KSMOD_AbstractMagicCard
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(KSMOD_CustomTag.KSMOD_WATERY_CARD);
         this.retain = true;
-        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
-        this.baseBlock = 0;
+        this.setBaseMagicNumber(0);
     }
 
     @Override
@@ -89,7 +88,8 @@ public class SakuraCardTheReturn extends KSMOD_AbstractMagicCard
                 {
                     if (r instanceof KSMOD_AbstractWand)
                     {
-                        r.setCounter(r.counter + (((KSMOD_AbstractWand) r).GetTriggerNumber() - ((KSMOD_AbstractWand) r).GetUpdateTriggerNumber()) * this.magicNumber / 100);
+                        KSMOD_AbstractWand wand = (KSMOD_AbstractWand)r;
+                        r.setCounter(r.counter + (int)((wand.GetTriggerNumber() - wand.GetUpdateTriggerNumber()) * RECHARGE_RATE));
                         break;
                     }
                 }
@@ -108,17 +108,17 @@ public class SakuraCardTheReturn extends KSMOD_AbstractMagicCard
             if (AbstractDungeon.player.hasRelic(KSMOD_SealedWand.RELIC_ID))
             {
                 KSMOD_AbstractWand wand = (KSMOD_AbstractWand) AbstractDungeon.player.getRelic((KSMOD_SealedWand.RELIC_ID));
-                this.baseBlock = (wand.GetTriggerNumber() - wand.GetUpdateTriggerNumber()) / 2;
+                this.baseMagicNumber = (int)((wand.GetTriggerNumber() - wand.GetUpdateTriggerNumber()) * RECHARGE_RATE);
             }
             else if (AbstractDungeon.player.hasRelic(KSMOD_StarWand.RELIC_ID))
             {
                 KSMOD_AbstractWand wand = (KSMOD_AbstractWand) AbstractDungeon.player.getRelic((KSMOD_StarWand.RELIC_ID));
-                this.baseBlock = (wand.GetTriggerNumber() - wand.GetUpdateTriggerNumber()) / 2;
+                this.baseMagicNumber = (int)((wand.GetTriggerNumber() - wand.GetUpdateTriggerNumber()) * RECHARGE_RATE);
             }
             else if (AbstractDungeon.player.hasRelic(KSMOD_UltimateWand.RELIC_ID))
             {
                 KSMOD_AbstractWand wand = (KSMOD_AbstractWand) AbstractDungeon.player.getRelic((KSMOD_UltimateWand.RELIC_ID));
-                this.baseBlock = (wand.GetTriggerNumber() - wand.GetUpdateTriggerNumber()) / 2;
+                this.baseMagicNumber = (int)((wand.GetTriggerNumber() - wand.GetUpdateTriggerNumber()) * RECHARGE_RATE);
             }
             if (this.baseBlock != 0)
             {
