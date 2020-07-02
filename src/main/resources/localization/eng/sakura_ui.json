@@ -57,5 +57,10 @@
     "TEXT": [
       "convert to Sakura Card"
     ]
+  },
+  "KSMOD_WriteEmptySpellAction": {
+    "TEXT": [
+      "choose a spell"
+    ]
   }
 }
