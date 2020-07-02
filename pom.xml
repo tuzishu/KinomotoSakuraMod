@@ -6,8 +6,9 @@
 
     <groupId>KinomotoSakuraMod</groupId>
     <artifactId>KinomotoSakuraMod</artifactId>
-    <version>alpha</version>
+    <version>beta</version>
     <build>
+        <finalName>KinomotoSakuraMod</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
