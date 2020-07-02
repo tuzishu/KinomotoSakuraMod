@@ -24,8 +24,8 @@ public class SpellCardRelease extends KSMOD_AbstractSpellCard
     private static final CardRarity CARD_RARITY = CardRarity.BASIC;
     private static final CardTarget CARD_TARGET = CardTarget.NONE;
     private static final int BASE_MAGIC_NUMBER = 1;
-    public static final float BASE_RELEASE_UPGRADE_RATE = 0.25F;
-    public static final float UPGRADE_RELEASE_UPGRADE_RATE = 0.5F;
+    public static final float BASE_RELEASE_UPGRADE_RATE = 0.5F;
+    public static final float UPGRADE_RELEASE_UPGRADE_RATE = 1.0F;
 
     static
     {
