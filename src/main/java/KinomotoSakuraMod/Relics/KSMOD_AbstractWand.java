@@ -1,6 +1,5 @@
 package KinomotoSakuraMod.Relics;
 
-import KinomotoSakuraMod.Actions.KSMOD_FixedWaitAction;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
@@ -12,13 +11,11 @@ import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
-import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.monsters.beyond.Darkling;
 import com.megacrit.cardcrawl.powers.MinionPower;
 
 import java.util.ArrayList;
@@ -29,15 +26,17 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
     private int baseTriggerNumber;
     private int updateTriggerNumber;
     private int gainNumber;
+    private int extraGainNumber;
     public ArrayList<AbstractMonster> sealedMonsters = new ArrayList<>();
 
-    public KSMOD_AbstractWand(String id, Texture texture, Texture outline, RelicTier tier, LandingSound sfx, int baseTriggerNumber, int updateTriggerNumber, int gainNumber)
+    public KSMOD_AbstractWand(String id, Texture texture, Texture outline, RelicTier tier, LandingSound sfx, int baseTriggerNumber, int updateTriggerNumber, int gainNumber, int extraGainNumber)
     {
         super(id, texture, outline, tier, sfx);
         this.counter = START_COUNT;
         this.baseTriggerNumber = baseTriggerNumber;
         this.updateTriggerNumber = updateTriggerNumber;
         this.gainNumber = gainNumber;
+        this.extraGainNumber = extraGainNumber;
         updateTips();
     }
 
@@ -69,7 +68,12 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
     {
         if (!monster.hasPower(MinionPower.POWER_ID) && !sealedMonsters.contains(monster))
         {
-            GainCharge(gainNumber, monster);
+            int chargeNumber = gainNumber;
+            if (monster.type == AbstractMonster.EnemyType.ELITE || monster.type == AbstractMonster.EnemyType.BOSS)
+            {
+                chargeNumber += extraGainNumber;
+            }
+            GainCharge(chargeNumber, monster);
             sealedMonsters.add(monster);
         }
     }
@@ -85,6 +89,11 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
     public int GetGainNumber()
     {
         return gainNumber;
+    }
+
+    public int GetExtraGainNumber()
+    {
+        return extraGainNumber;
     }
 
     public int GetUpdateTriggerNumber()

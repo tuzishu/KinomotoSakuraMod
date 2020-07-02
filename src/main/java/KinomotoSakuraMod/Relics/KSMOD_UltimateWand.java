@@ -21,6 +21,7 @@ public class KSMOD_UltimateWand extends KSMOD_AbstractWand
     private static final RelicTier RELIC_TIER = RelicTier.SPECIAL;
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
     private static final int GAIN_NUMBER = 5;
+    private static final int EXTRA_GAIN_NUMBER = 10;
     private static final int BASE_TRIGGER_NUMBER = 35;
     private static final int UPDATE_TRIGGER_NUMBER = 20;
     private static final int START_CHARGE_NUMBER = 6;
@@ -33,13 +34,13 @@ public class KSMOD_UltimateWand extends KSMOD_AbstractWand
 
     public KSMOD_UltimateWand()
     {
-        super(RELIC_ID, ImageMaster.loadImage(RELIC_IMG_PATH), ImageMaster.loadImage(RELIC_IMG_OTL_PATH), RELIC_TIER, RELIC_SOUND, BASE_TRIGGER_NUMBER, UPDATE_TRIGGER_NUMBER, GAIN_NUMBER);
+        super(RELIC_ID, ImageMaster.loadImage(RELIC_IMG_PATH), ImageMaster.loadImage(RELIC_IMG_OTL_PATH), RELIC_TIER, RELIC_SOUND, BASE_TRIGGER_NUMBER, UPDATE_TRIGGER_NUMBER, GAIN_NUMBER, EXTRA_GAIN_NUMBER);
         this.elementCounter = 0;
     }
 
     public String getUpdatedDescription()
     {
-        return DESCRIPTIONS[0] + START_CHARGE_NUMBER + DESCRIPTIONS[1] + UPGRADE_NUMBER + DESCRIPTIONS[2] + MARKING_NUMBER + DESCRIPTIONS[3] + (int) (DAMAGE_PROMOTION * 100) + DESCRIPTIONS[4] + MAGICK_CHARGE_TRIGGER_NUMBER + DESCRIPTIONS[5] + MAGICK_CHARGE_NUMBER + DESCRIPTIONS[6] + this.GetGainNumber() + DESCRIPTIONS[7] + this.GetTriggerNumber() + DESCRIPTIONS[8] + this.GetTriggerNumber() + DESCRIPTIONS[9] + this.GetUpdateTriggerNumber() + DESCRIPTIONS[10] + this.GetRestCounterNumber() + DESCRIPTIONS[11];
+        return DESCRIPTIONS[0] + START_CHARGE_NUMBER + DESCRIPTIONS[1] + UPGRADE_NUMBER + DESCRIPTIONS[2] + MARKING_NUMBER + DESCRIPTIONS[3] + (int) (DAMAGE_PROMOTION * 100) + DESCRIPTIONS[4] + MAGICK_CHARGE_TRIGGER_NUMBER + DESCRIPTIONS[5] + MAGICK_CHARGE_NUMBER + DESCRIPTIONS[6] + this.GetGainNumber() + DESCRIPTIONS[7] + this.GetExtraGainNumber() + DESCRIPTIONS[8] + this.GetTriggerNumber() + DESCRIPTIONS[9] + this.GetTriggerNumber() + DESCRIPTIONS[10] + this.GetUpdateTriggerNumber() + DESCRIPTIONS[11] + this.GetRestCounterNumber() + DESCRIPTIONS[12];
     }
 
     public boolean canSpawn()

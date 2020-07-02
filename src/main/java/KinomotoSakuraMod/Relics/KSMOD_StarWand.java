@@ -22,17 +22,18 @@ public class KSMOD_StarWand extends KSMOD_AbstractWand
     private static final RelicTier RELIC_TIER = RelicTier.BOSS;
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
     private static final int GAIN_NUMBER = 4;
+    private static final int EXTRA_GAIN_NUMBER = 5;
     private static final int BASE_TRIGGER_NUMBER = 35;
     private static final int UPDATE_TRIGGER_NUMBER = 20;
 
     public KSMOD_StarWand()
     {
-        super(RELIC_ID, ImageMaster.loadImage(RELIC_IMG_PATH), ImageMaster.loadImage(RELIC_IMG_OTL_PATH), RELIC_TIER, RELIC_SOUND, BASE_TRIGGER_NUMBER, UPDATE_TRIGGER_NUMBER, GAIN_NUMBER);
+        super(RELIC_ID, ImageMaster.loadImage(RELIC_IMG_PATH), ImageMaster.loadImage(RELIC_IMG_OTL_PATH), RELIC_TIER, RELIC_SOUND, BASE_TRIGGER_NUMBER, UPDATE_TRIGGER_NUMBER, GAIN_NUMBER, EXTRA_GAIN_NUMBER);
     }
 
     public String getUpdatedDescription()
     {
-        return DESCRIPTIONS[0] + this.GetGainNumber() + DESCRIPTIONS[1] + GetTriggerNumber() + DESCRIPTIONS[2] + GetTriggerNumber() + DESCRIPTIONS[3] + this.GetUpdateTriggerNumber() + DESCRIPTIONS[4] + this.GetRestCounterNumber() + DESCRIPTIONS[5];
+        return DESCRIPTIONS[0] + this.GetGainNumber() + DESCRIPTIONS[1] + this.GetExtraGainNumber() + DESCRIPTIONS[2] + GetTriggerNumber() + DESCRIPTIONS[3] + GetTriggerNumber() + DESCRIPTIONS[4] + this.GetUpdateTriggerNumber() + DESCRIPTIONS[5] + this.GetRestCounterNumber() + DESCRIPTIONS[6];
     }
 
     public boolean canSpawn()
