@@ -10,7 +10,7 @@
   "ClowCardTheBig": {
     "NAME": "Big",
     "DESCRIPTION": "[ Firey ] NL Gain !M! Strength. NL Lose 1 Dexterity.",
-    "UPGRADE_DESCRIPTION": "[ Firey ] NL Gain 2 Strength.",
+    "UPGRADE_DESCRIPTION": "[ Firey ] NL Gain !M! Strength.",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheBubbles": {
@@ -170,13 +170,13 @@
   },
   "ClowCardTheLittle": {
     "NAME": "Little",
-    "DESCRIPTION": "[ Watery ] NL Gain 3 Dexterity. NL Lose 1 Strength.",
-    "UPGRADE_DESCRIPTION": "[ Watery ] NL Gain 3 Dexterity.",
+    "DESCRIPTION": "[ Watery ] NL Gain !M! Dexterity. NL Lose 1 Strength.",
+    "UPGRADE_DESCRIPTION": "[ Watery ] NL Gain !M! Dexterity.",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheLock": {
     "NAME": "Lock",
-    "DESCRIPTION": "[ Windy ] Exhaust. NL Exhaust up to !M! cards. Gain 1 Magick-Charge for each exhausted card. Unreal.",
+    "DESCRIPTION": "[ Firey ] Exhaust. NL Exhaust up to !M! cards. Gain 1 Magick-Charge for each exhausted card. Unreal.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -556,7 +556,7 @@
   },
   "SakuraCardTheGlow": {
     "NAME": "Glow",
-    "DESCRIPTION": "[ Sakura-Card ][ Windy ] NL At the start of turn, gain !M! Magick-Charge.",
+    "DESCRIPTION": "[ Sakura-Card ][ Firey ] NL At the start of turn, gain !M! Magick-Charge.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -610,7 +610,7 @@
   },
   "SakuraCardTheMirror": {
     "NAME": "Mirror",
-    "DESCRIPTION": "[ Sakura-Card ][ Earthy ] Exhaust. NL Select a Clow-Card or Sakura-Card and add as many copies as you can.",
+    "DESCRIPTION": "[ Sakura-Card ][ Watery ] Exhaust. NL Select a Clow-Card or Sakura-Card and add as many copies as you can.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

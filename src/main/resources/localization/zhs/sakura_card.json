@@ -170,13 +170,13 @@
   },
   "ClowCardTheLittle": {
     "NAME": "小",
-    "DESCRIPTION": "「 水 」 NL 获得3点 敏捷 ，失去1点 力量 。",
-    "UPGRADE_DESCRIPTION": "「 水 」 NL 获得3点 敏捷。",
+    "DESCRIPTION": "「 水 」 NL 获得 !M! 点 敏捷 ，失去1点 力量 。",
+    "UPGRADE_DESCRIPTION": "「 水 」 NL 获得 !M! 点 敏捷。",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheLock": {
     "NAME": "锁",
-    "DESCRIPTION": "「 风 」 消耗 。  NL 消耗最多 !M! 张手牌。每消耗1张获得1层 魔力充能 。 虚幻 。",
+    "DESCRIPTION": "「 火 」 消耗 。  NL 消耗最多 !M! 张手牌。每消耗1张获得1层 魔力充能 。 虚幻 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -555,7 +555,7 @@
   },
   "SakuraCardTheGlow": {
     "NAME": "灯",
-    "DESCRIPTION": "「 小樱牌 」「 风 」 NL 回合开始时，获得 !M! 层 魔力充能 。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」 NL 回合开始时，获得 !M! 层 魔力充能 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -609,7 +609,7 @@
   },
   "SakuraCardTheMirror": {
     "NAME": "镜",
-    "DESCRIPTION": "「 小樱牌 」「 地 」 消耗 。 NL 选择1张手牌中的 库洛牌 或 小樱牌 ，尽可能多地将其复制品加入手中。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」 消耗 。 NL 选择1张手牌中的 库洛牌 或 小樱牌 ，尽可能多地将其复制品加入手中。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
