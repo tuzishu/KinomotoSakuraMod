@@ -7,11 +7,11 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.BorderLongFlashEffect;
 
-public class KSMOD_FireyScreenVFXEffect extends AbstractGameEffect
+public class KSMOD_FireyVFXEffect extends AbstractGameEffect
 {
     private float timer = 0.0F;
 
-    public KSMOD_FireyScreenVFXEffect(float duration)
+    public KSMOD_FireyVFXEffect(float duration)
     {
         super();
         this.duration = duration;
@@ -31,7 +31,7 @@ public class KSMOD_FireyScreenVFXEffect extends AbstractGameEffect
         {
             for (int i = 0; i < 8; i++)
             {
-                AbstractDungeon.effectsQueue.add(new KSMOD_FireyEffect());
+                AbstractDungeon.effectsQueue.add(new KSMOD_FireyEffectElement());
             }
             this.timer = 0.05F;
         }

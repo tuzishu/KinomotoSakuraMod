@@ -69,8 +69,8 @@ public class SpellCardFengHua extends KSMOD_AbstractSpellCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new SFXAction(SFX_EFFECT_ID));
-        AbstractDungeon.actionManager.addToBottom(new VFXAction(new WhirlwindEffect(), 0.0F));
+        //AbstractDungeon.actionManager.addToBottom(new SFXAction(SFX_EFFECT_ID));
+        //AbstractDungeon.actionManager.addToBottom(new VFXAction(new WhirlwindEffect(), 0.0F));
         for (int i = 0; i < this.magicNumber; i++)
         {
             AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));

@@ -1,7 +1,9 @@
 package KinomotoSakuraMod.Powers;
 
+import KinomotoSakuraMod.Effects.KSMOD_WindyVFXEffect;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -21,6 +23,8 @@ public class KSMOD_WindyPower extends KSMOD_CustomPower
     private static final String POWER_IMG_PATH = "img/powers/windy_power.png";
     private static final AbstractPower.PowerType POWER_TYPE = AbstractPower.PowerType.BUFF;
     private int counter = 0;
+    private static final float GAIN_POWER_VFX_DURATION = 0.8F;
+    private static final float ATTACK_VFX_DURATION = 0.4F;
 
     static
     {
@@ -40,11 +44,17 @@ public class KSMOD_WindyPower extends KSMOD_CustomPower
         this.description = POWER_DESCRIPTIONS[0] + KSMOD_SealedBook.WINDY_DRAW_TRIGGER + POWER_DESCRIPTIONS[1] + ((this.counter == KSMOD_SealedBook.WATERY_ENERGY_TRIGGER - 1) ? POWER_DESCRIPTIONS[2] : "");
     }
 
+    public void onInitialApplication()
+    {
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(this.owner, new KSMOD_WindyVFXEffect(GAIN_POWER_VFX_DURATION), GAIN_POWER_VFX_DURATION));
+    }
+
     public void onUseCard(AbstractCard card, UseCardAction action)
     {
         if (card.hasTag(KSMOD_CustomTag.KSMOD_WINDY_CARD))
         {
             counter += 1;
+            AbstractDungeon.actionManager.addToBottom(new VFXAction(this.owner, new KSMOD_WindyVFXEffect(ATTACK_VFX_DURATION), ATTACK_VFX_DURATION));
             if (counter >= KSMOD_SealedBook.WINDY_DRAW_TRIGGER)
             {
                 counter -= KSMOD_SealedBook.WINDY_DRAW_TRIGGER;

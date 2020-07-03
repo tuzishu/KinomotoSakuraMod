@@ -7,9 +7,9 @@ import com.megacrit.cardcrawl.vfx.combat.GiantFireEffect;
 
 import java.lang.reflect.Field;
 
-public class KSMOD_FireyEffect extends GiantFireEffect
+public class KSMOD_FireyEffectElement extends GiantFireEffect
 {
-    public KSMOD_FireyEffect()
+    public KSMOD_FireyEffectElement()
     {
         super();
         try
