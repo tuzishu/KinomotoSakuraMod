@@ -100,7 +100,7 @@ public class KSMOD_SongAction extends AbstractGameAction
         }
         for (int i = 0; i < count; i++)
         {
-            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, block));
+            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, block, true));
         }
     }
 }
