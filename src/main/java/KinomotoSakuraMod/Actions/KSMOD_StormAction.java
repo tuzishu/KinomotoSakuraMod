@@ -22,8 +22,7 @@ public class KSMOD_StormAction extends AbstractGameAction
 {
     public static final String ACTION_ID = "KSMOD_StormAction";
     private static final float DURATION = Settings.ACTION_DUR_FAST;
-    private static final String SFX_EFFECT_ID = "ATTACK_WHIRLWIND";
-    private static final String SFX_ATTACK_ID = "ATTACK_HEAVY";
+    private static final String SFX_EFFECT_ID = "STANCE_ENTER_CALM";
     private AbstractPlayer player;
     private DamageInfo damageInfo;
     private AbstractMonster monster;
@@ -65,7 +64,6 @@ public class KSMOD_StormAction extends AbstractGameAction
                         this.isDone = true;
                         return;
                     }
-                    AbstractDungeon.actionManager.addToBottom(new SFXAction(SFX_ATTACK_ID));
                     AbstractDungeon.actionManager.addToBottom(new VFXAction(player, new CleaveEffect(), 0.0F));
                     AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damageInfo.output), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
                 }
@@ -82,7 +80,6 @@ public class KSMOD_StormAction extends AbstractGameAction
                         this.isDone = true;
                         return;
                     }
-                    AbstractDungeon.actionManager.addToBottom(new SFXAction(SFX_ATTACK_ID));
                     AbstractDungeon.actionManager.addToBottom(new VFXAction(player, new CleaveEffect(), 0.0F));
                     AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, damageInfo, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
                 }

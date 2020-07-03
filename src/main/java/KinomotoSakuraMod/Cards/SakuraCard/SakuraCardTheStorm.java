@@ -33,8 +33,7 @@ public class SakuraCardTheStorm extends KSMOD_AbstractMagicCard
     private static final int BASE_DAMAGE = 1;
     private static final int MAX_DAMAGE_OFFSET = 8;
     private static final int BASE_MAGIC_NUMBER = 7;
-    private static final String SFX_EFFECT_ID = "ATTACK_WHIRLWIND";
-    private static final String SFX_ATTACK_ID = "ATTACK_HEAVY";
+    private static final String SFX_EFFECT_ID = "STANCE_ENTER_CALM";
 
     static
     {
@@ -77,11 +76,9 @@ public class SakuraCardTheStorm extends KSMOD_AbstractMagicCard
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new SFXAction(SFX_EFFECT_ID));
-        AbstractDungeon.actionManager.addToBottom(new VFXAction(new WhirlwindEffect(), 0.0F));
         for (int i = 0; i < this.magicNumber; ++i)
         {
             int d = new Random().random(this.damage, this.damage + MAX_DAMAGE_OFFSET);
-            AbstractDungeon.actionManager.addToBottom(new SFXAction(SFX_ATTACK_ID));
             AbstractDungeon.actionManager.addToBottom(new VFXAction(player, new CleaveEffect(), 0.0F));
             AbstractDungeon.actionManager.addToBottom(new DamageRandomEnemyAction(new DamageInfo(player, d, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }
