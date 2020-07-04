@@ -17,6 +17,7 @@ public class KSMOD_WindyEffectElement extends AbstractGameEffect
     private float pC;
     private float x;
     private float y;
+    private float scaleL;
     private float speedX;
     private float startingDuration;
     private float delayTimer = MathUtils.random(0.1F);
@@ -33,9 +34,10 @@ public class KSMOD_WindyEffectElement extends AbstractGameEffect
         this.x = MathUtils.random(-Settings.WIDTH * 0.2F, Settings.WIDTH * 0.4F);
         this.y = getY(this.x);
         this.rotation = getRotation(this.x);
-        this.scale = MathUtils.random(0.4F, 0.8F);
+        this.scale = MathUtils.random(0.3F, 0.6F);
+        this.scaleL = MathUtils.random(1.5F, 3F);
         this.color = Color.SKY;
-        this.color.a = MathUtils.random(0.2F, 0.8F);
+        this.color.a = MathUtils.random(0.1F, 0.6F);
         this.speedX = Settings.WIDTH / MathUtils.random(0.5F, 1.2F);
     }
 
@@ -96,7 +98,7 @@ public class KSMOD_WindyEffectElement extends AbstractGameEffect
     {
         sb.setColor(this.color);
         sb.setBlendFunction(770, 1);
-        sb.draw(this.img, this.x, this.y, (float) this.img.packedWidth / 2.0F, (float) this.img.packedHeight / 2.0F, (float) this.img.packedWidth, (float) this.img.packedHeight, this.scale * Settings.scale, this.scale * Settings.scale, this.rotation);
+        sb.draw(this.img, this.x, this.y, (float) this.img.packedWidth / 2.0F, (float) this.img.packedHeight / 2.0F, (float) this.img.packedWidth * this.scaleL, (float) this.img.packedHeight, this.scale * Settings.scale, this.scale * Settings.scale, this.rotation);
         sb.setBlendFunction(770, 771);
     }
 
