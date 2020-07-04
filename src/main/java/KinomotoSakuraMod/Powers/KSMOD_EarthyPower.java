@@ -1,7 +1,9 @@
 package KinomotoSakuraMod.Powers;
 
+import KinomotoSakuraMod.Effects.KSMOD_EarthyVFXEffect;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -20,6 +22,8 @@ public class KSMOD_EarthyPower extends KSMOD_CustomPower
     private static final String[] POWER_DESCRIPTIONS;
     private static final String POWER_IMG_PATH = "img/powers/earthy_power.png";
     private static final AbstractPower.PowerType POWER_TYPE = AbstractPower.PowerType.BUFF;
+    private static final float GAIN_POWER_VFX_DURATION = 0.5F;
+    private static final float ATTACK_VFX_DURATION = 0.2F;
 
     static
     {
@@ -39,10 +43,16 @@ public class KSMOD_EarthyPower extends KSMOD_CustomPower
         this.description = POWER_DESCRIPTIONS[0] + KSMOD_SealedBook.EARTHY_BLOCK_NUMBER + POWER_DESCRIPTIONS[1];
     }
 
+    public void onInitialApplication()
+    {
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(this.owner, new KSMOD_EarthyVFXEffect(GAIN_POWER_VFX_DURATION), GAIN_POWER_VFX_DURATION));
+    }
+
     public void onUseCard(AbstractCard card, UseCardAction action)
     {
         if (card.hasTag(KSMOD_CustomTag.KSMOD_EARTHY_CARD))
         {
+            AbstractDungeon.actionManager.addToBottom(new VFXAction(this.owner, new KSMOD_EarthyVFXEffect(GAIN_POWER_VFX_DURATION), GAIN_POWER_VFX_DURATION));
             AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this.owner, this.owner, KSMOD_SealedBook.EARTHY_BLOCK_NUMBER));
         }
     }

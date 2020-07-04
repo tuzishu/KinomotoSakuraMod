@@ -30,12 +30,12 @@ public class KSMOD_WateryEffectElement extends AbstractGameEffect
             InitStartPoint();
         } while (!CheckPointIsInside());
         this.rotation = MathUtils.atan2(4, 1) * MathUtils.radiansToDegrees;
-        this.scale = MathUtils.random(0.1F, 0.2F);
-        this.scaleL = MathUtils.random(2F, 6F);
+        this.scale = MathUtils.random(0.15F, 0.3F);
+        this.scaleL = MathUtils.random(3F, 8F);
         this.color = Color.GREEN;
         this.color.r = MathUtils.random(0F, 1F);
         this.color.b = MathUtils.random(0.6F, 0.8F);
-        this.color.a = MathUtils.random(0.3F, 0.6F);
+        this.color.a = MathUtils.random(0.44F, 0.66F);
         this.vY = Settings.HEIGHT / MathUtils.random(0.1F, 0.5F);
         this.vX = vY / 4F;
     }
