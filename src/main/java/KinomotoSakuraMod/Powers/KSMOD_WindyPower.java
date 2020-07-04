@@ -22,9 +22,9 @@ public class KSMOD_WindyPower extends KSMOD_CustomPower
     private static final String[] POWER_DESCRIPTIONS;
     private static final String POWER_IMG_PATH = "img/powers/windy_power.png";
     private static final AbstractPower.PowerType POWER_TYPE = AbstractPower.PowerType.BUFF;
-    private int counter = 0;
     private static final float GAIN_POWER_VFX_DURATION = 0.8F;
     private static final float ATTACK_VFX_DURATION = 0.4F;
+    private int counter = 0;
 
     static
     {
