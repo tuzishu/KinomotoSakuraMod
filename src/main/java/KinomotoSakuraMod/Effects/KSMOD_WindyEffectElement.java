@@ -36,8 +36,10 @@ public class KSMOD_WindyEffectElement extends AbstractGameEffect
         this.rotation = getRotation(this.x);
         this.scale = MathUtils.random(0.3F, 0.6F);
         this.scaleL = MathUtils.random(1.5F, 3F);
-        this.color = Color.SKY;
-        this.color.a = MathUtils.random(0.1F, 0.6F);
+        this.color = Color.GREEN;
+        this.color.r = MathUtils.random(0F, 1F);
+        this.color.b = MathUtils.random(0.6F, 0.8F);
+        this.color.a = MathUtils.random(0.1F, 0.5F);
         this.speedX = Settings.WIDTH / MathUtils.random(0.5F, 1.2F);
     }
 
