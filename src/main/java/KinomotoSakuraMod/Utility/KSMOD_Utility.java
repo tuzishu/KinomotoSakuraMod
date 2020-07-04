@@ -1,5 +1,7 @@
 package KinomotoSakuraMod.Utility;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.random.Random;
 import org.apache.logging.log4j.LogManager;
@@ -231,5 +233,10 @@ public class KSMOD_Utility
             return arrayList.get(new Random().random(0, arrayList.size() - 1));
         }
         return null;
+    }
+
+    public static TextureAtlas.AtlasRegion GetAtlasRegion(Texture texture)
+    {
+        return new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(),texture.getHeight());
     }
 }
