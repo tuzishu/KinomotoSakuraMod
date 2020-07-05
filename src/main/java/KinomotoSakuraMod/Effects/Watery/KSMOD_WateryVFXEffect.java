@@ -1,4 +1,4 @@
-package KinomotoSakuraMod.Effects;
+package KinomotoSakuraMod.Effects.Watery;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -7,12 +7,12 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.BorderLongFlashEffect;
 
-public class KSMOD_EarthyVFXEffect extends AbstractGameEffect
+public class KSMOD_WateryVFXEffect extends AbstractGameEffect
 {
     private float timer = 0.0F;
-    private Color color = new Color(97F / 256F, 87F / 256F, 36F / 256F, 205F / 252F);
+    private Color color = new Color(0xD281F5CD);
 
-    public KSMOD_EarthyVFXEffect(float duration)
+    public KSMOD_WateryVFXEffect(float duration)
     {
         super();
         this.duration = duration;
@@ -32,7 +32,7 @@ public class KSMOD_EarthyVFXEffect extends AbstractGameEffect
         {
             for (int i = 0; i < 24; i++)
             {
-                AbstractDungeon.effectsQueue.add(new KSMOD_EarthyEffectElement(this.startingDuration));
+                AbstractDungeon.effectsQueue.add(new KSMOD_WateryEffectElement(this.startingDuration));
             }
             this.timer = 0.05F;
         }

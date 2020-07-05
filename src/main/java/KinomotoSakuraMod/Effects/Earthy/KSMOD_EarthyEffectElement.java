@@ -1,4 +1,4 @@
-package KinomotoSakuraMod.Effects;
+package KinomotoSakuraMod.Effects.Earthy;
 
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.badlogic.gdx.Gdx;
@@ -34,7 +34,7 @@ public class KSMOD_EarthyEffectElement extends AbstractGameEffect
         this.y = MathUtils.random(-Settings.HEIGHT * 0.1F, Settings.HEIGHT * 0.1F) * Settings.scale - (float) this.img.packedHeight / 2.0F;
         this.vX = MathUtils.random(-Settings.WIDTH * 0.04F, Settings.WIDTH * 0.04F) * Settings.scale;
         this.vY = MathUtils.random(Settings.HEIGHT * 0.1F, Settings.HEIGHT * 0.4F) * Settings.scale;
-        this.color = new Color(97F / 256F, 87F / 256F, 36F / 256F, 1F);
+        this.color = new Color(0x615724FF);
         this.color.r = MathUtils.random(this.color.r - 0.1F, this.color.r + 0.1F);
         this.color.g = MathUtils.random(this.color.g - 0.1F, this.color.g + 0.1F);
         this.brightness = MathUtils.random(0.7F, 1F);

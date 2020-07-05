@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Powers;
 
-import KinomotoSakuraMod.Effects.KSMOD_EarthyVFXEffect;
+import KinomotoSakuraMod.Effects.Earthy.KSMOD_EarthyVFXEffect;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;

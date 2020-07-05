@@ -1,4 +1,4 @@
-package KinomotoSakuraMod.Effects;
+package KinomotoSakuraMod.Effects.Firey;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -7,12 +7,11 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.BorderLongFlashEffect;
 
-public class KSMOD_WindyVFXEffect extends AbstractGameEffect
+public class KSMOD_FireyVFXEffect extends AbstractGameEffect
 {
     private float timer = 0.0F;
-    private Color color = new Color(165F / 252F, 244F / 252F, 200F / 252F, 205F / 252F);
 
-    public KSMOD_WindyVFXEffect(float duration)
+    public KSMOD_FireyVFXEffect(float duration)
     {
         super();
         this.duration = duration;
@@ -23,16 +22,16 @@ public class KSMOD_WindyVFXEffect extends AbstractGameEffect
     {
         if (this.duration == this.startingDuration)
         {
-            AbstractDungeon.effectsQueue.add(new BorderLongFlashEffect(color));
+            AbstractDungeon.effectsQueue.add(new BorderLongFlashEffect(Color.FIREBRICK));
         }
 
         this.duration -= Gdx.graphics.getDeltaTime();
         this.timer -= Gdx.graphics.getDeltaTime();
         if (this.timer < 0.0F)
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 8; i++)
             {
-                AbstractDungeon.effectsQueue.add(new KSMOD_WindyEffectElement(this.startingDuration));
+                AbstractDungeon.effectsQueue.add(new KSMOD_FireyEffectElement());
             }
             this.timer = 0.05F;
         }

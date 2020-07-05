@@ -1,4 +1,4 @@
-package KinomotoSakuraMod.Effects;
+package KinomotoSakuraMod.Effects.Firey;
 
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.badlogic.gdx.math.MathUtils;

@@ -1,4 +1,4 @@
-package KinomotoSakuraMod.Effects;
+package KinomotoSakuraMod.Effects.Windy;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -9,46 +9,66 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 
-public class KSMOD_WateryEffectElement extends AbstractGameEffect
+public class KSMOD_WindyEffectElement extends AbstractGameEffect
 {
     private TextureAtlas.AtlasRegion img;
+    private float pA;
+    private float pB;
+    private float pC;
     private float x;
     private float y;
     private float scaleL;
-    private float vX;
-    private float vY;
+    private float speedX;
     private float startingDuration;
     private float delayTimer = MathUtils.random(0.1F);
 
-    public KSMOD_WateryEffectElement(float startingDuration)
+    public KSMOD_WindyEffectElement(float startingDuration)
     {
         this.setImg();
         this.startingDuration = startingDuration;
         this.duration = this.startingDuration;
         do
         {
-            InitStartPoint();
-        } while (!CheckPointIsInside());
-        this.rotation = MathUtils.atan2(4, 1) * MathUtils.radiansToDegrees;
-        this.scale = MathUtils.random(0.15F, 0.3F);
-        this.scaleL = MathUtils.random(3F, 8F);
+            GetRandomPath();
+        } while (!CheckPathIsInside());
+        this.x = MathUtils.random(-Settings.WIDTH * 0.2F, Settings.WIDTH * 0.4F);
+        this.y = getY(this.x);
+        this.rotation = getRotation(this.x);
+        this.scale = MathUtils.random(0.3F, 0.6F);
+        this.scaleL = MathUtils.random(1.5F, 3F);
         this.color = Color.GREEN;
         this.color.r = MathUtils.random(0F, 1F);
         this.color.b = MathUtils.random(0.6F, 0.8F);
-        this.color.a = MathUtils.random(0.44F, 0.66F);
-        this.vY = Settings.HEIGHT / MathUtils.random(0.1F, 0.5F);
-        this.vX = vY / 4F;
+        this.color.a = MathUtils.random(0.1F, 0.5F);
+        this.speedX = Settings.WIDTH / MathUtils.random(0.5F, 1.2F);
     }
 
-    private void InitStartPoint()
+    private void GetRandomPath()
     {
-        this.x = MathUtils.random(Settings.WIDTH, Settings.HEIGHT * 8F + Settings.WIDTH * 18F) / 17F;
-        this.y = MathUtils.random(Settings.HEIGHT * 16F + Settings.WIDTH * 8F, Settings.HEIGHT * 33F + Settings.WIDTH * 8F) / 17F;
+        this.pA = MathUtils.random(2F, 5F);
+        this.pB = MathUtils.random(3F, 6F);
+        this.pC = MathUtils.random(8F, 16F);
     }
 
-    private boolean CheckPointIsInside()
+    private boolean CheckPathIsInside()
     {
-        return this.x + this.y * 4F >= Settings.HEIGHT * 4F + Settings.WIDTH && this.x + this.y * 4F <= Settings.HEIGHT * 8F + Settings.WIDTH * 2F && this.y - this.x * 4F >= -Settings.WIDTH * 4F && this.y - this.x * 4F <= Settings.HEIGHT;
+        float y0 = getY(0);
+        float y1 = getY(1920);
+        if ((y0 >= 0 && y0 <= 1080) || (y1 >= 0 && y1 <= 1080))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    private float getY(float x)
+    {
+        return (-pA * MathUtils.log(MathUtils.E, 0.01F * x + pB) + pC) * 100F;
+    }
+
+    private float getRotation(float x)
+    {
+        return MathUtils.atan2(-pA / (x * 0.01F + pB), 1) * MathUtils.radiansToDegrees;
     }
 
     public void update()
@@ -59,8 +79,9 @@ public class KSMOD_WateryEffectElement extends AbstractGameEffect
         }
         else
         {
-            this.x -= this.vX * Gdx.graphics.getDeltaTime();
-            this.y -= this.vY * Gdx.graphics.getDeltaTime();
+            this.x += this.speedX * Gdx.graphics.getDeltaTime();
+            this.y = getY(this.x);
+            this.rotation = getRotation(this.x);
             this.duration -= Gdx.graphics.getDeltaTime();
 
             if (this.duration < 0.0F)
