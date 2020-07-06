@@ -297,7 +297,7 @@
   },
   "ClowCardTheSnow": {
     "NAME": "Snow",
-    "DESCRIPTION": "[ Watery ] NL Each Watery-Element-State played in this battle deals !D! damage to a random enemy.",
+    "DESCRIPTION": "[ Watery ] NL Each Watery-Element-Card played in this battle deals !D! damage to a random enemy.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       " Deal extra ",

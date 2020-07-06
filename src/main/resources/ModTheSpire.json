@@ -1,12 +1,12 @@
 {
   "modid": "KinomotoSakuraMod",
   "name": "KinomotoSakuraMod(木之本樱)",
-  "description": "Kinomoto Sakura, the protagonist of animation Card Captor Sakura.\nEnglish localization completed. (translated by software, lrevisions are welcome)\ne-mail:477630080@qq.com\nnew version is coming soon\n\n2020.7.2 Update: \nSpell Release: the effect increasing 25%/50% -> 50%/100%\nClow Card The Erase: kill line 25%/50% -> 33%/66%, add killing minion effect. \nthe wands: add extra charge when kill elite and boss 3/5/10\nSakura Card The Return: recharge restoring 50% -> 75% \n\n动画《魔卡少女樱》的主角木之本樱。\n英文本地化已完成（机翻，欢迎修改优化）。\n欢迎各位玩家提出宝贵的意见和建议。\n联系方式：QQ 477630080(兔子舒)。\n新版本内容制作中\n\n2020.7.2更新内容：\n符咒 解：效果提升25%/50% → 效果提升50%/100%\n库洛牌 消：斩杀线25%/50%→33%/66%，新增爪牙斩杀\n小樱牌 回：恢复充能50%→75%\n封印之杖系列：增加击杀精英和boss额外获得充能3/5/10",
+  "description": "Kinomoto Sakura, the protagonist of animation Card Captor Sakura.\nEnglish localization completed. (translated by software, lrevisions are welcome)\ne-mail:477630080@qq.com\nnew version is coming soon\n\n2020.7.2 Update: \nSpell Release: the effect increasing 25%/50% -> 50%/100%\nClow Card The Erase: kill line 25%/50% -> 33%/66%, add killing minion effect. \nthe wands: add extra charge when kill elite and boss 3/5/10\nSakura Card The Return: recharge restoring 50% -> 75%\n\n2020.7.6 Update: \nFix the English version of startup crash bug. \nAdd Earthy Element, Windy Element and Watery Element visual effects. \n\n动画《魔卡少女樱》的主角木之本樱。\n英文本地化已完成（机翻，欢迎修改优化）。\n欢迎各位玩家提出宝贵的意见和建议。\n联系方式：QQ 477630080(兔子舒)。\n新版本内容制作中\n\n2020.7.2更新内容：\n符咒 解：效果提升25%/50% → 效果提升50%/100%\n库洛牌 消：斩杀线25%/50%→33%/66%，新增爪牙斩杀\n小樱牌 回：恢复充能50%→75%\n封印之杖系列：增加击杀精英和boss额外获得充能3/5/10\n\n2020.7.6更新内容：\n修复英文版启动崩溃bug\n添加地元素、水元素、风元素特效",
   "author_list": [
     "tuzishu(兔子舒)",
     "Lyrichor(English localization)"
   ],
-  "version": "1.3.200702",
+  "version": "1.3.200706",
   "mts_version": "3.16.0",
   "sts_version": "01-27-2020",
   "credits": "None",
