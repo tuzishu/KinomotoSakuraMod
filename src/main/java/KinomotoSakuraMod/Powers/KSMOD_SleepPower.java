@@ -1,16 +1,16 @@
 package KinomotoSakuraMod.Powers;
 
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.WeakPower;
 
 public class KSMOD_SleepPower extends KSMOD_CustomPower
 {
@@ -20,7 +20,6 @@ public class KSMOD_SleepPower extends KSMOD_CustomPower
     private static final String POWER_IMG_PATH = "img/powers/sleep_power.png";
     private static final PowerType POWER_TYPE = PowerType.DEBUFF;
     private static final int WEAKENED_NUMBER = 2;
-    private int recordHP;
 
     static
     {
@@ -62,6 +61,7 @@ public class KSMOD_SleepPower extends KSMOD_CustomPower
         {
             AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
             AbstractDungeon.actionManager.addToTop(new HealAction(this.owner, this.owner, this.owner.maxHealth - this.owner.currentHealth));
+            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this.owner, this.owner, new WeakPower(this.owner, WEAKENED_NUMBER, false), WEAKENED_NUMBER));
         }
     }
 
