@@ -136,7 +136,6 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
     {
         for (int i = 0; i < GetTriggerNumber(); i++)
         {
-            KSMOD_Utility.Logger.info(AbstractDungeon.player.hand.size());
             if (AbstractDungeon.player.hand.size() == 0)
             {
                 AbstractDungeon.actionManager.addToBottom(new VFXAction(new KSMOD_SealOrbEffect(this.hb.cX, this.hb.cY, Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.13F)));

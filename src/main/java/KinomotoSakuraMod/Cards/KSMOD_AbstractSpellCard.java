@@ -1,6 +1,7 @@
 package KinomotoSakuraMod.Cards;
 
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
+import KinomotoSakuraMod.Utility.KSMOD_LoggerTool;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
@@ -630,7 +631,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
                                 }
                                 break;
                             default:
-                                KSMOD_Utility.Logger.info("ERROR: Tried to display an invalid energy type");
+                                KSMOD_LoggerTool.Logger.info("ERROR: Tried to display an invalid energy type");
                         }
                     }
 
@@ -661,7 +662,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
 
                 if (numLines > 5)
                 {
-                    KSMOD_Utility.Logger.info("WARNING: Card " + this.name + " has lots of text");
+                    KSMOD_LoggerTool.Logger.info("WARNING: Card " + this.name + " has lots of text");
                 }
 
             }
@@ -830,7 +831,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
                                 }
                                 break;
                             default:
-                                KSMOD_Utility.Logger.info("ERROR: Tried to display an invalid energy type");
+                                KSMOD_LoggerTool.Logger.info("ERROR: Tried to display an invalid energy type");
                         }
 
                         if (currentWidth + CARD_ENERGY_IMG_WIDTH > DESC_LINE_WIDTH)

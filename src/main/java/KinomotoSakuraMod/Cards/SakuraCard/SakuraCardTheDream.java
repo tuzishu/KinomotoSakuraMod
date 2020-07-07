@@ -5,6 +5,7 @@ import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
+import KinomotoSakuraMod.Utility.KSMOD_LoggerTool;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -131,7 +132,7 @@ public class SakuraCardTheDream extends KSMOD_AbstractMagicCard
         }
         catch (Exception e)
         {
-            KSMOD_Utility.Logger.info(clowCard.name + "，转换小樱牌失败。");
+            KSMOD_LoggerTool.Logger.error(clowCard.name + "，转换小樱牌失败。");
             AbstractDungeon.effectList.add(new ThoughtBubble(AbstractDungeon.player.dialogX, AbstractDungeon.player.dialogY, 3.0F, clowCard.name + "，" + KinomotoSakura.GetMessage(0), true));
             e.printStackTrace();
             sakuraCard = clowCard;

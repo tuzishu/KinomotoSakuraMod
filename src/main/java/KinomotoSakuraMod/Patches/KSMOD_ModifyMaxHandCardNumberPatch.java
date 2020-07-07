@@ -2,6 +2,7 @@ package KinomotoSakuraMod.Patches;
 
 import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Powers.KSMOD_LightPower;
+import KinomotoSakuraMod.Utility.KSMOD_LoggerTool;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
@@ -132,7 +133,7 @@ public class KSMOD_ModifyMaxHandCardNumberPatch
                                 }
                                 else
                                 {
-                                    KSMOD_Utility.Logger.warn("Player attempted to draw from an empty drawpile mid-DrawAction?MASTER DECK: " + AbstractDungeon.player.masterDeck.getCardNames());
+                                    KSMOD_LoggerTool.Logger.warn("Player attempted to draw from an empty drawpile mid-DrawAction?MASTER DECK: " + AbstractDungeon.player.masterDeck.getCardNames());
                                     action.isDone = true;
                                 }
                                 if (action.amount == 0)

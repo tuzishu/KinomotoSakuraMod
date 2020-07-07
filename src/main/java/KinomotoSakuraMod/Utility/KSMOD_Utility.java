@@ -15,22 +15,6 @@ import java.util.HashMap;
 public class KSMOD_Utility
 {
     /**
-     * 日志管理器
-     */
-    public static final Logger Logger = LogManager.getLogger("KSMOD");
-
-    public static void ShowStacktrace()
-    {
-        String log = "";
-        StackTraceElement[] element = Thread.currentThread().getStackTrace();
-        for (int i = 2; i < element.length; i++)
-        {
-            log = log + "\n    " + (i - 2) + " : " + element[i];
-        }
-        Logger.info(log);
-    }
-
-    /**
      * 获取该语句所在的类名
      *
      * @return String 该语句所在的类名

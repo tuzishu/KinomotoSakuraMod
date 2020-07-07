@@ -10,6 +10,7 @@ import KinomotoSakuraMod.Patches.KSMOD_CustomKeywords;
 import KinomotoSakuraMod.Potions.KSMOD_MagickBottle;
 import KinomotoSakuraMod.Relics.*;
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
+import KinomotoSakuraMod.Utility.KSMOD_LoggerTool;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import basemod.BaseMod;
 import basemod.interfaces.*;
@@ -47,11 +48,11 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
 
     public static void initialize()
     {
-        KSMOD_Utility.Logger.info("开始初始化 KSMOD");
+        KSMOD_LoggerTool.Logger.info("开始初始化 KSMOD");
 
         new KSMOD();
 
-        KSMOD_Utility.Logger.info("完成初始化 KSMOD");
+        KSMOD_LoggerTool.Logger.info("完成初始化 KSMOD");
     }
 
     @SuppressWarnings("deprecation")
@@ -74,25 +75,25 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
     @Override
     public void receiveEditCharacters()
     {
-        KSMOD_Utility.Logger.info("开始编辑角色");
+        KSMOD_LoggerTool.Logger.info("开始编辑角色");
 
         BaseMod.addCharacter(new KinomotoSakura(), KSMOD_ImageConst.SELECT_BUTTON_PATH, KSMOD_ImageConst.PORTRAIT_PATH, KSMOD_CustomCharacter.KINOMOTOSAKURA);
 
-        KSMOD_Utility.Logger.info("结束编辑角色");
+        KSMOD_LoggerTool.Logger.info("结束编辑角色");
     }
 
     @Override
     public void receiveEditRelics()
     {
-        KSMOD_Utility.Logger.info("开始编辑遗物");
+        KSMOD_LoggerTool.Logger.info("开始编辑遗物");
 
         for (AbstractRelic relic : GetRelicList())
         {
             BaseMod.addRelicToCustomPool(relic, KSMOD_CustomCardColor.CLOWCARD_COLOR);
-            KSMOD_Utility.Logger.info("Loading relic : " + relic.name);
+            KSMOD_LoggerTool.Logger.info("Loading relic : " + relic.name);
         }
 
-        KSMOD_Utility.Logger.info("结束编辑遗物");
+        KSMOD_LoggerTool.Logger.info("结束编辑遗物");
     }
 
     public static ArrayList<AbstractRelic> GetRelicList()
@@ -123,7 +124,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
     @Override
     public void receiveEditCards()
     {
-        KSMOD_Utility.Logger.info("开始编辑卡牌");
+        KSMOD_LoggerTool.Logger.info("开始编辑卡牌");
 
         ArrayList<AbstractCard> unlockedCardList = new ArrayList<>();
         unlockedCardList.addAll(GetClowCardList());
@@ -133,7 +134,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         {
             BaseMod.addCard(card);
             UnlockTracker.unlockCard(card.cardID);
-            KSMOD_Utility.Logger.info("Loading Unlocked Card : " + card.name);
+            KSMOD_LoggerTool.Logger.info("Loading Unlocked Card : " + card.name);
         }
 
         ArrayList<AbstractCard> lockedCardList = new ArrayList<>();
@@ -141,10 +142,10 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         for (AbstractCard card : lockedCardList)
         {
             BaseMod.addCard(card);
-            KSMOD_Utility.Logger.info("Loading Locked Card : " + card.name);
+            KSMOD_LoggerTool.Logger.info("Loading Locked Card : " + card.name);
         }
 
-        KSMOD_Utility.Logger.info("结束编辑卡牌");
+        KSMOD_LoggerTool.Logger.info("结束编辑卡牌");
     }
 
     public static ArrayList<AbstractCard> GetClowCardList()
@@ -287,25 +288,25 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
 
     public void receiveEditPotions()
     {
-        KSMOD_Utility.Logger.info("开始编辑药水");
+        KSMOD_LoggerTool.Logger.info("开始编辑药水");
 
         BaseMod.addPotion(KSMOD_MagickBottle.class, Color.NAVY.cpy(), Color.BLUE.cpy(), Color.SKY.cpy(), KSMOD_MagickBottle.POTION_ID, KSMOD_CustomCharacter.KINOMOTOSAKURA);
 
-        KSMOD_Utility.Logger.info("结束编辑药水");
+        KSMOD_LoggerTool.Logger.info("结束编辑药水");
     }
 
     public void receiveEditEvents()
     {
-        KSMOD_Utility.Logger.info("开始编辑事件");
+        KSMOD_LoggerTool.Logger.info("开始编辑事件");
 
-        KSMOD_Utility.Logger.info("结束编辑事件");
+        KSMOD_LoggerTool.Logger.info("结束编辑事件");
     }
 
     public void receiveEditMonsters()
     {
-        KSMOD_Utility.Logger.info("开始编辑怪物");
+        KSMOD_LoggerTool.Logger.info("开始编辑怪物");
 
-        KSMOD_Utility.Logger.info("结束编辑怪物");
+        KSMOD_LoggerTool.Logger.info("结束编辑怪物");
     }
 
     public static String GetLocalizationPath()
@@ -316,11 +317,11 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
             switch (Settings.language)
             {
                 case ZHS:
-                    KSMOD_Utility.Logger.info("language == zhs");
+                    KSMOD_LoggerTool.Logger.info("language == zhs");
                     localizationPath = localizationPath + "zhs/";
                     break;
                 default:
-                    KSMOD_Utility.Logger.info("language == eng");
+                    KSMOD_LoggerTool.Logger.info("language == eng");
                     localizationPath = localizationPath + "eng/";
                     break;
             }
@@ -331,7 +332,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
     @Override
     public void receiveEditStrings()
     {
-        KSMOD_Utility.Logger.info("开始编辑本地化文本");
+        KSMOD_LoggerTool.Logger.info("开始编辑本地化文本");
 
         String card = GetLocalizationPath() + "sakura_card.json";
         String cardStrings = Gdx.files.internal(card).readString(String.valueOf(StandardCharsets.UTF_8));
@@ -357,23 +358,23 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         String potionStrings = Gdx.files.internal(potion).readString(String.valueOf(StandardCharsets.UTF_8));
         BaseMod.loadCustomStrings(PotionStrings.class, potionStrings);
 
-        KSMOD_Utility.Logger.info("结束编辑本地化文本");
+        KSMOD_LoggerTool.Logger.info("结束编辑本地化文本");
     }
 
     @Override
     public void receiveEditKeywords()
     {
-        KSMOD_Utility.Logger.info("开始编辑关键字");
+        KSMOD_LoggerTool.Logger.info("开始编辑关键字");
 
         String path = "localization/";
         switch (Settings.language)
         {
             case ZHS:
-                KSMOD_Utility.Logger.info("language == zhs");
+                KSMOD_LoggerTool.Logger.info("language == zhs");
                 path += "zhs/";
                 break;
             default:
-                KSMOD_Utility.Logger.info("language == eng");
+                KSMOD_LoggerTool.Logger.info("language == eng");
                 path += "eng/";
                 break;
         }
@@ -387,29 +388,29 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         for (int i = 0; i < keywordList.length; ++i)
         {
             Keyword key = keywordList[i];
-            KSMOD_Utility.Logger.info("加载关键字：" + key.NAMES[0]);
+            KSMOD_LoggerTool.Logger.info("加载关键字：" + key.NAMES[0]);
             BaseMod.addKeyword(key.NAMES, key.DESCRIPTION);
         }
 
-        KSMOD_Utility.Logger.info("结束编辑关键字");
+        KSMOD_LoggerTool.Logger.info("结束编辑关键字");
     }
 
     @Override
     public void receiveOnBattleStart(AbstractRoom abstractRoom)
     {
-        // KSMOD_Utility.Logger.info("common relic pool");
+        // KSMOD_LoggerTool.Logger.info("common relic pool");
         // ShowRelicList(AbstractDungeon.commonRelicPool);
         //
-        // KSMOD_Utility.Logger.info("uncommon relic pool");
+        // KSMOD_LoggerTool.Logger.info("uncommon relic pool");
         // ShowRelicList(AbstractDungeon.uncommonRelicPool);
         //
-        // KSMOD_Utility.Logger.info("rare relic pool");
+        // KSMOD_LoggerTool.Logger.info("rare relic pool");
         // ShowRelicList(AbstractDungeon.rareRelicPool);
         //
-        // KSMOD_Utility.Logger.info("boss relic pool");
+        // KSMOD_LoggerTool.Logger.info("boss relic pool");
         // ShowRelicList(AbstractDungeon.bossRelicPool);
         //
-        // KSMOD_Utility.Logger.info("shop relic pool");
+        // KSMOD_LoggerTool.Logger.info("shop relic pool");
         // ShowRelicList(AbstractDungeon.shopRelicPool);
     }
 
@@ -417,7 +418,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
     {
         for (int i = 0; i < relics.size(); i++)
         {
-            KSMOD_Utility.Logger.info(i + ": " + relics.get(i) + (istargetrelic(relics.get(i)) ? "<=========" : ""));
+            KSMOD_LoggerTool.Logger.info(i + ": " + relics.get(i) + (istargetrelic(relics.get(i)) ? "<=========" : ""));
         }
     }
 
