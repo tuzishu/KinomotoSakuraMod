@@ -1,7 +1,7 @@
 package KinomotoSakuraMod.Patches;
 
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.KSMOD_ReflectTool;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
@@ -24,12 +24,12 @@ public class KSMOD_CardFlashVfxPatch
         {
             if (card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR || card.color == KSMOD_CustomCardColor.SAKURACARD_COLOR || card.color == KSMOD_CustomCardColor.SPELL_COLOR)
             {
-                Field thisColor = KSMOD_Utility.GetFieldByReflect(AbstractGameEffect.class, "color");
-                Field yScale = KSMOD_Utility.GetFieldByReflect(CardFlashVfx.class, "yScale");
-                Field thisCard = KSMOD_Utility.GetFieldByReflect(CardFlashVfx.class, "card");
-                Field thisIsSuper = KSMOD_Utility.GetFieldByReflect(CardFlashVfx.class, "isSuper");
-                Field duration = KSMOD_Utility.GetFieldByReflect(AbstractGameEffect.class, "duration");
-                Field img = KSMOD_Utility.GetFieldByReflect(CardFlashVfx.class, "img");
+                Field thisColor = KSMOD_ReflectTool.GetFieldByReflect(AbstractGameEffect.class, "color");
+                Field yScale = KSMOD_ReflectTool.GetFieldByReflect(CardFlashVfx.class, "yScale");
+                Field thisCard = KSMOD_ReflectTool.GetFieldByReflect(CardFlashVfx.class, "card");
+                Field thisIsSuper = KSMOD_ReflectTool.GetFieldByReflect(CardFlashVfx.class, "isSuper");
+                Field duration = KSMOD_ReflectTool.GetFieldByReflect(AbstractGameEffect.class, "duration");
+                Field img = KSMOD_ReflectTool.GetFieldByReflect(CardFlashVfx.class, "img");
                 thisColor.set(vfx, color);
                 yScale.setFloat(vfx, 0.0F);
                 thisCard.set(vfx, card);

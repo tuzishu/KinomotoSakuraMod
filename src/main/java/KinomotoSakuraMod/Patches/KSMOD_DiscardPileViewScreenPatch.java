@@ -1,7 +1,7 @@
 package KinomotoSakuraMod.Patches;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.KSMOD_ReflectTool;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
@@ -86,13 +86,13 @@ public class KSMOD_DiscardPileViewScreenPatch
             ArrayList<AbstractCard> cards = AbstractDungeon.player.discardPile.group;
             if (HasLongCard(cards))
             {
-                Field hoveredCard = KSMOD_Utility.GetFieldByReflect(DiscardPileViewScreen.class, "hoveredCard");
+                Field hoveredCard = KSMOD_ReflectTool.GetFieldByReflect(DiscardPileViewScreen.class, "hoveredCard");
                 hoveredCard.set(deck, null);
                 for (int i = 0; i < cards.size(); ++i)
                 {
                     AbstractCard card = cards.get(i);
                     int mod = i % CARDS_PER_LINE;
-                    Float currentDiffY = KSMOD_Utility.GetFieldByReflect(DiscardPileViewScreen.class, "currentDiffY").getFloat(deck);
+                    Float currentDiffY = KSMOD_ReflectTool.GetFieldByReflect(DiscardPileViewScreen.class, "currentDiffY").getFloat(deck);
                     card.target_x = DRAW_START_X + (float) mod * PAD_X;
                     card.target_y = DRAW_START_Y + currentDiffY - GetPadHeight(i, false);
                     card.update();
@@ -119,7 +119,7 @@ public class KSMOD_DiscardPileViewScreenPatch
             ArrayList<AbstractCard> cards = AbstractDungeon.player.discardPile.group;
             if (HasLongCard(cards))
             {
-                Field scrollUpperBound = KSMOD_Utility.GetFieldByReflect(DiscardPileViewScreen.class, "scrollUpperBound");
+                Field scrollUpperBound = KSMOD_ReflectTool.GetFieldByReflect(DiscardPileViewScreen.class, "scrollUpperBound");
                 if (cards.size() > CARDS_PER_LINE && cards.size() <= CARDS_PER_LINE * 2 && HasLongCard(cards) || cards.size() > CARDS_PER_LINE * 2)
                 {
                     scrollUpperBound.setFloat(deck, Settings.DEFAULT_SCROLL_LIMIT + GetPadHeight(cards.size() - 1, true));
@@ -128,7 +128,7 @@ public class KSMOD_DiscardPileViewScreenPatch
                 {
                     scrollUpperBound.setFloat(deck, Settings.DEFAULT_SCROLL_LIMIT);
                 }
-                Field prevDeckSize = KSMOD_Utility.GetFieldByReflect(DiscardPileViewScreen.class, "prevDeckSize");
+                Field prevDeckSize = KSMOD_ReflectTool.GetFieldByReflect(DiscardPileViewScreen.class, "prevDeckSize");
                 prevDeckSize.setInt(deck, AbstractDungeon.player.masterDeck.size());
                 return SpireReturn.Return(null);
             }
@@ -151,7 +151,7 @@ public class KSMOD_DiscardPileViewScreenPatch
                 {
                     AbstractCard card = cards.get(i);
                     int mod = i % 5;
-                    Float currentDiffY = KSMOD_Utility.GetFieldByReflect(DiscardPileViewScreen.class, "currentDiffY").getFloat(deck);
+                    Float currentDiffY = KSMOD_ReflectTool.GetFieldByReflect(DiscardPileViewScreen.class, "currentDiffY").getFloat(deck);
                     card.current_x = DRAW_START_X + mod * PAD_X;
                     card.current_y = DRAW_START_Y + currentDiffY - GetPadHeight(i, false) - MathUtils.random(100.0F * Settings.scale, 200.0F * Settings.scale);
                     card.targetDrawScale = 0.75F;

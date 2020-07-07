@@ -1,7 +1,7 @@
 package KinomotoSakuraMod.Patches;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.KSMOD_ReflectTool;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -24,11 +24,11 @@ public class KSMOD_CardLibraryScreenPatch
 
     public static SpireReturn<Object> Prefix(CardLibraryScreen lib) throws NoSuchFieldException, IllegalAccessException
     {
-        CardGroup visibleCards = (CardGroup) KSMOD_Utility.GetFieldByReflect(CardLibraryScreen.class, "visibleCards").get(lib);
+        CardGroup visibleCards = (CardGroup) KSMOD_ReflectTool.GetFieldByReflect(CardLibraryScreen.class, "visibleCards").get(lib);
         ArrayList<AbstractCard> cards = visibleCards.group;
         if (Check(cards))
         {
-            Field hoveredCard = KSMOD_Utility.GetFieldByReflect(CardLibraryScreen.class, "hoveredCard");
+            Field hoveredCard = KSMOD_ReflectTool.GetFieldByReflect(CardLibraryScreen.class, "hoveredCard");
             hoveredCard.set(lib, null);
             int lineNum = 0;
             for (int i = 0; i < cards.size(); ++i)
@@ -39,7 +39,7 @@ public class KSMOD_CardLibraryScreenPatch
                 {
                     ++lineNum;
                 }
-                float currentDiffY = KSMOD_Utility.GetFieldByReflect(CardLibraryScreen.class, "currentDiffY").getFloat(lib);
+                float currentDiffY = KSMOD_ReflectTool.GetFieldByReflect(CardLibraryScreen.class, "currentDiffY").getFloat(lib);
                 card.target_x = DRAW_START_X + (float) mod * PAD_X;
                 card.target_y = DRAW_START_Y + currentDiffY - (float) lineNum * PAD_Y;
                 card.update();
@@ -49,7 +49,7 @@ public class KSMOD_CardLibraryScreenPatch
                     hoveredCard.set(lib, card);
                 }
             }
-            CardLibSortHeader sortHeader = (CardLibSortHeader) KSMOD_Utility.GetFieldByReflect(CardLibraryScreen.class, "sortHeader").get(lib);
+            CardLibSortHeader sortHeader = (CardLibSortHeader) KSMOD_ReflectTool.GetFieldByReflect(CardLibraryScreen.class, "sortHeader").get(lib);
             if (sortHeader.justSorted)
             {
                 for (AbstractCard card : cards)

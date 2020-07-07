@@ -5,7 +5,7 @@ import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Powers.KSMOD_TwinPower_SakuraCard;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.KSMOD_ReflectTool;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -49,7 +49,7 @@ public class SakuraCardTheTwin extends KSMOD_AbstractMagicCard
     @Override
     public KSMOD_AbstractMagicCard makeCopy()
     {
-        if (KSMOD_Utility.IsReallyCopyingCard() && this.hasSameSakuraCard())
+        if (KSMOD_ReflectTool.IsReallyCopyingCard() && this.hasSameSakuraCard())
         {
             return getSameNameClowCard();
         }

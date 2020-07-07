@@ -8,7 +8,7 @@ import KinomotoSakuraMod.Powers.KSMOD_EarthyPower;
 import KinomotoSakuraMod.Powers.KSMOD_FireyPower;
 import KinomotoSakuraMod.Powers.KSMOD_WateryPower;
 import KinomotoSakuraMod.Powers.KSMOD_WindyPower;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.KSMOD_ReflectTool;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -45,7 +45,7 @@ public class SakuraCardTheWave extends KSMOD_AbstractMagicCard
     @Override
     public KSMOD_AbstractMagicCard makeCopy()
     {
-        if (KSMOD_Utility.IsReallyCopyingCard() && this.hasSameSakuraCard())
+        if (KSMOD_ReflectTool.IsReallyCopyingCard() && this.hasSameSakuraCard())
         {
             return getSameNameClowCard();
         }

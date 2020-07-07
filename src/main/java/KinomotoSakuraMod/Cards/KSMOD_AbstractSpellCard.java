@@ -2,7 +2,7 @@ package KinomotoSakuraMod.Cards;
 
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_LoggerTool;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.KSMOD_ReflectTool;
 import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
 import basemod.abstracts.DynamicVariable;
@@ -118,11 +118,11 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
     @SpireOverride
     public void renderEnergy(SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException
     {
-        boolean darken = KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "darken").getBoolean(this);
+        boolean darken = KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "darken").getBoolean(this);
         if (this.cost > -2 && !darken && !this.isLocked && this.isSeen)
         {
-            Method renderHelper = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, Texture.class, float.class, float.class);
-            Color renderColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
+            Method renderHelper = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, Texture.class, float.class, float.class);
+            Color renderColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
             renderHelper.invoke(this, sb, renderColor, GetEnergyImage(), this.current_x - 512F, this.current_y - 512F);
 
             Color costColor = Color.WHITE.cpy();
@@ -137,10 +137,10 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
 
             costColor.a = this.transparency;
 
-            Method getCost = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "getCost");
+            Method getCost = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "getCost");
             String text = (String) getCost.invoke(this);
 
-            Method getEnergyFont = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "getEnergyFont");
+            Method getEnergyFont = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "getEnergyFont");
             BitmapFont font = (BitmapFont) getEnergyFont.invoke(this);
 
             if ((this.type != AbstractCard.CardType.STATUS || this.cardID.equals("Slimed")) && (this.color != AbstractCard.CardColor.CURSE || this.cardID.equals("Pride")))
@@ -166,8 +166,8 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
 
     private void renderFramePortrait(SpriteBatch sb, float x, float y) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException
     {
-        Color renderColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
-        Method renderHelper = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, Texture.class, float.class, float.class);
+        Color renderColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
+        Method renderHelper = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, Texture.class, float.class, float.class);
         renderHelper.invoke(this, sb, renderColor, GetFrameImage(), x - 512F, y - 512F);
     }
 
@@ -206,8 +206,8 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
     @SpireOverride
     public void renderBannerImage(SpriteBatch sb, float drawX, float drawY) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException
     {
-        Color renderColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
-        Method renderHelper = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, Texture.class, float.class, float.class);
+        Color renderColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
+        Method renderHelper = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, Texture.class, float.class, float.class);
         renderHelper.invoke(this, sb, renderColor, GetBannerImage(), drawX - 512F, drawY - 512F);
     }
 
@@ -242,7 +242,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
         if (this.isSeen && !this.isLocked)
         {
             renderMask(sb);
-            Method getDescFont = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "getDescFont");
+            Method getDescFont = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "getDescFont");
             BitmapFont font = (BitmapFont) getDescFont.invoke(this);
             float draw_y = this.current_y - IMG_HEIGHT * this.drawScale / 2.0F + IMG_HEIGHT * DESC_OFFSET_TO_BOTTOM_Y * this.drawScale;
             draw_y += (float) this.description.size() * font.getCapHeight() * 0.775F - font.getCapHeight() * 0.375F;
@@ -262,11 +262,11 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
 
                 String[] var7 = ((DescriptionLine) this.description.get(i)).getCachedTokenizedText();
                 int var8 = var7.length;
-                GlyphLayout gl = (GlyphLayout) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "gl").get(this);
+                GlyphLayout gl = (GlyphLayout) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "gl").get(this);
                 for (int var9 = 0; var9 < var8; ++var9)
                 {
                     String tmp = var7[var9];
-                    Color textColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
+                    Color textColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
                     if (tmp.length() > 0 && tmp.charAt(0) == '*')
                     {
                         tmp = tmp.substring(1);
@@ -279,7 +279,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
                         }
 
                         gl.setText(font, tmp);
-                        Color goldColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "goldColor").get(this);
+                        Color goldColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "goldColor").get(this);
                         FontHelper.renderRotatedText(sb, font, tmp, this.current_x, this.current_y, start_x - this.current_x + gl.width / 2.0F, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, goldColor);
                         start_x = (float) Math.round(start_x + gl.width);
                         gl.setText(font, punctuation);
@@ -289,7 +289,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
                     }
                     else if (tmp.length() > 0 && tmp.charAt(0) == '!')
                     {
-                        Method renderDynamicVariable = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "renderDynamicVariable", char.class, float.class, float.class, int.class, BitmapFont.class, SpriteBatch.class, Character.class);
+                        Method renderDynamicVariable = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "renderDynamicVariable", char.class, float.class, float.class, int.class, BitmapFont.class, SpriteBatch.class, Character.class);
                         if (tmp.length() == 4)
                         {
                             start_x += (float) renderDynamicVariable.invoke(this, tmp.charAt(1), start_x, draw_y, i, font, sb, (Character) null);
@@ -354,7 +354,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
         // else
         // {
         //     FontHelper.menuBannerFont.getData().setScale(this.drawScale * 1.25F);
-        //     Color textColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
+        //     Color textColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
         //     FontHelper.renderRotatedText(sb, FontHelper.menuBannerFont, "? ? ?", this.current_x, this.current_y, 0.0F, -200.0F * Settings.scale * this.drawScale / 2.0F, this.angle, true, textColor);
         //     FontHelper.menuBannerFont.getData().setScale(1.0F);
         // }
@@ -370,7 +370,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
         if (this.isSeen && !this.isLocked)
         {
             renderMask(sb);
-            Method getDescFont = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "getDescFont");
+            Method getDescFont = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "getDescFont");
             BitmapFont font = (BitmapFont) getDescFont.invoke(this);
             float draw_y = this.current_y - IMG_HEIGHT * this.drawScale / 2.0F + IMG_HEIGHT * DESC_OFFSET_TO_BOTTOM_Y * this.drawScale;
             draw_y += (float) this.description.size() * font.getCapHeight() * 0.775F - font.getCapHeight() * 0.375F;
@@ -390,8 +390,8 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
 
                 String[] var7 = this.description.get(i).getCachedTokenizedTextCN();
                 int var8 = var7.length;
-                Method getDynamicValue = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "getDynamicValue", char.class);
-                GlyphLayout gl = (GlyphLayout) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "gl").get(this);
+                Method getDynamicValue = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "getDynamicValue", char.class);
+                GlyphLayout gl = (GlyphLayout) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "gl").get(this);
                 for (int var9 = 0; var9 < var8; ++var9)
                 {
                     String tmp = var7[var9];
@@ -475,11 +475,11 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
                         }
 
                         gl.setText(font, tmp);
-                        Color goldColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "goldColor").get(this);
+                        Color goldColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "goldColor").get(this);
                         FontHelper.renderRotatedText(sb, font, tmp, this.current_x, this.current_y, start_x - this.current_x + gl.width / 2.0F, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, goldColor);
                         start_x = (float) Math.round(start_x + gl.width);
                         gl.setText(font, punctuation);
-                        Color textColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
+                        Color textColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
                         FontHelper.renderRotatedText(sb, font, punctuation, this.current_x, this.current_y, start_x - this.current_x + gl.width / 2.0F, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, textColor);
                         gl.setText(font, punctuation);
                         start_x += gl.width;
@@ -505,7 +505,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
                     else
                     {
                         gl.setText(font, tmp);
-                        Color textColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
+                        Color textColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
                         FontHelper.renderRotatedText(sb, font, tmp, this.current_x, this.current_y, start_x - this.current_x + gl.width / 2.0F, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, textColor);
                         start_x += gl.width;
                     }
@@ -517,7 +517,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
         // else
         // {
         //     FontHelper.menuBannerFont.getData().setScale(this.drawScale * 1.25F);
-        //     Color textColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
+        //     Color textColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
         //     FontHelper.renderRotatedText(sb, FontHelper.menuBannerFont, "? ? ?", this.current_x, this.current_y, 0.0F, -200.0F * Settings.scale * this.drawScale / 2.0F, this.angle, true, textColor);
         //     FontHelper.menuBannerFont.getData().setScale(1.0F);
         // }
@@ -537,7 +537,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
             {
                 this.description.clear();
                 int numLines = 1;
-                StringBuilder sbuilder = (StringBuilder) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "sbuilder").get(this);
+                StringBuilder sbuilder = (StringBuilder) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "sbuilder").get(this);
                 sbuilder.setLength(0);
                 float currentWidth = 0.0F;
                 String[] var4 = this.rawDescription.split(" ");
@@ -547,7 +547,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
                 {
                     String word = var4[var6];
                     boolean isKeyword = false;
-                    StringBuilder sbuilder2 = (StringBuilder) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "sbuilder2").get(this);
+                    StringBuilder sbuilder2 = (StringBuilder) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "sbuilder2").get(this);
                     sbuilder2.setLength(0);
                     sbuilder2.append(" ");
                     if (word.length() > 0 && word.charAt(word.length() - 1) != ']' && !Character.isLetterOrDigit(word.charAt(word.length() - 1)))
@@ -556,8 +556,8 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
                         word = word.substring(0, word.length() - 1);
                     }
 
-                    GlyphLayout gl = (GlyphLayout) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "gl").get(this);
-                    Method dedupeKeyword = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "dedupeKeyword", String.class);
+                    GlyphLayout gl = (GlyphLayout) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "gl").get(this);
+                    Method dedupeKeyword = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "dedupeKeyword", String.class);
                     String keywordTmp = word.toLowerCase();
                     keywordTmp = (String) dedupeKeyword.invoke(this, keywordTmp);
                     GlyphLayout var10000;
@@ -680,7 +680,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
         {
             this.description.clear();
             int numLines = 1;
-            StringBuilder sbuilder = (StringBuilder) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "sbuilder").get(this);
+            StringBuilder sbuilder = (StringBuilder) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "sbuilder").get(this);
             sbuilder.setLength(0);
             float currentWidth = 0.0F;
             String[] var3 = this.rawDescription.split(" ");
@@ -692,8 +692,8 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
                 word = word.trim();
                 if (Settings.manualLineBreak || !word.contains("NL"))
                 {
-                    Method dedupeKeyword = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "dedupeKeyword", String.class);
-                    GlyphLayout gl = (GlyphLayout) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "gl").get(this);
+                    Method dedupeKeyword = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "dedupeKeyword", String.class);
+                    GlyphLayout gl = (GlyphLayout) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "gl").get(this);
                     String keywordTmp = word.toLowerCase();
                     keywordTmp = (String) dedupeKeyword.invoke(this, keywordTmp);
                     if (GameDictionary.keywords.containsKey(keywordTmp))
@@ -873,7 +873,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
     {
         try
         {
-            Method updateFlashVfx = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "updateFlashVfx");
+            Method updateFlashVfx = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "updateFlashVfx");
             updateFlashVfx.invoke(this);
             if (this.hoverTimer != 0.0F)
             {
@@ -926,8 +926,8 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
                 this.angle = MathHelper.angleLerpSnap(this.angle, this.targetAngle);
             }
 
-            Method updateTransparency = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "updateTransparency");
-            Method updateColor = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "updateColor");
+            Method updateTransparency = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "updateTransparency");
+            Method updateColor = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "updateColor");
             updateTransparency.invoke(this);
             updateColor.invoke(this);
         }
@@ -943,7 +943,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
         try
         {
             BitmapFont font;
-            Color renderColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
+            Color renderColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
             if (this.isLocked)
             {
                 font = FontHelper.cardTitleFont;
@@ -960,7 +960,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
             }
             else
             {
-                boolean useSmallTitleFont = KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "useSmallTitleFont").getBoolean(this);
+                boolean useSmallTitleFont = KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "useSmallTitleFont").getBoolean(this);
                 if (!useSmallTitleFont)
                 {
                     font = FontHelper.cardTitleFont;
@@ -1024,7 +1024,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
 
         if (!this.isLocked)
         {
-            Color renderColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
+            Color renderColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
             if (this.portrait != null)
             {
                 drawX = this.current_x - getPortraitOriginX();
@@ -1084,12 +1084,12 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
             TextureAtlas.AtlasRegion img = KSMOD_ImageConst.SILHOUETTE_ATLAS;
             if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT)
             {
-                Color BLUE_BORDER_GLOW_COLOR = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "BLUE_BORDER_GLOW_COLOR").get(this);
+                Color BLUE_BORDER_GLOW_COLOR = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "BLUE_BORDER_GLOW_COLOR").get(this);
                 sb.setColor(BLUE_BORDER_GLOW_COLOR);
             }
             else
             {
-                Color GREEN_BORDER_GLOW_COLOR = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "GREEN_BORDER_GLOW_COLOR").get(this);
+                Color GREEN_BORDER_GLOW_COLOR = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "GREEN_BORDER_GLOW_COLOR").get(this);
                 sb.setColor(GREEN_BORDER_GLOW_COLOR);
             }
 

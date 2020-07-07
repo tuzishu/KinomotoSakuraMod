@@ -4,7 +4,7 @@ import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheShadow;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.KSMOD_ReflectTool;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -52,7 +52,7 @@ public class SakuraCardTheShadow extends KSMOD_AbstractMagicCard
     @Override
     public KSMOD_AbstractMagicCard makeCopy()
     {
-        if (KSMOD_Utility.IsReallyCopyingCard() && this.hasSameSakuraCard())
+        if (KSMOD_ReflectTool.IsReallyCopyingCard() && this.hasSameSakuraCard())
         {
             return getSameNameClowCard();
         }

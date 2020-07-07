@@ -8,7 +8,7 @@ import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Powers.KSMOD_CreatePower;
 import KinomotoSakuraMod.Utility.KSMOD_DataTool;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.KSMOD_ReflectTool;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -59,7 +59,7 @@ public class SakuraCardTheCreate extends KSMOD_AbstractMagicCard
     @Override
     public KSMOD_AbstractMagicCard makeCopy()
     {
-        if (KSMOD_Utility.IsReallyCopyingCard() && this.hasSameSakuraCard())
+        if (KSMOD_ReflectTool.IsReallyCopyingCard() && this.hasSameSakuraCard())
         {
             return getSameNameClowCard();
         }

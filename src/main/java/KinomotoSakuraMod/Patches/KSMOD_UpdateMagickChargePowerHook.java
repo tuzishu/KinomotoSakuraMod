@@ -1,7 +1,7 @@
 package KinomotoSakuraMod.Patches;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.KSMOD_ReflectTool;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -22,8 +22,8 @@ public class KSMOD_UpdateMagickChargePowerHook
             @SpireInsertPatch(locator = Locator.class)
             public static void Insert(ApplyPowerAction action) throws NoSuchFieldException, IllegalAccessException
             {
-                float duration = KSMOD_Utility.GetFieldByReflect(AbstractGameAction.class, "duration").getFloat(action);
-                float startingDuration = KSMOD_Utility.GetFieldByReflect(ApplyPowerAction.class, "startingDuration").getFloat(action);
+                float duration = KSMOD_ReflectTool.GetFieldByReflect(AbstractGameAction.class, "duration").getFloat(action);
+                float startingDuration = KSMOD_ReflectTool.GetFieldByReflect(ApplyPowerAction.class, "startingDuration").getFloat(action);
                 if (duration == startingDuration)
                 {
                     PostMessage(action, AbstractDungeon.player.cardInUse);
@@ -62,7 +62,7 @@ public class KSMOD_UpdateMagickChargePowerHook
             if (card instanceof KSMOD_AbstractMagicCard)
             {
                 AbstractPower applyMe = null;
-                AbstractPower powerToApply = (AbstractPower) KSMOD_Utility.GetFieldByReflect(ApplyPowerAction.class, "powerToApply").get(action);
+                AbstractPower powerToApply = (AbstractPower) KSMOD_ReflectTool.GetFieldByReflect(ApplyPowerAction.class, "powerToApply").get(action);
                 if (powerToApply != null)
                 {
                     applyMe = powerToApply;
@@ -80,8 +80,8 @@ public class KSMOD_UpdateMagickChargePowerHook
             @SpireInsertPatch(locator = Locator.class)
             public static void Insert(ReducePowerAction action) throws NoSuchFieldException, IllegalAccessException
             {
-                float duration = KSMOD_Utility.GetFieldByReflect(AbstractGameAction.class, "duration").getFloat(action);
-                float startDuration = KSMOD_Utility.GetFieldByReflect(AbstractGameAction.class, "startDuration").getFloat(action);
+                float duration = KSMOD_ReflectTool.GetFieldByReflect(AbstractGameAction.class, "duration").getFloat(action);
+                float startDuration = KSMOD_ReflectTool.GetFieldByReflect(AbstractGameAction.class, "startDuration").getFloat(action);
                 if (duration == startDuration)
                 {
                     PostMessage(action, AbstractDungeon.player.cardInUse);
@@ -120,8 +120,8 @@ public class KSMOD_UpdateMagickChargePowerHook
             if (card instanceof KSMOD_AbstractMagicCard)
             {
                 AbstractPower reduceMe = null;
-                String powerID = (String) KSMOD_Utility.GetFieldByReflect(ReducePowerAction.class, "powerID").get(action);
-                AbstractPower powerInstance = (AbstractPower) KSMOD_Utility.GetFieldByReflect(ReducePowerAction.class, "powerInstance").get(action);
+                String powerID = (String) KSMOD_ReflectTool.GetFieldByReflect(ReducePowerAction.class, "powerID").get(action);
+                AbstractPower powerInstance = (AbstractPower) KSMOD_ReflectTool.GetFieldByReflect(ReducePowerAction.class, "powerInstance").get(action);
                 if (powerID != null)
                 {
                     reduceMe = action.target.getPower(powerID);
@@ -143,7 +143,7 @@ public class KSMOD_UpdateMagickChargePowerHook
             @SpireInsertPatch(locator = Locator.class)
             public static void Insert(RemoveSpecificPowerAction action) throws NoSuchFieldException, IllegalAccessException
             {
-                float duration = KSMOD_Utility.GetFieldByReflect(AbstractGameAction.class, "duration").getFloat(action);
+                float duration = KSMOD_ReflectTool.GetFieldByReflect(AbstractGameAction.class, "duration").getFloat(action);
                 if (duration == 0.1F)
                 {
                     PostMessage(action, AbstractDungeon.player.cardInUse);
@@ -182,8 +182,8 @@ public class KSMOD_UpdateMagickChargePowerHook
             if (card instanceof KSMOD_AbstractMagicCard)
             {
                 AbstractPower removeMe = null;
-                String powerID = (String) KSMOD_Utility.GetFieldByReflect(RemoveSpecificPowerAction.class, "powerToRemove").get(action);
-                AbstractPower powerInstance = (AbstractPower) KSMOD_Utility.GetFieldByReflect(RemoveSpecificPowerAction.class, "powerInstance").get(action);
+                String powerID = (String) KSMOD_ReflectTool.GetFieldByReflect(RemoveSpecificPowerAction.class, "powerToRemove").get(action);
+                AbstractPower powerInstance = (AbstractPower) KSMOD_ReflectTool.GetFieldByReflect(RemoveSpecificPowerAction.class, "powerInstance").get(action);
                 if (powerID != null)
                 {
                     removeMe = action.target.getPower(powerID);

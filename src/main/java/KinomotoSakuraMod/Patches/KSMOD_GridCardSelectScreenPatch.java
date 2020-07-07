@@ -1,7 +1,7 @@
 package KinomotoSakuraMod.Patches;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.KSMOD_ReflectTool;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
@@ -84,14 +84,14 @@ public class KSMOD_GridCardSelectScreenPatch
     {
         public static SpireReturn<Object> Prefix(GridCardSelectScreen grid) throws NoSuchFieldException, IllegalAccessException
         {
-            DRAW_START_Y = KSMOD_Utility.GetFieldByReflect(GridCardSelectScreen.class, "drawStartY").getFloat(grid);
-            CardGroup cardGroup = (CardGroup) KSMOD_Utility.GetFieldByReflect(GridCardSelectScreen.class, "targetGroup").get(grid);
+            DRAW_START_Y = KSMOD_ReflectTool.GetFieldByReflect(GridCardSelectScreen.class, "drawStartY").getFloat(grid);
+            CardGroup cardGroup = (CardGroup) KSMOD_ReflectTool.GetFieldByReflect(GridCardSelectScreen.class, "targetGroup").get(grid);
             ArrayList<AbstractCard> cards = cardGroup.group;
-            float currentDiffY = KSMOD_Utility.GetFieldByReflect(GridCardSelectScreen.class, "currentDiffY").getFloat(grid);
-            Field hoveredCard = KSMOD_Utility.GetFieldByReflect(GridCardSelectScreen.class, "hoveredCard");
+            float currentDiffY = KSMOD_ReflectTool.GetFieldByReflect(GridCardSelectScreen.class, "currentDiffY").getFloat(grid);
+            Field hoveredCard = KSMOD_ReflectTool.GetFieldByReflect(GridCardSelectScreen.class, "hoveredCard");
             if (HasLongCard(cards))
             {
-                boolean isJustForConfirming = KSMOD_Utility.GetFieldByReflect(GridCardSelectScreen.class, "isJustForConfirming").getBoolean(grid);
+                boolean isJustForConfirming = KSMOD_ReflectTool.GetFieldByReflect(GridCardSelectScreen.class, "isJustForConfirming").getBoolean(grid);
                 if (isJustForConfirming && cardGroup.size() <= 4)
                 {
                     switch (cardGroup.size())
@@ -176,11 +176,11 @@ public class KSMOD_GridCardSelectScreenPatch
     {
         public static SpireReturn<Object> Prefix(GridCardSelectScreen grid) throws NoSuchFieldException, IllegalAccessException
         {
-            CardGroup targetGroup = (CardGroup) KSMOD_Utility.GetFieldByReflect(GridCardSelectScreen.class, "targetGroup").get(grid);
+            CardGroup targetGroup = (CardGroup) KSMOD_ReflectTool.GetFieldByReflect(GridCardSelectScreen.class, "targetGroup").get(grid);
             ArrayList<AbstractCard> cards = targetGroup.group;
             if (HasLongCard(cards))
             {
-                Field scrollUpperBound = KSMOD_Utility.GetFieldByReflect(GridCardSelectScreen.class, "scrollUpperBound");
+                Field scrollUpperBound = KSMOD_ReflectTool.GetFieldByReflect(GridCardSelectScreen.class, "scrollUpperBound");
                 float padY = 0;
                 if (cards.size() > 10)
                 {
@@ -191,7 +191,7 @@ public class KSMOD_GridCardSelectScreenPatch
                     padY = Settings.DEFAULT_SCROLL_LIMIT;
                 }
                 scrollUpperBound.setFloat(grid, padY);
-                Field prevDeckSize = KSMOD_Utility.GetFieldByReflect(GridCardSelectScreen.class, "prevDeckSize");
+                Field prevDeckSize = KSMOD_ReflectTool.GetFieldByReflect(GridCardSelectScreen.class, "prevDeckSize");
                 prevDeckSize.setInt(grid, targetGroup.size());
                 return SpireReturn.Return(null);
             }
@@ -207,7 +207,7 @@ public class KSMOD_GridCardSelectScreenPatch
     {
         public static SpireReturn<Object> Prefix(GridCardSelectScreen grid) throws NoSuchFieldException, IllegalAccessException
         {
-            CardGroup targetGroup = (CardGroup) KSMOD_Utility.GetFieldByReflect(GridCardSelectScreen.class, "targetGroup").get(grid);
+            CardGroup targetGroup = (CardGroup) KSMOD_ReflectTool.GetFieldByReflect(GridCardSelectScreen.class, "targetGroup").get(grid);
             ArrayList<AbstractCard> cards = targetGroup.group;
             if (HasLongCard(cards))
             {
@@ -218,7 +218,7 @@ public class KSMOD_GridCardSelectScreenPatch
                     card.setAngle(0.0F, true);
                     card.lighten(true);
                     card.current_x = DRAW_START_X + (float) mod * PAD_X;
-                    float currentDiffY = KSMOD_Utility.GetFieldByReflect(GridCardSelectScreen.class, "currentDiffY").getFloat(grid);
+                    float currentDiffY = KSMOD_ReflectTool.GetFieldByReflect(GridCardSelectScreen.class, "currentDiffY").getFloat(grid);
                     card.current_y = DRAW_START_Y + currentDiffY - GetPadHeight(targetGroup, i, false) - MathUtils.random(100.0F * Settings.scale, 200.0F * Settings.scale);
                     card.targetDrawScale = 0.75F;
                     card.drawScale = 0.75F;
@@ -237,24 +237,24 @@ public class KSMOD_GridCardSelectScreenPatch
     {
         public static SpireReturn<Object> Prefix(GridCardSelectScreen grid) throws NoSuchFieldException, IllegalAccessException
         {
-            CardGroup targetGroup = (CardGroup) KSMOD_Utility.GetFieldByReflect(GridCardSelectScreen.class, "targetGroup").get(grid);
+            CardGroup targetGroup = (CardGroup) KSMOD_ReflectTool.GetFieldByReflect(GridCardSelectScreen.class, "targetGroup").get(grid);
             ArrayList<AbstractCard> cards = targetGroup.group;
             if (HasLongCard(cards))
             {
-                Field cardSelectAmount = KSMOD_Utility.GetFieldByReflect(GridCardSelectScreen.class, "cardSelectAmount");
-                Field hoveredCard = KSMOD_Utility.GetFieldByReflect(GridCardSelectScreen.class, "hoveredCard");
+                Field cardSelectAmount = KSMOD_ReflectTool.GetFieldByReflect(GridCardSelectScreen.class, "cardSelectAmount");
+                Field hoveredCard = KSMOD_ReflectTool.GetFieldByReflect(GridCardSelectScreen.class, "hoveredCard");
                 cardSelectAmount.setInt(grid, 0);
                 grid.confirmScreenUp = false;
                 grid.confirmButton.hide();
                 grid.confirmButton.isDisabled = true;
                 hoveredCard.set(grid, null);
                 grid.upgradePreviewCard = null;
-                AbstractCard controllerCard = (AbstractCard) KSMOD_Utility.GetFieldByReflect(GridCardSelectScreen.class, "hoveredCard").get(grid);
+                AbstractCard controllerCard = (AbstractCard) KSMOD_ReflectTool.GetFieldByReflect(GridCardSelectScreen.class, "hoveredCard").get(grid);
                 if (Settings.isControllerMode && controllerCard != null)
                 {
                     hoveredCard.set(grid, controllerCard);
                 }
-                boolean canCancel = KSMOD_Utility.GetFieldByReflect(GridCardSelectScreen.class, "canCancel").getBoolean(grid);
+                boolean canCancel = KSMOD_ReflectTool.GetFieldByReflect(GridCardSelectScreen.class, "canCancel").getBoolean(grid);
                 if ((grid.forUpgrade || grid.forTransform || grid.forPurge || AbstractDungeon.previousScreen == AbstractDungeon.CurrentScreen.SHOP) && canCancel)
                 {
                     AbstractDungeon.overlayMenu.cancelButton.show(GridCardSelectScreen.TEXT[1]);
@@ -263,12 +263,12 @@ public class KSMOD_GridCardSelectScreenPatch
                 {
                     AbstractCard card = cards.get(i);
                     int mod = i % 5;
-                    float currentDiffY = KSMOD_Utility.GetFieldByReflect(GridCardSelectScreen.class, "currentDiffY").getFloat(grid);
+                    float currentDiffY = KSMOD_ReflectTool.GetFieldByReflect(GridCardSelectScreen.class, "currentDiffY").getFloat(grid);
                     card.current_x = DRAW_START_X + (float) mod * PAD_X;
                     card.current_y = DRAW_START_Y + currentDiffY - GetPadHeight(targetGroup, i, false);
                 }
-                Field tipMsg = KSMOD_Utility.GetFieldByReflect(GridCardSelectScreen.class, "tipMsg");
-                String lastTip = (String) KSMOD_Utility.GetFieldByReflect(GridCardSelectScreen.class, "lastTip").get(grid);
+                Field tipMsg = KSMOD_ReflectTool.GetFieldByReflect(GridCardSelectScreen.class, "tipMsg");
+                String lastTip = (String) KSMOD_ReflectTool.GetFieldByReflect(GridCardSelectScreen.class, "lastTip").get(grid);
                 tipMsg.set(grid, lastTip);
                 return SpireReturn.Return(null);
             }

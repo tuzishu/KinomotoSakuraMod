@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class KSMOD_Utility
+public class KSMOD_ReflectTool
 {
     private static HashMap<String, Field> fieldMap = new HashMap<>();
 

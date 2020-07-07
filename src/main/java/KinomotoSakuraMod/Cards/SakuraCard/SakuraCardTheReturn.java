@@ -8,7 +8,7 @@ import KinomotoSakuraMod.Relics.KSMOD_AbstractWand;
 import KinomotoSakuraMod.Relics.KSMOD_SealedWand;
 import KinomotoSakuraMod.Relics.KSMOD_StarWand;
 import KinomotoSakuraMod.Relics.KSMOD_UltimateWand;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.KSMOD_ReflectTool;
 import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -49,7 +49,7 @@ public class SakuraCardTheReturn extends KSMOD_AbstractMagicCard
     @Override
     public KSMOD_AbstractMagicCard makeCopy()
     {
-        if (KSMOD_Utility.IsReallyCopyingCard() && this.hasSameSakuraCard())
+        if (KSMOD_ReflectTool.IsReallyCopyingCard() && this.hasSameSakuraCard())
         {
             return getSameNameClowCard();
         }

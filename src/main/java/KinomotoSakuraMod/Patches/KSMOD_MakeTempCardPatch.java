@@ -2,7 +2,7 @@ package KinomotoSakuraMod.Patches;
 
 import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Powers.KSMOD_TwinPower_SakuraCard;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.KSMOD_ReflectTool;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
@@ -41,10 +41,10 @@ public class KSMOD_MakeTempCardPatch
     {
         public static SpireReturn<AbstractCard> Perfix(MakeTempCardInHandAction action) throws NoSuchFieldException, IllegalAccessException
         {
-            AbstractCard c = (AbstractCard) KSMOD_Utility.GetFieldByReflect(MakeTempCardInHandAction.class, "c").get(action);
+            AbstractCard c = (AbstractCard) KSMOD_ReflectTool.GetFieldByReflect(MakeTempCardInHandAction.class, "c").get(action);
             if (HasTwinPower() && CheckCard(c))
             {
-                boolean sameUUID = KSMOD_Utility.GetFieldByReflect(MakeTempCardInHandAction.class, "sameUUID").getBoolean(action);
+                boolean sameUUID = KSMOD_ReflectTool.GetFieldByReflect(MakeTempCardInHandAction.class, "sameUUID").getBoolean(action);
                 AbstractCard card = sameUUID ? c.makeSameInstanceOf() : c.makeStatEquivalentCopy();
                 GetTwinPower().onMakeTempCard(card);
                 return SpireReturn.Return(card);
@@ -61,10 +61,10 @@ public class KSMOD_MakeTempCardPatch
     {
         public static SpireReturn<AbstractCard> Perfix(MakeTempCardInDiscardAction action) throws NoSuchFieldException, IllegalAccessException
         {
-            AbstractCard cardToMake = (AbstractCard) KSMOD_Utility.GetFieldByReflect(MakeTempCardInDiscardAction.class, "cardToMake").get(action);
+            AbstractCard cardToMake = (AbstractCard) KSMOD_ReflectTool.GetFieldByReflect(MakeTempCardInDiscardAction.class, "cardToMake").get(action);
             if (HasTwinPower() && CheckCard(cardToMake))
             {
-                boolean sameUUID = KSMOD_Utility.GetFieldByReflect(MakeTempCardInDiscardAction.class, "sameUUID").getBoolean(action);
+                boolean sameUUID = KSMOD_ReflectTool.GetFieldByReflect(MakeTempCardInDiscardAction.class, "sameUUID").getBoolean(action);
                 AbstractCard card = sameUUID ? cardToMake.makeSameInstanceOf() : cardToMake.makeStatEquivalentCopy();
                 GetTwinPower().onMakeTempCard(card);
                 return SpireReturn.Return(card);
@@ -81,7 +81,7 @@ public class KSMOD_MakeTempCardPatch
     {
         public static void Postfix(MakeTempCardInDiscardAndDeckAction action, AbstractCard card) throws NoSuchFieldException, IllegalAccessException
         {
-            AbstractCard cardToMake = (AbstractCard) KSMOD_Utility.GetFieldByReflect(MakeTempCardInDiscardAndDeckAction.class, "cardToMake").get(action);
+            AbstractCard cardToMake = (AbstractCard) KSMOD_ReflectTool.GetFieldByReflect(MakeTempCardInDiscardAndDeckAction.class, "cardToMake").get(action);
             if (HasTwinPower() && CheckCard(cardToMake))
             {
                 GetTwinPower().onMakeTempCard(cardToMake);
@@ -102,7 +102,7 @@ public class KSMOD_MakeTempCardPatch
     {
         public static void Postfix(MakeTempCardInDrawPileAction action, AbstractCard card, int amount, boolean randomSpot, boolean autoPosition, boolean toBottom, float cardX, float cardY) throws NoSuchFieldException, IllegalAccessException
         {
-            AbstractCard cardToMake = (AbstractCard) KSMOD_Utility.GetFieldByReflect(MakeTempCardInDrawPileAction.class, "cardToMake").get(action);
+            AbstractCard cardToMake = (AbstractCard) KSMOD_ReflectTool.GetFieldByReflect(MakeTempCardInDrawPileAction.class, "cardToMake").get(action);
             if (HasTwinPower() && CheckCard(cardToMake))
             {
                 GetTwinPower().onMakeTempCard(cardToMake);

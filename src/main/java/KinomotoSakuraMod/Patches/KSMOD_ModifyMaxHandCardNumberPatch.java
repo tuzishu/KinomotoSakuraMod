@@ -3,7 +3,7 @@ package KinomotoSakuraMod.Patches;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Powers.KSMOD_LightPower;
 import KinomotoSakuraMod.Utility.KSMOD_LoggerTool;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.KSMOD_ReflectTool;
 import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
@@ -88,7 +88,7 @@ public class KSMOD_ModifyMaxHandCardNumberPatch
                         }
                         else
                         {
-                            Field shuffleCheck = KSMOD_Utility.GetFieldByReflect(DrawCardAction.class, "shuffleCheck");
+                            Field shuffleCheck = KSMOD_ReflectTool.GetFieldByReflect(DrawCardAction.class, "shuffleCheck");
                             if (!shuffleCheck.getBoolean(action))
                             {
                                 int tmp;
@@ -113,7 +113,7 @@ public class KSMOD_ModifyMaxHandCardNumberPatch
                                 }
                                 shuffleCheck.setBoolean(action, true);
                             }
-                            Field duration = KSMOD_Utility.GetFieldByReflect(AbstractGameAction.class, "duration");
+                            Field duration = KSMOD_ReflectTool.GetFieldByReflect(AbstractGameAction.class, "duration");
                             duration.set(action, duration.getFloat(action) - Gdx.graphics.getDeltaTime());
                             if (action.amount != 0 && duration.getFloat(action) < 0.0F)
                             {
@@ -170,7 +170,7 @@ public class KSMOD_ModifyMaxHandCardNumberPatch
                     }
                     else
                     {
-                        Field shuffleCheck = KSMOD_Utility.GetFieldByReflect(DrawCardAction.class, "shuffleCheck");
+                        Field shuffleCheck = KSMOD_ReflectTool.GetFieldByReflect(DrawCardAction.class, "shuffleCheck");
                         if (!shuffleCheck.getBoolean(action))
                         {
                             int tmp;
@@ -197,7 +197,7 @@ public class KSMOD_ModifyMaxHandCardNumberPatch
 
                             shuffleCheck.setBoolean(action, true);
                         }
-                        Field duration = KSMOD_Utility.GetFieldByReflect(AbstractGameAction.class, "duration");
+                        Field duration = KSMOD_ReflectTool.GetFieldByReflect(AbstractGameAction.class, "duration");
                         duration.set(action, duration.getFloat(action) - Gdx.graphics.getDeltaTime());
                         if (action.amount != 0 && duration.getFloat(action) < 0.0F)
                         {
@@ -228,8 +228,8 @@ public class KSMOD_ModifyMaxHandCardNumberPatch
         {
             if (AbstractDungeon.player instanceof KinomotoSakura)
             {
-                float duration = KSMOD_Utility.GetFieldByReflect(AbstractGameAction.class, "duration").getFloat(action);
-                AbstractPlayer p = (AbstractPlayer) KSMOD_Utility.GetFieldByReflect(DrawPileToHandAction.class, "p").get(action);
+                float duration = KSMOD_ReflectTool.GetFieldByReflect(AbstractGameAction.class, "duration").getFloat(action);
+                AbstractPlayer p = (AbstractPlayer) KSMOD_ReflectTool.GetFieldByReflect(DrawPileToHandAction.class, "p").get(action);
                 if (duration == Settings.ACTION_DUR_MED)
                 {
                     if (p.drawPile.isEmpty())
@@ -245,7 +245,7 @@ public class KSMOD_ModifyMaxHandCardNumberPatch
                     while (var2.hasNext())
                     {
                         card = (AbstractCard) var2.next();
-                        AbstractCard.CardType typeToCheck = (AbstractCard.CardType) KSMOD_Utility.GetFieldByReflect(DrawPileToHandAction.class, "typeToCheck").get(action);
+                        AbstractCard.CardType typeToCheck = (AbstractCard.CardType) KSMOD_ReflectTool.GetFieldByReflect(DrawPileToHandAction.class, "typeToCheck").get(action);
                         if (card.type == typeToCheck)
                         {
                             tmp.addToRandomSpot(card);
@@ -287,7 +287,7 @@ public class KSMOD_ModifyMaxHandCardNumberPatch
 
                     action.isDone = true;
                 }
-                Method tickDuration = KSMOD_Utility.GetMethodByReflect(AbstractGameAction.class, "tickDuration");
+                Method tickDuration = KSMOD_ReflectTool.GetMethodByReflect(AbstractGameAction.class, "tickDuration");
                 tickDuration.invoke(action);
                 return SpireReturn.Return(null);
             }
@@ -319,8 +319,8 @@ public class KSMOD_ModifyMaxHandCardNumberPatch
                         discardAmount = action.amount + AbstractDungeon.player.hand.size() - GetCurrentMaxHandSize();
                         handAmount -= discardAmount;
                     }
-                    Method addToHand = KSMOD_Utility.GetMethodByReflect(MakeTempCardInHandAction.class, "addToHand", int.class);
-                    Method addToDiscard = KSMOD_Utility.GetMethodByReflect(MakeTempCardInHandAction.class, "addToDiscard", int.class);
+                    Method addToHand = KSMOD_ReflectTool.GetMethodByReflect(MakeTempCardInHandAction.class, "addToHand", int.class);
+                    Method addToDiscard = KSMOD_ReflectTool.GetMethodByReflect(MakeTempCardInHandAction.class, "addToDiscard", int.class);
                     addToHand.invoke(action, handAmount);
                     addToDiscard.invoke(action, discardAmount);
                     if (action.amount > 0)
