@@ -1,22 +1,18 @@
 package KinomotoSakuraMod.Cards.SakuraCard;
 
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheLibra;
-import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheSword;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
-import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.common.*;
-import com.megacrit.cardcrawl.actions.unique.DiscardPileToTopOfDeckAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 public class SakuraCardTheLibra extends KSMOD_AbstractMagicCard
 {

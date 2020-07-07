@@ -1,24 +1,17 @@
 package KinomotoSakuraMod.Cards.SakuraCard;
 
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheJump;
-import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheSword;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Powers.KSMOD_JumpPower_SakuraCard;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.random.Random;
-
-import java.util.ArrayList;
 
 public class SakuraCardTheJump extends KSMOD_AbstractMagicCard
 {

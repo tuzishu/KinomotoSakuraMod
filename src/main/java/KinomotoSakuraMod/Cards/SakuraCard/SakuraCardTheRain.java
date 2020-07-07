@@ -12,7 +12,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.random.Random;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 
 import java.util.ArrayList;
 

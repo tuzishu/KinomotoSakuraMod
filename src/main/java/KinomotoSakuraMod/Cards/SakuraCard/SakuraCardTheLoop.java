@@ -4,7 +4,6 @@ import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheLoop;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
-import KinomotoSakuraMod.Powers.KSMOD_LoopPower;
 import KinomotoSakuraMod.Powers.KSMOD_LoopPower_SakuraCard;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;

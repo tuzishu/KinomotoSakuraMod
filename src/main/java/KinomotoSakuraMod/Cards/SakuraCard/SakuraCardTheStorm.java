@@ -17,7 +17,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.vfx.combat.CleaveEffect;
-import com.megacrit.cardcrawl.vfx.combat.WhirlwindEffect;
 
 public class SakuraCardTheStorm extends KSMOD_AbstractMagicCard
 {

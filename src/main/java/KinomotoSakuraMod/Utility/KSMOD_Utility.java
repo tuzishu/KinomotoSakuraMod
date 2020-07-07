@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.random.Random;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import sun.rmi.runtime.Log;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -83,7 +82,6 @@ public class KSMOD_Utility
      * 通过输入一个伤害值，来返回一个用于DamageAllEnemy的伤害列表
      *
      * @param damage int 伤害值
-     *
      * @return int[] 伤害列表
      */
     public static int[] GetDamageList(int damage)
@@ -104,9 +102,7 @@ public class KSMOD_Utility
      *
      * @param targetClass 目标变量所在类，一般为当前类或其父类
      * @param fieldName   变量名
-     *
      * @return 目标变量
-     *
      * @throws NoSuchFieldException
      * @throws IllegalAccessException
      */
@@ -133,11 +129,9 @@ public class KSMOD_Utility
      * 通过反射的方法获取实例包括基类中的方法
      *
      * @param targetClass 目标函数所在类，一般为当前类或其父类
-     * @param methodName 方法名
-     * @param paramTypes 方法参数列表
-     *
+     * @param methodName  方法名
+     * @param paramTypes  方法参数列表
      * @return 目标函数
-     *
      * @throws NoSuchMethodException
      */
     public static Method GetMethodByReflect(Class targetClass, String methodName, Class<?>... paramTypes) throws NoSuchMethodException
@@ -205,7 +199,6 @@ public class KSMOD_Utility
      *
      * @param stringList 目标数组
      * @param targetStr  目标字符串
-     *
      * @return 是否存在
      */
     public static boolean IsStringListContains(ArrayList<String> stringList, String targetStr)
@@ -222,8 +215,9 @@ public class KSMOD_Utility
 
     /**
      * 返回List中的一个随机元素
+     *
      * @param arrayList 目标数组
-     * @param <T> 元素类型
+     * @param <T>       元素类型
      * @return 获取到的随机元素
      */
     public static <T> T GetRandomListElement(ArrayList<T> arrayList)
@@ -235,8 +229,54 @@ public class KSMOD_Utility
         return null;
     }
 
+    /**
+     * 用Texture材质生成Atlas贴图
+     *
+     * @param texture 材质图片
+     * @return 贴图纹理
+     */
     public static TextureAtlas.AtlasRegion GetAtlasRegion(Texture texture)
     {
-        return new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(),texture.getHeight());
+        return new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
+    }
+
+    /**
+     * 用Texture材质生成Atlas贴图
+     *
+     * @param texture         材质图片
+     * @param proportionToTop 显示比率
+     * @return 贴图纹理
+     */
+    public static TextureAtlas.AtlasRegion GetAtlasRegion(Texture texture, float proportionToTop)
+    {
+        int activeHeight = (int) (texture.getHeight() * proportionToTop);
+        return new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), activeHeight);
+    }
+
+    /**
+     * 用Texture材质生成Atlas贴图
+     *
+     * @param texture         材质图片
+     * @param backHeight      背图高度
+     * @param bottomAnchor    底部在背图中的坐标
+     * @param proportionToTop 显示比率
+     * @return 贴图纹理
+     */
+    public static TextureAtlas.AtlasRegion GetAtlasRegion(Texture texture, float backHeight, float bottomAnchor, float proportionToTop)
+    {
+        float backActiveHeight = backHeight * proportionToTop;
+        if (backActiveHeight >= backHeight - bottomAnchor)
+        {
+            return new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
+        }
+        else if (backActiveHeight < backHeight - bottomAnchor && backActiveHeight > backHeight - bottomAnchor - texture.getHeight())
+        {
+            float activeHeight = texture.getHeight() * proportionToTop - (backHeight - bottomAnchor - texture.getHeight());
+            return new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), (int) activeHeight);
+        }
+        else
+        {
+            return new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), 0);
+        }
     }
 }

@@ -1,11 +1,9 @@
 package KinomotoSakuraMod.Cards.SakuraCard;
 
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheSilent;
-import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheSword;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
-import KinomotoSakuraMod.Powers.KSMOD_SilentPower;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;

@@ -3,7 +3,6 @@ package KinomotoSakuraMod.Patches;
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.cards.AbstractCard;

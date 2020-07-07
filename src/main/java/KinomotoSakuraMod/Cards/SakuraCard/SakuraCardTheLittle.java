@@ -1,11 +1,9 @@
 package KinomotoSakuraMod.Cards.SakuraCard;
 
-import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheBig;
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheLittle;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
-import KinomotoSakuraMod.Powers.KSMOD_BigPower_SakuraCard;
 import KinomotoSakuraMod.Powers.KSMOD_LittlePower_SakuraCard;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -14,8 +12,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.DexterityPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 
 public class SakuraCardTheLittle extends KSMOD_AbstractMagicCard
 {

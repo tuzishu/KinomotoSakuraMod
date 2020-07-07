@@ -4,12 +4,10 @@ import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.CardGlowBorder;
@@ -31,7 +29,7 @@ public class KSMOD_CardGlowBorderPatch
             Field color = KSMOD_Utility.GetFieldByReflect(AbstractGameEffect.class, "color");
             if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT)
             {
-                if (card instanceof KSMOD_AbstractMagicCard && ((KSMOD_AbstractMagicCard)card).hasExtraEffect() && ((KSMOD_AbstractMagicCard)card).isThisCardCharged())
+                if (card instanceof KSMOD_AbstractMagicCard && ((KSMOD_AbstractMagicCard) card).hasExtraEffect() && ((KSMOD_AbstractMagicCard) card).isThisCardCharged())
                 {
                     color.set(border, Color.valueOf("ffdc0033"));
                 }
