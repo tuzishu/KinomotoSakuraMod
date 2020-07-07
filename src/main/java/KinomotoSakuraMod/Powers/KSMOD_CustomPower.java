@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Powers;
 
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.KSMOD_RenderTool;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -31,9 +31,9 @@ public abstract class KSMOD_CustomPower extends AbstractPower
         if (useCustomTexture)
         {
             Texture image48 = ImageMaster.loadImage(imgPath);
-            this.region48 = KSMOD_Utility.GetAtlasRegion(image48);
+            this.region48 = KSMOD_RenderTool.GetAtlasRegion(image48);
             Texture image128 = ImageMaster.loadImage(imgPath.replaceAll(".png", "_p.png"));
-            this.region128 = KSMOD_Utility.GetAtlasRegion(image128);
+            this.region128 = KSMOD_RenderTool.GetAtlasRegion(image128);
         }
         else
         {

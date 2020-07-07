@@ -185,9 +185,9 @@ public class KSMOD_ImageConst
         MASK_SKILL = ImageMaster.loadImage(MASK_SKILL_PATH);
         // 卡牌轮廓
         SILHOUETTE = ImageMaster.loadImage(SILHOUETTE_PATH);
-        SILHOUETTE_ATLAS = KSMOD_Utility.GetAtlasRegion(SILHOUETTE);
+        SILHOUETTE_ATLAS = KSMOD_RenderTool.GetAtlasRegion(SILHOUETTE);
         // 卡牌闪光效果
         FLASH = ImageMaster.loadImage(FLASH_PATH);
-        FLASH_ATLAS = KSMOD_Utility.GetAtlasRegion(FLASH);
+        FLASH_ATLAS = KSMOD_RenderTool.GetAtlasRegion(FLASH);
     }
 }

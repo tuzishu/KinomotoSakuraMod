@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Effects.Earthy;
 
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.KSMOD_RenderTool;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -13,6 +13,10 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 
 public class KSMOD_EarthyEffectElement extends AbstractGameEffect
 {
+    private static final TextureAtlas.AtlasRegion FROST_ORB_LEFT = KSMOD_RenderTool.GetAtlasRegion(ImageMaster.FROST_ORB_LEFT);
+    private static final TextureAtlas.AtlasRegion FROST_ORB_MIDDLE = KSMOD_RenderTool.GetAtlasRegion(ImageMaster.FROST_ORB_MIDDLE);
+    private static final TextureAtlas.AtlasRegion FROST_ORB_RIGHT = KSMOD_RenderTool.GetAtlasRegion(ImageMaster.FROST_ORB_RIGHT);
+
     private TextureAtlas.AtlasRegion img;
     private float brightness;
     private float x;
@@ -70,17 +74,17 @@ public class KSMOD_EarthyEffectElement extends AbstractGameEffect
     private void setImg()
     {
         int roll = MathUtils.random(2);
-        if (roll == 0)
+        switch (roll)
         {
-            this.img = KSMOD_Utility.GetAtlasRegion(ImageMaster.FROST_ORB_LEFT);
-        }
-        else if (roll == 1)
-        {
-            this.img = KSMOD_Utility.GetAtlasRegion(ImageMaster.FROST_ORB_MIDDLE);
-        }
-        else
-        {
-            this.img = KSMOD_Utility.GetAtlasRegion(ImageMaster.FROST_ORB_RIGHT);
+            case 0:
+                this.img = FROST_ORB_LEFT;
+                break;
+            case 1:
+                this.img = FROST_ORB_MIDDLE;
+                break;
+            default:
+                this.img = FROST_ORB_RIGHT;
+                break;
         }
 
     }
