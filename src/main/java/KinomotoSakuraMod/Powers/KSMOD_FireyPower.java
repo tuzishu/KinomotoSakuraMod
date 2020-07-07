@@ -3,7 +3,7 @@ package KinomotoSakuraMod.Powers;
 import KinomotoSakuraMod.Effects.Firey.KSMOD_FireyVFXEffect;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.KSMOD_DataTool;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
@@ -56,7 +56,7 @@ public class KSMOD_FireyPower extends KSMOD_CustomPower
         if (card.hasTag(KSMOD_CustomTag.KSMOD_FIREY_CARD))
         {
             AbstractDungeon.actionManager.addToBottom(new VFXAction(this.owner, new KSMOD_FireyVFXEffect(ATTACK_VFX_DURATION), ATTACK_VFX_DURATION));
-            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(this.owner, KSMOD_Utility.GetDamageList(KSMOD_SealedBook.FIREY_DAMAGE_NUMBER), DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.FIRE));
+            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(this.owner, KSMOD_DataTool.GetDamageList(KSMOD_SealedBook.FIREY_DAMAGE_NUMBER), DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.FIRE));
         }
     }
 

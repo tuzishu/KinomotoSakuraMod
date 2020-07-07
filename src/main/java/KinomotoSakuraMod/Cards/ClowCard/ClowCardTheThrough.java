@@ -5,7 +5,7 @@ import KinomotoSakuraMod.Cards.SakuraCard.SakuraCardTheThrough;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.KSMOD_DataTool;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -85,7 +85,7 @@ public class ClowCardTheThrough extends KSMOD_AbstractMagicCard
     {
         CardCrawlGame.sound.play(SOUND_KEY + MathUtils.random(1, 6));
         AbstractDungeon.actionManager.addToBottom(new VFXAction(player, new CleaveEffect(), CLEAVE_DURATION));
-        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_DataTool.GetDamageList(this.damage), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters)
         {
             if (mon.hasPower(PoisonPower.POWER_ID))
@@ -103,7 +103,7 @@ public class ClowCardTheThrough extends KSMOD_AbstractMagicCard
     {
         CardCrawlGame.sound.play(SOUND_KEY + MathUtils.random(1, 6));
         AbstractDungeon.actionManager.addToBottom(new VFXAction(player, new CleaveEffect(), CLEAVE_DURATION));
-        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_DataTool.GetDamageList(this.damage), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters)
         {
             if (mon.hasPower(PoisonPower.POWER_ID))

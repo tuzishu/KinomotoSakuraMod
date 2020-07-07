@@ -5,7 +5,7 @@ import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Effects.KSMOD_SealOrbEffect;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.KSMOD_DataTool;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -175,7 +175,7 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
             if (card.color == KSMOD_CustomCardColor.SAKURACARD_COLOR)
             {
                 String cardClassName = card.getClass().getName();
-                if (KSMOD_Utility.IsStringListContains(sakuraCardList, cardClassName))
+                if (KSMOD_DataTool.IsStringListContains(sakuraCardList, cardClassName))
                 {
                     cardsToRemove.add(card);
                     cardsToAdd.add(((KSMOD_AbstractMagicCard) card).getSameNameClowCard());

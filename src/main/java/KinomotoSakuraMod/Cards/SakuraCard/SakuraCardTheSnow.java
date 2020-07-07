@@ -4,6 +4,7 @@ import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheSnow;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
+import KinomotoSakuraMod.Utility.KSMOD_DataTool;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -74,7 +75,7 @@ public class SakuraCardTheSnow extends KSMOD_AbstractMagicCard
         AbstractDungeon.actionManager.addToBottom(new VFXAction(new BlizzardEffect(this.magicNumber, AbstractDungeon.getMonsters().shouldFlipVfx()), DURATION));
         for (int i = 0; i < this.magicNumber; i++)
         {
-            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_HEAVY, true));
+            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_DataTool.GetDamageList(this.damage), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_HEAVY, true));
         }
     }
 

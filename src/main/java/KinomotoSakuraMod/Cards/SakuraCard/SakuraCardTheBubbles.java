@@ -4,6 +4,7 @@ import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheBubbles;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
+import KinomotoSakuraMod.Utility.KSMOD_DataTool;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -87,7 +88,7 @@ public class SakuraCardTheBubbles extends KSMOD_AbstractMagicCard
             ArrayList<AbstractPower> buffs = new ArrayList<>();
             for (AbstractPower power : mon.powers)
             {
-                if (power.type == AbstractPower.PowerType.BUFF && !KSMOD_Utility.IsStringListContains(ClowCardTheBubbles.GetUnremovablePowerList(), power.ID))
+                if (power.type == AbstractPower.PowerType.BUFF && !KSMOD_DataTool.IsStringListContains(ClowCardTheBubbles.GetUnremovablePowerList(), power.ID))
                 {
                     buffs.add(power);
                 }

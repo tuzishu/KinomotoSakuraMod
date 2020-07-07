@@ -2,7 +2,7 @@ package KinomotoSakuraMod.Actions;
 
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheVoice;
 import KinomotoSakuraMod.Cards.SakuraCard.SakuraCardTheVoice;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.KSMOD_DataTool;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
@@ -87,7 +87,7 @@ public class KSMOD_SongAction_SakuraCard extends AbstractGameAction
         AbstractDungeon.actionManager.addToBottom(new VFXAction(player, new ShockWaveEffect(player.hb.cX, player.hb.cY, Settings.CREAM_COLOR, ShockWaveEffect.ShockWaveType.CHAOTIC), WAVE_EFFECT_DURATION));
         for (int i = 0; i < count; i++)
         {
-            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(this.damage), DamageInfo.DamageType.NORMAL, AttackEffect.BLUNT_LIGHT, true));
+            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_DataTool.GetDamageList(this.damage), DamageInfo.DamageType.NORMAL, AttackEffect.BLUNT_LIGHT, true));
         }
         for (int i = 0; i < count; i++)
         {

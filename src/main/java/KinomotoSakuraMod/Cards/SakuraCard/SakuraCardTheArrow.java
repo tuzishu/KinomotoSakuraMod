@@ -5,6 +5,7 @@ import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheArrow;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
+import KinomotoSakuraMod.Utility.KSMOD_DataTool;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
@@ -76,7 +77,7 @@ public class SakuraCardTheArrow extends KSMOD_AbstractMagicCard
                 continue;
             }
             String key = card.cardID.replaceAll("ClowCard", "").replaceAll("SakuraCard", "");
-            if (!KSMOD_Utility.IsStringListContains(cardIdList, key))
+            if (!KSMOD_DataTool.IsStringListContains(cardIdList, key))
             {
                 cardIdList.add(key);
             }

@@ -5,7 +5,7 @@ import KinomotoSakuraMod.Cards.SakuraCard.SakuraCardTheSnow;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.KSMOD_DataTool;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -91,7 +91,7 @@ public class ClowCardTheSnow extends KSMOD_AbstractMagicCard
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
         applyNormalEffect(player, monster);
-        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_Utility.GetDamageList(KSMOD_SealedBook.ENTIRETY_DAMAGE), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_DataTool.GetDamageList(KSMOD_SealedBook.ENTIRETY_DAMAGE), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
     }
 
     @Override

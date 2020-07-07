@@ -7,6 +7,7 @@ import KinomotoSakuraMod.KSMOD;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Powers.KSMOD_CreatePower;
+import KinomotoSakuraMod.Utility.KSMOD_DataTool;
 import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -130,7 +131,7 @@ public class SakuraCardTheCreate extends KSMOD_AbstractMagicCard
                 relicList.add(r);
             }
         }
-        relic = KSMOD_Utility.GetRandomListElement(relicList);
+        relic = KSMOD_DataTool.GetRandomListElement(relicList);
         if (relic != null)
         {
             if (relic.tier == AbstractRelic.RelicTier.COMMON)

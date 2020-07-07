@@ -6,7 +6,7 @@ import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Powers.KSMOD_MagickChargePower;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.KSMOD_DataTool;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -105,14 +105,14 @@ public class ClowCardTheBubbles extends KSMOD_AbstractMagicCard
         ArrayList<AbstractPower> buffs = new ArrayList<>();
         for (AbstractPower power : monster.powers)
         {
-            if (power.type == AbstractPower.PowerType.BUFF && !KSMOD_Utility.IsStringListContains(GetUnremovablePowerList(), power.ID))
+            if (power.type == AbstractPower.PowerType.BUFF && !KSMOD_DataTool.IsStringListContains(GetUnremovablePowerList(), power.ID))
             {
                 buffs.add(power);
             }
         }
         if (buffs.size() > 0)
         {
-            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(monster, player, KSMOD_Utility.GetRandomListElement(buffs)));
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(monster, player, KSMOD_DataTool.GetRandomListElement(buffs)));
             hasbuffremoved = true;
         }
         return hasbuffremoved;
@@ -124,7 +124,7 @@ public class ClowCardTheBubbles extends KSMOD_AbstractMagicCard
         ArrayList<AbstractPower> buffs = new ArrayList<>();
         for (AbstractPower power : monster.powers)
         {
-            if (power.type == AbstractPower.PowerType.BUFF && !KSMOD_Utility.IsStringListContains(GetUnremovablePowerList(), power.ID))
+            if (power.type == AbstractPower.PowerType.BUFF && !KSMOD_DataTool.IsStringListContains(GetUnremovablePowerList(), power.ID))
             {
                 buffs.add(power);
             }
