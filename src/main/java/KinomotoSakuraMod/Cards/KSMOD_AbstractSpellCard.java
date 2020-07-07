@@ -37,12 +37,12 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
     //////////
     // Override Method Usage
     //////////
-    private static final float ENERGY_COST_OFFSET_X = -90;
-    private static final float ENERGY_COST_OFFSET_Y = 222;
+    private static final float ENERGY_COST_OFFSET_X = -90F;
+    private static final float ENERGY_COST_OFFSET_Y = 222F;
     private static final Color ENERGY_COST_RESTRICTED_COLOR = new Color(1.0F, 0.3F, 0.3F, 1.0F);
     private static final Color ENERGY_COST_MODIFIED_COLOR = new Color(0.4F, 1.0F, 0.4F, 1.0F);
-    public static final float IMG_WIDTH = 220F * Settings.scale;
-    public static final float IMG_HEIGHT = 500F * Settings.scale;
+    public static final float IMG_WIDTH = 221F * Settings.scale;
+    public static final float IMG_HEIGHT = 491F * Settings.scale;
     private static final float DESC_LINE_WIDTH = 190F * Settings.scale;
     private static final float DESC_SCALE_RATE_X = 0.83F;
     private static final float DESC_OFFSET_TO_BOTTOM_Y = 0.35F;
@@ -51,14 +51,14 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
     private static final float HB_H = IMG_HEIGHT;
     private static final float TITLE_HEIGHT_TO_CENTER = 222.0F;
     private static final float TITLE_BOTTOM_HEIGHT_TO_CENTER = -205.0F;
-    private static final float PORTRAIT_WIDTH = 151F;
+    private static final float PORTRAIT_WIDTH = 152F;
     private static final float PORTRAIT_HEIGHT = 393F;
-    private static final float PORTRAIT_ORIGIN_X = 75F;
+    private static final float PORTRAIT_ORIGIN_X = 76F;
     private static final float PORTRAIT_ORIGIN_Y = 178F;
-    private static final float PORTRAIT_SINGLE_WIDTH = 220F;
-    private static final float PORTRAIT_SINGLE_HEIGHT = 500F;
-    private static final float PORTRAIT_SINGLE_ORIGIN_X = 110F;
-    private static final float PORTRAIT_SINGLE_ORIGIN_Y = 250F;
+    private static final float PORTRAIT_SINGLE_WIDTH = 221F;
+    private static final float PORTRAIT_SINGLE_HEIGHT = 491F;
+    private static final float PORTRAIT_SINGLE_ORIGIN_X = 110.5F;
+    private static final float PORTRAIT_SINGLE_ORIGIN_Y = 245.5F;
     public static boolean isHandSelectScreenOpened = false;
     private String BOTTOM_TITLE = "";
     private boolean isSimplePortraitCard = false;
