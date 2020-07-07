@@ -22,4 +22,52 @@ public class KSMOD_LoggerTool
         }
         Logger.info(log);
     }
+
+    /**
+     * 获取该语句所在的类名
+     *
+     * @return String 该语句所在的类名
+     */
+    public static String GetClassName()
+    {
+        StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
+        StackTraceElement e = stacktrace[2];
+        return e.getClassName();
+    }
+
+    /**
+     * 获取该语句所在的方法名
+     *
+     * @return String 该语句所在的方法名
+     */
+    public static String GetMethodName()
+    {
+        StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
+        StackTraceElement e = stacktrace[2];
+        return e.getMethodName();
+    }
+
+    /**
+     * 获取该语句所在的文件名
+     *
+     * @return String 该语句所在的文件名
+     */
+    public static String GetFileName()
+    {
+        StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
+        StackTraceElement e = stacktrace[2];
+        return e.getFileName();
+    }
+
+    /**
+     * 获取该语句执行的代码行数
+     *
+     * @return String 该语句执行的代码行数
+     */
+    public static int GetLineNumber()
+    {
+        StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
+        StackTraceElement e = stacktrace[2];
+        return e.getLineNumber();
+    }
 }

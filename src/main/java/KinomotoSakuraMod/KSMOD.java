@@ -11,7 +11,6 @@ import KinomotoSakuraMod.Potions.KSMOD_MagickBottle;
 import KinomotoSakuraMod.Relics.*;
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_LoggerTool;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
 import basemod.BaseMod;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
