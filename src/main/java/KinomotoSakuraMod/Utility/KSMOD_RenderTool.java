@@ -2,6 +2,7 @@ package KinomotoSakuraMod.Utility;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.MathUtils;
 
 public class KSMOD_RenderTool
 {
@@ -48,21 +49,24 @@ public class KSMOD_RenderTool
      *
      * @param atlasRegion     目标atlas
      * @param backHeight      背图高度
-     * @param bottomAnchor    底部在背图中的坐标
+     * @param anchor          底部在背图中的坐标
      * @param proportionToTop 显示比率
      * @return 贴图纹理
      */
-    public static TextureAtlas.AtlasRegion SetAtlasRegion(TextureAtlas.AtlasRegion atlasRegion, float backHeight, float bottomAnchor, float proportionToTop)
+    public static TextureAtlas.AtlasRegion SetAtlasRegion(TextureAtlas.AtlasRegion atlasRegion, float backHeight, float anchor, float proportionToTop)
     {
         float backActiveHeight = backHeight * proportionToTop;
-        if (backActiveHeight >= backHeight - bottomAnchor)
+        float bottomHeight = backHeight * 0.5F - anchor;
+        float topHeight = backHeight * 0.5f + anchor - atlasRegion.getTexture().getHeight();
+
+        if (backActiveHeight >= backHeight * 0.5F + anchor)
         {
             atlasRegion.setRegion(0, 0, atlasRegion.getTexture().getWidth(), atlasRegion.getTexture().getHeight());
         }
-        else if (backActiveHeight < backHeight - bottomAnchor && backActiveHeight > backHeight - bottomAnchor - atlasRegion.getTexture().getHeight())
+        else if (backActiveHeight < backHeight - bottomHeight && backActiveHeight > topHeight)
         {
-            float activeHeight = atlasRegion.getTexture().getHeight() * proportionToTop - (backHeight - bottomAnchor - atlasRegion.getTexture().getHeight());
-            atlasRegion.setRegion(0, 0, atlasRegion.getTexture().getWidth(), (int) activeHeight);
+            int activeHeight = (int) MathUtils.clamp(backActiveHeight - topHeight, 0F, atlasRegion.getTexture().getHeight());
+            atlasRegion.setRegion(0, 0, atlasRegion.getTexture().getWidth(), activeHeight);
         }
         else
         {

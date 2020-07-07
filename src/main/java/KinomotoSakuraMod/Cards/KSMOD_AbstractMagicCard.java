@@ -8,7 +8,9 @@ import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Powers.*;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
-import KinomotoSakuraMod.Utility.KSMOD_Utility;
+import KinomotoSakuraMod.Utility.KSMOD_LoggerTool;
+import KinomotoSakuraMod.Utility.KSMOD_ReflectTool;
+import KinomotoSakuraMod.Utility.KSMOD_RenderTool;
 import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
 import basemod.abstracts.DynamicVariable;
@@ -20,6 +22,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -41,6 +44,7 @@ import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -52,8 +56,8 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
     //////////
     // Override Method Usage
     //////////
-    private static final float ENERGY_COST_OFFSET_X = -90;
-    private static final float ENERGY_COST_OFFSET_Y = 222;
+    private static final float ENERGY_COST_OFFSET_X = -90F;
+    private static final float ENERGY_COST_OFFSET_Y = 222F;
     private static final Color ENERGY_COST_RESTRICTED_COLOR = new Color(1.0F, 0.3F, 0.3F, 1.0F);
     private static final Color ENERGY_COST_MODIFIED_COLOR = new Color(0.4F, 1.0F, 0.4F, 1.0F);
     public static final float IMG_WIDTH = 220F * Settings.scale;
@@ -64,14 +68,14 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
     private static final float CARD_ENERGY_IMG_WIDTH = 24.0F * Settings.scale;
     private static final float HB_W = IMG_WIDTH;
     private static final float HB_H = IMG_HEIGHT;
-    private static final float TITLE_HEIGHT_TO_CENTER = 222.0F;
-    private static final float TITLE_HEIGHT_SAKURA_TO_CENTER = 218.0F;
-    private static final float TITLE_BOTTOM_HEIGHT_TO_CENTER = -205.0F;
-    private static final float TITLE_BOTTOM_HEIGHT_SAKURA_TO_CENTER = -197.0F;
-    private static final float PORTRAIT_WIDTH = 151F;
-    private static final float PORTRAIT_HEIGHT = 393F;
-    private static final float PORTRAIT_ORIGIN_X = 75F;
-    private static final float PORTRAIT_ORIGIN_Y = 178F;
+    private static final float TITLE_HEIGHT_TO_CENTER = 222.0F * Settings.scale;
+    private static final float TITLE_HEIGHT_SAKURA_TO_CENTER = 218.0F * Settings.scale;
+    private static final float TITLE_BOTTOM_HEIGHT_TO_CENTER = -205.0F * Settings.scale;
+    private static final float TITLE_BOTTOM_HEIGHT_SAKURA_TO_CENTER = -197.0F * Settings.scale;
+    private static final float PORTRAIT_WIDTH = 151F * Settings.scale;
+    private static final float PORTRAIT_HEIGHT = 393F * Settings.scale;
+    private static final float PORTRAIT_ORIGIN_X = 75F * Settings.scale;
+    private static final float PORTRAIT_ORIGIN_Y = 178F * Settings.scale;
     public static boolean isHandSelectScreenOpened = false;
     private String BOTTOM_TITLE = "";
     private static int useChargeTimes = 0;
@@ -88,6 +92,8 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
     private int[] valueBuffer = new int[3];
     private boolean hasExtraEffect = false;
     private boolean isCharging = false;
+    public boolean isTurning = false;
+    private float renderedPortionProportionToTop = 1F;
 
     public KSMOD_AbstractMagicCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target)
     {
@@ -460,11 +466,15 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
     @SpireOverride
     public void renderEnergy(SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException
     {
-        boolean darken = KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "darken").getBoolean(this);
+        if (isTurning)
+        {
+            return;
+        }
+        boolean darken = KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "darken").getBoolean(this);
         if (this.cost > -2 && !darken && !this.isLocked && this.isSeen)
         {
-            Method renderHelper = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, Texture.class, float.class, float.class);
-            Color renderColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
+            Method renderHelper = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, Texture.class, float.class, float.class);
+            Color renderColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
             renderHelper.invoke(this, sb, renderColor, GetEnergyImage(), this.current_x - 512F, this.current_y - 512F);
 
             Color costColor = Color.WHITE.cpy();
@@ -479,10 +489,10 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
 
             costColor.a = this.transparency;
 
-            Method getCost = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "getCost");
+            Method getCost = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "getCost");
             String text = (String) getCost.invoke(this);
 
-            Method getEnergyFont = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "getEnergyFont");
+            Method getEnergyFont = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "getEnergyFont");
             BitmapFont font = (BitmapFont) getEnergyFont.invoke(this);
 
             if ((this.type != AbstractCard.CardType.STATUS || this.cardID.equals("Slimed")) && (this.color != AbstractCard.CardColor.CURSE || this.cardID.equals("Pride")))
@@ -490,6 +500,16 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                 FontHelper.renderRotatedText(sb, font, text, this.current_x, this.current_y, ENERGY_COST_OFFSET_X * this.drawScale * Settings.scale, ENERGY_COST_OFFSET_Y * this.drawScale * Settings.scale, this.angle, false, costColor);
             }
         }
+    }
+
+    public void SetTurningStatus(boolean isTurning)
+    {
+        this.isTurning = isTurning;
+    }
+
+    public void SetRenderedProportion(float proportion)
+    {
+        this.renderedPortionProportionToTop = proportion;
     }
 
     private Texture GetFrameImage()
@@ -518,29 +538,13 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
         return texture;
     }
 
-    private void renderFramePortrait(SpriteBatch sb, float x, float y) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException
-    {
-        Color renderColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
-        Method renderHelper = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, Texture.class, float.class, float.class);
-        renderHelper.invoke(this, sb, renderColor, GetFrameImage(), x - 512F, y - 512F);
-    }
-
     @SpireOverride
-    public void renderAttackPortrait(SpriteBatch sb, float x, float y) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException, NoSuchFieldException
+    public void renderPortraitFrame(SpriteBatch sb, float x, float y) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException
     {
-        renderFramePortrait(sb, x, y);
-    }
-
-    @SpireOverride
-    public void renderSkillPortrait(SpriteBatch sb, float x, float y) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException
-    {
-        renderFramePortrait(sb, x, y);
-    }
-
-    @SpireOverride
-    public void renderPowerPortrait(SpriteBatch sb, float x, float y) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException
-    {
-        renderFramePortrait(sb, x, y);
+        Color renderColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
+        sb.setColor(renderColor);
+        TextureAtlas.AtlasRegion img = KSMOD_RenderTool.GetAtlasRegion(GetFrameImage(), renderedPortionProportionToTop);
+        sb.draw(img, x + img.offsetX - (float) img.originalWidth / 2.0F, y + img.offsetY - (float) img.originalHeight / 2.0F + KSMOD_ImageConst.CLOWCARD_BG.getHeight() * 0.5F * (1F - renderedPortionProportionToTop), (float) img.originalWidth / 2.0F - img.offsetX, (float) img.originalHeight / 2.0F - img.offsetY, (float) img.packedWidth, (float) img.packedHeight, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle);
     }
 
     private Texture GetBannerImage()
@@ -572,9 +576,11 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
     @SpireOverride
     public void renderBannerImage(SpriteBatch sb, float drawX, float drawY) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException
     {
-        Color renderColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
-        Method renderHelper = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, Texture.class, float.class, float.class);
-        renderHelper.invoke(this, sb, renderColor, GetBannerImage(), drawX - 512F, drawY - 512F);
+        Color renderColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
+        sb.setColor(renderColor);
+        TextureAtlas.AtlasRegion img = KSMOD_RenderTool.GetAtlasRegion(GetBannerImage(), renderedPortionProportionToTop);
+        sb.draw(img, drawX + img.offsetX - (float) img.originalWidth / 2.0F, drawY + img.offsetY - (float) img.originalHeight / 2.0F + KSMOD_ImageConst.CLOWCARD_BG.getHeight() * 0.5F * (1F - renderedPortionProportionToTop), (float) img.originalWidth / 2.0F - img.offsetX, (float) img.originalHeight / 2.0F - img.offsetY, (float) img.packedWidth, (float) img.packedHeight, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle);
+
     }
 
     public void renderMask(SpriteBatch sb)
@@ -601,14 +607,14 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
     @SpireOverride
     public void renderDescription(SpriteBatch sb) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException
     {
-        if (AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this) && !this.isHandSelectScreenOpened && AbstractDungeon.player.hoveredCard != this)
+        if (CheckIsInHand() || isTurning)
         {
             return;
         }
         if (this.isSeen && !this.isLocked)
         {
             renderMask(sb);
-            Method getDescFont = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "getDescFont");
+            Method getDescFont = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "getDescFont");
             BitmapFont font = (BitmapFont) getDescFont.invoke(this);
             float draw_y = this.current_y - IMG_HEIGHT * this.drawScale / 2.0F + IMG_HEIGHT * DESC_OFFSET_TO_BOTTOM_Y * this.drawScale;
             draw_y += (float) this.description.size() * font.getCapHeight() * 0.775F - font.getCapHeight() * 0.375F;
@@ -628,11 +634,11 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
 
                 String[] var7 = ((DescriptionLine) this.description.get(i)).getCachedTokenizedText();
                 int var8 = var7.length;
-                GlyphLayout gl = (GlyphLayout) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "gl").get(this);
+                GlyphLayout gl = (GlyphLayout) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "gl").get(this);
                 for (int var9 = 0; var9 < var8; ++var9)
                 {
                     String tmp = var7[var9];
-                    Color textColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
+                    Color textColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
                     if (tmp.length() > 0 && tmp.charAt(0) == '*')
                     {
                         tmp = tmp.substring(1);
@@ -645,7 +651,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                         }
 
                         gl.setText(font, tmp);
-                        Color goldColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "goldColor").get(this);
+                        Color goldColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "goldColor").get(this);
                         FontHelper.renderRotatedText(sb, font, tmp, this.current_x, this.current_y, start_x - this.current_x + gl.width / 2.0F, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, goldColor);
                         start_x = (float) Math.round(start_x + gl.width);
                         gl.setText(font, punctuation);
@@ -655,7 +661,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                     }
                     else if (tmp.length() > 0 && tmp.charAt(0) == '!')
                     {
-                        Method renderDynamicVariable = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "renderDynamicVariable", char.class, float.class, float.class, int.class, BitmapFont.class, SpriteBatch.class, Character.class);
+                        Method renderDynamicVariable = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "renderDynamicVariable", char.class, float.class, float.class, int.class, BitmapFont.class, SpriteBatch.class, Character.class);
                         if (tmp.length() == 4)
                         {
                             start_x += (float) renderDynamicVariable.invoke(this, tmp.charAt(1), start_x, draw_y, i, font, sb, (Character) null);
@@ -720,7 +726,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
         // else
         // {
         //     FontHelper.menuBannerFont.getData().setScale(this.drawScale * 1.25F);
-        //     Color textColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
+        //     Color textColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
         //     FontHelper.renderRotatedText(sb, FontHelper.menuBannerFont, "? ? ?", this.current_x, this.current_y, 0.0F, -200.0F * Settings.scale * this.drawScale / 2.0F, this.angle, true, textColor);
         //     FontHelper.menuBannerFont.getData().setScale(1.0F);
         // }
@@ -729,14 +735,14 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
     @SpireOverride
     public void renderDescriptionCN(SpriteBatch sb) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException
     {
-        if (AbstractDungeon.player != null && AbstractDungeon.player.hand != null && AbstractDungeon.player.hand.contains(this) && !this.isHandSelectScreenOpened && AbstractDungeon.player.hoveredCard != this)
+        if (CheckIsInHand() || isTurning)
         {
             return;
         }
         if (this.isSeen && !this.isLocked)
         {
             renderMask(sb);
-            Method getDescFont = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "getDescFont");
+            Method getDescFont = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "getDescFont");
             BitmapFont font = (BitmapFont) getDescFont.invoke(this);
             float draw_y = this.current_y - IMG_HEIGHT * this.drawScale / 2.0F + IMG_HEIGHT * DESC_OFFSET_TO_BOTTOM_Y * this.drawScale;
             draw_y += (float) this.description.size() * font.getCapHeight() * 0.775F - font.getCapHeight() * 0.375F;
@@ -756,8 +762,8 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
 
                 String[] var7 = this.description.get(i).getCachedTokenizedTextCN();
                 int var8 = var7.length;
-                Method getDynamicValue = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "getDynamicValue", char.class);
-                GlyphLayout gl = (GlyphLayout) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "gl").get(this);
+                Method getDynamicValue = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "getDynamicValue", char.class);
+                GlyphLayout gl = (GlyphLayout) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "gl").get(this);
                 for (int var9 = 0; var9 < var8; ++var9)
                 {
                     String tmp = var7[var9];
@@ -841,11 +847,11 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                         }
 
                         gl.setText(font, tmp);
-                        Color goldColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "goldColor").get(this);
+                        Color goldColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "goldColor").get(this);
                         FontHelper.renderRotatedText(sb, font, tmp, this.current_x, this.current_y, start_x - this.current_x + gl.width / 2.0F, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, goldColor);
                         start_x = (float) Math.round(start_x + gl.width);
                         gl.setText(font, punctuation);
-                        Color textColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
+                        Color textColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
                         FontHelper.renderRotatedText(sb, font, punctuation, this.current_x, this.current_y, start_x - this.current_x + gl.width / 2.0F, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, textColor);
                         gl.setText(font, punctuation);
                         start_x += gl.width;
@@ -871,7 +877,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                     else
                     {
                         gl.setText(font, tmp);
-                        Color textColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
+                        Color textColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
                         FontHelper.renderRotatedText(sb, font, tmp, this.current_x, this.current_y, start_x - this.current_x + gl.width / 2.0F, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, textColor);
                         start_x += gl.width;
                     }
@@ -883,10 +889,18 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
         // else
         // {
         //     FontHelper.menuBannerFont.getData().setScale(this.drawScale * 1.25F);
-        //     Color textColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
+        //     Color textColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
         //     FontHelper.renderRotatedText(sb, FontHelper.menuBannerFont, "? ? ?", this.current_x, this.current_y, 0.0F, -200.0F * Settings.scale * this.drawScale / 2.0F, this.angle, true, textColor);
         //     FontHelper.menuBannerFont.getData().setScale(1.0F);
         // }
+    }
+
+    private boolean CheckIsInHand()
+    {
+        return AbstractDungeon.player != null && // player存在
+                AbstractDungeon.player.hand.contains(this) && //此牌在手牌中
+                !this.isHandSelectScreenOpened && // 卡牌选择界面未打开
+                AbstractDungeon.player.hoveredCard != this; // 鼠标没有悬停在牌上
     }
 
     private String GetCurrentDescription()
@@ -921,7 +935,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
             {
                 this.description.clear();
                 int numLines = 1;
-                StringBuilder sbuilder = (StringBuilder) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "sbuilder").get(this);
+                StringBuilder sbuilder = (StringBuilder) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "sbuilder").get(this);
                 sbuilder.setLength(0);
                 float currentWidth = 0.0F;
                 String[] var4 = GetCurrentDescription().split(" ");
@@ -931,7 +945,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                 {
                     String word = var4[var6];
                     boolean isKeyword = false;
-                    StringBuilder sbuilder2 = (StringBuilder) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "sbuilder2").get(this);
+                    StringBuilder sbuilder2 = (StringBuilder) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "sbuilder2").get(this);
                     sbuilder2.setLength(0);
                     sbuilder2.append(" ");
                     if (word.length() > 0 && word.charAt(word.length() - 1) != ']' && !Character.isLetterOrDigit(word.charAt(word.length() - 1)))
@@ -940,8 +954,8 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                         word = word.substring(0, word.length() - 1);
                     }
 
-                    GlyphLayout gl = (GlyphLayout) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "gl").get(this);
-                    Method dedupeKeyword = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "dedupeKeyword", String.class);
+                    GlyphLayout gl = (GlyphLayout) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "gl").get(this);
+                    Method dedupeKeyword = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "dedupeKeyword", String.class);
                     String keywordTmp = word.toLowerCase();
                     keywordTmp = (String) dedupeKeyword.invoke(this, keywordTmp);
                     GlyphLayout var10000;
@@ -1015,7 +1029,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                                 }
                                 break;
                             default:
-                                KSMOD_Utility.Logger.info("ERROR: Tried to display an invalid energy type");
+                                KSMOD_LoggerTool.Logger.info("ERROR: Tried to display an invalid energy type");
                         }
                     }
 
@@ -1046,7 +1060,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
 
                 if (numLines > 5)
                 {
-                    KSMOD_Utility.Logger.info("WARNING: Card " + this.name + " has lots of text");
+                    KSMOD_LoggerTool.Logger.info("WARNING: Card " + this.name + " has lots of text");
                 }
 
             }
@@ -1064,7 +1078,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
         {
             this.description.clear();
             int numLines = 1;
-            StringBuilder sbuilder = (StringBuilder) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "sbuilder").get(this);
+            StringBuilder sbuilder = (StringBuilder) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "sbuilder").get(this);
             sbuilder.setLength(0);
             float currentWidth = 0.0F;
             String[] var3 = GetCurrentDescription().split(" ");
@@ -1076,8 +1090,8 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                 word = word.trim();
                 if (Settings.manualLineBreak || !word.contains("NL"))
                 {
-                    Method dedupeKeyword = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "dedupeKeyword", String.class);
-                    GlyphLayout gl = (GlyphLayout) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "gl").get(this);
+                    Method dedupeKeyword = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "dedupeKeyword", String.class);
+                    GlyphLayout gl = (GlyphLayout) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "gl").get(this);
                     String keywordTmp = word.toLowerCase();
                     keywordTmp = (String) dedupeKeyword.invoke(this, keywordTmp);
                     if (GameDictionary.keywords.containsKey(keywordTmp))
@@ -1215,7 +1229,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                                 }
                                 break;
                             default:
-                                KSMOD_Utility.Logger.info("ERROR: Tried to display an invalid energy type");
+                                KSMOD_LoggerTool.Logger.info("ERROR: Tried to display an invalid energy type");
                         }
 
                         if (currentWidth + CARD_ENERGY_IMG_WIDTH > DESC_LINE_WIDTH)
@@ -1257,7 +1271,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
     {
         try
         {
-            Method updateFlashVfx = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "updateFlashVfx");
+            Method updateFlashVfx = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "updateFlashVfx");
             updateFlashVfx.invoke(this);
             if (this.hoverTimer != 0.0F)
             {
@@ -1310,8 +1324,8 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                 this.angle = MathHelper.angleLerpSnap(this.angle, this.targetAngle);
             }
 
-            Method updateTransparency = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "updateTransparency");
-            Method updateColor = KSMOD_Utility.GetMethodByReflect(AbstractCard.class, "updateColor");
+            Method updateTransparency = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "updateTransparency");
+            Method updateColor = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "updateColor");
             updateTransparency.invoke(this);
             updateColor.invoke(this);
         }
@@ -1327,7 +1341,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
         try
         {
             BitmapFont font;
-            Color renderColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
+            Color renderColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
             float offsetToTop = this.color == KSMOD_CustomCardColor.CLOWCARD_COLOR ? TITLE_HEIGHT_TO_CENTER : TITLE_HEIGHT_SAKURA_TO_CENTER;
             float offsetToBottom = this.color == KSMOD_CustomCardColor.CLOWCARD_COLOR ? TITLE_BOTTOM_HEIGHT_TO_CENTER : TITLE_BOTTOM_HEIGHT_SAKURA_TO_CENTER;
             if (this.isLocked)
@@ -1346,7 +1360,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
             }
             else
             {
-                boolean useSmallTitleFont = KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "useSmallTitleFont").getBoolean(this);
+                boolean useSmallTitleFont = KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "useSmallTitleFont").getBoolean(this);
                 if (!useSmallTitleFont)
                 {
                     font = FontHelper.cardTitleFont;
@@ -1382,33 +1396,45 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
     {
         float drawX = this.current_x;
         float drawY = this.current_y;
-        Texture img = null;
-        if (this.portraitImg != null)
-        {
-            img = this.portraitImg;
-        }
+        KSMOD_RenderTool.SetAtlasRegion(this.portrait, 512F*Settings.scale, PORTRAIT_ORIGIN_Y, renderedPortionProportionToTop);
+        sb.draw(this.portrait,
+                drawX - PORTRAIT_ORIGIN_X,
+                //drawX + (float) img.packedWidth / 2.0F,
+                drawY - PORTRAIT_ORIGIN_Y + PORTRAIT_HEIGHT - this.portrait.getRegionHeight(),
+                //drawX + (float) img.packedHeight / 2.0F,
+                PORTRAIT_ORIGIN_X,
+                PORTRAIT_ORIGIN_Y,
+                //PORTRAIT_ORIGIN_Y + this.portrait.getRegionHeight() * 0.5F,
+                PORTRAIT_WIDTH,
+                this.portrait.getRegionHeight(),
+                this.drawScale * Settings.scale,
+                this.drawScale * Settings.scale,
+                this.angle);
 
-        if (!this.isLocked)
-        {
-            Color renderColor = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
-            if (this.portrait != null)
-            {
-                drawX = this.current_x - PORTRAIT_ORIGIN_X;
-                drawY = this.current_y - PORTRAIT_ORIGIN_Y;
-                sb.setColor(renderColor);
-                sb.draw(this.portrait, drawX, drawY, PORTRAIT_ORIGIN_X, PORTRAIT_ORIGIN_Y, PORTRAIT_WIDTH, PORTRAIT_HEIGHT, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle);
-            }
-            else if (img != null)
-            {
-                sb.setColor(renderColor);
-                sb.draw(img, drawX, drawY, PORTRAIT_ORIGIN_X, PORTRAIT_ORIGIN_Y, PORTRAIT_WIDTH, PORTRAIT_HEIGHT, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, (int) PORTRAIT_WIDTH, (int) PORTRAIT_HEIGHT, false, false);
-            }
-        }
-        else
-        {
-            sb.draw(this.portraitImg, drawX, drawY, PORTRAIT_ORIGIN_X, PORTRAIT_ORIGIN_Y, PORTRAIT_WIDTH, PORTRAIT_HEIGHT, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, (int) PORTRAIT_WIDTH, (int) PORTRAIT_HEIGHT, false, false);
-        }
-
+//        if (this.portraitImg != null)
+//        {
+//            img = this.portraitImg;
+//        }
+//
+//        if (!this.isLocked)
+//        {
+//            if (this.portrait != null)
+//            {
+//                drawX = this.current_x - (float) this.portrait.packedWidth / 2.0F;
+//                drawY = this.current_y - (float) this.portrait.packedHeight / 2.0F;
+//                sb.setColor(this.renderColor);
+//                sb.draw(this.portrait, drawX, drawY + 72.0F, (float) this.portrait.packedWidth / 2.0F, (float) this.portrait.packedHeight / 2.0F - 72.0F, (float) this.portrait.packedWidth, (float) this.portrait.packedHeight, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle);
+//            }
+//            else if (img != null)
+//            {
+//                sb.setColor(this.renderColor);
+//                sb.draw(img, drawX, drawY + 72.0F, 125.0F, 23.0F, 250.0F, 190.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 250, 190, false, false);
+//            }
+//        }
+//        else
+//        {
+//            sb.draw(this.portraitImg, drawX, drawY + 72.0F, 125.0F, 23.0F, 250.0F, 190.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 250, 190, false, false);
+//        }
     }
 
     @SpireOverride
@@ -1450,16 +1476,62 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
             AtlasRegion img = KSMOD_ImageConst.SILHOUETTE_ATLAS;
             if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT)
             {
-                Color BLUE_BORDER_GLOW_COLOR = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "BLUE_BORDER_GLOW_COLOR").get(this);
+                Color BLUE_BORDER_GLOW_COLOR = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "BLUE_BORDER_GLOW_COLOR").get(this);
                 sb.setColor(hasExtraEffect && isThisCardCharged() ? Color.GOLD : BLUE_BORDER_GLOW_COLOR);
             }
             else
             {
-                Color GREEN_BORDER_GLOW_COLOR = (Color) KSMOD_Utility.GetFieldByReflect(AbstractCard.class, "GREEN_BORDER_GLOW_COLOR").get(this);
+                Color GREEN_BORDER_GLOW_COLOR = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "GREEN_BORDER_GLOW_COLOR").get(this);
                 sb.setColor(GREEN_BORDER_GLOW_COLOR);
             }
 
             sb.draw(img, this.current_x + img.offsetX - (float) img.originalWidth / 2.0F, this.current_y + img.offsetY - (float) img.originalWidth / 2.0F, (float) img.originalWidth / 2.0F - img.offsetX, (float) img.originalWidth / 2.0F - img.offsetY, (float) img.packedWidth, (float) img.packedHeight, this.drawScale * Settings.scale * 1.04F, this.drawScale * Settings.scale * 1.03F, this.angle);
         }
+    }
+
+    @SpireOverride
+    public void renderImage(SpriteBatch sb, boolean hovered, boolean selected) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException
+    {
+        if (!isTurning)
+        {
+            Method renderHelper1408 = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, AtlasRegion.class, float.class, float.class);
+            Method renderHelper1413 = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, AtlasRegion.class, float.class, float.class, float.class);
+            if (AbstractDungeon.player != null)
+            {
+                if (selected)
+                {
+                    renderHelper1413.invoke(this, sb, Color.SKY, this.getCardBgAtlas(), this.current_x, this.current_y, 1.03F);
+                }
+                Color frameShadowColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "frameShadowColor").get(this);
+                float SHADOW_OFFSET_X = KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "SHADOW_OFFSET_X").getFloat(this);
+                float SHADOW_OFFSET_Y = KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "SHADOW_OFFSET_Y").getFloat(this);
+                renderHelper1408.invoke(this, sb, frameShadowColor, this.getCardBgAtlas(), this.current_x + SHADOW_OFFSET_X * this.drawScale, this.current_y - SHADOW_OFFSET_Y * this.drawScale);
+                if (AbstractDungeon.player.hoveredCard == this && (AbstractDungeon.player.isDraggingCard && AbstractDungeon.player.isHoveringDropZone || AbstractDungeon.player.inSingleTargetMode))
+                {
+                    Color HOVER_IMG_COLOR = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "HOVER_IMG_COLOR").get(this);
+                    renderHelper1408.invoke(this, sb, HOVER_IMG_COLOR, this.getCardBgAtlas(), this.current_x, this.current_y);
+                }
+                else if (selected)
+                {
+                    Color SELECTED_CARD_COLOR = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "SELECTED_CARD_COLOR").get(this);
+                    renderHelper1408.invoke(this, sb, SELECTED_CARD_COLOR, this.getCardBgAtlas(), this.current_x, this.current_y);
+                }
+            }
+        }
+
+        Method renderCardBg = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "renderCardBg", SpriteBatch.class, float.class, float.class);
+        renderCardBg.invoke(this, sb, this.current_x, this.current_y);
+        if (!UnlockTracker.betaCardPref.getBoolean(this.cardID, false) && !Settings.PLAYTESTER_ART_MODE)
+        {
+            this.renderPortrait(sb);
+        }
+        else
+        {
+            Method renderJokePortrait = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "renderJokePortrait", SpriteBatch.class);
+            renderJokePortrait.invoke(this, sb);
+        }
+
+        this.renderPortraitFrame(sb, this.current_x, this.current_y);
+        this.renderBannerImage(sb, this.current_x, this.current_y);
     }
 }
