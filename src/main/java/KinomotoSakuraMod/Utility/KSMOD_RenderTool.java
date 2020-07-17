@@ -47,6 +47,19 @@ public class KSMOD_RenderTool
     /**
      * 用Texture材质生成Atlas贴图
      *
+     * @param texture            材质图片
+     * @param proportionToBottom 显示比率
+     * @return 贴图纹理
+     */
+    public static TextureAtlas.AtlasRegion GetAtlasRegionBottom(Texture texture, float proportionToBottom)
+    {
+        int activeHeight = (int) (texture.getHeight() * proportionToBottom);
+        return new TextureAtlas.AtlasRegion(texture, 0, texture.getHeight() - activeHeight, texture.getWidth(), activeHeight);
+    }
+
+    /**
+     * 用Texture材质生成Atlas贴图
+     *
      * @param atlasRegion     目标atlas
      * @param backHeight      背图高度
      * @param anchor          底部在背图中的坐标
@@ -65,7 +78,7 @@ public class KSMOD_RenderTool
         }
         else if (backActiveHeight < backHeight - bottomHeight && backActiveHeight > topHeight)
         {
-            int activeHeight = (int) MathUtils.clamp(backActiveHeight - topHeight, 0F, atlasRegion.getTexture().getHeight());
+            int activeHeight = MathUtils.ceil(MathUtils.clamp(backActiveHeight - topHeight, 0F, atlasRegion.getTexture().getHeight()));
             atlasRegion.setRegion(0, 0, atlasRegion.getTexture().getWidth(), activeHeight);
         }
         else
@@ -80,21 +93,24 @@ public class KSMOD_RenderTool
      *
      * @param texture         材质图片
      * @param backHeight      背图高度
-     * @param bottomAnchor    底部在背图中的坐标
+     * @param anchor          底部在背图中的坐标
      * @param proportionToTop 显示比率
      * @return 贴图纹理
      */
-    public static TextureAtlas.AtlasRegion GetAtlasRegion(Texture texture, float backHeight, float bottomAnchor, float proportionToTop)
+    public static TextureAtlas.AtlasRegion GetAtlasRegion(Texture texture, float backHeight, float anchor, float proportionToTop)
     {
         float backActiveHeight = backHeight * proportionToTop;
-        if (backActiveHeight >= backHeight - bottomAnchor)
+        float bottomHeight = backHeight * 0.5F - anchor;
+        float topHeight = backHeight * 0.5f + anchor - texture.getHeight();
+
+        if (backActiveHeight >= backHeight * 0.5F + anchor)
         {
             return new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
         }
-        else if (backActiveHeight < backHeight - bottomAnchor && backActiveHeight > backHeight - bottomAnchor - texture.getHeight())
+        else if (backActiveHeight < backHeight - bottomHeight && backActiveHeight > topHeight)
         {
-            float activeHeight = texture.getHeight() * proportionToTop - (backHeight - bottomAnchor - texture.getHeight());
-            return new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), (int) activeHeight);
+            int activeHeight = (int) MathUtils.clamp(backActiveHeight - topHeight, 0F, texture.getHeight());
+            return new TextureAtlas.AtlasRegion(texture, 0, 0, texture.getWidth(), activeHeight);
         }
         else
         {
