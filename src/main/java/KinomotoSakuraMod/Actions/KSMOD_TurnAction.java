@@ -1,10 +1,11 @@
 package KinomotoSakuraMod.Actions;
 
+import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
+import KinomotoSakuraMod.Effects.Turn.KSMOD_TurningVFXEffect;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -13,7 +14,6 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.vfx.ThoughtBubble;
-import com.megacrit.cardcrawl.vfx.combat.HeartBuffEffect;
 
 import java.util.ArrayList;
 
@@ -156,14 +156,19 @@ public class KSMOD_TurnAction extends AbstractGameAction
         catch (Exception e)
         {
             e.printStackTrace();
-            AbstractDungeon.effectList.add(new ThoughtBubble(player.dialogX, player.dialogY, 3.0F, KinomotoSakura.GetMessage(0), true));
+            AbstractDungeon.effectList.add(new ThoughtBubble(player.dialogX,
+                    player.dialogY,
+                    3.0F,
+                    KinomotoSakura.GetMessage(0),
+                    true));
             sakuraCard = clowCard;
             AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(new SpellCardTurn()));
         }
         RemoveTargetClowCardFromMasterDeck(clowCard);
-        AbstractDungeon.player.masterDeck.addToBottom(sakuraCard);
-        AbstractDungeon.actionManager.addToBottom(new VFXAction(new HeartBuffEffect(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY)));
-        AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(sakuraCard));
+        AbstractDungeon.effectsQueue.add(new KSMOD_TurningVFXEffect((KSMOD_AbstractMagicCard) clowCard,
+                (KSMOD_AbstractMagicCard) sakuraCard));
+//        AbstractDungeon.actionManager.addToBottom(new VFXAction(new HeartBuffEffect(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY)));
+//        AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(sakuraCard));
     }
 
     private void RemoveTargetClowCardFromMasterDeck(AbstractCard clowCard)

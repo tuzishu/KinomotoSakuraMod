@@ -23,7 +23,7 @@ public class KSMOD_TurningMistEffect extends AbstractGameEffect
     public KSMOD_TurningMistEffect(KSMOD_AbstractMagicCard card, float duration)
     {
         super();
-        this.color = new Color(0xFFFFFF66);
+        this.color = new Color(0xF77BFC99);
         this.card = card;
 //        this.a = MathUtils.random(0.3F,0.8F);
 //        this.b = MathUtils.random(0.1F,0.6F);
