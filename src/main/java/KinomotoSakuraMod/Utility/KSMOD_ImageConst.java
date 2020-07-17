@@ -24,39 +24,41 @@ public class KSMOD_ImageConst
     public static final String ORB_SPELLCARD_PATH = "img/cardui/spellcard/orb/orb.png";
     public static final String ORB_SPELLCARD_LARGE_PATH = "img/cardui/spellcard/orb/orb_p.png";
     // 卡牌稀有旗
-    public static final String BANNER_CLOWCARD_COMMON_PATH = "img/cardui/clowcard/banner/common.png";
-    public static final String BANNER_CLOWCARD_COMMON_LARGE_PATH = "img/cardui/clowcard/banner/common_p.png";
-    public static final String BANNER_CLOWCARD_UNCOMMON_PATH = "img/cardui/clowcard/banner/uncommon.png";
-    public static final String BANNER_CLOWCARD_UNCOMMON_LARGE_PATH = "img/cardui/clowcard/banner/uncommon_p.png";
-    public static final String BANNER_CLOWCARD_RARE_PATH = "img/cardui/clowcard/banner/rare.png";
-    public static final String BANNER_CLOWCARD_RARE_LARGE_PATH = "img/cardui/clowcard/banner/rare_p.png";
-    public static final String BANNER_SAKURACARD_PATH = "img/cardui/sakuracard/banner/banner.png";
-    public static final String BANNER_SAKURACARD_LARGE_PATH = "img/cardui/sakuracard/banner/banner_p.png";
-    public static final String BANNER_SPELLCARD_PATH = "img/cardui/spellcard/banner/banner.png";
-    public static final String BANNER_SPELLCARD_LARGE_PATH = "img/cardui/spellcard/banner/banner_p.png";
-    public static final String BANNER_EMPTY_PATH = "img/cardui/general/empty/empty.png";
-    public static final String BANNER_EMPTY_LARGE_PATH = "img/cardui/general/empty/empty_p.png";
+    private static final String BANNER_CLOWCARD_COMMON_PATH = "img/cardui/clowcard/banner/common.png";
+    private static final String BANNER_CLOWCARD_COMMON_LARGE_PATH = "img/cardui/clowcard/banner/common_p.png";
+    private static final String BANNER_CLOWCARD_UNCOMMON_PATH = "img/cardui/clowcard/banner/uncommon.png";
+    private static final String BANNER_CLOWCARD_UNCOMMON_LARGE_PATH = "img/cardui/clowcard/banner/uncommon_p.png";
+    private static final String BANNER_CLOWCARD_RARE_PATH = "img/cardui/clowcard/banner/rare.png";
+    private static final String BANNER_CLOWCARD_RARE_LARGE_PATH = "img/cardui/clowcard/banner/rare_p.png";
+    private static final String BANNER_SAKURACARD_PATH = "img/cardui/sakuracard/banner/banner.png";
+    private static final String BANNER_SAKURACARD_LARGE_PATH = "img/cardui/sakuracard/banner/banner_p.png";
+    private static final String BANNER_SPELLCARD_PATH = "img/cardui/spellcard/banner/banner.png";
+    private static final String BANNER_SPELLCARD_LARGE_PATH = "img/cardui/spellcard/banner/banner_p.png";
+    private static final String BANNER_EMPTY_PATH = "img/cardui/general/empty/empty.png";
+    private static final String BANNER_EMPTY_LARGE_PATH = "img/cardui/general/empty/empty_p.png";
     // 卡牌稀有框
-    public static final String FRAME_CLOWCARD_COMMON_PATH = "img/cardui/clowcard/frame/common.png";
-    public static final String FRAME_CLOWCARD_COMMON_LARGE_PATH = "img/cardui/clowcard/frame/common_p.png";
-    public static final String FRAME_CLOWCARD_UNCOMMON_PATH = "img/cardui/clowcard/frame/uncommon.png";
-    public static final String FRAME_CLOWCARD_UNCOMMON_LARGE_PATH = "img/cardui/clowcard/frame/uncommon_p.png";
-    public static final String FRAME_CLOWCARD_RARE_PATH = "img/cardui/clowcard/frame/rare.png";
-    public static final String FRAME_CLOWCARD_RARE_LARGE_PATH = "img/cardui/clowcard/frame/rare_p.png";
-    public static final String FRAME_SAKURACARD_PATH = "img/cardui/sakuracard/frame/frame.png";
-    public static final String FRAME_SAKURACARD_LARGE_PATH = "img/cardui/sakuracard/frame/frame_p.png";
-    public static final String FRAME_SPELLCARD_PATH = "img/cardui/spellcard/frame/frame.png";
-    public static final String FRAME_SPELLCARD_LARGE_PATH = "img/cardui/spellcard/frame/frame_p.png";
-    public static final String FRAME_EMPTY_PATH = "img/cardui/general/empty/empty.png";
-    public static final String FRAME_EMPTY_LARGE_PATH = "img/cardui/general/empty/empty_p.png";
+    private static final String FRAME_CLOWCARD_COMMON_PATH = "img/cardui/clowcard/frame/common.png";
+    private static final String FRAME_CLOWCARD_COMMON_LARGE_PATH = "img/cardui/clowcard/frame/common_p.png";
+    private static final String FRAME_CLOWCARD_UNCOMMON_PATH = "img/cardui/clowcard/frame/uncommon.png";
+    private static final String FRAME_CLOWCARD_UNCOMMON_LARGE_PATH = "img/cardui/clowcard/frame/uncommon_p.png";
+    private static final String FRAME_CLOWCARD_RARE_PATH = "img/cardui/clowcard/frame/rare.png";
+    private static final String FRAME_CLOWCARD_RARE_LARGE_PATH = "img/cardui/clowcard/frame/rare_p.png";
+    private static final String FRAME_SAKURACARD_PATH = "img/cardui/sakuracard/frame/frame.png";
+    private static final String FRAME_SAKURACARD_LARGE_PATH = "img/cardui/sakuracard/frame/frame_p.png";
+    private static final String FRAME_SPELLCARD_PATH = "img/cardui/spellcard/frame/frame.png";
+    private static final String FRAME_SPELLCARD_LARGE_PATH = "img/cardui/spellcard/frame/frame_p.png";
+    private static final String FRAME_EMPTY_PATH = "img/cardui/general/empty/empty.png";
+    private static final String FRAME_EMPTY_LARGE_PATH = "img/cardui/general/empty/empty_p.png";
     // 卡牌描述遮罩
-    public static final String MASK_ATTACK_PATH = "img/cardui/general/mask/attack_mask.png";
-    public static final String MASK_POWER_PATH = "img/cardui/general/mask/power_mask.png";
-    public static final String MASK_SKILL_PATH = "img/cardui/general/mask/skill_mask.png";
+    private static final String MASK_ATTACK_PATH = "img/cardui/general/mask/attack_mask.png";
+    private static final String MASK_POWER_PATH = "img/cardui/general/mask/power_mask.png";
+    private static final String MASK_SKILL_PATH = "img/cardui/general/mask/skill_mask.png";
     // 卡牌轮廓
-    public static final String SILHOUETTE_PATH = "img/cardui/general/silhouette/silhouette.png";
+    private static final String SILHOUETTE_PATH = "img/cardui/general/silhouette/silhouette.png";
     // 卡牌闪光效果
-    public static final String FLASH_PATH = "img/cardui/general/flash/flash.png";
+    private static final String FLASH_PATH = "img/cardui/general/flash/flash.png";
+    // 转变发光光效
+    public static final String TURNING_LUMIN_PATH = "img/effect/lumin.png";
     // 角色图片素材路径
     public static final String SELECT_BUTTON_PATH = "img/charSelect/button.png";
     public static final String PORTRAIT_PATH = "img/charSelect/portrait.png";
@@ -136,6 +138,8 @@ public class KSMOD_ImageConst
     // 卡牌闪光效果
     public static final Texture FLASH;
     public static final TextureAtlas.AtlasRegion FLASH_ATLAS;
+    // 转变发光光效
+    public static final Texture TURNING_LUMIN;
 
     static
     {
@@ -189,5 +193,7 @@ public class KSMOD_ImageConst
         // 卡牌闪光效果
         FLASH = ImageMaster.loadImage(FLASH_PATH);
         FLASH_ATLAS = KSMOD_RenderTool.GetAtlasRegion(FLASH);
+        // 转变发光光效
+        TURNING_LUMIN = ImageMaster.loadImage(TURNING_LUMIN_PATH);
     }
 }

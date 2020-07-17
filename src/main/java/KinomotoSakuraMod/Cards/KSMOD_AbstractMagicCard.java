@@ -92,8 +92,8 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
     private int[] valueBuffer = new int[3];
     private boolean hasExtraEffect = false;
     private boolean isCharging = false;
-    public boolean isTurning = false;
-    private float renderedPortionProportionToTop = 1F;
+    private boolean isTurning = false;
+    public float renderedPortionProportionToTop = 1F;
 
     public KSMOD_AbstractMagicCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target)
     {
@@ -505,11 +505,6 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
     public void SetTurningStatus(boolean isTurning)
     {
         this.isTurning = isTurning;
-    }
-
-    public void SetRenderedProportion(float proportion)
-    {
-        this.renderedPortionProportionToTop = proportion;
     }
 
     private Texture GetFrameImage()
@@ -1342,48 +1337,42 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
         {
             BitmapFont font;
             Color renderColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
-            float offsetToTop = this.color == KSMOD_CustomCardColor.CLOWCARD_COLOR ? TITLE_HEIGHT_TO_CENTER : TITLE_HEIGHT_SAKURA_TO_CENTER;
-            float offsetToBottom = this.color == KSMOD_CustomCardColor.CLOWCARD_COLOR ? TITLE_BOTTOM_HEIGHT_TO_CENTER : TITLE_BOTTOM_HEIGHT_SAKURA_TO_CENTER;
-            if (this.isLocked)
-            {
-                font = FontHelper.cardTitleFont;
-                font.getData().setScale(this.drawScale);
-                FontHelper.renderRotatedText(sb, font, LOCKED_STRING, this.current_x, this.current_y, 0.0F, offsetToTop * this.drawScale * Settings.scale, this.angle, false, renderColor);
-                FontHelper.renderRotatedText(sb, font, LOCKED_STRING, this.current_x, this.current_y, 0.0F, offsetToBottom * this.drawScale * Settings.scale, this.angle, false, renderColor);
-            }
-            else if (!this.isSeen)
-            {
-                font = FontHelper.cardTitleFont;
-                font.getData().setScale(this.drawScale);
-                FontHelper.renderRotatedText(sb, font, UNKNOWN_STRING, this.current_x, this.current_y, 0.0F, offsetToTop * this.drawScale * Settings.scale, this.angle, false, renderColor);
-                FontHelper.renderRotatedText(sb, font, UNKNOWN_STRING, this.current_x, this.current_y, 0.0F, offsetToBottom * this.drawScale * Settings.scale, this.angle, false, renderColor);
-            }
-            else
-            {
-                boolean useSmallTitleFont = KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "useSmallTitleFont").getBoolean(this);
-                if (!useSmallTitleFont)
-                {
-                    font = FontHelper.cardTitleFont;
-                }
-                else
-                {
-                    font = FontHelper.cardTitleFont_small;
-                }
+            boolean useSmallTitleFont = KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "useSmallTitleFont").getBoolean(this);
+            font = useSmallTitleFont ? FontHelper.cardTitleFont_small : FontHelper.cardTitleFont;
+            font.getData().setScale(this.drawScale);
 
-                font.getData().setScale(this.drawScale);
+            // render Title
+            float offsetToTop = this.color == KSMOD_CustomCardColor.CLOWCARD_COLOR ? TITLE_HEIGHT_TO_CENTER : TITLE_HEIGHT_SAKURA_TO_CENTER;
+            if (renderedPortionProportionToTop > 0.5F - (offsetToTop - font.getLineHeight() * 0.5F) / IMG_HEIGHT)
+            {
                 if (this.upgraded)
                 {
                     Color color = Settings.GREEN_TEXT_COLOR.cpy();
                     color.a = renderColor.a;
                     FontHelper.renderRotatedText(sb, font, this.name, this.current_x, this.current_y, 0.0F, offsetToTop * this.drawScale * Settings.scale, this.angle, false, color);
-                    FontHelper.renderRotatedText(sb, font, BOTTOM_TITLE, this.current_x, this.current_y, 0.0F, offsetToBottom * this.drawScale * Settings.scale, this.angle, false, color);
                 }
                 else
                 {
                     FontHelper.renderRotatedText(sb, font, this.name, this.current_x, this.current_y, 0.0F, offsetToTop * this.drawScale * Settings.scale, this.angle, false, renderColor);
+                }
+            }
+
+            // render Bottom Title
+            float offsetToBottom = this.color == KSMOD_CustomCardColor.CLOWCARD_COLOR ? TITLE_BOTTOM_HEIGHT_TO_CENTER : TITLE_BOTTOM_HEIGHT_SAKURA_TO_CENTER;
+            if (renderedPortionProportionToTop > 0.5F - (offsetToBottom - font.getLineHeight() * 0.5F) / IMG_HEIGHT)
+            {
+                if (this.upgraded)
+                {
+                    Color color = Settings.GREEN_TEXT_COLOR.cpy();
+                    color.a = renderColor.a;
+                    FontHelper.renderRotatedText(sb, font, BOTTOM_TITLE, this.current_x, this.current_y, 0.0F, offsetToBottom * this.drawScale * Settings.scale, this.angle, false, color);
+                }
+                else
+                {
                     FontHelper.renderRotatedText(sb, font, BOTTOM_TITLE, this.current_x, this.current_y, 0.0F, offsetToBottom * this.drawScale * Settings.scale, this.angle, false, renderColor);
                 }
             }
+
         }
         catch (Exception e)
         {
@@ -1396,20 +1385,14 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
     {
         float drawX = this.current_x;
         float drawY = this.current_y;
-        KSMOD_RenderTool.SetAtlasRegion(this.portrait, 512F*Settings.scale, PORTRAIT_ORIGIN_Y, renderedPortionProportionToTop);
-        sb.draw(this.portrait,
-                drawX - PORTRAIT_ORIGIN_X,
+        KSMOD_RenderTool.SetAtlasRegion(this.portrait, 512F * Settings.scale, PORTRAIT_ORIGIN_Y, renderedPortionProportionToTop);
+        sb.draw(this.portrait, drawX - PORTRAIT_ORIGIN_X,
                 //drawX + (float) img.packedWidth / 2.0F,
                 drawY - PORTRAIT_ORIGIN_Y + PORTRAIT_HEIGHT - this.portrait.getRegionHeight(),
                 //drawX + (float) img.packedHeight / 2.0F,
-                PORTRAIT_ORIGIN_X,
-                PORTRAIT_ORIGIN_Y,
+                PORTRAIT_ORIGIN_X, PORTRAIT_ORIGIN_Y,
                 //PORTRAIT_ORIGIN_Y + this.portrait.getRegionHeight() * 0.5F,
-                PORTRAIT_WIDTH,
-                this.portrait.getRegionHeight(),
-                this.drawScale * Settings.scale,
-                this.drawScale * Settings.scale,
-                this.angle);
+                PORTRAIT_WIDTH, this.portrait.getRegionHeight(), this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle);
 
 //        if (this.portraitImg != null)
 //        {

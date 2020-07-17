@@ -10,6 +10,7 @@ import KinomotoSakuraMod.Patches.KSMOD_CustomKeywords;
 import KinomotoSakuraMod.Potions.KSMOD_MagickBottle;
 import KinomotoSakuraMod.Relics.*;
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
+import KinomotoSakuraMod.Utility.KSMOD_LocalizeTool;
 import KinomotoSakuraMod.Utility.KSMOD_LoggerTool;
 import basemod.BaseMod;
 import basemod.interfaces.*;
@@ -365,18 +366,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
     {
         KSMOD_LoggerTool.Logger.info("开始编辑关键字");
 
-        String path = "localization/";
-        switch (Settings.language)
-        {
-            case ZHS:
-                KSMOD_LoggerTool.Logger.info("language == zhs");
-                path += "zhs/";
-                break;
-            default:
-                KSMOD_LoggerTool.Logger.info("language == eng");
-                path += "eng/";
-                break;
-        }
+        String path = KSMOD_LocalizeTool.GetKeywordFolderPath();
 
         path += "sakura_keyword.json";
         Gson gson = new Gson();
