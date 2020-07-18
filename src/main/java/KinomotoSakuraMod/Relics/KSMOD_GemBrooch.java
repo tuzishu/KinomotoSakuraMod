@@ -1,15 +1,18 @@
 package KinomotoSakuraMod.Relics;
 
+import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheShield;
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheSword;
-import KinomotoSakuraMod.Cards.SakuraCard.SakuraCardTheSword;
-import KinomotoSakuraMod.Characters.KinomotoSakura;
 import basemod.abstracts.CustomRelic;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
+
+import java.util.ArrayList;
 
 public class KSMOD_GemBrooch extends CustomRelic
 {
@@ -18,18 +21,19 @@ public class KSMOD_GemBrooch extends CustomRelic
     private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/gem_brooch.png";
     private static final RelicTier RELIC_TIER = RelicTier.SHOP;
     private static final LandingSound RELIC_SOUND = LandingSound.CLINK;
-    private static final int TRIGGER_NUMBER = 4;
-    private static final int DAMAGE_PROMOTE = 2;
-    private static final int STRENGTH_NUMBER = 2;
 
     public KSMOD_GemBrooch()
     {
-        super(RELIC_ID, ImageMaster.loadImage(RELIC_IMG_PATH), ImageMaster.loadImage(RELIC_IMG_OTL_PATH), RELIC_TIER, RELIC_SOUND);
+        super(RELIC_ID,
+                ImageMaster.loadImage(RELIC_IMG_PATH),
+                ImageMaster.loadImage(RELIC_IMG_OTL_PATH),
+                RELIC_TIER,
+                RELIC_SOUND);
     }
 
     public String getUpdatedDescription()
     {
-        return this.DESCRIPTIONS[0] + TRIGGER_NUMBER + this.DESCRIPTIONS[1] + DAMAGE_PROMOTE + this.DESCRIPTIONS[2] + STRENGTH_NUMBER + this.DESCRIPTIONS[3];
+        return this.DESCRIPTIONS[0];
     }
 
     public AbstractRelic makeCopy()
@@ -37,32 +41,63 @@ public class KSMOD_GemBrooch extends CustomRelic
         return new KSMOD_GemBrooch();
     }
 
-    public void atBattleStart()
+    public void onEquip()
     {
-        if (getDamagePromote() >= TRIGGER_NUMBER * DAMAGE_PROMOTE)
+        AbstractCard sword = null;
+        AbstractCard shield = null;
+        ArrayList<AbstractCard> cards = new ArrayList<>();
+        for (AbstractCard c : AbstractDungeon.player.masterDeck.group)
         {
-            this.flash();
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new StrengthPower(AbstractDungeon.player, STRENGTH_NUMBER), STRENGTH_NUMBER));
-        }
-    }
-
-    public int getDamagePromote()
-    {
-        if (AbstractDungeon.player instanceof KinomotoSakura)
-        {
-            int count = 0;
-            for (AbstractCard card : AbstractDungeon.player.masterDeck.group)
+            if (c.cardID.equals(ClowCardTheSword.ID))
             {
-                if (card.cardID == ClowCardTheSword.ID || card.cardID == SakuraCardTheSword.ID)
+                if (sword == null)
                 {
-                    count += 1;
+                    sword = c;
+                }
+                else
+                {
+                    cards.add(c);
                 }
             }
-            if (count < TRIGGER_NUMBER)
+            else if (c.cardID.equals(ClowCardTheShield.ID))
             {
-                return (TRIGGER_NUMBER - count) * DAMAGE_PROMOTE;
+                if (shield == null)
+                {
+                    shield = c;
+                }
+                else
+                {
+                    cards.add(c);
+                }
             }
         }
-        return 0;
+        if (cards.size() == 1)
+        {
+            AbstractDungeon.effectList.add(new PurgeCardEffect(cards.get(0),
+                    Settings.WIDTH * 0.5F,
+                    Settings.HEIGHT * 0.5F));
+            AbstractDungeon.player.masterDeck.removeCard(cards.get(0));
+        }
+        else if (cards.size() > 1)
+        {
+            for (int i = 0; i < cards.size(); i++)
+            {
+                AbstractDungeon.effectList.add(new PurgeCardEffect(cards.get(i),
+                        MathUtils.random(0.1F, 0.9F) * Settings.WIDTH,
+                        MathUtils.random(0.2F, 0.8F) * Settings.HEIGHT));
+                AbstractDungeon.player.masterDeck.removeCard(cards.get(i));
+            }
+        }
+        UpgradeCard(sword);
+        UpgradeCard(shield);
+    }
+
+    private void UpgradeCard(AbstractCard card)
+    {
+        card.upgrade();
+        AbstractDungeon.player.bottledCardUpgradeCheck(card);
+        AbstractDungeon.effectList.add(new ShowCardBrieflyEffect(card.makeStatEquivalentCopy(),
+                MathUtils.random(0.1F, 0.9F) * Settings.WIDTH,
+                MathUtils.random(0.25F, 0.75F) * Settings.HEIGHT));
     }
 }

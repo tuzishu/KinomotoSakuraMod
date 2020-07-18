@@ -144,10 +144,7 @@
     "NAME": "Gem Brooch",
     "FLAVOR": "This is the form in which the sword is scattered. It can control the wearer's mind.",
     "DESCRIPTIONS": [
-      " #y1. When #yThe #ySword in the master deck is less then #b",
-      " , Each #yThe #ySword deficiency increase #b",
-      " damage. NL  #y2. At the start of the turn, gain #b",
-      " #rStrength if there is no #yThe #ySword in your master deck."
+      "Remove all #ySwords and #yShields from the master deck to the last one and upgrade them."
     ]
   },
   "KSMOD_TouyasBicycle": {

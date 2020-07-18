@@ -263,7 +263,7 @@
   },
   "ClowCardTheShield": {
     "NAME": "Shield",
-    "DESCRIPTION": "[ Firey ] NL Gain !B! Block.",
+    "DESCRIPTION": "[ Firey ] NL Lone-Ranger. NL Gain !B! Block.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       " Gain ",
@@ -332,7 +332,7 @@
   },
   "ClowCardTheSword": {
     "NAME": "Sword",
-    "DESCRIPTION": "[ Firey ] NL Deal !D! damage.",
+    "DESCRIPTION": "[ Firey ] NL Lone-Ranger. NL Deal !D! damage.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       " Deal extra ",
@@ -706,7 +706,7 @@
   },
   "SakuraCardTheSword": {
     "NAME": "Sword",
-    "DESCRIPTION": "[ Sakura-Card ][ Firey ] NL Deal !D! damage and extra 25% of target's current health.",
+    "DESCRIPTION": "[ Sakura-Card ][ Firey ] NL Deal !D! damage and extra !M! % of target's current health.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

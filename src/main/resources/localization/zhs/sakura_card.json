@@ -263,7 +263,7 @@
   },
   "ClowCardTheShield": {
     "NAME": "盾",
-    "DESCRIPTION": "「 火 」 NL 获得 !B! 点 格挡 。",
+    "DESCRIPTION": "「 火 」 独行 。 NL 获得 !B! 点 格挡 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外获得",
@@ -332,7 +332,7 @@
   },
   "ClowCardTheSword": {
     "NAME": "剑",
-    "DESCRIPTION": "「 火 」 NL 造成 !D! 点伤害。",
+    "DESCRIPTION": "「 火 」 独行 。 NL 造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "额外造成",

@@ -2,12 +2,14 @@ package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Cards.SakuraCard.SakuraCardTheSword;
+import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
-import KinomotoSakuraMod.Relics.KSMOD_GemBrooch;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -29,7 +31,6 @@ public class ClowCardTheSword extends KSMOD_AbstractMagicCard
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
     private static final int BASE_DAMAGE = 6;
     private static final int UPGRADE_DAMAGE = 3;
-    private int gemDamage = 0;
 
     static
     {
@@ -55,7 +56,8 @@ public class ClowCardTheSword extends KSMOD_AbstractMagicCard
         if (!this.upgraded)
         {
             upgradeName();
-            upgradeDamage(UPGRADE_DAMAGE);
+            this.baseDamage = MathUtils.floor((BASE_DAMAGE + UPGRADE_DAMAGE) * GetCorrection());
+            this.upgradedDamage = true;
         }
     }
 
@@ -68,14 +70,20 @@ public class ClowCardTheSword extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster,
+                new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL),
+                AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
     }
 
     @Override
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, KSMOD_SealedBook.REAL_DAMAGE, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.SLASH_HEAVY));
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster,
+                new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL),
+                AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster,
+                new DamageInfo(player, KSMOD_SealedBook.REAL_DAMAGE, DamageInfo.DamageType.HP_LOSS),
+                AbstractGameAction.AttackEffect.SLASH_HEAVY));
     }
 
     @Override
@@ -84,18 +92,51 @@ public class ClowCardTheSword extends KSMOD_AbstractMagicCard
         return this.rawDescription + EXTENDED_DESCRIPTION[0] + KSMOD_SealedBook.REAL_DAMAGE + EXTENDED_DESCRIPTION[1];
     }
 
-    @Override
-    public void atTurnStart()
+    public void onRemoveFromMasterDeck()
     {
-        if (!AbstractDungeon.player.hasRelic(KSMOD_GemBrooch.RELIC_ID))
+        SetDamage(GetCorrection());
+    }
+
+    private float GetCorrection()
+    {
+        int amount = 0;
+        if (AbstractDungeon.player instanceof KinomotoSakura)
         {
-            return;
+            for (AbstractCard c : AbstractDungeon.player.masterDeck.group)
+            {
+                if (c.cardID.equals(ID))
+                {
+                    amount += 1;
+                }
+            }
+            amount = MathUtils.clamp(amount, 0, 4);
         }
-        KSMOD_GemBrooch relic = (KSMOD_GemBrooch) AbstractDungeon.player.getRelic(KSMOD_GemBrooch.RELIC_ID);
-        int damage = relic.getDamagePromote();
-        if (damage != gemDamage)
+        else
         {
-            upgradeDamage(damage - gemDamage);
+            amount = 4;
+        }
+        switch (amount)
+        {
+            case 0:
+            case 1:
+                return 8F / 5F;
+            case 2:
+                return 7F / 5F;
+            case 3:
+                return 6F / 5F;
+            default:
+                return 5F / 5F;
+        }
+    }
+
+    private void SetDamage(float correction)
+    {
+        for (AbstractCard c : AbstractDungeon.player.masterDeck.group)
+        {
+            if (c.cardID.equals(ID))
+            {
+                c.baseDamage = MathUtils.floor((c.upgraded ? BASE_DAMAGE + UPGRADE_DAMAGE : BASE_DAMAGE) * correction);
+            }
         }
     }
 }

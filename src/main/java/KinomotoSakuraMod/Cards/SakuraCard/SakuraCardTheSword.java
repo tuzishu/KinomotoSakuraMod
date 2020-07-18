@@ -26,9 +26,8 @@ public class SakuraCardTheSword extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SAKURACARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final int BASE_DAMAGE = 14;
-    private static final int BASE_MAGIC_NUMBER = 20;
-    private int gemDamage = 0;
+    private static final int BASE_DAMAGE = 16;
+    private static final int BASE_MAGIC_NUMBER = 25;
 
     static
     {
@@ -71,20 +70,5 @@ public class SakuraCardTheSword extends KSMOD_AbstractMagicCard
     {
         AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, monster.currentHealth * this.magicNumber / 100, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.SLASH_HEAVY));
-    }
-
-    @Override
-    public void atTurnStart()
-    {
-        if (!AbstractDungeon.player.hasRelic(KSMOD_GemBrooch.RELIC_ID))
-        {
-            return;
-        }
-        KSMOD_GemBrooch relic = (KSMOD_GemBrooch) AbstractDungeon.player.getRelic(KSMOD_GemBrooch.RELIC_ID);
-        int damage = relic.getDamagePromote();
-        if (damage != gemDamage)
-        {
-            upgradeDamage(damage - gemDamage);
-        }
     }
 }
