@@ -22,12 +22,23 @@ public class KSMOD_RenderCardBgPatch
             return SpireReturn.Continue();
         }
 
-        float renderedPortionProportionToTop = KSMOD_ReflectTool.GetFieldByReflect(KSMOD_AbstractMagicCard.class, "renderedPortionProportionToTop").getFloat(card);
+        float renderedPortionProportionToTop = KSMOD_ReflectTool.GetFieldByReflect(KSMOD_AbstractMagicCard.class,
+                "renderedPortionProportionToTop").getFloat(card);
         if (card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR && renderedPortionProportionToTop < 1F)
         {
             sb.setColor(Color.WHITE);
-            TextureAtlas.AtlasRegion img = KSMOD_RenderTool.GetAtlasRegion(KSMOD_ImageConst.CLOWCARD_BG, renderedPortionProportionToTop);
-            sb.draw(img, x + img.offsetX - (float) img.originalWidth / 2.0F, y + img.offsetY - (float) img.originalHeight / 2.0F + KSMOD_ImageConst.CLOWCARD_BG.getHeight() * 0.5F * (1F - renderedPortionProportionToTop), (float) img.originalWidth / 2.0F - img.offsetX, (float) img.originalHeight / 2.0F - img.offsetY, (float) img.packedWidth, (float) img.packedHeight, card.drawScale * Settings.scale, card.drawScale * Settings.scale, card.angle);
+            TextureAtlas.AtlasRegion img = KSMOD_RenderTool.GetAtlasRegion(KSMOD_ImageConst.CLOWCARD_BG,
+                    renderedPortionProportionToTop);
+            sb.draw(img,
+                    x + img.offsetX - img.packedWidth / 2.0F,
+                    y + img.offsetY - img.packedHeight / 2.0F + KSMOD_ImageConst.CLOWCARD_BG.getHeight() * 0.5F * (1F - renderedPortionProportionToTop) * Settings.scale,
+                    img.packedWidth / 2.0F - img.offsetX,
+                    img.packedHeight / 2.0F - img.offsetY,
+                    img.packedWidth,
+                    img.packedHeight,
+                    card.drawScale * Settings.scale,
+                    card.drawScale * Settings.scale,
+                    card.angle);
 
             return SpireReturn.Return(null);
         }

@@ -60,22 +60,22 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
     private static final float ENERGY_COST_OFFSET_Y = 222F;
     private static final Color ENERGY_COST_RESTRICTED_COLOR = new Color(1.0F, 0.3F, 0.3F, 1.0F);
     private static final Color ENERGY_COST_MODIFIED_COLOR = new Color(0.4F, 1.0F, 0.4F, 1.0F);
-    public static final float IMG_WIDTH = 221F * Settings.scale;
-    public static final float IMG_HEIGHT = 491F * Settings.scale;
+    public static final float IMG_WIDTH = 221F;// * Settings.scale;
+    public static final float IMG_HEIGHT = 491F;// * Settings.scale;
     private static final float DESC_LINE_WIDTH = 190F * Settings.scale;
     private static final float DESC_SCALE_RATE_X = 0.83F;
-    private static final float DESC_OFFSET_TO_BOTTOM_Y = 0.35F;
-    private static final float CARD_ENERGY_IMG_WIDTH = 24.0F * Settings.scale;
+    private static final float DESC_OFFSET_TO_BOTTOM_Y = 0.15F * Settings.scale;
+    private static final float CARD_ENERGY_IMG_WIDTH = 24.0F;// * Settings.scale;
     private static final float HB_W = IMG_WIDTH;
     private static final float HB_H = IMG_HEIGHT;
-    private static final float TITLE_HEIGHT_TO_CENTER = 222.0F * Settings.scale;
-    private static final float TITLE_HEIGHT_SAKURA_TO_CENTER = 218.0F * Settings.scale;
-    private static final float TITLE_BOTTOM_HEIGHT_TO_CENTER = -205.0F * Settings.scale;
-    private static final float TITLE_BOTTOM_HEIGHT_SAKURA_TO_CENTER = -197.0F * Settings.scale;
-    private static final float PORTRAIT_WIDTH = 152F * Settings.scale;
-    private static final float PORTRAIT_HEIGHT = 393F * Settings.scale;
-    private static final float PORTRAIT_ORIGIN_X = 76F * Settings.scale;
-    private static final float PORTRAIT_ORIGIN_Y = 178F * Settings.scale;
+    private static final float TITLE_HEIGHT_TO_CENTER = 222.0F;// * Settings.scale;
+    private static final float TITLE_HEIGHT_SAKURA_TO_CENTER = 218.0F;// * Settings.scale;
+    private static final float TITLE_BOTTOM_HEIGHT_TO_CENTER = -205.0F;// * Settings.scale;
+    private static final float TITLE_BOTTOM_HEIGHT_SAKURA_TO_CENTER = -197.0F;// * Settings.scale;
+    private static final float PORTRAIT_WIDTH = 152F;// * Settings.scale;
+    private static final float PORTRAIT_HEIGHT = 393F;// * Settings.scale;
+    private static final float PORTRAIT_ORIGIN_X = 76F;// * Settings.scale;
+    private static final float PORTRAIT_ORIGIN_Y = 178F;// * Settings.scale;
     public static boolean isHandSelectScreenOpened = false;
     private String BOTTOM_TITLE = "";
     private static int useChargeTimes = 0;
@@ -161,7 +161,10 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                 }
                 else
                 {
-                    AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(player, player, power, KSMOD_SealedBook.ACTIVE_NUMBER));
+                    AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(player,
+                            player,
+                            power,
+                            KSMOD_SealedBook.ACTIVE_NUMBER));
                 }
             }
             this.applyExtraEffect(player, monster);
@@ -173,13 +176,20 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
             this.applyNormalEffect(player, monster);
             if (this.color == KSMOD_CustomCardColor.SAKURACARD_COLOR)
             {
-                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(new VoidCard(), 1, true, true, false));
+                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(new VoidCard(),
+                        1,
+                        true,
+                        true,
+                        false));
             }
         }
         if (player.hasRelic(KSMOD_SealedBook.RELIC_ID))
         {
             KSMOD_SealedBook book = (KSMOD_SealedBook) player.getRelic(KSMOD_SealedBook.RELIC_ID);
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_MagickChargePower(player, book.applyPowerNumberOnce(this)), book.applyPowerNumberOnce(this)));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player,
+                    player,
+                    new KSMOD_MagickChargePower(player, book.applyPowerNumberOnce(this)),
+                    book.applyPowerNumberOnce(this)));
         }
     }
 
@@ -187,19 +197,27 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
     {
         if (this.hasTag(KSMOD_CustomTag.KSMOD_EARTHY_CARD) && !player.hasPower(KSMOD_EarthyPower.POWER_ID))
         {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_EarthyPower(player, 1)));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player,
+                    player,
+                    new KSMOD_EarthyPower(player, 1)));
         }
         if (this.hasTag(KSMOD_CustomTag.KSMOD_FIREY_CARD) && !player.hasPower(KSMOD_FireyPower.POWER_ID))
         {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_FireyPower(player, 1)));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player,
+                    player,
+                    new KSMOD_FireyPower(player, 1)));
         }
         if (this.hasTag(KSMOD_CustomTag.KSMOD_WATERY_CARD) && !player.hasPower(KSMOD_WateryPower.POWER_ID))
         {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_WateryPower(player, 1)));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player,
+                    player,
+                    new KSMOD_WateryPower(player, 1)));
         }
         if (this.hasTag(KSMOD_CustomTag.KSMOD_WINDY_CARD) && !player.hasPower(KSMOD_WindyPower.POWER_ID))
         {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_WindyPower(player, 1)));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player,
+                    player,
+                    new KSMOD_WindyPower(player, 1)));
         }
     }
 
@@ -473,8 +491,15 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
         boolean darken = KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "darken").getBoolean(this);
         if (this.cost > -2 && !darken && !this.isLocked && this.isSeen)
         {
-            Method renderHelper = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, Texture.class, float.class, float.class);
-            Color renderColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
+            Method renderHelper = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class,
+                    "renderHelper",
+                    SpriteBatch.class,
+                    Color.class,
+                    Texture.class,
+                    float.class,
+                    float.class);
+            Color renderColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class,
+                    "renderColor").get(this);
             renderHelper.invoke(this, sb, renderColor, GetEnergyImage(), this.current_x - 512F, this.current_y - 512F);
 
             Color costColor = Color.WHITE.cpy();
@@ -495,9 +520,19 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
             Method getEnergyFont = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "getEnergyFont");
             BitmapFont font = (BitmapFont) getEnergyFont.invoke(this);
 
-            if ((this.type != AbstractCard.CardType.STATUS || this.cardID.equals("Slimed")) && (this.color != AbstractCard.CardColor.CURSE || this.cardID.equals("Pride")))
+            if ((this.type != AbstractCard.CardType.STATUS || this.cardID.equals("Slimed")) && (this.color != AbstractCard.CardColor.CURSE || this.cardID.equals(
+                    "Pride")))
             {
-                FontHelper.renderRotatedText(sb, font, text, this.current_x, this.current_y, ENERGY_COST_OFFSET_X * this.drawScale * Settings.scale, ENERGY_COST_OFFSET_Y * this.drawScale * Settings.scale, this.angle, false, costColor);
+                FontHelper.renderRotatedText(sb,
+                        font,
+                        text,
+                        this.current_x,
+                        this.current_y,
+                        ENERGY_COST_OFFSET_X * this.drawScale * Settings.scale,
+                        ENERGY_COST_OFFSET_Y * this.drawScale * Settings.scale,
+                        this.angle,
+                        false,
+                        costColor);
             }
         }
     }
@@ -539,7 +574,16 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
         Color renderColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
         sb.setColor(renderColor);
         TextureAtlas.AtlasRegion img = KSMOD_RenderTool.GetAtlasRegion(GetFrameImage(), renderedPortionProportionToTop);
-        sb.draw(img, x + img.offsetX - (float) img.originalWidth / 2.0F, y + img.offsetY - (float) img.originalHeight / 2.0F + KSMOD_ImageConst.CLOWCARD_BG.getHeight() * 0.5F * (1F - renderedPortionProportionToTop), (float) img.originalWidth / 2.0F - img.offsetX, (float) img.originalHeight / 2.0F - img.offsetY, (float) img.packedWidth, (float) img.packedHeight, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle);
+        sb.draw(img,
+                x + img.offsetX - img.packedWidth / 2.0F,
+                y + img.offsetY - img.packedHeight / 2.0F + KSMOD_ImageConst.CLOWCARD_BG.getHeight() * 0.5F * (1F - renderedPortionProportionToTop) * Settings.scale,
+                img.packedWidth / 2.0F - img.offsetX,
+                img.packedHeight / 2.0F - img.offsetY,
+                img.packedWidth,
+                img.packedHeight,
+                this.drawScale * Settings.scale,
+                this.drawScale * Settings.scale,
+                this.angle);
     }
 
     private Texture GetBannerImage()
@@ -573,8 +617,18 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
     {
         Color renderColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
         sb.setColor(renderColor);
-        TextureAtlas.AtlasRegion img = KSMOD_RenderTool.GetAtlasRegion(GetBannerImage(), renderedPortionProportionToTop);
-        sb.draw(img, drawX + img.offsetX - (float) img.originalWidth / 2.0F, drawY + img.offsetY - (float) img.originalHeight / 2.0F + KSMOD_ImageConst.CLOWCARD_BG.getHeight() * 0.5F * (1F - renderedPortionProportionToTop), (float) img.originalWidth / 2.0F - img.offsetX, (float) img.originalHeight / 2.0F - img.offsetY, (float) img.packedWidth, (float) img.packedHeight, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle);
+        TextureAtlas.AtlasRegion img = KSMOD_RenderTool.GetAtlasRegion(GetBannerImage(),
+                renderedPortionProportionToTop);
+        sb.draw(img,
+                drawX + img.offsetX - (float) img.packedWidth / 2.0F,
+                drawY + img.offsetY - (float) img.packedHeight / 2.0F + KSMOD_ImageConst.CLOWCARD_BG.getHeight() * 0.5F * (1F - renderedPortionProportionToTop) * Settings.scale,
+                (float) img.packedWidth / 2.0F - img.offsetX,
+                (float) img.packedHeight / 2.0F - img.offsetY,
+                (float) img.packedWidth,
+                (float) img.packedHeight,
+                this.drawScale * Settings.scale,
+                this.drawScale * Settings.scale,
+                this.angle);
 
     }
 
@@ -596,7 +650,22 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                 texture = KSMOD_ImageConst.MASK_SKILL;
                 break;
         }
-        sb.draw(texture, this.current_x - 256.0F, this.current_y - 256.0F, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
+        sb.draw(texture,
+                this.current_x - 256.0F,
+                this.current_y - 256.0F,
+                256.0F,
+                256.0F,
+                512.0F,
+                512.0F,
+                this.drawScale * Settings.scale,
+                this.drawScale * Settings.scale,
+                this.angle,
+                0,
+                0,
+                512,
+                512,
+                false,
+                false);
     }
 
     @SpireOverride
@@ -611,7 +680,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
             renderMask(sb);
             Method getDescFont = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "getDescFont");
             BitmapFont font = (BitmapFont) getDescFont.invoke(this);
-            float draw_y = this.current_y - IMG_HEIGHT * this.drawScale / 2.0F + IMG_HEIGHT * DESC_OFFSET_TO_BOTTOM_Y * this.drawScale;
+            float draw_y = this.current_y - IMG_HEIGHT * this.drawScale / 2.0F + IMG_HEIGHT * (0.5F - DESC_OFFSET_TO_BOTTOM_Y) * this.drawScale;
             draw_y += (float) this.description.size() * font.getCapHeight() * 0.775F - font.getCapHeight() * 0.375F;
             float spacing = 1.45F * -font.getCapHeight() / Settings.scale / this.drawScale;
 
@@ -633,7 +702,8 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                 for (int var9 = 0; var9 < var8; ++var9)
                 {
                     String tmp = var7[var9];
-                    Color textColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
+                    Color textColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "textColor").get(
+                            this);
                     if (tmp.length() > 0 && tmp.charAt(0) == '*')
                     {
                         tmp = tmp.substring(1);
@@ -646,37 +716,93 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                         }
 
                         gl.setText(font, tmp);
-                        Color goldColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "goldColor").get(this);
-                        FontHelper.renderRotatedText(sb, font, tmp, this.current_x, this.current_y, start_x - this.current_x + gl.width / 2.0F, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, goldColor);
+                        Color goldColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class,
+                                "goldColor").get(this);
+                        FontHelper.renderRotatedText(sb,
+                                font,
+                                tmp,
+                                this.current_x,
+                                this.current_y,
+                                start_x - this.current_x + gl.width / 2.0F,
+                                (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F,
+                                this.angle,
+                                true,
+                                goldColor);
                         start_x = (float) Math.round(start_x + gl.width);
                         gl.setText(font, punctuation);
-                        FontHelper.renderRotatedText(sb, font, punctuation, this.current_x, this.current_y, start_x - this.current_x + gl.width / 2.0F, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, textColor);
+                        FontHelper.renderRotatedText(sb,
+                                font,
+                                punctuation,
+                                this.current_x,
+                                this.current_y,
+                                start_x - this.current_x + gl.width / 2.0F,
+                                (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F,
+                                this.angle,
+                                true,
+                                textColor);
                         gl.setText(font, punctuation);
                         start_x += gl.width;
                     }
                     else if (tmp.length() > 0 && tmp.charAt(0) == '!')
                     {
-                        Method renderDynamicVariable = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "renderDynamicVariable", char.class, float.class, float.class, int.class, BitmapFont.class, SpriteBatch.class, Character.class);
+                        Method renderDynamicVariable = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class,
+                                "renderDynamicVariable",
+                                char.class,
+                                float.class,
+                                float.class,
+                                int.class,
+                                BitmapFont.class,
+                                SpriteBatch.class,
+                                Character.class);
                         if (tmp.length() == 4)
                         {
-                            start_x += (float) renderDynamicVariable.invoke(this, tmp.charAt(1), start_x, draw_y, i, font, sb, (Character) null);
+                            start_x += (float) renderDynamicVariable.invoke(this,
+                                    tmp.charAt(1),
+                                    start_x,
+                                    draw_y,
+                                    i,
+                                    font,
+                                    sb,
+                                    (Character) null);
                         }
                         else if (tmp.length() == 5)
                         {
-                            start_x += (float) renderDynamicVariable.invoke(this, tmp.charAt(1), start_x, draw_y, i, font, sb, tmp.charAt(3));
+                            start_x += (float) renderDynamicVariable.invoke(this,
+                                    tmp.charAt(1),
+                                    start_x,
+                                    draw_y,
+                                    i,
+                                    font,
+                                    sb,
+                                    tmp.charAt(3));
                         }
                     }
                     else if (tmp.equals("[R] "))
                     {
                         gl.width = CARD_ENERGY_IMG_WIDTH * this.drawScale;
-                        this.renderSmallEnergy(sb, orb_red, (start_x - this.current_x) / Settings.scale / this.drawScale, -100.0F - (((float) this.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
+                        this.renderSmallEnergy(sb,
+                                orb_red,
+                                (start_x - this.current_x) / Settings.scale / this.drawScale,
+                                -100.0F - (((float) this.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
                         start_x += gl.width;
                     }
                     else if (tmp.equals("[R]. "))
                     {
                         gl.width = CARD_ENERGY_IMG_WIDTH * this.drawScale / Settings.scale;
-                        this.renderSmallEnergy(sb, orb_red, (start_x - this.current_x) / Settings.scale / this.drawScale, -100.0F - (((float) this.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
-                        FontHelper.renderRotatedText(sb, font, LocalizedStrings.PERIOD, this.current_x, this.current_y, start_x - this.current_x + CARD_ENERGY_IMG_WIDTH * this.drawScale, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, textColor);
+                        this.renderSmallEnergy(sb,
+                                orb_red,
+                                (start_x - this.current_x) / Settings.scale / this.drawScale,
+                                -100.0F - (((float) this.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
+                        FontHelper.renderRotatedText(sb,
+                                font,
+                                LocalizedStrings.PERIOD,
+                                this.current_x,
+                                this.current_y,
+                                start_x - this.current_x + CARD_ENERGY_IMG_WIDTH * this.drawScale,
+                                (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F,
+                                this.angle,
+                                true,
+                                textColor);
                         start_x += gl.width;
                         gl.setText(font, LocalizedStrings.PERIOD);
                         start_x += gl.width;
@@ -684,33 +810,72 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                     else if (tmp.equals("[G] "))
                     {
                         gl.width = CARD_ENERGY_IMG_WIDTH * this.drawScale;
-                        this.renderSmallEnergy(sb, orb_green, (start_x - this.current_x) / Settings.scale / this.drawScale, -100.0F - (((float) this.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
+                        this.renderSmallEnergy(sb,
+                                orb_green,
+                                (start_x - this.current_x) / Settings.scale / this.drawScale,
+                                -100.0F - (((float) this.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
                         start_x += gl.width;
                     }
                     else if (tmp.equals("[G]. "))
                     {
                         gl.width = CARD_ENERGY_IMG_WIDTH * this.drawScale;
-                        this.renderSmallEnergy(sb, orb_green, (start_x - this.current_x) / Settings.scale / this.drawScale, -100.0F - (((float) this.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
-                        FontHelper.renderRotatedText(sb, font, LocalizedStrings.PERIOD, this.current_x, this.current_y, start_x - this.current_x + CARD_ENERGY_IMG_WIDTH * this.drawScale, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, textColor);
+                        this.renderSmallEnergy(sb,
+                                orb_green,
+                                (start_x - this.current_x) / Settings.scale / this.drawScale,
+                                -100.0F - (((float) this.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
+                        FontHelper.renderRotatedText(sb,
+                                font,
+                                LocalizedStrings.PERIOD,
+                                this.current_x,
+                                this.current_y,
+                                start_x - this.current_x + CARD_ENERGY_IMG_WIDTH * this.drawScale,
+                                (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F,
+                                this.angle,
+                                true,
+                                textColor);
                         start_x += gl.width;
                     }
                     else if (tmp.equals("[B] "))
                     {
                         gl.width = CARD_ENERGY_IMG_WIDTH * this.drawScale;
-                        this.renderSmallEnergy(sb, orb_blue, (start_x - this.current_x) / Settings.scale / this.drawScale, -100.0F - (((float) this.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
+                        this.renderSmallEnergy(sb,
+                                orb_blue,
+                                (start_x - this.current_x) / Settings.scale / this.drawScale,
+                                -100.0F - (((float) this.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
                         start_x += gl.width;
                     }
                     else if (tmp.equals("[B]. "))
                     {
                         gl.width = CARD_ENERGY_IMG_WIDTH * this.drawScale;
-                        this.renderSmallEnergy(sb, orb_blue, (start_x - this.current_x) / Settings.scale / this.drawScale, -100.0F - (((float) this.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
-                        FontHelper.renderRotatedText(sb, font, LocalizedStrings.PERIOD, this.current_x, this.current_y, start_x - this.current_x + CARD_ENERGY_IMG_WIDTH * this.drawScale, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, textColor);
+                        this.renderSmallEnergy(sb,
+                                orb_blue,
+                                (start_x - this.current_x) / Settings.scale / this.drawScale,
+                                -100.0F - (((float) this.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
+                        FontHelper.renderRotatedText(sb,
+                                font,
+                                LocalizedStrings.PERIOD,
+                                this.current_x,
+                                this.current_y,
+                                start_x - this.current_x + CARD_ENERGY_IMG_WIDTH * this.drawScale,
+                                (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F,
+                                this.angle,
+                                true,
+                                textColor);
                         start_x += gl.width;
                     }
                     else
                     {
                         gl.setText(font, tmp);
-                        FontHelper.renderRotatedText(sb, font, tmp, this.current_x, this.current_y, start_x - this.current_x + gl.width / 2.0F, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, textColor);
+                        FontHelper.renderRotatedText(sb,
+                                font,
+                                tmp,
+                                this.current_x,
+                                this.current_y,
+                                start_x - this.current_x + gl.width / 2.0F,
+                                (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F,
+                                this.angle,
+                                true,
+                                textColor);
                         start_x += gl.width;
                     }
                 }
@@ -739,7 +904,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
             renderMask(sb);
             Method getDescFont = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "getDescFont");
             BitmapFont font = (BitmapFont) getDescFont.invoke(this);
-            float draw_y = this.current_y - IMG_HEIGHT * this.drawScale / 2.0F + IMG_HEIGHT * DESC_OFFSET_TO_BOTTOM_Y * this.drawScale;
+            float draw_y = this.current_y - IMG_HEIGHT * this.drawScale / 2.0F + IMG_HEIGHT * (0.5F - DESC_OFFSET_TO_BOTTOM_Y) * this.drawScale;
             draw_y += (float) this.description.size() * font.getCapHeight() * 0.775F - font.getCapHeight() * 0.375F;
             float spacing = 1.45F * -font.getCapHeight() / Settings.scale / this.drawScale;
 
@@ -757,7 +922,9 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
 
                 String[] var7 = this.description.get(i).getCachedTokenizedTextCN();
                 int var8 = var7.length;
-                Method getDynamicValue = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "getDynamicValue", char.class);
+                Method getDynamicValue = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class,
+                        "getDynamicValue",
+                        char.class);
                 GlyphLayout gl = (GlyphLayout) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "gl").get(this);
                 for (int var9 = 0; var9 < var8; ++var9)
                 {
@@ -782,11 +949,13 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                             {
                                 if (dv.value(this) >= dv.baseValue(this))
                                 {
-                                    tmp = "[#" + dv.getIncreasedValueColor().toString() + "]" + Integer.toString(dv.value(this)) + "[]";
+                                    tmp = "[#" + dv.getIncreasedValueColor().toString() + "]" + Integer.toString(dv.value(
+                                            this)) + "[]";
                                 }
                                 else
                                 {
-                                    tmp = "[#" + dv.getDecreasedValueColor().toString() + "]" + Integer.toString(dv.value(this)) + "[]";
+                                    tmp = "[#" + dv.getDecreasedValueColor().toString() + "]" + Integer.toString(dv.value(
+                                            this)) + "[]";
                                 }
                             }
                             else
@@ -842,38 +1011,77 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                         }
 
                         gl.setText(font, tmp);
-                        Color goldColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "goldColor").get(this);
-                        FontHelper.renderRotatedText(sb, font, tmp, this.current_x, this.current_y, start_x - this.current_x + gl.width / 2.0F, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, goldColor);
+                        Color goldColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class,
+                                "goldColor").get(this);
+                        FontHelper.renderRotatedText(sb,
+                                font,
+                                tmp,
+                                this.current_x,
+                                this.current_y,
+                                start_x - this.current_x + gl.width / 2.0F,
+                                (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F,
+                                this.angle,
+                                true,
+                                goldColor);
                         start_x = (float) Math.round(start_x + gl.width);
                         gl.setText(font, punctuation);
-                        Color textColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
-                        FontHelper.renderRotatedText(sb, font, punctuation, this.current_x, this.current_y, start_x - this.current_x + gl.width / 2.0F, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, textColor);
+                        Color textColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class,
+                                "textColor").get(this);
+                        FontHelper.renderRotatedText(sb,
+                                font,
+                                punctuation,
+                                this.current_x,
+                                this.current_y,
+                                start_x - this.current_x + gl.width / 2.0F,
+                                (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F,
+                                this.angle,
+                                true,
+                                textColor);
                         gl.setText(font, punctuation);
                         start_x += gl.width;
                     }
                     else if (tmp.equals("[R]"))
                     {
                         gl.width = CARD_ENERGY_IMG_WIDTH * this.drawScale;
-                        this.renderSmallEnergy(sb, orb_red, (start_x - this.current_x) / Settings.scale / this.drawScale, -100.0F - (((float) this.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
+                        this.renderSmallEnergy(sb,
+                                orb_red,
+                                (start_x - this.current_x) / Settings.scale / this.drawScale,
+                                -100.0F - (((float) this.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
                         start_x += gl.width;
                     }
                     else if (tmp.equals("[G]"))
                     {
                         gl.width = CARD_ENERGY_IMG_WIDTH * this.drawScale;
-                        this.renderSmallEnergy(sb, orb_green, (start_x - this.current_x) / Settings.scale / this.drawScale, -100.0F - (((float) this.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
+                        this.renderSmallEnergy(sb,
+                                orb_green,
+                                (start_x - this.current_x) / Settings.scale / this.drawScale,
+                                -100.0F - (((float) this.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
                         start_x += gl.width;
                     }
                     else if (tmp.equals("[B]"))
                     {
                         gl.width = CARD_ENERGY_IMG_WIDTH * this.drawScale;
-                        this.renderSmallEnergy(sb, orb_blue, (start_x - this.current_x) / Settings.scale / this.drawScale, -100.0F - (((float) this.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
+                        this.renderSmallEnergy(sb,
+                                orb_blue,
+                                (start_x - this.current_x) / Settings.scale / this.drawScale,
+                                -100.0F - (((float) this.description.size() - 4.0F) / 2.0F - (float) i + 1.0F) * spacing);
                         start_x += gl.width;
                     }
                     else
                     {
                         gl.setText(font, tmp);
-                        Color textColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "textColor").get(this);
-                        FontHelper.renderRotatedText(sb, font, tmp, this.current_x, this.current_y, start_x - this.current_x + gl.width / 2.0F, (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F, this.angle, true, textColor);
+                        Color textColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class,
+                                "textColor").get(this);
+                        FontHelper.renderRotatedText(sb,
+                                font,
+                                tmp,
+                                this.current_x,
+                                this.current_y,
+                                start_x - this.current_x + gl.width / 2.0F,
+                                (float) i * 1.45F * -font.getCapHeight() + draw_y - this.current_y + -6.0F,
+                                this.angle,
+                                true,
+                                textColor);
                         start_x += gl.width;
                     }
                 }
@@ -930,7 +1138,8 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
             {
                 this.description.clear();
                 int numLines = 1;
-                StringBuilder sbuilder = (StringBuilder) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "sbuilder").get(this);
+                StringBuilder sbuilder = (StringBuilder) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class,
+                        "sbuilder").get(this);
                 sbuilder.setLength(0);
                 float currentWidth = 0.0F;
                 String[] var4 = GetCurrentDescription().split(" ");
@@ -940,17 +1149,22 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                 {
                     String word = var4[var6];
                     boolean isKeyword = false;
-                    StringBuilder sbuilder2 = (StringBuilder) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "sbuilder2").get(this);
+                    StringBuilder sbuilder2 = (StringBuilder) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class,
+                            "sbuilder2").get(this);
                     sbuilder2.setLength(0);
                     sbuilder2.append(" ");
-                    if (word.length() > 0 && word.charAt(word.length() - 1) != ']' && !Character.isLetterOrDigit(word.charAt(word.length() - 1)))
+                    if (word.length() > 0 && word.charAt(word.length() - 1) != ']' && !Character.isLetterOrDigit(word.charAt(
+                            word.length() - 1)))
                     {
                         sbuilder2.insert(0, word.charAt(word.length() - 1));
                         word = word.substring(0, word.length() - 1);
                     }
 
-                    GlyphLayout gl = (GlyphLayout) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "gl").get(this);
-                    Method dedupeKeyword = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "dedupeKeyword", String.class);
+                    GlyphLayout gl = (GlyphLayout) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "gl").get(
+                            this);
+                    Method dedupeKeyword = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class,
+                            "dedupeKeyword",
+                            String.class);
                     String keywordTmp = word.toLowerCase();
                     keywordTmp = (String) dedupeKeyword.invoke(this, keywordTmp);
                     GlyphLayout var10000;
@@ -1073,7 +1287,8 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
         {
             this.description.clear();
             int numLines = 1;
-            StringBuilder sbuilder = (StringBuilder) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "sbuilder").get(this);
+            StringBuilder sbuilder = (StringBuilder) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class,
+                    "sbuilder").get(this);
             sbuilder.setLength(0);
             float currentWidth = 0.0F;
             String[] var3 = GetCurrentDescription().split(" ");
@@ -1085,8 +1300,11 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                 word = word.trim();
                 if (Settings.manualLineBreak || !word.contains("NL"))
                 {
-                    Method dedupeKeyword = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "dedupeKeyword", String.class);
-                    GlyphLayout gl = (GlyphLayout) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "gl").get(this);
+                    Method dedupeKeyword = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class,
+                            "dedupeKeyword",
+                            String.class);
+                    GlyphLayout gl = (GlyphLayout) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "gl").get(
+                            this);
                     String keywordTmp = word.toLowerCase();
                     keywordTmp = (String) dedupeKeyword.invoke(this, keywordTmp);
                     if (GameDictionary.keywords.containsKey(keywordTmp))
@@ -1251,7 +1469,9 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
 
             if (sbuilder.toString().equals(LocalizedStrings.PERIOD))
             {
-                this.description.set(this.description.size() - 2, new DescriptionLine(this.description.get(this.description.size() - 2).getText() + LocalizedStrings.PERIOD, this.description.get(this.description.size() - 2).width));
+                this.description.set(this.description.size() - 2,
+                        new DescriptionLine(this.description.get(this.description.size() - 2).getText() + LocalizedStrings.PERIOD,
+                                this.description.get(this.description.size() - 2).width));
                 this.description.remove(this.description.size() - 1);
             }
         }
@@ -1283,7 +1503,8 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                 this.current_y = MathHelper.cardLerpSnap(this.current_y, this.target_y);
                 if (AbstractDungeon.player.hasRelic("Necronomicon"))
                 {
-                    if (this.cost >= 2 && this.type == AbstractCard.CardType.ATTACK && AbstractDungeon.player.getRelic("Necronomicon").checkTrigger())
+                    if (this.cost >= 2 && this.type == AbstractCard.CardType.ATTACK && AbstractDungeon.player.getRelic(
+                            "Necronomicon").checkTrigger())
                     {
                         AbstractDungeon.player.getRelic("Necronomicon").beginLongPulse();
                     }
@@ -1336,8 +1557,10 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
         try
         {
             BitmapFont font;
-            Color renderColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
-            boolean useSmallTitleFont = KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "useSmallTitleFont").getBoolean(this);
+            Color renderColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class,
+                    "renderColor").get(this);
+            boolean useSmallTitleFont = KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class,
+                    "useSmallTitleFont").getBoolean(this);
             font = useSmallTitleFont ? FontHelper.cardTitleFont_small : FontHelper.cardTitleFont;
             font.getData().setScale(this.drawScale);
 
@@ -1349,11 +1572,29 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                 {
                     Color color = Settings.GREEN_TEXT_COLOR.cpy();
                     color.a = renderColor.a;
-                    FontHelper.renderRotatedText(sb, font, this.name, this.current_x, this.current_y, 0.0F, offsetToTop * this.drawScale * Settings.scale, this.angle, false, color);
+                    FontHelper.renderRotatedText(sb,
+                            font,
+                            this.name,
+                            this.current_x,
+                            this.current_y,
+                            0.0F,
+                            offsetToTop * this.drawScale * Settings.scale,
+                            this.angle,
+                            false,
+                            color);
                 }
                 else
                 {
-                    FontHelper.renderRotatedText(sb, font, this.name, this.current_x, this.current_y, 0.0F, offsetToTop * this.drawScale * Settings.scale, this.angle, false, renderColor);
+                    FontHelper.renderRotatedText(sb,
+                            font,
+                            this.name,
+                            this.current_x,
+                            this.current_y,
+                            0.0F,
+                            offsetToTop * this.drawScale * Settings.scale,
+                            this.angle,
+                            false,
+                            renderColor);
                 }
             }
 
@@ -1365,11 +1606,29 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                 {
                     Color color = Settings.GREEN_TEXT_COLOR.cpy();
                     color.a = renderColor.a;
-                    FontHelper.renderRotatedText(sb, font, BOTTOM_TITLE, this.current_x, this.current_y, 0.0F, offsetToBottom * this.drawScale * Settings.scale, this.angle, false, color);
+                    FontHelper.renderRotatedText(sb,
+                            font,
+                            BOTTOM_TITLE,
+                            this.current_x,
+                            this.current_y,
+                            0.0F,
+                            offsetToBottom * this.drawScale * Settings.scale,
+                            this.angle,
+                            false,
+                            color);
                 }
                 else
                 {
-                    FontHelper.renderRotatedText(sb, font, BOTTOM_TITLE, this.current_x, this.current_y, 0.0F, offsetToBottom * this.drawScale * Settings.scale, this.angle, false, renderColor);
+                    FontHelper.renderRotatedText(sb,
+                            font,
+                            BOTTOM_TITLE,
+                            this.current_x,
+                            this.current_y,
+                            0.0F,
+                            offsetToBottom * this.drawScale * Settings.scale,
+                            this.angle,
+                            false,
+                            renderColor);
                 }
             }
 
@@ -1383,41 +1642,17 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
     @SpireOverride
     public void renderPortrait(SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException
     {
-        float drawX = this.current_x;
-        float drawY = this.current_y;
-        KSMOD_RenderTool.SetAtlasRegion(this.portrait, 512F * Settings.scale, PORTRAIT_ORIGIN_Y, renderedPortionProportionToTop);
-        sb.draw(this.portrait, drawX - PORTRAIT_ORIGIN_X,
-                //drawX + (float) img.packedWidth / 2.0F,
-                drawY - PORTRAIT_ORIGIN_Y + PORTRAIT_HEIGHT - this.portrait.getRegionHeight(),
-                //drawX + (float) img.packedHeight / 2.0F,
-                PORTRAIT_ORIGIN_X, PORTRAIT_ORIGIN_Y,
-                //PORTRAIT_ORIGIN_Y + this.portrait.getRegionHeight() * 0.5F,
-                PORTRAIT_WIDTH, this.portrait.getRegionHeight(), this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle);
-
-//        if (this.portraitImg != null)
-//        {
-//            img = this.portraitImg;
-//        }
-//
-//        if (!this.isLocked)
-//        {
-//            if (this.portrait != null)
-//            {
-//                drawX = this.current_x - (float) this.portrait.packedWidth / 2.0F;
-//                drawY = this.current_y - (float) this.portrait.packedHeight / 2.0F;
-//                sb.setColor(this.renderColor);
-//                sb.draw(this.portrait, drawX, drawY + 72.0F, (float) this.portrait.packedWidth / 2.0F, (float) this.portrait.packedHeight / 2.0F - 72.0F, (float) this.portrait.packedWidth, (float) this.portrait.packedHeight, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle);
-//            }
-//            else if (img != null)
-//            {
-//                sb.setColor(this.renderColor);
-//                sb.draw(img, drawX, drawY + 72.0F, 125.0F, 23.0F, 250.0F, 190.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 250, 190, false, false);
-//            }
-//        }
-//        else
-//        {
-//            sb.draw(this.portraitImg, drawX, drawY + 72.0F, 125.0F, 23.0F, 250.0F, 190.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 250, 190, false, false);
-//        }
+        KSMOD_RenderTool.SetAtlasRegion(this.portrait, KSMOD_ImageConst.CLOWCARD_BG.getHeight(), PORTRAIT_ORIGIN_Y, renderedPortionProportionToTop);
+        sb.draw(this.portrait,
+                this.current_x - PORTRAIT_ORIGIN_X,
+                this.current_y - PORTRAIT_ORIGIN_Y + (PORTRAIT_HEIGHT - this.portrait.getRegionHeight()) * Settings.scale,
+                PORTRAIT_ORIGIN_X,
+                PORTRAIT_ORIGIN_Y,
+                PORTRAIT_WIDTH,
+                this.portrait.getRegionHeight(),
+                this.drawScale * Settings.scale,
+                this.drawScale * Settings.scale,
+                this.angle);
     }
 
     @SpireOverride
@@ -1459,16 +1694,27 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
             AtlasRegion img = KSMOD_ImageConst.SILHOUETTE_ATLAS;
             if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT)
             {
-                Color BLUE_BORDER_GLOW_COLOR = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "BLUE_BORDER_GLOW_COLOR").get(this);
+                Color BLUE_BORDER_GLOW_COLOR = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class,
+                        "BLUE_BORDER_GLOW_COLOR").get(this);
                 sb.setColor(hasExtraEffect && isThisCardCharged() ? Color.GOLD : BLUE_BORDER_GLOW_COLOR);
             }
             else
             {
-                Color GREEN_BORDER_GLOW_COLOR = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "GREEN_BORDER_GLOW_COLOR").get(this);
+                Color GREEN_BORDER_GLOW_COLOR = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class,
+                        "GREEN_BORDER_GLOW_COLOR").get(this);
                 sb.setColor(GREEN_BORDER_GLOW_COLOR);
             }
 
-            sb.draw(img, this.current_x + img.offsetX - (float) img.originalWidth / 2.0F, this.current_y + img.offsetY - (float) img.originalWidth / 2.0F, (float) img.originalWidth / 2.0F - img.offsetX, (float) img.originalWidth / 2.0F - img.offsetY, (float) img.packedWidth, (float) img.packedHeight, this.drawScale * Settings.scale * 1.04F, this.drawScale * Settings.scale * 1.03F, this.angle);
+            sb.draw(img,
+                    this.current_x + img.offsetX - (float) img.originalWidth / 2.0F,
+                    this.current_y + img.offsetY - (float) img.originalWidth / 2.0F,
+                    (float) img.originalWidth / 2.0F - img.offsetX,
+                    (float) img.originalWidth / 2.0F - img.offsetY,
+                    (float) img.packedWidth,
+                    (float) img.packedHeight,
+                    this.drawScale * Settings.scale * 1.04F,
+                    this.drawScale * Settings.scale * 1.03F,
+                    this.angle);
         }
     }
 
@@ -1477,32 +1723,75 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
     {
         if (!isTurning)
         {
-            Method renderHelper1408 = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, AtlasRegion.class, float.class, float.class);
-            Method renderHelper1413 = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "renderHelper", SpriteBatch.class, Color.class, AtlasRegion.class, float.class, float.class, float.class);
+            Method renderHelper1408 = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class,
+                    "renderHelper",
+                    SpriteBatch.class,
+                    Color.class,
+                    AtlasRegion.class,
+                    float.class,
+                    float.class);
+            Method renderHelper1413 = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class,
+                    "renderHelper",
+                    SpriteBatch.class,
+                    Color.class,
+                    AtlasRegion.class,
+                    float.class,
+                    float.class,
+                    float.class);
             if (AbstractDungeon.player != null)
             {
                 if (selected)
                 {
-                    renderHelper1413.invoke(this, sb, Color.SKY, this.getCardBgAtlas(), this.current_x, this.current_y, 1.03F);
+                    renderHelper1413.invoke(this,
+                            sb,
+                            Color.SKY,
+                            this.getCardBgAtlas(),
+                            this.current_x,
+                            this.current_y,
+                            1.03F);
                 }
-                Color frameShadowColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "frameShadowColor").get(this);
-                float SHADOW_OFFSET_X = KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "SHADOW_OFFSET_X").getFloat(this);
-                float SHADOW_OFFSET_Y = KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "SHADOW_OFFSET_Y").getFloat(this);
-                renderHelper1408.invoke(this, sb, frameShadowColor, this.getCardBgAtlas(), this.current_x + SHADOW_OFFSET_X * this.drawScale, this.current_y - SHADOW_OFFSET_Y * this.drawScale);
+                Color frameShadowColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class,
+                        "frameShadowColor").get(this);
+                float SHADOW_OFFSET_X = KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class,
+                        "SHADOW_OFFSET_X").getFloat(this);
+                float SHADOW_OFFSET_Y = KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class,
+                        "SHADOW_OFFSET_Y").getFloat(this);
+                renderHelper1408.invoke(this,
+                        sb,
+                        frameShadowColor,
+                        this.getCardBgAtlas(),
+                        this.current_x + SHADOW_OFFSET_X * this.drawScale,
+                        this.current_y - SHADOW_OFFSET_Y * this.drawScale);
                 if (AbstractDungeon.player.hoveredCard == this && (AbstractDungeon.player.isDraggingCard && AbstractDungeon.player.isHoveringDropZone || AbstractDungeon.player.inSingleTargetMode))
                 {
-                    Color HOVER_IMG_COLOR = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "HOVER_IMG_COLOR").get(this);
-                    renderHelper1408.invoke(this, sb, HOVER_IMG_COLOR, this.getCardBgAtlas(), this.current_x, this.current_y);
+                    Color HOVER_IMG_COLOR = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class,
+                            "HOVER_IMG_COLOR").get(this);
+                    renderHelper1408.invoke(this,
+                            sb,
+                            HOVER_IMG_COLOR,
+                            this.getCardBgAtlas(),
+                            this.current_x,
+                            this.current_y);
                 }
                 else if (selected)
                 {
-                    Color SELECTED_CARD_COLOR = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "SELECTED_CARD_COLOR").get(this);
-                    renderHelper1408.invoke(this, sb, SELECTED_CARD_COLOR, this.getCardBgAtlas(), this.current_x, this.current_y);
+                    Color SELECTED_CARD_COLOR = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class,
+                            "SELECTED_CARD_COLOR").get(this);
+                    renderHelper1408.invoke(this,
+                            sb,
+                            SELECTED_CARD_COLOR,
+                            this.getCardBgAtlas(),
+                            this.current_x,
+                            this.current_y);
                 }
             }
         }
 
-        Method renderCardBg = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "renderCardBg", SpriteBatch.class, float.class, float.class);
+        Method renderCardBg = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class,
+                "renderCardBg",
+                SpriteBatch.class,
+                float.class,
+                float.class);
         renderCardBg.invoke(this, sb, this.current_x, this.current_y);
         if (!UnlockTracker.betaCardPref.getBoolean(this.cardID, false) && !Settings.PLAYTESTER_ART_MODE)
         {
@@ -1510,7 +1799,9 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
         }
         else
         {
-            Method renderJokePortrait = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class, "renderJokePortrait", SpriteBatch.class);
+            Method renderJokePortrait = KSMOD_ReflectTool.GetMethodByReflect(AbstractCard.class,
+                    "renderJokePortrait",
+                    SpriteBatch.class);
             renderJokePortrait.invoke(this, sb);
         }
 

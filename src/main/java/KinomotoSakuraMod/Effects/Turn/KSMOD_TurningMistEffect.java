@@ -2,14 +2,12 @@ package KinomotoSakuraMod.Effects.Turn;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
-import KinomotoSakuraMod.Utility.KSMOD_LoggerTool;
 import KinomotoSakuraMod.Utility.KSMOD_RenderTool;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 
@@ -45,16 +43,17 @@ public class KSMOD_TurningMistEffect extends AbstractGameEffect
     {
         sb.setBlendFunction(770, 1);
         sb.setColor(this.color);
-        TextureAtlas.AtlasRegion atl = KSMOD_RenderTool.GetAtlasRegionBottom(img, 1F - card.renderedPortionProportionToTop);
+        TextureAtlas.AtlasRegion atl = KSMOD_RenderTool.GetAtlasRegionBottom(img,
+                1F - card.renderedPortionProportionToTop);
         sb.draw(atl,
-                card.current_x - img.getWidth() * 0.5F,
-                card.current_y - img.getHeight() * 0.5F,
-                (float) atl.getRegionWidth() / 2.0F,
-                (float) atl.getRegionHeight() / 2.0F,
-                (float) atl.getRegionWidth(),
-                (float) atl.getRegionHeight(),
-                1F,
-                1F,
+                card.current_x - atl.packedWidth * 0.5F,
+                card.current_y- img.getHeight() * 0.5F * Settings.scale,
+                atl.packedWidth * 0.5F,
+                0F,
+                atl.packedWidth,
+                atl.packedHeight,
+                Settings.scale,
+                Settings.scale,
                 0F);
         sb.setBlendFunction(770, 771);
     }

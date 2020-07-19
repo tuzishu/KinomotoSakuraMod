@@ -61,13 +61,13 @@ public class KSMOD_TurningLuminEffect extends AbstractGameEffect
         {
             sb.setColor(lumin_color);
             sb.setBlendFunction(770, 1);
-            float offsetY = KSMOD_AbstractMagicCard.IMG_HEIGHT * (0.5F - card.renderedPortionProportionToTop) + MathUtils.random(
+            float offsetY = KSMOD_AbstractMagicCard.IMG_HEIGHT * (0.5F - card.renderedPortionProportionToTop) * Settings.scale + MathUtils.random(
                     -anchorShake,
                     anchorShake);// - atl.getRegionHeight() * 0.5F
             for (int i = 0; i < controlPointAmountPerWidth * frequency; i++)
             {
                 float propX = ((float) i / (controlPointAmountPerWidth * frequency) - 0.5F);
-                float offsetX = KSMOD_AbstractMagicCard.IMG_WIDTH * propX - atl.getRegionWidth() * 0.5F;
+                float offsetX = KSMOD_AbstractMagicCard.IMG_WIDTH * Settings.scale * propX - atl.getRegionWidth() * 0.5F;
                 float angle = -MathUtils.atan2(offsetX, offsetY) * MathUtils.radiansToDegrees;
                 sb.draw(atl,
                         card.current_x + offsetX,

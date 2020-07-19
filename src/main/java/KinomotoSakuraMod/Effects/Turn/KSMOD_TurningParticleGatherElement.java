@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.CatmullRomSpline;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 
@@ -58,7 +59,7 @@ public class KSMOD_TurningParticleGatherElement extends AbstractGameEffect
 
     private Vector2 GetTargetPosition(Vector2 anchor)
     {
-        float x = anchor.x - KSMOD_AbstractMagicCard.IMG_WIDTH * 0.25F * Settings.scale + startPosition.x * KSMOD_AbstractMagicCard.IMG_WIDTH * 0.5F / Settings.WIDTH;
+        float x = anchor.x - KSMOD_AbstractMagicCard.IMG_WIDTH * 0.25F + startPosition.x * KSMOD_AbstractMagicCard.IMG_WIDTH * 0.5F / Settings.WIDTH;
         float y = anchor.y - KSMOD_AbstractMagicCard.IMG_HEIGHT * 0.5F * Settings.scale;
         return new Vector2(x, y);
     }
@@ -74,7 +75,8 @@ public class KSMOD_TurningParticleGatherElement extends AbstractGameEffect
 
         if (this.currentPosition.dst(this.targetPosition) >= DST_THRESHOLD)
         {
-            Vector2 movementVector = new Vector2(this.currentPosition.x - this.targetPosition.x, this.currentPosition.y - this.targetPosition.y);
+            Vector2 movementVector = new Vector2(this.currentPosition.x - this.targetPosition.x,
+                    this.currentPosition.y - this.targetPosition.y);
             movementVector.nor();
             movementVector.x *= Gdx.graphics.getDeltaTime() * this.currentSpeed;
             movementVector.y *= Gdx.graphics.getDeltaTime() * this.currentSpeed;
@@ -147,7 +149,16 @@ public class KSMOD_TurningParticleGatherElement extends AbstractGameEffect
             {
                 if (this.endingPoints.get(i) != null)
                 {
-                    sb.draw(IMAGE, this.endingPoints.get(i).x - (float) (IMAGE.packedWidth / 2), this.endingPoints.get(i).y - (float) (IMAGE.packedHeight / 2), (float) IMAGE.packedWidth / 2.0F, (float) IMAGE.packedHeight / 2.0F, (float) IMAGE.packedWidth, (float) IMAGE.packedHeight, scale, scale, this.rotation);
+                    sb.draw(IMAGE,
+                            this.endingPoints.get(i).x - (float) (IMAGE.packedWidth / 2),
+                            this.endingPoints.get(i).y - (float) (IMAGE.packedHeight / 2),
+                            (float) IMAGE.packedWidth / 2.0F,
+                            (float) IMAGE.packedHeight / 2.0F,
+                            (float) IMAGE.packedWidth,
+                            (float) IMAGE.packedHeight,
+                            scale,
+                            scale,
+                            this.rotation);
                     scale *= 0.975F;
                 }
             }
@@ -155,7 +166,16 @@ public class KSMOD_TurningParticleGatherElement extends AbstractGameEffect
             {
                 if (this.points.get(i) != null)
                 {
-                    sb.draw(IMAGE, this.points.get(i).x - (float) (IMAGE.packedWidth / 2), this.points.get(i).y - (float) (IMAGE.packedHeight / 2), (float) IMAGE.packedWidth / 2.0F, (float) IMAGE.packedHeight / 2.0F, (float) IMAGE.packedWidth, (float) IMAGE.packedHeight, scale, scale, this.rotation);
+                    sb.draw(IMAGE,
+                            this.points.get(i).x - (float) (IMAGE.packedWidth / 2),
+                            this.points.get(i).y - (float) (IMAGE.packedHeight / 2),
+                            (float) IMAGE.packedWidth / 2.0F,
+                            (float) IMAGE.packedHeight / 2.0F,
+                            (float) IMAGE.packedWidth,
+                            (float) IMAGE.packedHeight,
+                            scale,
+                            scale,
+                            this.rotation);
                     scale *= 0.975F;
                 }
             }
