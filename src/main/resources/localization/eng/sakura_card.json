@@ -610,7 +610,7 @@
   },
   "SakuraCardTheMirror": {
     "NAME": "Mirror",
-    "DESCRIPTION": "[ Sakura-Card ][ Watery ] Exhaust. NL Select a Clow-Card or Sakura-Card and add as many copies as you can.",
+    "DESCRIPTION": "[ Sakura-Card ][ Watery ] Exhaust. NL Select 1 of all Clow Cards to join the hand.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

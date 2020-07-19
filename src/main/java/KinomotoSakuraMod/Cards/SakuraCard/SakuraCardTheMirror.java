@@ -1,6 +1,6 @@
 package KinomotoSakuraMod.Cards.SakuraCard;
 
-import KinomotoSakuraMod.Actions.KSMOD_MirrorAction;
+import KinomotoSakuraMod.Actions.KSMOD_MirrorAction_SakuraCard;
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheMirror;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
@@ -64,6 +64,6 @@ public class SakuraCardTheMirror extends KSMOD_AbstractMagicCard
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         int count = (player.hasPower(KSMOD_LightPower.POWER_ID) ? 12 : 10) - player.hand.size() + 1;
-        AbstractDungeon.actionManager.addToBottom(new KSMOD_MirrorAction(count));
+        AbstractDungeon.actionManager.addToBottom(new KSMOD_MirrorAction_SakuraCard());
     }
 }

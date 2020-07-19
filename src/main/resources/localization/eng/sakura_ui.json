@@ -37,6 +37,11 @@
       "copy"
     ]
   },
+  "KSMOD_MirrorAction_SakuraCard": {
+    "TEXT": [
+      "choose one Clow Card to join the hand"
+    ]
+  },
   "KSMOD_SongAction": {
     "TEXT": [
       "song"

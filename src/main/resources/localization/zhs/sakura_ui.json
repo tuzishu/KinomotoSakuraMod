@@ -37,6 +37,11 @@
       "复制"
     ]
   },
+  "KSMOD_MirrorAction_SakuraCard": {
+    "TEXT": [
+      "选择1张库洛牌加入手牌"
+    ]
+  },
   "KSMOD_SongAction": {
     "TEXT": [
       "歌唱"

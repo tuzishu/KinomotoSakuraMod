@@ -609,7 +609,7 @@
   },
   "SakuraCardTheMirror": {
     "NAME": "镜",
-    "DESCRIPTION": "「 小樱牌 」「 水 」 消耗 。 NL 选择1张手牌中的 库洛牌 或 小樱牌 ，尽可能多地将其复制品加入手中。",
+    "DESCRIPTION": "「 小樱牌 」「 水 」 消耗 。 NL 从所有库洛牌中选择1张加入手牌。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
