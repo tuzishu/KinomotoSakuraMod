@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -131,7 +132,16 @@ public class ClowCardTheSword extends KSMOD_AbstractMagicCard
 
     private void SetDamage(float correction)
     {
-        for (AbstractCard c : AbstractDungeon.player.masterDeck.group)
+        SetGroup(AbstractDungeon.player.masterDeck, correction);
+        SetGroup(AbstractDungeon.player.hand, correction);
+        SetGroup(AbstractDungeon.player.drawPile, correction);
+        SetGroup(AbstractDungeon.player.discardPile, correction);
+        SetGroup(AbstractDungeon.player.exhaustPile, correction);
+    }
+
+    private void SetGroup(CardGroup group, float correction)
+    {
+        for (AbstractCard c : group.group)
         {
             if (c.cardID.equals(ID))
             {

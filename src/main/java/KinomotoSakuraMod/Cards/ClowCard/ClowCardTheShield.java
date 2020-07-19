@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -127,7 +128,16 @@ public class ClowCardTheShield extends KSMOD_AbstractMagicCard
 
     private void SetBlock(float correction)
     {
-        for (AbstractCard c : AbstractDungeon.player.masterDeck.group)
+        SetGroup(AbstractDungeon.player.masterDeck, correction);
+        SetGroup(AbstractDungeon.player.hand, correction);
+        SetGroup(AbstractDungeon.player.drawPile, correction);
+        SetGroup(AbstractDungeon.player.discardPile, correction);
+        SetGroup(AbstractDungeon.player.exhaustPile, correction);
+    }
+
+    private void SetGroup(CardGroup group, float correction)
+    {
+        for (AbstractCard c : group.group)
         {
             if (c.cardID.equals(ID))
             {

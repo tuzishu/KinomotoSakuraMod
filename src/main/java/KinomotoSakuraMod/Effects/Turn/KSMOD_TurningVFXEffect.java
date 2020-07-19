@@ -160,7 +160,7 @@ public class KSMOD_TurningVFXEffect extends AbstractGameEffect
         {
             sakuraCard.SetTurningStatus(false);
             // 加入卡组
-            AbstractDungeon.player.masterDeck.addToBottom(sakuraCard);
+            AbstractDungeon.player.masterDeck.addToBottom(sakuraCard.makeCopy());
             // 加入手牌
             AbstractDungeon.effectsQueue.add(new ShowCardAndAddToHandEffect(sakuraCard));
             this.isDone = true;
