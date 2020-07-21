@@ -85,9 +85,9 @@ public class ClowCardTheCreate extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_CreatePower(), 1));
         if (TryRemoveThisFromMasterDeck())
         {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_CreatePower(), 1));
             AbstractDungeon.getCurrRoom().addRelicToRewards(GetRandomTier());
         }
     }

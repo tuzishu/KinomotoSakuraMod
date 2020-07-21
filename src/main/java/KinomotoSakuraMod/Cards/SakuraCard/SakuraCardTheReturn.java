@@ -2,6 +2,7 @@ package KinomotoSakuraMod.Cards.SakuraCard;
 
 import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheReturn;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
+import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Relics.KSMOD_AbstractWand;
@@ -9,6 +10,7 @@ import KinomotoSakuraMod.Relics.KSMOD_SealedWand;
 import KinomotoSakuraMod.Relics.KSMOD_StarWand;
 import KinomotoSakuraMod.Relics.KSMOD_UltimateWand;
 import KinomotoSakuraMod.Utility.KSMOD_ReflectTool;
+import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -69,8 +71,7 @@ public class SakuraCardTheReturn extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new HealAction(player, player, player.maxHealth - player.currentHealth));
-        TryRemoveThisFromMasterDeck();
+        TryRemoveThisFromMasterDeck(player, monster);
     }
 
     public void atTurnStart()
@@ -78,12 +79,13 @@ public class SakuraCardTheReturn extends KSMOD_AbstractMagicCard
         this.retain = true;
     }
 
-    private void TryRemoveThisFromMasterDeck()
+    private void TryRemoveThisFromMasterDeck(AbstractPlayer player, AbstractMonster monster)
     {
         for (AbstractCard card : AbstractDungeon.player.masterDeck.group)
         {
             if (card.cardID == this.cardID)
             {
+                AbstractDungeon.actionManager.addToBottom(new HealAction(player, player, player.maxHealth - player.currentHealth));
                 for (AbstractRelic r : AbstractDungeon.player.relics)
                 {
                     if (r instanceof KSMOD_AbstractWand)
@@ -94,9 +96,10 @@ public class SakuraCardTheReturn extends KSMOD_AbstractMagicCard
                     }
                 }
                 AbstractDungeon.player.masterDeck.removeCard(card);
-                break;
+                return;
             }
         }
+        AbstractDungeon.actionManager.addToBottom(new TalkAction(true, KinomotoSakura.GetMessage(4), 1.0F, 2.0F));
     }
 
     @Override

@@ -74,9 +74,9 @@ public class SakuraCardTheCreate extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_CreatePower(player, 2), 2));
         if (TryRemoveThisFromMasterDeck())
         {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_CreatePower(player, 2), 2));
             GetRelics();
         }
     }
