@@ -143,7 +143,7 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
             ((KSMOD_AbstractMagicCard) card).release(releaseRate);
             card.rawDescription = reloadReleasedCardDescription(card.rawDescription, !card.isEthereal, !card.exhaust);
             card.initializeDescription();
-            card.isEthereal = true;
+            card.isEthereal = !card.retain;
             card.exhaust = true;
         }
         AbstractDungeon.player.hand.addToTop(card);
