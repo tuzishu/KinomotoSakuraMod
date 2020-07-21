@@ -246,5 +246,13 @@
       "At the start of the turn, Add #b",
       " #yEmpty #ySpell into your hand."
     ]
+  },
+  "KSMOD_DreamPower_SakuraCard": {
+    "NAME": "Dreamland Sakura",
+    "DESCRIPTIONS": [
+      "Through the [Dream] card, have obtained the temporary Sakura Cards. At the end of the turn, They will change back to the Clow Cards. The temporary Sakura Cards are: ",
+      ", ",
+      "None"
+    ]
   }
 }

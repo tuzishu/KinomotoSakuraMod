@@ -5,9 +5,11 @@ import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
+import KinomotoSakuraMod.Powers.KSMOD_DreamPower_SakuraCard;
 import KinomotoSakuraMod.Utility.KSMOD_LoggerTool;
 import KinomotoSakuraMod.Utility.KSMOD_ReflectTool;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -31,7 +33,6 @@ public class SakuraCardTheDream extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SAKURACARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.NONE;
-    private ArrayList<String> sakuraCardIDList = new ArrayList<>();
 
     static
     {
@@ -50,7 +51,6 @@ public class SakuraCardTheDream extends KSMOD_AbstractMagicCard
     @Override
     public void upgrade()
     {
-
     }
 
     @Override
@@ -71,72 +71,16 @@ public class SakuraCardTheDream extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new VFXAction(new HeartBuffEffect(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY)));
-        sakuraCardIDList.clear();
-        RecordSakuraCardIDInGroup(AbstractDungeon.player.hand);
-        RecordSakuraCardIDInGroup(AbstractDungeon.player.drawPile);
-        RecordSakuraCardIDInGroup(AbstractDungeon.player.discardPile);
-        RecordSakuraCardIDInGroup(AbstractDungeon.player.exhaustPile);
-        ReplaceClowCardToSakuraCard(AbstractDungeon.player.hand);
-        // ReplaceClowCardToSakuraCard(AbstractDungeon.player.drawPile);
-        // ReplaceClowCardToSakuraCard(AbstractDungeon.player.discardPile);
-        // ReplaceClowCardToSakuraCard(AbstractDungeon.player.exhaustPile);
-    }
-
-    private void RecordSakuraCardIDInGroup(CardGroup group)
-    {
-        for (AbstractCard card : group.group)
+        AbstractDungeon.actionManager.addToBottom(new VFXAction(new HeartBuffEffect(AbstractDungeon.player.hb.cX,
+                AbstractDungeon.player.hb.cY)));
+        if (player.hasPower(KSMOD_DreamPower_SakuraCard.POWER_ID))
         {
-            if (card.color == KSMOD_CustomCardColor.SAKURACARD_COLOR && !hasSameIDInList(card.cardID))
-            {
-                sakuraCardIDList.add(card.cardID);
-            }
+            KSMOD_DreamPower_SakuraCard power = (KSMOD_DreamPower_SakuraCard) player.getPower(
+                    KSMOD_DreamPower_SakuraCard.POWER_ID);
+            power.GetCardInfomation();
         }
-    }
-
-    private boolean hasSameIDInList(String targetID)
-    {
-        for (String id : sakuraCardIDList)
-        {
-            if (id.equals(targetID))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private void ReplaceClowCardToSakuraCard(CardGroup group)
-    {
-        for (int i = 0; i < group.group.size(); i++)
-        {
-            AbstractCard clowCard = group.group.get(i);
-            if (!hasSameIDInList(clowCard.cardID.replaceAll("Clow", "Sakura")))
-            {
-                group.group.remove(i);
-                AbstractCard sakuraCard = GetSameNameSakuraCard(clowCard);
-                sakuraCardIDList.add(sakuraCard.cardID);
-                group.group.add(i, sakuraCard);
-                group.refreshHandLayout();
-            }
-        }
-    }
-
-    private AbstractCard GetSameNameSakuraCard(AbstractCard clowCard)
-    {
-        AbstractCard sakuraCard = null;
-        try
-        {
-            Class obj = Class.forName(clowCard.getClass().getName().replaceAll("Clow", "Sakura"));
-            sakuraCard = (AbstractCard) obj.newInstance();
-        }
-        catch (Exception e)
-        {
-            KSMOD_LoggerTool.Logger.error(clowCard.name + "，转换小樱牌失败。");
-            AbstractDungeon.effectList.add(new ThoughtBubble(AbstractDungeon.player.dialogX, AbstractDungeon.player.dialogY, 3.0F, clowCard.name + "，" + KinomotoSakura.GetMessage(0), true));
-            e.printStackTrace();
-            sakuraCard = clowCard;
-        }
-        return sakuraCard;
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player,
+                player,
+                new KSMOD_DreamPower_SakuraCard(player)));
     }
 }

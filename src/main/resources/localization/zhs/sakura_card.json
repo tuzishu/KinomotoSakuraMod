@@ -501,7 +501,7 @@
   },
   "SakuraCardTheDream": {
     "NAME": "梦",
-    "DESCRIPTION": "「 小樱牌 」「 风 」 消耗 。 NL 将手牌中的 库洛牌 ，在本场战斗中尽可能多地转化为 小樱牌 。",
+    "DESCRIPTION": "「 小樱牌 」「 风 」 消耗 。 NL 将手牌中的 库洛牌 ，在本回合内尽可能多地转化为 小樱牌 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

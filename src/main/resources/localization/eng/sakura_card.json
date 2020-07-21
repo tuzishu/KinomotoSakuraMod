@@ -502,7 +502,7 @@
   },
   "SakuraCardTheDream": {
     "NAME": "Dream",
-    "DESCRIPTION": "[ Sakura-Card ][ Windy ] Exhaust. NL Convert the Clow-Cards in your hand into Sakura-Cards as much as possible in this battle.",
+    "DESCRIPTION": "[ Sakura-Card ][ Windy ] Exhaust. NL Convert the Clow-Cards in your hand into Sakura-Cards as much as possible in this turn.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
