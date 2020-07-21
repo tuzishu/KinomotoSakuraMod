@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
 
-public class KSMOD_TurningVFXEffect extends AbstractGameEffect
+public class KSMOD_TurningEffect extends AbstractGameEffect
 {
     ////////
     // Time Line:从上一个阶段到本阶段所需的时间
@@ -47,7 +47,7 @@ public class KSMOD_TurningVFXEffect extends AbstractGameEffect
 
     private boolean[] doneArray = new boolean[]{true, true, true, true, true};
 
-    public KSMOD_TurningVFXEffect(KSMOD_AbstractMagicCard clowCard, KSMOD_AbstractMagicCard sakuraCard)
+    public KSMOD_TurningEffect(KSMOD_AbstractMagicCard clowCard, KSMOD_AbstractMagicCard sakuraCard)
     {
         this.startingDuration = GetTotalTime();
         this.duration = this.startingDuration;

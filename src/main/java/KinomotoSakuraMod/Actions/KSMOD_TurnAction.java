@@ -3,7 +3,6 @@ package KinomotoSakuraMod.Actions;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
-import KinomotoSakuraMod.Effects.Turn.KSMOD_TurningVFXEffect;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
@@ -165,7 +164,7 @@ public class KSMOD_TurnAction extends AbstractGameAction
             AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(new SpellCardTurn()));
         }
         RemoveTargetClowCardFromMasterDeck(clowCard);
-        AbstractDungeon.effectsQueue.add(new KSMOD_TurningVFXEffect((KSMOD_AbstractMagicCard) clowCard,
+        AbstractDungeon.actionManager.addToBottom(new KSMOD_TurnVFXAction((KSMOD_AbstractMagicCard) clowCard,
                 (KSMOD_AbstractMagicCard) sakuraCard));
 //        AbstractDungeon.actionManager.addToBottom(new VFXAction(new HeartBuffEffect(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY)));
 //        AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(sakuraCard));
