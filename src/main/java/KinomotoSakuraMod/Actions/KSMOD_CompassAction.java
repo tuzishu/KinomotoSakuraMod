@@ -56,7 +56,7 @@ public class KSMOD_CompassAction extends AbstractGameAction
                     if (voidAmount > 0)
                     {
                         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(new VoidCard(), voidAmount));
-                        AbstractDungeon.player.masterDeck.addToBottom(card.makeSameInstanceOf());
+                        AbstractDungeon.player.masterDeck.addToBottom(card.makeCopy());
                     }
                     AbstractDungeon.cardRewardScreen.discoveryCard = null;
                 }
