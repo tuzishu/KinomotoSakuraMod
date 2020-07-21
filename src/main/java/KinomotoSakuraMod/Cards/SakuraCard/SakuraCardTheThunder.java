@@ -77,7 +77,7 @@ public class SakuraCardTheThunder extends KSMOD_AbstractMagicCard
             count += player.getPower(KSMOD_MagickChargePower.POWER_ID).amount;
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(player, player, KSMOD_MagickChargePower.POWER_ID));
         }
-        count /= this.magicNumber;
+        count /= this.baseMagicNumber;
         AbstractDungeon.actionManager.addToBottom(new KSMOD_ThunderAction(new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), count));
     }
 }

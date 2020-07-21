@@ -24,7 +24,7 @@ public class SakuraCardTheShield extends KSMOD_AbstractMagicCard
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
     private static final int BASE_BLOCK = 14;
-    private static final int BASE_MAGIC_NUMBER = 30;
+    private static final int BASE_MAGIC_NUMBER = 25;
 
     static
     {

@@ -20,13 +20,12 @@ public class SakuraCardTheLibra extends KSMOD_AbstractMagicCard
     private static final String NAME;
     private static final String DESCRIPTION;
     private static final String IMAGE_PATH = "img/cards/sakuracard/the_libra.png";
-    private static final int COST = 0;
+    private static final int COST = 1;
     private static final CardType CARD_TYPE = CardType.SKILL;
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.SAKURACARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
-    private static final int BASE_BLOCK = 6;
-    private static final int BASE_MAGIC_NUMBER = 2;
+    private static final int BASE_BLOCK = 3;
 
     static
     {
@@ -40,7 +39,6 @@ public class SakuraCardTheLibra extends KSMOD_AbstractMagicCard
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
         this.tags.add(KSMOD_CustomTag.KSMOD_FIREY_CARD);
         this.baseBlock = BASE_BLOCK;
-        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
     @Override
@@ -71,12 +69,12 @@ public class SakuraCardTheLibra extends KSMOD_AbstractMagicCard
         if (player.hasPower(KSMOD_MagickChargePower.POWER_ID))
         {
             AbstractPower power = player.getPower(KSMOD_MagickChargePower.POWER_ID);
-            count = power.amount / this.magicNumber;
+            count = power.amount;
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(player, player, power));
         }
         for (int i = 0; i < count; i++)
         {
-            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
+            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block, true));
         }
     }
 }

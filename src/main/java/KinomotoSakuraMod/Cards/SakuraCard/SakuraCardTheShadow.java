@@ -26,7 +26,7 @@ public class SakuraCardTheShadow extends KSMOD_AbstractMagicCard
     private static final CardRarity CARD_RARITY = CardRarity.SPECIAL;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
     private static final int BASE_BLOCK = 8;
-    private static final int BASE_MAGIC_NUMBER = 1;
+    private static final int BASE_MAGIC_NUMBER = 2;
 
     static
     {
@@ -41,6 +41,7 @@ public class SakuraCardTheShadow extends KSMOD_AbstractMagicCard
         this.tags.add(KSMOD_CustomTag.KSMOD_EARTHY_CARD);
         this.baseBlock = BASE_BLOCK;
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
+        this.exhaust = true;
     }
 
     @Override
@@ -69,5 +70,10 @@ public class SakuraCardTheShadow extends KSMOD_AbstractMagicCard
     {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new IntangiblePower(player, this.magicNumber), this.magicNumber));
+    }
+
+    public void atTurnStart()
+    {
+        this.retain = true;
     }
 }

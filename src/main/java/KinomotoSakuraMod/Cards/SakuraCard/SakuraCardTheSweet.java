@@ -64,6 +64,6 @@ public class SakuraCardTheSweet extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_SweetPower_SakuraCard(player, this.magicNumber), this.magicNumber));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_SweetPower_SakuraCard(player, this.baseMagicNumber), this.baseMagicNumber));
     }
 }
