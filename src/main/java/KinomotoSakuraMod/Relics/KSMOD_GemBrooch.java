@@ -96,7 +96,7 @@ public class KSMOD_GemBrooch extends CustomRelic
     {
         card.upgrade();
         AbstractDungeon.player.bottledCardUpgradeCheck(card);
-        AbstractDungeon.effectList.add(new ShowCardBrieflyEffect(card.makeStatEquivalentCopy(),
+        AbstractDungeon.topLevelEffectsQueue.add(new ShowCardBrieflyEffect(card.makeStatEquivalentCopy(),
                 MathUtils.random(0.1F, 0.9F) * Settings.WIDTH,
                 MathUtils.random(0.25F, 0.75F) * Settings.HEIGHT));
     }
