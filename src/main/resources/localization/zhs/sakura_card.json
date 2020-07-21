@@ -10,7 +10,7 @@
   "ClowCardTheBig": {
     "NAME": "大",
     "DESCRIPTION": "「 火 」 NL 获得 !M! 点 力量 ，失去1点 敏捷 。",
-    "UPGRADE_DESCRIPTION": "「 火 」获得 !M! 点 力量。",
+    "UPGRADE_DESCRIPTION": "「 火 」获得 !M! 点 力量 。",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheBubbles": {
@@ -573,7 +573,7 @@
   },
   "SakuraCardTheLibra": {
     "NAME": "秤",
-    "DESCRIPTION": "「 小樱牌 」「 火 」 NL 消耗所有 魔力充能 ，每消耗 !M! 层获得 !B! 点 格挡 。",
+    "DESCRIPTION": "「 小樱牌 」「 火 」 NL 消耗所有 魔力充能 ，每层获得 !B! 点 格挡 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -645,13 +645,13 @@
   },
   "SakuraCardTheSand": {
     "NAME": "沙",
-    "DESCRIPTION": "「 小樱牌 」「 地 」 NL 造成 !D! 点伤害，给与 !M! 层 中毒 。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」 NL 造成 !D! 点伤害，给与1层 中毒  !M! 次。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheShadow": {
     "NAME": "影",
-    "DESCRIPTION": "「 小樱牌 」「 地 」 NL 获得 !B! 点 格挡 ， !M! 层 无实体 。",
+    "DESCRIPTION": "「 小樱牌 」「 地 」 消耗 。 NL 获得 !B! 点 格挡 ， !M! 层 无实体 。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

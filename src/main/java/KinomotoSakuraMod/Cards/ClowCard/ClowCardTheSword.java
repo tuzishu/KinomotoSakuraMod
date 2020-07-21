@@ -143,7 +143,7 @@ public class ClowCardTheSword extends KSMOD_AbstractMagicCard
     {
         for (AbstractCard c : group.group)
         {
-            if (c.cardID.equals(ID))
+            if (c.cardID.contains(ID))
             {
                 c.baseDamage = MathUtils.floor((c.upgraded ? BASE_DAMAGE + UPGRADE_DAMAGE : BASE_DAMAGE) * correction);
             }

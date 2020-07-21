@@ -155,7 +155,7 @@
   },
   "ClowCardTheLibra": {
     "NAME": "Libra",
-    "DESCRIPTION": "[ Firey ] NL Gain !B! Block, or double if you have no Block.",
+    "DESCRIPTION": "[ Firey ] NL Gain !B! Block, or double if you have no Block with losing !M! Magick-Charge.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       " Gain extra ",
@@ -574,7 +574,7 @@
   },
   "SakuraCardTheLibra": {
     "NAME": "Libra",
-    "DESCRIPTION": "[ Sakura-Card ][ Firey ] NL Remove all Magick-Charge, gain !B! Block for every !M! Magick-Charge removed.",
+    "DESCRIPTION": "[ Sakura-Card ][ Firey ] NL Remove all Magick-Charge, gain !B! Block for each Magick-Charge removed.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -646,7 +646,7 @@
   },
   "SakuraCardTheSand": {
     "NAME": "Sand",
-    "DESCRIPTION": "[ Sakura-Card ][ Earthy ] NL Deal !D! damage, apply !M! Poison.",
+    "DESCRIPTION": "[ Sakura-Card ][ Earthy ] NL Deal !D! damage, apply 1 Poison !M! times.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },

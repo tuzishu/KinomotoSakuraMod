@@ -139,7 +139,7 @@ public class ClowCardTheShield extends KSMOD_AbstractMagicCard
     {
         for (AbstractCard c : group.group)
         {
-            if (c.cardID.equals(ID))
+            if (c.cardID.contains(ID))
             {
                 c.baseBlock = MathUtils.floor((c.upgraded ? BASE_BLOCK + UPGRADE_BLOCK : BASE_BLOCK) * correction);
             }
