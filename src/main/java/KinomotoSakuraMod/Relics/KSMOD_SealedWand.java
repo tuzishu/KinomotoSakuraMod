@@ -11,7 +11,7 @@ public class KSMOD_SealedWand extends KSMOD_AbstractWand
     private static final RelicTier RELIC_TIER = RelicTier.STARTER;
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
     private static final int GAIN_NUMBER = 3;
-    private static final int EXTRA_GAIN_NUMBER = 3;
+    private static final int EXTRA_GAIN_NUMBER = 2;
     private static final int BASE_TRIGGER_NUMBER = 40;
     private static final int UPDATE_TRIGGER_NUMBER = 20;
 
