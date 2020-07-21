@@ -116,8 +116,8 @@
   },
   "ClowCardTheFly": {
     "NAME": "飞",
-    "DESCRIPTION": "「 风 」 NL 获得 !B! 点格挡， 抽 !M! 张牌。",
-    "UPGRADE_DESCRIPTION": "Null",
+    "DESCRIPTION": "「 风 」 NL 抽 !M! 张牌。消耗3层 魔力充能 。",
+    "UPGRADE_DESCRIPTION": "「 风 」 NL 抽 !M! 张牌。",
     "EXTENDED_DESCRIPTION": [
       "额外抽",
       "张牌。"

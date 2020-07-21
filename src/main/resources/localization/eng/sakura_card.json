@@ -116,7 +116,7 @@
   },
   "ClowCardTheFly": {
     "NAME": "Fly",
-    "DESCRIPTION": "[ Windy ] NL Gain !B! Block. NL Draw !M! cards.",
+    "DESCRIPTION": "[ Windy ] NL Draw !M! cards. Lose 3 Magick-Charge.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       " Draw extra ",
