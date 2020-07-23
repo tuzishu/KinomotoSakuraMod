@@ -30,8 +30,11 @@ public class ClowCardTheSword extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.BASIC;
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
-    private static final int BASE_DAMAGE = 6;
-    private static final int UPGRADE_DAMAGE = 3;
+    public static final int BASE_DAMAGE = 6;
+    public static final int UPGRADE_DAMAGE = 3;
+    private static final float LONE_RATE = 0.2F;
+    private static final float MAX_LONE_RATE = 0.6F;
+    private static final int BASE_COUNT = 4;
 
     static
     {
@@ -49,6 +52,7 @@ public class ClowCardTheSword extends KSMOD_AbstractMagicCard
         this.tags.add(CardTags.STARTER_STRIKE);
         this.cardsToPreview = new SakuraCardTheSword();
         this.baseDamage = BASE_DAMAGE;
+        this.misc = BASE_COUNT;
     }
 
     @Override
@@ -57,8 +61,9 @@ public class ClowCardTheSword extends KSMOD_AbstractMagicCard
         if (!this.upgraded)
         {
             upgradeName();
-            this.baseDamage = MathUtils.floor((BASE_DAMAGE + UPGRADE_DAMAGE) * GetCorrection());
+            this.baseDamage = GetDamage(this);
             this.upgradedDamage = true;
+            initializeDescription();
         }
     }
 
@@ -68,23 +73,18 @@ public class ClowCardTheSword extends KSMOD_AbstractMagicCard
         return new ClowCardTheSword();
     }
 
+
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster,
-                new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL),
-                AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
     }
 
     @Override
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster,
-                new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL),
-                AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster,
-                new DamageInfo(player, KSMOD_SealedBook.REAL_DAMAGE, DamageInfo.DamageType.HP_LOSS),
-                AbstractGameAction.AttackEffect.SLASH_HEAVY));
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, KSMOD_SealedBook.REAL_DAMAGE, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.SLASH_HEAVY));
     }
 
     @Override
@@ -95,10 +95,11 @@ public class ClowCardTheSword extends KSMOD_AbstractMagicCard
 
     public void onRemoveFromMasterDeck()
     {
-        SetDamage(GetCorrection());
+        ResetMisc();
+        SetDamage();
     }
 
-    private float GetCorrection()
+    private void ResetMisc()
     {
         int amount = 0;
         if (AbstractDungeon.player instanceof KinomotoSakura)
@@ -110,43 +111,33 @@ public class ClowCardTheSword extends KSMOD_AbstractMagicCard
                     amount += 1;
                 }
             }
-            amount = MathUtils.clamp(amount, 0, 4);
         }
-        else
-        {
-            amount = 4;
-        }
-        switch (amount)
-        {
-            case 0:
-            case 1:
-                return 8F / 5F;
-            case 2:
-                return 7F / 5F;
-            case 3:
-                return 6F / 5F;
-            default:
-                return 5F / 5F;
-        }
+        this.misc = MathUtils.clamp(amount, 1, 4);
     }
 
-    private void SetDamage(float correction)
+    private void SetDamage()
     {
-        SetGroup(AbstractDungeon.player.masterDeck, correction);
-        SetGroup(AbstractDungeon.player.hand, correction);
-        SetGroup(AbstractDungeon.player.drawPile, correction);
-        SetGroup(AbstractDungeon.player.discardPile, correction);
-        SetGroup(AbstractDungeon.player.exhaustPile, correction);
+        SetGroup(AbstractDungeon.player.masterDeck);
+        SetGroup(AbstractDungeon.player.hand);
+        SetGroup(AbstractDungeon.player.drawPile);
+        SetGroup(AbstractDungeon.player.discardPile);
+        SetGroup(AbstractDungeon.player.exhaustPile);
     }
 
-    private void SetGroup(CardGroup group, float correction)
+    private void SetGroup(CardGroup group)
     {
         for (AbstractCard c : group.group)
         {
             if (c.cardID.contains(ID))
             {
-                c.baseDamage = MathUtils.floor((c.upgraded ? BASE_DAMAGE + UPGRADE_DAMAGE : BASE_DAMAGE) * correction);
+                c.misc = this.misc;
+                c.baseDamage = GetDamage(c);
             }
         }
+    }
+
+    public int GetDamage(AbstractCard card)
+    {
+        return MathUtils.floor((BASE_DAMAGE + (card.upgraded ? UPGRADE_DAMAGE : 0)) * (1F + MathUtils.clamp((BASE_COUNT - card.misc) * LONE_RATE, 0, MAX_LONE_RATE)));
     }
 }

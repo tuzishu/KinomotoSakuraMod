@@ -30,8 +30,11 @@ public class ClowCardTheShield extends KSMOD_AbstractMagicCard
     private static final CardColor CARD_COLOR = KSMOD_CustomCardColor.CLOWCARD_COLOR;
     private static final CardRarity CARD_RARITY = CardRarity.BASIC;
     private static final CardTarget CARD_TARGET = CardTarget.SELF;
-    private static final int BASE_BLOCK = 5;
-    private static final int UPGRADE_BLOCK = 3;
+    public static final int BASE_BLOCK = 5;
+    public static final int UPGRADE_BLOCK = 3;
+    private static final float LONE_RATE = 0.2F;
+    private static final float MAX_LONE_RATE = 0.6F;
+    private static final int BASE_COUNT = 4;
 
     static
     {
@@ -48,6 +51,7 @@ public class ClowCardTheShield extends KSMOD_AbstractMagicCard
         this.tags.add(CardTags.STARTER_DEFEND);
         this.cardsToPreview = new SakuraCardTheShield();
         this.baseBlock = BASE_BLOCK;
+        this.misc = BASE_COUNT;
     }
 
     @Override
@@ -56,8 +60,9 @@ public class ClowCardTheShield extends KSMOD_AbstractMagicCard
         if (!this.upgraded)
         {
             upgradeName();
-            this.baseBlock = MathUtils.floor((BASE_BLOCK + UPGRADE_BLOCK) * GetCorrection());
+            this.baseBlock = GetBlock(this);
             this.upgradedBlock = true;
+            initializeDescription();
         }
     }
 
@@ -77,10 +82,7 @@ public class ClowCardTheShield extends KSMOD_AbstractMagicCard
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
         applyNormalEffect(player, monster);
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player,
-                player,
-                new MetallicizePower(player, KSMOD_SealedBook.METALLICIZE_NUMBER),
-                KSMOD_SealedBook.METALLICIZE_NUMBER));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new MetallicizePower(player, KSMOD_SealedBook.METALLICIZE_NUMBER), KSMOD_SealedBook.METALLICIZE_NUMBER));
     }
 
     @Override
@@ -91,10 +93,11 @@ public class ClowCardTheShield extends KSMOD_AbstractMagicCard
 
     public void onRemoveFromMasterDeck()
     {
-        SetBlock(GetCorrection());
+        ResetMisc();
+        SetDamage();
     }
 
-    private float GetCorrection()
+    private void ResetMisc()
     {
         int amount = 0;
         if (AbstractDungeon.player instanceof KinomotoSakura)
@@ -106,43 +109,33 @@ public class ClowCardTheShield extends KSMOD_AbstractMagicCard
                     amount += 1;
                 }
             }
-            amount = MathUtils.clamp(amount, 0, 4);
         }
-        else
-        {
-            amount = 4;
-        }
-        switch (amount)
-        {
-            case 0:
-            case 1:
-                return 8F / 5F;
-            case 2:
-                return 7F / 5F;
-            case 3:
-                return 6F / 5F;
-            default:
-                return 5F / 5F;
-        }
+        this.misc = MathUtils.clamp(amount, 1, 4);
     }
 
-    private void SetBlock(float correction)
+    private void SetDamage()
     {
-        SetGroup(AbstractDungeon.player.masterDeck, correction);
-        SetGroup(AbstractDungeon.player.hand, correction);
-        SetGroup(AbstractDungeon.player.drawPile, correction);
-        SetGroup(AbstractDungeon.player.discardPile, correction);
-        SetGroup(AbstractDungeon.player.exhaustPile, correction);
+        SetGroup(AbstractDungeon.player.masterDeck);
+        SetGroup(AbstractDungeon.player.hand);
+        SetGroup(AbstractDungeon.player.drawPile);
+        SetGroup(AbstractDungeon.player.discardPile);
+        SetGroup(AbstractDungeon.player.exhaustPile);
     }
 
-    private void SetGroup(CardGroup group, float correction)
+    private void SetGroup(CardGroup group)
     {
         for (AbstractCard c : group.group)
         {
             if (c.cardID.contains(ID))
             {
-                c.baseBlock = MathUtils.floor((c.upgraded ? BASE_BLOCK + UPGRADE_BLOCK : BASE_BLOCK) * correction);
+                c.misc = this.misc;
+                c.baseDamage = GetBlock(c);
             }
         }
+    }
+
+    public int GetBlock(AbstractCard card)
+    {
+        return MathUtils.floor((BASE_BLOCK + (card.upgraded ? UPGRADE_BLOCK : 0)) * (1F + MathUtils.clamp((BASE_COUNT - card.misc) * LONE_RATE, 0, MAX_LONE_RATE)));
     }
 }
