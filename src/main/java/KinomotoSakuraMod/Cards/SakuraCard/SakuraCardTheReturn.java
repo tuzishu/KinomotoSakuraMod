@@ -99,7 +99,7 @@ public class SakuraCardTheReturn extends KSMOD_AbstractMagicCard
                 return;
             }
         }
-        AbstractDungeon.actionManager.addToBottom(new TalkAction(true, KinomotoSakura.GetMessage(4), 1.0F, 2.0F));
+        AbstractDungeon.actionManager.addToBottom(new TalkAction(true, KinomotoSakura.GetMessage(4), 1.0F, 5.0F));
     }
 
     @Override

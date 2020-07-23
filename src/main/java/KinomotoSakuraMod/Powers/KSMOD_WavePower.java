@@ -44,7 +44,7 @@ public class KSMOD_WavePower extends KSMOD_CustomPower
     {
         if (card.type == AbstractCard.CardType.ATTACK)
         {
-            AbstractDungeon.actionManager.addToTop(new GainBlockAction(this.owner, this.owner, this.amount));
+            AbstractDungeon.actionManager.addToTop(new GainBlockAction(this.owner, this.owner, this.amount, true));
         }
     }
 }

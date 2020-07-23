@@ -38,9 +38,9 @@ public class KSMOD_TeddyBear extends CustomRelic
 
     public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction)
     {
-        if (targetCard.color == KSMOD_CustomCardColor.SPELL_COLOR)
+        if (targetCard.color == KSMOD_CustomCardColor.SPELL_COLOR && !targetCard.cardID.equals(SpellCardEmptySpell.ID))
         {
-            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, BLOCK_NUMBER));
+            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, BLOCK_NUMBER, true));
         }
     }
 }

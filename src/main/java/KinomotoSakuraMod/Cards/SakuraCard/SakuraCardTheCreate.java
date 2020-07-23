@@ -116,7 +116,7 @@ public class SakuraCardTheCreate extends KSMOD_AbstractMagicCard
     {
         AbstractRelic relic;
         ArrayList<AbstractRelic> relicList = new ArrayList<>();
-        for (AbstractRelic r : KSMOD.GetRelicList())
+        for (AbstractRelic r : KSMOD.GetRelics())
         {
             if (r.tier == AbstractRelic.RelicTier.COMMON && isRelicPoolContains(r.relicId, AbstractDungeon.commonRelicPool))
             {

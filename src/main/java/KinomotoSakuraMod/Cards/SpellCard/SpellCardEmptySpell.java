@@ -34,6 +34,7 @@ public class SpellCardEmptySpell extends KSMOD_AbstractSpellCard
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET, true);
         this.exhaust = true;
         this.isEthereal = true;
+        this.purgeOnUse = true;
     }
 
     @Override

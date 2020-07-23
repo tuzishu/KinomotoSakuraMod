@@ -7,10 +7,7 @@ import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomTag;
 import KinomotoSakuraMod.Powers.*;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
-import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
-import KinomotoSakuraMod.Utility.KSMOD_LoggerTool;
-import KinomotoSakuraMod.Utility.KSMOD_ReflectTool;
-import KinomotoSakuraMod.Utility.KSMOD_RenderTool;
+import KinomotoSakuraMod.Utility.*;
 import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
 import basemod.abstracts.DynamicVariable;
@@ -416,7 +413,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
     {
         if (AbstractDungeon.player instanceof KinomotoSakura)
         {
-            for (AbstractCard card : AbstractDungeon.player.drawPile.group)
+            for (AbstractCard card : AbstractDungeon.player.masterDeck.group)
             {
                 if (card.cardID.equals(this.cardID))
                 {
@@ -424,6 +421,13 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                 }
             }
             for (AbstractCard card : AbstractDungeon.player.hand.group)
+            {
+                if (card.cardID.equals(this.cardID))
+                {
+                    return true;
+                }
+            }
+            for (AbstractCard card : AbstractDungeon.player.drawPile.group)
             {
                 if (card.cardID.equals(this.cardID))
                 {

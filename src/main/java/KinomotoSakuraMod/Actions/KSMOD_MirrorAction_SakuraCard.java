@@ -38,7 +38,7 @@ public class KSMOD_MirrorAction_SakuraCard extends AbstractGameAction
         if (this.duration == DURATION)
         {
             CardGroup group = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-            group.group = KSMOD.GetClowCardList();
+            group.group = KSMOD.GetClowCards();
             AbstractDungeon.gridSelectScreen.open(group, 1, false, TEXT[0]);
             this.tickDuration();
             return;

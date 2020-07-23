@@ -87,7 +87,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
     {
         KSMOD_LoggerTool.Logger.info("开始编辑遗物");
 
-        for (AbstractRelic relic : GetRelicList())
+        for (AbstractRelic relic : GetRelics())
         {
             BaseMod.addRelicToCustomPool(relic, KSMOD_CustomCardColor.CLOWCARD_COLOR);
             KSMOD_LoggerTool.Logger.info("Loading relic : " + relic.name);
@@ -96,29 +96,31 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         KSMOD_LoggerTool.Logger.info("结束编辑遗物");
     }
 
-    public static ArrayList<AbstractRelic> GetRelicList()
+    public static ArrayList<AbstractRelic> relics = null;
+    public static ArrayList<AbstractRelic> GetRelics()
     {
-        ArrayList<AbstractRelic> relicList = new ArrayList<AbstractRelic>();
-
-        relicList.add(new KSMOD_SealedWand());
-        relicList.add(new KSMOD_SealedBook());
-        relicList.add(new KSMOD_StarWand());
-        relicList.add(new KSMOD_UltimateWand());
-        relicList.add(new KSMOD_DarknessWand());
-        relicList.add(new KSMOD_Cerberus());
-        relicList.add(new KSMOD_Yue());
-        relicList.add(new KSMOD_TaoistSuit());
-        relicList.add(new KSMOD_SwordJade());
-        relicList.add(new KSMOD_TeddyBear());
-        relicList.add(new KSMOD_MoonBell());
-        relicList.add(new KSMOD_YukitosBentoBox());
-        relicList.add(new KSMOD_RollerSkates());
-        relicList.add(new KSMOD_Compass());
-        relicList.add(new KSMOD_GemBrooch());
-        relicList.add(new KSMOD_TouyasBicycle());
-        relicList.add(new KSMOD_TomoyosHeart());
-
-        return relicList;
+        if (relics == null)
+        {
+            relics = new ArrayList<>();
+            relics.add(new KSMOD_SealedWand());
+            relics.add(new KSMOD_SealedBook());
+            relics.add(new KSMOD_StarWand());
+            relics.add(new KSMOD_UltimateWand());
+            relics.add(new KSMOD_DarknessWand());
+            relics.add(new KSMOD_Cerberus());
+            relics.add(new KSMOD_Yue());
+            relics.add(new KSMOD_TaoistSuit());
+            relics.add(new KSMOD_SwordJade());
+            relics.add(new KSMOD_TeddyBear());
+            relics.add(new KSMOD_MoonBell());
+            relics.add(new KSMOD_YukitosBentoBox());
+            relics.add(new KSMOD_RollerSkates());
+            relics.add(new KSMOD_Compass());
+            relics.add(new KSMOD_GemBrooch());
+            relics.add(new KSMOD_TouyasBicycle());
+            relics.add(new KSMOD_TomoyosHeart());
+        }
+        return relics;
     }
 
     @Override
@@ -127,9 +129,9 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         KSMOD_LoggerTool.Logger.info("开始编辑卡牌");
 
         ArrayList<AbstractCard> unlockedCardList = new ArrayList<>();
-        unlockedCardList.addAll(GetClowCardList());
-        unlockedCardList.addAll(GetSpellCardList());
-        unlockedCardList.addAll(GetSakuraCardList());
+        unlockedCardList.addAll(GetClowCards());
+        unlockedCardList.addAll(GetSpellCards());
+        unlockedCardList.addAll(GetSakuraCards());
         for (AbstractCard card : unlockedCardList)
         {
             BaseMod.addCard(card);
@@ -138,7 +140,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         }
 
         ArrayList<AbstractCard> lockedCardList = new ArrayList<>();
-        // lockedCardList.addAll(GetSakuraCardList());
+        // lockedCardList.addAll(GetSakuraCards());
         for (AbstractCard card : lockedCardList)
         {
             BaseMod.addCard(card);
@@ -148,142 +150,151 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         KSMOD_LoggerTool.Logger.info("结束编辑卡牌");
     }
 
-    public static ArrayList<AbstractCard> GetClowCardList()
+    private static ArrayList<AbstractCard> clowCards = null;
+
+    public static ArrayList<AbstractCard> GetClowCards()
     {
-        ArrayList<AbstractCard> cardList = new ArrayList<AbstractCard>();
-
-        cardList.add(new ClowCardTheArrow());
-        cardList.add(new ClowCardTheBig());
-        cardList.add(new ClowCardTheBubbles());
-        cardList.add(new ClowCardTheChange());
-        cardList.add(new ClowCardTheCloud());
-        cardList.add(new ClowCardTheCreate());
-        cardList.add(new ClowCardTheDark());
-        cardList.add(new ClowCardTheDash());
-        cardList.add(new ClowCardTheDream());
-        cardList.add(new ClowCardTheEarthy());
-        cardList.add(new ClowCardTheErase());
-        cardList.add(new ClowCardTheFight());
-        cardList.add(new ClowCardTheFirey());
-        cardList.add(new ClowCardTheFloat());
-        cardList.add(new ClowCardTheFlower());
-        cardList.add(new ClowCardTheFly());
-        cardList.add(new ClowCardTheFreeze());
-        cardList.add(new ClowCardTheGlow());
-        cardList.add(new ClowCardTheIllusion());
-        cardList.add(new ClowCardTheJump());
-        cardList.add(new ClowCardTheLibra());
-        cardList.add(new ClowCardTheLight());
-        cardList.add(new ClowCardTheLittle());
-        cardList.add(new ClowCardTheLock());
-        cardList.add(new ClowCardTheLoop());
-        cardList.add(new ClowCardTheMaze());
-        cardList.add(new ClowCardTheMirror());
-        cardList.add(new ClowCardTheMist());
-        cardList.add(new ClowCardTheMove());
-        cardList.add(new ClowCardThePower());
-        cardList.add(new ClowCardTheRain());
-        cardList.add(new ClowCardTheReturn());
-        cardList.add(new ClowCardTheSand());
-        cardList.add(new ClowCardTheShadow());
-        cardList.add(new ClowCardTheShield());
-        cardList.add(new ClowCardTheShot());
-        cardList.add(new ClowCardTheSilent());
-        cardList.add(new ClowCardTheSleep());
-        cardList.add(new ClowCardTheSnow());
-        cardList.add(new ClowCardTheSong());
-        cardList.add(new ClowCardTheStorm());
-        cardList.add(new ClowCardTheSweet());
-        cardList.add(new ClowCardTheSword());
-        cardList.add(new ClowCardTheThrough());
-        cardList.add(new ClowCardTheThunder());
-        cardList.add(new ClowCardTheTime());
-        cardList.add(new ClowCardTheTwin());
-        cardList.add(new ClowCardTheVoice());
-        cardList.add(new ClowCardTheWatery());
-        cardList.add(new ClowCardTheWave());
-        cardList.add(new ClowCardTheWindy());
-        cardList.add(new ClowCardTheWood());
-
-        return cardList;
+        if (clowCards == null)
+        {
+            clowCards = new ArrayList<>();
+            clowCards.add(new ClowCardTheArrow());
+            clowCards.add(new ClowCardTheBig());
+            clowCards.add(new ClowCardTheBubbles());
+            clowCards.add(new ClowCardTheChange());
+            clowCards.add(new ClowCardTheCloud());
+            clowCards.add(new ClowCardTheCreate());
+            clowCards.add(new ClowCardTheDark());
+            clowCards.add(new ClowCardTheDash());
+            clowCards.add(new ClowCardTheDream());
+            clowCards.add(new ClowCardTheEarthy());
+            clowCards.add(new ClowCardTheErase());
+            clowCards.add(new ClowCardTheFight());
+            clowCards.add(new ClowCardTheFirey());
+            clowCards.add(new ClowCardTheFloat());
+            clowCards.add(new ClowCardTheFlower());
+            clowCards.add(new ClowCardTheFly());
+            clowCards.add(new ClowCardTheFreeze());
+            clowCards.add(new ClowCardTheGlow());
+            clowCards.add(new ClowCardTheIllusion());
+            clowCards.add(new ClowCardTheJump());
+            clowCards.add(new ClowCardTheLibra());
+            clowCards.add(new ClowCardTheLight());
+            clowCards.add(new ClowCardTheLittle());
+            clowCards.add(new ClowCardTheLock());
+            clowCards.add(new ClowCardTheLoop());
+            clowCards.add(new ClowCardTheMaze());
+            clowCards.add(new ClowCardTheMirror());
+            clowCards.add(new ClowCardTheMist());
+            clowCards.add(new ClowCardTheMove());
+            clowCards.add(new ClowCardThePower());
+            clowCards.add(new ClowCardTheRain());
+            clowCards.add(new ClowCardTheReturn());
+            clowCards.add(new ClowCardTheSand());
+            clowCards.add(new ClowCardTheShadow());
+            clowCards.add(new ClowCardTheShield());
+            clowCards.add(new ClowCardTheShot());
+            clowCards.add(new ClowCardTheSilent());
+            clowCards.add(new ClowCardTheSleep());
+            clowCards.add(new ClowCardTheSnow());
+            clowCards.add(new ClowCardTheSong());
+            clowCards.add(new ClowCardTheStorm());
+            clowCards.add(new ClowCardTheSweet());
+            clowCards.add(new ClowCardTheSword());
+            clowCards.add(new ClowCardTheThrough());
+            clowCards.add(new ClowCardTheThunder());
+            clowCards.add(new ClowCardTheTime());
+            clowCards.add(new ClowCardTheTwin());
+            clowCards.add(new ClowCardTheVoice());
+            clowCards.add(new ClowCardTheWatery());
+            clowCards.add(new ClowCardTheWave());
+            clowCards.add(new ClowCardTheWindy());
+            clowCards.add(new ClowCardTheWood());
+        }
+        return clowCards;
     }
 
-    public static ArrayList<AbstractCard> GetSpellCardList()
+    private static ArrayList<AbstractCard> spellCards = null;
+
+    public static ArrayList<AbstractCard> GetSpellCards()
     {
-        ArrayList<AbstractCard> cardList = new ArrayList<AbstractCard>();
+        if (spellCards == null)
+        {
+            spellCards = new ArrayList<>();
+            spellCards.add(new SpellCardRelease());
+            spellCards.add(new SpellCardSeal());
+            spellCards.add(new SpellCardTurn());
+            spellCards.add(new SpellCardEmptySpell());
+            spellCards.add(new SpellCardHuoShen());
+            spellCards.add(new SpellCardLeiDi());
+            spellCards.add(new SpellCardFengHua());
+            spellCards.add(new SpellCardShuiLong());
 
-        cardList.add(new SpellCardRelease());
-        cardList.add(new SpellCardSeal());
-        cardList.add(new SpellCardTurn());
-        cardList.add(new SpellCardEmptySpell());
-        cardList.add(new SpellCardHuoShen());
-        cardList.add(new SpellCardLeiDi());
-        cardList.add(new SpellCardFengHua());
-        cardList.add(new SpellCardShuiLong());
-
-        // cardList.add(new TestCard());
-
-        return cardList;
+            // spellCards.add(new TestCard());
+        }
+        return spellCards;
     }
 
-    public static ArrayList<AbstractCard> GetSakuraCardList()
+    private static ArrayList<AbstractCard> sakuraCards = null;
+
+    public static ArrayList<AbstractCard> GetSakuraCards()
     {
-        ArrayList<AbstractCard> cardList = new ArrayList<AbstractCard>();
-
-        cardList.add(new SakuraCardTheArrow());
-        cardList.add(new SakuraCardTheBig());
-        cardList.add(new SakuraCardTheBubbles());
-        cardList.add(new SakuraCardTheChange());
-        cardList.add(new SakuraCardTheCloud());
-        cardList.add(new SakuraCardTheCreate());
-        cardList.add(new SakuraCardTheDark());
-        cardList.add(new SakuraCardTheDash());
-        cardList.add(new SakuraCardTheDream());
-        cardList.add(new SakuraCardTheEarthy());
-        cardList.add(new SakuraCardTheErase());
-        cardList.add(new SakuraCardTheFight());
-        cardList.add(new SakuraCardTheFirey());
-        cardList.add(new SakuraCardTheFloat());
-        cardList.add(new SakuraCardTheFlower());
-        cardList.add(new SakuraCardTheFly());
-        cardList.add(new SakuraCardTheFreeze());
-        cardList.add(new SakuraCardTheGlow());
-        cardList.add(new SakuraCardTheIllusion());
-        cardList.add(new SakuraCardTheJump());
-        cardList.add(new SakuraCardTheLibra());
-        cardList.add(new SakuraCardTheLight());
-        cardList.add(new SakuraCardTheLittle());
-        cardList.add(new SakuraCardTheLock());
-        cardList.add(new SakuraCardTheLoop());
-        cardList.add(new SakuraCardTheMaze());
-        cardList.add(new SakuraCardTheMirror());
-        cardList.add(new SakuraCardTheMist());
-        cardList.add(new SakuraCardTheMove());
-        cardList.add(new SakuraCardThePower());
-        cardList.add(new SakuraCardTheRain());
-        cardList.add(new SakuraCardTheReturn());
-        cardList.add(new SakuraCardTheSand());
-        cardList.add(new SakuraCardTheShadow());
-        cardList.add(new SakuraCardTheShield());
-        cardList.add(new SakuraCardTheShot());
-        cardList.add(new SakuraCardTheSilent());
-        cardList.add(new SakuraCardTheSleep());
-        cardList.add(new SakuraCardTheSnow());
-        cardList.add(new SakuraCardTheSong());
-        cardList.add(new SakuraCardTheStorm());
-        cardList.add(new SakuraCardTheSweet());
-        cardList.add(new SakuraCardTheSword());
-        cardList.add(new SakuraCardTheThrough());
-        cardList.add(new SakuraCardTheThunder());
-        cardList.add(new SakuraCardTheTime());
-        cardList.add(new SakuraCardTheTwin());
-        cardList.add(new SakuraCardTheVoice());
-        cardList.add(new SakuraCardTheWatery());
-        cardList.add(new SakuraCardTheWave());
-        cardList.add(new SakuraCardTheWindy());
-        cardList.add(new SakuraCardTheWood());
-
-        return cardList;
+        if (sakuraCards == null)
+        {
+            sakuraCards = new ArrayList<>();
+            sakuraCards.add(new SakuraCardTheArrow());
+            sakuraCards.add(new SakuraCardTheBig());
+            sakuraCards.add(new SakuraCardTheBubbles());
+            sakuraCards.add(new SakuraCardTheChange());
+            sakuraCards.add(new SakuraCardTheCloud());
+            sakuraCards.add(new SakuraCardTheCreate());
+            sakuraCards.add(new SakuraCardTheDark());
+            sakuraCards.add(new SakuraCardTheDash());
+            sakuraCards.add(new SakuraCardTheDream());
+            sakuraCards.add(new SakuraCardTheEarthy());
+            sakuraCards.add(new SakuraCardTheErase());
+            sakuraCards.add(new SakuraCardTheFight());
+            sakuraCards.add(new SakuraCardTheFirey());
+            sakuraCards.add(new SakuraCardTheFloat());
+            sakuraCards.add(new SakuraCardTheFlower());
+            sakuraCards.add(new SakuraCardTheFly());
+            sakuraCards.add(new SakuraCardTheFreeze());
+            sakuraCards.add(new SakuraCardTheGlow());
+            sakuraCards.add(new SakuraCardTheIllusion());
+            sakuraCards.add(new SakuraCardTheJump());
+            sakuraCards.add(new SakuraCardTheLibra());
+            sakuraCards.add(new SakuraCardTheLight());
+            sakuraCards.add(new SakuraCardTheLittle());
+            sakuraCards.add(new SakuraCardTheLock());
+            sakuraCards.add(new SakuraCardTheLoop());
+            sakuraCards.add(new SakuraCardTheMaze());
+            sakuraCards.add(new SakuraCardTheMirror());
+            sakuraCards.add(new SakuraCardTheMist());
+            sakuraCards.add(new SakuraCardTheMove());
+            sakuraCards.add(new SakuraCardThePower());
+            sakuraCards.add(new SakuraCardTheRain());
+            sakuraCards.add(new SakuraCardTheReturn());
+            sakuraCards.add(new SakuraCardTheSand());
+            sakuraCards.add(new SakuraCardTheShadow());
+            sakuraCards.add(new SakuraCardTheShield());
+            sakuraCards.add(new SakuraCardTheShot());
+            sakuraCards.add(new SakuraCardTheSilent());
+            sakuraCards.add(new SakuraCardTheSleep());
+            sakuraCards.add(new SakuraCardTheSnow());
+            sakuraCards.add(new SakuraCardTheSong());
+            sakuraCards.add(new SakuraCardTheStorm());
+            sakuraCards.add(new SakuraCardTheSweet());
+            sakuraCards.add(new SakuraCardTheSword());
+            sakuraCards.add(new SakuraCardTheThrough());
+            sakuraCards.add(new SakuraCardTheThunder());
+            sakuraCards.add(new SakuraCardTheTime());
+            sakuraCards.add(new SakuraCardTheTwin());
+            sakuraCards.add(new SakuraCardTheVoice());
+            sakuraCards.add(new SakuraCardTheWatery());
+            sakuraCards.add(new SakuraCardTheWave());
+            sakuraCards.add(new SakuraCardTheWindy());
+            sakuraCards.add(new SakuraCardTheWood());
+        }
+        return sakuraCards;
     }
 
     public void receiveEditPotions()

@@ -23,7 +23,7 @@ public class KSMOD_EarthyPower extends KSMOD_CustomPower
     private static final String POWER_IMG_PATH = "img/powers/earthy_power.png";
     private static final AbstractPower.PowerType POWER_TYPE = AbstractPower.PowerType.BUFF;
     private static final float GAIN_POWER_VFX_DURATION = 0.5F;
-    private static final float ATTACK_VFX_DURATION = 0.2F;
+//    private static final float ATTACK_VFX_DURATION = 0.2F;
 
     static
     {
@@ -53,7 +53,7 @@ public class KSMOD_EarthyPower extends KSMOD_CustomPower
         if (card.hasTag(KSMOD_CustomTag.KSMOD_EARTHY_CARD))
         {
             AbstractDungeon.actionManager.addToBottom(new VFXAction(this.owner, new KSMOD_EarthyVFXEffect(GAIN_POWER_VFX_DURATION), GAIN_POWER_VFX_DURATION));
-            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this.owner, this.owner, KSMOD_SealedBook.EARTHY_BLOCK_NUMBER));
+            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(this.owner, this.owner, KSMOD_SealedBook.EARTHY_BLOCK_NUMBER, true));
         }
     }
 

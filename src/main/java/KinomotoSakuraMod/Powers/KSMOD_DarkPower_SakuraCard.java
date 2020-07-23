@@ -68,7 +68,7 @@ public class KSMOD_DarkPower_SakuraCard extends KSMOD_CustomPower
         ArrayList<AbstractCard> uncommonList = new ArrayList<>();
         ArrayList<AbstractCard> rareList = new ArrayList<>();
 
-        for (AbstractCard card : KSMOD.GetClowCardList())
+        for (AbstractCard card : KSMOD.GetClowCards())
         {
             switch (card.rarity)
             {
