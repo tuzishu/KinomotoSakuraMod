@@ -1,5 +1,7 @@
 package KinomotoSakuraMod.Utility;
 
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.random.Random;
 
@@ -57,5 +59,24 @@ public class KSMOD_DataTool
             return arrayList.get(new Random().random(0, arrayList.size() - 1));
         }
         return null;
+    }
+
+    /**
+     * 判断目标卡池中是否包含目标ID的卡
+     *
+     * @param group 目标卡池
+     * @param id    目标ID
+     * @return 是否包含
+     */
+    public static boolean CardGroupContains(CardGroup group, String id)
+    {
+        for (AbstractCard card : group.group)
+        {
+            if (card.cardID.equals(id))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
