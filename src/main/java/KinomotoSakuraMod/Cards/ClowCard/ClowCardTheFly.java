@@ -69,7 +69,7 @@ public class ClowCardTheFly extends KSMOD_AbstractMagicCard
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
         AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, this.magicNumber));
-        if (upgraded)
+        if (!upgraded)
         {
             if (player.hasPower(KSMOD_MagickChargePower.POWER_ID))
             {
