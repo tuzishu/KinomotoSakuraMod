@@ -1,15 +1,11 @@
 package KinomotoSakuraMod.Utility;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.random.Random;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import com.megacrit.cardcrawl.cards.CardGroup;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class KSMOD_ReflectTool
@@ -75,10 +71,20 @@ public class KSMOD_ReflectTool
         return method;
     }
 
+    public static ArrayList<String> copyingFakeList = new ArrayList<>(Arrays.asList( //
+            "preBattlePrep",//
+            "loadPlayerSave",//
+            "ExhaustPileViewScreen",//
+            "SingleCardViewPopup"//
+    ));
+//    public static ArrayList<String> copyingRealList = new ArrayList<>(Arrays.asList( //
+//            "Duplicator",// 祭坛复制事件
+//            "DollysMirror"// 多利之镜遗物
+//    ));
     /**
      * 是否正在由拷贝卡牌动作调用makecopy函数
      *
-     * @return 是否为战斗中的卡牌复制（如：双持的复制效果）
+     * @return 是否为真卡牌复制（如：双持、多利之镜、复制祭坛的复制效果）
      */
     public static boolean IsReallyCopyingCard()
     {
@@ -86,9 +92,12 @@ public class KSMOD_ReflectTool
         for (int i = 0; i < elements.length; i++)
         {
             // Logger.info(i+": "+elements[i]);
-            if (elements[i].toString().contains("makeSameInstanceOf") || elements[i].toString().contains("ExhaustPileViewScreen"))
+            for (String strR : copyingFakeList)
             {
-                return false;
+                if (elements[i].toString().contains(strR))
+                {
+                    return false;
+                }
             }
         }
         return true;
