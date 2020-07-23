@@ -154,6 +154,7 @@ public class ClowCardTheBubbles extends KSMOD_AbstractMagicCard
             powerBlackList.add(MinionPower.POWER_ID);
             powerBlackList.add(SplitPower.POWER_ID);
             powerBlackList.add(ThieveryPower.POWER_ID);
+            powerBlackList.add(TimeWarpPower.POWER_ID);
         }
         return powerBlackList;
     }
