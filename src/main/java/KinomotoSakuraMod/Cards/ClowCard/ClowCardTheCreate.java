@@ -119,7 +119,7 @@ public class ClowCardTheCreate extends KSMOD_AbstractMagicCard
                 return true;
             }
         }
-        AbstractDungeon.actionManager.addToBottom(new TalkAction(true, KinomotoSakura.GetMessage(2), 1.0F, 2.0F));
+        AbstractDungeon.actionManager.addToBottom(new TalkAction(true, KinomotoSakura.GetMessage(2), 1.0F, 5.0F));
         return false;
     }
 }
