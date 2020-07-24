@@ -72,17 +72,17 @@
     },
     {
       "NAMES": [
-        "magick-charge",
-        "Magick-Charge"
+        "mana",
+        "Mana"
       ],
-      "DESCRIPTION": "Once enough is accumulated, playing a Clow Card or Sakura Card will trigger an additional special effect of that card."
+      "DESCRIPTION": "Once enough is accumulated, playing a Clow Card will trigger an additional special effect of that card."
     },
     {
       "NAMES": [
-        "charging-state",
-        "Charging-State"
+        "charged",
+        "Charged"
       ],
-      "DESCRIPTION": "Enter this state when the #yMagick #yCharge reaches a threshold. The next non-ability, non-charging Clow card will have a special effect."
+      "DESCRIPTION": "Enter this state when the #yMana reaches a threshold. The next non-power, non-charging Clow card will have a special effect."
     },
     {
       "NAMES": [
@@ -100,7 +100,7 @@
         "sakura-cards",
         "Sakura-Cards"
       ],
-      "DESCRIPTION": "A special card obtained by converting a #yClow #yCard of the same name using #yThe #yTurn. NL #yUniqueness, there can only be one #ySakura #yCard of the same name in the master deck. NL Cannot be upgraded and does not trigger #yMagick #yCharge effects. When played, add one Void to the draw pile."
+      "DESCRIPTION": "A special card obtained by converting a #yClow #yCard of the same name using #yThe #yTurn. NL #yUniqueness, there can only be one #ySakura #yCard of the same name in the master deck. NL Cannot be upgraded and does not trigger #yMana effects. When played, add one Void to the draw pile."
     },
     {
       "NAMES": [
@@ -118,15 +118,15 @@
     },
     {
       "NAMES": [
-        "light-element-card",
-        "Light-Element-Card"
+        "light-card",
+        "Light-Card"
       ],
       "DESCRIPTION": "Light Element is the upper element of the #yEarthy #yElement and the #yFirey Element, which can trigger the effect of both those at the same time."
     },
     {
       "NAMES": [
-        "dark-element-card",
-        "Dark-Element-Card"
+        "dark-card",
+        "Dark-Card"
       ],
       "DESCRIPTION": "Dark Element is the upper element of the #yWatery #yElement and the #yWindy Element, which can trigger the effect of both those at the same time."
     },
@@ -134,31 +134,31 @@
       "NAMES": [
         "earthy",
         "Earthy",
-        "earthy-element-card.",
-        "Earthy-Element-Card."
+        "earthy-card.",
+        "Earthy-Card."
       ],
-      "DESCRIPTION": "Earthy Element Card. NL Enter earthy-element-state, when played in charging-state. NL Gain #bBlocks by using it in the #yEarthy #yElement #yState."
+      "DESCRIPTION": "Earthy Element Card. NL Enter the earthy state, when played while charged. NL Gain #bBlocks by using it in the #yEarthy #yState."
     },
     {
       "NAMES": [
-        "earthy-element-state",
-        "Earthy-Element-State"
+        "earthy-state",
+        "Earthy-State"
       ],
-      "DESCRIPTION": "When using #yEarthy #yElement #yCard, gain 4 #bBlocks."
+      "DESCRIPTION": "When using #yEarthy #yCard, gain 4 #bBlocks."
     },
     {
       "NAMES": [
         "watery",
         "Watery",
-        "watery-element-card",
-        "Watery-Element-Card"
+        "watery-card",
+        "Watery-Card"
       ],
-      "DESCRIPTION": "Earthy Element Card. NL Enter watery-element-state, when played in charging-state. NL Gain #bEnergy by using it in the #yWatery #yElement #yState."
+      "DESCRIPTION": Watery Element Card. NL Enter the watery state, when played while charged. NL Gain #bEnergy by using it in the #yWatery #yState."
     },
     {
       "NAMES": [
-        "watery-element-state",
-        "Watery-Element-State"
+        "watery-state",
+        "Watery-State"
       ],
       "DESCRIPTION": "For every #b2 #yWatery #yElement #yCards played, gain #b1 energy."
     },
@@ -166,33 +166,33 @@
       "NAMES": [
         "firey",
         "Firey",
-        "firey-element-card",
-        "Firey-Element-Card"
+        "firey-card",
+        "Firey-Card"
       ],
-      "DESCRIPTION": "Firey Element Card. NL Enter firey-element-state, when played in charging-state. NL Deal damage to all enemies by using it in the #yFirey #yElement #yState."
+      "DESCRIPTION": "Firey Element Card. NL Enter the firey state, when played while charged. NL Deal damage to all enemies by using it in the #yFirey #yState."
     },
     {
       "NAMES": [
-        "firey-element-state",
-        "Firey-Element-State"
+        "firey-state",
+        "Firey-State"
       ],
-      "DESCRIPTION": "When using #yFirey #yElement #yCard, deal 4 damage to all enemies."
+      "DESCRIPTION": "When using #yFirey #yCard, deal 4 damage to all enemies."
     },
     {
       "NAMES": [
         "windy",
         "Windy",
-        "windy-element-card",
-        "Windy-Element-Card"
+        "windy-card",
+        "Windy-Card"
       ],
-      "DESCRIPTION": "Windy Element Card. NL Enter windy-element-state, when played in charging-state. NL Draw card by using it in the #yWindy #yElement #yState."
+      "DESCRIPTION": "Windy Element Card. NL Enter the windy state, when played while charged. NL Draw card by using it in the #yWindy #yState."
     },
     {
       "NAMES": [
-        "windy-element-state",
-        "Windy-Element-State"
+        "windy-state",
+        "Windy-State"
       ],
-      "DESCRIPTION": "For every #b2 #yWindy #yElement #yCards played, draw #b1 card."
+      "DESCRIPTION": "For every #b2 #yWindy #yCards played, draw #b1 card."
     },
     {
       "NAMES": [
@@ -227,7 +227,7 @@
         "the-voice",
         "The-Voice"
       ],
-      "DESCRIPTION": "A #yClow #yCard that cannot be played. Draw an additional card when the card is drawn, will only trigger the card effect when consumed."
+      "DESCRIPTION": "Draw an additional card when the card is drawn, will only trigger the card effect when exhausted."
     },
     {
       "NAMES": [
@@ -268,42 +268,42 @@
         "sealed-wand",
         "Sealed-Wand"
       ],
-      "DESCRIPTION": "Kill the enemy can get recharge, when the recharge conditions are met, you can convert the #yClow #yCard to the #ySakura #yCard."
+      "DESCRIPTION": "Kill the enemy to get charge, when the recharge conditions are met, you can convert the #yClow #yCard to the #ySakura #yCard."
     },
     {
       "NAMES": [
         "empty-spell",
         "Empty-Spell"
       ],
-      "DESCRIPTION": "Consumptive attack card that can change element."
+      "DESCRIPTION": "Etherial spell card that can create an elemental spell."
     },
     {
       "NAMES": [
         "huo-shen",
         "Huo-Shen"
       ],
-      "DESCRIPTION": "Consumable attack card of the #yFirey #yElement that deals damage to a single target."
+      "DESCRIPTION": "Etherial attack card of the #yFirey #yElement that deals damage to a single target."
     },
     {
       "NAMES": [
         "lei-di",
         "Lei-Di"
       ],
-      "DESCRIPTION": "Consumable attack card of the #yEarthy #yElement that deals damage to a random target."
+      "DESCRIPTION": "Etherial attack card of the #yEarthy #yElement that deals damage to a random target."
     },
     {
       "NAMES": [
         "feng-hua",
         "Feng-Hua"
       ],
-      "DESCRIPTION": "Consumable attack card of the #yWindy #yElement that deals damage several times to a single target."
+      "DESCRIPTION": "Etherial attack card of the #yWindy #yElement that deals damage several times to a single target."
     },
     {
       "NAMES": [
         "shui-long",
         "Shui-Long"
       ],
-      "DESCRIPTION": "Consumable attack card of the #yWatery #yElement that deals damage to all enemies."
+      "DESCRIPTION": "Etherial attack card of the #yWatery #yElement that deals damage to all enemies."
     },
     {
       "NAMES": [
@@ -317,7 +317,7 @@
         "removable",
         "Removable"
       ],
-      "DESCRIPTION": "After use, it will be removed from the master deck. And the temporary card does not work."
+      "DESCRIPTION": "After use, it will be removed from the master deck. And temporary copies of the card do not work."
     },
     {
       "NAMES": [
@@ -338,56 +338,56 @@
         "defence-buffs",
         "Defence-Buffs"
       ],
-      "DESCRIPTION": "Includes Blocks, Metallicize, Plated Armor, Artifact, Thorns, Buffer, Intangible, Malleable, Barricade."
+      "DESCRIPTION": "Includes Block, Metallicize, Plated Armor, Artifact, Thorns, Buffer, Intangible, Malleable, Barricade."
     },
     {
       "NAMES": [
         "protect",
         "Protect"
       ],
-      "DESCRIPTION": "Gain Block when exhasuts."
+      "DESCRIPTION": "Gain Block when this card is exhausted."
     },
     {
       "NAMES": [
         "echo",
         "Echo"
       ],
-      "DESCRIPTION": "When exhausted by The-Song, extra apply its effect."
+      "DESCRIPTION": "When exhausted by The-Song, apply its effect additional times."
     },
     {
       "NAMES": [
         "cost-decreasing",
         "Cost-Decreasing"
       ],
-      "DESCRIPTION": "At the start of each battle, the cost is reduced by 1."
+      "DESCRIPTION": "At the start of each battle, this cards cost is permanently reduced by 1."
     },
     {
       "NAMES": [
         "entity-limited",
         "Entity-Limited"
       ],
-      "DESCRIPTION": "This card can only be effective when it comes from the combat bonus. The temporary one gained during the battle will not have an effect."
+      "DESCRIPTION": "This card can only be effective when it comes from the combat bonus. The temporary copies made during the battle will not have an effect."
     },
     {
       "NAMES": [
         "continuously",
         "Continuously"
       ],
-      "DESCRIPTION": "When playing, add the same card to your hand."
+      "DESCRIPTION": "When playing, add a copy of the same card to your hand."
     },
     {
       "NAMES": [
         "target-frozen",
         "Target-Frozen"
       ],
-      "DESCRIPTION": "Interrupts the current action of target if it is not a boss or elite."
+      "DESCRIPTION": "Stun the target if it is not a boss or elite."
     },
     {
       "NAMES": [
         "charging-limited",
         "Charging-Limited"
       ],
-      "DESCRIPTION": "It can only be played in Charging State."
+      "DESCRIPTION": "It can only be played in the Charged State."
     },
     {
       "NAMES": [
