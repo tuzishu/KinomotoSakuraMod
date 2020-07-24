@@ -41,7 +41,6 @@ public class ClowCardTheSong extends KSMOD_AbstractMagicCard
         this.tags.add(KSMOD_CustomTag.KSMOD_WINDY_CARD);
         this.cardsToPreview = new SakuraCardTheSong();
         this.baseDamage = BASE_DAMAGE;
-        this.baseBlock = 0;
     }
 
     @Override
@@ -63,13 +62,13 @@ public class ClowCardTheSong extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new KSMOD_SongAction(this.damage, this.block));
+        AbstractDungeon.actionManager.addToBottom(new KSMOD_SongAction(this.damage));
     }
 
     @Override
     public void applyExtraEffect(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new KSMOD_SongAction(this.damage, this.block, KSMOD_SealedBook.SONG_NUMBER));
+        AbstractDungeon.actionManager.addToBottom(new KSMOD_SongAction(this.damage, KSMOD_SealedBook.SONG_NUMBER));
     }
 
     @Override

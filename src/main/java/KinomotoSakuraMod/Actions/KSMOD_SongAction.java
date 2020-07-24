@@ -27,7 +27,6 @@ public class KSMOD_SongAction extends AbstractGameAction
     private static final float WAVE_EFFECT_DURATION = 0.6F;
     private AbstractPlayer player;
     private int damage;
-    private int block;
     private int extraCount;
 
     static
@@ -36,18 +35,17 @@ public class KSMOD_SongAction extends AbstractGameAction
         TEXT = uiStrings.TEXT;
     }
 
-    public KSMOD_SongAction(int damage, int block)
+    public KSMOD_SongAction(int damage)
     {
-        this(damage, block, 0);
+        this(damage, 0);
     }
 
-    public KSMOD_SongAction(int damage, int block, int extraCount)
+    public KSMOD_SongAction(int damage, int extraCount)
     {
         this.actionType = ActionType.DAMAGE;
         this.player = AbstractDungeon.player;
         this.duration = DURATION;
         this.damage = damage;
-        this.block = block;
         this.extraCount = extraCount;
     }
 
@@ -97,10 +95,6 @@ public class KSMOD_SongAction extends AbstractGameAction
         for (int i = 0; i < count; i++)
         {
             AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, KSMOD_DataTool.GetDamageList(this.damage), DamageInfo.DamageType.NORMAL, AttackEffect.BLUNT_LIGHT, true));
-        }
-        for (int i = 0; i < count; i++)
-        {
-            AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, block, true));
         }
     }
 }
