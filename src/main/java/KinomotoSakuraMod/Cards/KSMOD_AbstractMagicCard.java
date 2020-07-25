@@ -1,6 +1,7 @@
 package KinomotoSakuraMod.Cards;
 
 import KinomotoSakuraMod.Actions.KSMOD_ReleaseAction;
+import KinomotoSakuraMod.Cards.SakuraCard.SakuraCardTheLove;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Effects.KSMOD_MagickChargedEffect;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
@@ -74,7 +75,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
     private static final float PORTRAIT_ORIGIN_X = 76F;// * Settings.scale;
     private static final float PORTRAIT_ORIGIN_Y = 178F;// * Settings.scale;
     public static boolean isHandSelectScreenOpened = false;
-    private String BOTTOM_TITLE = "";
+    private String bottomTitle = "";
     private static int useChargeTimes = 0;
     private static KSMOD_MagickChargedEffect magickChargeEffect = null;
 
@@ -114,7 +115,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
 
     public abstract AbstractCard makeCopy();
 
-    public KSMOD_AbstractMagicCard getSameNameClowCard()
+    public AbstractCard getSameNameClowCard()
     {
         return null;
     }
@@ -254,16 +255,20 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
         {
             this.upgraded = true;
         }
-        String bottomTitle = this.getClass().getSimpleName();
-        if (BOTTOM_TITLE.isEmpty() && bottomTitle.contains("ClowCardThe"))
+        String bt = this.getClass().getSimpleName();
+        if (bottomTitle.isEmpty() && bt.contains("ClowCardThe"))
         {
-            bottomTitle = bottomTitle.replaceAll("ClowCardThe", "THE ");
-            BOTTOM_TITLE = bottomTitle.toUpperCase();
+            bt = bt.replaceAll("ClowCardThe", "THE ");
+            bottomTitle = bt.toUpperCase();
         }
-        if (BOTTOM_TITLE.isEmpty() && bottomTitle.contains("SakuraCardThe"))
+        if (bottomTitle.isEmpty() && bt.contains("SakuraCardThe"))
         {
-            bottomTitle = bottomTitle.replaceAll("SakuraCardThe", "THE ");
-            BOTTOM_TITLE = bottomTitle.toUpperCase();
+            bt = bt.replaceAll("SakuraCardThe", "THE ");
+            bottomTitle = bt.toUpperCase();
+        }
+        if (this.cardID.contains(SakuraCardTheLove.ID))
+        {
+            bottomTitle = "";
         }
     }
 
@@ -1611,8 +1616,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                     Color color = Settings.GREEN_TEXT_COLOR.cpy();
                     color.a = renderColor.a;
                     FontHelper.renderRotatedText(sb,
-                            font,
-                            BOTTOM_TITLE,
+                            font, bottomTitle,
                             this.current_x,
                             this.current_y,
                             0.0F,
@@ -1624,8 +1628,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                 else
                 {
                     FontHelper.renderRotatedText(sb,
-                            font,
-                            BOTTOM_TITLE,
+                            font, bottomTitle,
                             this.current_x,
                             this.current_y,
                             0.0F,
