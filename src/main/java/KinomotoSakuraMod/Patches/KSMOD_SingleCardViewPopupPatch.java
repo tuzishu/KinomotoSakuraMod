@@ -570,14 +570,14 @@ public class KSMOD_SingleCardViewPopupPatch
                     }
                     else if (card.isSeen)
                     {
-                        String BOTTOM_TITLE = (String) KSMOD_ReflectTool.GetFieldByReflect(KSMOD_AbstractMagicCard.class, "BOTTOM_TITLE").get(card);
+                        String bottomTitle = (String) KSMOD_ReflectTool.GetFieldByReflect(KSMOD_AbstractMagicCard.class, "bottomTitle").get(card);
                         if (SingleCardViewPopup.isViewingUpgrade && !((Boolean) allowUpgradePreview.invoke(view)))
                         {
-                            FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, BOTTOM_TITLE, Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + offsetToBottom * Settings.scale, Settings.GREEN_TEXT_COLOR.cpy());
+                            FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, bottomTitle, Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + offsetToBottom * Settings.scale, Settings.GREEN_TEXT_COLOR.cpy());
                         }
                         else
                         {
-                            FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, BOTTOM_TITLE, Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + offsetToBottom * Settings.scale, Settings.CREAM_COLOR.cpy());
+                            FontHelper.renderFontCentered(sb, FontHelper.SCP_cardTitleFont_small, bottomTitle, Settings.WIDTH * 0.5F, Settings.HEIGHT * 0.5F + offsetToBottom * Settings.scale, Settings.CREAM_COLOR.cpy());
                         }
                     }
                     else
