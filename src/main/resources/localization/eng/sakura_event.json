@@ -1,0 +1,15 @@
+{
+  "KSMOD_XiaoLangsFeelings": {
+    "NAME": "XiaoLang's Feelings",
+    "DESCRIPTIONS": [
+      "After solving the crisis caused by Clow Reed, the tired XiaoLang confesses to you.",
+      "XiaoLang finally fell asleep because his magic power was exhausted, but there was a happy smile on his face.",
+      "XiaoLang said nothing and left silently."
+    ],
+    "OPTIONS":[
+      "[Accept] #gReceive [ ] #gcard.",
+      "[Reject] #gHeal #gall #gHp.",
+      "[Leave]"
+    ]
+  }
+}
