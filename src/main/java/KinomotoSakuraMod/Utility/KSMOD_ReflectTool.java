@@ -18,8 +18,6 @@ public class KSMOD_ReflectTool
      * @param targetClass 目标变量所在类，一般为当前类或其父类
      * @param fieldName   变量名
      * @return 目标变量
-     * @throws NoSuchFieldException
-     * @throws IllegalAccessException
      */
     public static Field GetFieldByReflect(Class targetClass, String fieldName) throws NoSuchFieldException, IllegalAccessException
     {
@@ -47,7 +45,6 @@ public class KSMOD_ReflectTool
      * @param methodName  方法名
      * @param paramTypes  方法参数列表
      * @return 目标函数
-     * @throws NoSuchMethodException
      */
     public static Method GetMethodByReflect(Class targetClass, String methodName, Class<?>... paramTypes) throws NoSuchMethodException
     {

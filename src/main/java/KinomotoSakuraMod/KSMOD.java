@@ -4,6 +4,7 @@ import KinomotoSakuraMod.Cards.ClowCard.*;
 import KinomotoSakuraMod.Cards.SakuraCard.*;
 import KinomotoSakuraMod.Cards.SpellCard.*;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
+import KinomotoSakuraMod.Events.KSMOD_XiaoLangsFeelings;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCharacter;
 import KinomotoSakuraMod.Patches.KSMOD_CustomKeywords;
@@ -13,6 +14,7 @@ import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_LocalizeTool;
 import KinomotoSakuraMod.Utility.KSMOD_LoggerTool;
 import basemod.BaseMod;
+import basemod.eventUtil.AddEventParams;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -20,6 +22,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -97,6 +100,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
     }
 
     public static ArrayList<AbstractRelic> relics = null;
+
     public static ArrayList<AbstractRelic> GetRelics()
     {
         if (relics == null)
@@ -310,6 +314,9 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
     {
         KSMOD_LoggerTool.Logger.info("开始编辑事件");
 
+        BaseMod.addEvent(new AddEventParams.Builder(KSMOD_XiaoLangsFeelings.ID, KSMOD_XiaoLangsFeelings.class).dungeonID(TheCity.ID).playerClass(KSMOD_CustomCharacter.KINOMOTOSAKURA).create());
+//        BaseMod.addEvent(KSMOD_XiaoLangsFeelings.ID, KSMOD_XiaoLangsFeelings.class, TheCity.ID);
+
         KSMOD_LoggerTool.Logger.info("结束编辑事件");
     }
 
@@ -340,34 +347,53 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         return localizationPath;
     }
 
+    private void LoadLocalizationStrings(String fileName, Class<?> classType)
+    {
+        String filePath = GetLocalizationPath() + fileName;
+        String json = Gdx.files.internal(filePath).readString(String.valueOf(StandardCharsets.UTF_8));
+        BaseMod.loadCustomStrings(classType, json);
+    }
+
     @Override
     public void receiveEditStrings()
     {
         KSMOD_LoggerTool.Logger.info("开始编辑本地化文本");
 
-        String card = GetLocalizationPath() + "sakura_card.json";
-        String cardStrings = Gdx.files.internal(card).readString(String.valueOf(StandardCharsets.UTF_8));
-        BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
+        LoadLocalizationStrings("sakura_card.json", CardStrings.class);
+        LoadLocalizationStrings("sakura_character.json", CharacterStrings.class);
+        LoadLocalizationStrings("sakura_event.json", EventStrings.class);
+        LoadLocalizationStrings("sakura_potion.json", PotionStrings.class);
+        LoadLocalizationStrings("sakura_power.json", PowerStrings.class);
+        LoadLocalizationStrings("sakura_relic.json", RelicStrings.class);
+        LoadLocalizationStrings("sakura_ui.json", UIStrings.class);
 
-        String character = GetLocalizationPath() + "sakura_character.json";
-        String charStrings = Gdx.files.internal(character).readString(String.valueOf(StandardCharsets.UTF_8));
-        BaseMod.loadCustomStrings(CharacterStrings.class, charStrings);
-
-        String power = GetLocalizationPath() + "sakura_power.json";
-        String powerStrings = Gdx.files.internal(power).readString(String.valueOf(StandardCharsets.UTF_8));
-        BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
-
-        String relic = GetLocalizationPath() + "sakura_relic.json";
-        String relicStrings = Gdx.files.internal(relic).readString(String.valueOf(StandardCharsets.UTF_8));
-        BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
-
-        String ui = GetLocalizationPath() + "sakura_ui.json";
-        String uiStrings = Gdx.files.internal(ui).readString(String.valueOf(StandardCharsets.UTF_8));
-        BaseMod.loadCustomStrings(UIStrings.class, uiStrings);
-
-        String potion = GetLocalizationPath() + "sakura_potion.json";
-        String potionStrings = Gdx.files.internal(potion).readString(String.valueOf(StandardCharsets.UTF_8));
-        BaseMod.loadCustomStrings(PotionStrings.class, potionStrings);
+//        String card = GetLocalizationPath() + "sakura_card.json";
+//        String cardStrings = Gdx.files.internal(card).readString(String.valueOf(StandardCharsets.UTF_8));
+//        BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
+//
+//        String character = GetLocalizationPath() + "sakura_character.json";
+//        String charStrings = Gdx.files.internal(character).readString(String.valueOf(StandardCharsets.UTF_8));
+//        BaseMod.loadCustomStrings(CharacterStrings.class, charStrings);
+//
+//        String event = GetLocalizationPath() + "sakura_event.json";
+//        String eventStrings = Gdx.files.internal(event).readString(String.valueOf(StandardCharsets.UTF_8));
+//        BaseMod.loadCustomStrings(EventStrings.class, eventStrings);
+//
+//        String potion = GetLocalizationPath() + "sakura_potion.json";
+//        String potionStrings = Gdx.files.internal(potion).readString(String.valueOf(StandardCharsets.UTF_8));
+//        BaseMod.loadCustomStrings(PotionStrings.class, potionStrings);
+//
+//        String power = GetLocalizationPath() + "sakura_power.json";
+//        String powerStrings = Gdx.files.internal(power).readString(String.valueOf(StandardCharsets.UTF_8));
+//        BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
+//
+//        String relic = GetLocalizationPath() + "sakura_relic.json";
+//        String relicStrings = Gdx.files.internal(relic).readString(String.valueOf(StandardCharsets.UTF_8));
+//        BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
+//
+//        String ui = GetLocalizationPath() + "sakura_ui.json";
+//        String uiStrings = Gdx.files.internal(ui).readString(String.valueOf(StandardCharsets.UTF_8));
+//        BaseMod.loadCustomStrings(UIStrings.class, uiStrings);
 
         KSMOD_LoggerTool.Logger.info("结束编辑本地化文本");
     }

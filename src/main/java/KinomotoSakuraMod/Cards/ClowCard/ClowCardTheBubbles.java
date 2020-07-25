@@ -36,7 +36,7 @@ public class ClowCardTheBubbles extends KSMOD_AbstractMagicCard
     private static final CardTarget CARD_TARGET = CardTarget.ENEMY;
     private static final int BASE_DAMAGE = 5;
     private static final int BASE_MAGIC_NUMBER = 2;
-    private static final ArrayList<String> powerBlackList = new ArrayList<>();
+    public static final ArrayList<String> powerBlackList = new ArrayList<>();
 
     static
     {
@@ -45,6 +45,16 @@ public class ClowCardTheBubbles extends KSMOD_AbstractMagicCard
         DESCRIPTION = cardStrings.DESCRIPTION;
         UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
         EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
+        powerBlackList.add(ModeShiftPower.POWER_ID);
+        powerBlackList.add(RegrowPower.POWER_ID);
+        powerBlackList.add(FadingPower.POWER_ID);
+        powerBlackList.add(ShiftingPower.POWER_ID);
+        powerBlackList.add(UnawakenedPower.POWER_ID);
+        powerBlackList.add(InvinciblePower.POWER_ID);
+        powerBlackList.add(MinionPower.POWER_ID);
+        powerBlackList.add(SplitPower.POWER_ID);
+        powerBlackList.add(ThieveryPower.POWER_ID);
+        powerBlackList.add(TimeWarpPower.POWER_ID);
     }
 
     public ClowCardTheBubbles()
@@ -105,7 +115,7 @@ public class ClowCardTheBubbles extends KSMOD_AbstractMagicCard
         ArrayList<AbstractPower> buffs = new ArrayList<>();
         for (AbstractPower power : monster.powers)
         {
-            if (power.type == AbstractPower.PowerType.BUFF && !KSMOD_DataTool.IsStringListContains(GetUnremovablePowerList(), power.ID))
+            if (power.type == AbstractPower.PowerType.BUFF && !KSMOD_DataTool.IsStringListContains(powerBlackList, power.ID))
             {
                 buffs.add(power);
             }
@@ -124,7 +134,7 @@ public class ClowCardTheBubbles extends KSMOD_AbstractMagicCard
         ArrayList<AbstractPower> buffs = new ArrayList<>();
         for (AbstractPower power : monster.powers)
         {
-            if (power.type == AbstractPower.PowerType.BUFF && !KSMOD_DataTool.IsStringListContains(GetUnremovablePowerList(), power.ID))
+            if (power.type == AbstractPower.PowerType.BUFF && !KSMOD_DataTool.IsStringListContains(powerBlackList, power.ID))
             {
                 buffs.add(power);
             }
@@ -139,23 +149,5 @@ public class ClowCardTheBubbles extends KSMOD_AbstractMagicCard
             }
         }
         return hasbuffremoved;
-    }
-
-    public static ArrayList<String> GetUnremovablePowerList()
-    {
-        if (powerBlackList.size() == 0)
-        {
-            powerBlackList.add(ModeShiftPower.POWER_ID);
-            powerBlackList.add(RegrowPower.POWER_ID);
-            powerBlackList.add(FadingPower.POWER_ID);
-            powerBlackList.add(ShiftingPower.POWER_ID);
-            powerBlackList.add(UnawakenedPower.POWER_ID);
-            powerBlackList.add(InvinciblePower.POWER_ID);
-            powerBlackList.add(MinionPower.POWER_ID);
-            powerBlackList.add(SplitPower.POWER_ID);
-            powerBlackList.add(ThieveryPower.POWER_ID);
-            powerBlackList.add(TimeWarpPower.POWER_ID);
-        }
-        return powerBlackList;
     }
 }
