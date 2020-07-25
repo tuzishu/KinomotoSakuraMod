@@ -601,6 +601,12 @@
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
+  "SakuraCardTheLove": {
+    "NAME": " ",
+    "DESCRIPTION": "「 小樱牌 」无法被打出，抽到时获得 !M! 能量。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
   "SakuraCardTheMaze": {
     "NAME": "迷",
     "DESCRIPTION": "「 小樱牌 」「 地 」 NL 获得 !B! 点 格挡  !M! 次。",

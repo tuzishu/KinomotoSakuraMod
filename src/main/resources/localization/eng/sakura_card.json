@@ -602,6 +602,12 @@
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
+  "SakuraCardTheLove": {
+    "NAME": " ",
+    "DESCRIPTION": "[ Sakura-Card ] NL Unable to be played, gain !M! energy when drawn.",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
   "SakuraCardTheMaze": {
     "NAME": "Maze",
     "DESCRIPTION": "[ Sakura-Card ][ Earthy ] NL Gain !B! Block !M! times.",
