@@ -560,6 +560,12 @@
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
+  "SakuraCardTheHope": {
+    "NAME": "Hope",
+    "DESCRIPTION": "[ Sakura-Card ] NL All your Damage and Block are doubled.",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
   "SakuraCardTheIllusion": {
     "NAME": "Illusion",
     "DESCRIPTION": "[ Sakura-Card ][ Windy ] Innate. Exhaust. NL Apply !M! Weakened and Vulnerable.",

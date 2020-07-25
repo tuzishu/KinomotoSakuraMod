@@ -1,6 +1,8 @@
 package KinomotoSakuraMod.Relics;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
+import KinomotoSakuraMod.Cards.SakuraCard.SakuraCardTheHope;
+import KinomotoSakuraMod.Cards.SakuraCard.SakuraCardTheLove;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Effects.KSMOD_SealOrbEffect;
@@ -155,6 +157,10 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
         {
             for (AbstractCard card : AbstractDungeon.player.masterDeck.group)
             {
+                if (card.cardID.contains(SakuraCardTheLove.ID) || card.cardID.contains(SakuraCardTheHope.ID))
+                {
+                    break;
+                }
                 if (card.cardID.contains("SakuraCardThe") || card.cardID.contains("SpellCardTurn"))
                 {
                     sakuraCardAmount += 1;

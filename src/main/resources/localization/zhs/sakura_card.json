@@ -559,6 +559,12 @@
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
+  "SakuraCardTheHope": {
+    "NAME": "希望",
+    "DESCRIPTION": "「 小樱牌 」 NL 你的所有伤害和 格挡 翻倍。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
   "SakuraCardTheIllusion": {
     "NAME": "幻",
     "DESCRIPTION": "「 小樱牌 」「 风 」 固有 。 消耗 。 NL 给与 !M! 层 虚弱 和 !M! 层 易伤 。",
