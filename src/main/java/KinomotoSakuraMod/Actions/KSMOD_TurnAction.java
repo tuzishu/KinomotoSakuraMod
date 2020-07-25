@@ -1,5 +1,6 @@
 package KinomotoSakuraMod.Actions;
 
+import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheNothing;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
 import KinomotoSakuraMod.Cards.SpellCard.SpellCardTurn;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
@@ -117,7 +118,7 @@ public class KSMOD_TurnAction extends AbstractGameAction
 
     private boolean IsCorrectCardType(AbstractCard card)
     {
-        if (card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR)
+        if (card.color == KSMOD_CustomCardColor.CLOWCARD_COLOR && !card.cardID.equals(ClowCardTheNothing.ID))
         {
             String cardID = card.cardID;
             if (cardID.contains("ClowCardThe"))
@@ -155,17 +156,12 @@ public class KSMOD_TurnAction extends AbstractGameAction
         catch (Exception e)
         {
             e.printStackTrace();
-            AbstractDungeon.effectList.add(new ThoughtBubble(player.dialogX,
-                    player.dialogY,
-                    3.0F,
-                    KinomotoSakura.GetMessage(0),
-                    true));
+            AbstractDungeon.effectList.add(new ThoughtBubble(player.dialogX, player.dialogY, 3.0F, KinomotoSakura.GetMessage(0), true));
             sakuraCard = clowCard;
             AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(new SpellCardTurn()));
         }
         RemoveTargetClowCardFromMasterDeck(clowCard);
-        AbstractDungeon.actionManager.addToBottom(new KSMOD_TurnVFXAction((KSMOD_AbstractMagicCard) clowCard,
-                (KSMOD_AbstractMagicCard) sakuraCard));
+        AbstractDungeon.actionManager.addToBottom(new KSMOD_TurnVFXAction((KSMOD_AbstractMagicCard) clowCard, (KSMOD_AbstractMagicCard) sakuraCard));
 //        AbstractDungeon.actionManager.addToBottom(new VFXAction(new HeartBuffEffect(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY)));
 //        AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(sakuraCard));
     }

@@ -220,6 +220,12 @@
       "张 空道符 。"
     ]
   },
+  "ClowCardTheNothing": {
+    "NAME": "无",
+    "DESCRIPTION": "你的所有 库洛牌 和 小樱牌 耗能变为0，并获得 回击  !D! 和 保护  !B! ，打出时将被消耗。 吞噬  !M! 。",
+    "UPGRADE_DESCRIPTION": "你的所有 库洛牌 和 小樱牌 耗能变为0，并获得 回击  !D! 和 保护  !B! ，打出时将被消耗。",
+    "EXTENDED_DESCRIPTION": []
+  },
   "ClowCardThePower": {
     "NAME": "力",
     "DESCRIPTION": "「 火 」 NL 造成 !D! 点伤害。失去 !M! 层 力量 。",

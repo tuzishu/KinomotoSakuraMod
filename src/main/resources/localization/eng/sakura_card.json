@@ -220,6 +220,12 @@
       " Empty-Spell."
     ]
   },
+  "ClowCardTheNothing": {
+    "NAME": "Nothing",
+    "DESCRIPTION": "Clow-Cards and Sakura-Cards cost 0, gain Counterattack !D!, Protect !B! and exhaust when played them. Swallow !M!.",
+    "UPGRADE_DESCRIPTION": "Clow-Cards and Sakura-Cards cost 0, gain Counterattack !D!, Protect !B! and exhaust when played them.",
+    "EXTENDED_DESCRIPTION": []
+  },
   "ClowCardThePower": {
     "NAME": "Power",
     "DESCRIPTION": "[ Firey ] NL Deal !D! damage. NL Lose !M! Strength.",

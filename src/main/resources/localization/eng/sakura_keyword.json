@@ -342,6 +342,13 @@
     },
     {
       "NAMES": [
+        "counterattack",
+        "Counterattack"
+      ],
+      "DESCRIPTION": "When consumed, damage all enemies."
+    },
+    {
+      "NAMES": [
         "protect",
         "Protect"
       ],
@@ -395,6 +402,13 @@
         "Lone-Ranger"
       ],
       "DESCRIPTION": "When there are less than 4 cards of the same name in the master deck, the attribute will be increased by 20% for each less card, up to 60% at most."
+    },
+    {
+      "NAMES": [
+        "swallow",
+        "Swallow"
+      ],
+      "DESCRIPTION": "At the end of the round, randomly remove the cards from the deck."
     }
   ]
 }
