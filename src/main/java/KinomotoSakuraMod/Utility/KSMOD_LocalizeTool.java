@@ -1,88 +1,62 @@
 package KinomotoSakuraMod.Utility;
 
+import basemod.BaseMod;
+import com.badlogic.gdx.Gdx;
 import com.megacrit.cardcrawl.core.Settings;
+
+import java.nio.charset.StandardCharsets;
 
 public class KSMOD_LocalizeTool
 {
+    private static String localizationPath = null;
+
     /**
-     * 获取本地化关键字路径
+     * 获取本地化文本的文件夹路径
      *
-     * @return
+     * @return 文件夹路径
      */
-    public static String GetKeywordFolderPath()
+    public static String GetFolderPath()
     {
-        String path = "localization/";
-        switch (Settings.language)
+        if (localizationPath == null)
         {
-            case ZHS:
-                KSMOD_LoggerTool.Logger.info("language == zhs");
-                path += "zhs/";
-                break;
-            default:
-                KSMOD_LoggerTool.Logger.info("language == eng");
-                path += "eng/";
-                break;
+            localizationPath = "localization/";
+            switch (Settings.language)
+            {
+                case ZHS:
+                    KSMOD_LoggerTool.Logger.info("language == zhs");
+                    localizationPath = localizationPath + "zhs/";
+                    break;
+                default:
+                    KSMOD_LoggerTool.Logger.info("language == eng");
+                    localizationPath = localizationPath + "eng/";
+                    break;
+            }
         }
-        return path;
+        return localizationPath;
     }
 
     /**
-     * 获取本地化库洛牌Library名
+     * 载入本地化文本
      *
-     * @return
+     * @param fileName  文件名
+     * @param classType 文本类型
      */
-    public static String GetLibraryClowCardName()
+    public static void LoadStrings(String fileName, Class<?> classType)
     {
-        String name;
-        switch (Settings.language)
-        {
-            case ZHS:
-                name = "库洛牌";
-                break;
-            default:
-                name = "Clow Card";
-                break;
-        }
-        return name;
+        LoadStrings(GetFolderPath(), fileName, classType);
     }
 
     /**
-     * 获取本地化小樱牌Library名
+     * 载入本地化文本
      *
-     * @return
+     * @param folderPath 文件夹路径
+     * @param fileName   文件名
+     * @param classType  文本类型
      */
-    public static String GetLibrarySakuraCardName()
+    public static void LoadStrings(String folderPath, String fileName, Class<?> classType)
     {
-        String name;
-        switch (Settings.language)
-        {
-            case ZHS:
-                name = "小樱牌";
-                break;
-            default:
-                name = "Sakura Card";
-                break;
-        }
-        return name;
-    }
-
-    /**
-     * 获取本地化符咒Library名
-     *
-     * @return
-     */
-    public static String GetLibrarySpellName()
-    {
-        String name;
-        switch (Settings.language)
-        {
-            case ZHS:
-                name = "符咒";
-                break;
-            default:
-                name = "Spell";
-                break;
-        }
-        return name;
+        String filePath = folderPath + fileName;
+        String json = Gdx.files.internal(filePath).readString(String.valueOf(StandardCharsets.UTF_8));
+        BaseMod.loadCustomStrings(classType, json);
     }
 }

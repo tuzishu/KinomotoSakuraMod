@@ -10,13 +10,11 @@ import KinomotoSakuraMod.Patches.KSMOD_CustomCharacter;
 import KinomotoSakuraMod.Relics.KSMOD_SealedBook;
 import KinomotoSakuraMod.Relics.KSMOD_SealedWand;
 import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
-import basemod.BaseMod;
+import KinomotoSakuraMod.Utility.KSMOD_LocalizeTool;
 import basemod.abstracts.CustomPlayer;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
-import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -32,7 +30,6 @@ import com.megacrit.cardcrawl.localization.TutorialStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class KinomotoSakura extends CustomPlayer
@@ -46,18 +43,7 @@ public class KinomotoSakura extends CustomPlayer
     private static final int MAX_ORBS = 0;
     private static final int CARD_DRAW = 5;
     private static final int START_ENERGY = 3;
-    private static final float[] LAYER_SPEED = {
-            -40.0F,
-            -32.0F,
-            20.0F,
-            -20.0F,
-            0.0F,
-            -10.0F,
-            -8.0F,
-            5.0F,
-            -5.0F,
-            0.0F
-    };
+    private static final float[] LAYER_SPEED = {-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F, -5.0F, 0.0F};
     // 角色资源
     public static final float CHARACTER_SCALE_RATE = 2.0f;
 
@@ -71,7 +57,7 @@ public class KinomotoSakura extends CustomPlayer
         this.dialogY = (this.drawY + 220.0F * Settings.scale);
 
         // 参数列表：静态贴图路径，越肩视角2贴图路径，越肩视角贴图路径，失败时贴图路径，角色选择界面信息，碰撞箱XY宽高，初始能量数
-        initializeClass(KSMOD_ImageConst.IDLE_IMAGE_PATH, KSMOD_ImageConst.SHOULDER_2_IMAGE_PATH,  KSMOD_ImageConst.SHOULDER_1_IMAGE_PATH, KSMOD_ImageConst.CORPSE_IMAGE_PATH, getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(START_ENERGY));
+        initializeClass(KSMOD_ImageConst.IDLE_IMAGE_PATH, KSMOD_ImageConst.SHOULDER_2_IMAGE_PATH, KSMOD_ImageConst.SHOULDER_1_IMAGE_PATH, KSMOD_ImageConst.CORPSE_IMAGE_PATH, getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(START_ENERGY));
 
         // loadAnimation(KSMOD_ImageConst.ANIMA_ATLAS_PATH, KSMOD_ImageConst.ANIMA_SKELETON_PATH, CHARACTER_SCALE_RATE);
         //
@@ -111,16 +97,14 @@ public class KinomotoSakura extends CustomPlayer
 
     public CharSelectInfo getLoadout()
     {
-        return new CharSelectInfo(GetCharactorLocalization().NAMES[0], GetCharactorLocalization().TEXT[0], START_HP, START_HP, MAX_ORBS, START_GOLD, CARD_DRAW, this, getStartingRelics(), getStartingDeck(), false);
+        return new CharSelectInfo(GetCharactorStrings().NAMES[0], GetCharactorStrings().TEXT[0], START_HP, START_HP, MAX_ORBS, START_GOLD, CARD_DRAW, this, getStartingRelics(), getStartingDeck(), false);
     }
 
-    public static CharacterStrings GetCharactorLocalization()
+    public static CharacterStrings GetCharactorStrings()
     {
         if (characterStrings == null)
         {
-            String path = KSMOD.GetLocalizationPath() + "sakura_character.json";
-            String str = Gdx.files.internal(path).readString(String.valueOf(StandardCharsets.UTF_8));
-            BaseMod.loadCustomStrings(TutorialStrings.class, str);
+            KSMOD_LocalizeTool.LoadStrings("sakura_character.json", CharacterStrings.class);
             characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
         }
         return characterStrings;
@@ -128,24 +112,12 @@ public class KinomotoSakura extends CustomPlayer
 
     public String getTitle(PlayerClass playerClass)
     {
-        return GetCharactorLocalization().NAMES[1];
+        return GetCharactorStrings().NAMES[1];
     }
 
     public static String GetMessage(int msgNumber)
     {
-        if (MESSAGES == null)
-        {
-            String path = KSMOD.GetLocalizationPath() + "sakura_tutorial.json";
-            String tutorialStrings = Gdx.files.internal(path).readString(String.valueOf(StandardCharsets.UTF_8));
-            BaseMod.loadCustomStrings(TutorialStrings.class, tutorialStrings);
-            TutorialStrings tut = CardCrawlGame.languagePack.getTutorialString("Message");
-            MESSAGES = tut.TEXT;
-        }
-        if (msgNumber >= MESSAGES.length)
-        {
-            return "Error! Message Number Over Length.";
-        }
-        return MESSAGES[msgNumber];
+        return GetCharactorStrings().OPTIONS[msgNumber];
     }
 
     public AbstractCard.CardColor getCardColor()
@@ -191,7 +163,7 @@ public class KinomotoSakura extends CustomPlayer
 
     public String getLocalizedCharacterName()
     {
-        return GetCharactorLocalization().NAMES[0];
+        return GetCharactorStrings().NAMES[0];
     }
 
     public AbstractPlayer newInstance()
@@ -211,14 +183,7 @@ public class KinomotoSakura extends CustomPlayer
 
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect()
     {
-        return new AbstractGameAction.AttackEffect[] {
-                AbstractGameAction.AttackEffect.SLASH_HEAVY,
-                AbstractGameAction.AttackEffect.FIRE,
-                AbstractGameAction.AttackEffect.SLASH_DIAGONAL,
-                AbstractGameAction.AttackEffect.SLASH_HEAVY,
-                AbstractGameAction.AttackEffect.FIRE,
-                AbstractGameAction.AttackEffect.SLASH_DIAGONAL
-        };
+        return new AbstractGameAction.AttackEffect[]{AbstractGameAction.AttackEffect.SLASH_HEAVY, AbstractGameAction.AttackEffect.FIRE, AbstractGameAction.AttackEffect.SLASH_DIAGONAL, AbstractGameAction.AttackEffect.SLASH_HEAVY, AbstractGameAction.AttackEffect.FIRE, AbstractGameAction.AttackEffect.SLASH_DIAGONAL};
     }
 
     public String getVampireText()

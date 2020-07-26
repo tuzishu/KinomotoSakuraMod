@@ -21,25 +21,22 @@ import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 @SpireInitializer
-public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharactersSubscriber, EditRelicsSubscriber, EditCardsSubscriber, EditStringsSubscriber, EditKeywordsSubscriber, OnStartBattleSubscriber
+public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharactersSubscriber, EditRelicsSubscriber, EditCardsSubscriber, EditStringsSubscriber, EditKeywordsSubscriber
 {
     // CardColor卡片颜色，卡片总览中的tab按钮颜色
     public static final Color colorClowCard = CardHelper.getColor(255, 152, 74);
     public static final Color colorSakuraCard = CardHelper.getColor(255, 192, 203);
     public static final Color colorSpellCard = CardHelper.getColor(253, 220, 106);
-    private static String localizationPath = null;
 
     public KSMOD()
     {
@@ -93,7 +90,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         for (AbstractRelic relic : GetRelics())
         {
             BaseMod.addRelicToCustomPool(relic, KSMOD_CustomCardColor.CLOWCARD_COLOR);
-            KSMOD_LoggerTool.Logger.info("Loading relic : " + relic.name);
+            KSMOD_LoggerTool.Logger.info("载入遗物：" + relic.name);
         }
 
         KSMOD_LoggerTool.Logger.info("结束编辑遗物");
@@ -140,7 +137,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         {
             BaseMod.addCard(card);
             UnlockTracker.unlockCard(card.cardID);
-            KSMOD_LoggerTool.Logger.info("Loading Unlocked Card : " + card.name);
+            KSMOD_LoggerTool.Logger.info("解锁卡牌：" + card.name);
         }
 
         ArrayList<AbstractCard> lockedCardList = new ArrayList<>();
@@ -148,7 +145,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         for (AbstractCard card : lockedCardList)
         {
             BaseMod.addCard(card);
-            KSMOD_LoggerTool.Logger.info("Loading Locked Card : " + card.name);
+            KSMOD_LoggerTool.Logger.info("载入锁定卡牌：" + card.name);
         }
 
         KSMOD_LoggerTool.Logger.info("结束编辑卡牌");
@@ -330,73 +327,18 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         KSMOD_LoggerTool.Logger.info("结束编辑怪物");
     }
 
-    public static String GetLocalizationPath()
-    {
-        if (localizationPath == null)
-        {
-            localizationPath = "localization/";
-            switch (Settings.language)
-            {
-                case ZHS:
-                    KSMOD_LoggerTool.Logger.info("language == zhs");
-                    localizationPath = localizationPath + "zhs/";
-                    break;
-                default:
-                    KSMOD_LoggerTool.Logger.info("language == eng");
-                    localizationPath = localizationPath + "eng/";
-                    break;
-            }
-        }
-        return localizationPath;
-    }
-
-    private void LoadLocalizationStrings(String fileName, Class<?> classType)
-    {
-        String filePath = GetLocalizationPath() + fileName;
-        String json = Gdx.files.internal(filePath).readString(String.valueOf(StandardCharsets.UTF_8));
-        BaseMod.loadCustomStrings(classType, json);
-    }
-
     @Override
     public void receiveEditStrings()
     {
         KSMOD_LoggerTool.Logger.info("开始编辑本地化文本");
 
-        LoadLocalizationStrings("sakura_card.json", CardStrings.class);
-        LoadLocalizationStrings("sakura_character.json", CharacterStrings.class);
-        LoadLocalizationStrings("sakura_event.json", EventStrings.class);
-        LoadLocalizationStrings("sakura_potion.json", PotionStrings.class);
-        LoadLocalizationStrings("sakura_power.json", PowerStrings.class);
-        LoadLocalizationStrings("sakura_relic.json", RelicStrings.class);
-        LoadLocalizationStrings("sakura_ui.json", UIStrings.class);
-
-//        String card = GetLocalizationPath() + "sakura_card.json";
-//        String cardStrings = Gdx.files.internal(card).readString(String.valueOf(StandardCharsets.UTF_8));
-//        BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
-//
-//        String character = GetLocalizationPath() + "sakura_character.json";
-//        String charStrings = Gdx.files.internal(character).readString(String.valueOf(StandardCharsets.UTF_8));
-//        BaseMod.loadCustomStrings(CharacterStrings.class, charStrings);
-//
-//        String event = GetLocalizationPath() + "sakura_event.json";
-//        String eventStrings = Gdx.files.internal(event).readString(String.valueOf(StandardCharsets.UTF_8));
-//        BaseMod.loadCustomStrings(EventStrings.class, eventStrings);
-//
-//        String potion = GetLocalizationPath() + "sakura_potion.json";
-//        String potionStrings = Gdx.files.internal(potion).readString(String.valueOf(StandardCharsets.UTF_8));
-//        BaseMod.loadCustomStrings(PotionStrings.class, potionStrings);
-//
-//        String power = GetLocalizationPath() + "sakura_power.json";
-//        String powerStrings = Gdx.files.internal(power).readString(String.valueOf(StandardCharsets.UTF_8));
-//        BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
-//
-//        String relic = GetLocalizationPath() + "sakura_relic.json";
-//        String relicStrings = Gdx.files.internal(relic).readString(String.valueOf(StandardCharsets.UTF_8));
-//        BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
-//
-//        String ui = GetLocalizationPath() + "sakura_ui.json";
-//        String uiStrings = Gdx.files.internal(ui).readString(String.valueOf(StandardCharsets.UTF_8));
-//        BaseMod.loadCustomStrings(UIStrings.class, uiStrings);
+        KSMOD_LocalizeTool.LoadStrings("sakura_card.json", CardStrings.class);
+        KSMOD_LocalizeTool.LoadStrings("sakura_character.json", CharacterStrings.class);
+        KSMOD_LocalizeTool.LoadStrings("sakura_event.json", EventStrings.class);
+        KSMOD_LocalizeTool.LoadStrings("sakura_potion.json", PotionStrings.class);
+        KSMOD_LocalizeTool.LoadStrings("sakura_power.json", PowerStrings.class);
+        KSMOD_LocalizeTool.LoadStrings("sakura_relic.json", RelicStrings.class);
+        KSMOD_LocalizeTool.LoadStrings("sakura_ui.json", UIStrings.class);
 
         KSMOD_LoggerTool.Logger.info("结束编辑本地化文本");
     }
@@ -406,68 +348,17 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
     {
         KSMOD_LoggerTool.Logger.info("开始编辑关键字");
 
-        String path = KSMOD_LocalizeTool.GetKeywordFolderPath();
-
-        path += "sakura_keyword.json";
-        Gson gson = new Gson();
+        String path = KSMOD_LocalizeTool.GetFolderPath() + "sakura_keyword.json";
         String json = Gdx.files.internal(path).readString(String.valueOf(StandardCharsets.UTF_8));
-        KSMOD_CustomKeywords keywords = gson.fromJson(json, KSMOD_CustomKeywords.class);
-        Keyword[] keywordList = keywords.keywords;
+        Keyword[] keywordList = new Gson().fromJson(json, KSMOD_CustomKeywords.class).keywords;
 
         for (int i = 0; i < keywordList.length; ++i)
         {
-            Keyword key = keywordList[i];
-            KSMOD_LoggerTool.Logger.info("加载关键字：" + key.NAMES[0]);
-            BaseMod.addKeyword(key.NAMES, key.DESCRIPTION);
+            Keyword word = keywordList[i];
+            KSMOD_LoggerTool.Logger.info("加载关键字：" + word.NAMES[0]);
+            BaseMod.addKeyword(word.NAMES, word.DESCRIPTION);
         }
 
         KSMOD_LoggerTool.Logger.info("结束编辑关键字");
-    }
-
-    @Override
-    public void receiveOnBattleStart(AbstractRoom abstractRoom)
-    {
-        // KSMOD_LoggerTool.Logger.info("common relic pool");
-        // ShowRelicList(AbstractDungeon.commonRelicPool);
-        //
-        // KSMOD_LoggerTool.Logger.info("uncommon relic pool");
-        // ShowRelicList(AbstractDungeon.uncommonRelicPool);
-        //
-        // KSMOD_LoggerTool.Logger.info("rare relic pool");
-        // ShowRelicList(AbstractDungeon.rareRelicPool);
-        //
-        // KSMOD_LoggerTool.Logger.info("boss relic pool");
-        // ShowRelicList(AbstractDungeon.bossRelicPool);
-        //
-        // KSMOD_LoggerTool.Logger.info("shop relic pool");
-        // ShowRelicList(AbstractDungeon.shopRelicPool);
-    }
-
-    public void ShowRelicList(ArrayList<String> relics)
-    {
-        for (int i = 0; i < relics.size(); i++)
-        {
-            KSMOD_LoggerTool.Logger.info(i + ": " + relics.get(i) + (istargetrelic(relics.get(i)) ? "<=========" : ""));
-        }
-    }
-
-    public boolean istargetrelic(String relic)
-    {
-        if (relic.contains(KSMOD_StarWand.RELIC_ID))
-        {
-            return true;
-        }
-        else if (relic.contains(KSMOD_Cerberus.RELIC_ID))
-        {
-            return true;
-        }
-        else if (relic.contains(KSMOD_Yue.RELIC_ID))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
     }
 }

@@ -20,12 +20,12 @@ public class KSMOD_ColorTabBarPatch
         {
             if (playerClass == KINOMOTOSAKURA)
             {
-                tabName[0] = KinomotoSakura.GetCharactorLocalization().TEXT[1];
+                tabName[0] = KinomotoSakura.GetCharactorStrings().TEXT[1];
             }
             else
             {
-                tabName[0] = tabName[0].replace("Sakuracard_color", KinomotoSakura.GetCharactorLocalization().TEXT[2]);
-                tabName[0] = tabName[0].replace("Spell_color", KinomotoSakura.GetCharactorLocalization().TEXT[3]);
+                tabName[0] = tabName[0].replace("Sakuracard_color", KinomotoSakura.GetCharactorStrings().TEXT[2]);
+                tabName[0] = tabName[0].replace("Spell_color", KinomotoSakura.GetCharactorStrings().TEXT[3]);
             }
         }
     }

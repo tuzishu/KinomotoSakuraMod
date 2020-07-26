@@ -72,6 +72,4 @@ public class KSMOD_EarthyPower extends KSMOD_CustomPower
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         }
     }
-
-
 }

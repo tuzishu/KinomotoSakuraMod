@@ -9,6 +9,14 @@
       "Clow Card",
       "Sakura Card",
       "Spell"
-    ]
+    ],
+    "OPTIONS": [
+      "Conversion to Sakura Card failed",
+      "Magick Charge is not enough.",
+      "Get relic faild, there is no The Create in the master deck.",
+      "RELEASE!",
+      "Return faild, there is no The Return in the master deck."
+    ],
+    "UNIQUE_REWARDS": []
   }
 }
