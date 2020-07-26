@@ -4,7 +4,7 @@ import KinomotoSakuraMod.Cards.ClowCard.*;
 import KinomotoSakuraMod.Cards.SakuraCard.*;
 import KinomotoSakuraMod.Cards.SpellCard.*;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
-import KinomotoSakuraMod.Events.KSMOD_XiaoLangsFeelings;
+import KinomotoSakuraMod.Events.KSMOD_XiaoLangsFeelingsEvent;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCharacter;
 import KinomotoSakuraMod.Patches.KSMOD_CustomKeywords;
@@ -314,11 +314,11 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
     {
         KSMOD_LoggerTool.Logger.info("开始编辑事件");
 
-        BaseMod.addEvent(new AddEventParams.Builder(KSMOD_XiaoLangsFeelings.ID, KSMOD_XiaoLangsFeelings.class).dungeonID(TheCity.ID).playerClass(KSMOD_CustomCharacter.KINOMOTOSAKURA).create());
-//        BaseMod.addEvent(KSMOD_XiaoLangsFeelings.ID, KSMOD_XiaoLangsFeelings.class, TheCity.ID);
+        BaseMod.addEvent(new AddEventParams.Builder(KSMOD_XiaoLangsFeelingsEvent.ID, KSMOD_XiaoLangsFeelingsEvent.class).dungeonID(TheCity.ID).playerClass(KSMOD_CustomCharacter.KINOMOTOSAKURA).create());
 
         KSMOD_LoggerTool.Logger.info("结束编辑事件");
     }
+
 
     public void receiveEditMonsters()
     {

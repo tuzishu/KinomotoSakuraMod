@@ -129,9 +129,10 @@ public class ClowCardTheShield extends KSMOD_AbstractMagicCard
             if (c.cardID.contains(ID))
             {
                 c.misc = this.misc;
-                c.baseDamage = GetBlock(c);
+                c.baseBlock = GetBlock(c);
             }
         }
+        group.refreshHandLayout();
     }
 
     public int GetBlock(AbstractCard card)

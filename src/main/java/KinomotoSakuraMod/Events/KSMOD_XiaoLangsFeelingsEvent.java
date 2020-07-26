@@ -9,9 +9,9 @@ import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 
-public class KSMOD_XiaoLangsFeelings extends AbstractImageEvent
+public class KSMOD_XiaoLangsFeelingsEvent extends AbstractImageEvent
 {
-    public static final String ID = "KSMOD_XiaoLangsFeelings";
+    public static final String ID = "KSMOD_XiaoLangsFeelingsEvent";
     private static final String NAME;
     private static final String[] DESCRIPTIONS;
     private static final String[] OPTIONS;
@@ -27,7 +27,7 @@ public class KSMOD_XiaoLangsFeelings extends AbstractImageEvent
         OPTIONS = eventStrings.OPTIONS;
     }
 
-    public KSMOD_XiaoLangsFeelings()
+    public KSMOD_XiaoLangsFeelingsEvent()
     {
         super(NAME, DESCRIPTIONS[0], IMAGE_PATH);
         this.imageEventText.setDialogOption(OPTIONS[0], new SakuraCardTheLove());

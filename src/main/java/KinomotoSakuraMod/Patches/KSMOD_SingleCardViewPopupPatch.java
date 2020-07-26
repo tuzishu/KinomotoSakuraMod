@@ -138,6 +138,7 @@ public class KSMOD_SingleCardViewPopupPatch
             {
                 switch (card.rarity)
                 {
+                    case BASIC:
                     case COMMON:
                         texture = KSMOD_ImageConst.FRAME_CLOWCARD_COMMON_LARGE;
                         break;
@@ -192,6 +193,7 @@ public class KSMOD_SingleCardViewPopupPatch
             {
                 switch (card.rarity)
                 {
+                    case BASIC:
                     case COMMON:
                         texture = KSMOD_ImageConst.BANNER_CLOWCARD_COMMON_LARGE;
                         break;
