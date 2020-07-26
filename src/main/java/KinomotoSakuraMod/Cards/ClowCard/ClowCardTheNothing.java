@@ -1,9 +1,13 @@
 package KinomotoSakuraMod.Cards.ClowCard;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
+import KinomotoSakuraMod.Cards.SakuraCard.SakuraCardTheHope;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
+import KinomotoSakuraMod.Powers.KSMOD_NothingPower;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -38,8 +42,10 @@ public class ClowCardTheNothing extends KSMOD_AbstractMagicCard
     public ClowCardTheNothing()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
+        this.cardsToPreview = new SakuraCardTheHope();
         this.baseDamage = BASE_DAMAGE;
         this.baseBlock = BASE_BLOCK;
+        this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 
     @Override
@@ -65,6 +71,13 @@ public class ClowCardTheNothing extends KSMOD_AbstractMagicCard
     @Override
     public void applyNormalEffect(AbstractPlayer player, AbstractMonster monster)
     {
-
+        if (player.hasPower(KSMOD_NothingPower.POWER_ID))
+        {
+            ((KSMOD_NothingPower)player.getPower(KSMOD_NothingPower.POWER_ID)).SetValue(this.damage, this.block, this.upgraded);
+        }
+        else
+        {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new KSMOD_NothingPower(player, this.damage, this.block, this.upgraded)));
+        }
     }
 }
