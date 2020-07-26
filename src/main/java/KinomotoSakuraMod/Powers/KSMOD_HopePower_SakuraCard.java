@@ -4,7 +4,6 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class KSMOD_HopePower_SakuraCard extends KSMOD_CustomPower
 {
@@ -12,7 +11,7 @@ public class KSMOD_HopePower_SakuraCard extends KSMOD_CustomPower
     private static final String POWER_NAME;
     private static final String[] POWER_DESCRIPTIONS;
     private static final String POWER_IMG_PATH = "img/powers/glow_power_sakuracard.png";
-    private static final AbstractPower.PowerType POWER_TYPE = AbstractPower.PowerType.BUFF;
+    private static final PowerType POWER_TYPE = PowerType.BUFF;
 
     static
     {

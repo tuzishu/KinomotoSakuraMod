@@ -1,5 +1,6 @@
 package KinomotoSakuraMod.Utility;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -56,7 +57,7 @@ public class KSMOD_DataTool
     {
         if (arrayList.size() > 0)
         {
-            return arrayList.get(new Random().random(0, arrayList.size() - 1));
+            return arrayList.get(MathUtils.random(0, arrayList.size() - 1));
         }
         return null;
     }
