@@ -254,5 +254,11 @@
       "，",
       "无"
     ]
+  },
+  "KSMOD_HopePower_SakuraCard": {
+    "NAME": "希望·樱",
+    "DESCRIPTIONS": [
+      "你的所有 #r伤害 和 #b格挡 翻倍。"
+    ]
   }
 }

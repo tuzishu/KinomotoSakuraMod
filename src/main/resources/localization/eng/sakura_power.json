@@ -254,5 +254,11 @@
       ", ",
       "None"
     ]
+  },
+  "KSMOD_HopePower_SakuraCard": {
+    "NAME": "Hope Sakura",
+    "DESCRIPTIONS": [
+      "All your #rDamage and #bBlock are doubled."
+    ]
   }
 }

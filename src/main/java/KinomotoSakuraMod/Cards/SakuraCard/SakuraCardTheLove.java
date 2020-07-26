@@ -35,6 +35,7 @@ public class SakuraCardTheLove extends KSMOD_AbstractMagicCard
     public SakuraCardTheLove()
     {
         super(ID, NAME, IMAGE_PATH, COST, DESCRIPTION, CARD_TYPE, CARD_COLOR, CARD_RARITY, CARD_TARGET);
+        this.cardsToPreview = new SakuraCardTheHope();
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
     }
 

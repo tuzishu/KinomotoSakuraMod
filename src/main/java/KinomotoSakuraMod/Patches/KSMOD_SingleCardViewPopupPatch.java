@@ -138,14 +138,14 @@ public class KSMOD_SingleCardViewPopupPatch
             {
                 switch (card.rarity)
                 {
-                    case RARE:
-                        texture = KSMOD_ImageConst.FRAME_CLOWCARD_RARE_LARGE;
+                    case COMMON:
+                        texture = KSMOD_ImageConst.FRAME_CLOWCARD_COMMON_LARGE;
                         break;
                     case UNCOMMON:
                         texture = KSMOD_ImageConst.FRAME_CLOWCARD_UNCOMMON_LARGE;
                         break;
                     default:
-                        texture = KSMOD_ImageConst.FRAME_CLOWCARD_COMMON_LARGE;
+                        texture = KSMOD_ImageConst.FRAME_CLOWCARD_RARE_LARGE;
                         break;
                 }
             }
@@ -192,14 +192,14 @@ public class KSMOD_SingleCardViewPopupPatch
             {
                 switch (card.rarity)
                 {
-                    case RARE:
-                        texture = KSMOD_ImageConst.BANNER_CLOWCARD_RARE_LARGE;
+                    case COMMON:
+                        texture = KSMOD_ImageConst.BANNER_CLOWCARD_COMMON_LARGE;
                         break;
                     case UNCOMMON:
                         texture = KSMOD_ImageConst.BANNER_CLOWCARD_UNCOMMON_LARGE;
                         break;
                     default:
-                        texture = KSMOD_ImageConst.BANNER_CLOWCARD_COMMON_LARGE;
+                        texture = KSMOD_ImageConst.BANNER_CLOWCARD_RARE_LARGE;
                 }
             }
             else if (card.color == KSMOD_CustomCardColor.SPELL_COLOR)
