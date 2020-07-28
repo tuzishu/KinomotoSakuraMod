@@ -1,8 +1,10 @@
 ﻿*.xml
 *.iml
 .idea/
+Excel/
 photoshop/
 target/
 version/
 Excel/~$PlanningCase.xlsx
 Excel/~$方案 9-30.docx
+pom.xml

@@ -32,6 +32,8 @@
                                 <echo message="copy package"/>
                                 <copy file="target/KinomotoSakuraMod.jar" tofile="D:/Steam/steamapps/common/SlayTheSpire/mods/KinomotoSakuraMod.jar"
                                       overwrite="true"/>
+                                <!--<copy file="target/KinomotoSakuraMod.jar" tofile="E:/SteamGames/steamapps/common/SlayTheSpire/mods/KinomotoSakuraMod.jar"
+                                      overwrite="true"/>-->
                             </target>
                         </configuration>
                         <goals>
