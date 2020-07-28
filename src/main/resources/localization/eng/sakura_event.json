@@ -1,5 +1,5 @@
 {
-  "KSMOD_XiaoLangsFeelings": {
+  "KSMOD_XiaoLangsFeelingsEvent": {
     "NAME": "XiaoLang's Feelings",
     "DESCRIPTIONS": [
       "After solving the crisis caused by Clow Reed, the tired XiaoLang confesses to you.",
@@ -10,6 +10,24 @@
       "[Accept] #gReceive [ ] #gcard.",
       "[Reject] #gHeal #gall #gHp.",
       "[Leave]"
+    ]
+  },
+  "KSMOD_TheSealedCardEvent": {
+    "NAME": "The Sealed Card",
+    "DESCRIPTIONS": [
+      "screen1 desc",
+      "screen2 desc",
+      "screen3 desc",
+      "screen4 desc"
+    ],
+    "OPTIONS":[
+      "screen1 opt1",
+      "screen1 opt2",
+      "screen1 opt31",
+      "screen1 opt32",
+      "screen1 opt33",
+      "screen2/3 opt1",
+      "screen4 opt1"
     ]
   }
 }
