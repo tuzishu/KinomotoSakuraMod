@@ -16,10 +16,10 @@
   "ClowCardTheBubbles": {
     "NAME": "Bubbles",
     "DESCRIPTION": "[ Watery ] NL Deal !D! damage. NL Remove a random buff.",
-    "UPGRADE_DESCRIPTION": "[ Watery ] NL Deal !D! damage. NL Remove a random buff. NL Gain !M! Magick-Charge when successful.",
+    "UPGRADE_DESCRIPTION": "[ Watery ] NL Deal !D! damage. NL Remove a random buff. NL Gain !M! Mana when successful.",
     "EXTENDED_DESCRIPTION": [
       "[ Watery ] NL Deal !D! damage. NL remove all buffs.",
-      "[ Watery ] NL Deal !D! damage. NL remove all buffs. NL Gain !M! Magick-Charge when successful."
+      "[ Watery ] NL Deal !D! damage. NL remove all buffs. NL Gain !M! Mana when successful."
     ]
   },
   "ClowCardTheChange": {
@@ -33,7 +33,7 @@
   },
   "ClowCardTheCloud": {
     "NAME": "Cloud",
-    "DESCRIPTION": "[ Watery ] NL Gain !M! Block for every Watery-Element-State in your hand.",
+    "DESCRIPTION": "[ Watery ] NL Gain !B! Block for every Watery Card in your hand.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       " Gain extra ",
@@ -72,7 +72,7 @@
   },
   "ClowCardTheEarthy": {
     "NAME": "Earthy",
-    "DESCRIPTION": "[ Earthy ] NL Add !M! Lei-Di to your hand. Enter the Earthy-Element-State.",
+    "DESCRIPTION": "[ Earthy ] NL Add !M! Lei-Di to your hand. Enter the Earthy State.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -86,7 +86,7 @@
   },
   "ClowCardTheFight": {
     "NAME": "Fight",
-    "DESCRIPTION": "[ Earthy ] Exhaust. Continuously. NL Deal !D! damage. NL Gain 1 Magick-Charge. NL Gain !M! Temporary-Strength.",
+    "DESCRIPTION": "[ Earthy ] Exhaust. Continuously. NL Deal !D! damage. NL Gain 1 Mana. NL Gain !M! Temporary-Strength.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       " Gain ",
@@ -95,7 +95,7 @@
   },
   "ClowCardTheFirey": {
     "NAME": "Firey",
-    "DESCRIPTION": "[ Firey ] NL Add !M! Huo-Shen to your hand. NL Enter Firey-Element-State.",
+    "DESCRIPTION": "[ Firey ] NL Add !M! Huo-Shen to your hand. NL Enter the Firey State.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -116,7 +116,7 @@
   },
   "ClowCardTheFly": {
     "NAME": "Fly",
-    "DESCRIPTION": "[ Windy ] NL Draw !M! cards. Lose 3 Magick-Charge.",
+    "DESCRIPTION": "[ Windy ] NL Draw !M! cards. Lose 3 Mana.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       " Draw extra ",
@@ -133,7 +133,7 @@
   },
   "ClowCardTheGlow": {
     "NAME": "Glow",
-    "DESCRIPTION": "[ Firey ] NL Draw !M! cards. NL Gain 2 Magick-Charge.",
+    "DESCRIPTION": "[ Firey ] NL Draw !M! cards. NL Gain 2 Mana.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -155,7 +155,7 @@
   },
   "ClowCardTheLibra": {
     "NAME": "Libra",
-    "DESCRIPTION": "[ Firey ] NL Gain !B! Block, or double if you have no Block with losing !M! Magick-Charge.",
+    "DESCRIPTION": "[ Firey ] NL Gain !B! Block, or double if you have no Block with losing !M! Mana.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       " Gain extra ",
@@ -176,7 +176,7 @@
   },
   "ClowCardTheLock": {
     "NAME": "Lock",
-    "DESCRIPTION": "[ Firey ] Exhaust. NL Exhaust up to !M! cards. Gain 1 Magick-Charge for each exhausted card. Unreal.",
+    "DESCRIPTION": "[ Firey ] Exhaust. NL Exhaust up to !M! cards. Gain 1 Mana for each exhausted card. Unreal.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -246,7 +246,7 @@
   "ClowCardTheReturn": {
     "NAME": "Return",
     "DESCRIPTION": "[ Watery ] NL Record the current state and return to this state after !M! rounds. NL Add 2 Void into the discard pile.",
-    "UPGRADE_DESCRIPTION": "[ Watery ] Retain. NL Record the current state and return this state after !M! rounds. NL Add 2 Void into the discard pile.",
+    "UPGRADE_DESCRIPTION": "[ Watery ] Retain. NL Record the current state and return to this state after !M! rounds. NL Add 2 Void into the discard pile.",
     "EXTENDED_DESCRIPTION": []
   },
   "ClowCardTheSand": {
@@ -278,7 +278,7 @@
   },
   "ClowCardTheShot": {
     "NAME": "Shot",
-    "DESCRIPTION": "[ Firey ] NL Apply 2 times. Each deal !D! damage and apply !M! Poison.",
+    "DESCRIPTION": "[ Firey ] NL Deal !D! damage and apply !M! Poison 2 times.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "  Apply extra ",
@@ -303,7 +303,7 @@
   },
   "ClowCardTheSnow": {
     "NAME": "Snow",
-    "DESCRIPTION": "[ Watery ] NL Each Watery-Element-Card played in this battle deals !D! damage to a random enemy.",
+    "DESCRIPTION": "[ Watery ] NL Each Watery Card played in this battle deals !D! damage to a random enemy.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       " Deal extra ",
@@ -347,8 +347,8 @@
   },
   "ClowCardTheThrough": {
     "NAME": "Through",
-    "DESCRIPTION": "[ Earthy ] NL Deal !D! damage to all enemies. NL Apply Poison damage 1 time. NL Add 1 Void into the discard pile.",
-    "UPGRADE_DESCRIPTION": "[ Earthy ] NL Deal !D! damage to all enemies. NL Deepen the Poison by !M!. Apply Poison damage 1 time. NL Add 1 Void into the discard pile.",
+    "DESCRIPTION": "[ Earthy ] NL Deal !D! damage to all enemies. NL Apply 1 Poison. NL Add 1 Void into the discard pile.",
+    "UPGRADE_DESCRIPTION": "[ Earthy ] NL Deal !D! damage to all enemies. NL Increase existing Poison by !M!. Apply 1 Poison. NL Add 1 Void into the discard pile.",
     "EXTENDED_DESCRIPTION": [
       " Deals an extra ",
       "% damage to the target's max health."
@@ -362,11 +362,11 @@
   },
   "ClowCardTheTime": {
     "NAME": "Time",
-    "DESCRIPTION": "[ Watery ] Exhaust. NL Interrupt all enemy operations. NL Add 2 Void into the discard pile.",
+    "DESCRIPTION": "[ Watery ] Exhaust. NL Stun all enemies. NL Add 2 Void into the discard pile.",
     "UPGRADE_DESCRIPTION": "[ Watery ] Exhaust. NL Interrupt all enemy operations. NL Deal !D! damage to all enemies. NL Add 2 Void into the discard pile.",
     "EXTENDED_DESCRIPTION": [
-      "[ Watery ] Exhaust. NL Interrupt all enemy operations.",
-      "[ Watery ] Exhaust. NL Interrupt all enemy operations. NL Deal !D! damage to all enemies."
+      "[ Watery ] Exhaust. NL Stun all enemies.",
+      "[ Watery ] Exhaust. NL Stun all enemies. NL Deal !D! damage to all enemies."
     ]
   },
   "ClowCardTheTwin": {
@@ -385,7 +385,7 @@
   },
   "ClowCardTheWatery": {
     "NAME": "Watery",
-    "DESCRIPTION": "[ Watery ] NL Add !M! Shui-Long to your hand. NL Enter Watery-Element-State.",
+    "DESCRIPTION": "[ Watery ] NL Add !M! Shui-Long to your hand. NL Enter the Watery State.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -397,7 +397,7 @@
   },
   "ClowCardTheWindy": {
     "NAME": "Windy",
-    "DESCRIPTION": "[ Windy ] NL Add !M! Feng-Hua to your hand. NL Enter Windy-Element-State.",
+    "DESCRIPTION": "[ Windy ] NL Add !M! Feng-Hua to your hand. NL Enter the Windy State.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -484,7 +484,7 @@
   },
   "SakuraCardTheCloud": {
     "NAME": "Cloud",
-    "DESCRIPTION": "[ Sakura-Card ][ Watery ] NL Gain !B! Block. For every 3 Watery-Element-State in the master deck, gain Block extra 1 time .",
+    "DESCRIPTION": "[ Sakura-Card ][ Watery ] NL Gain !B! Block. For every 3 Watery cards in the master deck, gain Block extra 1 time .",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -514,13 +514,13 @@
   },
   "SakuraCardTheEarthy": {
     "NAME": "Earthy",
-    "DESCRIPTION": "[ Sakura-Card ][ Earthy ] NL Enter the Earthy-Element-State permanently.",
+    "DESCRIPTION": "[ Sakura-Card ][ Earthy ] NL Enter the Earthy State permanently.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheErase": {
     "NAME": "Erase",
-    "DESCRIPTION": "[ Sakura-Card ][ Earthy ] NL Deal damage to normal monster so it has 1 health remaining.",
+    "DESCRIPTION": "[ Sakura-Card ][ Earthy ] NL Deal damage to normal monster such that it has 1 health remaining.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -532,7 +532,7 @@
   },
   "SakuraCardTheFirey": {
     "NAME": "Firey",
-    "DESCRIPTION": "[ Sakura-Card ][ Firey ] NL Enter the Firey-Element-State permanently.",
+    "DESCRIPTION": "[ Sakura-Card ][ Firey ] NL Enter the Firey State permanently.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -556,13 +556,13 @@
   },
   "SakuraCardTheFreeze": {
     "NAME": "Freeze",
-    "DESCRIPTION": "[ Sakura-Card ][ Windy ] NL Deal !D! damage. NL Gain !B! Block. NL Interrupts the current action of target if it is not a boss or elite.",
+    "DESCRIPTION": "[ Sakura-Card ][ Windy ] NL Deal !D! damage. NL Gain !B! Block. NL Stuns the target if it is not a boss or elite.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheGlow": {
     "NAME": "Glow",
-    "DESCRIPTION": "[ Sakura-Card ][ Firey ] NL At the start of turn, gain !M! Magick-Charge.",
+    "DESCRIPTION": "[ Sakura-Card ][ Firey ] NL At the start of turn, gain !M! Mana.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -586,13 +586,13 @@
   },
   "SakuraCardTheLibra": {
     "NAME": "Libra",
-    "DESCRIPTION": "[ Sakura-Card ][ Firey ] NL Remove all Magick-Charge, gain !B! Block for each Magick-Charge removed.",
+    "DESCRIPTION": "[ Sakura-Card ][ Firey ] NL Remove all Mana, gain !B! Block for each Mana removed.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheLight": {
     "NAME": "Light",
-    "DESCRIPTION": "[ Sakura-Card ][ Earthy ][ Firey ] NL Exhaust all Status and Curses. Each heal 1 health and draw 1 card.",
+    "DESCRIPTION": "[ Sakura-Card ][ Earthy ][ Firey ] NL Exhaust all Status and Curses. For each card exhausted heal 1 health and draw 1 card.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -604,7 +604,7 @@
   },
   "SakuraCardTheLock": {
     "NAME": "Lock",
-    "DESCRIPTION": "[ Sakura-Card ][ Firey ] NL This turn does not reduce the number of charging layers when triggering the Magick-Charge.",
+    "DESCRIPTION": "[ Sakura-Card ][ Firey ] NL This turn do not reduce the amount of Mana when triggering Mana.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -634,7 +634,7 @@
   },
   "SakuraCardTheMist": {
     "NAME": "Mist",
-    "DESCRIPTION": "[ Sakura-Card ][ Earthy ] NL Removes all Block of all enemies. NL At the start of turn, apply !M! Poison to all enemies.",
+    "DESCRIPTION": "[ Sakura-Card ][ Earthy ] NL Removes all Block of all enemies. NL At the start of each turn, apply !M! Poison to all enemies.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -700,7 +700,7 @@
   },
   "SakuraCardTheSnow": {
     "NAME": "Snow",
-    "DESCRIPTION": "[ Sakura-Card ][ Watery ] NL Each card played this turn deals !D! damage to all enemies. NL A total of !M!.",
+    "DESCRIPTION": "[ Sakura-Card ][ Watery ] NL Deal !D! damage to all enemies for each card played this turn. NL A total of !M!.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -718,7 +718,7 @@
   },
   "SakuraCardTheSweet": {
     "NAME": "Sweet",
-    "DESCRIPTION": "[ Sakura-Card ][ Firey ] NL At the start of the turn, heal !M! % of the lost health.",
+    "DESCRIPTION": "[ Sakura-Card ][ Firey ] NL At the start of each turn, heal !M! % of health lost last turn.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -736,7 +736,7 @@
   },
   "SakuraCardTheThunder": {
     "NAME": "Thunder",
-    "DESCRIPTION": "[ Sakura-Card ][ Earthy ] NL Gains 2X Magick-Charge and Remove all. Deal !D! damage to random enemy for each !M! Magick-Charge.",
+    "DESCRIPTION": "[ Sakura-Card ][ Earthy ] NL Gain 2X Mana and then Remove all Mana. Deal !D! damage to random enemy for each !M! Mana.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
@@ -760,19 +760,19 @@
   },
   "SakuraCardTheWatery": {
     "NAME": "Watery",
-    "DESCRIPTION": "[ Sakura-Card ][ Watery ] NL Enter the Watery-Element-State permanently.",
+    "DESCRIPTION": "[ Sakura-Card ][ Watery ] NL Enter the Watery State permanently.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheWave": {
     "NAME": "Wave",
-    "DESCRIPTION": "[ Sakura-Card ][ Watery ] Exhaust. NL Enter all the Element State",
+    "DESCRIPTION": "[ Sakura-Card ][ Watery ] Exhaust. NL Enter all the Elemental States",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
   "SakuraCardTheWindy": {
     "NAME": "Windy",
-    "DESCRIPTION": "[ Sakura-Card ][ Windy ] NL Permanent entry into the Windy-Element-States at the same time.",
+    "DESCRIPTION": "[ Sakura-Card ][ Windy ] NL Enter the Windy State permanently.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
