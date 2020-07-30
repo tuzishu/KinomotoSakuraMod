@@ -64,8 +64,8 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
     private static final float DESC_SCALE_RATE_X = 0.83F;
     private static final float DESC_OFFSET_TO_BOTTOM_Y = 0.15F * Settings.scale;
     private static final float CARD_ENERGY_IMG_WIDTH = 24.0F;// * Settings.scale;
-    private static final float HB_W = IMG_WIDTH;
-    private static final float HB_H = IMG_HEIGHT;
+    private static final float HB_W = IMG_WIDTH * Settings.scale;
+    private static final float HB_H = IMG_HEIGHT * Settings.scale;
     private static final float TITLE_HEIGHT_TO_CENTER = 222.0F;// * Settings.scale;
     private static final float TITLE_HEIGHT_SAKURA_TO_CENTER = 218.0F;// * Settings.scale;
     private static final float TITLE_BOTTOM_HEIGHT_TO_CENTER = -205.0F;// * Settings.scale;

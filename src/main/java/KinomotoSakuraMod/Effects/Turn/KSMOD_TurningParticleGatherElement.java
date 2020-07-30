@@ -25,8 +25,8 @@ public class KSMOD_TurningParticleGatherElement extends AbstractGameEffect
     private static final int CONTROL_POINT_AMOUNT = 20;
     private static final int TWEENER_AMOUNT = 120;
 
-    private CatmullRomSpline<Vector2> crs = new CatmullRomSpline();
-    private ArrayList<Vector2> controlPoints = new ArrayList();
+    private CatmullRomSpline<Vector2> crs = new CatmullRomSpline<>();
+    private ArrayList<Vector2> controlPoints = new ArrayList<>();
     private ArrayList<Vector2> points = new ArrayList<>();
     private ArrayList<Vector2> endingPoints = new ArrayList<>();
     private Vector2 currentPosition;
