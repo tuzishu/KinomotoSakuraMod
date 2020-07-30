@@ -1,12 +1,13 @@
 {
   "modid": "KinomotoSakuraMod",
   "name": "KinomotoSakuraMod(木之本樱)",
-  "description": "Kinomoto Sakura, the protagonist of animation Card Captor Sakura.\nEnglish localization completed. (translated by software, lrevisions are welcome)\ne-mail:477630080@qq.com\nnew version is coming soon\n\n2020.7.23 update content:\nReworked Sakura Card The Shadow: Gain 2 layers of intangible\nModified Sakura Card The Dream: In this battle -> In this round\nAdded: The Bubble can't eliminate the countdown of time old man\n\n动画《魔卡少女樱》的主角木之本樱。\n英文本地化已完成（机翻，欢迎修改优化）。\n欢迎各位玩家提出宝贵的意见和建议。\n联系方式：QQ 477630080(兔子舒)。\n新版本内容制作中\n\n2020.7.23更新内容：\n重做小樱牌·影：获得2层无实体\n小樱牌·梦：本场战斗内->本回合内\n新增：泡无法消除时间老人的倒计时",
+  "description": "Kinomoto Sakura, the protagonist of animation Card Captor Sakura.\nEnglish localization completed. (translated by software, lrevisions are welcome)\ne-mail:477630080@qq.com\nnew version is coming soon\n\n2020.7.30 update content:\nNew event: XiaoLang's Feelings (Option 1: Get the \" \" card; Option 2: Restore all health)\nNew card: \" \" Unplayable, get 1 cost when drawn\n\n动画《魔卡少女樱》的主角木之本樱。\n英文本地化已完成（机翻，欢迎修改优化）。\n欢迎各位玩家提出宝贵的意见和建议。\n联系方式：QQ 477630080(兔子舒)。\n新版本内容制作中\n\n2020.7.30更新内容：\n新事件：小狼的心意（选择1：获得“  ”牌；选择2：恢复所有生命值）\n新卡片：“  ”无法被打出，抽到时获得1费",
   "author_list": [
     "tuzishu(兔子舒)",
-    "Lyrichor(English localization)"
+    "Lyrichor(English localization)",
+    "DoonLord(English localization)"
   ],
-  "version": "1.4.200723",
+  "version": "1.5.200730",
   "mts_version": "3.16.0",
   "sts_version": "01-27-2020",
   "credits": "None",

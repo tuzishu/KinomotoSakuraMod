@@ -616,7 +616,7 @@
   },
   "SakuraCardTheLove": {
     "NAME": " ",
-    "DESCRIPTION": "[ Sakura-Card ] NL Unable to be played, gain !M! energy when drawn.",
+    "DESCRIPTION": "[ Sakura-Card ] NL Unplayable, gain !M! energy when drawn.",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": []
   },
