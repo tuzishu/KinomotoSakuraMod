@@ -84,12 +84,18 @@ public class KSMOD_GemBrooch extends CustomRelic
             {
                 AbstractDungeon.effectList.add(new PurgeCardEffect(cards.get(i),
                         MathUtils.random(0.1F, 0.9F) * Settings.WIDTH,
-                        MathUtils.random(0.2F, 0.8F) * Settings.HEIGHT));
+                        MathUtils.random(0.1F, 0.9F) * Settings.HEIGHT));
                 AbstractDungeon.player.masterDeck.removeCard(cards.get(i));
             }
         }
-        UpgradeCard(sword);
-        UpgradeCard(shield);
+        if (sword != null)
+        {
+            UpgradeCard(sword);
+        }
+        if (sword != null)
+        {
+            UpgradeCard(shield);
+        }
     }
 
     private void UpgradeCard(AbstractCard card)
