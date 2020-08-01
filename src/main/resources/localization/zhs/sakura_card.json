@@ -303,7 +303,7 @@
   },
   "ClowCardTheSnow": {
     "NAME": "雪",
-    "DESCRIPTION": "「 水 」 NL 本场战斗每打出过1张 水元素牌 ，对随机敌人造成 !D! 点伤害。",
+    "DESCRIPTION": "「 水 」 NL 本场战斗每打出过1张 水元素牌 的 库洛牌 ，对随机敌人造成 !D! 点伤害。",
     "UPGRADE_DESCRIPTION": "Null",
     "EXTENDED_DESCRIPTION": [
       "对全体敌人额外造成",
