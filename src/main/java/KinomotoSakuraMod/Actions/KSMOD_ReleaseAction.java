@@ -22,7 +22,6 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
     private static final String[] TEXT;
     private AbstractPlayer player;
     private static final float DURATION = Settings.ACTION_DUR_XFAST;
-    private int vulnAmount;
     private float releaseRate;
     private ArrayList<AbstractCard> cannotReleaseList = new ArrayList<AbstractCard>();
 
@@ -32,12 +31,11 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
         TEXT = uiStrings.TEXT;
     }
 
-    public KSMOD_ReleaseAction(int vulnAmount, float rate)
+    public KSMOD_ReleaseAction(float rate)
     {
         this.actionType = AbstractGameAction.ActionType.CARD_MANIPULATION;
         this.player = AbstractDungeon.player;
         this.duration = DURATION;
-        this.vulnAmount = vulnAmount;
         this.releaseRate = rate;
     }
 
@@ -71,10 +69,6 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
                 ReleaseCard(card);
                 this.returnCards();
                 this.isDone = true;
-                for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters)
-                {
-                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(monster, this.player, new VulnerablePower(monster, this.vulnAmount, false)));
-                }
                 this.tickDuration();
                 return;
             }
@@ -95,10 +89,6 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
                 {
                     ReleaseCard(card);
                     returnCards();
-                    for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters)
-                    {
-                        AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(monster, this.player, new VulnerablePower(monster, this.vulnAmount, false)));
-                    }
                 }
             }
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;

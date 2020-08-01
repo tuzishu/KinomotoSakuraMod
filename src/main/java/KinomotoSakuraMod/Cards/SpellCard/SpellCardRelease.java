@@ -6,11 +6,14 @@ import KinomotoSakuraMod.Characters.KinomotoSakura;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Relics.KSMOD_SwordJade;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerToRandomEnemyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
 
 public class SpellCardRelease extends KSMOD_AbstractSpellCard
 {
@@ -62,12 +65,16 @@ public class SpellCardRelease extends KSMOD_AbstractSpellCard
     {
         if (player.hasRelic(KSMOD_SwordJade.RELIC_ID))
         {
-            AbstractDungeon.actionManager.addToBottom(new KSMOD_ReleaseAction(this.magicNumber, UPGRADE_RELEASE_UPGRADE_RATE));
+            AbstractDungeon.actionManager.addToBottom(new KSMOD_ReleaseAction(UPGRADE_RELEASE_UPGRADE_RATE));
             player.getRelic(KSMOD_SwordJade.RELIC_ID).flash();
         }
         else
         {
-            AbstractDungeon.actionManager.addToBottom(new KSMOD_ReleaseAction(this.magicNumber, BASE_RELEASE_UPGRADE_RATE));
+            AbstractDungeon.actionManager.addToBottom(new KSMOD_ReleaseAction(BASE_RELEASE_UPGRADE_RATE));
+        }
+        for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
+        {
+            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, player, new VulnerablePower(monster, this.magicNumber, false), this.magicNumber, true));
         }
         AbstractDungeon.actionManager.addToBottom(new TalkAction(true, KinomotoSakura.GetMessage(3), 1.0F, 2.0F));
     }
