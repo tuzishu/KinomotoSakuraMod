@@ -1,9 +1,12 @@
 package KinomotoSakuraMod.Patches;
 
 import KinomotoSakuraMod.Cards.KSMOD_AbstractMagicCard;
+import KinomotoSakuraMod.Characters.KinomotoSakura;
+import KinomotoSakuraMod.Powers.KSMOD_NothingPower;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
 
 public class KSMOD_CardAddToHandPatch
@@ -13,10 +16,7 @@ public class KSMOD_CardAddToHandPatch
     {
         public static void Postfix(ShowCardAndAddToHandEffect effect, AbstractCard card, float x, float y)
         {
-            if (card instanceof KSMOD_AbstractMagicCard && card.cost > 0)
-            {
-                card.setCostForTurn(-9);
-            }
+            TrySetCost(card);
         }
     }
 
@@ -25,10 +25,15 @@ public class KSMOD_CardAddToHandPatch
     {
         public static void Postfix(ShowCardAndAddToHandEffect effect, AbstractCard card)
         {
-            if (card instanceof KSMOD_AbstractMagicCard && card.cost > 0)
-            {
-                card.setCostForTurn(-9);
-            }
+            TrySetCost(card);
+        }
+    }
+
+    public static void TrySetCost(AbstractCard card)
+    {
+        if (card instanceof KSMOD_AbstractMagicCard && card.cost > 0 && AbstractDungeon.player.hasPower(KSMOD_NothingPower.POWER_ID))
+        {
+            card.setCostForTurn(-9);
         }
     }
 }
