@@ -31,7 +31,7 @@ public class KSMOD_CardAddToHandPatch
 
     public static void TrySetCost(AbstractCard card)
     {
-        if (card instanceof KSMOD_AbstractMagicCard && card.cost > 0 && AbstractDungeon.player.hasPower(KSMOD_NothingPower.POWER_ID))
+        if (AbstractDungeon.player.hasPower(KSMOD_NothingPower.POWER_ID) && card instanceof KSMOD_AbstractMagicCard && card.cost > 0)
         {
             card.setCostForTurn(-9);
         }
