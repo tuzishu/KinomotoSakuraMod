@@ -46,7 +46,7 @@ public class KSMOD_WindyPower extends KSMOD_CustomPower
 
     public void onInitialApplication()
     {
-        AbstractDungeon.actionManager.addToBottom(new VFXAction(this.owner, new KSMOD_WindyVFXEffect(GAIN_POWER_VFX_DURATION), GAIN_POWER_VFX_DURATION));
+        AbstractDungeon.effectsQueue.add(new KSMOD_WindyVFXEffect(GAIN_POWER_VFX_DURATION));
     }
 
     public void onUseCard(AbstractCard card, UseCardAction action)
@@ -54,7 +54,7 @@ public class KSMOD_WindyPower extends KSMOD_CustomPower
         if (card.hasTag(KSMOD_CustomTag.KSMOD_WINDY_CARD))
         {
             counter += 1;
-            AbstractDungeon.actionManager.addToBottom(new VFXAction(this.owner, new KSMOD_WindyVFXEffect(ATTACK_VFX_DURATION), ATTACK_VFX_DURATION));
+            AbstractDungeon.effectsQueue.add(new KSMOD_WindyVFXEffect(ATTACK_VFX_DURATION));
             if (counter >= KSMOD_SealedBook.WINDY_DRAW_TRIGGER)
             {
                 counter -= KSMOD_SealedBook.WINDY_DRAW_TRIGGER;

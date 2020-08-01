@@ -25,8 +25,8 @@ public class KSMOD_FireyPower extends KSMOD_CustomPower
     private static final String[] POWER_DESCRIPTIONS;
     private static final String POWER_IMG_PATH = "img/powers/firey_power.png";
     private static final AbstractPower.PowerType POWER_TYPE = AbstractPower.PowerType.BUFF;
-    private static final float GAIN_POWER_VFX_DURATION = 0.5F;
-    private static final float ATTACK_VFX_DURATION = 0.2F;
+    private static final float GAIN_POWER_VFX_DURATION = 0.8F;
+    private static final float ATTACK_VFX_DURATION = 0.4F;
 
     static
     {
@@ -48,14 +48,14 @@ public class KSMOD_FireyPower extends KSMOD_CustomPower
 
     public void onInitialApplication()
     {
-        AbstractDungeon.actionManager.addToBottom(new VFXAction(this.owner, new KSMOD_FireyVFXEffect(GAIN_POWER_VFX_DURATION), GAIN_POWER_VFX_DURATION));
+        AbstractDungeon.effectsQueue.add(new KSMOD_FireyVFXEffect(GAIN_POWER_VFX_DURATION));
     }
 
     public void onUseCard(AbstractCard card, UseCardAction action)
     {
         if (card.hasTag(KSMOD_CustomTag.KSMOD_FIREY_CARD))
         {
-            AbstractDungeon.actionManager.addToBottom(new VFXAction(this.owner, new KSMOD_FireyVFXEffect(ATTACK_VFX_DURATION), ATTACK_VFX_DURATION));
+            AbstractDungeon.effectsQueue.add(new KSMOD_FireyVFXEffect(ATTACK_VFX_DURATION));
             AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(this.owner, KSMOD_DataTool.GetDamageList(KSMOD_SealedBook.FIREY_DAMAGE_NUMBER), DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.FIRE));
         }
     }
