@@ -49,6 +49,7 @@ public class ClowCardTheThunder extends KSMOD_AbstractMagicCard
         this.setBaseMagicNumber(BASE_MAGIC_NUMBER);
         this.cantUseMessage = KinomotoSakura.GetMessage(1);
         this.retain = true;
+        this.canUse = this.isThisCardCharged();
     }
 
     @Override

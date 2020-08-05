@@ -31,7 +31,7 @@ public class ClowCardTheFly extends KSMOD_AbstractMagicCard
     private static final CardRarity CARD_RARITY = CardRarity.UNCOMMON;
     private static final CardTarget CARD_TARGET = CardTarget.NONE;
     private static final int BASE_MAGIC_NUMBER = 2;
-    private static final int MAGICK_CHARGE_COST = 4;
+    private static final int MAGICK_CHARGE_COST = 3;
 
     static
     {

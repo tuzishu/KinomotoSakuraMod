@@ -1,7 +1,5 @@
 package KinomotoSakuraMod.Utility;
 
-import com.megacrit.cardcrawl.cards.CardGroup;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -78,6 +76,7 @@ public class KSMOD_ReflectTool
 //            "Duplicator",// 祭坛复制事件
 //            "DollysMirror"// 多利之镜遗物
 //    ));
+
     /**
      * 是否正在由拷贝卡牌动作调用makecopy函数
      *

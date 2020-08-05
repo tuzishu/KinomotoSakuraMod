@@ -24,6 +24,7 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
     private static final float DURATION = Settings.ACTION_DUR_XFAST;
     private float releaseRate;
     private ArrayList<AbstractCard> cannotReleaseList = new ArrayList<AbstractCard>();
+    private int vulAmount;
 
     static
     {
@@ -31,19 +32,20 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
         TEXT = uiStrings.TEXT;
     }
 
-    public KSMOD_ReleaseAction(float rate)
+    public KSMOD_ReleaseAction(float rate, int vulAmount)
     {
         this.actionType = AbstractGameAction.ActionType.CARD_MANIPULATION;
         this.player = AbstractDungeon.player;
         this.duration = DURATION;
         this.releaseRate = rate;
+        this.vulAmount = vulAmount;
     }
 
     public void update()
     {
         if (AbstractDungeon.getCurrRoom().isBattleEnding())
         {
-            this.isDone = true;
+            Done();
             return;
         }
         if (this.duration == DURATION)
@@ -57,7 +59,7 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
             }
             if (this.cannotReleaseList.size() == this.player.hand.group.size())
             {
-                this.isDone = true;
+                Done();
                 return;
             }
 
@@ -68,7 +70,7 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
                 AbstractDungeon.player.hand.removeCard(card);
                 ReleaseCard(card);
                 this.returnCards();
-                this.isDone = true;
+                Done();
                 this.tickDuration();
                 return;
             }
@@ -92,8 +94,18 @@ public class KSMOD_ReleaseAction extends AbstractGameAction
                 }
             }
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
+            Done();
         }
         tickDuration();
+    }
+
+    private void Done()
+    {
+        this.isDone = true;
+        for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
+        {
+            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, player, new VulnerablePower(m, this.vulAmount, false), this.vulAmount, true));
+        }
     }
 
     private void returnCards()

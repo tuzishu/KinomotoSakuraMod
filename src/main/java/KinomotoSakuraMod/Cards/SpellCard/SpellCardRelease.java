@@ -65,16 +65,12 @@ public class SpellCardRelease extends KSMOD_AbstractSpellCard
     {
         if (player.hasRelic(KSMOD_SwordJade.RELIC_ID))
         {
-            AbstractDungeon.actionManager.addToBottom(new KSMOD_ReleaseAction(UPGRADE_RELEASE_UPGRADE_RATE));
+            AbstractDungeon.actionManager.addToBottom(new KSMOD_ReleaseAction(UPGRADE_RELEASE_UPGRADE_RATE, this.magicNumber));
             player.getRelic(KSMOD_SwordJade.RELIC_ID).flash();
         }
         else
         {
-            AbstractDungeon.actionManager.addToBottom(new KSMOD_ReleaseAction(BASE_RELEASE_UPGRADE_RATE));
-        }
-        for (AbstractMonster m : AbstractDungeon.getMonsters().monsters)
-        {
-            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(m, player, new VulnerablePower(monster, this.magicNumber, false), this.magicNumber, true));
+            AbstractDungeon.actionManager.addToBottom(new KSMOD_ReleaseAction(BASE_RELEASE_UPGRADE_RATE, this.magicNumber));
         }
         AbstractDungeon.actionManager.addToBottom(new TalkAction(true, KinomotoSakura.GetMessage(3), 1.0F, 2.0F));
     }
