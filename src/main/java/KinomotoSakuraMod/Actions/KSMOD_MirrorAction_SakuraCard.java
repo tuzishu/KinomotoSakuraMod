@@ -1,6 +1,8 @@
 package KinomotoSakuraMod.Actions;
 
+import KinomotoSakuraMod.Cards.ClowCard.ClowCardTheNothing;
 import KinomotoSakuraMod.KSMOD;
+import KinomotoSakuraMod.Utility.KSMOD_DataTool;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -10,16 +12,22 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+
 public class KSMOD_MirrorAction_SakuraCard extends AbstractGameAction
 {
     public static final String ACTION_ID = "KSMOD_MirrorAction_SakuraCard";
     private static final String[] TEXT;
     private static final float DURATION = Settings.ACTION_DUR_FAST;
+    private static CardGroup clowCardGroup;
+    private static ArrayList<String> BlackListID = new ArrayList<>();
 
     static
     {
         UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ACTION_ID);
         TEXT = uiStrings.TEXT;
+        BlackListID.add(ClowCardTheNothing.ID);
     }
 
     public KSMOD_MirrorAction_SakuraCard()
@@ -37,9 +45,7 @@ public class KSMOD_MirrorAction_SakuraCard extends AbstractGameAction
         }
         if (this.duration == DURATION)
         {
-            CardGroup group = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-            group.group = KSMOD.GetClowCards();
-            AbstractDungeon.gridSelectScreen.open(group, 1, false, TEXT[0]);
+            AbstractDungeon.gridSelectScreen.open(GetClowCardGroup(), 1, false, TEXT[0]);
             this.tickDuration();
             return;
         }
@@ -55,5 +61,15 @@ public class KSMOD_MirrorAction_SakuraCard extends AbstractGameAction
         }
 
         this.tickDuration();
+    }
+
+    private CardGroup GetClowCardGroup()
+    {
+        if (clowCardGroup == null)
+        {
+            clowCardGroup = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+            clowCardGroup.group = KSMOD.GetClowCards().stream().filter(card -> !KSMOD_DataTool.IsStringListContains(BlackListID, card.cardID)).collect(Collectors.toCollection(ArrayList::new));
+        }
+        return clowCardGroup;
     }
 }

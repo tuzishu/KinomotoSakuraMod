@@ -269,5 +269,12 @@
       " block. NL At the end of the battle, randomly remove 1 other card from the master deck.",
       " block."
     ]
+  },
+  "KSMOD_NothingPower_Monster": {
+    "NAME": "Nothing",
+    "DESCRIPTIONS": [
+      "When playing #yClow #yCards and #ySakura #yCards, there is a #b",
+      "% chance of being exhausted."
+    ]
   }
 }

@@ -1,13 +1,13 @@
 {
   "modid": "KinomotoSakuraMod",
   "name": "KinomotoSakuraMod(木之本樱)",
-  "description": "Kinomoto Sakura, the protagonist of animation Card Captor Sakura.\nEnglish localization completed. (translated by software, lrevisions are welcome)\ne-mail:477630080@qq.com\nnew version is coming soon\n\n2020.7.30 update content:\nNew event: XiaoLang's Feelings (Option 1: Get the \" \" card; Option 2: Restore all health)\nNew card: \" \" Unplayable, get 1 cost when drawn\n\n动画《魔卡少女樱》的主角木之本樱。\n英文本地化已完成（机翻，欢迎修改优化）。\n欢迎各位玩家提出宝贵的意见和建议。\n联系方式：QQ 477630080(兔子舒)。\n新版本内容制作中\n\n2020.7.30更新内容：\n新事件：小狼的心意（选择1：获得“  ”牌；选择2：恢复所有生命值）\n新卡片：“  ”无法被打出，抽到时获得1费",
+  "description": "Kinomoto Sakura, the protagonist of animation Card Captor Sakura.\nEnglish localization completed. (translated by software, lrevisions are welcome)\ne-mail:477630080@qq.com\nnew version is coming soon\n\n动画《魔卡少女樱》的主角木之本樱。\n英文本地化已完成（机翻，欢迎修改优化）。\n欢迎各位玩家提出宝贵的意见和建议。\n联系方式：QQ 477630080(兔子舒)。\n新版本内容制作中\n\n2020.9.5 update content:\nNew event: XiaoLang's Feelings (in The City)\nNew event: The Sealed Card (in The Beyond) \nNew card: \" \"\nNew card: \"The Nothing\"\nNew card: \"The Hope\"\n\n2020.9.5更新内容：\n新事件：小狼的心意（第二层）\n新事件：被封印的卡片（第三层）\n新卡片：“  ”\n新卡片：“无”\n新卡片：“希望”",
   "author_list": [
     "tuzishu(兔子舒)",
     "Lyrichor(English localization)",
     "DoonLord(English localization)"
   ],
-  "version": "1.5.200730",
+  "version": "2.1.200906",
   "mts_version": "3.16.0",
   "sts_version": "01-27-2020",
   "credits": "None",

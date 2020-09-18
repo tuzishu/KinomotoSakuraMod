@@ -1,0 +1,11 @@
+{
+  "KSMOD_TheNothingMonster": {
+    "MOVES": [
+      "move 1"
+    ],
+    "NAME": "The Nothing",
+    "DIALOG": [
+      "dialog 1"
+    ]
+  }
+}

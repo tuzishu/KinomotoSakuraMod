@@ -29,7 +29,14 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
     private int updateTriggerNumber;
     private int gainNumber;
     private int extraGainNumber;
-    public ArrayList<AbstractMonster> sealedMonsters = new ArrayList<>();
+    private ArrayList<AbstractMonster> sealedMonsters = new ArrayList<>();
+    private static ArrayList<String> sakuraCardBlackList = new ArrayList<>();
+
+    static
+    {
+        sakuraCardBlackList.add(SakuraCardTheLove.ID);
+        sakuraCardBlackList.add(SakuraCardTheHope.ID);
+    }
 
     public KSMOD_AbstractWand(String id, Texture texture, Texture outline, RelicTier tier, LandingSound sfx, int baseTriggerNumber, int updateTriggerNumber, int gainNumber, int extraGainNumber)
     {
@@ -157,7 +164,7 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
         {
             for (AbstractCard card : AbstractDungeon.player.masterDeck.group)
             {
-                if (card.cardID.contains(SakuraCardTheLove.ID) || card.cardID.contains(SakuraCardTheHope.ID))
+                if (KSMOD_DataTool.IsStringListContains(sakuraCardBlackList, card.cardID))
                 {
                     break;
                 }

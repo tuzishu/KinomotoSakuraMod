@@ -1,0 +1,11 @@
+{
+  "KSMOD_TheNothingMonster": {
+    "MOVES": [
+      "行动1"
+    ],
+    "NAME": "无",
+    "DIALOG": [
+      "对话1"
+    ]
+  }
+}

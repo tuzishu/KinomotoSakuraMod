@@ -15,7 +15,7 @@ public class KSMOD_XiaoLangsFeelingsEvent extends AbstractImageEvent
     private static final String NAME;
     private static final String[] DESCRIPTIONS;
     private static final String[] OPTIONS;
-    private static final String IMAGE_PATH = "img/events/xiaolangs_feelings.jpg";
+    private static final String IMAGE_PATH = "img/events/xiaolangs_feelings.png";
     private boolean hasSelected = false;
     private AbstractCard card;
 

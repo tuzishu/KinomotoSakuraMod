@@ -4,7 +4,9 @@ import KinomotoSakuraMod.Cards.ClowCard.*;
 import KinomotoSakuraMod.Cards.SakuraCard.*;
 import KinomotoSakuraMod.Cards.SpellCard.*;
 import KinomotoSakuraMod.Characters.KinomotoSakura;
+import KinomotoSakuraMod.Events.KSMOD_TheSealedCardEvent;
 import KinomotoSakuraMod.Events.KSMOD_XiaoLangsFeelingsEvent;
+import KinomotoSakuraMod.Monsters.KSMOD_TheNothingMonster;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCharacter;
 import KinomotoSakuraMod.Patches.KSMOD_CustomKeywords;
@@ -21,6 +23,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.dungeons.TheBeyond;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
@@ -231,7 +234,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
             spellCards.add(new SpellCardFengHua());
             spellCards.add(new SpellCardShuiLong());
 
-            // spellCards.add(new TestCard());
+            spellCards.add(new TestCard());
         }
         return spellCards;
     }
@@ -315,6 +318,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         KSMOD_LoggerTool.Logger.info("开始编辑事件");
 
         BaseMod.addEvent(new AddEventParams.Builder(KSMOD_XiaoLangsFeelingsEvent.ID, KSMOD_XiaoLangsFeelingsEvent.class).dungeonID(TheCity.ID).playerClass(KSMOD_CustomCharacter.KINOMOTOSAKURA).create());
+        BaseMod.addEvent(new AddEventParams.Builder(KSMOD_TheSealedCardEvent.ID, KSMOD_TheSealedCardEvent.class).dungeonID(TheBeyond.ID).playerClass(KSMOD_CustomCharacter.KINOMOTOSAKURA).create());
 
         KSMOD_LoggerTool.Logger.info("结束编辑事件");
     }
@@ -323,6 +327,8 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
     public void receiveEditMonsters()
     {
         KSMOD_LoggerTool.Logger.info("开始编辑怪物");
+
+        BaseMod.addMonster(KSMOD_TheNothingMonster.ID, KSMOD_TheNothingMonster::new);
 
         KSMOD_LoggerTool.Logger.info("结束编辑怪物");
     }
@@ -339,6 +345,7 @@ public class KSMOD implements ISubscriber, PostInitializeSubscriber, EditCharact
         KSMOD_LocalizeTool.LoadStrings("sakura_power.json", PowerStrings.class);
         KSMOD_LocalizeTool.LoadStrings("sakura_relic.json", RelicStrings.class);
         KSMOD_LocalizeTool.LoadStrings("sakura_ui.json", UIStrings.class);
+        KSMOD_LocalizeTool.LoadStrings("sakura_monster.json", MonsterStrings.class);
 
         KSMOD_LoggerTool.Logger.info("结束编辑本地化文本");
     }
