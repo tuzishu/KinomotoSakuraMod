@@ -1,5 +1,6 @@
 package KinomotoSakuraMod.Patches;
 
+import KinomotoSakuraMod.Events.KSMOD_TheSealedCardEvent;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.ui.buttons.ProceedButton;
@@ -13,8 +14,11 @@ public class KSMOD_ProceedButtonPatch
         @SpireInsertPatch(locator = Locator.class)
         public static void Insert(ProceedButton button) throws NoSuchFieldException, IllegalAccessException
         {
-            AbstractDungeon.dungeonMapScreen.open(false);
-            AbstractDungeon.previousScreen = AbstractDungeon.CurrentScreen.COMBAT_REWARD;
+            if (AbstractDungeon.getCurrRoom().event instanceof KSMOD_TheSealedCardEvent)
+            {
+                AbstractDungeon.dungeonMapScreen.open(false);
+                AbstractDungeon.previousScreen = AbstractDungeon.CurrentScreen.COMBAT_REWARD;
+            }
         }
     }
 
