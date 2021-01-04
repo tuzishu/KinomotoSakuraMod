@@ -75,16 +75,25 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
 
     public void onMonsterDeath(AbstractMonster monster)
     {
-        if (!monster.hasPower(MinionPower.POWER_ID) && !sealedMonsters.contains(monster))
+        if (!monster.hasPower(MinionPower.POWER_ID) && !HasMonsterSealed(monster))
         {
             int chargeNumber = gainNumber;
             if (monster.type == AbstractMonster.EnemyType.ELITE || monster.type == AbstractMonster.EnemyType.BOSS)
             {
                 chargeNumber += extraGainNumber;
             }
+            if (AbstractDungeon.player.hasRelic(KSMOD_DarknessWand.RELIC_ID))
+            {
+                chargeNumber += KSMOD_DarknessWand.CHARGE_NUMBER;
+            }
             GainCharge(chargeNumber, monster);
             sealedMonsters.add(monster);
         }
+    }
+
+    public boolean HasMonsterSealed(AbstractMonster monster)
+    {
+        return sealedMonsters.contains(monster);
     }
 
     public void updateTips()

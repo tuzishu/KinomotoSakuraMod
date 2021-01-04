@@ -17,7 +17,7 @@ public class KSMOD_DarknessWand extends CustomRelic
     private static final String RELIC_IMG_OTL_PATH = "img/relics/outline/darkness_wand.png";
     private static final RelicTier RELIC_TIER = RelicTier.BOSS;
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
-    private static final int CHARGE_NUMBER = 2;
+    public static final int CHARGE_NUMBER = 2;
     private static final int STRENGTH_NUMBER = 1;
 
     public KSMOD_DarknessWand()
@@ -51,31 +51,6 @@ public class KSMOD_DarknessWand extends CustomRelic
         for (AbstractMonster monster: AbstractDungeon.getMonsters().monsters)
         {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, AbstractDungeon.player, new StrengthPower(monster, STRENGTH_NUMBER), STRENGTH_NUMBER));
-        }
-    }
-
-    public void onMonsterDeath(AbstractMonster monster)
-    {
-        if (!monster.hasPower(MinionPower.POWER_ID))
-        {
-            if (AbstractDungeon.player.hasRelic(KSMOD_SealedWand.RELIC_ID))
-            {
-                this.flash();
-                KSMOD_SealedWand wand = (KSMOD_SealedWand) AbstractDungeon.player.getRelic(KSMOD_SealedWand.RELIC_ID);
-                wand.GainCharge(CHARGE_NUMBER, monster);
-            }
-            else if (AbstractDungeon.player.hasRelic(KSMOD_StarWand.RELIC_ID))
-            {
-                this.flash();
-                KSMOD_StarWand wand = (KSMOD_StarWand) AbstractDungeon.player.getRelic(KSMOD_StarWand.RELIC_ID);
-                wand.GainCharge(CHARGE_NUMBER, monster);
-            }
-            else if (AbstractDungeon.player.hasRelic(KSMOD_UltimateWand.RELIC_ID))
-            {
-                this.flash();
-                KSMOD_UltimateWand wand = (KSMOD_UltimateWand) AbstractDungeon.player.getRelic(KSMOD_UltimateWand.RELIC_ID);
-                wand.GainCharge(CHARGE_NUMBER, monster);
-            }
         }
     }
 }
