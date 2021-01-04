@@ -1570,7 +1570,7 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                     "renderColor").get(this);
             boolean useSmallTitleFont = KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class,
                     "useSmallTitleFont").getBoolean(this);
-            font = useSmallTitleFont ? FontHelper.cardTitleFont_small : FontHelper.cardTitleFont;
+            font = useSmallTitleFont ? FontHelper.SCP_cardTitleFont_small : FontHelper.cardTitleFont;
             font.getData().setScale(this.drawScale);
 
             // render Title

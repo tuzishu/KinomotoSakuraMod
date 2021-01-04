@@ -967,7 +967,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
                 }
                 else
                 {
-                    font = FontHelper.cardTitleFont_small;
+                    font = FontHelper.SCP_cardTitleFont_small;
                 }
 
                 font.getData().setScale(this.drawScale);

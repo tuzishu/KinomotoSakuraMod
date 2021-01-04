@@ -134,7 +134,6 @@ public class ClowCardTheSword extends KSMOD_AbstractMagicCard
                 c.baseDamage = GetDamage(c);
             }
         }
-        group.refreshHandLayout();
     }
 
     public int GetDamage(AbstractCard card)
