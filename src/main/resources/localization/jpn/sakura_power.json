@@ -1,0 +1,280 @@
+{
+  "KSMOD_MagickChargePower": {
+    "NAME": "マジックチャージ",
+    "DESCRIPTIONS": [
+      "#yクロウカード か #yさくらカード の使用で蓄積する。 #b",
+      " 貯まると #yフルチャージ に入る。"
+    ]
+  },
+  "KSMOD_CreatePower": {
+    "NAME": "創",
+    "DESCRIPTIONS": [
+      "戦闘後の報酬にランダムな #yレリック #b",
+      " つを加える。"
+    ]
+  },
+  "KSMOD_DarkPower": {
+    "NAME": "闇",
+    "DESCRIPTIONS": [
+      "ターン終了時、手札から #b",
+      " 枚まで廃棄する。廃棄した場合、エナジー #b1 を得る。"
+    ]
+  },
+  "KSMOD_DarkPower_SakuraCard": {
+    "NAME": "闇（さくら）",
+    "DESCRIPTIONS": [
+      "ターン終了時、手札をすべて廃棄する。廃棄した枚数だけ、ランダムな #yアップグレード された #yクロウカード を捨て札に加える。"
+    ]
+  },
+  "KSMOD_EarthyPower": {
+    "NAME": "大地の加護",
+    "DESCRIPTIONS": [
+      "#yアース のカードをプレイするたびに、 #b",
+      " #bブロック を得る。"
+    ]
+  },
+  "KSMOD_EarthyPower_SakuraCard": {
+    "NAME": "地（さくら）",
+    "DESCRIPTIONS": [
+      "#y大地の加護 が戦闘終了まで解除されない。"
+    ]
+  },
+  "KSMOD_WateryPower": {
+    "NAME": "水の加護",
+    "DESCRIPTIONS": [
+      "#yウォーター のカードを #b",
+      " 枚プレイするたびに、エナジー #b1 を得る。",
+      " NL もう 1 枚プレイでエナジーを得る。"
+    ]
+  },
+  "KSMOD_WateryPower_SakuraCard": {
+    "NAME": "水（さくら）",
+    "DESCRIPTIONS": [
+      "#y水の加護 が戦闘終了まで解除されない。"
+    ]
+  },
+  "KSMOD_FireyPower": {
+    "NAME": "炎の加護",
+    "DESCRIPTIONS": [
+      "#yファイア のカードをプレイするたびに、敵全体に #b",
+      " ダメージを与える。"
+    ]
+  },
+  "KSMOD_FireyPower_SakuraCard": {
+    "NAME": "火（さくら）",
+    "DESCRIPTIONS": [
+      "#y炎の加護 が戦闘終了まで解除されない。"
+    ]
+  },
+  "KSMOD_WindyPower": {
+    "NAME": "風の加護",
+    "DESCRIPTIONS": [
+      "#yウィンド のカードを #b",
+      " 枚プレイするたびに、カードを #b1 枚引く。",
+      " NL もう 1 枚プレイでカードを引く。"
+    ]
+  },
+  "KSMOD_WindyPower_SakuraCard": {
+    "NAME": "風（さくら）",
+    "DESCRIPTIONS": [
+      "#y風の加護 が戦闘終了まで解除されない。"
+    ]
+  },
+  "KSMOD_FloatPower": {
+    "NAME": "浮",
+    "DESCRIPTIONS": [
+      "カードを引くたび、 #b",
+      " #bブロック を得る。"
+    ]
+  },
+  "KSMOD_FloatPower_SakuraCard": {
+    "NAME": "浮（さくら）",
+    "DESCRIPTIONS": [
+      "ターン開始時、 #y敏捷性 #b",
+      " を得る。"
+    ]
+  },
+  "KSMOD_FlyPower_SakuraCard": {
+    "NAME": "翔（さくら）",
+    "DESCRIPTIONS": [
+      "ターン開始時、追加で #b",
+      " 枚カードを引く。"
+    ]
+  },
+  "KSMOD_FreezePower": {
+    "NAME": "凍",
+    "DESCRIPTIONS": [
+      "ターン開始時、行動不能になる。"
+    ]
+  },
+  "KSMOD_GlowPower_SakuraCard": {
+    "NAME": "灯（さくら）",
+    "DESCRIPTIONS": [
+      "ターン開始時、 #yマジックチャージ #b",
+      " を得る。"
+    ]
+  },
+  "KSMOD_JumpPower_SakuraCard": {
+    "NAME": "跳（さくら）",
+    "DESCRIPTIONS": [
+      "ターン開始時、ランダムなデバフを #b",
+      " つ取り除く。"
+    ]
+  },
+  "KSMOD_LightPower": {
+    "NAME": "光",
+    "DESCRIPTIONS": [
+      "手札の上限が #b2 増加する。 NL #y空虚 を引いてもエナジーが減少しない。",
+      " 使用するとカードを #b1 枚引けるようになる。"
+    ]
+  },
+  "KSMOD_LoopPower": {
+    "NAME": "輪",
+    "DESCRIPTIONS": [
+      "ターン開始時、 カードを #b",
+      " 枚引いて、カードを #b",
+      " 枚捨てる。"
+    ]
+  },
+  "KSMOD_LoopPower_SakuraCard": {
+    "NAME": "輪（さくら）",
+    "DESCRIPTIONS": [
+      "ターン終了時を除いて、カードを捨てるたび #b",
+      " 枚カードを引く。"
+    ]
+  },
+  "KSMOD_LockPower": {
+    "NAME": "錠",
+    "DESCRIPTIONS": [
+      "#yフルチャージ による効果が発動しない。 #b",
+      " ターン有効。"
+    ]
+  },
+  "KSMOD_LockPower_SakuraCard": {
+    "NAME": "錠（さくら）",
+    "DESCRIPTIONS": [
+      "#yフルチャージ による効果が発動しても #yマジックチャージ が減少しない。 #b",
+      " ターン有効。"
+    ]
+  },
+  "KSMOD_ReturnPower": {
+    "NAME": "戻",
+    "DESCRIPTIONS": [
+      "#b",
+      " ターン後、加護が戻ってくる。"
+    ]
+  },
+  "KSMOD_SilentPower": {
+    "NAME": "静",
+    "DESCRIPTIONS": [
+      "次のターン攻撃できない。"
+    ]
+  },
+  "KSMOD_SleepPower": {
+    "NAME": "眠",
+    "DESCRIPTIONS": [
+      "眠っている。 #b",
+      " ターン有効。 NL ダメージを受けると解除される。 NL ターン経過で目を覚ましたとき、HPを全回復し #y脱力 #b2 を受ける。"
+    ]
+  },
+  "KSMOD_TimePower": {
+    "NAME": "時",
+    "DESCRIPTIONS": [
+      "#b",
+      " ターンの間、行動できない。"
+    ]
+  },
+  "KSMOD_TwinPower": {
+    "NAME": "双",
+    "DESCRIPTIONS": [
+      "ターンの最初にプレイする #yクロウカード を、　2　回プレイする。",
+      "ターンの最初にプレイする #yクロウカード #b",
+      " 枚を、　2　回プレイする。"
+    ]
+  },
+  "KSMOD_TwinPower_SakuraCard": {
+    "NAME": "双（さくら）",
+    "DESCRIPTIONS": [
+      "デッキすべての #yクロウカード のコストが #b1 増加する。すべての #yクロウカード を　2　回プレイする。"
+    ]
+  },
+  "KSMOD_WavePower": {
+    "NAME": "波",
+    "DESCRIPTIONS": [
+      "攻撃するたび #b",
+      " #bブロック を得る。"
+    ]
+  },
+  "KSMOD_BigPower_SakuraCard": {
+    "NAME": "大（さくら）",
+    "DESCRIPTIONS": [
+      "#y攻撃 で与えるダメージが #b",
+      "% 増加する。"
+    ]
+  },
+  "KSMOD_LittlePower_SakuraCard": {
+    "NAME": "小（さくら）",
+    "DESCRIPTIONS": [
+      "#y攻撃 で受けるダメージが #b",
+      "% 減少する。"
+    ]
+  },
+  "KSMOD_SweetPower_SakuraCard": {
+    "NAME": "甘（さくら）",
+    "DESCRIPTIONS": [
+      "ターン開始時、失っているHPの #b",
+      "% を回復する。"
+    ]
+  },
+  "KSMOD_VoicePower_SakuraCard": {
+    "NAME": "声",
+    "DESCRIPTIONS": [
+      "ターン開始時、 #y声 を #b",
+      " 枚手札に加える。"
+    ]
+  },
+  "KSMOD_CerberusMarkPower": {
+    "NAME": "ケロちゃんのアシスト",
+    "DESCRIPTIONS": [
+      "#y攻撃 で受けるダメージが #b",
+      "% 増加する。 NL ターン開始時に解除される。"
+    ]
+  },
+  "KSMOD_MovePower_SakuraCard": {
+    "NAME": "移（さくら）",
+    "DESCRIPTIONS": [
+      "ターン開始時、 #y護符 を #b",
+      " 枚手札に加える。"
+    ]
+  },
+  "KSMOD_DreamPower_SakuraCard": {
+    "NAME": "桜のドリームランド",
+    "DESCRIPTIONS": [
+      "#y夢 のカードで #yさくらカード を獲得した。ターン終了時、元に戻る。戻るカードは次の通り。 ",
+      "、 ",
+      "無し"
+    ]
+  },
+  "KSMOD_HopePower_SakuraCard": {
+    "NAME": "希望（さくら）",
+    "DESCRIPTIONS": [
+      "あなたの #r攻撃 と #bブロック の値が 2 倍になる。"
+    ]
+  },
+  "KSMOD_NothingPower": {
+    "NAME": "無",
+    "DESCRIPTIONS": [
+      "#yクロウカード と #yさくらカード のエナジー消費が 0 。プレイしたそれらのカードは #y廃棄 する。 NL この方法で #y廃棄 するたび、敵全体に #b",
+      " ダメージを与え、 #b",
+      " ブロックを得る。 NL 戦闘終了時、デッキからランダムなカードを取り除く。",
+      " ブロックを得る。"
+    ]
+  },
+  "KSMOD_NothingPower_Monster": {
+    "NAME": "ナッシング",
+    "DESCRIPTIONS": [
+      "#yクロウカード か #yさくらカード をプレイしたとき、 #b",
+      "% の確率で廃棄する。"
+    ]
+  }
+}

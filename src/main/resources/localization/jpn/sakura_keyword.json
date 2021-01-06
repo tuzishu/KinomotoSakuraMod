@@ -1,0 +1,414 @@
+{
+  "keywords": [
+    {
+      "NAMES": [
+        "ミニオン",
+        "ミニオン"
+      ],
+      "DESCRIPTION": "リーダーが倒されると、ミニオンは逃走する。"
+    },
+    {
+      "NAMES": [
+        "締め付け",
+        "締め付け"
+      ],
+      "DESCRIPTION": "ターン終了時、ダメージを受ける。"
+    },
+    {
+      "NAMES": [
+        "バッファー",
+        "Buffer"
+      ],
+      "DESCRIPTION": "次のHPの喪失を防ぐ。"
+    },
+    {
+      "NAMES": [
+        "金属化",
+        "Metallicize"
+      ],
+      "DESCRIPTION": "ターン終了時、 #yブロック を得る。"
+    },
+    {
+      "NAMES": [
+        "プレートアーマー",
+        "Plated Armor"
+      ],
+      "DESCRIPTION": "ターン終了時、 #yブロック を得る。攻撃によってHPを失うたび、 #yプレートアーマー は #b1 減少する。"
+    },
+    {
+      "NAMES": [
+        "鍛錬",
+        "Malleable"
+      ],
+      "DESCRIPTION": "攻撃でダメージを受けるたび、 #yブロック を得る。"
+    },
+    {
+      "NAMES": [
+        "再生",
+        "Regeneration"
+      ],
+      "DESCRIPTION": "ターン終了時にHPを回復する。 ターン毎に回復量が #b1 減少する。"
+    },
+    {
+      "NAMES": [
+        "ダメージブースト",
+        "Temporary-Strength"
+      ],
+      "DESCRIPTION": "#y筋力 を得るが、ターン終了時 #r失う 。"
+    },
+    {
+      "NAMES": [
+        "ブラー",
+        "Blur"
+      ],
+      "DESCRIPTION": "ターン開始時に #yブロック を失わない。"
+    },
+    {
+      "NAMES": [
+        "貫通ダメージ",
+        "Real-Damage"
+      ],
+      "DESCRIPTION": "#yブロック を無視してダメージを与える。"
+    },
+    {
+      "NAMES": [
+        "マジックチャージ",
+        "Magick-Charge"
+      ],
+      "DESCRIPTION": "蓄積することができる。一部の #yクロウカード または #yさくらカード は #yマジックチャージ を消費して効果を発揮する。"
+    },
+    {
+      "NAMES": [
+        "フルチャージ",
+        "Charging-State"
+      ],
+      "DESCRIPTION": "#yマジックチャージ が一定量に達したときこの状態に入る。一部を除き、次にプレイする #yクロウカード は特別な効果を発揮する。"
+    },
+    {
+      "NAMES": [
+        "クロウカード",
+        "Clow-Card",
+        "clow-cards",
+        "Clow-Cards"
+      ],
+      "DESCRIPTION": "クロウ・リードによって創られた魔法のカード。様々な方法で入手する。"
+    },
+    {
+      "NAMES": [
+        "さくらカード",
+        "Sakura-Card",
+        "sakura-cards",
+        "Sakura-Cards"
+      ],
+      "DESCRIPTION": "#yターン を使用し、 #yクロウカード から変身させて入手する。 NL #y特有性 ：同じ名前の #yさくらカード は複数所持できない。 NL アップグレード不可。 #yフルチャージ での特殊効果は無い。プレイするたびに、 #r空虚 を #b1 枚山札に加える。"
+    },
+    {
+      "NAMES": [
+        "ターン",
+        "The-Turn"
+      ],
+      "DESCRIPTION": "#yクロウカード を #yさくらカード に変身させる #yスペル。"
+    },
+    {
+      "NAMES": [
+        "スペル",
+        "Spell"
+      ],
+      "DESCRIPTION": "#yクロウカード に属さない特殊なカード。使い切りであることが多い。"
+    },
+    {
+      "NAMES": [
+        "太陽の加護",
+        "Light-Element-Card"
+      ],
+      "DESCRIPTION": "#yアース と #yファイア の上位属性による加護。両方の加護を同時に受ける。"
+    },
+    {
+      "NAMES": [
+        "月の加護",
+        "Dark-Element-Card"
+      ],
+      "DESCRIPTION": "#yウォーター と #yウィンド の上位属性による加護。両方の加護を同時に受ける。"
+    },
+    {
+      "NAMES": [
+        "アース",
+        "アース",
+        "アース",
+        "Earthy-Element-Card."
+      ],
+      "DESCRIPTION": "地の属性を持つカード。 NL #yフルチャージ の効果をこのカードで発動すると、あなたは #y大地の加護 を受ける。 NL #y大地の加護 を受けた状態でこのカードをプレイすると、 #yブロック を得る。"
+    },
+    {
+      "NAMES": [
+        "大地の加護",
+        "Earthy-Element-State"
+      ],
+      "DESCRIPTION": "この加護を受けている間、 #yアース のカードをプレイすると #b4 ブロックを得る。."
+    },
+    {
+      "NAMES": [
+        "ウォーター",
+        "Watery",
+        "watery-element-card",
+        "Watery-Element-Card"
+      ],
+      "DESCRIPTION": "水の属性を持つカード。 NL #yフルチャージ の効果をこのカードで発動すると、あなたは #y水の加護 を受ける。 NL #y水の加護 を受けた状態でこのカードをプレイすると、 #yエナジー を得る。"
+    },
+    {
+      "NAMES": [
+        "水の加護",
+        "Watery-Element-State"
+      ],
+      "DESCRIPTION": "この加護を受けている間、 #yウォーター のカードを #b2 枚プレイするとエナジーを #b1 得る。"
+    },
+    {
+      "NAMES": [
+        "ファイア",
+        "Firey",
+        "firey-element-card",
+        "Firey-Element-Card"
+      ],
+      "DESCRIPTION": "炎の属性を持つカード。 NL #yフルチャージ の効果をこのカードで発動すると、あなたは #y炎の加護 を受ける。 NL #y炎の加護 を受けた状態でこのカードをプレイすると、敵全体にダメージを与える。"
+    },
+    {
+      "NAMES": [
+        "炎の加護",
+        "Firey-Element-State"
+      ],
+      "DESCRIPTION": "この加護を受けている間、 #yファイア のカードをプレイすると敵全体に #b4 ダメージを与える。"
+    },
+    {
+      "NAMES": [
+        "ウィンド",
+        "Windy",
+        "windy-element-card",
+        "Windy-Element-Card"
+      ],
+      "DESCRIPTION": "風の属性を持つカード。 NL #yフルチャージ の効果をこのカードで発動すると、あなたは #y風の加護 を受ける。 NL #y風の加護 を受けた状態でこのカードをプレイすると、カードを引ける。"
+    },
+    {
+      "NAMES": [
+        "風の加護",
+        "Windy-Element-State"
+      ],
+      "DESCRIPTION": "この加護を受けている間、 #yウィンド のカードを #b2 枚プレイするとカードを #b1 枚引ける。"
+    },
+    {
+      "NAMES": [
+        "封印解除",
+        "Release"
+      ],
+      "DESCRIPTION": "封印解除をしたカードはコストが #b0 になり、効果が #b50% 増加する。ただし #rエセリアル と #r廃棄 が付与される。"
+    },
+    {
+      "NAMES": [
+        "変身",
+        "Convert"
+      ],
+      "DESCRIPTION": "#yクロウカード を #yさくらカード に変身させる。 NL 同じ名前の #yさくらカード を所持していないときのみ可能。 NL 変身後、対象の #yクロウカード はデッキから取り除かれて同じ名前の #yさくらカード を獲得する。"
+    },
+    {
+      "NAMES": [
+        "剣",
+        "The-Sword"
+      ],
+      "DESCRIPTION": "攻撃の基本になる #yクロウカード 。"
+    },
+    {
+      "NAMES": [
+        "鏡",
+        "The-Mirror"
+      ],
+      "DESCRIPTION": "手札のカードを複製する #yクロウカード 。"
+    },
+    {
+      "NAMES": [
+        "声",
+        "The-Voice"
+      ],
+      "DESCRIPTION": "A #yClow #yCard that cannot be played. Draw an additional card when the card is drawn, will only trigger the card effect when consumed."
+    },
+    {
+      "NAMES": [
+        "雨",
+        "The-Rain"
+      ],
+      "DESCRIPTION": "手札のカードのコストを減少させる #yクロウカード 。"
+    },
+    {
+      "NAMES": [
+        "雪",
+        "The-Snow"
+      ],
+      "DESCRIPTION": "特定のカードをプレイするたびに強くなる #yクロウカード 。"
+    },
+    {
+      "NAMES": [
+        "嵐"
+      ],
+      "DESCRIPTION": "敵 #b1 体に複数回攻撃できる #yクロウカード 。"
+    },
+    {
+      "NAMES": [
+        "雷",
+        "The-Thunder"
+      ],
+      "DESCRIPTION": "ランダムな敵に複数回大ダメージを与える #yクロウカード 。"
+    },
+    {
+      "NAMES": [
+        "霧",
+        "The-Mist"
+      ],
+      "DESCRIPTION": "敵の防御を崩すことのできる #yクロウカード 。"
+    },
+    {
+      "NAMES": [
+        "封印の杖",
+        "Sealed-Wand"
+      ],
+      "DESCRIPTION": "敵を倒すたびにチャージがされ、一定量に達したとき #yクロウカード は #yさくらカード に変身できる。"
+    },
+    {
+      "NAMES": [
+        "護符",
+        "Empty-Spell"
+      ],
+      "DESCRIPTION": "属性を選べる使い切りのカード。"
+    },
+    {
+      "NAMES": [
+        "火神招来",
+        "Huo-Shen"
+      ],
+      "DESCRIPTION": "使い切りの #yファイア カード。敵 #b1 体にダメージを与える。"
+    },
+    {
+      "NAMES": [
+        "雷帝招来",
+        "Lei-Di"
+      ],
+      "DESCRIPTION": "使い切りの #yアース カード。ランダムな敵 #b1 体にダメージを与える。"
+    },
+    {
+      "NAMES": [
+        "風華招来",
+        "Feng-Hua"
+      ],
+      "DESCRIPTION": "使い切りの #yウィンド カード。敵 #b1 体に複数回ダメージを与える。"
+    },
+    {
+      "NAMES": [
+        "水龍招来",
+        "Shui-Long"
+      ],
+      "DESCRIPTION": "使い切りの #yウォーター カード。敵全体にダメージを与える。"
+    },
+    {
+      "NAMES": [
+        "眠り",
+        "Sleep"
+      ],
+      "DESCRIPTION": "眠りに落ちた敵はダメージを受けると、この状態を解除する。ターン経過で目を覚ますと、対象はHPを全回復し #y脱力 #b2 を受ける。"
+    },
+    {
+      "NAMES": [
+        "除外",
+        "Removable"
+      ],
+      "DESCRIPTION": "使用後、デッキから除外される。一時的に入手した場合は使用できない。"
+    },
+    {
+      "NAMES": [
+        "インビジブル",
+        "Invisible"
+      ],
+      "DESCRIPTION": "このカードを引くたび、追加でもう #b1 枚引く。"
+    },
+    {
+      "NAMES": [
+        "アンリアル",
+        "Unreal"
+      ],
+      "DESCRIPTION": "このカードが別のカードを廃棄したとき、このカードの複製 #b1 枚を捨て札に加える。"
+    },
+    {
+      "NAMES": [
+        "ディフェンスバフ",
+        "Defence-Buffs"
+      ],
+      "DESCRIPTION": "ブロック、金属化、プレートアーマー、アーティファクト、トゲ、バッファー、無形、鍛錬、バリケードのバフ。"
+    },
+    {
+      "NAMES": [
+        "カウンターアタック",
+        "Counterattack"
+      ],
+      "DESCRIPTION": "カードを廃棄すると敵全体にダメージを与える。"
+    },
+    {
+      "NAMES": [
+        "プロテクト",
+        "Protect"
+      ],
+      "DESCRIPTION": "カードを廃棄すると #yブロック を得る。"
+    },
+    {
+      "NAMES": [
+        "反響",
+        "Echo"
+      ],
+      "DESCRIPTION": "#y歌 で廃棄すると、効果が増加する。"
+    },
+    {
+      "NAMES": [
+        "コスト減少",
+        "Cost-Decreasing"
+      ],
+      "DESCRIPTION": "戦闘開始時、コストが #b1 減少する。"
+    },
+    {
+      "NAMES": [
+        "使用制限",
+        "Entity-Limited"
+      ],
+      "DESCRIPTION": "戦闘後の報酬以外では発動しない。"
+    },
+    {
+      "NAMES": [
+        "連鎖",
+        "Continuously"
+      ],
+      "DESCRIPTION": "このカードを使用して廃棄したとき、同じカードを手札に加える。"
+    },
+    {
+      "NAMES": [
+        "氷結",
+        "Target-Frozen"
+      ],
+      "DESCRIPTION": "対象がボスかエリート以外なら行動不能にする。"
+    },
+    {
+      "NAMES": [
+        "チャージリミット",
+        "Charging-Limited"
+      ],
+      "DESCRIPTION": "#yフルチャージ のときのみプレイ可能。"
+    },
+    {
+      "NAMES": [
+        "一匹狼",
+        "Lone-Ranger"
+      ],
+      "DESCRIPTION": "デッキに同じ名前のカードが #b4 枚未満のとき、効果は枚数が少なくなるごとに #b20% ずつ増加し、最大で #b60% まで増加する。"
+    },
+    {
+      "NAMES": [
+        "消滅",
+        "Swallow"
+      ],
+      "DESCRIPTION": "戦闘終了後、デッキからランダムなカードを取り除く。"
+    }
+  ]
+}

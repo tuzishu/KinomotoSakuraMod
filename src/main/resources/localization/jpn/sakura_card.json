@@ -1,0 +1,785 @@
+{
+  "ClowCardTheArrow": {
+    "NAME": "矢",
+    "DESCRIPTION": "[ ファイア ] NL 手札のカードを好きな枚数捨てる。ランダムな敵に捨てた枚数 +X 回 !D! ダメージを与える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      "[ ファイア ] NL 手札のカードを好きな枚数捨て、その枚数 +X 回 !D! ダメージを与える。"
+    ]
+  },
+  "ClowCardTheBig": {
+    "NAME": "大",
+    "DESCRIPTION": "[ ファイア ] NL 筋力 !M! を得て、 NL 敏捷性 1 を失う。",
+    "UPGRADE_DESCRIPTION": "[ ファイア ] NL 筋力 !M! を得る。",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "ClowCardTheBubbles": {
+    "NAME": "泡",
+    "DESCRIPTION": "[ ウォーター ] NL !D! ダメージを与える。 NL バフ 1 つを取り除く。",
+    "UPGRADE_DESCRIPTION": "[ ウォーター ] NL !D! ダメージを与え、 NL バフ 1 つを取り除く。 NL 取り除けた場合、マジックチャージ !M! を得る。",
+    "EXTENDED_DESCRIPTION": [
+      "[ ウォーター ] NL !D! ダメージを与える。 NL バフをすべて取り除く。",
+      "[ ウォーター ] NL !D! ダメージを与え、 NL バフをすべて取り除く。 NL 取り除けた場合、マジックチャージ !M! を得る。"
+    ]
+  },
+  "ClowCardTheChange": {
+    "NAME": "替",
+    "DESCRIPTION": "[ アース ] NL 手札から 1 枚までカードを捨てる。捨てた枚数+ !M! 枚カードを引く。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      " 追加で ",
+      " 枚カードを引く。"
+    ]
+  },
+  "ClowCardTheCloud": {
+    "NAME": "雲",
+    "DESCRIPTION": "[ ウォーター ] NL 手札の ウォーター カードの枚数ｘ !M! ブロック を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      " 追加で ",
+      " ブロック を得る。"
+    ]
+  },
+  "ClowCardTheCreate": {
+    "NAME": "創",
+    "DESCRIPTION": "[ アース ][ ウィンド ] 除外 コスト減少 使用制限 NL 戦闘後の報酬にランダムなレリック 1 つを加える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "ClowCardTheDark": {
+    "NAME": "闇",
+    "DESCRIPTION": "[ ウィンド ][ ウォーター ] NL ターン終了時、手札から 1 枚までカードを 廃棄 する。 廃棄 した場合、次のターンにエナジー 1 を得る。",
+    "UPGRADE_DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "ClowCardTheDash": {
+    "NAME": "駆",
+    "DESCRIPTION": "[ ウィンド ] 廃棄 NL !M! 枚カードを引く。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      " 追加で ",
+      " 枚カードを引く。"
+    ]
+  },
+  "ClowCardTheDream": {
+    "NAME": "夢",
+    "DESCRIPTION": "[ ウィンド ] 廃棄 NL ランダムな クロウカード を !M! 枚手札に加える。 NLこのターン、そのコストは0。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      " 追加で ",
+      " 枚加える。"
+    ]
+  },
+  "ClowCardTheEarthy": {
+    "NAME": "地",
+    "DESCRIPTION": "[ アース ] NL 雷帝招来 を !M! 枚手札に加える。 大地の加護 を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "ClowCardTheErase": {
+    "NAME": "消",
+    "DESCRIPTION": "[ ウィンド ] NL 最大HPの 33% 未満の、ボスまたはエリート以外の敵を即死させる。条件に合わない場合、 !D! ダメージを与える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      "[ ウィンド ] NL 最大HPの 66% 未満の、ボスまたはエリート以外の敵を即死させる。条件に合わない場合、 !D! ダメージを与える。"
+    ]
+  },
+  "ClowCardTheFight": {
+    "NAME": "闘",
+    "DESCRIPTION": "[ アース ] 廃棄 連鎖 NL !D! ダメージを与える。 NL マジックチャージ 1 と NL ダメージブースト !M! を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      " 筋力 ",
+      " を得る。"
+    ]
+  },
+  "ClowCardTheFirey": {
+    "NAME": "火",
+    "DESCRIPTION": "[ ファイア ] NL 火神招来 を !M! 枚手札に加える。 NL 炎の加護 を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "ClowCardTheFloat": {
+    "NAME": "浮",
+    "DESCRIPTION": "[ ウィンド ] NL カードを 1 枚引くたび、 !M! ブロック を得る。",
+    "UPGRADE_DESCRIPTION": "[ ウィンド ] 天賦 カードを 1 枚引くたび、 !M! ブロック を得る。",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "ClowCardTheFlower": {
+    "NAME": "花",
+    "DESCRIPTION": " [ アース ] 廃棄 NL エナジー !M! を得る。",
+    "UPGRADE_DESCRIPTION": "[ アース ] NL エナジー !M! を得る。",
+    "EXTENDED_DESCRIPTION": [
+      " 追加でエナジー ",
+      " を得る。"
+    ]
+  },
+  "ClowCardTheFly": {
+    "NAME": "翔",
+    "DESCRIPTION": "[ ウィンド ] NL カードを !M! 枚引く。 マジックチャージ を 3 失う。",
+    "UPGRADE_DESCRIPTION": "[ ウィンド ] NL カードを !M! 枚引く。",
+    "EXTENDED_DESCRIPTION": [
+      " 追加で ",
+      " 枚カードを引く。"
+    ]
+  },
+  "ClowCardTheFreeze": {
+    "NAME": "凍",
+    "DESCRIPTION": "[ ウォーター ] NL !B! ブロック を得る。 NL !D! ダメージを与える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      " 氷結 させる。"
+    ]
+  },
+  "ClowCardTheGlow": {
+    "NAME": "灯",
+    "DESCRIPTION": "[ ファイア ] NL !M! 枚カードを引く。 NL マジックチャージ 2 を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "ClowCardTheIllusion": {
+    "NAME": "幻",
+    "DESCRIPTION": "[ ウィンド ] NL !B! ブロック を得る。 NL 廃棄 されたカード 3 枚につき、追加で !M! ブロック を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      "[ ウィンド ] NL !B! ブロック を得る。 NL 廃棄 されたカード 2 枚につき、追加で !M! ブロック を得る。"
+    ]
+  },
+  "ClowCardTheJump": {
+    "NAME": "跳",
+    "DESCRIPTION": "[ ウィンド ] 廃棄 NL !B! ブロック を得る。 NL デバフを 1 つ取り除く。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      "[ ウィンド ] 廃棄 NL !B! ブロック を得る。 NL デバフをすべて取り除く。"
+    ]
+  },
+  "ClowCardTheLibra": {
+    "NAME": "秤",
+    "DESCRIPTION": "[ ファイア ] NL !B! ブロック を得る。ブロック値が0のとき、 マジックチャージ !M! を失い 2 倍になる。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      " 追加で ",
+      " ブロック を得る。"
+    ]
+  },
+  "ClowCardTheLight": {
+    "NAME": "光",
+    "DESCRIPTION": "[ アース ][ ファイア ] NL 手札の上限が 2 増加する。 NL 空虚 を引いてもエナジーが減少しない。",
+    "UPGRADE_DESCRIPTION": "[ アース ][ ファイア ] NL 手札の上限が 2 増加する。 NL 空虚 のエナジー減少が無くなり、 NL カードを 1 枚引けるようになる。",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "ClowCardTheLittle": {
+    "NAME": "小",
+    "DESCRIPTION": "[ ウォーター ] NL 敏捷性 !M! を得て、 NL 筋力 1 を失う。",
+    "UPGRADE_DESCRIPTION": "[ ウォーター ] NL 敏捷性 !M! を得る。",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "ClowCardTheLock": {
+    "NAME": "錠",
+    "DESCRIPTION": "[ ファイア ] 廃棄 NL 手札から !M! 枚までカードを 廃棄 する。この方法で 廃棄 したカードの枚数に等しい マジックチャージ を得る。 アンリアル",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "ClowCardTheLoop": {
+    "NAME": "輪",
+    "DESCRIPTION": "[ アース ] NL ターン開始時、カードを !M! 枚引き !M! 枚捨てる。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "ClowCardTheMaze": {
+    "NAME": "迷",
+    "DESCRIPTION": "[ アース ] NL !B! ブロック を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      " 追加で ",
+      " ブロック を得る。"
+    ]
+  },
+  "ClowCardTheMirror": {
+    "NAME": "鏡",
+    "DESCRIPTION": "[ ウォーター ] エセリアル 廃棄 NL 手札にある クロウカード か さくらカード を複製し、 1 枚手札に加える。",
+    "UPGRADE_DESCRIPTION": "[ ウォーター ] 廃棄 NL 手札にある クロウカード か さくらカード を複製し、 1 枚手札に加える。",
+    "EXTENDED_DESCRIPTION": [
+      " 複製をもう 1 枚手札に加える。"
+    ]
+  },
+  "ClowCardTheMist": {
+    "NAME": "霧",
+    "DESCRIPTION": "[ アース ] NL 敵全体に 毒 !M! を与える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      " 敵全員の ディフェンスバフ を取り除く。"
+    ]
+  },
+  "ClowCardTheMove": {
+    "NAME": "移",
+    "DESCRIPTION": "[ ファイア ] NL 護符 を !M! 枚手札に加える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      " 追加で ",
+      " 枚手札に加える。"
+    ]
+  },
+  "ClowCardTheNothing": {
+    "NAME": "無",
+    "DESCRIPTION": "クロウカード と さくらカード がエナジーを消費しない。プレイしたそれらのカードは 廃棄 する。更に !D! ダメージを与え、 !B! ブロック を得る。 消滅 !M!",
+    "UPGRADE_DESCRIPTION": "クロウカード と さくらカード がエナジーを消費しない。プレイしたそれらのカードは 廃棄 する。更に !D! ダメージを与え、 !B! ブロック を得る。",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "ClowCardThePower": {
+    "NAME": "力",
+    "DESCRIPTION": "[ ファイア ] NL !D! ダメージを与える。 NL 筋力 !M! を失う。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      " 追加で 貫通ダメージ ",
+      " を与える。"
+    ]
+  },
+  "ClowCardTheRain": {
+    "NAME": "雨",
+    "DESCRIPTION": "[ ウォーター ] 廃棄 NL このターン、すべての手札のコストを 1 減らす。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      "[ ウォーター ] このターン、すべての手札のコストを 1 減らす。"
+    ]
+  },
+  "ClowCardTheReturn": {
+    "NAME": "戻",
+    "DESCRIPTION": "[ ウォーター ] NL !M! ターン後、現在得ている加護を再び得る。 NL 空虚 を 2 枚捨て札に加える。",
+    "UPGRADE_DESCRIPTION": "[ ウォーター ] 保留 NL !M! ターン後、現在得ている加護を再び得る。 NL 空虚 を 2 枚捨て札に加える。",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "ClowCardTheSand": {
+    "NAME": "砂",
+    "DESCRIPTION": "[ アース ] NL !D! ダメージを与える。 NL 毒 !M! を与える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      " 追加で 毒 ",
+      " を与える。"
+    ]
+  },
+  "ClowCardTheShadow": {
+    "NAME": "影",
+    "DESCRIPTION": "[ アース ] NL !B! ブロック を得る。 NL ブラー !M! を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      " 追加で ブラー ",
+      " を得る。"
+    ]
+  },
+  "ClowCardTheShield": {
+    "NAME": "盾",
+    "DESCRIPTION": "[ ファイア ] NL 一匹狼 NL !B! ブロック を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      " 金属化 ",
+      " を得る。"
+    ]
+  },
+  "ClowCardTheShot": {
+    "NAME": "撃",
+    "DESCRIPTION": "[ ファイア ] NL !D! ダメージと 毒 !M! を 2 回与える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      "  追加で 弱体 ",
+      " を与える。"
+    ]
+  },
+  "ClowCardTheSilent": {
+    "NAME": "静",
+    "DESCRIPTION": "[ ウォーター ] NL バッファー 1 を得る。次のターン攻撃できない。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      "[ ウォーター ] NL バッファー 1 を得る。"
+    ]
+  },
+  "ClowCardTheSleep": {
+    "NAME": "眠",
+    "DESCRIPTION": "[ ウィンド ] 廃棄 NL ボス以外の敵ならば !M! ターンの間 眠り にする。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      "[ ウィンド ] 廃棄 NL ボス以外のすべての敵を !M! ターンの間 眠り にする。"
+    ]
+  },
+  "ClowCardTheSnow": {
+    "NAME": "雪",
+    "DESCRIPTION": "[ ウォーター ] NL この戦闘中プレイした ウォーター の クロウカード の枚数に等しい回数、 !D! ダメージをランダムな敵に与える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      " 追加で敵全体に ",
+      " ダメージを与える。",
+      "!M! 回攻撃する。"
+    ]
+  },
+  "ClowCardTheSong": {
+    "NAME": "歌",
+    "DESCRIPTION": "[ ウィンド ] NL 手札から X+1 枚までカードを 廃棄 する。この方法で 廃棄 した枚数に等しい回数、 !D! ダメージを敵全体に与える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      " 攻撃回数を ",
+      " 回追加する。"
+    ]
+  },
+  "ClowCardTheStorm": {
+    "NAME": "嵐",
+    "DESCRIPTION": "[ ウィンド ] NL !D! ダメージを与える。 空虚 を 1 枚捨て札に加える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      "[ ウィンド ] NL 敵全体に !D! ダメージを与える。 空虚 を 1 枚捨て札に加える。"
+    ]
+  },
+  "ClowCardTheSweet": {
+    "NAME": "甘",
+    "DESCRIPTION": "[ ファイア ] 廃棄 NL HPを !M! 回復する。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      "[ ファイア ] 廃棄 NL 再生 !M! を得る。"
+    ]
+  },
+  "ClowCardTheSword": {
+    "NAME": "剣",
+    "DESCRIPTION": "[ ファイア ] NL 一匹狼 NL !D! ダメージを与える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      " 追加で 貫通ダメージ ",
+      " を与える。"
+    ]
+  },
+  "ClowCardTheThrough": {
+    "NAME": "抜",
+    "DESCRIPTION": "[ アース ] NL 敵全体に !D! ダメージを与える。 NL 毒 を 1 回発動する。 NL 空虚 を 1 枚捨て札に加える。",
+    "UPGRADE_DESCRIPTION": "[ アース ] NL 敵全体に !D! ダメージを与える。 NL 現在ある 毒 を !M! 増やし、 1 回発動する。 NL 空虚 を 1 枚捨て札に加える。",
+    "EXTENDED_DESCRIPTION": [
+      " 追加で敵の最大HPの ",
+      "% に等しいダメージを与える。"
+    ]
+  },
+  "ClowCardTheThunder": {
+    "NAME": "雷",
+    "DESCRIPTION": "[ アース ] 保留 チャージリミット NL ランダムな敵に !D! ダメージを !M! 回与える。 NL 空虚 を 1 枚捨て札に加える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "ClowCardTheTime": {
+    "NAME": "時",
+    "DESCRIPTION": "[ ウォーター ] 廃棄 NL 敵全員を行動不能にする。 NL 空虚 を 2 枚捨て札に加える。",
+    "UPGRADE_DESCRIPTION": "[ ウォーター ] 廃棄 NL 敵全員を行動不能にする。 NL 敵全体に !D! ダメージを与える。 NL 空虚 を 2 枚捨て札に加える。",
+    "EXTENDED_DESCRIPTION": [
+      "[ ウォーター ] 廃棄 NL 敵全員を行動不能にする。",
+      "[ ウォーター ] 廃棄 NL 敵全員を行動不能にする。 NL 敵全体に !D! ダメージを与える。"
+    ]
+  },
+  "ClowCardTheTwin": {
+    "NAME": "双",
+    "DESCRIPTION": "[ ウォーター ][ ファイア ] NL ターンの最初にプレイする クロウカード を 2 回プレイする。",
+    "UPGRADE_DESCRIPTION": "[ ウォーター ][ ファイア ] 保留 NL ターンの最初にプレイする クロウカード を 2 回プレイする。",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "ClowCardTheVoice": {
+    "NAME": "声",
+    "DESCRIPTION": "[ ウィンド ] エセリアル インビジブル NL 複製を 1 枚捨て札に加える。 NL プロテクト !B! NL 反響 !M!",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": [
+      "[ ウィンド ] エセリアル インビジブル NL 複製を 1 枚捨て札に加える。 NL プロテクト !B! NL 反響 !M!"
+    ]
+  },
+  "ClowCardTheWatery": {
+    "NAME": "水",
+    "DESCRIPTION": "[ ウォーター ] NL 水龍招来 を !M! 枚手札に加える。 NL 水の加護 を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "ClowCardTheWave": {
+    "NAME": "波",
+    "DESCRIPTION": "[ ウォーター ] NL 攻撃するたび !M! ブロック を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "ClowCardTheWindy": {
+    "NAME": "風",
+    "DESCRIPTION": "[ ウィンド ] NL 風華招来 を !M! 枚手札に加える。 NL 風の加護 を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "ClowCardTheWood": {
+    "NAME": "樹",
+    "DESCRIPTION": "[ アース ] NL ターン終了時まで、敵が 筋力 !M! を失う。 NL 敵の 毒 を 50% 増加する。",
+    "UPGRADE_DESCRIPTION": "[ アース ] NL ターン終了時まで、敵が 筋力 !M! を失う。 NL すべての 毒 を対象に移動し、更に 50% 増加する。",
+    "EXTENDED_DESCRIPTION": [
+      " 追加で 脱力 ",
+      " を与える。"
+    ]
+  },
+  "SpellCardRelease": {
+    "NAME": "レリーズ",
+    "DESCRIPTION": "[ スペル ] NL 手札の クロウカード 1 枚の 封印解除 をする。敵全体に 弱体 !M! を与える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SpellCardSeal": {
+    "NAME": "シール",
+    "DESCRIPTION": "[ スペル ] NL !D! ダメージを与える。 致命 時、 封印の杖 に !M! 追加でチャージする。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SpellCardTurn": {
+    "NAME": "ターン",
+    "DESCRIPTION": "[ スペル ] 保留 NL 手札の クロウカード を さくらカード に 変身 させる。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SpellCardEmptySpell": {
+    "NAME": "護符",
+    "DESCRIPTION": "[ スペル ] エセリアル 廃棄 NL 火神招来 、 雷帝招来 、 風華招来 、 水龍招来 から 1 つ選び手札に加える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SpellCardHuoShen": {
+    "NAME": "火神招来",
+    "DESCRIPTION": "[ スペル ][ ファイア ] エセリアル 廃棄 NL !D! ダメージを与える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SpellCardLeiDi": {
+    "NAME": "雷帝招来",
+    "DESCRIPTION": "[ スペル ][ アース ] エセリアル 廃棄 NL ランダムな敵に !D! ダメージを与える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SpellCardFengHua": {
+    "NAME": "風華招来",
+    "DESCRIPTION": "[ スペル ][ ウィンド ] エセリアル 廃棄 NL !D! ダメージを !M! 回与える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SpellCardShuiLong": {
+    "NAME": "水龍招来",
+    "DESCRIPTION": "[ スペル ][ ウォーター ] エセリアル 廃棄 NL 敵全体に !D! ダメージを与える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheArrow": {
+    "NAME": "矢",
+    "DESCRIPTION": "[ さくらカード ][ ファイア ] NL 山札をすべて捨てる。捨てた クロウカード または さくらカード の名前の種類に等しい回数、ランダムな敵に !D! ダメージを与える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheBig": {
+    "NAME": "大",
+    "DESCRIPTION": "[ さくらカード ][ ファイア ] NL 攻撃で与えるダメージが 33% 増加する。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheBubbles": {
+    "NAME": "泡",
+    "DESCRIPTION": "[ さくらカード ][ ウォーター ] 保留 廃棄 NL 敵全体に !D! ダメージを与える。バフをすべて取り除く。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheChange": {
+    "NAME": "替",
+    "DESCRIPTION": "[ さくらカード ][ アース ] NL 手札をすべて捨て、 !M! 枚カードを引く。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheCloud": {
+    "NAME": "雲",
+    "DESCRIPTION": "[ さくらカード ][ ウォーター ] NL !B! ブロック を得る。デッキの ウォーター カード 3 枚につき、もう 1 度 ブロック を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheCreate": {
+    "NAME": "創",
+    "DESCRIPTION": "[ さくらカード ][ アース ][ ウィンド ] 除外 NL 戦闘後の報酬にランダムなレリック 1 つとキャラ専用レリック 1 つを加える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheDark": {
+    "NAME": "闇",
+    "DESCRIPTION": "[ さくらカード ][ ウィンド ][ ウォーター ] NL ターン終了時、手札をすべて 廃棄 する。この方法で 廃棄 した枚数だけ、ランダムな アップグレード された クロウカード を捨て札に加える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheDash": {
+    "NAME": "駆",
+    "DESCRIPTION": "[ さくらカード ][ ウィンド ] 廃棄 NL 手札が一杯になるまでカードを引く。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheDream": {
+    "NAME": "夢",
+    "DESCRIPTION": "[ さくらカード ][ ウィンド ] 廃棄 NL このターン、手札の クロウカード すべてが さくらカード に 変身 する。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheEarthy": {
+    "NAME": "地",
+    "DESCRIPTION": "[ さくらカード ][ アース ] NL 戦闘終了まで 大地の加護 を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheErase": {
+    "NAME": "消",
+    "DESCRIPTION": "[ さくらカード ][ アース ] NL 通常モンスターのHPを 1 にする。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheFight": {
+    "NAME": "闘",
+    "DESCRIPTION": "[ さくらカード ][ アース ] NL !D! ダメージを与える。 NL 筋力 !M! を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheFirey": {
+    "NAME": "火",
+    "DESCRIPTION": "[ さくらカード ][ ファイア ] NL 戦闘終了まで 炎の加護 を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheFloat": {
+    "NAME": "浮",
+    "DESCRIPTION": "[ さくらカード ][ ウィンド ] NL ターン開始時、 敏捷性 !M! を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheFlower": {
+    "NAME": "花",
+    "DESCRIPTION": "[ さくらカード ][ アース ] 廃棄 NL エナジー !M! を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheFly": {
+    "NAME": "翔",
+    "DESCRIPTION": "[ さくらカード ][ ウィンド ] NL ターン開始時、 !M! 枚カードを引く。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheFreeze": {
+    "NAME": "凍",
+    "DESCRIPTION": "[ さくらカード ][ ウォーター ] NL !D! ダメージを与える。 NL !B! ブロック を得る。 NL 対象がボスかエリート以外なら行動不能にする。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheGlow": {
+    "NAME": "灯",
+    "DESCRIPTION": "[ さくらカード ][ ファイア ] NL ターン開始時、 マジックチャージ !M! を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheHope": {
+    "NAME": "希望",
+    "DESCRIPTION": "[ さくらカード ] NL 攻撃と ブロック の値が 2 倍になる。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheIllusion": {
+    "NAME": "幻",
+    "DESCRIPTION": "[ さくらカード ][ ウィンド ] 天賦 廃棄 NL 脱力 !M! と 弱体 !M! を与える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheJump": {
+    "NAME": "跳",
+    "DESCRIPTION": "[ さくらカード ][ ウィンド ] NL ターン開始時、ランダムなデバフ !M! つを取り除く。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheLibra": {
+    "NAME": "秤",
+    "DESCRIPTION": "[ さくらカード ][ ファイア ] NL すべての マジックチャージ を取り除く。取り除いた マジックチャージ の数ｘ !B! ブロック を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheLight": {
+    "NAME": "光",
+    "DESCRIPTION": "[ さくらカード ][ アース ][ ファイア ] NL すべての 状態異常 と呪いを 廃棄 する。この方法で 廃棄 したカードの枚数に等しい回数、HPを 1 回復と 1 枚カードを引く。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheLittle": {
+    "NAME": "小",
+    "DESCRIPTION": "[ さくらカード ][ ウォーター ] NL 攻撃で受けるダメージが 33% 減少する。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheLock": {
+    "NAME": "錠",
+    "DESCRIPTION": "[ さくらカード ][ ファイア ] NL このターン、 フルチャージ による効果を発動しても減少しない。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheLoop": {
+    "NAME": "輪",
+    "DESCRIPTION": "[ さくらカード ][ アース ] NL ターン終了時を除いて、カードを捨てるたび 1 枚カードを引く。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheLove": {
+    "NAME": " ",
+    "DESCRIPTION": "[ さくらカード ] NL 使用不可 このカードを引いたとき、エナジー !M! を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheMaze": {
+    "NAME": "迷",
+    "DESCRIPTION": "[ さくらカード ][ アース ] NL !B! ブロック を !M! 回得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheMirror": {
+    "NAME": "鏡",
+    "DESCRIPTION": "[ さくらカード ][ ウォーター ] 廃棄 NL すべての クロウカード から 1 枚選び、手札に加える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheMist": {
+    "NAME": "霧",
+    "DESCRIPTION": "[ さくらカード ][ アース ] NL 敵全体の ブロック を取り除く。 NL ターン開始時、敵全体に 毒 !M! を与える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheMove": {
+    "NAME": "移",
+    "DESCRIPTION": "[ さくらカード ][ ファイア ] NL ターン開始時、 護符 を !M! 枚手札に加える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardThePower": {
+    "NAME": "力",
+    "DESCRIPTION": "[ さくらカード ][ ファイア ] NL 筋力 !M! を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheRain": {
+    "NAME": "雨",
+    "DESCRIPTION": "[ さくらカード ][ ウォーター ] 廃棄 NL 戦闘終了まで、手札のランダムなカード !M! 枚のコストを0にする。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheReturn": {
+    "NAME": "戻",
+    "DESCRIPTION": "[ さくらカード ][ ウォーター ] 保留 除外 NL HPを全回復する。前回の 変身 に必要だったチャージの 75% を返還する。( !M! 返還する。)",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheSand": {
+    "NAME": "砂",
+    "DESCRIPTION": "[ さくらカード ][ アース ] NL !D! ダメージと 毒 1 を !M! 回与える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheShadow": {
+    "NAME": "影",
+    "DESCRIPTION": "[ さくらカード ][ アース ] 廃棄 NL !B! ブロック を得る。 NL 無形 !M! を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheShield": {
+    "NAME": "盾",
+    "DESCRIPTION": "[ さくらカード ][ ファイア ] NL !B! ブロック を得る。 NL 追加で失っているHPの !M! % に等しい ブロック を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheShot": {
+    "NAME": "撃",
+    "DESCRIPTION": "[ さくらカード ][ ファイア ] NL !D! ダメージを !M! 回与える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheSilent": {
+    "NAME": "静",
+    "DESCRIPTION": "[ さくらカード ][ ウォーター ] 廃棄 NL バッファー !M! を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheSleep": {
+    "NAME": "眠",
+    "DESCRIPTION": "[ さくらカード ][ ウィンド ] 廃棄 NL ボス以外の敵ならば !M! ターンの間 眠り にする。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheSnow": {
+    "NAME": "雪",
+    "DESCRIPTION": "[ さくらカード ][ ウォーター ] NL このターンプレイしたカードの枚数に等しい回数、敵全体に !D! ダメージを与える。 NL !M! 回攻撃する。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheSong": {
+    "NAME": "歌",
+    "DESCRIPTION": "[ さくらカード ][ ウィンド ] NL 手札のカードを好きな枚数 廃棄 する。この方法で 廃棄 した枚数に等しい回数、敵全体に !D! ダメージを与え、 !B! ブロック を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheStorm": {
+    "NAME": "嵐",
+    "DESCRIPTION": "[ さくらカード ][ ウィンド ] NL !D! ~ !B! ダメージを !M! 回与える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheSweet": {
+    "NAME": "甘",
+    "DESCRIPTION": "[ さくらカード ][ ファイア ] NL ターン開始時、失っているHPの !M! % を回復する。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheSword": {
+    "NAME": "剣",
+    "DESCRIPTION": "[ さくらカード ][ ファイア ] NL !D! ダメージを与える。追加で敵の残りHPの !M! % に等しいダメージを与える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheThrough": {
+    "NAME": "抜",
+    "DESCRIPTION": "[ さくらカード ][ アース ] NL 敵全体に !D! ダメージと、追加で最大HPの 10% に等しいダメージを与える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheThunder": {
+    "NAME": "雷",
+    "DESCRIPTION": "[ さくらカード ][ アース ] NL マジックチャージ 2ｘX を得てから、すべて取り除く。取り除いた マジックチャージ !M! つにつき、ランダムな敵に !D! ダメージを与える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheTime": {
+    "NAME": "時",
+    "DESCRIPTION": "[ さくらカード ][ ウォーター ] 天賦 廃棄 NL 敵全体に !D! ダメージを与え、行動不能にする。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheTwin": {
+    "NAME": "双",
+    "DESCRIPTION": "[ さくらカード ][ ファイア ][ ウォーター ] NL デッキすべての クロウカード のコストが 1 増加する。すべての クロウカード を 2 回プレイする。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheVoice": {
+    "NAME": "声",
+    "DESCRIPTION": "[ さくらカード ][ ウィンド ] NL ターン開始時、 声 を !M! 枚手札に加える。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheWatery": {
+    "NAME": "水",
+    "DESCRIPTION": "[ さくらカード ][ ウォーター ] NL 戦闘終了まで 水の加護 を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheWave": {
+    "NAME": "波",
+    "DESCRIPTION": "[ さくらカード ][ ウォーター ] 廃棄 NL 加護をすべて得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheWindy": {
+    "NAME": "風",
+    "DESCRIPTION": "[ さくらカード ][ ウィンド ] NL 戦闘終了まで 風の加護 を得る。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  },
+  "SakuraCardTheWood": {
+    "NAME": "樹",
+    "DESCRIPTION": "[ さくらカード ][ アース ] NL 敵が 筋力 !M! を失う。",
+    "UPGRADE_DESCRIPTION": "Null",
+    "EXTENDED_DESCRIPTION": []
+  }
+}

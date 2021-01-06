@@ -1,0 +1,71 @@
+{
+  "KSMOD_ReleaseAction": {
+    "TEXT": [
+      "封印解除",
+      "[ さくらカード ]",
+      "[ アース ]",
+      "[ ウォーター ]",
+      "[ ファイア ]",
+      "[ ウィンド ]",
+      " 封印解除",
+      " エセリアル",
+      " 廃棄"
+    ]
+  },
+  "KSMOD_ArrowAction": {
+    "TEXT": [
+      "捨てる"
+    ]
+  },
+  "KSMOD_ChangeAction": {
+    "TEXT": [
+      "交換"
+    ]
+  },
+  "KSMOD_DarkAction": {
+    "TEXT": [
+      "廃棄"
+    ]
+  },
+  "KSMOD_LockAction": {
+    "TEXT": [
+      "廃棄"
+    ]
+  },
+  "KSMOD_MirrorAction": {
+    "TEXT": [
+      "複製"
+    ]
+  },
+  "KSMOD_MirrorAction_SakuraCard": {
+    "TEXT": [
+      "手札に追加するクロウカードを選択"
+    ]
+  },
+  "KSMOD_SongAction": {
+    "TEXT": [
+      "廃棄"
+    ]
+  },
+  "KSMOD_SongAction_SakuraCard": {
+    "TEXT": [
+      "廃棄"
+    ]
+  },
+  "KSMOD_ReturnAction": {
+    "TEXT": [
+      "Return:Please select a maximum of ",
+      " card to return to the draw pile."
+    ]
+  },
+  "KSMOD_TurnAction": {
+    "TEXT": [
+      "変身させるクロウカード"
+    ]
+  },
+  "KSMOD_WriteEmptySpellAction": {
+    "TEXT": [
+      "手札に追加するスペルを選択"
+    ]
+  }
+}

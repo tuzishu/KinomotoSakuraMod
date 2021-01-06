@@ -1,0 +1,33 @@
+{
+  "KSMOD_XiaoLangsFeelingsEvent": {
+    "NAME": "小狼の想い",
+    "DESCRIPTIONS": [
+      "クロウリードが引き起こした危機を打ち破り、疲労の中、小狼はあなたに想いを打ち明けた。",
+      "魔力が尽き、彼は眠りに落ちた。しかし、その寝顔は幸せそうな笑みを浮かべている。",
+      "彼は何も言わず、たた静かに立ち去った。"
+    ],
+    "OPTIONS":[
+      "[受け取る] [ ] #gを獲得。",
+      "[拒否する] #gHPを全回復。",
+      "[立ち去る]"
+    ]
+  },
+  "KSMOD_TheSealedCardEvent": {
+    "NAME": "封印されたカード",
+    "DESCRIPTIONS": [
+      "screen1 desc",
+      "screen2 desc",
+      "screen3 desc",
+      "screen4 desc"
+    ],
+    "OPTIONS":[
+      "screen1 opt1",
+      "screen1 opt2",
+      "screen1 opt31",
+      "screen1 opt32",
+      "screen1 opt33",
+      "screen2/3 opt1",
+      "screen4 opt1"
+    ]
+  }
+}

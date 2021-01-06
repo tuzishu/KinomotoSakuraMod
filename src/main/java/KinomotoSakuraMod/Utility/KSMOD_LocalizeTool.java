@@ -26,6 +26,10 @@ public class KSMOD_LocalizeTool
                     KSMOD_LoggerTool.Logger.info("language == zhs");
                     localizationPath = localizationPath + "zhs/";
                     break;
+                case JPN:
+                    KSMOD_LoggerTool.Logger.info("language == jpn");
+                    localizationPath = localizationPath + "jpn/";
+                    break;
                 default:
                     KSMOD_LoggerTool.Logger.info("language == eng");
                     localizationPath = localizationPath + "eng/";
