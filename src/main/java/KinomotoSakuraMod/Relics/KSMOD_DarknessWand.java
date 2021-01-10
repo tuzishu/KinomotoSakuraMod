@@ -1,12 +1,10 @@
 package KinomotoSakuraMod.Relics;
 
-import KinomotoSakuraMod.Cards.SpellCard.SpellCardRelease;
 import basemod.abstracts.CustomRelic;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.MinionPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
@@ -19,6 +17,11 @@ public class KSMOD_DarknessWand extends CustomRelic
     private static final LandingSound RELIC_SOUND = AbstractRelic.LandingSound.MAGICAL;
     public static final int CHARGE_NUMBER = 2;
     private static final int STRENGTH_NUMBER = 1;
+
+    static
+    {
+        KSMOD_AbstractWand.RegisterExtraRechargeRelics(RELIC_ID, CHARGE_NUMBER);
+    }
 
     public KSMOD_DarknessWand()
     {
@@ -48,7 +51,7 @@ public class KSMOD_DarknessWand extends CustomRelic
     public void atBattleStart()
     {
         this.flash();
-        for (AbstractMonster monster: AbstractDungeon.getMonsters().monsters)
+        for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters)
         {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, AbstractDungeon.player, new StrengthPower(monster, STRENGTH_NUMBER), STRENGTH_NUMBER));
         }

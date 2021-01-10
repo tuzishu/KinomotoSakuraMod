@@ -19,8 +19,10 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.MinionPower;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public abstract class KSMOD_AbstractWand extends CustomRelic
 {
@@ -31,6 +33,8 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
     private int extraGainNumber;
     private ArrayList<AbstractMonster> sealedMonsters = new ArrayList<>();
     private static ArrayList<String> sakuraCardBlackList = new ArrayList<>();
+    private static HashMap<String, Integer> extraRechargeRelics = new HashMap<>();
+    private static HashMap<String, Integer> extraRechargeCards = new HashMap<>();
 
     static
     {
@@ -82,9 +86,18 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
             {
                 chargeNumber += extraGainNumber;
             }
-            if (AbstractDungeon.player.hasRelic(KSMOD_DarknessWand.RELIC_ID))
+            for (HashMap.Entry<String, Integer> entry : extraRechargeRelics.entrySet())
             {
-                chargeNumber += KSMOD_DarknessWand.CHARGE_NUMBER;
+                if (AbstractDungeon.player.hasRelic(entry.getKey()))
+                {
+                    chargeNumber += entry.getValue();
+                    AbstractRelic relic = AbstractDungeon.player.getRelic(entry.getKey());
+                    relic.flash();
+                }
+            }
+            if (extraRechargeCards.containsKey(AbstractDungeon.player.cardInUse.cardID))
+            {
+                chargeNumber += extraRechargeCards.get(AbstractDungeon.player.cardInUse.cardID);
             }
             GainCharge(chargeNumber, monster);
             sealedMonsters.add(monster);
@@ -130,7 +143,11 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
         {
             AbstractDungeon.effectList.add(new KSMOD_SealOrbEffect(monster.hb.cX, monster.hb.cY, this.hb.cX, this.hb.cY));
         }
-        this.setCounter(this.counter + chargeNumber);
+        if (chargeNumber > 0)
+        {
+            this.flash();
+            this.setCounter(this.counter + chargeNumber);
+        }
     }
 
     public void setCounter(int counter)
@@ -148,6 +165,7 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
         }
         AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new SpellCardTurn()));
+        this.flash();
     }
 
     public void ShowOrbEffect()
@@ -214,5 +232,15 @@ public abstract class KSMOD_AbstractWand extends CustomRelic
         {
             arrayList.add(i, cardsToAdd.get(i));
         }
+    }
+
+    public static void RegisterExtraRechargeRelics(String relicId, int rechargeNumber)
+    {
+        extraRechargeRelics.put(relicId, rechargeNumber);
+    }
+
+    public static void RegisterExtraRechargeCards(String cardId, int rechargeNumber)
+    {
+        extraRechargeCards.put(cardId, rechargeNumber);
     }
 }

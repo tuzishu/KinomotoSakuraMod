@@ -1,9 +1,10 @@
 package KinomotoSakuraMod.Cards.SpellCard;
 
-import KinomotoSakuraMod.Actions.KSMOD_SealAction;
 import KinomotoSakuraMod.Cards.KSMOD_AbstractSpellCard;
 import KinomotoSakuraMod.Patches.KSMOD_CustomCardColor;
+import KinomotoSakuraMod.Relics.KSMOD_AbstractWand;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -32,6 +33,7 @@ public class SpellCardSeal extends KSMOD_AbstractSpellCard
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
         NAME = cardStrings.NAME;
         DESCRIPTION = cardStrings.DESCRIPTION;
+        KSMOD_AbstractWand.RegisterExtraRechargeCards(ID, BASE_MAGIC_NUMBER);
     }
 
     public SpellCardSeal()
@@ -60,6 +62,6 @@ public class SpellCardSeal extends KSMOD_AbstractSpellCard
     @Override
     public void use(AbstractPlayer player, AbstractMonster monster)
     {
-        AbstractDungeon.actionManager.addToBottom(new KSMOD_SealAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY, this.magicNumber));
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
     }
 }
