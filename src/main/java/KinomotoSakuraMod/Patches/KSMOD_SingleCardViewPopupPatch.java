@@ -6,6 +6,7 @@ import KinomotoSakuraMod.Utility.KSMOD_ImageConst;
 import KinomotoSakuraMod.Utility.KSMOD_ReflectTool;
 import basemod.BaseMod;
 import basemod.abstracts.DynamicVariable;
+import basemod.patches.com.megacrit.cardcrawl.screens.SingleCardViewPopup.TitleFontSize;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -24,6 +25,7 @@ import com.megacrit.cardcrawl.localization.LocalizedStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.screens.SingleCardViewPopup;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.regex.Matcher;
@@ -534,13 +536,13 @@ public class KSMOD_SingleCardViewPopupPatch
     @SpirePatch(clz = SingleCardViewPopup.class, method = "renderTitle", paramtypez = {SpriteBatch.class})
     public static class renderTitle
     {
-        public static boolean hasInit = false;
-
         public static SpireReturn<Object> Prefix(SingleCardViewPopup view, SpriteBatch sb) throws NoSuchFieldException, IllegalAccessException, InvocationTargetException, NoSuchMethodException
         {
             AbstractCard card = (AbstractCard) KSMOD_ReflectTool.GetFieldByReflect(SingleCardViewPopup.class, "card").get(view);
-            if (IsKSCard(card) && hasInit)
+            if (IsKSCard(card))
             {
+                Field savedFont =  KSMOD_ReflectTool.GetFieldByReflect(TitleFontSize.class, "savedFont");
+                savedFont.set(null, FontHelper.SCP_cardTitleFont_small);
                 Method allowUpgradePreview = KSMOD_ReflectTool.GetMethodByReflect(SingleCardViewPopup.class, "allowUpgradePreview");
                 float offsetToTop = card.color == KSMOD_CustomCardColor.SAKURACARD_COLOR ? TITLE_HEIGHT_SAKURA_TO_CENTER : TITLE_HEIGHT_TO_CENTER;
                 if (card.isLocked)
@@ -591,7 +593,6 @@ public class KSMOD_SingleCardViewPopupPatch
             }
             else
             {
-                hasInit = true;
                 return SpireReturn.Continue();
             }
         }
@@ -663,10 +664,7 @@ public class KSMOD_SingleCardViewPopupPatch
         }
     }
 
-    @SpirePatch(clz = SingleCardViewPopup.class, method = "open", paramtypez = {
-            AbstractCard.class,
-            CardGroup.class
-    })
+    @SpirePatch(clz = SingleCardViewPopup.class, method = "open", paramtypez = {AbstractCard.class, CardGroup.class})
     public static class open_group
     {
         public static void Postfix(SingleCardViewPopup view, AbstractCard card, CardGroup group) throws NoSuchFieldException, IllegalAccessException

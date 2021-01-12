@@ -942,18 +942,16 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
     {
         try
         {
-            BitmapFont font;
+            BitmapFont font = FontHelper.cardTitleFont;
             Color renderColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
             if (this.isLocked)
             {
-                font = FontHelper.cardTitleFont;
                 font.getData().setScale(this.drawScale);
                 FontHelper.renderRotatedText(sb, font, LOCKED_STRING, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
                 FontHelper.renderRotatedText(sb, font, LOCKED_STRING, this.current_x, this.current_y, 0.0F, TITLE_BOTTOM_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
             }
             else if (!this.isSeen)
             {
-                font = FontHelper.cardTitleFont;
                 font.getData().setScale(this.drawScale);
                 FontHelper.renderRotatedText(sb, font, UNKNOWN_STRING, this.current_x, this.current_y, 0.0F, TITLE_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
                 FontHelper.renderRotatedText(sb, font, UNKNOWN_STRING, this.current_x, this.current_y, 0.0F, TITLE_BOTTOM_HEIGHT_TO_CENTER * this.drawScale * Settings.scale, this.angle, false, renderColor);
@@ -961,16 +959,7 @@ public abstract class KSMOD_AbstractSpellCard extends CustomCard
             else
             {
                 boolean useSmallTitleFont = KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "useSmallTitleFont").getBoolean(this);
-                if (!useSmallTitleFont)
-                {
-                    font = FontHelper.cardTitleFont;
-                }
-                else
-                {
-                    font = FontHelper.SCP_cardTitleFont_small;
-                }
-
-                font.getData().setScale(this.drawScale);
+                font.getData().setScale(this.drawScale * (useSmallTitleFont ? 0.85F : 1F));
                 if (this.upgraded)
                 {
                     Color color = Settings.GREEN_TEXT_COLOR.cpy();

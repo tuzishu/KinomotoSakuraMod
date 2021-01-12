@@ -1560,18 +1560,20 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
         }
     }
 
-    @SpireOverride
+    public float getTitleFontSize()
+    {
+        return 27F;
+    }
+
     public void renderTitle(SpriteBatch sb)
     {
         try
         {
-            BitmapFont font;
-            Color renderColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class,
-                    "renderColor").get(this);
-            boolean useSmallTitleFont = KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class,
-                    "useSmallTitleFont").getBoolean(this);
-            font = useSmallTitleFont ? FontHelper.SCP_cardTitleFont_small : FontHelper.cardTitleFont;
-            font.getData().setScale(this.drawScale);
+            Color renderColor = (Color) KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "renderColor").get(this);
+            boolean useSmallTitleFont = KSMOD_ReflectTool.GetFieldByReflect(AbstractCard.class, "useSmallTitleFont").getBoolean(this);
+
+            BitmapFont font = FontHelper.cardTitleFont;
+            font.getData().setScale(this.drawScale * (useSmallTitleFont ? 0.85F : 1F));
 
             // render Title
             float offsetToTop = this.color == KSMOD_CustomCardColor.CLOWCARD_COLOR ? TITLE_HEIGHT_TO_CENTER : TITLE_HEIGHT_SAKURA_TO_CENTER;
@@ -1581,7 +1583,8 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                 {
                     Color color = Settings.GREEN_TEXT_COLOR.cpy();
                     color.a = renderColor.a;
-                    FontHelper.renderRotatedText(sb,
+                    FontHelper.renderRotatedText(
+                            sb,
                             font,
                             this.name,
                             this.current_x,
@@ -1590,11 +1593,13 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                             offsetToTop * this.drawScale * Settings.scale,
                             this.angle,
                             false,
-                            color);
+                            color
+                    );
                 }
                 else
                 {
-                    FontHelper.renderRotatedText(sb,
+                    FontHelper.renderRotatedText(
+                            sb,
                             font,
                             this.name,
                             this.current_x,
@@ -1603,7 +1608,8 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                             offsetToTop * this.drawScale * Settings.scale,
                             this.angle,
                             false,
-                            renderColor);
+                            renderColor
+                    );
                 }
             }
 
@@ -1616,7 +1622,8 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                     Color color = Settings.GREEN_TEXT_COLOR.cpy();
                     color.a = renderColor.a;
                     FontHelper.renderRotatedText(sb,
-                            font, bottomTitle,
+                            font,
+                            bottomTitle,
                             this.current_x,
                             this.current_y,
                             0.0F,
@@ -1628,7 +1635,8 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                 else
                 {
                     FontHelper.renderRotatedText(sb,
-                            font, bottomTitle,
+                            font,
+                            bottomTitle,
                             this.current_x,
                             this.current_y,
                             0.0F,
@@ -1638,7 +1646,6 @@ public abstract class KSMOD_AbstractMagicCard extends CustomCard implements ISub
                             renderColor);
                 }
             }
-
         }
         catch (Exception e)
         {
